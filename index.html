@@ -1,0 +1,2572 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFL // LostFromLight Cyber Defense Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+
+<body class="theme-corporate-cyber">
+
+    <!-- KALI LINUX OFFICIAL DRAGON INTRO ANIMATION SPLASH -->
+    <div id="kali-intro-splash" class="kali-intro-splash">
+        <div class="intro-backdrop-glow"></div>
+        <div class="intro-cyber-grid"></div>
+
+        <div class="intro-dragon-container">
+            <img src="kali_dragon.svg" alt="Official Kali Linux Dragon" class="intro-dragon-image" />
+            <div class="intro-laser-scanner"></div>
+        </div>
+
+        <div class="intro-details-card">
+            <div class="intro-badge-pill">
+                <span class="pulsing-beacon" style="background: var(--cyan); box-shadow: 0 0 10px var(--cyan);"></span>
+                <span>KALI LINUX ROLLING // SİBER SAVUNMA KERNEL</span>
+            </div>
+
+            <h1 class="intro-brand-title">LFL // LOST FROM LIGHT</h1>
+            <p class="intro-cli-stream-line" id="intro-cli-text">modprobe --force-vermagic lfl_kernel_shield.ko</p>
+
+            <div class="intro-progress-box">
+                <div class="intro-progress-track">
+                    <div class="intro-progress-fill" id="intro-progress-bar"></div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center;">
+                <button type="button" class="intro-skip-btn" id="btn-skip-intro">GİRİŞİ ATLA [ESC] &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress-bar" style="width:0%"></div>
+
+    <!-- Background Orbs (Parallax) -->
+    <div class="hero-bg-orb hero-bg-orb-1" id="orb1"></div>
+    <div class="hero-bg-orb hero-bg-orb-2" id="orb2"></div>
+    <div class="hero-bg-orb hero-bg-orb-3" id="orb3"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="lfl-particle-canvas"></canvas>
+
+    <!-- App Wrapper with Sidebar & Main Stage -->
+    <div id="app-layout" class="app-shell">
+
+        <!-- LEFT ENTERPRISE SIDEBAR (Starts collapsed by default) -->
+        <aside class="app-sidebar" id="app-sidebar">
+            <div class="sidebar-header">
+                <div class="brand-shield"
+                    style="background: rgba(0, 229, 255, 0.12); border: 1px solid var(--cyan); box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lfl-logo-svg">
+                        <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke="var(--cyan)" stroke-width="1.8"
+                            fill="rgba(0, 229, 255, 0.15)" />
+                        <path d="M12 2v20" stroke="var(--cyan)" stroke-width="1.4" stroke-dasharray="2 2" />
+                        <path d="M7 8l5-3 5 3v8l-5 3-5-3z" stroke="#38bdf8" stroke-width="1.4" />
+                        <polyline points="9 11 12 8 15 11" stroke="#ffffff" stroke-width="2" />
+                        <polyline points="9 14 12 17 15 14" stroke="var(--cyan)" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="brand-meta">
+                    <span class="brand-name" style="letter-spacing: 1.5px; font-weight: 900;">LFL</span>
+                    <span class="brand-tier" style="color: var(--cyan); font-weight: 700; letter-spacing: 0.8px;">LOST
+                        FROM LIGHT</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label" data-i18n="nav_section_core">TEMEL PLATFORM</div>
+
+                <button class="nav-btn active" data-page="page-dashboard">
+                    <span class="nav-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Komuta Merkezi</span>
+                    <span class="nav-badge" id="badge-incident-count">LIVE</span>
+                </button>
+
+                <div class="nav-section-label">AKADEMİ &amp; EĞİTİM</div>
+
+                <!-- BEGINNER FRIENDLY CYBER ACADEMY (15 BÖLÜM EĞİTİM PLANI) -->
+                <button class="nav-btn" data-page="page-academy">
+                    <span class="nav-icon" style="color: var(--green);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Siber Akademi (Eğitim)</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(16, 185, 129, 0.2); color: var(--green); border: 1px solid var(--green);">EĞİTİM</span>
+                </button>
+
+                <!-- 140+ SİBER KOD KÜTÜPHANESİ (AYRI YER) -->
+                <button class="nav-btn" data-page="page-commands">
+                    <span class="nav-icon" style="color: var(--cyan);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Siber Kod Kütüphanesi</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(0, 229, 255, 0.2); color: var(--cyan); border: 1px solid var(--cyan);">140+
+                        KOD</span>
+                </button>
+
+                <button class="nav-btn" data-page="page-terminal">
+                    <span class="nav-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="4 17 10 11 4 5" />
+                            <line x1="12" y1="19" x2="20" y2="19" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Kali Web Terminal</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(0, 229, 255, 0.2); color: var(--cyan); border: 1px solid var(--cyan);">LIVE
+                        CLI</span>
+                </button>
+
+                <div class="nav-section-label">TEST &amp; DEĞERLENDİRME</div>
+
+                <button class="nav-btn" data-page="page-quiz">
+                    <span class="nav-icon" style="color: #c084fc;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Siber Rol Testi</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(192, 132, 252, 0.2); color: #c084fc; border: 1px solid #c084fc;">10
+                        SORU</span>
+                </button>
+
+                <button class="nav-btn" data-page="page-ctf">
+                    <span class="nav-icon" style="color: #ef4444;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                            <line x1="4" y1="22" x2="4" y2="15" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Siber CTF Arenası</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444;">6
+                        SEVİYE</span>
+                </button>
+
+                <div class="nav-section-label" data-i18n="nav_section_guide">REHBER &amp; SÖZLÜK</div>
+
+                <!-- 0-LEVEL BEGINNER GLOSSARY & KNOWLEDGE BASE -->
+                <button class="nav-btn" data-page="page-glossary">
+                    <span class="nav-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                    </span>
+                    <span class="nav-label" data-i18n="nav_glossary">Siber Kılavuz &amp; Sözlük</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(0, 229, 255, 0.15); color: var(--cyan); border-color: var(--cyan);">A-Z</span>
+                </button>
+
+                <!-- ADMIN ONLY: LIVE VISITOR & AUDIT LOGS -->
+                <div class="nav-section-label" id="nav-section-admin" style="display: none; color: var(--red);">YÖNETİCİ
+                    &amp; DENETİM</div>
+                <button class="nav-btn" data-page="page-logs" id="nav-btn-logs" style="display: none;">
+                    <span class="nav-icon" style="color: var(--red);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="4 17 10 11 4 5" />
+                            <line x1="12" y1="19" x2="20" y2="19" />
+                        </svg>
+                    </span>
+                    <span class="nav-label" data-i18n="nav_logs">Ziyaretçi &amp; Sistem Logları</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(239, 68, 68, 0.2); color: var(--red); border: 1px solid var(--red);">ADMIN</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="cluster-card">
+                    <div class="cluster-status-row">
+                        <span class="pulsing-beacon"></span>
+                        <span class="cluster-label" data-i18n="cluster_active">NODE CLUSTER // AKTİF</span>
+                    </div>
+                    <div class="cluster-sub" data-i18n="cluster_sub">ASP.NET Core &bull; EF SQLite &bull; HSTS</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Mobile Sidebar Backdrop Overlay -->
+        <div class="sidebar-mobile-backdrop" id="sidebar-mobile-backdrop"></div>
+
+        <!-- MAIN STAGE -->
+        <div class="app-main">
+            <!-- Topbar -->
+            <!-- Admin Broadcast Banner Bar -->
+            <div id="admin-global-broadcast-bar" class="admin-broadcast-banner hidden">
+                <span id="admin-broadcast-text">🚨 SİBER GÜVENLİK TATBİKATI AKTİF // YÖNETİCİ: burak_wyxz</span>
+                <button type="button" id="btn-dismiss-broadcast"
+                    style="background: transparent; border: none; color: #fff; cursor: pointer; font-size: 16px; font-weight: 800;">&times;</button>
+            </div>
+
+            <header class="app-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle-btn" id="btn-toggle-sidebar" title="Menüyü Daralt/Genişlet">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
+                    <div class="breadcrumb-container">
+                        <span class="crumb-root" data-i18n="crumb_root">LFL Platform</span>
+                        <span class="crumb-separator">/</span>
+                        <span class="crumb-active" id="current-crumb-title" data-i18n="nav_cmd">Komuta Merkezi</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <button class="search-command-btn" id="btn-quick-search">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <span>Siber Komutları ve Terimleri Ara... (Ctrl+K)</span>
+                        <kbd>Ctrl+K</kbd>
+                    </button>
+
+                    <!-- REPLAY KALI DRAGON INTRO BUTTON -->
+                    <button class="topbar-pill-btn" id="btn-replay-intro"
+                        title="Kali Ejderhası Açılış Animasyonunu Tekrar Oynat"
+                        style="border-color: rgba(0, 229, 255, 0.4); color: var(--cyan);">
+                        <span>🐉 Kali Animasyonu</span>
+                    </button>
+
+                    <!-- THEME SELECTOR DROPDOWN -->
+                    <div class="topbar-dropdown-wrapper" id="theme-dropdown-wrapper">
+                        <button class="topbar-pill-btn" id="btn-theme-toggle" title="Tema Seçin / Select Theme">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="5" />
+                                <path
+                                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                            </svg>
+                            <span id="current-theme-label">Cyber Midnight</span>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </button>
+                        <div class="topbar-menu-popup hidden" id="theme-menu-popup">
+                            <div class="popup-item active" data-theme-val="cyber-midnight">
+                                <span class="theme-color-bullet" style="background: #00e5ff;"></span>
+                                <span>Cyber Midnight</span>
+                            </div>
+                            <div class="popup-item" data-theme-val="emerald-matrix">
+                                <span class="theme-color-bullet" style="background: #10b981;"></span>
+                                <span>Emerald Matrix</span>
+                            </div>
+                            <div class="popup-item" data-theme-val="slate-corporate">
+                                <span class="theme-color-bullet" style="background: #3b82f6;"></span>
+                                <span>Slate Corporate</span>
+                            </div>
+                            <div class="popup-item" data-theme-val="clean-light">
+                                <span class="theme-color-bullet"
+                                    style="background: #ffffff; border: 1px solid #94a3b8;"></span>
+                                <span>Clean Light</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-auth-zone" id="user-auth-zone">
+                        <button class="btn-glow-blue btn-sm" id="topbar-login-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                                <polyline points="10 17 15 12 10 7" />
+                                <line x1="15" y1="12" x2="3" y2="12" />
+                            </svg>
+                            <span data-i18n="btn_signin">Giriş</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- DYNAMIC PAGES -->
+            <main class="page-stage" id="page-stage">
+
+                <!-- ==========================================
+                     PAGE 1: COMMAND CENTER (Dashboard with Guided Journey Flow)
+                     ========================================== -->
+                <section class="app-page page-active" id="page-dashboard">
+
+                    <!-- TOP BREAKING THREAT TICKER (High-Tech Ticker) -->
+                    <div style="background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: var(--radius-md); padding: 8px 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; overflow: hidden;"
+                        data-reveal>
+                        <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                            <span class="pulsing-beacon"
+                                style="background: var(--cyan); box-shadow: 0 0 10px var(--cyan);"></span>
+                            <span style="font-weight: 800; color: var(--cyan); letter-spacing: 0.8px;">CANLI SAVUNMA
+                                TELEMETRİSİ //</span>
+                        </div>
+                        <div
+                            style="color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: var(--font-mono);">
+                            [KORUMA AKTİF] SQLite LINQ Parametrik Filtreleme Devrede &bull; Kestrel Server İmzası
+                            Gizlendi &bull; HSTS &bull; CSP &bull; X-Frame DENY
+                        </div>
+                        <span class="badge-soft-green" style="flex-shrink: 0;">DEFCON 4</span>
+                    </div>
+
+                    <!-- 1. CYBER HERO CARD: INTERACTIVE SHIELD SANDBOX & DEVELOPER PROFILE -->
+                    <div class="cyber-hero-card" data-reveal>
+                        <div class="cyber-hero-grid">
+                            <!-- Left: Interactive Sandbox & Terminal -->
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <span class="badge-pulsing-green">SAVUNMA KALKANI AKTİF</span>
+                                    <span
+                                        style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">ASP.NET
+                                        8 &bull; EF SQLite &bull; HSTS &bull; Zero-Trust</span>
+                                </div>
+                                <h1 class="page-main-heading text-gradient-animate"
+                                    style="font-size: 26px; margin-bottom: 6px;">
+                                    LFL CYBER COMMAND // KOMUTA MERKEZİ
+                                </h1>
+                                <p
+                                    style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; max-width: 650px;">
+                                    Aşağıdaki simülasyon butonlarına tıklayarak sunucunun aktif koruma kalkanlarını
+                                    canlı test edebilirsiniz:
+                                </p>
+
+                                <!-- Sandbox Action Buttons -->
+                                <div class="sandbox-actions-row" style="margin-bottom: 12px;">
+                                    <button type="button" class="btn-sandbox-test" id="btn-sim-sqli">
+                                        <span style="color: var(--red);">&bull;</span>
+                                        <span data-i18n="sim_btn_sqli">🧪 Test: SQL Injection Saldırısı</span>
+                                    </button>
+                                    <button type="button" class="btn-sandbox-test" id="btn-sim-iframe">
+                                        <span style="color: var(--cyan);">&bull;</span>
+                                        <span data-i18n="sim_btn_iframe">🛡️ Test: Clickjacking (Iframe DENY)</span>
+                                    </button>
+                                    <button type="button" class="btn-sandbox-test" id="btn-jump-terminal-direct"
+                                        style="border-color: rgba(0, 229, 255, 0.4);">
+                                        <span style="color: #22c55e;">&bull;</span>
+                                        <span>💻 Kali Linux Simülasyon Terminali &rarr;</span>
+                                    </button>
+                                </div>
+
+                                <!-- Holographic Interactive Cyber Terminal -->
+                                <div class="sim-output-box" id="sim-terminal-output" style="min-height: 72px;">
+                                    <div class="sim-terminal-line">
+                                        <span class="sim-prompt">&gt;</span>
+                                        <span style="color: var(--text-secondary);" id="sim-terminal-text"
+                                            data-i18n="sim_initial_msg">Simülasyon hazır. Yukarıdaki butonlardan birine
+                                            basarak testi başlatın.</span>
+                                        <span class="terminal-blinking-cursor"
+                                            style="color: var(--cyan); font-weight: 700; animation: typewriterCursor 0.8s infinite;">_</span>
+                                    </div>
+                                </div>
+
+                                <!-- Developer Official Contact Channels -->
+                                <div class="dev-social-panel">
+                                    <div class="dev-social-header">
+                                        <span class="pulsing-beacon"
+                                            style="width: 6px; height: 6px; background: var(--cyan); box-shadow: 0 0 8px var(--cyan);"></span>
+                                        <span>GELİŞTİRİCİ RESMİ İLETİŞİM PROTOKOLLERİ</span>
+                                    </div>
+                                    <div class="dev-social-cards">
+                                        <!-- LinkedIn -->
+                                        <a href="https://www.linkedin.com/in/burak-bezmen-a177833a8/" target="_blank"
+                                            rel="noopener noreferrer" class="dev-social-item"
+                                            title="LinkedIn: Burak Bezmen">
+                                            <span class="dev-social-icon icon-linkedin">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                                </svg>
+                                            </span>
+                                            <div class="dev-social-info">
+                                                <span class="dev-social-name">LinkedIn</span>
+                                                <span class="dev-social-handle">Burak Bezmen</span>
+                                            </div>
+                                            <span class="dev-social-arrow">&nearr;</span>
+                                        </a>
+
+                                        <!-- YouTube -->
+                                        <a href="https://youtube.com/@burak_wyxz" target="_blank"
+                                            rel="noopener noreferrer" class="dev-social-item"
+                                            title="YouTube: @burak_wyxz">
+                                            <span class="dev-social-icon icon-youtube">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                                </svg>
+                                            </span>
+                                            <div class="dev-social-info">
+                                                <span class="dev-social-name">YouTube</span>
+                                                <span class="dev-social-handle">@burak_wyxz</span>
+                                            </div>
+                                            <span class="dev-social-arrow">&nearr;</span>
+                                        </a>
+
+                                        <!-- Discord -->
+                                        <div class="dev-social-item btn-copy-social" data-copy="weavers_thread1th"
+                                            title="Discord: weavers_thread1th (Tıkla ve Kopyala)">
+                                            <span class="dev-social-icon icon-discord">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                                                </svg>
+                                            </span>
+                                            <div class="dev-social-info">
+                                                <span class="dev-social-name">Discord</span>
+                                                <span class="dev-social-handle">weavers_thread1th</span>
+                                            </div>
+                                            <span class="dev-social-arrow dev-copy-icon">⧉</span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Platform Developer & Creator Profile Card (burak_wyxz) -->
+                            <div class="developer-profile-card">
+                                <div class="dev-card-header">
+                                    <div class="dev-badge-status">
+                                        <span class="pulsing-beacon"
+                                            style="width: 7px; height: 7px; background: #22c55e; box-shadow: 0 0 10px #22c55e;"></span>
+                                        <span>YAPIMCI &amp; GELİŞTİRİCİ</span>
+                                    </div>
+                                    <span class="dev-handle">@burak_wyxz</span>
+                                </div>
+
+                                <div class="dev-card-body">
+                                    <div class="dev-avatar-container">
+                                        <div class="dev-avatar-hex">
+                                            <span class="dev-avatar-text">BW</span>
+                                        </div>
+                                        <div class="dev-identity">
+                                            <div class="dev-name">burak_wyxz</div>
+                                            <div class="dev-title">Platform Mimarı &amp; Siber Güvenlik Öğrencisi</div>
+                                            <div class="dev-role-meta">
+                                                <span class="dev-tag-mini">LFL Creator</span>
+                                                <span class="dev-tag-mini">Full-Stack &amp; Security</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="dev-bio-text">
+                                        Merhaba! Bu platformun kurucusu ve geliştiricisiyim. Hem <strong>Full-Stack Web
+                                            Mimarileri</strong> (C# .NET 8, ASP.NET Core, Modern Frontend) hem de
+                                        <strong>Siber Güvenlik</strong> (Red &amp; Blue Team araçları, Kali Linux sızma
+                                        simülasyonları, Zero-Trust mimarisi) alanında kendimi tutkuyla eğitiyor ve
+                                        geliştiriyorum. Bu projeyi hem öğrendiklerimi hayata geçirmek hem de siber
+                                        güvenliğe sıfırdan başlayanlara rehberlik etmek için tasarladım.
+                                    </p>
+
+                                    <div class="dev-skills-section">
+                                        <div class="dev-skills-title">ÖĞRENİLEN TEKNOLOJİLER &amp; ODAK ALANLARI</div>
+                                        <div class="dev-skills-grid">
+                                            <span class="dev-skill-pill">⚡ C# .NET 8</span>
+                                            <span class="dev-skill-pill">🌐 Full-Stack Web</span>
+                                            <span class="dev-skill-pill">🛡️ Siber Savunma</span>
+                                            <span class="dev-skill-pill">⚔️ Red &amp; Blue Team</span>
+                                            <span class="dev-skill-pill">🐉 Kali Linux &amp; Nmap</span>
+                                            <span class="dev-skill-pill">🔑 Zero-Trust &amp; JWT</span>
+                                            <span class="dev-skill-pill">🗄️ SQLite &amp; EF Core</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="dev-stats-row">
+                                        <div class="dev-stat-item">
+                                            <span class="dev-stat-label">DURUM</span>
+                                            <span class="dev-stat-val" style="color: var(--green);">Aktif
+                                                Geliştirme</span>
+                                        </div>
+                                        <div class="dev-stat-item">
+                                            <span class="dev-stat-label">HEDEF</span>
+                                            <span class="dev-stat-val" style="color: var(--cyan);">Full-Stack &amp;
+                                                Siber Uzmanlık</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1.1 100% SECTOR-BASED CYBER SECURITY FOUNDATION ("NE NEDİR?") -->
+                    <div class="cyber-sector-intro-card" data-reveal>
+                        <div class="sector-intro-head">
+                            <div>
+                                <div class="badge-soft-cyan" style="margin-bottom: 6px;">SEKTÖREL SİBER DEFANS &amp;
+                                    KURUMSAL RİSK BİLGİLENDİRMESİ</div>
+                                <h2 style="font-size: 20px; font-weight: 800; color: #ffffff; letter-spacing: 0.3px;">
+                                    Siber Güvenlik Nedir &amp; Kurumsal Sektörde Neden Hayatidir?
+                                </h2>
+                                <p
+                                    style="font-size: 13px; color: var(--text-secondary); margin-top: 4px; max-width: 920px; line-height: 1.5;">
+                                    Siber güvenlik; finans, kurumsal bulut sistemleri ve kritik altyapılardaki dijital
+                                    varlıkları, müşteri veritabanlarını ve API uç noktalarını kötü niyetli sızmalardan
+                                    koruma kalkanıdır. Tek bir açık port veya denetlenmemiş web parametresi, şirketlere
+                                    milyonlarca TL iş durması ve yasal regülasyon cezası (KVKK / GDPR / SOC2) riski
+                                    getirir.
+                                </p>
+                            </div>
+                            <div style="display: flex; gap: 8px; flex-shrink: 0; align-items: center; margin-top: 8px;">
+                                <button class="btn-secondary btn-sm" id="btn-intro-to-quiz"
+                                    style="border-color: rgba(192, 132, 252, 0.4); color: #c084fc;">🎯 Siber Rol Testini
+                                    Çöz &rarr;</button>
+                                <button class="btn-glow-blue btn-sm" id="btn-intro-to-terminal">⚡ Kali Terminalini
+                                    Aç</button>
+                            </div>
+                        </div>
+
+                        <div class="sector-pillars-grid">
+                            <!-- Pillar 1: Blue Team / Defensive -->
+                            <div class="pillar-box">
+                                <div class="pillar-header">
+                                    <div class="pillar-icon blue-glow">🛡️</div>
+                                    <div>
+                                        <div class="pillar-title">Blue Team &amp; Defansif Zırh</div>
+                                        <div class="pillar-sub">Savunma, İzleme &amp; SOC</div>
+                                    </div>
+                                </div>
+                                <p class="pillar-text">
+                                    HSTS, CSP ve X-Frame-Options gibi güvenlik başlıklarıyla tarayıcıyı kilitler.
+                                    Veritabanı sorgularını (SQLi) parametrik LINQ ile bağlar ve 7/24 proaktif izleme
+                                    yapar.
+                                </p>
+                                <div class="pillar-badges">
+                                    <span class="badge-tech">HSTS Preload</span>
+                                    <span class="badge-tech">LINQ Parametrik</span>
+                                    <span class="badge-tech">Zero-Trust</span>
+                                </div>
+                            </div>
+
+                            <!-- Pillar 2: Red Team / Offensive -->
+                            <div class="pillar-box">
+                                <div class="pillar-header">
+                                    <div class="pillar-icon red-glow">⚔️</div>
+                                    <div>
+                                        <div class="pillar-title">Red Team &amp; Zafiyet Taraması</div>
+                                        <div class="pillar-sub">Etik Sızma Testleri (Penetration)</div>
+                                    </div>
+                                </div>
+                                <p class="pillar-text">
+                                    Saldırganlardan önce Nmap ile açık portları, Gobuster ile gizli dizinleri, FFuf ile
+                                    zayıf parametreleri yasal ve kontrollü şekilde tarayarak sistem açıklarını kapatır.
+                                </p>
+                                <div class="pillar-badges">
+                                    <span class="badge-tech">Nmap (-p-, -sV)</span>
+                                    <span class="badge-tech">Gobuster Dizin</span>
+                                    <span class="badge-tech">Hping3 SYN/ACK</span>
+                                </div>
+                            </div>
+
+                            <!-- Pillar 3: Purple Team & Entegre Siber Güvenlik -->
+                            <div class="pillar-box" style="cursor: pointer;" id="dash-card-purple-team">
+                                <div class="pillar-header">
+                                    <div class="pillar-icon purple-glow">🟣</div>
+                                    <div>
+                                        <div class="pillar-title" style="color: #c084fc;">Purple Team (Entegre Güvenlik)
+                                        </div>
+                                        <div class="pillar-sub">Ofansif &amp; Defansif Ekiplerin Köprüsü</div>
+                                    </div>
+                                </div>
+                                <p class="pillar-text">
+                                    Red Team'in hücum taktikleri ile Blue Team'in tespit ve kalkan sistemlerini
+                                    (SIEM/EDR) birleştirir. Saldırı senaryolarının anında tespit edilip engellendiğini
+                                    canlı simülasyonla doğrular.
+                                </p>
+                                <div class="pillar-badges">
+                                    <span class="badge-tech">Mitre ATT&amp;CK</span>
+                                    <span class="badge-tech">Ortak Tatbikat</span>
+                                    <span class="badge-tech" style="color: #c084fc; border-color: #c084fc;">Siber Rol
+                                        Testini Çöz &rarr;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. STREAMLINED 4 KPI METRICS -->
+                    <div class="kpi-grid" data-reveal-stagger style="margin-bottom: 24px;">
+                        <div class="kpi-card">
+                            <div class="kpi-icon-box cyan-glow">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <div class="kpi-data">
+                                <span class="kpi-title" data-i18n="kpi_defcon_title">GLOBAL DEFENSE LEVEL</span>
+                                <span class="kpi-value text-cyan" data-i18n="kpi_defcon_val">DEFCON 4 // STABİL</span>
+                                <span class="kpi-hint text-green" data-i18n="kpi_defcon_hint">&bull; Tüm 1,420 Endpoint
+                                    Sigortalandı</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card">
+                            <div class="kpi-icon-box green-glow">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)"
+                                    stroke-width="2">
+                                    <polyline points="4 17 10 11 4 5" />
+                                    <line x1="12" y1="19" x2="20" y2="19" />
+                                </svg>
+                            </div>
+                            <div class="kpi-data">
+                                <span class="kpi-title">AKTİF SİBER ARAÇLAR</span>
+                                <span class="kpi-value text-green" id="kpi-tools-count">115+ ARAÇ</span>
+                                <span class="kpi-hint text-green">&bull; Nmap, Gobuster, FFuf, Hydra, Hping3</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card">
+                            <div class="kpi-icon-box purple-glow">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7"
+                                    stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                            </div>
+                            <div class="kpi-data">
+                                <span class="kpi-title">SIFIR GÜVEN (ZERO-TRUST)</span>
+                                <span class="kpi-value text-purple">%100 AKTİF</span>
+                                <span class="kpi-hint text-cyan">&bull; SOC2 &amp; ISO 27001 Standardı</span>
+                            </div>
+                        </div>
+
+                        <div class="kpi-card">
+                            <div class="kpi-icon-box blue-glow">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)"
+                                    stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    <path d="M9 12l2 2 4-4" />
+                                </svg>
+                            </div>
+                            <div class="kpi-data">
+                                <span class="kpi-title">SEC-HEADERS HARDENING</span>
+                                <span class="kpi-value text-blue">100% ZORUNLU KILINDI</span>
+                                <span class="kpi-hint text-green">&bull; HSTS &bull; CSP &bull; DENY &bull;
+                                    nosniff</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. LIVE ATTACK STREAM & SYSTEM HARDENING SUMMARY -->
+                    <div class="dashboard-grid-2col" data-reveal>
+                        <div class="panel-card">
+                            <div class="panel-header">
+                                <div class="panel-title">
+                                    <span class="pulsing-beacon"></span>
+                                    <span>Canlı Tehdit Telemetrisi &amp; Saldırı Engelleme</span>
+                                </div>
+                                <span class="badge-soft-cyan">REALTIME SHIELD</span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="attack-stream-container" id="dashboard-attack-stream"></div>
+                            </div>
+                        </div>
+
+                        <div class="panel-card">
+                            <div class="panel-header">
+                                <div class="panel-title">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                        <path d="M9 12l2 2 4-4" />
+                                    </svg>
+                                    <span>Aktif Güvenlik Kalkanları &amp; Durum</span>
+                                </div>
+                                <button type="button" class="btn-secondary btn-sm" id="dash-view-glossary-btn"
+                                    style="border-color: rgba(0, 229, 255, 0.4); color: var(--cyan); display: inline-flex; align-items: center; gap: 6px; font-weight: 700;">
+                                    <span>📖 Kılavuz &amp; Sözlükte İncele</span> &rarr;
+                                </button>
+                            </div>
+                            <div class="panel-body">
+                                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);">
+                                        <span
+                                            style="color: var(--text-secondary); font-family: var(--font-mono);">Strict-Transport-Security
+                                            (HSTS)</span>
+                                        <span class="badge-soft-green">31536000s &bull; PRELOAD</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);">
+                                        <span
+                                            style="color: var(--text-secondary); font-family: var(--font-mono);">Content-Security-Policy
+                                            (CSP)</span>
+                                        <span class="badge-soft-green">SCRIPT-WHITELIST</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);">
+                                        <span
+                                            style="color: var(--text-secondary); font-family: var(--font-mono);">X-Frame-Options
+                                            (Clickjacking)</span>
+                                        <span class="badge-soft-green">DENY</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);">
+                                        <span
+                                            style="color: var(--text-secondary); font-family: var(--font-mono);">SQLite
+                                            LINQ Parametrik Koruma</span>
+                                        <span class="badge-soft-green">SQLi ENGEL</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);">
+                                        <span
+                                            style="color: var(--text-secondary); font-family: var(--font-mono);">Kestrel
+                                            Server Banner Redaction</span>
+                                        <span class="badge-soft-green">GİZLENDİ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ==========================================
+                     PAGE: SİBER AKADEMİ (15 KAPSAMLI EĞİTİM BÖLÜMÜ)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-academy">
+                    <div class="page-header" data-reveal>
+                        <div class="page-title-block">
+                            <div class="page-tier-badge"
+                                style="background: rgba(16, 185, 129, 0.15); color: var(--green); border-color: var(--green);">
+                                MÜFREDAT &amp; ADIM ADIM EĞİTİM PLANI</div>
+                            <h1 class="page-main-heading">Siber Güvenlik Akademisi // 15 Kapsamlı Eğitim Bölümü</h1>
+                            <p class="page-subheading">0 Yazılım ve 0 Siber Bilgiden Uzmanlığa: Red Team (5 Bölüm), Blue
+                                Team (5 Bölüm) ve Purple Team (5 Bölüm) Adım Adım Siber Güvenlik Yol Haritası</p>
+                        </div>
+                        <div class="page-actions-block">
+                            <button class="btn-secondary" id="btn-academy-to-commands">
+                                📚 140+ Kod Kütüphanesine Git &rarr;
+                            </button>
+                            <button class="btn-glow-blue" id="btn-open-terminal-from-academy">
+                                💻 Kali Web Terminalini Aç &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 0-LEVEL BEGINNER ACADEMY: CORE CONCEPTS FIRST -->
+                    <div class="academy-hero" data-reveal style="margin-bottom: 24px;">
+                        <div
+                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                            <div>
+                                <span class="badge-soft-cyan" style="font-weight: 700;">BÖLÜM 0 // HİÇ BİLMEYENLER İÇİN
+                                    SİBER TEMELLER</span>
+                                <h3 style="font-size: 20px; font-weight: 800; color: #ffffff; margin-top: 4px;">
+                                    Sıfırdan Başlayan Biri Ne Bilmeli?
+                                </h3>
+                            </div>
+                            <span style="font-size: 12px; color: var(--text-muted); font-family: var(--font-mono);">0
+                                Kod &bull; 0 Siber Bilgi İle Başlayanlar İçin</span>
+                        </div>
+                        <p
+                            style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                            Siber güvenlik karmaşık matematik veya sihir değildir. Bir evin güvenliğini sağlamak ile bir
+                            bilgisayar ağını korumak tamamen aynı mantığa dayanır. İşte bilmeniz gereken 4 altın kural:
+                        </p>
+
+                        <!-- 4 Beginner Fundamental Concept Cards -->
+                        <div class="sector-pillars-grid"
+                            style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+                            <!-- Pillar 1: IP Address -->
+                            <div class="pillar-box" style="border-left: 3px solid var(--cyan);">
+                                <div class="pillar-header">
+                                    <span class="pillar-icon blue-glow">🌐</span>
+                                    <div>
+                                        <div class="pillar-title" style="color: var(--cyan);">1. IP Adresi Nedir?</div>
+                                        <div class="pillar-sub">Evin Açık Posta Adresi</div>
+                                    </div>
+                                </div>
+                                <p class="pillar-text">
+                                    İnternete bağlı her cihazın dünyadaki posta adresidir. Mektup nasıl evinize
+                                    geliyorsa, internet paketleri de IP adresinize gelir.
+                                </p>
+                                <div
+                                    style="font-family: var(--font-mono); font-size: 11px; color: #94a3b8; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 4px; margin-top: 8px; line-height: 1.5;">
+                                    &bull; <strong style="color: #38bdf8;">127.0.0.1:</strong> Kendi bilgisayarımız
+                                    (Evimiz)<br>
+                                    &bull; <strong style="color: #4ade80;">192.168.1.1:</strong> Evdeki modem (Bina
+                                    kapısı)<br>
+                                    &bull; <strong style="color: #f87171;">8.8.8.8:</strong> Google sunucusu (Dış dünya)
+                                </div>
+                            </div>
+
+                            <!-- Pillar 2: Ports -->
+                            <div class="pillar-box" style="border-left: 3px solid var(--green);">
+                                <div class="pillar-header">
+                                    <span class="pillar-icon green-glow">🚪</span>
+                                    <div>
+                                        <div class="pillar-title" style="color: var(--green);">2. Port (Kapı) Nedir?
+                                        </div>
+                                        <div class="pillar-sub">Evin Kapıları &amp; Pencereleri</div>
+                                    </div>
+                                </div>
+                                <p class="pillar-text">
+                                    Bir bilgisayarda 1'den 65.535'e kadar kapı (port) vardır. Her kapıda farklı bir
+                                    görevli çalışır. Port taranarak hangi kapıların açık olduğu öğrenilir.
+                                </p>
+                                <div
+                                    style="font-family: var(--font-mono); font-size: 11px; color: #94a3b8; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 4px; margin-top: 8px; line-height: 1.5;">
+                                    &bull; <strong style="color: #38bdf8;">Port 80:</strong> Düz Web Sitesi (HTTP)<br>
+                                    &bull; <strong style="color: #4ade80;">Port 443:</strong> Güvenli Kilitli Web
+                                    (HTTPS)<br>
+                                    &bull; <strong style="color: #c084fc;">Port 22:</strong> Yönetici Arka Kapısı
+                                    (SSH)<br>
+                                    &bull; <strong style="color: #f87171;">Port 3389:</strong> Windows Uzak Masaüstü
+                                </div>
+                            </div>
+
+                            <!-- Pillar 3: 3-Way Handshake -->
+                            <div class="pillar-box" style="border-left: 3px solid #c084fc;">
+                                <div class="pillar-header">
+                                    <span class="pillar-icon purple-glow">🤝</span>
+                                    <div>
+                                        <div class="pillar-title" style="color: #c084fc;">3. 3 Yollu El Sıkışma</div>
+                                        <div class="pillar-sub">TCP Bağlantı Protokolü</div>
+                                    </div>
+                                </div>
+                                <p class="pillar-text">
+                                    İki bilgisayar konuşmadan önce birbirine selam verir:
+                                </p>
+                                <div
+                                    style="font-family: var(--font-mono); font-size: 11px; color: #94a3b8; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 4px; margin-top: 8px; line-height: 1.5;">
+                                    1. <strong style="color: #38bdf8;">SYN:</strong> "Selam, kapın açık mı?"<br>
+                                    2. <strong style="color: #4ade80;">SYN-ACK:</strong> "Açığım, seni duydum!"<br>
+                                    3. <strong style="color: #f59e0b;">ACK:</strong> "Harika, veri gönderiyorum!"<br>
+                                    <span style="color: #38bdf8;">Stealth Scan:</span> SYN atıp cevabı alınca hemen
+                                    kaçmaktır!
+                                </div>
+                            </div>
+
+                            <!-- Pillar 4: Kali & Terminal -->
+                            <div class="pillar-box" style="border-left: 3px solid #f87171;">
+                                <div class="pillar-header">
+                                    <span class="pillar-icon red-glow">💻</span>
+                                    <div>
+                                        <div class="pillar-title" style="color: #f87171;">4. Neden Kali &amp; Terminal?
+                                        </div>
+                                        <div class="pillar-sub">Otomasyon &amp; Hız Gücü</div>
+                                    </div>
+                                </div>
+                                <p class="pillar-text">
+                                    Fareyle tıklayarak 10.000 portu veya 500 web sayfasını tek tek açamazsınız.
+                                    Terminalde tek satır komutla tüm bu süreci 3 saniyede tamamlarsınız.
+                                </p>
+                                <div
+                                    style="font-family: var(--font-mono); font-size: 11px; color: #94a3b8; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 4px; margin-top: 8px; line-height: 1.5;">
+                                    &bull; <strong>Kali Linux:</strong> 600+ hazır güvenlik aracıyla gelir.<br>
+                                    &bull; <strong>Temel Dizinler:</strong> <code>/etc</code> (Ayarlar),
+                                    <code>/var/log</code> (Kayıtlar), <code>/home</code> (Kullanıcılar).
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EĞİTİM TAKIM SEÇİCİ SEKMELER -->
+                    <div style="margin-bottom: 24px;" data-reveal>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                            <div>
+                                <h3 style="font-size: 18px; font-weight: 800; color: #ffffff;">Eğitim Yol Haritası:
+                                    Takımını Seç</h3>
+                                <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">Test
+                                    sonucundaki rolüne veya ilgi alanına göre 5'er bölümlük detaylı müfredatları incele:
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-team-switcher" id="curriculum-tabs-bar">
+                            <button type="button" class="curriculum-team-btn team-red active"
+                                data-curriculum-team="red">
+                                <span class="curriculum-team-icon">⚔️</span>
+                                <div>
+                                    <div class="curriculum-team-title" style="color: #f87171;">Red Team (Ofansif)</div>
+                                    <div class="curriculum-team-sub">5 Bölüm &bull; Etik Sızma &amp; Keşif</div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="curriculum-team-btn team-blue" data-curriculum-team="blue">
+                                <span class="curriculum-team-icon">🛡️</span>
+                                <div>
+                                    <div class="curriculum-team-title" style="color: #60a5fa;">Blue Team (Defansif)
+                                    </div>
+                                    <div class="curriculum-team-sub">5 Bölüm &bull; Sistem Savunma &amp; SOC</div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="curriculum-team-btn team-purple" data-curriculum-team="purple">
+                                <span class="curriculum-team-icon">🟣</span>
+                                <div>
+                                    <div class="curriculum-team-title" style="color: #c084fc;">Purple Team (Strateji)
+                                    </div>
+                                    <div class="curriculum-team-sub">5 Bölüm &bull; Entegre Tatbikat &amp; Yönetim</div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="curriculum-team-btn team-all" data-curriculum-team="all">
+                                <span class="curriculum-team-icon">🌐</span>
+                                <div>
+                                    <div class="curriculum-team-title" style="color: var(--cyan);">Tüm Müfredat</div>
+                                    <div class="curriculum-team-sub">15 Bölümü Birlikte Listele</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 15 KAPSAMLI BÖLÜM (RED, BLUE, PURPLE) -->
+                    <div id="curriculum-chapters-container" data-reveal>
+
+                        <!-- ================= RED TEAM CHAPTERS (5 BÖLÜM) ================= -->
+                        <div class="curriculum-chapter-card card-red" data-team-scope="red">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-red">BÖLÜM R-1 // OFANSİF &bull;
+                                        TEMEL SEVİYE &bull; 15 DK</span>
+                                    <h3 class="curriculum-chapter-title">Dijital Ayak İzi &amp; Hedef Keşfi (OSINT &amp;
+                                        Bilgi Toplama)</h3>
+                                </div>
+                                <span class="badge-tech">OSINT &bull; WHOIS &bull; DNS &bull; RECON</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Bir binaya veya depoya girmeden önce etrafında dolaşıp kapıların yerini, güvenlik
+                                kameralarının açısını ve nöbetçilerin vardiya saatlerini uzaktan, kimseye görünmeden not
+                                almaya benzer.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Siber saldırganlar veya etik hacker'lar (sızma testi uzmanları) bir hedefe saldırmadan
+                                önce günlerce bilgi toplar. Hedefe tek bir doğrudan paket atmadan açık internetteki
+                                Whois kayıtları, arama motoru sızıntıları (Google Dorking) ve DNS sunucuları incelenir.
+                                Bu sayede kurumun kullandığı sunucular, posta sistemleri ve çalışan alt alan adları
+                                (subdomain) ortaya çıkarılır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Pasif Keşif:</strong> Hedefe dokunmadan herkese açık
+                                            veritabanlarından veri toplama.</li>
+                                        <li><strong>DNS Sorguları:</strong> Hedefin A, MX (e-posta) ve TXT kayıtlarını
+                                            bulma.</li>
+                                        <li><strong>Subdomain Avı:</strong> Unutulmuş test ve geliştirme sunucularını
+                                            açığa çıkarma.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Komutlar</div>
+                                    <ul>
+                                        <li><code>whois</code>: Alan adı sahibini ve sunucu sağlayıcısını bulur.</li>
+                                        <li><code>dig</code> &amp; <code>nslookup</code>: DNS posta ve IP haritasını
+                                            çıkarır.</li>
+                                        <li><code>sublist3r</code> &amp; <code>amass</code>: Alt alan adlarını otomatik
+                                            keşfeder.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">whois</span>
+                                    <span class="badge-tech">dig</span>
+                                    <span class="badge-tech">nslookup</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="linux">⚡ İlgili Komutları Kod Kütüphanesinde Gör</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="whois lostfromlight.com">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-red" data-team-scope="red">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-red">BÖLÜM R-2 // OFANSİF &bull;
+                                        ORTA SEVİYE &bull; 25 DK</span>
+                                    <h3 class="curriculum-chapter-title">Ağ Taraması &amp; Servislerin Parmak İzi
+                                        (Scanning &amp; Enumeration)</h3>
+                                </div>
+                                <span class="badge-tech">NMAP &bull; HPING3 &bull; SYN SCAN &bull; PORTS</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Binanın etrafındaki 65.535 pencerenin tek tek kollarına dokunup hangisinin açık
+                                olduğunu, içeride hangi görevlinin nöbet tuttuğunu ve hangi versiyon kilidi kullandığını
+                                uzaktan tespit etmektir.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Bir bilgisayarda 1'den 65.535'e kadar port (iletişim kapısı) bulunur. Nmap aracı hedefe
+                                özel TCP paketleri yollar. Eğer port açıksa "SYN-ACK" cevabı döner. "Stealth Scan" (-sS)
+                                tekniğinde tam bağlantı kurulmaz, sadece kapının açık olduğu anlaşılıp kaçılır. Servis
+                                versiyon tespiti (-sV) sayesinde portta çalışan programın sürümü (örn: Apache 2.4.49)
+                                bulunur ve o sürüme ait bilinen açıklar araştırılır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Port Durumları:</strong> Açık (Open), Kapalı (Closed), Filtrelenmiş
+                                            (Filtered).</li>
+                                        <li><strong>Stealth SYN Scan:</strong> Güvenlik loglarına düşmeden gizlice port
+                                            yoklama.</li>
+                                        <li><strong>Versiyon Analizi:</strong> Eski ve savunmasız servislerin tam
+                                            sürümünü çıkarma.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Komutlar</div>
+                                    <ul>
+                                        <li><code>nmap -sS -p- 127.0.0.1</code>: Tüm 65.535 portu gizlice tarar.</li>
+                                        <li><code>nmap -sV -p 80,443,22 [IP]</code>: Servislerin tam adını ve
+                                            versiyonunu deşifre eder.</li>
+                                        <li><code>hping3 -S -p 80 192.168.1.1</code>: Manuel TCP SYN paketi fırlatır.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">nmap</span>
+                                    <span class="badge-tech">hping3</span>
+                                    <span class="badge-tech">masscan</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="nmap">⚡ Nmap Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="nmap -sV -p 80,443,22 192.168.1.1">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-red" data-team-scope="red">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-red">BÖLÜM R-3 // OFANSİF &bull;
+                                        İLERİ SEVİYE &bull; 30 DK</span>
+                                    <h3 class="curriculum-chapter-title">Web Uygulama Zafiyetleri &amp; Dizin Fuzzing
+                                        (Web Security &amp; SQLi)</h3>
+                                </div>
+                                <span class="badge-tech">GOBUSTER &bull; FFUF &bull; SQLMAP &bull; FUZZING</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Web sitesinin ziyaretçilere açık vitrinine bakmak yerine, binanın arkasındaki unutulmuş
+                                gizli personel kapılarını (/admin, /yedek.zip) aramak ve giriş formundaki danışmaya
+                                hileli sorular sormaktır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Web sitelerinin çoğu karmaşık kodlama hataları barındırır. Gobuster veya FFuf gibi
+                                araçlar, wordlist (kelime listesi) kullanarak saniyede yüzlerce istek gönderir ve
+                                normalde menüde gözükmeyen gizli sayfaları (/admin, /config.php, /backup) ortaya
+                                çıkarır. SQL Injection zafiyetinde ise giriş formuna <code>' OR '1'='1</code> gibi
+                                parametreler girilerek veritabanı sorgusu kandırılır ve şifre bilmeden giriş sağlanır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Dizin Keşfi (Fuzzing):</strong> Gizli ve unutulmuş URL'lerin
+                                            tespiti.</li>
+                                        <li><strong>SQL Injection:</strong> Veritabanı sorgusunu manipüle etme mantığı.
+                                        </li>
+                                        <li><strong>Hata Mesajı Analizi:</strong> Sunucunun sızdırdığı hassas kod
+                                            yığınları.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Komutlar</div>
+                                    <ul>
+                                        <li><code>gobuster dir -u [URL] -w common.txt</code>: Gizli web klasörlerini
+                                            tarar.</li>
+                                        <li><code>ffuf -u [URL]/FUZZ -w wordlist.txt</code>: Çok hızlı web fuzzer
+                                            aracıdır.</li>
+                                        <li><code>sqlmap -u "[URL]?id=1" --dbs</code>: Veritabanı açıklarını otomatik
+                                            test eder.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">gobuster</span>
+                                    <span class="badge-tech">ffuf</span>
+                                    <span class="badge-tech">sqlmap</span>
+                                    <span class="badge-tech">nikto</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="web">⚡ Web Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="gobuster dir -u http://127.0.0.1 -w /usr/share/wordlists/dirb/common.txt">💻
+                                        Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-red" data-team-scope="red">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-red">BÖLÜM R-4 // OFANSİF &bull;
+                                        ORTA SEVİYE &bull; 20 DK</span>
+                                    <h3 class="curriculum-chapter-title">Kimlik Doğrulama &amp; Parola Kırma
+                                        (Brute-Force &amp; Hashing)</h3>
+                                </div>
+                                <span class="badge-tech">HYDRA &bull; JOHN &bull; HASHCAT &bull; ROCKYOU</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Kapıdaki şifreli kilitte insanların en çok kullandığı kombinasyonları (1234, admin,
+                                pass) saniyede yüzlerce kez deneyen bir şifre robotu çalıştırmak gibidir.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Dünyadaki en yaygın siber sızıntıların %80'i zayıf veya varsayılan parolalardan
+                                kaynaklanır. Hydra gibi araçlar, SSH, FTP veya Web oturum açma formlarına karşı
+                                saniyeler içinde binlerce parola dener (Sözlük Saldırısı). Ayrıca sistemlerde saklanan
+                                şifrelenmiş özetler (MD5, SHA256 Hash), John The Ripper veya Hashcat ile meşhur parola
+                                veritabanları (RockYou) üzerinden çözülmeye çalışılır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Sözlük Saldırısı (Dictionary):</strong> Gerçekte sızdırılmış popüler
+                                            parolaları deneme.</li>
+                                        <li><strong>Kaba Kuvvet (Brute-Force):</strong> Harf ve sayı kombinasyonlarını
+                                            sırayla deneme.</li>
+                                        <li><strong>Hash Çözümleme:</strong> Tek yönlü matematiksel özetleri sözlükle
+                                            geri çözme.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Komutlar</div>
+                                    <ul>
+                                        <li><code>hydra -l admin -P rockyou.txt [IP] ssh</code>: SSH parolalarını
+                                            sözlükle dener.</li>
+                                        <li><code>hydra -l admin -p Sebu132009 192.168.1.1 http-get /</code>: Web panel
+                                            parolasını test eder.</li>
+                                        <li><code>john --wordlist=passwords.txt hashes.txt</code>: Şifrelenmiş hash
+                                            listesini kırar.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">hydra</span>
+                                    <span class="badge-tech">john</span>
+                                    <span class="badge-tech">hashcat</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="auth">⚡ Parola Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="hydra -l admin -p Sebu132009 192.168.1.1 http-get /">💻 Terminalde
+                                        Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-red" data-team-scope="red">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-red">BÖLÜM R-5 // OFANSİF &bull;
+                                        İLERİ SEVİYE &bull; 35 DK</span>
+                                    <h3 class="curriculum-chapter-title">Zafiyet İstismarı &amp; Yetki Yükseltme
+                                        (Exploitation &amp; Reverse Shell)</h3>
+                                </div>
+                                <span class="badge-tech">METASPLOIT &bull; REVERSE SHELL &bull; NETCAT &bull;
+                                    ROOT</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Açık bir pencereden eve girdikten sonra binanın anahtarlık odasını bulup tüm binayı
+                                kontrol eden "Genel Müdür / Root" anahtarını ele geçirmektir.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Bir yazılım hatası bulunduğunda ona özel bir "Exploit" (istismar kodu) çalıştırılır.
+                                Güvenlik duvarları dışarıdan içeri gelen bağlantıları engeller; bu engeli aşmak için
+                                Ters Bağlantı (Reverse Shell) kullanılır: Kurban sunucuya kendi kendine bizim
+                                bilgisayarımıza bağlanıp komut satırı vermesi emredilir. İçeri girildikten sonra
+                                sistemdeki izin hataları (Linux SUID bitleri vb.) incelenerek en yetkili kullanıcı
+                                (Root) seviyesine çıkılır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Reverse Shell Mekanizması:</strong> Güvenlik duvarlarını ters yönden
+                                            aşma.</li>
+                                        <li><strong>Metasploit Framework:</strong> Hazır exploit modüllerini arama ve
+                                            yapılandırma.</li>
+                                        <li><strong>Yetki Yükseltme (Privilege Escalation):</strong> Düşük yetkiden Root
+                                            yetkisine geçiş.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Komutlar</div>
+                                    <ul>
+                                        <li><code>nc -lvnp 4444</code>: Kurbandan gelecek ters kabuk bağlantısını
+                                            dinler.</li>
+                                        <li><code>msfconsole</code>: Dünyanın en popüler sızma ve exploit çerçevesidir.
+                                        </li>
+                                        <li><code>find / -perm -4000 2&gt;/dev/null</code>: Linux'ta yetki yükseltmeye
+                                            açık SUID dosyalarını arar.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">msfconsole</span>
+                                    <span class="badge-tech">netcat</span>
+                                    <span class="badge-tech">linpeas</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="exploit">⚡ Exploit Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="nc -lvnp 4444">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ================= BLUE TEAM CHAPTERS (5 BÖLÜM) ================= -->
+                        <div class="curriculum-chapter-card card-blue" data-team-scope="blue">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-blue">BÖLÜM B-1 // DEFANSİF &bull;
+                                        TEMEL SEVİYE &bull; 15 DK</span>
+                                    <h3 class="curriculum-chapter-title">Savunma Mimarisi &amp; Sistem Sertleştirme
+                                        (Hardening &amp; Zero-Trust)</h3>
+                                </div>
+                                <span class="badge-tech">ZERO-TRUST &bull; HARDENING &bull; MFA &bull; LEAST
+                                    PRIVILEGE</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Kaleyi inşa ederken gereksiz tüm arka kapıları tuğlayla örmek, standart kilitleri
+                                şifreli çelik kapılarla değiştirmek ve kapıdaki nöbetçiye "Kimseye peşinen güvenme, her
+                                girişte kimlik sor" kuralı koymaktır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Bir sistemi savunmanın ilk kuralı saldırı yüzeyini küçültmektir (Attack Surface
+                                Reduction). Sunucuda kullanılmayan tüm hizmetler ve portlar kapatılır. Varsayılan
+                                parolalar değiştirilir. Root kullanıcısının şifreyle uzaktan bağlanması tamamen
+                                yasaklanır, yalnızca kriptografik SSH anahtarları ve iki adımlı donanım doğrulamaları
+                                (FIDO2) zorunlu kılınır. "Asla güvenme, her zaman doğrula" (Zero-Trust) mimarisi
+                                uygulanır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>En Az Yetki Prensibi:</strong> Kullanıcılara sadece işini yapacak
+                                            kadar yetki verme.</li>
+                                        <li><strong>Sıfır Güven (Zero-Trust):</strong> Ağın içindeki cihazlara bile
+                                            peşinen güvenmeme.</li>
+                                        <li><strong>Sistem Sertleştirme:</strong> Gereksiz servisleri ve açık portları
+                                            devre dışı bırakma.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Mekanizmalar
+                                    </div>
+                                    <ul>
+                                        <li><code>ssh-keygen -t ed25519</code>: Kırılması imkansız modern şifreleme
+                                            anahtarı üretir.</li>
+                                        <li><code>PermitRootLogin no</code>: SSH üzerinden root girişini kapatır.</li>
+                                        <li><code>systemctl disable --now [servis]</code>: Kullanılmayan gereksiz
+                                            servisleri kapatır.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan
+                                        Kavramlar:</span>
+                                    <span class="badge-tech">Zero-Trust</span>
+                                    <span class="badge-tech">SSH Key</span>
+                                    <span class="badge-tech">FIDO2 / MFA</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="blue">⚡ Blue Team Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="sudo systemctl status ssh">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-blue" data-team-scope="blue">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-blue">BÖLÜM B-2 // DEFANSİF &bull;
+                                        ORTA SEVİYE &bull; 25 DK</span>
+                                    <h3 class="curriculum-chapter-title">Ağ Kalkanları &amp; Güvenlik Duvarı (Firewall
+                                        &amp; Traffic Filtering)</h3>
+                                </div>
+                                <span class="badge-tech">UFW &bull; IPTABLES &bull; RATE LIMIT &bull; DDoS
+                                    DEFENSE</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Şehrin giriş kapısına bir gümrük kontrol noktası koyup, sadece geçerli pasaportu ve
+                                randevusu olan araçları içeri almak, şüpheli veya zararlı yük taşıyanları kapıda
+                                durdurmaktır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Güvenlik duvarları (Firewall) ağ paketlerini IP, Port ve protokol düzeyinde süzer.
+                                Linux'ta UFW ve iptables ile kural zincirleri oluşturulur: Gelen tüm yabancı bağlantılar
+                                varsayılan olarak reddedilir (DEFAULT DROP); sadece güvenli web (443) ve yetkili IP
+                                adreslerine izin verilir. SYN Flood ve DoS saldırılarına karşı paket sınırı (Rate
+                                Limiting) konularak sunucunun kilitlenmesi engellenir.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Paket Filtreleme Kuralları:</strong> DROP vs REJECT farkı.</li>
+                                        <li><strong>IP &amp; Port İzolasyonu:</strong> Sadece yetkili IP'lerin yönetim
+                                            portlarına erişmesi.</li>
+                                        <li><strong>DDoS &amp; Flood Kalkanı:</strong> Anormal paket patlamalarını
+                                            sınırlandırma.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Komutlar</div>
+                                    <ul>
+                                        <li><code>sudo ufw default deny incoming</code>: Gelen tüm yabancı paketleri
+                                            engeller.</li>
+                                        <li><code>sudo ufw allow 443/tcp</code>: Sadece güvenli HTTPS web trafiğine izin
+                                            verir.</li>
+                                        <li><code>iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute</code>:
+                                            DoS kalkanı.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">ufw</span>
+                                    <span class="badge-tech">iptables</span>
+                                    <span class="badge-tech">fail2ban</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="packet">⚡ Firewall Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="sudo ufw status verbose">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-blue" data-team-scope="blue">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-blue">BÖLÜM B-3 // DEFANSİF &bull;
+                                        İLERİ SEVİYE &bull; 20 DK</span>
+                                    <h3 class="curriculum-chapter-title">Güvenli Web Başlıkları &amp; Tarayıcı Zırhları
+                                        (HSTS, CSP &amp; WAF)</h3>
+                                </div>
+                                <span class="badge-tech">HSTS &bull; CSP &bull; X-FRAME-OPTIONS &bull; WAF SHIELD</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Web sitesine gelen ziyaretçinin tarayıcısına "Bu sayfayı sadece kurşun geçirmez şifreli
+                                camın arkasından aç, başka pencerelerin seni kandırmasına izin verme" diyen dijital
+                                güvenlik mühürleri basmaktır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Web tarayıcıları sunucudan gelen HTTP başlıklarına göre güvenlik kararları alır. HSTS
+                                (Strict-Transport-Security) başlığı ile tarayıcıya "Bu siteye asla şifresiz HTTP ile
+                                bağlanma, her zaman zorunlu HTTPS kullan" talimatı verilir; bu sayede araya girme
+                                (Man-in-the-Middle) ve SSL Strip saldırıları imkansızlaşır. CSP (Content Security
+                                Policy) ile web sayfasında yabancı JavaScript çalıştırması yasaklanır (XSS kalkanı).
+                                X-Frame-Options ile sayfanın iframe'e gömülüp tıklama tuzağı (Clickjacking) yapılması
+                                engellenir.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>HSTS Kalkanı:</strong> Zorunlu HTTPS ve şifreleme düşürme engelleme.
+                                        </li>
+                                        <li><strong>CSP Zırhı:</strong> Siteler arası betik çalıştırma (XSS) engelleme.
+                                        </li>
+                                        <li><strong>Clickjacking Koruması:</strong> Şeffaf iframe tuzaklarını devre dışı
+                                            bırakma.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Kodlar &amp; Denetim</div>
+                                    <ul>
+                                        <li><code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code>:
+                                            1 yıllık HTTPS kilidi.</li>
+                                        <li><code>X-Frame-Options: DENY</code>: İframe gömmesini tamamen yasaklar.</li>
+                                        <li><code>Invoke-WebRequest -Uri [URL] -Method Head</code>: PowerShell ile
+                                            başlık denetimi.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan
+                                        Başlıklar:</span>
+                                    <span class="badge-tech">HSTS</span>
+                                    <span class="badge-tech">CSP</span>
+                                    <span class="badge-tech">X-Frame</span>
+                                    <span class="badge-tech">WAF</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="powershell">⚡ Başlık Denetim Kodunu Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="curl.exe -I https://lostfromlight.com">💻 Terminalde Simüle
+                                        Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-blue" data-team-scope="blue">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-blue">BÖLÜM B-4 // DEFANSİF &bull;
+                                        İLERİ SEVİYE &bull; 30 DK</span>
+                                    <h3 class="curriculum-chapter-title">Güvenlik Logları &amp; Olay İnceleme (SIEM, EDR
+                                        &amp; Log Analysis)</h3>
+                                </div>
+                                <span class="badge-tech">SIEM &bull; EDR &bull; WIRESHARK &bull; LOG ANALYSIS</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Kalenin her köşesindeki güvenlik kameralarının kayıtlarını (logları) 7/24 izleyen ve "Şu
+                                kapı son 1 dakikada 500 kez zorlandı!" uyarısı veren yapay zekalı güvenlik odası.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Bir saldırgan sistemde ne yaparsa yapsın arkasında dijital ayak izi (log) bırakır.
+                                Linux'ta <code>/var/log/auth.log</code> dosyasındaki başarısız girişler, Nginx erişim
+                                loglarındaki anormal 404/500 istekleri ve EDR ajanlarının şüpheli süreç uyarıları SIEM
+                                sisteminde toplanır. Güvenlik analisti (SOC Analyst), Wireshark ile ağ paketlerini
+                                saniye saniye inceleyerek zararlı IP adreslerini ve veri sızıntılarını tespit eder.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Log Dosyası Analizi:</strong> Kim, ne zaman, hangi IP ile girmeye
+                                            çalıştı?</li>
+                                        <li><strong>Kaba Kuvvet Tespiti:</strong> Başarısız oturum açma desenlerini
+                                            ayıklama.</li>
+                                        <li><strong>Paket Yakalama (Packet Sniffing):</strong> Wireshark ve tcpdump ile
+                                            trafik izleme.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Komutlar</div>
+                                    <ul>
+                                        <li><code>grep 'Failed password' /var/log/auth.log</code>: Hatalı şifre
+                                            denemelerini listeler.</li>
+                                        <li><code>tail -f /var/log/nginx/access.log</code>: Web trafiğini canlı akışta
+                                            izler.</li>
+                                        <li><code>tcpdump -i eth0 port 80 -n</code>: 80 portundaki ham paketleri
+                                            yakalar.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">Wireshark</span>
+                                    <span class="badge-tech">tcpdump</span>
+                                    <span class="badge-tech">auditd</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="blue">⚡ Log Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="grep 'Failed password' /var/log/auth.log">💻 Terminalde Simüle
+                                        Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-blue" data-team-scope="blue">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-blue">BÖLÜM B-5 // DEFANSİF &bull;
+                                        İLERİ SEVİYE &bull; 25 DK</span>
+                                    <h3 class="curriculum-chapter-title">Olay Müdahale &amp; Soğuk Yedekleme (Incident
+                                        Response &amp; Cold Backup)</h3>
+                                </div>
+                                <span class="badge-tech">AIR-GAPPED &bull; FORENSICS &bull; RANSOMWARE &bull;
+                                    BACKUP</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Yangın alarmı çaldığında paniğe kapılmak yerine, yangın kapılarını otomatik kapatıp
+                                odayı izole etmek ve kasadaki kopyadan tüm şirketi 15 dakikada yeniden başlatmaktır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Siber dünyada "Bize asla virüs bulaşmaz" yaklaşımı büyük bir yanılgıdır. Önemli olan
+                                saldırı gerçekleştiğinde paniğe kapılmadan sistemi karantinaya almak (Ağ İzolasyonu),
+                                deliller silinmeden RAM bellek imajını almak ve internetten tamamen kopuk, hava boşluklu
+                                (Air-Gapped) yani fidye yazılımlarının (Ransomware) asla ulaşamayacağı soğuk yedekleme
+                                sisteminden şirketi sıfır veri kaybıyla ayağa kaldırmaktır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>PICERL Olay Müdahalesi:</strong> Hazırlık, Tespit, Sınırlandırma,
+                                            Temizleme, Kurtarma.</li>
+                                        <li><strong>Ağ İzolasyonu:</strong> Virüslü makinenin diğer sunuculara
+                                            bulaşmasını durdurma.</li>
+                                        <li><strong>Air-Gapped Yedekleme:</strong> İnternetten izole edilmiş,
+                                            değiştirilemez soğuk yedekleme.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Mekanizmalar</div>
+                                    <ul>
+                                        <li><code>ip link set dev eth0 down</code>: Tehlike anında ağ kartını anında
+                                            düşürür.</li>
+                                        <li><code>dd if=/dev/sda of=/mnt/backup.img</code>: Adli bilişim disk kopyasını
+                                            alır.</li>
+                                        <li><code>3-2-1 Yedekleme Kuralı</code>: 3 kopya, 2 farklı ortam, 1 internet
+                                            dışı soğuk yedek.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan
+                                        Kavramlar:</span>
+                                    <span class="badge-tech">Air-Gapped</span>
+                                    <span class="badge-tech">Forensics</span>
+                                    <span class="badge-tech">Immutable Backup</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="blue">⚡ Müdahale Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="df -h">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ================= PURPLE TEAM CHAPTERS (5 BÖLÜM) ================= -->
+                        <div class="curriculum-chapter-card card-purple" data-team-scope="purple">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-purple">BÖLÜM P-1 // STRATEJİ &bull;
+                                        TEMEL SEVİYE &bull; 20 DK</span>
+                                    <h3 class="curriculum-chapter-title">Entegre Güvenlik Köprüsü (The Purple Bridge
+                                        Felsefesi)</h3>
+                                </div>
+                                <span class="badge-tech">PURPLE TEAM &bull; SİNERJİ &bull; İŞBİRLİĞİ &bull; ORTAK
+                                    AKIL</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Bir futbol takımının forveti (Red Team) ile kalecisinin (Blue Team) birbirine düşman
+                                olmak yerine antrenmanda beraber çalışarak takımın açıklarını kapatmasıdır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Klasik siber güvenlik yapılarında Red Team gelir, sızar ve arkasında 100 sayfalık teknik
+                                bir rapor bırakıp gider; Blue Team ise raporu anlamakta ve kuralları yazmakta zorlanır.
+                                Purple Team bu iki tarafı aynı masaya oturtur: Red Team saldırı tekniğini savunmacının
+                                gözü önünde canlı gösterir, Blue Team de kuralı o anda yazıp "Şimdi tekrar dene!" der.
+                                Bu köprü sayesinde güvenlik dayanıklılığı aylar yerine saatler içinde yükseltilir.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Silo Mentalitesini Yıkmak:</strong> Saldıran ile savunan ekipleri
+                                            ortak hedefe yöneltme.</li>
+                                        <li><strong>Canlı Geri Bildirim:</strong> Ofansif bulguları saniyeler içinde
+                                            savunma kuralına çevirme.</li>
+                                        <li><strong>Kültür Değişimi:</strong> Güvenliği engelleyen değil, işi koruyan
+                                            bir güce dönüştürme.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel İlkeler &amp; Çıktılar</div>
+                                    <ul>
+                                        <li><code>Ortak Tatbikat Protokolü</code>: Saldırı ve savunmanın eş zamanlı
+                                            kaydı.</li>
+                                        <li><code>Bilgi Paylaşım Matrisi</code>: Red Team taktiklerinin Blue Team
+                                            kurallarıyla eşlenmesi.</li>
+                                        <li><code>Geri Bildirim Döngüsü</code>: Her tatbikattan sonra sistemin otomatik
+                                            güncellenmesi.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan
+                                        Kavramlar:</span>
+                                    <span class="badge-tech">Purple Bridge</span>
+                                    <span class="badge-tech">Ortak Akıl</span>
+                                    <span class="badge-tech">Sinerji</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="all">⚡ Tüm Komut Kütüphanesini İncele</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="help">💻 Terminalde Keşfet</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-purple" data-team-scope="purple">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-purple">BÖLÜM P-2 // STRATEJİ &bull;
+                                        ORTA SEVİYE &bull; 25 DK</span>
+                                    <h3 class="curriculum-chapter-title">Tehdit Modellemesi &amp; MITRE ATT&amp;CK
+                                        Matrisi (TTPs &amp; Threat Intel)</h3>
+                                </div>
+                                <span class="badge-tech">MITRE ATT&amp;CK &bull; TTP &bull; THREAT INTEL &bull;
+                                    STRIDE</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Satrançta dünyanın en tehlikeli büyük ustalarının yaptığı tüm hamleleri (Taktik, Teknik,
+                                Prosedür) bir şemaya döküp kendi tahtandaki zayıf kareleri önceden kapatmaktır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Gerçek siber korsan grupları (APT) rastgele hareket etmez. MITRE ATT&amp;CK matrisi, bir
+                                saldırganın ilk sızışından (Initial Access) veriyi çalmasına (Exfiltration) kadar geçen
+                                14 ana aşamayı ve yüzlerce tekniği haritalandırır. Siber Tehdit İstihbaratı (CTI) ile
+                                kurumunuza saldıran aktörlerin taktikleri önceden tespit edilir ve savunma kalkanları bu
+                                tekniklere göre özel olarak konumlandırılır.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>MITRE ATT&amp;CK Matrisi:</strong> 14 Taktik ve TTP hiyerarşisi.
+                                        </li>
+                                        <li><strong>Tehdit İstihbaratı (CTI):</strong> Sektöre özel saldırgan
+                                            gruplarının takibi.</li>
+                                        <li><strong>STRIDE Modellemesi:</strong> Sahtecilik, Değiştirme, Bilgi Sızdırma,
+                                            Yetki Gaspı analizi.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Matrisler</div>
+                                    <ul>
+                                        <li><code>MITRE ATT&amp;CK Navigator</code>: Tehdit matrisini görselleştirir ve
+                                            boşlukları gösterir.</li>
+                                        <li><code>OpenCTI &amp; MISP</code>: Uluslararası siber tehdit göstergelerini
+                                            (IoC) paylaşır.</li>
+                                        <li><code>T1566 &amp; T1059</code>: Örnek MITRE saldırı tekniği kodları.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">MITRE ATT&amp;CK</span>
+                                    <span class="badge-tech">MISP</span>
+                                    <span class="badge-tech">OpenCTI</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="blue">⚡ Savunma Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="uname -a">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-purple" data-team-scope="purple">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-purple">BÖLÜM P-3 // STRATEJİ &bull;
+                                        İLERİ SEVİYE &bull; 30 DK</span>
+                                    <h3 class="curriculum-chapter-title">Canlı Siber Tatbikatlar &amp; Tehdit Emülasyonu
+                                        (War Games &amp; Emulation)</h3>
+                                </div>
+                                <span class="badge-tech">ATOMIC RED &bull; WAR GAMES &bull; MTTD &bull; MTTR</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                İtfaiyecilerin ve polisin yılda birkaç kez gerçek duman ve sahte senaryolarla acil durum
+                                tatbikatı yapması gibi, şirkette de kontrollü yangın tatbikatı yapmaktır.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Siber savunmanın gerçek gücü ancak canlı bir kriz anında test edilebilir. Masa Başı
+                                Tatbikatlarda (Tabletop) yöneticilerle fidye senaryoları tartışılır; Canlı Tehdit
+                                Emülasyonunda ise Atomic Red Team gibi araçlarla sistemde gerçek saldırı izleri simüle
+                                edilir. Amaç iki kritik metriği ölçmektir: Tehdidi Algılama Süresi (MTTD - Mean Time to
+                                Detect) ve Tehdide Müdahale Süresi (MTTR - Mean Time to Respond).
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Tabletop Egzersizleri:</strong> C-Level yöneticilerle siber kriz
+                                            yönetimi.</li>
+                                        <li><strong>Otomatize Tehdit Emülasyonu:</strong> Kontrollü ve zararsız saldırı
+                                            testleri.</li>
+                                        <li><strong>MTTD &amp; MTTR Ölçümü:</strong> Savunma ekibinin refleks hızını
+                                            milisaniyelere indirme.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Araçlar &amp; Çerçeveler</div>
+                                    <ul>
+                                        <li><code>Atomic Red Team</code>: MITRE tekniklerine uygun tek satırlık testler
+                                            çalıştırır.</li>
+                                        <li><code>Caldera &amp; Infection Monkey</code>: Otonom siber tatbikat
+                                            simülatörleridir.</li>
+                                        <li><code>MTTD / MTTR Dashboard</code>: Savunmanın tepki süresini grafiklerle
+                                            raporlar.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan Araçlar:</span>
+                                    <span class="badge-tech">Atomic Red Team</span>
+                                    <span class="badge-tech">Caldera</span>
+                                    <span class="badge-tech">War Games</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="packet">⚡ Paket Komutlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="sudo nmap -sn 192.168.1.0/24">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-purple" data-team-scope="purple">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-purple">BÖLÜM P-4 // STRATEJİ &bull;
+                                        İLERİ SEVİYE &bull; 20 DK</span>
+                                    <h3 class="curriculum-chapter-title">Zafiyet Doğrulama &amp; Sürekli İyileştirme
+                                        Döngüsü (Continuous Gap Analysis)</h3>
+                                </div>
+                                <span class="badge-tech">VALIDATION &bull; CVSS &bull; PDCA &bull; DEVSECOPS</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Evin kapı kilidi tamir edildikten sonra "Tamam bitti" demeyip, çilingire "Şimdi zorla
+                                bakalım gerçekten açılmıyor mu?" diye test ettirmektir.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Bir açık bulunduğunda ve yazılımcı "düzelttim" dediğinde süreç bitmez. Red Team aynı
+                                saldırıyı tekrar dener; eğer açık kapandıysa bulgu doğrulanır (Remediation Validation).
+                                Zafiyetler CVSS skoruna ve iş etkisine göre önceliklendirilir. PDCA (Planla, Uygula,
+                                Kontrol Et, Önlem Al) döngüsüyle güvenlik, şirket içinde yılda bir yapılan bir denetim
+                                olmaktan çıkıp her gün yaşayan dinamik bir sürece dönüşür.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Zafiyet Doğrulama (Validation):</strong> Kapatılan açıkların test
+                                            edilerek teyidi.</li>
+                                        <li><strong>CVSS 3.1 Skorlama:</strong> Açıkları önem derecesine göre
+                                            önceliklendirme.</li>
+                                        <li><strong>DevSecOps Köprüsü:</strong> Güvenliği yazılım geliştirme sürecine
+                                            entegre etme.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Süreçler &amp; Standartlar
+                                    </div>
+                                    <ul>
+                                        <li><code>CVSS Vektör Hesaplayıcı</code>: Zafiyetin ciddiyetini 0 ile 10
+                                            arasında puanlar.</li>
+                                        <li><code>PDCA Güvenlik Çemberi</code>: Planla - Uygula - Kontrol Et - Önlem Al.
+                                        </li>
+                                        <li><code>CI/CD Güvenlik Kapıları</code>: Açık içeren kodların canlıya geçmesini
+                                            durdurur.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan
+                                        Kavramlar:</span>
+                                    <span class="badge-tech">Validation</span>
+                                    <span class="badge-tech">CVSS 3.1</span>
+                                    <span class="badge-tech">DevSecOps</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="web">⚡ Web Açıklarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="nikto -h 192.168.1.1">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-chapter-card card-purple" data-team-scope="purple">
+                            <div class="curriculum-chapter-header">
+                                <div>
+                                    <span class="curriculum-chapter-badge badge-cur-purple">BÖLÜM P-5 // STRATEJİ &bull;
+                                        YÖNETİM &bull; 25 DK</span>
+                                    <h3 class="curriculum-chapter-title">Kurumsal Siber Dayanıklılık &amp; Risk Yönetimi
+                                        (Cyber Resilience &amp; Risk Governance)</h3>
+                                </div>
+                                <span class="badge-tech">RESILIENCE &bull; RISK MANAGEMENT &bull; GOVERNANCE &bull;
+                                    CISO</span>
+                            </div>
+
+                            <div class="curriculum-analogy-box">
+                                💡 <strong>GÜNLÜK HAYATTAN BENZETME:</strong>
+                                Bir araba kazası olduğunda sadece hava yastığının açılması yetmez; kaskonun hasarı
+                                karşılaması, hastane sürecinin hazır olması ve şirketin itibar kaybetmemesi gerekir.
+                            </div>
+
+                            <p class="curriculum-body-text">
+                                Siber güvenlik sadece teknik bir konu değildir; kurumun finansal geleceği, itibarı ve
+                                yasal sorumluluğudur. Kurumsal siber dayanıklılık (Cyber Resilience), "Saldırıya
+                                uğramayacağız" hayalinden çıkıp, "Saldırı olduğunda bile müşterilere hizmet vermeyi
+                                nasıl sürdürürüz?" felsefesine geçiştir. Regülasyon uyumu (KVKK, ISO 27001, NIS2) ve
+                                EDR/MFA gibi kalkanlar, şirketin siber güvenlik risklerini minimize eder ve milyon
+                                dolarlık cezaları engeller.
+                            </p>
+
+                            <div class="curriculum-details-grid">
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🎯 Neler Öğreneceksin?</div>
+                                    <ul>
+                                        <li><strong>Siber Dayanıklılık (Resilience):</strong> Kesintisiz iş sürekliliği
+                                            planı.</li>
+                                        <li><strong>Yasal Regülasyonlar:</strong> KVKK, GDPR ve ISO 27001
+                                            gereksinimleri.</li>
+                                        <li><strong>Siber Risk Yönetimi Modeli:</strong> Güvenlik kalkanlarının kurumsal
+                                            risklere etkisi.</li>
+                                    </ul>
+                                </div>
+                                <div class="curriculum-detail-block">
+                                    <div class="curriculum-detail-block-title">🛠️ Temel Çıktılar &amp; Raporlar</div>
+                                    <ul>
+                                        <li><code>CISO Yönetim Kurulu Raporu</code>: Şirketin siber risk skorunu sade
+                                            dille sunar.</li>
+                                        <li><code>Kurumsal Risk Hesaplama</code>: EDR ve FIDO2 varlığında siber savunma
+                                            puanı yükselir.</li>
+                                        <li><code>İş Etki Analizi (BIA)</code>: Olası bir kesintinin saatlik maliyetini
+                                            belirler.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="curriculum-actions-bar">
+                                <div class="curriculum-tools-pills">
+                                    <span style="font-size: 11.5px; color: var(--text-muted);">Öne Çıkan
+                                        Kavramlar:</span>
+                                    <span class="badge-tech">Cyber Resilience</span>
+                                    <span class="badge-tech">Risk Governance</span>
+                                    <span class="badge-tech">CISO Dashboard</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" class="btn-secondary btn-sm btn-jump-commands-cat"
+                                        data-cat="powershell">⚡ Denetim Kodlarını Kod Kütüphanesinde Aç</button>
+                                    <button type="button" class="btn-glow-blue btn-sm btn-jump-terminal-cmd"
+                                        data-cmd="uptime">💻 Terminalde Simüle Et</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section><!-- ==========================================
+                     PAGE: SİBER KOD KÜTÜPHANESİ (142+ GERÇEK KOMUT & SCRIPT)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-commands">
+                    <div class="page-header" data-reveal>
+                        <div class="page-title-block">
+                            <div class="page-tier-badge"
+                                style="background: rgba(0, 229, 255, 0.15); color: var(--cyan); border-color: var(--cyan);">
+                                142+ ÇALIŞTIRILABİLİR KOMUT &amp; SCRIPT</div>
+                            <h1 class="page-main-heading">Siber Kod Kütüphanesi &amp; Komut Merkezi</h1>
+                            <p class="page-subheading">Linux Temellerinden İleri Ağ Taramasına, Web Zafiyetlerinden
+                                Firewall Kurallarına 142+ Hazır Komut ve Script</p>
+                        </div>
+                        <div class="page-actions-block">
+                            <button class="btn-glow-blue" id="btn-open-terminal-from-commands">
+                                💻 Kali Web Terminalini Aç &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 140+ REAL PRACTICAL COMMANDS MASTER LIBRARY -->
+                    <div style="margin-top: 10px;" data-reveal>
+                        <div class="panel-header" style="margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                            <div class="panel-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="2">
+                                    <polyline points="4 17 10 11 4 5" />
+                                    <line x1="12" y1="19" x2="20" y2="19" />
+                                </svg>
+                                <span>142+ Gerçek Siber Güvenlik Komut &amp; Script Kütüphanesi</span>
+                            </div>
+                            <span class="badge-soft-cyan" id="academy-count-badge">142 KOMUT YÜKLENDİ &bull; CANLI
+                                SİMÜLASYON</span>
+                        </div>
+
+                        <!-- Academy Command Search & Filter Pills -->
+                        <div class="filter-bar" style="margin-bottom: 20px;">
+                            <div class="search-input-wrap">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                </svg>
+                                <input type="text" id="academy-cmd-search"
+                                    placeholder="140+ komut veya araç ara (örn: nmap, hping3, gobuster, hydra, port, dosya, parola, syn)..." />
+                            </div>
+                            <div class="filter-pills" id="academy-category-pills">
+                                <button class="filter-pill active" data-cat="all">Tümü (140+)</button>
+                                <button class="filter-pill" data-cat="linux">1. Linux Temelleri</button>
+                                <button class="filter-pill" data-cat="nmap">2. Ağ &amp; Nmap</button>
+                                <button class="filter-pill" data-cat="web">3. Web &amp; Fuzzing</button>
+                                <button class="filter-pill" data-cat="packet">4. Paket &amp; Firewall</button>
+                                <button class="filter-pill" data-cat="mitm">5. MITM &amp; Dinleme</button>
+                                <button class="filter-pill" data-cat="auth">6. Kimlik &amp; Parola</button>
+                                <button class="filter-pill" data-cat="exploit">7. Zafiyet &amp; Exploit</button>
+                                <button class="filter-pill" data-cat="tunnel">8. Tünel &amp; Pivot</button>
+                                <button class="filter-pill" data-cat="blue">9. Blue Team &amp; SOC</button>
+                                <button class="filter-pill" data-cat="powershell">10. PowerShell Denetim</button>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Injected Command Cards Container -->
+                        <div id="academy-commands-container" style="display: flex; flex-direction: column; gap: 14px;">
+                            <!-- Injected dynamically via app.js -->
+                        </div>
+                    </div>
+                </section><!-- ==========================================
+                     PAGE 5: KALI LINUX WEB TERMINAL (LIVE CLI SIMULATOR)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-terminal">
+                    <div class="page-header" data-reveal>
+                        <div class="page-title-block">
+                            <div class="page-tier-badge">ETKİLEŞİMLİ SİMÜLASYON LABI</div>
+                            <h1 class="page-main-heading">Kali Linux Web Terminal // Canlı Siber Sandbox</h1>
+                            <p class="page-subheading">İnternet Bağlantısı Olmadan Güvenle Nmap, Gobuster, Hping3 ve
+                                MITM Komutlarını Test Edin</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Command Chips Bar (Click-to-Type & Run) -->
+                    <div class="quick-labs-bar" data-reveal>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span
+                                style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.5px;">⚡
+                                HIZLI KOMUT PALETİ (Tıklayarak Terminalde Çalıştırın):</span>
+                            <span
+                                style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">Otomatik
+                                Komut Enjeksiyonu</span>
+                        </div>
+                        <div class="quick-labs-filter-row">
+                            <button class="quick-cmd-btn" data-terminal-cmd="nmap -p- 127.0.0.1">🔍 nmap -p-
+                                127.0.0.1</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="nmap -sV -p 80,443 127.0.0.1">🔍 nmap -sV
+                                Servis</button>
+                            <button class="quick-cmd-btn"
+                                data-terminal-cmd="gobuster dir -u http://127.0.0.1 -w common.txt">📁 gobuster
+                                dir</button>
+                            <button class="quick-cmd-btn"
+                                data-terminal-cmd="ffuf -u http://127.0.0.1/FUZZ -w common.txt">⚡ ffuf Fuzzing</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="nikto -h 127.0.0.1">🛡️ nikto Web
+                                Scan</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo hping3 -S -p 80 -c 1 127.0.0.1">📡
+                                hping3 SYN Probe</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo hping3 -A -p 80 -c 1 127.0.0.1">🛡️
+                                hping3 ACK Firewall</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo nmap -sn 192.168.1.0/24">📡 nmap Ping
+                                Sweep</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo nmap -O 192.168.1.17">🖥️ nmap -O OS
+                                Tespit</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="bettercap -iface lo">⚔️ bettercap
+                                MITM</button>
+                            <button class="quick-cmd-btn"
+                                data-terminal-cmd="hydra -l admin -p Sebu132009 192.168.1.1 http-get /">🔑 hydra Auth
+                                Test</button>
+                            <button class="quick-cmd-btn"
+                                data-terminal-cmd="sqlmap -u http://127.0.0.1/api/search?q=test --dbs">💉 sqlmap
+                                Enjeksiyon</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="powershell .\Audit-Headers.ps1">📜
+                                PowerShell Başlık Denetimi</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="powershell .\Port-Scan.ps1">📜 PowerShell
+                                Çok Kanallı Port Tara</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="help">❓ help (115+ Araç)</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="clear">🧹 clear</button>
+                        </div>
+                    </div>
+
+                    <!-- Authentic Kali Linux Terminal Window (Matches Screenshot) -->
+                    <div class="kali-terminal-wrapper" data-reveal>
+                        <!-- Multi-Tab Titlebar -->
+                        <div class="kali-titlebar">
+                            <div class="kali-tabs-header-left">
+                                <div class="kali-tabs-bar" id="kali-tabs-bar">
+                                    <!-- Dynamic tabs injected by app.js -->
+                                </div>
+                                <button type="button" class="kali-add-tab-btn" id="btn-kali-add-tab"
+                                    title="Yeni Terminal Sekmesi Aç (+)">+</button>
+                                <button type="button" class="kali-tab-menu-btn" title="Sekme Seçenekleri">&or;</button>
+                            </div>
+                            <div class="kali-window-controls">
+                                <span class="kali-window-btn">&minus;</span>
+                                <span class="kali-window-btn">&#9633;</span>
+                                <span class="kali-window-btn close">&#10005;</span>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Body & History -->
+                        <div class="kali-terminal-body" id="kali-terminal-body">
+                            <!-- Kali MOTD banner from screenshot -->
+                            <div class="kali-motd">
+                                <div class="motd-line motd-red">┌──(Message from Kali developers)</div>
+                                <div class="motd-line">│</div>
+                                <div class="motd-line">│ This is an educational interactive sandbox of Kali Linux &amp;
+                                    LFL (LostFromLight) Defense.</div>
+                                <div class="motd-line">│ All simulations run safely in-browser with zero illegal or
+                                    harmful actions.</div>
+                                <div class="motd-line">│ Learn how:</div>
+                                <div class="motd-line">│ &rArr;
+                                    https://www.kali.org/docs/troubleshooting/common-minimum-setup/</div>
+                                <div class="motd-line">│</div>
+                                <div class="motd-line motd-gray">└──(Run: "touch ~/.hushlogin" to hide this message)
+                                </div>
+                            </div>
+
+                            <!-- Command Output History Zone -->
+                            <div id="kali-history-zone"></div>
+
+                            <!-- Active Live Command Prompt -->
+                            <div class="kali-input-line-block">
+                                <div class="kali-prompt-line1">
+                                    ┌──(<span class="kali-user">Sunny</span><span class="kali-skull">㉿</span><span
+                                        class="kali-host">SUNNY</span>)-[<span class="kali-path">~</span>]
+                                </div>
+                                <div class="kali-input-row">
+                                    <span class="kali-prompt-line2">└─$</span>
+                                    <input type="text" id="kali-cmd-input" class="kali-cli-input" autofocus
+                                        autocomplete="off" spellcheck="false"
+                                        placeholder="Komut yazın (örn: nmap -p- 127.0.0.1 veya 'help')..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ==========================================
+                     PAGE: SİBER ROL & TAKIM TESTİ (RED vs BLUE vs PURPLE)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-quiz">
+                    <div class="page-header" data-reveal>
+                        <div class="page-title-block">
+                            <div class="page-tier-badge"
+                                style="background: rgba(192, 132, 252, 0.15); color: #c084fc; border-color: #c084fc;">0
+                                KOD BİLGİSİ &bull; KİŞİLİK &amp; YETENEK TESTİ</div>
+                            <h1 class="page-main-heading">Siber Rol Testi: Hangi Takıma Yatkınsın?</h1>
+                            <p class="page-subheading">0 Yazılım ve 0 Siber Güvenlik Bilgisi Gerektirmeyen Günlük Hayat
+                                Senaryolarıyla 10 Soruda Red Team (Hücum), Blue Team (Savunma) veya Purple Team
+                                (Strateji) Yeteneğini Keşfet.</p>
+                        </div>
+                        <div class="page-actions-block">
+                            <button class="btn-secondary" id="btn-restart-quiz">Testi Baştan Başlat</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-wrapper" data-reveal>
+                        <div class="quiz-card" id="quiz-main-container">
+                            <!-- Injected dynamically via app.js -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     PAGE: SİBER CTF ARENASI (6 AŞAMALI SIZMA OPERASYONU)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-ctf">
+                    <!-- Page Header -->
+                    <div class="page-header" data-reveal>
+                        <div class="page-title-block">
+                            <div class="page-tier-badge"
+                                style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: #ef4444;">6
+                                KADEMELİ SIZMA &bull; 142 KOD İLE ÇÖZÜLÜR</div>
+                            <h1 class="page-main-heading">Siber CTF Arenası // Bayrak Avı</h1>
+                            <p class="page-subheading">Kütüphanedeki 142 Kali Linux kodunu kullanarak hedefleri analiz
+                                et, açıkları sömür ve gizli bayrakları (flag) ele geçir.</p>
+                        </div>
+                        <div class="page-actions-block">
+                            <button type="button" class="btn-glow-blue btn-sm hidden" id="btn-admin-bypass-ctf"
+                                style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);"
+                                title="Yönetici Root Anahtarı ile tüm 6 aşamayı anında aç (+2300 XP)">👑 Master Root
+                                Key: Tüm Seviyeleri Aç</button>
+                            <button class="btn-secondary btn-sm" id="btn-reset-ctf-progress"
+                                title="Tüm ilerlemeyi sıfırla">🔄 Sıfırla</button>
+                        </div>
+                    </div>
+
+                    <!-- Clean Horizontal Stepper & Progress Track -->
+                    <div class="ctf-top-stepper-card" data-reveal>
+                        <div class="ctf-stepper-header">
+                            <div class="ctf-stepper-title-row">
+                                <span class="pulsing-beacon"
+                                    style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
+                                <span id="ctf-progress-text"
+                                    style="font-weight: 800; font-size: 13px; color: #ffffff;">İlerleme: 0/6 Tamamlandı
+                                    (%0)</span>
+                            </div>
+                            <div class="ctf-stepper-meta-row">
+                                <span class="ctf-rank-badge" id="ctf-current-rank">Rütbe: Çaylak Analist</span>
+                                <span class="ctf-xp-badge" id="ctf-total-xp">0 XP</span>
+                            </div>
+                        </div>
+
+                        <!-- 6 Horizontal Stage Navigation Buttons in a single clean row -->
+                        <div class="ctf-stepper-tabs" id="ctf-stage-nav">
+                            <!-- Injected dynamically via app.js -->
+                        </div>
+
+                        <!-- Thin Progress Track -->
+                        <div class="ctf-progress-track">
+                            <div class="ctf-progress-bar-fill" id="ctf-progress-bar-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Two Column Split Arena: Left Briefing / Right Terminal -->
+                    <div class="ctf-split-container" data-reveal>
+                        <!-- Left: Focused Mission Briefing Card -->
+                        <div class="ctf-briefing-col">
+                            <div class="ctf-clean-card" id="ctf-briefing-box">
+                                <!-- Injected dynamically via app.js -->
+                            </div>
+                        </div>
+
+                        <!-- Right: Focused Kali Terminal Window -->
+                        <div class="ctf-terminal-col">
+                            <div class="ctf-clean-terminal">
+                                <div class="ctf-term-topbar">
+                                    <div class="ctf-term-dots">
+                                        <span class="term-dot dot-red"></span>
+                                        <span class="term-dot dot-yellow"></span>
+                                        <span class="term-dot dot-green"></span>
+                                    </div>
+                                    <div class="ctf-term-target-info" id="ctf-term-title-text">
+                                        root@kali-ctf:~# [10.10.1.5]
+                                    </div>
+                                    <div class="ctf-term-btn-group">
+                                        <button type="button" class="ctf-tiny-btn" id="btn-clear-ctf-term"
+                                            title="Ekranı Temizle">🧹 Temizle</button>
+                                        <button type="button" class="ctf-tiny-btn" id="btn-reset-ctf-term"
+                                            title="Yeniden Başlat">🔄 Yenile</button>
+                                    </div>
+                                </div>
+
+                                <div class="ctf-term-screen" id="ctf-term-screen">
+                                    <div class="ctf-term-output" id="ctf-term-output-area"></div>
+                                    <div class="ctf-term-input-line">
+                                        <span class="ctf-prompt-symbol"
+                                            id="ctf-term-prompt-label">root@kali-ctf:~#</span>
+                                        <input type="text" class="ctf-screen-input" id="ctf-term-command-input"
+                                            placeholder="Komut yazın (örn: nmap -sV 10.10.1.5)..." autocomplete="off"
+                                            spellcheck="false" />
+                                    </div>
+                                </div>
+
+                                <div class="ctf-term-bottom-bar">
+                                    <span>💡 İpuçlarındaki komutları elinizle yazabilir veya <kbd
+                                            style="background: rgba(0,229,255,0.15); color: #00e5ff; padding: 1px 5px; border-radius: 3px; font-weight: 700;">Tab</kbd>
+                                        tuşuna basarak otomatik tamamlayabilirsiniz.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ==========================================
+                     PAGE: SİBER KILAVUZ & SÖZLÜK (A-Z)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-glossary">
+                    <div class="page-header" data-reveal>
+                        <div class="page-title-block">
+                            <div class="page-tier-badge" id="glossary-badge-count">30+ TEMEL SİBER TERİM</div>
+                            <h1 class="page-main-heading">Siber Terimler Kılavuzu &amp; A-Z Sözlük</h1>
+                            <p class="page-subheading">0 Yazılım ve 0 Siber Güvenlik Bilgisine Sahip Kişiler İçin Günlük
+                                Hayat Benzetmeli Sade Rehber</p>
+                        </div>
+                    </div>
+
+                    <div class="filter-bar" data-reveal>
+                        <div class="search-input-wrap">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                            <input type="text" id="glossary-search-input"
+                                placeholder="Siber terim veya kısaltma ara (örn: MFA, HSTS, JWT, SQLi, Port, Handshake, Nmap)..." />
+                        </div>
+                        <div class="filter-pills" id="glossary-category-pills">
+                            <button class="filter-pill active" data-cat="all">Tümü (30+)</button>
+                            <button class="filter-pill" data-cat="auth">Kimlik &amp; Oturum</button>
+                            <button class="filter-pill" data-cat="network">Ağ &amp; Protokoller</button>
+                            <button class="filter-pill" data-cat="attacks">Saldırı Türleri</button>
+                            <button class="filter-pill" data-cat="defense">Savunma &amp; Şifreleme</button>
+                            <button class="filter-pill" data-cat="tools">Siber Araçlar (Kali)</button>
+                        </div>
+                    </div>
+
+                    <div class="glossary-cards-grid" id="glossary-cards-container" data-reveal-stagger></div>
+                </section><!-- ==========================================
+                     PAGE 10: ZİYARETÇİ & SİSTEM LOGLARI (ADMIN ONLY)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-logs">
+                    <div class="page-header" data-reveal>
+                        <div class="page-title-block">
+                            <div class="page-tier-badge" data-i18n="logs_badge">GÜVENLİK AUDİT &amp; TELEMETRİ</div>
+                            <h1 class="page-main-heading" data-i18n="logs_main_heading">Ziyaretçi &amp; İstemci Erişim
+                                Logları</h1>
+                            <p class="page-subheading" data-i18n="logs_main_subheading">Sisteme bağlanan gerçek
+                                istemcilerin IP adresi, işletim sistemi, tarayıcısı ve cihaz parmak izi</p>
+                        </div>
+                        <div class="page-actions-block">
+                            <button type="button" class="btn-secondary" id="btn-clear-logs"
+                                style="color: #ef4444; border-color: rgba(239, 68, 68, 0.4);"
+                                title="Tüm log kayıtlarını temizle">
+                                <span>🧹 Logları Temizle</span>
+                            </button>
+                            <button class="btn-secondary" id="btn-export-logs" data-i18n="btn_export_logs">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                <span>Logları İndir (JSON)</span>
+                            </button>
+                            <button class="btn-glow-blue" id="btn-refresh-logs" data-i18n="btn_refresh_logs">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="23 4 23 10 17 10" />
+                                    <polyline points="1 20 1 14 7 14" />
+                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                                </svg>
+                                <span>Logları Yenile</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Admin DEFCON & Broadcast Controller (Exclusive for burak_wyxz) -->
+                    <div class="panel-card"
+                        style="margin-bottom: 20px; padding: 18px 22px; border: 1px solid rgba(0, 229, 255, 0.35); background: linear-gradient(135deg, rgba(6, 12, 28, 0.98), rgba(12, 24, 52, 0.95));"
+                        data-reveal>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 14px;">
+                            <div>
+                                <div
+                                    style="font-family: var(--font-mono); font-size: 11.5px; color: #00e5ff; font-weight: 800; letter-spacing: 1.5px;">
+                                    👑 BAŞ YÖNETİCİ KONSOLU // burak_wyxz</div>
+                                <div style="font-size: 13px; color: #cbd5e1; margin-top: 3px;">Platform Savunma Alarmı
+                                    (DEFCON Seviyesi) &amp; Acil Durum Yönetimi</div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <button type="button" class="btn-defcon btn-defcon-1" id="btn-defcon-1"
+                                    title="Kırmızı Alarm - Saldırı ve Sızma">🚨 DEFCON 1</button>
+                                <button type="button" class="btn-defcon btn-defcon-3" id="btn-defcon-3"
+                                    title="Yüksek Güvenlik Modu">⚠️ DEFCON 3</button>
+                                <button type="button" class="btn-defcon btn-defcon-5 active" id="btn-defcon-5"
+                                    title="Normal Savunma Durumu">🛡️ DEFCON 5</button>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                            <input type="text" id="admin-broadcast-input"
+                                placeholder="Tüm platforma canlı acil durum neon duyurusu yayınla (örn: Siber tatbikat aktif)..."
+                                style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,229,255,0.25); border-radius: 4px; padding: 8px 12px; color: #fff; font-family: inherit; font-size: 12px; outline: none;" />
+                            <button type="button" class="btn-glow-blue btn-sm" id="btn-publish-broadcast">📢 Duyuru
+                                Yayınla</button>
+                            <button type="button" class="btn-secondary btn-sm" id="btn-clear-broadcast">Kaldır</button>
+                        </div>
+                    </div>
+
+                    <!-- Log Metrics -->
+                    <div class="kpi-grid" data-reveal-stagger style="margin-bottom: 24px;">
+                        <div class="kpi-card">
+                            <div class="kpi-data">
+                                <span class="kpi-title" data-i18n="logs_stat_total">TOPLAM ERİŞİM İSTEĞİ</span>
+                                <span class="kpi-value text-cyan" id="log-stat-total">0</span>
+                                <span class="kpi-hint text-green">&bull; Gerçek Zamanlı Telemetri</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-data">
+                                <span class="kpi-title" data-i18n="logs_stat_ips">BENZERSİZ IP ADRESİ</span>
+                                <span class="kpi-value text-green" id="log-stat-ips">0</span>
+                                <span class="kpi-hint text-green">&bull; IPv4 / IPv6 Yakalandı</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-data">
+                                <span class="kpi-title" data-i18n="logs_stat_admins">YÖNETİCİ ERİŞİMLERİ</span>
+                                <span class="kpi-value text-purple" id="log-stat-admins">0</span>
+                                <span class="kpi-hint text-purple">&bull; lostfromlight / admin</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-data">
+                                <span class="kpi-title" data-i18n="logs_stat_status">SİSTEM LOG DURUMU</span>
+                                <span class="kpi-value text-blue" id="log-stat-status">100% CAPTURING</span>
+                                <span class="kpi-hint text-green">&bull; EDR &bull; HSTS &bull; RemoteIp</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Filter Row -->
+                    <div class="filter-bar" data-reveal>
+                        <div class="search-input-wrap">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                            <input type="text" id="logs-search-input"
+                                placeholder="IP, İşletim Sistemi, Tarayıcı veya Kullanıcı Ara..." />
+                        </div>
+                    </div>
+
+                    <!-- Logs Table -->
+                    <div class="panel-card" data-reveal>
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="2">
+                                    <polyline points="4 17 10 11 4 5" />
+                                    <line x1="12" y1="19" x2="20" y2="19" />
+                                </svg>
+                                <span>İstemci Erişim &amp; Telemetri Kayıtları (/api/blog/access-logs)</span>
+                            </div>
+                            <span class="badge-pulsing-green" id="log-live-status">CANLI KAYIT AKIŞI</span>
+                        </div>
+                        <div class="panel-body" style="padding: 0; overflow-x: auto;">
+                            <table class="compliance-table" id="access-logs-table">
+                                <thead>
+                                    <tr>
+                                        <th data-i18n="logs_col_time">Zaman</th>
+                                        <th data-i18n="logs_col_ip">İstemci IP Adresi</th>
+                                        <th data-i18n="logs_col_os">İşletim Sistemi</th>
+                                        <th data-i18n="logs_col_browser">Tarayıcı &amp; Cihaz</th>
+                                        <th data-i18n="logs_col_user">Kullanıcı / Rol</th>
+                                        <th data-i18n="logs_col_action">İşlem &amp; Rota</th>
+                                        <th data-i18n="logs_col_status">Durum</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="access-logs-tbody">
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted" style="padding: 24px;">Loglar
+                                            yükleniyor...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- COMMAND PALETTE MODAL (Ctrl + K) -->
+    <div id="command-palette-modal" class="palette-backdrop hidden">
+        <div class="palette-dialog">
+            <div class="palette-search-row">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="palette-search-input"
+                    placeholder="Komut yazın veya sayfaya geçin... (örn: 'terminal', 'academy', 'audit', 'jwt')"
+                    autocomplete="off" />
+                <kbd id="btn-close-palette">ESC</kbd>
+            </div>
+            <div class="palette-results-list" id="palette-results"></div>
+        </div>
+    </div>
+
+    <!-- CLEAN CORPORATE AUTHENTICATION MODAL -->
+    <div id="auth-modal" class="palette-backdrop hidden">
+        <div class="auth-clean-card">
+            <button class="modal-close-icon" id="btn-close-auth-modal">&times;</button>
+
+            <div class="auth-dialog-header" style="text-align: center; margin-bottom: 20px;">
+                <div class="brand-shield" style="margin: 0 auto 12px; width: 44px; height: 44px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>
+                </div>
+                <h3 class="auth-title" id="auth-main-title" data-i18n="auth_title_signin">Operatör Kimlik Doğrulama</h3>
+                <p class="auth-subtitle" id="auth-main-subtitle" data-i18n="auth_sub_signin">Güvenli Erişim Ağ Geçidi
+                    &bull; JWT Bearer Token Yönetimi</p>
+            </div>
+
+            <div class="auth-pill-switcher">
+                <button class="auth-switch-btn active" id="modal-tab-signin">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                        <polyline points="10 17 15 12 10 7" />
+                        <line x1="15" y1="12" x2="3" y2="12" />
+                    </svg>
+                    <span data-i18n="auth_tab_signin">Giriş Yap</span>
+                </button>
+                <button class="auth-switch-btn" id="modal-tab-signup">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="16" />
+                        <line x1="8" y1="12" x2="16" y2="12" />
+                    </svg>
+                    <span data-i18n="auth_tab_signup">Kayıt Ol</span>
+                </button>
+            </div>
+
+            <div id="auth-modal-alert"></div>
+
+            <form id="auth-modal-form" class="enterprise-form">
+                <div class="form-row">
+                    <label class="form-label" data-i18n="form_username_label">Operatör Adı / Callsign</label>
+                    <input type="text" id="auth-input-username" class="form-input-styled" required autocomplete="off"
+                        placeholder="Kullanıcı Adı / Callsign (örn: lostfromlight)" value="" />
+                </div>
+
+                <div class="form-row">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label class="form-label" data-i18n="form_password_label">Şifre / Güvenlik Anahtarı</label>
+                        <span class="entropy-label" id="entropy-text">Hazır</span>
+                    </div>
+                    <input type="password" id="auth-input-password" class="form-input-styled" required
+                        placeholder="••••••••" value="" />
+
+                    <div class="entropy-meter-bar">
+                        <div class="entropy-fill" id="entropy-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Registration Password Confirmation Row -->
+                <div class="form-row hidden" id="auth-row-confirm">
+                    <label class="form-label" data-i18n="form_confirm_password_label">Şifre Doğrulama (Tekrar)</label>
+                    <input type="password" id="auth-input-confirm" class="form-input-styled" placeholder="••••••••"
+                        value="" />
+                </div>
+
+                <button type="submit" id="auth-btn-execute" class="btn-glow-blue btn-full"
+                    style="margin-top: 10px; padding: 12px;" data-i18n="btn_auth_execute">
+                    Giriş Yap &amp; Session Storage'a Kaydet &rarr;
+                </button>
+            </form>
+
+            <div class="storage-info-badge" style="margin-top: 16px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                <span>Yetkilendirme ile birlikte JWT token doğrudan <strong>sessionStorage['cyber_token']</strong> içine
+                    yazılır.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Floating Toast Container -->
+    <div id="toast-container" class="toast-stack"></div>
+
+    <script src="academy-data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

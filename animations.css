@@ -1,0 +1,2011 @@
+/* ==========================================================================
+   AEGIS CYBER DEFENSE — ANIMATION LAYER V2.0
+   Pure CSS & JS-class driven animations. No external dependencies.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------
+   KEYFRAME LIBRARY
+   ------------------------------------------------------------------ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-36px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(36px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.55), 0 0 60px rgba(0, 229, 255, 0.15);
+    }
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        border-color: rgba(0, 229, 255, 0.2);
+    }
+
+    50% {
+        border-color: rgba(0, 229, 255, 0.7);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -300px 0;
+    }
+
+    100% {
+        background-position: 300px 0;
+    }
+}
+
+@keyframes typewriterCursor {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes floatY {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes rotateSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes neonScan {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes particleDrift {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+
+    33% {
+        transform: translate(20px, -15px) scale(1.1);
+        opacity: 1;
+    }
+
+    66% {
+        transform: translate(-10px, -30px) scale(0.9);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate(5px, -50px) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes hexFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.03;
+    }
+
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+        opacity: 0.06;
+    }
+
+    75% {
+        transform: translateY(10px) rotate(-3deg);
+        opacity: 0.04;
+    }
+}
+
+@keyframes slidePageIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes borderTrace {
+    0% {
+        clip-path: inset(0 100% 100% 0);
+    }
+
+    25% {
+        clip-path: inset(0 0 100% 0);
+    }
+
+    50% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes morphCard {
+
+    0%,
+    100% {
+        border-radius: 16px;
+    }
+
+    50% {
+        border-radius: 20px 12px 20px 12px;
+    }
+}
+
+@keyframes statusBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+
+/* ------------------------------------------------------------------
+   SCROLL-REVEAL BASE STATES (Fail-safe: defaults to visible)
+   ------------------------------------------------------------------ */
+[data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal-ready [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+[data-reveal].is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+/* Stagger delays for child items */
+[data-reveal-stagger]>* {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal-ready [data-reveal-stagger]:not(.is-visible)>* {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+[data-reveal-stagger].is-visible>*:nth-child(1) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.04s;
+}
+
+[data-reveal-stagger].is-visible>*:nth-child(2) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.08s;
+}
+
+[data-reveal-stagger].is-visible>*:nth-child(3) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.12s;
+}
+
+[data-reveal-stagger].is-visible>*:nth-child(4) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.16s;
+}
+
+[data-reveal-stagger].is-visible>*:nth-child(5) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.20s;
+}
+
+[data-reveal-stagger].is-visible>*:nth-child(6) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.24s;
+}
+
+[data-reveal-stagger].is-visible>*:nth-child(n+7) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.28s;
+}
+
+
+/* ------------------------------------------------------------------
+   PAGE TRANSITION
+   ------------------------------------------------------------------ */
+.app-page.page-active {
+    animation: slidePageIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
+/* ------------------------------------------------------------------
+   KPI CARDS — ENHANCED HOVER & ENTRY ANIMATIONS
+   ------------------------------------------------------------------ */
+.kpi-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease !important;
+}
+
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(0, 229, 255, 0.04));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.kpi-card:hover::before {
+    opacity: 1;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 229, 255, 0.12) !important;
+    border-color: rgba(0, 229, 255, 0.35) !important;
+}
+
+/* Animated counter value */
+.kpi-value {
+    transition: color 0.3s ease;
+}
+
+.kpi-card:hover .kpi-value {
+    color: var(--cyan) !important;
+}
+
+
+/* ------------------------------------------------------------------
+   GUIDE / GLOSSARY CARDS — 3D TILT EFFECT
+   ------------------------------------------------------------------ */
+.guide-card-item,
+.glossary-item-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease !important;
+    transform-style: preserve-3d;
+    will-change: transform;
+    position: relative;
+    overflow: hidden;
+}
+
+.guide-card-item::after,
+.glossary-item-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 229, 255, 0.05),
+            transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.guide-card-item:hover::after,
+.glossary-item-card:hover::after {
+    left: 150%;
+}
+
+.guide-card-item:hover,
+.glossary-item-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.1) !important;
+    border-color: rgba(0, 229, 255, 0.4) !important;
+}
+
+
+/* ------------------------------------------------------------------
+   ADVISORY CARDS — SLIDE-IN ON ENTRY
+   ------------------------------------------------------------------ */
+.advisory-card {
+    transition: transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.advisory-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--cyan), transparent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+
+.advisory-card:hover::before {
+    transform: scaleY(1);
+}
+
+.advisory-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(0, 229, 255, 0.3) !important;
+}
+
+
+/* ------------------------------------------------------------------
+   BUTTON RIPPLE EFFECT
+   ------------------------------------------------------------------ */
+.btn-glow-blue,
+.btn-secondary,
+.btn-danger-sm,
+.journey-step-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+.btn-glow-blue:active {
+    transform: scale(0.97) !important;
+}
+
+
+/* ------------------------------------------------------------------
+   SIDEBAR — SMOOTH ACTIVE INDICATOR SLIDE
+   ------------------------------------------------------------------ */
+.nav-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 3px;
+    background: var(--cyan);
+    border-radius: 0 2px 2px 0;
+    transform: scaleY(0);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-btn.active::before {
+    transform: scaleY(1);
+}
+
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at left center, rgba(0, 229, 255, 0.07), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.nav-btn:hover::after,
+.nav-btn.active::after {
+    opacity: 1;
+}
+
+
+/* ------------------------------------------------------------------
+   TOPBAR GLASS ENHANCEMENT
+   ------------------------------------------------------------------ */
+.app-topbar {
+    background: rgba(6, 9, 19, 0.9) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.08) !important;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-topbar.topbar-elevated {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ------------------------------------------------------------------
+   LIVE CLOCK — SUBTLE FLICKER
+   ------------------------------------------------------------------ */
+.live-clock-badge {
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+
+/* ------------------------------------------------------------------
+   ATTACK STREAM ITEMS — FLY IN FROM RIGHT
+   ------------------------------------------------------------------ */
+.attack-stream-item {
+    animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
+/* ------------------------------------------------------------------
+   PULSING STATUS DOTS — MORE DRAMATIC
+   ------------------------------------------------------------------ */
+.pulsing-beacon {
+    animation: pulseGlow 1.4s ease-in-out infinite !important;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+.nav-status-dot {
+    animation: pulseGreen 2s ease-in-out infinite;
+}
+
+@keyframes pulseGreen {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--green);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 14px var(--green);
+        opacity: 0.7;
+    }
+}
+
+
+/* ------------------------------------------------------------------
+   BRAND SHIELD — ROTATING GLOW
+   ------------------------------------------------------------------ */
+.brand-shield {
+    animation: glowPulse 3s ease-in-out infinite;
+    transition: transform 0.3s ease !important;
+}
+
+.brand-shield:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+
+/* ------------------------------------------------------------------
+   CYBER PANEL — GRADIENT BORDER SHINE ON HOVER
+   ------------------------------------------------------------------ */
+.cyber-panel {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+    position: relative;
+}
+
+.cyber-panel:hover {
+    border-color: rgba(0, 229, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.07) !important;
+}
+
+
+/* ------------------------------------------------------------------
+   KPI MASSTRANSIT COUNT — FLIP ANIMATION ON CHANGE
+   ------------------------------------------------------------------ */
+.kpi-flip {
+    animation: countUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* ------------------------------------------------------------------
+   JOURNEY STEPPER — TAB TRANSITION
+   ------------------------------------------------------------------ */
+.journey-step-btn {
+    transition: all 0.25s cubic-bezier(0.16, 0.9, 0.3, 1) !important;
+}
+
+.journey-step-btn.active {
+    animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.journey-content-pane {
+    animation: fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+
+/* ------------------------------------------------------------------
+   GLOSSARY CARDS — STAGGERED GRID ENTRY
+   ------------------------------------------------------------------ */
+.glossary-cards-container .glossary-item-card {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(1) {
+    animation-delay: 0.04s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(2) {
+    animation-delay: 0.09s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(3) {
+    animation-delay: 0.14s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(4) {
+    animation-delay: 0.19s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(5) {
+    animation-delay: 0.24s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(6) {
+    animation-delay: 0.29s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(7) {
+    animation-delay: 0.34s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(8) {
+    animation-delay: 0.39s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(9) {
+    animation-delay: 0.44s;
+}
+
+.glossary-cards-container .glossary-item-card:nth-child(n+10) {
+    animation-delay: 0.49s;
+}
+
+
+/* ------------------------------------------------------------------
+   ADVISORY CARDS — STAGGERED ENTRY
+   ------------------------------------------------------------------ */
+.advisory-card {
+    animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.advisory-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.advisory-card:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.advisory-card:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.advisory-card:nth-child(4) {
+    animation-delay: 0.26s;
+}
+
+.advisory-card:nth-child(n+5) {
+    animation-delay: 0.33s;
+}
+
+
+/* ------------------------------------------------------------------
+   PARALLAX BACKGROUND PARTICLES (canvas overlay)
+   ------------------------------------------------------------------ */
+#lfl-particle-canvas,
+#aegis-particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+.app-shell {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ------------------------------------------------------------------
+   SCROLL PROGRESS BAR
+   ------------------------------------------------------------------ */
+#scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), #2563eb, var(--green));
+    background-size: 200%;
+    animation: gradientShift 3s linear infinite;
+    z-index: 9999;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px var(--cyan);
+}
+
+
+/* ------------------------------------------------------------------
+   MORPHING HERO BACKGROUND (Command Center)
+   ------------------------------------------------------------------ */
+#page-dashboard .page-stage-inner,
+.page-stage {
+    position: relative;
+}
+
+.hero-bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(90px);
+    will-change: transform;
+    transition: transform 0.08s linear;
+}
+
+.hero-bg-orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.07), transparent 70%);
+    top: -150px;
+    right: -100px;
+}
+
+.hero-bg-orb-2 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.09), transparent 70%);
+    bottom: 50px;
+    left: 100px;
+}
+
+.hero-bg-orb-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.05), transparent 70%);
+    top: 40%;
+    left: 40%;
+}
+
+
+/* ------------------------------------------------------------------
+   SCAN LINE (subtle cinematic overlay)
+   ------------------------------------------------------------------ */
+body.theme-corporate-cyber::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.015) 2px,
+            rgba(0, 0, 0, 0.015) 4px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ------------------------------------------------------------------
+   TOAST — ANIMATED ENTRY
+   ------------------------------------------------------------------ */
+.toast-item {
+    animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+
+/* ------------------------------------------------------------------
+   MODAL — SCALE-IN ENTRY
+   ------------------------------------------------------------------ */
+.auth-modal-box {
+    animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+
+/* ------------------------------------------------------------------
+   DRAWER — SLIDE-IN FROM RIGHT
+   ------------------------------------------------------------------ */
+.publish-drawer-panel {
+    animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+
+/* ------------------------------------------------------------------
+   COMPLIANCE TABLE ROWS — STAGGER
+   ------------------------------------------------------------------ */
+.compliance-table tbody tr {
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.compliance-table.table-revealed tbody tr:nth-child(1) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.05s;
+}
+
+.compliance-table.table-revealed tbody tr:nth-child(2) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.11s;
+}
+
+.compliance-table.table-revealed tbody tr:nth-child(3) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.17s;
+}
+
+.compliance-table.table-revealed tbody tr:nth-child(4) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.23s;
+}
+
+.compliance-table.table-revealed tbody tr:nth-child(5) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.29s;
+}
+
+.compliance-table.table-revealed tbody tr:nth-child(n+6) {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.35s;
+}
+
+
+/* ------------------------------------------------------------------
+   GLOSSARY CARD SPECIAL HEADER
+   ------------------------------------------------------------------ */
+.glossary-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.glossary-card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.glossary-card-desc {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    flex: 1;
+}
+
+.glossary-card-cat {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-left: auto;
+}
+
+.glossary-analogy-text {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+
+/* ------------------------------------------------------------------
+   MICRO INTERACTION — FOCUS RING
+   ------------------------------------------------------------------ */
+input:focus,
+button:focus-visible,
+textarea:focus {
+    outline: 2px solid rgba(0, 229, 255, 0.5);
+    outline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------------
+   ACTIVE PAGE CONTENT — SMOOTH SECTION REVEALS
+   ------------------------------------------------------------------ */
+.section-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-reveal.in-view {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* ------------------------------------------------------------------
+   MASSTRANSIT BUS PAGE — ANIMATED STAT BARS
+   ------------------------------------------------------------------ */
+.bus-stat-fill {
+    height: 4px;
+    background: linear-gradient(90deg, var(--cyan), #2563eb);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+}
+
+.bus-stat-fill.animated {
+    width: var(--target-width, 85%);
+}
+
+
+/* ------------------------------------------------------------------
+   SIDEBAR — HOVER ICON POP
+   ------------------------------------------------------------------ */
+.nav-btn .nav-icon svg {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.nav-btn:hover .nav-icon svg {
+    transform: scale(1.2);
+}
+
+.nav-btn.active .nav-icon svg {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 6px var(--cyan));
+}
+
+
+/* ------------------------------------------------------------------
+   THEMED BODY BACKGROUNDS
+   ------------------------------------------------------------------ */
+body.theme-corporate-cyber {
+    background-image:
+        radial-gradient(circle at 15% 15%, rgba(29, 78, 216, 0.18) 0%, transparent 42%),
+        radial-gradient(circle at 85% 80%, rgba(0, 229, 255, 0.09) 0%, transparent 42%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 60%) !important;
+    background-attachment: fixed !important;
+}
+
+
+/* ------------------------------------------------------------------
+   "LOCKED" JWT PAGE — PULSING LOCK ICON
+   ------------------------------------------------------------------ */
+.jwt-shield-large {
+    animation: glowPulse 2.5s ease-in-out infinite, floatY 4s ease-in-out infinite;
+}
+
+
+/* ------------------------------------------------------------------
+   FILTER PILLS — ACTIVE SLIDE INDICATOR
+   ------------------------------------------------------------------ */
+.filter-pill {
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.filter-pill.active {
+    animation: scaleIn 0.2s ease both;
+}
+
+
+/* ------------------------------------------------------------------
+   ZERO TRUST MATRIX PAGE — ROW ENTRY
+   ------------------------------------------------------------------ */
+.compliance-check-row {
+    transition: background 0.2s ease !important;
+}
+
+.compliance-check-row:hover {
+    background: rgba(0, 229, 255, 0.03) !important;
+}
+
+
+/* ------------------------------------------------------------------
+   ANIMATED GRADIENT TEXT  
+   ------------------------------------------------------------------ */
+.text-gradient-animate {
+    background: linear-gradient(90deg, #00e5ff, #3b82f6, #10b981, #00e5ff);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 5s ease-in-out infinite;
+}
+
+
+/* ------------------------------------------------------------------
+   COUNTER ANIMATION HELPER
+   ------------------------------------------------------------------ */
+.counter-animate {
+    display: inline-block;
+    animation: countUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
+/* ------------------------------------------------------------------
+   RESPONSIVE — REDUCE MOTION
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal],
+    [data-reveal-stagger]>* {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ------------------------------------------------------------------
+   CYBER COMMAND HERO & RADAR STYLES
+   ------------------------------------------------------------------ */
+.cyber-hero-card {
+    background: linear-gradient(135deg, rgba(12, 20, 43, 0.95) 0%, rgba(8, 13, 28, 0.98) 100%);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 229, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 420px);
+    gap: 24px;
+    align-items: stretch;
+}
+
+@media (max-width: 992px) {
+    .cyber-hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.radar-widget-box {
+    background: #030712;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: inset 0 0 25px rgba(0, 229, 255, 0.08), 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+.radar-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.8px;
+}
+
+.radar-canvas-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    cursor: crosshair;
+}
+
+#lfl-radar-canvas,
+#aegis-radar-canvas {
+    width: 260px;
+    height: 260px;
+    display: block;
+    border-radius: 50%;
+}
+
+.radar-footer-stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+/* Cursor Glow */
+.cyber-cursor-glow {
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.04) 0%, transparent 65%);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Badges for Access Log */
+.badge-role-admin {
+    background: rgba(239, 68, 68, 0.18);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.badge-role-user {
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.badge-role-guest {
+    background: rgba(148, 163, 184, 0.12);
+    color: #cbd5e1;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+}
+
+.badge-os {
+    background: rgba(0, 229, 255, 0.08);
+    color: var(--cyan);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.badge-ip-mono {
+    font-family: var(--font-mono);
+    color: #38bdf8;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+/* ==================================================================
+   100% SECTOR-BASED INTRO CARD & PILLARS
+   ================================================================== */
+.cyber-sector-intro-card {
+    background: linear-gradient(135deg, rgba(10, 15, 29, 0.95), rgba(15, 23, 42, 0.98));
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cyber-sector-intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--blue), transparent);
+}
+
+.sector-intro-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.sector-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.pillar-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.pillar-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 229, 255, 0.35);
+    background: rgba(0, 229, 255, 0.03);
+    box-shadow: 0 8px 24px rgba(0, 229, 255, 0.08);
+}
+
+.pillar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.pillar-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.pillar-icon.blue-glow {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.pillar-icon.red-glow {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.pillar-icon.green-glow {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.pillar-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.pillar-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.pillar-text {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 14px;
+    flex: 1;
+}
+
+.pillar-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.badge-tech {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* ==================================================================
+   KALI LINUX INTERACTIVE TERMINAL WINDOW (AUTHENTIC KALI STYLING)
+   ================================================================== */
+.kali-terminal-wrapper {
+    background: #0c0c0c;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+}
+
+.kali-titlebar {
+    background: #1c1c1c;
+    border-bottom: 1px solid #2e2e2e;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    user-select: none;
+}
+
+.kali-tab-active {
+    background: #0c0c0c;
+    border-top: 2px solid var(--cyan);
+    border-left: 1px solid #2e2e2e;
+    border-right: 1px solid #2e2e2e;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #e5e5e5;
+    border-radius: 4px 4px 0 0;
+    height: 100%;
+}
+
+.kali-window-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #a0a0a0;
+    font-size: 13px;
+}
+
+.kali-window-btn {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.kali-window-btn:hover {
+    color: #ffffff;
+}
+
+.kali-window-btn.close:hover {
+    color: #ef4444;
+}
+
+.kali-terminal-body {
+    padding: 16px 20px;
+    flex: 1;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #d4d4d4;
+    background: #0c0c0c;
+    max-height: 580px;
+}
+
+.kali-motd {
+    color: #d4d4d4;
+    margin-bottom: 14px;
+    white-space: normal !important;
+    font-family: inherit;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.kali-motd .motd-line {
+    white-space: normal !important;
+    line-height: 1.45;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.kali-motd .motd-red {
+    color: #ef4444;
+    font-weight: 700;
+}
+
+.kali-motd .motd-gray {
+    color: #9ca3af;
+}
+
+.kali-prompt-line1 {
+    color: #38bdf8;
+    font-weight: 700;
+}
+
+.kali-prompt-line1 .kali-user {
+    color: #38bdf8;
+}
+
+.kali-prompt-line1 .kali-skull {
+    color: #ef4444;
+}
+
+.kali-prompt-line1 .kali-host {
+    color: #38bdf8;
+}
+
+.kali-prompt-line1 .kali-path {
+    color: #22c55e;
+}
+
+.kali-prompt-line2 {
+    color: #38bdf8;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.kali-cmd-entry {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.kali-output-block {
+    margin: 8px 0 16px 0;
+    padding-left: 2px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.kali-input-row {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.kali-cli-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    caret-color: var(--cyan);
+}
+
+.kali-cli-input::placeholder {
+    color: #52525b;
+}
+
+/* Guided Labs Quick Chips */
+.quick-labs-bar {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+}
+
+.quick-labs-filter-row {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+
+.quick-cmd-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 11.5px;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.quick-cmd-btn:hover {
+    background: rgba(0, 229, 255, 0.12);
+    border-color: var(--cyan);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ==================================================================
+   SIBER AKADEMİ (BEGINNER FRIENDLY) STYLES
+   ================================================================== */
+.academy-hero {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.cheatsheet-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    margin-bottom: 16px;
+    transition: all 0.25s ease;
+}
+
+.cheatsheet-card:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.cmd-code-line {
+    background: #090d16;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--cyan);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+.cmd-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.btn-cmd-copy,
+.btn-cmd-run {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: all 0.2s ease;
+}
+
+.btn-cmd-copy:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-cmd-run {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--cyan);
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+.btn-cmd-run:hover {
+    background: var(--cyan);
+    color: #000000;
+}
+
+/* ==========================================================================
+   OFFICIAL KALI LINUX DRAGON INTRO SPLASH ANIMATION
+   ========================================================================== */
+.kali-intro-splash {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: #020617;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s;
+}
+
+.kali-intro-splash.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-backdrop-glow {
+    position: absolute;
+    width: min(650px, 90vw);
+    height: min(650px, 90vw);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(37, 99, 235, 0.08) 45%, transparent 70%);
+    pointer-events: none;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    animation: introBackdropPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes introBackdropPulse {
+    0% {
+        transform: scale(0.92) translateZ(0);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.08) translateZ(0);
+        opacity: 1;
+    }
+}
+
+.intro-cyber-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.intro-dragon-container {
+    position: relative;
+    width: min(500px, 86vw);
+    height: min(320px, 44vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.intro-dragon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.75));
+    will-change: transform;
+    transform: translateZ(0);
+    animation: dragonPulseGlow 3s ease-in-out infinite alternate;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+@keyframes dragonPulseGlow {
+    0% {
+        transform: scale(0.98) translateZ(0);
+    }
+
+    100% {
+        transform: scale(1.02) translateZ(0);
+    }
+}
+
+.intro-laser-scanner {
+    position: absolute;
+    top: 0;
+    left: 4%;
+    right: 4%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00e5ff 30%, #ffffff 50%, #00e5ff 70%, transparent);
+    box-shadow: 0 0 10px #00e5ff, 0 0 18px #00e5ff;
+    border-radius: 2px;
+    pointer-events: none;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    animation: dragonLaserScan 2s ease-in-out infinite alternate;
+    z-index: 3;
+}
+
+@keyframes dragonLaserScan {
+    0% {
+        transform: translateY(15px) translateZ(0);
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(min(290px, 40vh)) translateZ(0);
+        opacity: 0.3;
+    }
+}
+
+.intro-details-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.intro-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 9999px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.15);
+}
+
+.intro-brand-title {
+    font-family: var(--font-sans);
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+.intro-cli-stream-line {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #94a3b8;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 8px 18px;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.intro-cli-prompt {
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.intro-cli-text {
+    color: #f1f5f9;
+}
+
+.intro-cli-cursor {
+    color: var(--cyan);
+    animation: typewriterCursor 0.8s infinite;
+}
+
+.intro-progress-box {
+    width: min(440px, 86vw);
+    margin-bottom: 16px;
+}
+
+.intro-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.intro-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #0284c7, #00e5ff, #38bdf8);
+    box-shadow: 0 0 10px #00e5ff;
+    border-radius: 9999px;
+    transition: width 0.15s ease-out;
+}
+
+.intro-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+}
+
+.intro-skip-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.intro-skip-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: var(--cyan);
+}
+
+/* ==========================================================================
+   KALI MULTI-TAB TITLEBAR & TABS MANAGER
+   ========================================================================== */
+.kali-tabs-header-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.kali-tabs-header-left::-webkit-scrollbar {
+    display: none;
+}
+
+.kali-tabs-bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.kali-tabs-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.kali-tab-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #141416;
+    border: 1px solid #222226;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    white-space: nowrap;
+    height: 30px;
+}
+
+.kali-tab-item:hover {
+    background: #1a1a20;
+    color: #f1f5f9;
+}
+
+.kali-tab-item.active {
+    background: #1e1e24;
+    color: #ffffff;
+    border-color: #33333c;
+    border-top: 2px solid var(--cyan);
+    font-weight: 600;
+}
+
+.kali-tab-close {
+    font-size: 14px;
+    color: #64748b;
+    padding: 0 2px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.kali-tab-close:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.kali-add-tab-btn,
+.kali-tab-menu-btn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    font-size: 16px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.kali-add-tab-btn:hover,
+.kali-tab-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
