@@ -23,9 +23,7 @@ Bu proje saf HTML5, CSS3 ve Modern Vanilla JavaScript ile inşa edilmiştir. Her
    * Seviye 1.1 (Ağ Keşfi) -> Seviye 3.2 (Grand SQL & Root Boss) kademeli sızma operasyonu.
    * **<kbd>Tab</kbd> Tuşu ile Otomatik Tamamlama (Auto-Complete):** Komutun başını yazıp Tab'a basıldığında komutu otomatik tamamlar.
    * Yerel hafıza (`localStorage`) sayesinde kazanılan XP'ler ve seviye ilerlemesi asla kaybolmaz.
-3. **🔑 Root Oturum Simülasyonu:**
-   * Kullanıcı: `root` &bull; Şifre: `toor2026`
-   * Başarılı girişte yerel JWT Bearer token üretilir ve yönetici konsolu açılır.
+
 4. **📱 %100 Responsive Mimari:**
    * Masaüstü, tablet ve mobil uyumlu esnek ızgaralar ve off-canvas çekmece navigasyon menüsü.
 
