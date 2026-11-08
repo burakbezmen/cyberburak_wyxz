@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFL Cyber Range // İnteraktif Akademi Odaları</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3.2">
+    <link rel="stylesheet" href="animations.css?v=3.2">
+
+    <style>
+        /* ==========================================================================
+           ACADEMY ROOMS SPLIT-SCREEN CYBER MIDNIGHT THEME
+           ========================================================================== */
+        :root {
+            --academy-header-height: 64px;
+        }
+
+        html, body.academy-body {
+            height: 100vh;
+            max-height: 100vh;
+            overflow: hidden !important;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-darkest, #060913);
+            color: var(--text-primary, #ffffff);
+            font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation Bar */
+        .academy-navbar {
+            height: var(--academy-header-height);
+            background: rgba(8, 13, 28, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .academy-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .academy-brand-logo {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(37, 99, 235, 0.3));
+            border: 1px solid var(--cyan, #00e5ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 0 14px rgba(0, 229, 255, 0.3);
+        }
+
+        .academy-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .academy-brand-title {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .academy-brand-subtitle {
+            font-size: 10.5px;
+            font-family: var(--font-mono, monospace);
+            color: var(--cyan, #00e5ff);
+            letter-spacing: 0.5px;
+        }
+
+        .academy-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .academy-progress-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 170px;
+        }
+
+        .academy-progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            color: var(--text-secondary, #94a3b8);
+        }
+
+        .academy-progress-track {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .academy-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00e5ff, #3b82f6);
+            width: 0%;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+        }
+
+        .btn-academy-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary, #94a3b8);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm, 8px);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-academy-back:hover {
+            color: #ffffff;
+            border-color: var(--cyan, #00e5ff);
+            background: rgba(0, 229, 255, 0.08);
+            transform: translateX(-2px);
+        }
+
+        /* Split-Screen Main Layout */
+        .academy-workspace {
+            display: grid;
+            grid-template-columns: 320px 1.15fr 1fr;
+            flex: 1;
+            height: calc(100vh - var(--academy-header-height));
+            max-height: calc(100vh - var(--academy-header-height));
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        /* Column 1: Rooms Navigation Sidebar */
+        .academy-rooms-sidebar {
+            background: var(--bg-sidebar, #090e21);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            height: 100%;
+            max-height: 100%;
+            min-height: 0;
+        }
+
+        .rooms-sidebar-header {
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rooms-sidebar-title {
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            color: var(--text-muted, #64748b);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-reset-academy {
+            background: none;
+            border: none;
+            color: var(--text-muted, #64748b);
+            font-size: 11px;
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+
+        .btn-reset-academy:hover {
+            color: var(--red, #ef4444);
+        }
+
+        .rooms-list {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        /* Room Item Card in Sidebar */
+        .academy-room-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md, 12px);
+            padding: 12px 14px;
+            transition: all 0.2s ease;
+        }
+
+        .academy-room-item:hover:not(.locked) {
+            background: rgba(0, 229, 255, 0.05);
+            border-color: rgba(0, 229, 255, 0.25);
+            transform: translateX(3px);
+        }
+
+        .academy-room-item.active {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: var(--cyan, #00e5ff);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+        }
+
+        .academy-room-item.completed {
+            border-left: 3px solid var(--green, #10b981);
+        }
+
+        .academy-room-item.locked {
+            opacity: 0.55;
+            background: rgba(0, 0, 0, 0.2);
+            border-style: dashed;
+        }
+
+        .room-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .room-item-track {
+            font-size: 9.5px;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .track-badge-red {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .track-badge-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .track-badge-purple {
+            background: rgba(167, 139, 250, 0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .room-item-status {
+            font-size: 11px;
+            color: var(--text-muted, #64748b);
+        }
+
+        .academy-room-item.completed .room-item-status {
+            color: var(--green, #10b981);
+            font-weight: 700;
+        }
+
+        .room-item-title {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 4px;
+        }
+
+        .room-item-meta {
+            font-size: 10px;
+            color: var(--text-muted, #64748b);
+            font-family: var(--font-mono, monospace);
+        }
+
+        /* Column 2: Theory & Mission Left Panel */
+        .academy-theory-panel {
+            background: var(--bg-base, #080d1c);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 28px 32px;
+            gap: 24px;
+            height: 100%;
+            max-height: 100%;
+            min-height: 0;
+        }
+
+        .room-header-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 20px;
+        }
+
+        .room-badges-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .room-track-badge {
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .room-track-badge.track-red {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+
+        .room-track-badge.track-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.35);
+        }
+
+        .room-track-badge.track-purple {
+            background: rgba(167, 139, 250, 0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(167, 139, 250, 0.35);
+        }
+
+        .room-level-badge {
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary, #94a3b8);
+        }
+
+        .room-title-h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+            margin: 0;
+        }
+
+        /* Theory Content Typography */
+        .room-theory-content {
+            font-size: 14px;
+            line-height: 1.68;
+            color: #cbd5e1;
+        }
+
+        .room-theory-content h2,
+        .room-theory-content h3,
+        .room-theory-content h4 {
+            color: #ffffff;
+            margin-top: 1.4em;
+            margin-bottom: 0.6em;
+            font-weight: 700;
+        }
+
+        .room-theory-content h4 {
+            font-size: 15px;
+            color: var(--cyan, #00e5ff);
+            border-left: 3px solid var(--cyan, #00e5ff);
+            padding-left: 10px;
+        }
+
+        .room-theory-content p {
+            margin-bottom: 1em;
+        }
+
+        .room-theory-content strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .room-theory-content .inline-code {
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            color: var(--cyan, #00e5ff);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: var(--font-mono, monospace);
+            font-size: 12.5px;
+        }
+
+        .room-theory-content .code-block {
+            background: #040814;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-sm, 8px);
+            padding: 14px 16px;
+            overflow-x: auto;
+            font-family: var(--font-mono, monospace);
+            font-size: 12.5px;
+            color: #38bdf8;
+            margin: 14px 0;
+        }
+
+        /* Mission Scenario Card */
+        .room-mission-card {
+            background: linear-gradient(135deg, rgba(12, 20, 43, 0.9), rgba(15, 24, 52, 0.9));
+            border: 1px solid rgba(0, 229, 255, 0.28);
+            border-radius: var(--radius-md, 12px);
+            padding: 18px 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .mission-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            color: var(--cyan, #00e5ff);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .mission-text {
+            font-size: 13.5px;
+            color: #ffffff;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Tactical Hint Accordion (CTF Style) */
+        .room-hint-container,
+        .ctf-hint-container {
+            background: rgba(234, 179, 8, 0.05) !important;
+            border: 1px solid rgba(234, 179, 8, 0.25) !important;
+            border-radius: var(--radius-sm, 8px) !important;
+            overflow: hidden !important;
+            margin-top: 14px !important;
+            display: block !important;
+            flex-shrink: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        .room-hint-container:hover,
+        .ctf-hint-container:hover {
+            border-color: rgba(234, 179, 8, 0.5) !important;
+        }
+
+        .room-hint-btn,
+        .ctf-hint-btn {
+            width: 100% !important;
+            min-height: 38px !important;
+            background: rgba(234, 179, 8, 0.04) !important;
+            border: none !important;
+            padding: 9px 14px !important;
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            color: #eab308 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            cursor: pointer !important;
+            user-select: none !important;
+            text-align: left !important;
+            transition: background 0.2s ease !important;
+        }
+
+        .room-hint-btn:hover,
+        .ctf-hint-btn:hover {
+            background: rgba(234, 179, 8, 0.12) !important;
+            color: #fef08a !important;
+        }
+
+        .room-hint-body,
+        .ctf-hint-body {
+            display: none;
+            padding: 12px 14px !important;
+            font-size: 12px !important;
+            color: #fef08a !important;
+            line-height: 1.55 !important;
+            border-top: 1px dashed rgba(234, 179, 8, 0.25) !important;
+            background: rgba(10, 15, 26, 0.8) !important;
+        }
+
+        .room-hint-container.open .room-hint-body,
+        .ctf-hint-container.open .ctf-hint-body {
+            display: block !important;
+        }
+
+        .room-hint-explanation {
+            margin-bottom: 12px !important;
+            line-height: 1.6 !important;
+            color: #fef9c3 !important;
+        }
+
+        .room-hint-explanation p {
+            margin: 0 0 8px 0 !important;
+        }
+
+        .room-hint-explanation strong {
+            color: #ffffff !important;
+        }
+
+        .room-hint-explanation code {
+            font-family: var(--font-mono, monospace) !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            border: 1px solid rgba(234, 179, 8, 0.3) !important;
+            padding: 2px 6px !important;
+            border-radius: 4px !important;
+            color: #67e8f9 !important;
+        }
+
+        .room-hint-cmd-section {
+            background: rgba(0, 0, 0, 0.6) !important;
+            border: 1px solid rgba(0, 229, 255, 0.25) !important;
+            border-radius: 6px !important;
+            padding: 10px 12px !important;
+        }
+
+        .room-hint-cmd-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin-bottom: 8px !important;
+            font-size: 10.5px !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-weight: 700 !important;
+            color: var(--cyan, #00e5ff) !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .btn-hint-fill {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(16, 185, 129, 0.25)) !important;
+            border: 1px solid rgba(0, 229, 255, 0.5) !important;
+            color: #ffffff !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            padding: 4px 10px !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .btn-hint-fill:hover {
+            background: rgba(0, 229, 255, 0.4) !important;
+            border-color: #00e5ff !important;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .room-hint-code-box {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 8px 12px !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+            transition: border-color 0.2s ease !important;
+        }
+
+        .room-hint-code-box:hover {
+            border-color: rgba(0, 229, 255, 0.4) !important;
+        }
+
+        .room-hint-code-box .prompt-sign {
+            color: var(--cyan, #00e5ff) !important;
+            font-weight: 800 !important;
+            font-family: var(--font-mono, monospace) !important;
+        }
+
+        .room-hint-code-box code {
+            color: #a7f3d0 !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 12px !important;
+            user-select: all !important;
+            word-break: break-all !important;
+        }
+
+        /* Flag Box */
+        .room-flag-box {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: var(--radius-sm, 8px);
+            padding: 14px 18px;
+            display: none;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+        }
+
+        .flag-label {
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            color: #10b981;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        .flag-code {
+            font-size: 13.5px;
+            font-family: var(--font-mono, monospace);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: #a7f3d0;
+            letter-spacing: 0.5px;
+            user-select: all;
+        }
+
+        /* Action Buttons Area */
+        .room-actions-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .btn-next-room-style {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: var(--radius-sm, 8px);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-next-room-style:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .btn-next-room-style:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Column 3: Mini Hacker Terminal Right Panel */
+        .academy-terminal-panel {
+            background: #040711;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            max-height: 100%;
+            min-height: 0;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Terminal Window Header */
+        .mini-terminal-header {
+            background: #090e20;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .terminal-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .terminal-window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ef4444;
+        }
+
+        .dot-yellow {
+            background: #f59e0b;
+        }
+
+        .dot-green {
+            background: #10b981;
+        }
+
+        .terminal-title-text {
+            font-family: var(--font-mono, monospace);
+            font-size: 11.5px;
+            color: var(--text-secondary, #94a3b8);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .terminal-status-badge {
+            font-size: 10px;
+            font-family: var(--font-mono, monospace);
+            color: var(--green, #10b981);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 2px 8px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Quick Helper Chips */
+        .terminal-chips-bar {
+            background: rgba(6, 11, 24, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .terminal-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary, #94a3b8);
+            font-family: var(--font-mono, monospace);
+            font-size: 10.5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .terminal-chip:hover {
+            color: #ffffff;
+            border-color: var(--cyan, #00e5ff);
+            background: rgba(0, 229, 255, 0.08);
+        }
+
+        /* Terminal Body Output History */
+        .mini-terminal-body {
+            flex: 1 1 0;
+            min-height: 0;
+            padding: 16px;
+            overflow-y: auto;
+            font-family: 'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #d1d5db;
+            background: #02050e;
+        }
+
+        .terminal-line {
+            margin-bottom: 6px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .terminal-echo {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .terminal-echo .prompt-user {
+            color: var(--cyan, #00e5ff);
+        }
+
+        .terminal-echo .prompt-dir {
+            color: #3b82f6;
+        }
+
+        .terminal-echo .cmd-text {
+            color: #ffffff;
+        }
+
+        .terminal-response.output-motd {
+            color: #94a3b8;
+        }
+
+        .terminal-response.output-success {
+            color: #4ade80;
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 2px solid #10b981;
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .terminal-response.output-error {
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.05);
+            border-left: 2px solid #ef4444;
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Terminal Input Form Row */
+        .mini-terminal-input-bar {
+            background: #080d1e;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 14px;
+        }
+
+        .terminal-input-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terminal-prompt-label {
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            color: var(--cyan, #00e5ff);
+            white-space: nowrap;
+            user-select: none;
+            font-weight: 700;
+        }
+
+        .terminal-cmd-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: #ffffff;
+            font-family: 'Cascadia Code', 'JetBrains Mono', monospace;
+            font-size: 13px;
+            padding: 8px 12px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .terminal-cmd-input:focus {
+            border-color: var(--cyan, #00e5ff);
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
+            background: rgba(0, 229, 255, 0.02);
+        }
+
+        .btn-submit-cmd {
+            background: rgba(0, 229, 255, 0.12);
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            color: var(--cyan, #00e5ff);
+            padding: 8px 14px;
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-submit-cmd:hover {
+            background: var(--cyan, #00e5ff);
+            color: #000000;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1100px) {
+            .academy-workspace {
+                grid-template-columns: 260px 1.15fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            html, body.academy-body {
+                height: auto !important;
+                max-height: none !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+            }
+
+            .academy-navbar {
+                height: auto !important;
+                min-height: 56px !important;
+                padding: 10px 16px !important;
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+            }
+
+            .academy-nav-right {
+                width: 100% !important;
+                justify-content: space-between !important;
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+            }
+
+            .academy-progress-container {
+                width: 100% !important;
+                min-width: 0 !important;
+                order: 3 !important;
+            }
+
+            .academy-workspace {
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: none !important;
+                height: auto !important;
+                max-height: none !important;
+                min-height: 100vh !important;
+                overflow: visible !important;
+            }
+
+            .academy-rooms-sidebar {
+                width: 100% !important;
+                max-height: 260px !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(0, 229, 255, 0.18) !important;
+                overflow-y: auto !important;
+            }
+
+            .academy-theory-panel {
+                width: 100% !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(0, 229, 255, 0.18) !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow-y: visible !important;
+                padding: 24px 18px !important;
+            }
+
+            .academy-terminal-panel {
+                width: 100% !important;
+                height: 520px !important;
+                max-height: 580px !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .mini-terminal-body {
+                flex: 1 !important;
+                min-height: 280px !important;
+                max-height: none !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .academy-navbar {
+                padding: 8px 12px !important;
+            }
+
+            .academy-brand-title {
+                font-size: 13px !important;
+            }
+
+            .academy-brand-subtitle {
+                font-size: 9px !important;
+            }
+
+            .btn-role-quiz {
+                font-size: 11px !important;
+                padding: 6px 10px !important;
+                flex: 1 !important;
+                justify-content: center !important;
+            }
+
+            .btn-academy-back {
+                font-size: 11px !important;
+                padding: 6px 10px !important;
+            }
+
+            .track-filter-bar {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 6px !important;
+                padding: 8px 10px !important;
+            }
+
+            .track-filter-btn {
+                padding: 7px 8px !important;
+                font-size: 10px !important;
+            }
+
+            .room-title-h1 {
+                font-size: 18px !important;
+            }
+
+            .room-badges-row {
+                flex-wrap: wrap !important;
+                gap: 6px !important;
+            }
+
+            .mini-terminal-input-bar {
+                padding: 8px 10px !important;
+            }
+
+            .terminal-prompt-label {
+                font-size: 10.5px !important;
+            }
+
+            .terminal-cmd-input {
+                font-size: 11.5px !important;
+                padding: 6px 8px !important;
+            }
+
+            .btn-submit-cmd {
+                padding: 6px 10px !important;
+                font-size: 11px !important;
+            }
+
+            .quiz-modal-backdrop {
+                padding: 10px !important;
+            }
+
+            .quiz-modal-card {
+                max-height: 94vh !important;
+            }
+
+            .quiz-modal-body {
+                padding: 16px 14px !important;
+                gap: 14px !important;
+            }
+
+            .quiz-scenario-box {
+                padding: 12px !important;
+                gap: 8px !important;
+            }
+
+            .quiz-question-title {
+                font-size: 13.5px !important;
+            }
+
+            .quiz-option-card {
+                padding: 10px 12px !important;
+                gap: 8px !important;
+            }
+
+            .quiz-opt-text {
+                font-size: 12px !important;
+            }
+
+            .quiz-score-breakdown {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+            }
+        }
+
+        /* Role Quiz Trigger Button */
+        .btn-role-quiz {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.25), rgba(59, 130, 246, 0.25));
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            border-radius: var(--radius-sm, 8px);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 15px rgba(167, 139, 250, 0.2);
+        }
+
+        .btn-role-quiz:hover {
+            background: linear-gradient(135deg, #a78bfa, #3b82f6);
+            color: #000000;
+            box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* Track Filter Bar in Sidebar (Spacious 2x2 Cyber Matrix) */
+        .track-filter-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 12px 14px;
+            background: rgba(5, 9, 22, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-shrink: 0;
+        }
+
+        .track-filter-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 12px;
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+
+        .track-filter-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-1px);
+        }
+
+        .track-btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .track-btn-count {
+            font-size: 10px;
+            font-family: var(--font-mono, monospace);
+            padding: 1px 6px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #94a3b8;
+        }
+
+        /* Active: All */
+        .track-filter-btn.track-btn-all.active {
+            color: #ffffff;
+            background: rgba(0, 229, 255, 0.15);
+            border-color: var(--cyan, #00e5ff);
+            box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
+        }
+        .track-filter-btn.track-btn-all.active .track-btn-count {
+            background: rgba(0, 229, 255, 0.3);
+            color: #00e5ff;
+        }
+
+        /* Active: Red */
+        .track-filter-btn.track-btn-red.active {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+            color: #fca5a5;
+            box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
+        }
+        .track-filter-btn.track-btn-red.active .track-btn-count {
+            background: rgba(239, 68, 68, 0.35);
+            color: #fca5a5;
+        }
+
+        /* Active: Blue */
+        .track-filter-btn.track-btn-blue.active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            color: #93c5fd;
+            box-shadow: 0 0 14px rgba(59, 130, 246, 0.3);
+        }
+        .track-filter-btn.track-btn-blue.active .track-btn-count {
+            background: rgba(59, 130, 246, 0.35);
+            color: #93c5fd;
+        }
+
+        /* Active: Purple */
+        .track-filter-btn.track-btn-purple.active {
+            background: rgba(168, 85, 247, 0.22);
+            border-color: #c084fc;
+            color: #e9d5ff;
+            box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
+        }
+        .track-filter-btn.track-btn-purple.active .track-btn-count {
+            background: rgba(168, 85, 247, 0.35);
+            color: #e9d5ff;
+        }
+
+        /* Quiz Modal Styles */
+        .quiz-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(2, 6, 17, 0.88);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .quiz-modal-card {
+            background: #090e22;
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            border-radius: var(--radius-lg, 16px);
+            width: 100%;
+            max-width: 680px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .quiz-modal-header {
+            background: rgba(12, 19, 44, 0.95);
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quiz-modal-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-modal-title {
+            font-size: 13px;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .quiz-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted, #64748b);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+            padding: 0 6px;
+        }
+
+        .quiz-close-btn:hover {
+            color: #ffffff;
+        }
+
+        .quiz-modal-body {
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .quiz-progress-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            color: var(--text-secondary, #94a3b8);
+        }
+
+        .quiz-progress-bar-track {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a78bfa, #00e5ff);
+            transition: width 0.3s ease;
+        }
+
+        .quiz-scenario-box {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px;
+            border-radius: var(--radius-md, 12px);
+        }
+
+        .quiz-scenario-icon {
+            font-size: 24px;
+        }
+
+        .quiz-question-title {
+            font-size: 15.5px;
+            color: #ffffff;
+            line-height: 1.45;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .quiz-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md, 12px);
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            color: #e2e8f0;
+        }
+
+        .quiz-option-card:hover {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: var(--cyan, #00e5ff);
+            transform: translateX(4px);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.12);
+        }
+
+        .quiz-opt-letter {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--cyan, #00e5ff);
+            flex-shrink: 0;
+        }
+
+        .quiz-opt-text {
+            font-size: 13.5px;
+            line-height: 1.45;
+        }
+
+        /* Result View */
+        .quiz-result-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .quiz-result-trophy {
+            font-size: 48px;
+            filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.5));
+        }
+
+        .quiz-result-meta-badge {
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            letter-spacing: 1px;
+        }
+
+        .quiz-result-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .quiz-result-desc {
+            font-size: 13px;
+            line-height: 1.55;
+            color: #94a3b8;
+            max-width: 540px;
+            margin: 0;
+        }
+
+        .quiz-score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .score-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-sm, 8px);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .score-card.winner {
+            background: rgba(0, 229, 255, 0.1);
+            border-color: var(--cyan, #00e5ff);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+        }
+
+        .score-team {
+            font-size: 10.5px;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            color: var(--text-secondary, #94a3b8);
+        }
+
+        .score-points {
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .btn-start-assigned-track {
+            width: 100%;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            color: #ffffff;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: var(--radius-sm, 8px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-start-assigned-track:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 229, 255, 0.5);
+        }
+
+        .terminal-response.output-general-tool {
+            color: #e2e8f0;
+            background: rgba(0, 229, 255, 0.04);
+            border-left: 2px solid var(--cyan, #00e5ff);
+            padding: 8px 12px;
+            margin: 6px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+
+<body class="academy-body theme-corporate-cyber">
+
+    <!-- Top Navigation Header -->
+    <header class="academy-navbar">
+        <a href="index.html" class="academy-brand" title="Ana Sayfaya Dön">
+            <div class="academy-brand-logo">⚔️</div>
+            <div class="academy-brand-text">
+                <span class="academy-brand-title">LFL CYBER RANGE</span>
+                <span class="academy-brand-subtitle">INTERACTIVE ACADEMY ROOMS</span>
+            </div>
+        </a>
+
+        <div class="academy-nav-right">
+            <!-- 10-Question Cyber Role Quiz Trigger -->
+            <button type="button" class="btn-role-quiz" id="btn-start-quiz" title="Siber Rolünü Belirle">
+                <span>🎯</span>
+                <span>Rol Belirleme Testi (10 Soru)</span>
+            </button>
+
+            <!-- Progress Tracker -->
+            <div class="academy-progress-container">
+                <div class="academy-progress-meta">
+                    <span>AKADEMİ İLERLEMESİ</span>
+                    <span id="room-progress-text">%0 (0/0)</span>
+                </div>
+                <div class="academy-progress-track">
+                    <div class="academy-progress-fill" id="room-progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Return to Platform Button -->
+            <a href="index.html" class="btn-academy-back">
+                <span>&larr;</span>
+                <span>Ana Platforma Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Workspace Split Screen -->
+    <main class="academy-workspace">
+
+        <!-- Column 1: Rooms Navigation Sidebar -->
+        <aside class="academy-rooms-sidebar">
+            <div class="rooms-sidebar-header">
+                <div class="rooms-sidebar-title">
+                    <span>📚</span>
+                    <span>Eğitim Odaları</span>
+                </div>
+                <button type="button" class="btn-reset-academy" id="btn-reset-progress" title="İlerlemeyi Sıfırla">
+                    ↺ Sıfırla
+                </button>
+            </div>
+
+            <!-- Track Filter Bar (Spacious 2x2 Cyber Matrix) -->
+            <div class="track-filter-bar">
+                <button type="button" class="track-filter-btn track-btn-all active" data-track="all">
+                    <span class="track-btn-main">🌐 TÜMÜ</span>
+                    <span class="track-btn-count">27</span>
+                </button>
+                <button type="button" class="track-filter-btn track-btn-red" data-track="red">
+                    <span class="track-btn-main">⚔️ RED</span>
+                    <span class="track-btn-count">12</span>
+                </button>
+                <button type="button" class="track-filter-btn track-btn-blue" data-track="blue">
+                    <span class="track-btn-main">🛡️ BLUE</span>
+                    <span class="track-btn-count">9</span>
+                </button>
+                <button type="button" class="track-filter-btn track-btn-purple" data-track="purple">
+                    <span class="track-btn-main">🔮 PURPLE</span>
+                    <span class="track-btn-count">6</span>
+                </button>
+            </div>
+
+            <!-- Injected by js/academy_engine.js -->
+            <div class="rooms-list" id="room-list-container">
+                <!-- Dynamically populated room cards -->
+            </div>
+        </aside>
+
+        <!-- Column 2: Theory & Mission Left Panel -->
+        <section class="academy-theory-panel">
+
+            <!-- Active Room Header & Badges -->
+            <div class="room-header-section">
+                <div class="room-badges-row">
+                    <span class="room-track-badge track-red" id="room-track">RED TEAM</span>
+                    <span class="room-level-badge" id="room-level">Beginner</span>
+                </div>
+                <h1 class="room-title-h1" id="room-title">Yükleniyor...</h1>
+            </div>
+
+            <!-- Theory Content (Markdown Parsed) -->
+            <article class="room-theory-content" id="room-theory">
+                <p>Oda teorik dokümantasyonu yükleniyor...</p>
+            </article>
+
+            <!-- Mission Scenario Box -->
+            <div class="room-mission-card">
+                <div class="mission-card-header">
+                    <span>🎯</span>
+                    <span>SENARYO GÖREVİ (TERMINAL MISSION)</span>
+                </div>
+                <p class="mission-text" id="room-mission">Görev tanımı yükleniyor...</p>
+
+                <!-- Tactical Hint Accordion (CTF Kısmındaki Gibi) -->
+                <div class="room-hint-container ctf-hint-container" id="room-hint-container">
+                    <button type="button" class="room-hint-btn ctf-hint-btn" id="btn-toggle-room-hint">
+                        <span style="display: flex; align-items: center; gap: 6px;">💡 Taktik İpucu &amp; Önerilen Kodlar (Takılırsan Tıkla)</span>
+                        <span id="room-hint-icon" style="font-weight: 800; color: #eab308; font-size: 13px;">&darr;</span>
+                    </button>
+                    <div class="room-hint-body ctf-hint-body" id="room-hint-body">
+                        <div class="room-hint-explanation" id="room-hint-explanation">
+                            <!-- Populated dynamically per room -->
+                        </div>
+                        <div class="room-hint-cmd-section">
+                            <div class="room-hint-cmd-header">
+                                <span>KULLANILABİLİR KOMUT (Terminale yaz veya tek tıkla aktar):</span>
+                                <button type="button" class="btn-hint-fill" id="btn-hint-fill">
+                                    <span>⚡ Terminale Aktar ↵</span>
+                                </button>
+                            </div>
+                            <div class="room-hint-code-box" id="room-hint-code-box" title="Terminale aktarmak için tıkla">
+                                <span class="prompt-sign">$</span>
+                                <code id="room-hint-code">...</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flag Solved Box -->
+            <div class="room-flag-box" id="room-flag-display"></div>
+
+            <!-- Action: Next Room Button -->
+            <div class="room-actions-row">
+                <button type="button" class="btn-next-room-style" id="btn-next-room" disabled style="display: none;">
+                    <span>Sonraki Odaya Geç</span>
+                    <span>&rarr;</span>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Column 3: Mini Hacker Terminal Right Panel -->
+        <section class="academy-terminal-panel">
+
+            <!-- Terminal Window Titlebar -->
+            <div class="mini-terminal-header">
+                <div class="terminal-header-left">
+                    <div class="terminal-window-dots">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                    </div>
+                    <span class="terminal-title-text">
+                        <span>kali@lfl-range:</span>
+                        <span style="color: var(--cyan, #00e5ff);">~/rooms</span>
+                    </span>
+                </div>
+
+                <div class="terminal-status-badge">
+                    <span class="pulsing-beacon"
+                        style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 6px #10b981;"></span>
+                    <span>SANDBOX ACTIVE</span>
+                </div>
+            </div>
+
+            <!-- Quick Terminal Helper Chips -->
+            <div class="terminal-chips-bar">
+                <span class="terminal-chip" onclick="quickFillCmd('help')">help</span>
+                <span class="terminal-chip" onclick="quickFillCmd('clear')">clear</span>
+                <span class="terminal-chip" onclick="quickFillCmd('reset')">reset</span>
+                <span class="terminal-chip" onclick="quickFillCmd('nmap -sS -p 80,443,2222 10.10.110.45')">Örnek: nmap</span>
+                <span class="terminal-chip" onclick="quickFillCmd('grep -iE &quot;(union.*select|\'\\s*or\\s*1=1)&quot; /var/log/nginx/access.log')">Örnek: grep</span>
+            </div>
+
+            <!-- Terminal Output History -->
+            <div class="mini-terminal-body" id="room-terminal-history">
+                <!-- Terminal outputs and echo injected here -->
+            </div>
+
+            <!-- Terminal Input Row Form -->
+            <div class="mini-terminal-input-bar">
+                <form class="terminal-input-form" id="room-terminal-form" autocomplete="off">
+                    <label for="room-terminal-input" class="terminal-prompt-label">lfl-cadet@range:~$</label>
+                    <input type="text" id="room-terminal-input" class="terminal-cmd-input"
+                        placeholder="Komutu buraya yazın ve Enter'a basın..." spellcheck="false" autocomplete="off"
+                        autofocus />
+                    <button type="submit" class="btn-submit-cmd" id="btn-submit-cmd">Çalıştır &crarr;</button>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 10 Soruluk Rol Belirleme Testi Modalı -->
+    <div class="quiz-modal-backdrop" id="academy-quiz-modal" style="display: none;">
+        <div class="quiz-modal-card">
+            <div class="quiz-modal-header">
+                <div class="quiz-modal-header-left">
+                    <span class="pulsing-beacon" style="background: var(--cyan, #00e5ff); width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 8px var(--cyan, #00e5ff);"></span>
+                    <span class="quiz-modal-title">LFL SİBER ROL BELİRLEME TESTİ (10 KURUMSAL SENARYO)</span>
+                </div>
+                <button type="button" class="quiz-close-btn" title="Kapat">&times;</button>
+            </div>
+            <div class="quiz-modal-body">
+                <!-- Dynamically rendered question or result by js/academy_engine.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 142+ Siber Komut Veritabanı -->
+    <script src="academy-data.js?v=3.2"></script>
+    <!-- Akademi Odaları Veritabanı (Fetch / CORS gerektirmez) -->
+    <script src="rooms_data.js?v=3.2"></script>
+    <!-- İzole Akademi Motoru -->
+    <script src="js/academy_engine.js?v=3.2"></script>
+
+    <script>
+        // Initialize Isolated Academy Engine directly from memory
+        document.addEventListener('DOMContentLoaded', () => {
+            const engine = new AcademyEngine({
+                storageKey: 'lfl_academy_progress_v3',
+                roomTitleId: 'room-title',
+                roomTrackId: 'room-track',
+                roomLevelId: 'room-level',
+                roomTheoryId: 'room-theory',
+                roomMissionId: 'room-mission',
+                roomHintContainerId: 'room-hint-container',
+                btnToggleRoomHintId: 'btn-toggle-room-hint',
+                roomHintBodyId: 'room-hint-body',
+                roomHintIconId: 'room-hint-icon',
+                roomHintExplanationId: 'room-hint-explanation',
+                roomHintCodeId: 'room-hint-code',
+                btnHintFillId: 'btn-hint-fill',
+                roomHintCodeBoxId: 'room-hint-code-box',
+                terminalHistoryId: 'room-terminal-history',
+                terminalInputId: 'room-terminal-input',
+                terminalFormId: 'room-terminal-form',
+                flagDisplayId: 'room-flag-display',
+                btnNextRoomId: 'btn-next-room',
+                roomListId: 'room-list-container',
+                progressTextId: 'room-progress-text',
+                progressBarId: 'room-progress-bar'
+            });
+
+            // Bind Reset Progress Button
+            const btnReset = document.getElementById('btn-reset-progress');
+            if (btnReset) {
+                btnReset.addEventListener('click', () => {
+                    engine.resetProgress();
+                });
+            }
+
+            // Expose quick fill helper for chip clicks
+            window.quickFillCmd = function (cmd) {
+                const input = document.getElementById('room-terminal-input');
+                if (input) {
+                    input.value = cmd;
+                    input.focus();
+                }
+            };
+        });
+    </script>
+
+</body>
+
+</html>
+

