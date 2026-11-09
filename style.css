@@ -6052,3 +6052,595 @@ code,
         transform: none !important;
     }
 }
+
+/* ==========================================================================
+   LFL // CYBER SKILL TREE & BRANCHING ROADMAP (SIFIRDAN BAŞLAYANLAR PATİKASI)
+   ========================================================================== */
+
+.branching-skill-tree-container {
+    margin-top: 60px;
+    padding: 40px 30px;
+    background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.05), transparent 70%),
+                rgba(10, 16, 28, 0.85);
+    border: 1px solid rgba(0, 229, 255, 0.16);
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.branching-skill-tree-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.6), rgba(0, 229, 255, 0.6), transparent);
+}
+
+.tree-header-block {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 36px auto;
+}
+
+.tree-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #10b981;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.tree-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981;
+    animation: pulseGlowGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlowGreen {
+    0%, 100% { opacity: 0.5; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+.tree-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f8fafc;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 40%, #a7f3d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tree-subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* --- ROOT NODE (STARTER TRACK) --- */
+.tree-root-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.tree-root-card {
+    background: linear-gradient(145deg, rgba(8, 28, 20, 0.9), rgba(12, 22, 32, 0.92)) !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+    border-radius: 16px !important;
+    padding: 28px !important;
+    box-shadow: 0 0 35px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(16, 185, 129, 0.25) !important;
+    position: relative;
+    cursor: default;
+    transition: transform 0.15s ease-out, box-shadow 0.25s ease !important;
+}
+
+.tree-root-card:hover {
+    border-color: rgba(16, 185, 129, 0.7) !important;
+    box-shadow: 0 0 45px rgba(16, 185, 129, 0.22), inset 0 1px 0 rgba(16, 185, 129, 0.4) !important;
+}
+
+.tree-root-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #34d399;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+}
+
+.tree-root-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+}
+
+.tree-root-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.tree-root-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.root-step-pill {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(16, 185, 129, 0.22);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.root-step-pill:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    background: rgba(16, 185, 129, 0.12);
+    transform: translateY(-2px);
+}
+
+.root-step-pill .step-num {
+    background: rgba(16, 185, 129, 0.25);
+    color: #34d399;
+    font-weight: 800;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono, monospace);
+}
+
+.tree-root-action {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-tree-start-starter {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(16, 185, 129, 0.35);
+    transition: all 0.25s ease;
+    border: none;
+}
+
+.btn-tree-start-starter:hover {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    box-shadow: 0 6px 24px rgba(16, 185, 129, 0.5);
+    transform: translateY(-2px);
+    color: #ffffff !important;
+}
+
+/* --- TRUNK CONNECTOR & SVG BRANCHES --- */
+.tree-trunk-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px 0 14px 0;
+    position: relative;
+}
+
+.trunk-vertical-line {
+    width: 2px;
+    height: 35px;
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.8), rgba(0, 229, 255, 0.8));
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+
+.trunk-pulse-node {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #00e5ff;
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 14px #00e5ff, 0 0 24px #00e5ff;
+    animation: trunkPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes trunkPulse {
+    0%, 100% { transform: translateX(-50%) scale(0.9); opacity: 0.7; }
+    50% { transform: translateX(-50%) scale(1.4); opacity: 1; }
+}
+
+.trunk-split-label {
+    margin: 14px 0 6px 0;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #38bdf8;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+}
+
+.tree-branch-svg-container {
+    width: 100%;
+    max-width: 960px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.branch-connector-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.branch-svg-line {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+
+.branch-red-line {
+    stroke: rgba(239, 68, 68, 0.75);
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.6));
+}
+
+.branch-blue-line {
+    stroke: rgba(0, 229, 255, 0.85);
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.7));
+}
+
+.branch-purple-line {
+    stroke: rgba(168, 85, 247, 0.8);
+    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
+}
+
+/* --- 3 SPECIALIZED BRANCHES GRID --- */
+.tree-branches-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.tree-branch-card {
+    border-radius: 16px !important;
+    padding: 24px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.15s ease-out, box-shadow 0.25s ease, border-color 0.25s ease !important;
+    cursor: default;
+    position: relative;
+}
+
+.tree-branch-card .branch-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 8px;
+}
+
+.branch-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.branch-room-count {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono, monospace);
+}
+
+.branch-card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #f8fafc;
+    margin-bottom: 10px;
+}
+
+.branch-card-desc {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+    min-height: 58px;
+}
+
+.branch-topics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.branch-topics-list li {
+    font-size: 12px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.topic-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.branch-card-footer {
+    margin-top: auto;
+}
+
+.btn-branch-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: none;
+}
+
+/* RED BRANCH SPECIFICS */
+.tree-branch-card.branch-red {
+    background: linear-gradient(150deg, rgba(35, 12, 18, 0.9), rgba(18, 10, 16, 0.92)) !important;
+    border: 1px solid rgba(239, 68, 68, 0.35) !important;
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.08) !important;
+}
+.tree-branch-card.branch-red:hover {
+    border-color: rgba(239, 68, 68, 0.7) !important;
+    box-shadow: 0 0 45px rgba(239, 68, 68, 0.2) !important;
+}
+.red-badge {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+}
+.red-dot {
+    background: #ef4444;
+    box-shadow: 0 0 8px #ef4444;
+}
+.btn-red-action {
+    background: rgba(239, 68, 68, 0.18);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    color: #fca5a5 !important;
+}
+.btn-red-action:hover {
+    background: #ef4444;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.45);
+    transform: translateY(-2px);
+}
+
+/* BLUE BRANCH SPECIFICS */
+.tree-branch-card.branch-blue {
+    background: linear-gradient(150deg, rgba(8, 22, 38, 0.9), rgba(6, 16, 28, 0.92)) !important;
+    border: 1px solid rgba(0, 229, 255, 0.35) !important;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.08) !important;
+}
+.tree-branch-card.branch-blue:hover {
+    border-color: rgba(0, 229, 255, 0.7) !important;
+    box-shadow: 0 0 45px rgba(0, 229, 255, 0.2) !important;
+}
+.blue-badge {
+    background: rgba(0, 229, 255, 0.15);
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    color: #38bdf8;
+}
+.blue-dot {
+    background: #00e5ff;
+    box-shadow: 0 0 8px #00e5ff;
+}
+.btn-blue-action {
+    background: rgba(0, 229, 255, 0.18);
+    border: 1px solid rgba(0, 229, 255, 0.45);
+    color: #7dd3fc !important;
+}
+.btn-blue-action:hover {
+    background: #00e5ff;
+    color: #031326 !important;
+    font-weight: 800;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.45);
+    transform: translateY(-2px);
+}
+
+/* PURPLE BRANCH SPECIFICS */
+.tree-branch-card.branch-purple {
+    background: linear-gradient(150deg, rgba(28, 14, 40, 0.9), rgba(18, 10, 26, 0.92)) !important;
+    border: 1px solid rgba(168, 85, 247, 0.35) !important;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.08) !important;
+}
+.tree-branch-card.branch-purple:hover {
+    border-color: rgba(168, 85, 247, 0.7) !important;
+    box-shadow: 0 0 45px rgba(168, 85, 247, 0.2) !important;
+}
+.purple-badge {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    color: #c084fc;
+}
+.purple-dot {
+    background: #a855f7;
+    box-shadow: 0 0 8px #a855f7;
+}
+.btn-purple-action {
+    background: rgba(168, 85, 247, 0.18);
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    color: #d8b4fe !important;
+}
+.btn-purple-action:hover {
+    background: #a855f7;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.45);
+    transform: translateY(-2px);
+}
+
+/* --- BOTTOM QUIZ CALLOUT --- */
+.tree-bottom-quiz-box {
+    margin: 40px auto 0 auto;
+    max-width: 960px;
+    padding: 20px 26px;
+    background: linear-gradient(90deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.tree-quiz-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tree-quiz-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.tree-quiz-text h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+}
+
+.tree-quiz-text p {
+    font-size: 12.5px;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.btn-tree-quiz-launch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.btn-tree-quiz-launch:hover {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
+    transform: translateY(-2px);
+}
+
+/* --- RESPONSIVE MEDIA QUERIES FOR TREE --- */
+@media (max-width: 980px) {
+    .tree-root-steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .tree-branches-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .branch-card-desc {
+        min-height: auto;
+    }
+    .tree-branch-svg-container {
+        display: none;
+    }
+    .tree-bottom-quiz-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .btn-tree-quiz-launch {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .branching-skill-tree-container {
+        padding: 24px 16px;
+        margin-top: 36px;
+    }
+    .tree-title {
+        font-size: 22px;
+    }
+    .tree-root-card {
+        padding: 18px !important;
+    }
+    .tree-root-title {
+        font-size: 18px;
+    }
+    .tree-root-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .btn-tree-start-starter {
+        width: 100%;
+        justify-content: center;
+    }
+}

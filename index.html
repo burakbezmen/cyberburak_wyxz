@@ -10,8 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.2">
-    <link rel="stylesheet" href="animations.css?v=3.2">
+    <link rel="stylesheet" href="style.css?v=3.9">
+    <link rel="stylesheet" href="animations.css?v=3.9">
 </head>
 
 <body class="theme-corporate-cyber">
@@ -42,7 +42,7 @@
             </div>
 
             <div style="display: flex; justify-content: center;">
-                <button type="button" class="intro-skip-btn" id="btn-skip-intro" onclick="(function(){var s=document.getElementById('kali-intro-splash');if(s){s.classList.add('fade-out');setTimeout(function(){s.style.display='none';},300);}})();">GİRİŞİ ATLA [ESC] &rarr;</button>
+                <button type="button" class="intro-skip-btn" id="btn-skip-intro" onclick="(function(){var s=document.getElementById('kali-intro-splash');if(s){s.classList.add('fade-out');setTimeout(function(){s.style.display='none';},300);}})();"><span data-i18n="btn_skip_intro">GİRİŞİ ATLA [ESC] &rarr;</span></button>
             </div>
         </div>
     </div>
@@ -290,6 +290,12 @@
                         <span>🐉 Kali Animasyonu</span>
                     </button>
 
+                    <!-- LANGUAGE TOGGLE BUTTON (TR / EN) -->
+                    <button type="button" class="topbar-pill-btn" id="btn-language-toggle" title="Dil Değiştir / Switch Language (TR/EN)" style="border-color: rgba(0, 229, 255, 0.4); color: var(--cyan); display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                        <span style="font-size: 13px;">🌐</span>
+                        <span id="current-lang-label" style="font-weight: 800; font-family: var(--font-mono); letter-spacing: 0.5px;">EN</span>
+                    </button>
+
                     <!-- THEME SELECTOR DROPDOWN -->
                     <div class="topbar-dropdown-wrapper" id="theme-dropdown-wrapper">
                         <button class="topbar-pill-btn" id="btn-theme-toggle" title="Tema Seçin / Select Theme">
@@ -361,19 +367,17 @@
                                 LFL // NEXT-GEN CYBER COMMAND CENTER
                             </h1>
                             <p class="hero-tagline-lead">
-                                Ofansif ve Defansif Siber Güvenlik Mimarisi • Canlı Operasyon Alanı
+                                <span data-i18n="hero_sub">Ofansif ve Defansif Siber Güvenlik Mimarisi • Canlı Operasyon Alanı</span>
                             </p>
                             <div class="hero-actions-cluster">
                                 <button type="button" class="btn-hero-start-academy" id="btn-hero-role-quiz">
-                                    <span>🎯 Siber Rol Testini Çöz (10 Soru)</span>
+                                    <span data-i18n="btn_hero_quiz">🎯 Siber Rol Testini Çöz (10 Soru)</span>
                                     <span>&rarr;</span>
                                 </button>
                                 <button type="button" class="btn-hero-shield-test" id="btn-hero-test-shield">
-                                    <span>🛡️ Canlı Kalkan Testi</span>
+                                    <span data-i18n="btn_hero_shield">🛡️ Canlı Kalkan Testi</span>
                                 </button>
-                                <button type="button" class="btn-hero-report" id="btn-hero-inspect-report">
-                                    <span>📋 Raporu İncele</span>
-                                </button>
+
                             </div>
                         </div>
 
@@ -600,6 +604,184 @@
                             </div>
                         </div>
 
+                        
+                        <!-- ==========================================
+                             CYBER SKILL TREE: SIFIRDAN BAŞLAYANLAR İÇİN PATİKA & YOL AĞACI
+                             ========================================== -->
+                        <div class="branching-skill-tree-container" id="branching-skill-tree" data-reveal>
+                            <div class="tree-header-block">
+                                <div class="tree-badge-pill">
+                                    <span class="tree-badge-dot"></span>
+                                    <span>🗺️ İNTERAKTİF SİBER YOL HARİTASI &amp; SKILL TREE</span>
+                                </div>
+                                <h2 class="tree-title" data-i18n="tree_title">Sıfırdan Başla ➔ Uzmanlaşma Patikası</h2>
+                                <p class="tree-subtitle" data-i18n="tree_subtitle">Hiçbir ön bilgiye gerek yok. Kökten başla, temelleri kavra; ardından ilgi duyduğun alana (Red, Blue, Purple) doğru dallanarak uzmanlaş.</p>
+                            </div>
+
+                            <!-- ROOT: STARTER TRACK (KÖK KATMAN) -->
+                            <div class="tree-root-wrapper">
+                                <div class="tree-root-card tilt-3d-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <div class="tree-root-badge">
+                                        <span class="root-pulse-icon">🌱</span>
+                                        <span>SEVİYE 0 // SIFIRDAN BAŞLAYANLAR İÇİN KÖK PATİKA</span>
+                                    </div>
+                                    <h3 class="tree-root-title">Starter Track // 18 Temel Eğitim ve Görev Odası</h3>
+                                    <p class="tree-root-desc">
+                                        Ağ mimarisi, IP/MAC, Portlar, DNS, TCP/UDP, HTTP, Linux dosya sistemi, CLI, chmod izinleri, Nmap, Hashing, Prosesler (ps/kill), grep log analizi, ss portları, tcpdump paketleri, Cookie &amp; Session, SSH anahtarları ve UFW güvenlik duvarı. Sıfır bilgiyle gel, tam donanımla ayrıl.
+                                    </p>
+                                    
+                                    <div class="tree-root-steps-grid">
+                                        <div class="root-step-pill"><span class="step-num">01</span> Ağ Temelleri &amp; IP/MAC</div>
+                                        <div class="root-step-pill"><span class="step-num">02</span> Portlar &amp; Servisler</div>
+                                        <div class="root-step-pill"><span class="step-num">03</span> DNS &amp; İsim Çözümleme</div>
+                                        <div class="root-step-pill"><span class="step-num">04</span> TCP &amp; UDP Protokolleri</div>
+                                        <div class="root-step-pill"><span class="step-num">05</span> HTTP Başlıkları &amp; Metotlar</div>
+                                        <div class="root-step-pill"><span class="step-num">06</span> Linux Dosya Hiyerarşisi</div>
+                                        <div class="root-step-pill"><span class="step-num">07</span> Terminal &amp; CLI Temelleri</div>
+                                        <div class="root-step-pill"><span class="step-num">08</span> Linux İzinleri &amp; chmod</div>
+                                        <div class="root-step-pill"><span class="step-num">09</span> Nmap ile İlk Ağ Taraması</div>
+                                        <div class="root-step-pill"><span class="step-num">10</span> Kriptografi &amp; Hashleme</div>
+                                        <div class="root-step-pill"><span class="step-num">11</span> Linux Prosesleri &amp; ps/kill</div>
+                                        <div class="root-step-pill"><span class="step-num">12</span> Log Analizi &amp; grep/Pipe</div>
+                                        <div class="root-step-pill"><span class="step-num">13</span> Dinleyen Portlar &amp; ss/netstat</div>
+                                        <div class="root-step-pill"><span class="step-num">14</span> Paket Yakalama &amp; tcpdump</div>
+                                        <div class="root-step-pill"><span class="step-num">15</span> Cookie, Session &amp; curl</div>
+                                        <div class="root-step-pill"><span class="step-num">16</span> SSH &amp; Anahtar Çiftleri</div>
+                                        <div class="root-step-pill"><span class="step-num">17</span> Güvenlik Duvarı &amp; UFW</div>
+                                        <div class="root-step-pill"><span class="step-num">18</span> Etik Hackleme &amp; Mezuniyet</div>
+                                    </div>
+
+                                    <div class="tree-root-action">
+                                        <a href="academy.html?track=starter&room=starter-01" class="btn-tree-start-starter">
+                                            <span data-i18n="tree_starter_btn">🌱 Starter Patikasına Başla (18 Temel Oda)</span>
+                                            <span class="btn-arrow">➔</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- TRUNK SPLIT CONNECTOR (GÖVDE VE DALLANMA ÇİZGİLERİ) -->
+                            <div class="tree-trunk-connector">
+                                <div class="trunk-vertical-line">
+                                    <div class="trunk-pulse-node"></div>
+                                </div>
+                                <div class="trunk-split-label">
+                                    <span>⚡ KÖKÜ TAMAMLAYINCA DALINI SEÇ (UZMANLAŞMA ALANLARI) ⚡</span>
+                                </div>
+                                <div class="tree-branch-svg-container">
+                                    <svg class="branch-connector-svg" viewBox="0 0 900 60" preserveAspectRatio="none">
+                                        <!-- Sol Kol (Red) -->
+                                        <path d="M 450 0 C 450 30, 150 20, 150 60" class="branch-svg-line branch-red-line" />
+                                        <!-- Orta Kol (Blue) -->
+                                        <path d="M 450 0 L 450 60" class="branch-svg-line branch-blue-line" />
+                                        <!-- Sağ Kol (Purple) -->
+                                        <path d="M 450 0 C 450 30, 750 20, 750 60" class="branch-svg-line branch-purple-line" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- 3 SPECIALIZATION BRANCHES (DALLAR) -->
+                            <div class="tree-branches-grid">
+                                <!-- DAL 1: RED TEAM -->
+                                <div class="tree-branch-card branch-red tilt-3d-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <div class="branch-card-header">
+                                        <span class="branch-badge red-badge">🔴 OFANSİF OPERASYONLAR</span>
+                                        <span class="branch-room-count">20 GÖREV ODASI</span>
+                                    </div>
+                                    <h3 class="branch-card-title">Red Team (Saldırı &amp; Pentest)</h3>
+                                    <p class="branch-card-desc">
+                                        Hedef sistemlerdeki zafiyetleri istismar et, yetki yükselt, güvenlik duvarlarını ve EDR çözümlerini atlatarak tam kontrol sağla.
+                                    </p>
+                                    <ul class="branch-topics-list">
+                                        <li><span class="topic-dot red-dot"></span> Web Sızma (SQLi, XSS, CSRF, IDOR)</li>
+                                        <li><span class="topic-dot red-dot"></span> Metasploit &amp; Exploit Zincirleri</li>
+                                        <li><span class="topic-dot red-dot"></span> Linux/Win Yetki Yükseltme (SUID, SeImpersonate)</li>
+                                        <li><span class="topic-dot red-dot"></span> Active Directory &amp; Kerberoasting</li>
+                                        <li><span class="topic-dot red-dot"></span> EDR / AV Bypass &amp; Payload Gizleme</li>
+                                        <li><span class="topic-dot red-dot"></span> C2 Frameworks (Cobalt Strike, Sliver)</li>
+                                    </ul>
+                                    <div class="branch-card-footer">
+                                        <a href="academy.html?track=red&room=red-101" class="btn-branch-action btn-red-action">
+                                            <span>🔴 Red Team Patikasına Gir</span>
+                                            <span class="btn-arrow">➔</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- DAL 2: BLUE TEAM -->
+                                <div class="tree-branch-card branch-blue tilt-3d-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <div class="branch-card-header">
+                                        <span class="branch-badge blue-badge">🔵 DEFANSİF SAVUNMA</span>
+                                        <span class="branch-room-count">17 GÖREV ODASI</span>
+                                    </div>
+                                    <h3 class="branch-card-title">Blue Team (SOC &amp; Tehdit Avı)</h3>
+                                    <p class="branch-card-desc">
+                                        Ağ trafiğini kokla, şüpheli anomalileri tespit et, adli bellek incelemesi yap ve saldırganları kurumsal ağdan püskürt.
+                                    </p>
+                                    <ul class="branch-topics-list">
+                                        <li><span class="topic-dot blue-dot"></span> Wireshark ile Paket &amp; PCAP Analizi</li>
+                                        <li><span class="topic-dot blue-dot"></span> Snort &amp; Suricata ile NIDS Kuralı</li>
+                                        <li><span class="topic-dot blue-dot"></span> Windows Event IDs &amp; Sysmon Avı</li>
+                                        <li><span class="topic-dot blue-dot"></span> Volatility ile RAM Bellek Adli Bilişimi</li>
+                                        <li><span class="topic-dot blue-dot"></span> Sigma Kuralları &amp; SIEM Entegrasyonu</li>
+                                        <li><span class="topic-dot blue-dot"></span> Incident Response (Olay Müdahale)</li>
+                                    </ul>
+                                    <div class="branch-card-footer">
+                                        <a href="academy.html?track=blue&room=blue-101" class="btn-branch-action btn-blue-action">
+                                            <span>🔵 Blue Team Patikasına Gir</span>
+                                            <span class="btn-arrow">➔</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- DAL 3: PURPLE TEAM -->
+                                <div class="tree-branch-card branch-purple tilt-3d-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <div class="branch-card-header">
+                                        <span class="branch-badge purple-badge">🟣 HİBRİT OPERASYON</span>
+                                        <span class="branch-room-count">14 GÖREV ODASI</span>
+                                    </div>
+                                    <h3 class="branch-card-title">Purple Team (Tatbikat &amp; BAS)</h3>
+                                    <p class="branch-card-desc">
+                                        Saldırgan gibi düşün, savunmacı gibi analiz et. Savunma boşluklarını kapat, tehdit modelleri kur ve güvenlik duruşunu doğrula.
+                                    </p>
+                                    <ul class="branch-topics-list">
+                                        <li><span class="topic-dot purple-dot"></span> MITRE ATT&amp;CK &amp; Kill Chain Eşleme</li>
+                                        <li><span class="topic-dot purple-dot"></span> Boşluk (Gap) Analizi &amp; Tespit Validasyonu</li>
+                                        <li><span class="topic-dot purple-dot"></span> Atomic Red Team &amp; BAS Simülasyonu</li>
+                                        <li><span class="topic-dot purple-dot"></span> STRIDE Tehdit Modellemesi</li>
+                                        <li><span class="topic-dot purple-dot"></span> Zero-Trust Mimari Doğrulama</li>
+                                        <li><span class="topic-dot purple-dot"></span> Canlı Kırmızı/Mavi Tatbikat Koordinasyonu</li>
+                                    </ul>
+                                    <div class="branch-card-footer">
+                                        <a href="academy.html?track=purple&room=purple-101" class="btn-branch-action btn-purple-action">
+                                            <span>🟣 Purple Team Patikasına Gir</span>
+                                            <span class="btn-arrow">➔</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BOTTOM QUIZ CALLOUT -->
+                            <div class="tree-bottom-quiz-box">
+                                <div class="tree-quiz-info">
+                                    <div class="tree-quiz-icon">🎯</div>
+                                    <div class="tree-quiz-text">
+                                        <h4 data-i18n="tree_quiz_title">Hangi patikadan başlaman gerektiğinden emin değil misin?</h4>
+                                        <p data-i18n="tree_quiz_desc">10 gerçekçi kurumsal senaryo sorusunu yanıtla; güçlü ve zayıf yönlerini analiz edip sana özel siber güvenlik rolünü belirleyelim.</p>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-tree-quiz-launch" id="btn-tree-quiz-action" onclick="(function(){ if (typeof window.navigateToPage === 'function') { window.navigateToPage('page-quiz'); } else { const qb = document.querySelector('[data-page=\'page-quiz\']'); if (qb) qb.click(); else window.location.hash = '#page-quiz'; } const main = document.querySelector('.app-main'); if (main) main.scrollTo({top: 0, behavior: 'smooth'}); })()">
+                                    <span data-i18n="tree_quiz_btn">Siber Rol Testini Başlat</span>
+                                    <span class="btn-arrow">➔</span>
+                                </button>
+                            </div>
+                        </div>
+
+
                         <!-- Fallback elements for app.js background listeners (Hidden, non-obtrusive) -->
                         <div style="display:none;" aria-hidden="true">
                             <div id="dashboard-attack-stream"></div>
@@ -804,13 +986,13 @@
                                 <span>🎯 Tüm Akademi Odalarını Başlat</span>
                                 <span>&rarr;</span>
                             </a>
-                            <a href="academy.html?track=red" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(239, 68, 68, 0.4); color: #f87171;">
+                            <a href="academy.html?track=red&room=red-101" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(239, 68, 68, 0.4); color: #f87171;">
                                 ⚔️ Red Team Odaları (12 Görev)
                             </a>
-                            <a href="academy.html?track=blue" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(59, 130, 246, 0.4); color: #60a5fa;">
+                            <a href="academy.html?track=blue&room=blue-101" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(59, 130, 246, 0.4); color: #60a5fa;">
                                 🛡️ Blue Team Odaları (12 Görev)
                             </a>
-                            <a href="academy.html?track=purple" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">
+                            <a href="academy.html?track=purple&room=purple-101" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">
                                 🟣 Purple Team Odaları (9 Görev)
                             </a>
                         </div>
@@ -1129,7 +1311,7 @@
                 <section class="app-page page-hidden" id="page-glossary">
                     <div class="page-header" data-reveal>
                         <div class="page-title-block">
-                            <div class="page-tier-badge" id="glossary-badge-count">30+ TEMEL SİBER TERİM</div>
+                            <div class="page-tier-badge" id="glossary-badge-count">80+ KAPSAMLI SİBER TERİM &amp; ANALOJİ</div>
                             <h1 class="page-main-heading">Siber Terimler Kılavuzu &amp; A-Z Sözlük</h1>
                             <p class="page-subheading">0 Yazılım ve 0 Siber Güvenlik Bilgisine Sahip Kişiler İçin Günlük
                                 Hayat Benzetmeli Sade Rehber</p>
@@ -1147,7 +1329,7 @@
                                 placeholder="Siber terim veya kısaltma ara (örn: MFA, HSTS, JWT, SQLi, Port, Handshake, Nmap)..." />
                         </div>
                         <div class="filter-pills" id="glossary-category-pills">
-                            <button class="filter-pill active" data-cat="all">Tümü (30+)</button>
+                            <button class="filter-pill active" data-cat="all">Tümü (80+)</button>
                             <button class="filter-pill" data-cat="auth">Kimlik &amp; Oturum</button>
                             <button class="filter-pill" data-cat="network">Ağ &amp; Protokoller</button>
                             <button class="filter-pill" data-cat="attacks">Saldırı Türleri</button>
@@ -1416,9 +1598,9 @@
     <!-- Global Floating Toast Container -->
     <div id="toast-container" class="toast-stack"></div>
 
-    <script src="academy-data.js?v=3.2"></script>
-    <script src="rooms_data.js?v=3.2"></script>
-    <script src="app.js?v=3.2"></script>
+    <script src="academy-data.js?v=3.9"></script>
+    <script src="rooms_data.js?v=3.9"></script>
+    <script src="app.js?v=3.9"></script>
 </body>
 
 </html>

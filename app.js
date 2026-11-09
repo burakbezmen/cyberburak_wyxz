@@ -1,1 +1,6054 @@
-﻿(function (_0xc4172e, _0x43c916) { const _0x49d0b5 = _0x78d9, _0xa93886 = _0xc4172e(); while (!![]) { try { const _0x11461b = -parseInt(_0x49d0b5(0x3d7)) / 0x1 + parseInt(_0x49d0b5(0x1dc)) / 0x2 * (parseInt(_0x49d0b5(0x120)) / 0x3) + parseInt(_0x49d0b5(0x276)) / 0x4 * (parseInt(_0x49d0b5(0x84)) / 0x5) + -parseInt(_0x49d0b5(0x2cf)) / 0x6 + parseInt(_0x49d0b5(0x2f6)) / 0x7 * (parseInt(_0x49d0b5(0xdb)) / 0x8) + parseInt(_0x49d0b5(0x477)) / 0x9 * (parseInt(_0x49d0b5(0x24b)) / 0xa) + parseInt(_0x49d0b5(0x488)) / 0xb; if (_0x11461b === _0x43c916) break; else _0xa93886['push'](_0xa93886['shift']()); } catch (_0x56a03d) { _0xa93886['push'](_0xa93886['shift']()); } } }(_0x4733, 0xb0159), (function () { 'use strict'; const _0x48547c = _0x78d9; const _0x5b0dcd = { 'theme': localStorage[_0x48547c(0x3ee)](_0x48547c(0x393)) || localStorage[_0x48547c(0x3ee)](_0x48547c(0x386)) || 'cyber-midnight', 'token': localStorage[_0x48547c(0x3ee)]('cyber_token') || sessionStorage[_0x48547c(0x3ee)](_0x48547c(0x1d7)) || null, 'currentUser': null, 'activePage': _0x48547c(0xa5), 'accessLogs': [], 'simRunning': ![] }; let _0x1662a0 = null; function _0x5df386(_0x4ded89, _0x450725) { const _0x7368e3 = _0x48547c, _0x2970fa = btoa(JSON['stringify']({ 'alg': 'HS256', 'typ': _0x7368e3(0x362) }))['replace'](/=/g, ''), _0x408af2 = btoa(JSON[_0x7368e3(0x19d)]({ 'sub': '1', 'uname': _0x4ded89, 'role': _0x450725, 'iat': Math['floor'](Date['now']() / 0x3e8), 'exp': Math[_0x7368e3(0x423)](Date[_0x7368e3(0xd3)]() / 0x3e8) + 0x15180 * 0x1e }))['replace'](/=/g, ''), _0x3e8900 = btoa('lfl_defense_simulated_hmac_sha256_sig')[_0x7368e3(0x1ed)](/=/g, ''); return _0x2970fa + '.' + _0x408af2 + '.' + _0x3e8900; } const _0x54f1b0 = ((() => { const _0x3fd86c = _0x48547c; if (window[_0x3fd86c(0x3c1)] !== window[_0x3fd86c(0xae)]) try { window[_0x3fd86c(0x3c1)][_0x3fd86c(0xa2)] = window['self'][_0x3fd86c(0xa2)]; } catch (_0x5d6171) { document['documentElement'][_0x3fd86c(0x430)] = _0x3fd86c(0xd6); } try { console[_0x3fd86c(0x2b5)](_0x3fd86c(0x252) + _0x3fd86c(0xaa) + _0x3fd86c(0x404) + _0x3fd86c(0x428), 'background:\x20#ef4444;\x20color:\x20#ffffff;\x20font-weight:\x20800;\x20font-size:\x2013px;\x20padding:\x204px\x2010px;\x20border-radius:\x204px;', _0x3fd86c(0x152)); } catch (_0x28e005) { } const _0x5d8a2b = 0x5, _0x376b90 = 0x3c * 0x3e8; function _0x496148() { const _0x380fe9 = _0x3fd86c; try { return JSON[_0x380fe9(0x45c)](localStorage[_0x380fe9(0x3ee)]('lfl_waf_bruteforce') || '{}'); } catch (_0x13b94b) { return {}; } } function _0x3425e8() { const _0x36bbc7 = _0x3fd86c, _0x266f0f = _0x496148(), _0x54b6ea = Date[_0x36bbc7(0xd3)](); if (_0x266f0f[_0x36bbc7(0x243)] && _0x266f0f['lockedUntil'] > _0x54b6ea) { const _0x566962 = Math[_0x36bbc7(0x2b4)]((_0x266f0f[_0x36bbc7(0x243)] - _0x54b6ea) / 0x3e8); return { 'blocked': !![], 'remainingSec': _0x566962, 'message': _0x36bbc7(0x4aa) + _0x566962 + '\x20saniye\x20kilitlendi!' }; } return { 'blocked': ![] }; } function _0xe2b3ee(_0x400a18 = _0x3fd86c(0x2db)) { const _0x235bb0 = _0x3fd86c, _0x244399 = _0x496148(), _0x73f1a9 = Date[_0x235bb0(0xd3)](); !_0x244399[_0x235bb0(0x470)] || _0x73f1a9 - (_0x244399[_0x235bb0(0x25c)] || _0x73f1a9) > _0x376b90 ? (_0x244399['attempts'] = 0x1, _0x244399['firstAttemptTime'] = _0x73f1a9) : _0x244399[_0x235bb0(0x470)]++; _0x244399[_0x235bb0(0x470)] >= _0x5d8a2b && (_0x244399['lockedUntil'] = _0x73f1a9 + _0x376b90, _0x244399['attempts'] = 0x0, _0x475faa('BRUTE_FORCE_LOCKOUT', '5\x20başarısız\x20deneme\x20sonrası\x20' + _0x400a18 + '\x2060sn\x20süreyle\x20donduruldu.')); try { localStorage[_0x235bb0(0x2ed)](_0x235bb0(0x4f2), JSON[_0x235bb0(0x19d)](_0x244399)); } catch (_0x546389) { } return _0x244399; } function _0x4cfaab() { const _0x4b2877 = _0x3fd86c; try { localStorage[_0x4b2877(0x394)](_0x4b2877(0x4f2)); } catch (_0x1a5683) { } } const _0x349d60 = [{ 'name': _0x3fd86c(0x3ab), 'regex': /<script|javascript:|data:text\/html|onload\s*=|onerror\s*=|document\.cookie/i }, { 'name': 'SQLI_PAYLOAD', 'regex': /('|")\s*or\s*('|")?\d+('|")?=('|")?\d+|union\s+select|drop\s+table|xp_cmdshell|--|;\s*drop/i }, { 'name': _0x3fd86c(0xdf), 'regex': /\.\.\/|\.\.\|\/etc\/passwd|c:\windows\system32/i }, { 'name': _0x3fd86c(0x272), 'regex': /;\s*(cat|ls|rm|nc|curl|wget)\s+|\|\s*nc\s+|\$\(whoami\)/i }, { 'name': _0x3fd86c(0x486), 'regex': /__proto__|constructor\s*\[\s*['"]prototype['"]\s*\]/i }]; function _0x3f0ba0(_0x3f9f36, _0x265e31 = 'GİRDİ') { const _0x4effdd = _0x3fd86c; if (!_0x3f9f36 || typeof _0x3f9f36 !== _0x4effdd(0x3c7)) return { 'safe': !![] }; for (const _0x4f61c6 of _0x349d60) { if (_0x4f61c6[_0x4effdd(0x300)][_0x4effdd(0x183)](_0x3f9f36)) return _0x475faa(_0x4f61c6['name'], _0x4effdd(0x2a4) + _0x265e31 + _0x4effdd(0x109) + _0x3f9f36[_0x4effdd(0x1f3)](0x0, 0x2d)), { 'safe': ![], 'threat': _0x4f61c6['name'], 'message': _0x4effdd(0x45f) + _0x4f61c6[_0x4effdd(0x1b1)] + _0x4effdd(0x145) }; } return { 'safe': !![] }; } function _0x475faa(_0x482282, _0x5d6c56) { const _0x1948da = _0x3fd86c; try { let _0x241c12 = JSON['parse'](localStorage['getItem']('lfl_access_logs') || '[]'); const _0x4d4200 = { 'id': Date[_0x1948da(0xd3)]() + Math['random']()[_0x1948da(0x2ff)](0x24)['substring'](0x2, 0x6), 'timestamp': new Date()['toISOString'](), 'ipAddress': sessionStorage['getItem'](_0x1948da(0x132)) || _0x1948da(0x2a6), 'country': _0x1948da(0xef), 'operatingSystem': navigator[_0x1948da(0x4b7)] || _0x1948da(0x20c), 'browser': _0x1948da(0x4c7), 'deviceType': _0x1948da(0x4b8), 'screen': window[_0x1948da(0x498)][_0x1948da(0x4a9)] + 'x' + window['screen']['height'], 'cores': navigator['hardwareConcurrency'] ? navigator['hardwareConcurrency'] + _0x1948da(0x2e1) : '4\x20Çekirdek', 'connection': _0x1948da(0x322), 'language': navigator['language'] || _0x1948da(0x12d), 'username': _0x5b0dcd[_0x1948da(0x37d)] && _0x5b0dcd[_0x1948da(0x37d)]['username'] ? _0x5b0dcd[_0x1948da(0x37d)][_0x1948da(0x327)] : _0x1948da(0x3f3), 'role': _0x1948da(0x3f4), 'method': _0x1948da(0x2ca), 'path': '[' + _0x482282 + ']\x20' + _0x5d6c56, 'statusCode': 0x193 }; _0x241c12['unshift'](_0x4d4200); if (_0x241c12['length'] > 0xc8) _0x241c12 = _0x241c12['slice'](0x0, 0xc8); localStorage[_0x1948da(0x2ed)](_0x1948da(0x1bf), JSON['stringify'](_0x241c12)); } catch (_0x280e35) { } } return { 'checkRateLimit': _0x3425e8, 'recordFailedAttempt': _0xe2b3ee, 'resetFailedAttempts': _0x4cfaab, 'inspectPayload': _0x3f0ba0, 'logSecurityIncident': _0x475faa }; })()), _0x39c831 = { async 'login'(_0x232306, _0x5bff7d) { const _0x22d8fd = _0x48547c; await new Promise(_0x27270d => setTimeout(_0x27270d, 0x64)); const _0x52dd55 = (_0x232306 || '')['trim'](), _0x49b248 = _0x5bff7d || '', _0x2bf62c = _0x54f1b0[_0x22d8fd(0x4db)](); if (_0x2bf62c['blocked']) return { 'ok': ![], 'status': 0x1ad, 'data': { 'error': _0x2bf62c[_0x22d8fd(0x461)] } }; const _0x339cbb = _0x54f1b0['inspectPayload'](_0x52dd55, _0x22d8fd(0x1a5)); if (!_0x339cbb['safe']) return _0x54f1b0[_0x22d8fd(0x381)](_0x22d8fd(0x22d)), { 'ok': ![], 'status': 0x193, 'data': { 'error': _0x339cbb['message'] } }; const _0x3ac396 = _0x54f1b0[_0x22d8fd(0x475)](_0x49b248, _0x22d8fd(0x367)); if (!_0x3ac396[_0x22d8fd(0x385)]) return _0x54f1b0[_0x22d8fd(0x381)]('WAF_SALDIRI'), { 'ok': ![], 'status': 0x193, 'data': { 'error': _0x3ac396[_0x22d8fd(0x461)] } }; if (_0x52dd55[_0x22d8fd(0x377)]() === _0x22d8fd(0x275) && _0x49b248 === _0x22d8fd(0x104)) { _0x54f1b0['resetFailedAttempts'](); const _0x3de7bc = _0x5df386(_0x22d8fd(0x275), 'admin'), _0x41cbe6 = { 'id': 0x1, 'username': _0x22d8fd(0x275), 'email': _0x22d8fd(0xe8), 'role': _0x22d8fd(0x416) }; return localStorage['setItem'](_0x22d8fd(0x1d7), _0x3de7bc), localStorage[_0x22d8fd(0x2ed)]('cyber_user', JSON[_0x22d8fd(0x19d)](_0x41cbe6)), localStorage[_0x22d8fd(0x2ed)](_0x22d8fd(0x1e3), _0x41cbe6['username']), localStorage[_0x22d8fd(0x2ed)](_0x22d8fd(0xb7), _0x41cbe6['role']), { 'ok': !![], 'status': 0xc8, 'data': { 'token': _0x3de7bc, 'user': _0x41cbe6, 'message': _0x22d8fd(0x2af) } }; } try { const _0x503343 = JSON[_0x22d8fd(0x45c)](localStorage[_0x22d8fd(0x3ee)](_0x22d8fd(0x261)) || '[]'), _0x5ed77a = _0x503343[_0x22d8fd(0x482)](_0x3d2701 => _0x3d2701[_0x22d8fd(0x327)]['toLowerCase']() === _0x52dd55['toLowerCase']() && _0x3d2701[_0x22d8fd(0x3d9)] === _0x49b248); if (_0x5ed77a) { _0x54f1b0[_0x22d8fd(0x235)](); const _0x305882 = _0x5df386(_0x5ed77a[_0x22d8fd(0x327)], 'operator'), _0xf08380 = { 'id': _0x5ed77a['id'] || Date[_0x22d8fd(0xd3)](), 'username': _0x5ed77a[_0x22d8fd(0x327)], 'email': _0x5ed77a[_0x22d8fd(0x327)] + _0x22d8fd(0x48c), 'role': _0x22d8fd(0x1bc) }; return localStorage[_0x22d8fd(0x2ed)](_0x22d8fd(0x1d7), _0x305882), localStorage['setItem'](_0x22d8fd(0x2c8), JSON['stringify'](_0xf08380)), localStorage[_0x22d8fd(0x2ed)](_0x22d8fd(0x1e3), _0xf08380[_0x22d8fd(0x327)]), localStorage[_0x22d8fd(0x2ed)]('cyber_role', _0xf08380[_0x22d8fd(0x2f0)]), { 'ok': !![], 'status': 0xc8, 'data': { 'token': _0x305882, 'user': _0xf08380, 'message': _0x22d8fd(0x79) + _0xf08380[_0x22d8fd(0x327)] + _0x22d8fd(0x17f) } }; } } catch (_0x234dd7) { } return _0x54f1b0['recordFailedAttempt']('HATALI_GİRİŞ'), { 'ok': ![], 'status': 0x191, 'data': { 'error': _0x22d8fd(0x274) } }; }, async 'register'(_0x28cc52, _0x2cf53b) { const _0x3da783 = _0x48547c; await new Promise(_0x1693fe => setTimeout(_0x1693fe, 0x64)); const _0x3c3242 = (_0x28cc52 || '')[_0x3da783(0x2eb)](), _0x5cb0fc = _0x2cf53b || '', _0x325faa = _0x54f1b0['checkRateLimit'](); if (_0x325faa[_0x3da783(0x4fe)]) return { 'ok': ![], 'status': 0x1ad, 'data': { 'error': _0x325faa['message'] } }; const _0x5bd15c = _0x54f1b0[_0x3da783(0x475)](_0x3c3242, _0x3da783(0x135)); if (!_0x5bd15c[_0x3da783(0x385)]) return { 'ok': ![], 'status': 0x193, 'data': { 'error': _0x5bd15c[_0x3da783(0x461)] } }; const _0x189496 = _0x54f1b0[_0x3da783(0x475)](_0x5cb0fc, _0x3da783(0x400)); if (!_0x189496[_0x3da783(0x385)]) return { 'ok': ![], 'status': 0x193, 'data': { 'error': _0x189496[_0x3da783(0x461)] } }; if (!_0x3c3242 || _0x3c3242[_0x3da783(0x14a)] < 0x3 || _0x3c3242[_0x3da783(0x14a)] > 0x14) return { 'ok': ![], 'status': 0x190, 'data': { 'error': _0x3da783(0x245) } }; if (!/^[a-zA-Z0-9_]+$/[_0x3da783(0x183)](_0x3c3242)) return { 'ok': ![], 'status': 0x190, 'data': { 'error': _0x3da783(0x415) } }; if (!_0x5cb0fc || _0x5cb0fc[_0x3da783(0x14a)] < 0x4) return { 'ok': ![], 'status': 0x190, 'data': { 'error': _0x3da783(0x4d2) } }; const _0x2a6515 = ['burak_wyxz', _0x3da783(0x416), 'root', 'system', 'superuser', _0x3da783(0x32d), _0x3da783(0x406)]; if (_0x2a6515[_0x3da783(0x3d4)](_0x3c3242[_0x3da783(0x377)]())) return { 'ok': ![], 'status': 0x199, 'data': { 'error': _0x3da783(0x3ba) } }; let _0x35b1f4 = []; try { _0x35b1f4 = JSON[_0x3da783(0x45c)](localStorage[_0x3da783(0x3ee)]('lfl_registered_users') || '[]'); } catch (_0x1621e1) { _0x35b1f4 = []; } if (_0x35b1f4[_0x3da783(0x202)](_0x4762a2 => _0x4762a2[_0x3da783(0x327)][_0x3da783(0x377)]() === _0x3c3242[_0x3da783(0x377)]())) return { 'ok': ![], 'status': 0x199, 'data': { 'error': 'Bu\x20kullanıcı\x20adı\x20zaten\x20alınmış.' } }; const _0x7f3de1 = { 'id': Date[_0x3da783(0xd3)](), 'username': _0x3c3242, 'password': _0x5cb0fc, 'role': _0x3da783(0x1bc), 'registeredAt': new Date()[_0x3da783(0x439)]() }; _0x35b1f4[_0x3da783(0x4f5)](_0x7f3de1), localStorage[_0x3da783(0x2ed)](_0x3da783(0x261), JSON['stringify'](_0x35b1f4)); const _0x3c4a29 = _0x5df386(_0x3c3242, 'operator'), _0x3907dc = { 'id': _0x7f3de1['id'], 'username': _0x3c3242, 'email': _0x3c3242 + _0x3da783(0x48c), 'role': _0x3da783(0x1bc) }; return localStorage[_0x3da783(0x2ed)](_0x3da783(0x1d7), _0x3c4a29), localStorage[_0x3da783(0x2ed)](_0x3da783(0x2c8), JSON[_0x3da783(0x19d)](_0x3907dc)), localStorage[_0x3da783(0x2ed)](_0x3da783(0x1e3), _0x3907dc['username']), localStorage[_0x3da783(0x2ed)](_0x3da783(0xb7), _0x3907dc[_0x3da783(0x2f0)]), { 'ok': !![], 'status': 0xc9, 'data': { 'token': _0x3c4a29, 'user': _0x3907dc, 'message': _0x3da783(0xf4) + _0x3c3242 + '!\x20Operatör\x20hesabınız\x20başarıyla\x20oluşturuldu.' } }; }, async 'me'() { const _0x115adf = _0x48547c, _0x43043b = localStorage[_0x115adf(0x3ee)]('cyber_token') || sessionStorage[_0x115adf(0x3ee)]('cyber_token'); if (!_0x43043b) return null; const _0x53787c = localStorage[_0x115adf(0x3ee)](_0x115adf(0x2c8)); if (_0x53787c) try { return { 'user': JSON[_0x115adf(0x45c)](_0x53787c) }; } catch (_0x1f8927) { } return { 'user': { 'id': 0x1, 'username': _0x115adf(0x275), 'role': _0x115adf(0x416), 'email': _0x115adf(0xe8) } }; }, async 'sendVisitTelemetry'(_0x28ace4) { const _0x48547f = _0x48547c; try { const _0x10fbff = navigator[_0x48547f(0x1f4)]; let _0x304bc1 = _0x48547f(0x103); if (_0x10fbff[_0x48547f(0x2ae)](_0x48547f(0x43f)) !== -0x1) _0x304bc1 = _0x10fbff['indexOf']('Windows\x20NT\x2010.0') !== -0x1 ? 'Windows\x2010/11\x20x64' : 'Windows\x20x64'; else { if (_0x10fbff['indexOf']('Mac') !== -0x1) _0x304bc1 = _0x10fbff[_0x48547f(0x2ae)](_0x48547f(0x2f3)) !== -0x1 ? _0x48547f(0x2e0) : _0x10fbff['indexOf'](_0x48547f(0x2bd)) !== -0x1 ? _0x48547f(0x321) : 'macOS\x20Sonoma'; else { if (_0x10fbff['indexOf'](_0x48547f(0xe7)) !== -0x1) _0x304bc1 = _0x48547f(0x48a); else _0x10fbff[_0x48547f(0x2ae)](_0x48547f(0x225)) !== -0x1 && (_0x304bc1 = _0x48547f(0x1cc)); } } let _0x1127a6 = _0x48547f(0xe4); if (_0x10fbff[_0x48547f(0x2ae)]('Edg/') !== -0x1) _0x1127a6 = 'Microsoft\x20Edge'; else { if (_0x10fbff[_0x48547f(0x2ae)](_0x48547f(0x2df)) !== -0x1) _0x1127a6 = _0x48547f(0x284); else { if (_0x10fbff['indexOf'](_0x48547f(0x186)) !== -0x1) _0x1127a6 = 'Mozilla\x20Firefox'; else { if (_0x10fbff[_0x48547f(0x2ae)](_0x48547f(0xa3)) !== -0x1 && _0x10fbff[_0x48547f(0x2ae)](_0x48547f(0x2df)) === -0x1) _0x1127a6 = 'Apple\x20Safari'; else { if (_0x10fbff[_0x48547f(0x2ae)](_0x48547f(0x201)) !== -0x1) _0x1127a6 = 'Opera'; } } } } let _0x5a61a0 = _0x48547f(0xbd); if (/Mobi|Android|iPhone/i[_0x48547f(0x183)](_0x10fbff)) _0x5a61a0 = _0x48547f(0x291); else { if (/Tablet|iPad/i[_0x48547f(0x183)](_0x10fbff)) _0x5a61a0 = _0x48547f(0x1b7); } const _0x3541cd = window[_0x48547f(0x498)][_0x48547f(0x4a9)] + 'x' + window[_0x48547f(0x498)]['height'] + '\x20(' + (window[_0x48547f(0x3d3)] || 0x1) + 'x)', _0x1048fb = navigator[_0x48547f(0x86)] ? navigator[_0x48547f(0x86)] + _0x48547f(0x2ef) : _0x48547f(0x3e9), _0x39b175 = navigator[_0x48547f(0x2c0)] ? (navigator['connection']['effectiveType'] || '4G')[_0x48547f(0x3aa)]() + '\x20(' + (navigator['connection']['downlink'] || 0xf) + _0x48547f(0x51f) : _0x48547f(0x24f); let _0x4f71c = sessionStorage['getItem'](_0x48547f(0x132)), _0x27ae04 = sessionStorage[_0x48547f(0x3ee)](_0x48547f(0x33b)); if (!_0x4f71c) try { const _0x2c2686 = new AbortController(), _0x383cf3 = setTimeout(() => _0x2c2686[_0x48547f(0x1ee)](), 0x7d0), _0x5ec51e = await fetch(_0x48547f(0x222), { 'signal': _0x2c2686['signal'] }); clearTimeout(_0x383cf3); if (_0x5ec51e['ok']) { const _0xbd9631 = await _0x5ec51e[_0x48547f(0x258)](); _0xbd9631 && _0xbd9631['ip'] && (_0x4f71c = _0xbd9631['ip'], _0x27ae04 = _0x48547f(0x3bc), sessionStorage['setItem']('lfl_cached_visitor_ip', _0x4f71c), sessionStorage[_0x48547f(0x2ed)]('lfl_cached_visitor_loc', _0x27ae04)); } } catch (_0x2a06a1) { } !_0x4f71c && (_0x4f71c = '127.0.0.1\x20(Yerel\x20İstemci)', _0x27ae04 = _0x48547f(0x2c2)); const _0xc2dff6 = _0x5b0dcd[_0x48547f(0x37d)], _0x2c7945 = _0xc2dff6 ? _0xc2dff6['username'] : _0x48547f(0x1b3), _0x59087f = _0xc2dff6 ? _0xc2dff6[_0x48547f(0x2f0)] : _0x48547f(0x26a); let _0x1ba354 = []; try { _0x1ba354 = JSON[_0x48547f(0x45c)](localStorage[_0x48547f(0x3ee)](_0x48547f(0x1bf)) || '[]'); } catch (_0x1406d2) { _0x1ba354 = []; } const _0x2f7eb2 = { 'id': Date['now']() + Math['random']()[_0x48547f(0x2ff)](0x24)['substring'](0x2, 0x6), 'timestamp': new Date()[_0x48547f(0x439)](), 'ipAddress': _0x4f71c, 'country': _0x27ae04 || _0x48547f(0x175), 'operatingSystem': _0x304bc1, 'browser': _0x1127a6, 'deviceType': _0x5a61a0, 'screen': _0x3541cd, 'cores': _0x1048fb, 'connection': _0x39b175, 'language': navigator['language'] || 'tr-TR', 'username': _0x2c7945, 'role': _0x59087f, 'method': _0x48547f(0x425), 'path': _0x28ace4 && _0x28ace4[_0x48547f(0x18d)] ? _0x28ace4[_0x48547f(0x18d)] : '/dashboard', 'statusCode': 0xc8 }, _0x111252 = _0x1ba354[0x0]; if (_0x111252 && _0x111252[_0x48547f(0xad)] === _0x2f7eb2[_0x48547f(0xad)] && _0x111252[_0x48547f(0x18d)] === _0x2f7eb2['path'] && Date[_0x48547f(0xd3)]() - new Date(_0x111252[_0x48547f(0x4d3)])[_0x48547f(0x248)]() < 0x1388) return { 'ok': !![] }; _0x1ba354[_0x48547f(0x471)](_0x2f7eb2); if (_0x1ba354['length'] > 0xc8) _0x1ba354 = _0x1ba354['slice'](0x0, 0xc8); localStorage[_0x48547f(0x2ed)]('lfl_access_logs', JSON['stringify'](_0x1ba354)); } catch (_0x524fe6) { } return { 'ok': !![], 'status': 0xc8 }; }, async 'getAccessLogs'() { const _0x2dc369 = _0x48547c; let _0x17d4b4 = []; try { _0x17d4b4 = JSON[_0x2dc369(0x45c)](localStorage[_0x2dc369(0x3ee)](_0x2dc369(0x1bf)) || '[]'); } catch (_0xb96d6e) { _0x17d4b4 = []; } return { 'logs': _0x17d4b4 }; } }; function _0x44db8b(_0x2e73bc) { const _0x565e19 = _0x48547c; if (!_0x2e73bc && _0x2e73bc !== 0x0) return ''; return String(_0x2e73bc)[_0x565e19(0x1ed)](/&/g, _0x565e19(0x445))[_0x565e19(0x1ed)](/</g, _0x565e19(0x3be))[_0x565e19(0x1ed)](/>/g, _0x565e19(0x28a))[_0x565e19(0x1ed)](/"/g, _0x565e19(0x289))[_0x565e19(0x1ed)](/'/g, '&#39;'); } function _0x43b520(_0x1f5e01, _0x5a2206, _0x341b08) { const _0x1b40e3 = _0x48547c, _0x34b013 = document[_0x1b40e3(0xd9)](_0x1b40e3(0x13c)); if (!_0x34b013) return; const _0x37b1bc = document[_0x1b40e3(0x315)](_0x1b40e3(0x223)); _0x37b1bc[_0x1b40e3(0x427)] = _0x1b40e3(0x389) + _0x1f5e01, _0x37b1bc[_0x1b40e3(0x430)] = _0x1b40e3(0x1ff) + _0x44db8b(_0x5a2206) + '</strong>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22toast-msg\x22>' + _0x44db8b(_0x341b08) + _0x1b40e3(0x4fb); const _0x1260f9 = _0x37b1bc[_0x1b40e3(0x316)](_0x1b40e3(0x226)), _0x525308 = () => { const _0x4e4b40 = _0x1b40e3; _0x37b1bc[_0x4e4b40(0x37e)][_0x4e4b40(0x16b)](_0x4e4b40(0x11c)), setTimeout(() => _0x37b1bc['remove'](), 0x104); }; _0x1260f9['addEventListener'](_0x1b40e3(0x266), _0x525308), setTimeout(_0x525308, 0x1068), _0x34b013[_0x1b40e3(0x49f)](_0x37b1bc); } function _0x488ab0() { const _0xda73d0 = _0x48547c, _0x372742 = document['getElementById']('kali-intro-splash'); if (!_0x372742) return; const _0x5d8267 = document['getElementById'](_0xda73d0(0x246)), _0x3766a0 = document[_0xda73d0(0xd9)]('intro-cli-text'), _0x173f02 = document[_0xda73d0(0xd9)]('btn-skip-intro'), _0x53e646 = document[_0xda73d0(0xd9)](_0xda73d0(0x3ad)), _0x2e957a = [{ 'pct': 0xa, 'msg': '[0.000000]\x20Linux\x20version\x206.8.11-kali-amd64\x20(devel@kali.org)\x20#1\x20SMP\x20PREEMPT_DYNAMIC' }, { 'pct': 0x19, 'msg': _0xda73d0(0x3f0) }, { 'pct': 0x2d, 'msg': _0xda73d0(0x242) }, { 'pct': 0x41, 'msg': _0xda73d0(0x408) }, { 'pct': 0x55, 'msg': _0xda73d0(0x1b8) }, { 'pct': 0x64, 'msg': '[4.920440]\x20lfl-radar:\x20Defense\x20radar\x20telemetry\x20locked\x20-\x20DEFCON\x204\x20STABLE' }]; let _0x44b4c1 = null, _0x563a2a = ![]; function _0x584b0a() { if (_0x563a2a) return; _0x563a2a = !![]; if (_0x44b4c1) cancelAnimationFrame(_0x44b4c1); _0x372742['classList']['add']('fade-out'), setTimeout(() => { const _0x17de81 = _0x78d9; _0x372742[_0x17de81(0xe6)][_0x17de81(0x234)] = _0x17de81(0x140), !_0x5b0dcd[_0x17de81(0x2da)] && (_0x5b0dcd['visualsBooted'] = !![], _0x45cd29(), typeof initAnimationEngine === _0x17de81(0x2e9) && initAnimationEngine()); }, 0x15e); } function _0x45714e() { const _0x2af4fc = _0xda73d0; _0x563a2a = ![], _0x372742[_0x2af4fc(0xe6)]['display'] = _0x2af4fc(0x354), _0x372742[_0x2af4fc(0x37e)]['remove']('fade-out'); if (_0x5d8267) _0x5d8267[_0x2af4fc(0xe6)]['width'] = '0%'; if (_0x3766a0) _0x3766a0[_0x2af4fc(0x19b)] = 'modprobe\x20--force-vermagic\x20lfl_kernel_shield.ko'; const _0x1f35de = 0xc80, _0x285a05 = performance[_0x2af4fc(0xd3)](); setTimeout(() => { if (!_0x563a2a) _0x584b0a(); }, 0xed8); function _0x4f5c51(_0x3c0ae5) { const _0x15ce94 = _0x2af4fc; if (_0x563a2a) return; const _0x550655 = _0x3c0ae5 - _0x285a05, _0x23c341 = Math['min'](_0x550655 / _0x1f35de, 0x1), _0xaf47a6 = Math[_0x15ce94(0x3f6)](_0x23c341 * 0x64); if (_0x5d8267) _0x5d8267[_0x15ce94(0xe6)][_0x15ce94(0x4a9)] = _0xaf47a6 + '%'; for (let _0x25dabd = _0x2e957a[_0x15ce94(0x14a)] - 0x1; _0x25dabd >= 0x0; _0x25dabd--) { if (_0xaf47a6 >= _0x2e957a[_0x25dabd][_0x15ce94(0x51d)]) { _0x3766a0 && _0x3766a0[_0x15ce94(0x19b)] !== _0x2e957a[_0x25dabd][_0x15ce94(0x4a1)] && (_0x3766a0['textContent'] = _0x2e957a[_0x25dabd][_0x15ce94(0x4a1)]); break; } } _0x23c341 < 0x1 ? _0x44b4c1 = requestAnimationFrame(_0x4f5c51) : setTimeout(() => { _0x584b0a(); }, 0x118); } _0x44b4c1 = requestAnimationFrame(_0x4f5c51); } _0x173f02 && _0x173f02[_0xda73d0(0x7e)]('click', _0x15dfcb => { _0x15dfcb['stopPropagation'](), _0x584b0a(); }), window['addEventListener'](_0xda73d0(0x2be), _0x3dc1c0 => { const _0x4397aa = _0xda73d0; _0x3dc1c0['key'] === _0x4397aa(0x3a9) && _0x372742[_0x4397aa(0xe6)][_0x4397aa(0x234)] !== _0x4397aa(0x140) && !_0x563a2a && _0x584b0a(); }), _0x53e646 && _0x53e646['addEventListener']('click', () => { _0x45714e(); }), _0x45714e(); } function _0x20ad86(_0x568f73) { const _0x13d619 = _0x48547c; _0x5b0dcd[_0x13d619(0x1be)] = _0x568f73, localStorage['setItem']('lfl_theme', _0x568f73), document[_0x13d619(0x2d1)][_0x13d619(0x413)]('data-theme', _0x568f73), document['body'][_0x13d619(0x413)](_0x13d619(0x499), _0x568f73), document[_0x13d619(0x18b)][_0x13d619(0x427)] = _0x13d619(0x331) + _0x568f73; const _0xb7aa1d = document[_0x13d619(0xd9)](_0x13d619(0x3e8)); if (_0xb7aa1d) { const _0x450623 = { 'cyber-midnight': _0x13d619(0x4ec), 'emerald-matrix': _0x13d619(0x396), 'slate-corporate': _0x13d619(0x12f), 'clean-light': _0x13d619(0x3b8) }; _0xb7aa1d[_0x13d619(0x19b)] = _0x450623[_0x568f73] || 'Cyber\x20Midnight'; } document[_0x13d619(0x2b3)](_0x13d619(0x297))['forEach'](_0xe3a7c8 => { const _0x1ecdb8 = _0x13d619; _0xe3a7c8[_0x1ecdb8(0x37e)]['toggle'](_0x1ecdb8(0x4ed), _0xe3a7c8[_0x1ecdb8(0x111)][_0x1ecdb8(0x3ea)] === _0x568f73); }), sessionStorage['setItem'](_0x13d619(0x1b5), _0x568f73), _0x628037(); } function _0x1618ee() { const _0x325213 = _0x48547c, _0x49e51d = document['getElementById'](_0x325213(0x1ab)), _0x44a305 = document[_0x325213(0xd9)]('theme-menu-popup'); _0x49e51d && _0x44a305 && (_0x49e51d[_0x325213(0x7e)]('click', _0x286527 => { const _0x4e795f = _0x325213; _0x286527['stopPropagation'](), _0x44a305[_0x4e795f(0x37e)][_0x4e795f(0x3a6)](_0x4e795f(0x89)); }), _0x44a305[_0x325213(0x2b3)](_0x325213(0xd2))['forEach'](_0x58511d => { const _0x58a3a0 = _0x325213; _0x58511d[_0x58a3a0(0x7e)](_0x58a3a0(0x266), () => { const _0x4dbf35 = _0x58a3a0, _0x1cbf44 = _0x58511d[_0x4dbf35(0x111)][_0x4dbf35(0x3ea)]; _0x20ad86(_0x1cbf44), _0x44a305['classList'][_0x4dbf35(0x16b)](_0x4dbf35(0x89)); }); })), document['addEventListener'](_0x325213(0x266), () => { const _0x4ac4da = _0x325213; if (_0x44a305) _0x44a305[_0x4ac4da(0x37e)][_0x4ac4da(0x16b)](_0x4ac4da(0x89)); }); } function _0x3cd918(_0x73dcf6) { const _0x2988a2 = _0x48547c; if (_0x73dcf6 === _0x2988a2(0x1ca)) { window[_0x2988a2(0xa2)][_0x2988a2(0x28d)] = _0x2988a2(0x2e3); return; } _0x5b0dcd[_0x2988a2(0x511)] = _0x73dcf6, document[_0x2988a2(0x2b3)](_0x2988a2(0x114))[_0x2988a2(0x93)](_0x5832bf => { const _0x334f98 = _0x2988a2; _0x5832bf['id'] === _0x73dcf6 ? (_0x5832bf[_0x334f98(0x37e)][_0x334f98(0x3e0)](_0x334f98(0x94)), _0x5832bf[_0x334f98(0x37e)][_0x334f98(0x16b)](_0x334f98(0x48d))) : (_0x5832bf[_0x334f98(0x37e)][_0x334f98(0x16b)](_0x334f98(0x94)), _0x5832bf['classList'][_0x334f98(0x3e0)]('page-active')); }), document[_0x2988a2(0x2b3)]('.sidebar-nav\x20.nav-btn')['forEach'](_0x4594cf => { const _0x1a0e05 = _0x2988a2; _0x4594cf['classList']['toggle'](_0x1a0e05(0x4ed), _0x4594cf[_0x1a0e05(0x111)]['page'] === _0x73dcf6); }), document[_0x2988a2(0x2b3)]('#' + _0x73dcf6 + _0x2988a2(0x3cb) + _0x73dcf6 + '\x20[data-reveal-stagger]')[_0x2988a2(0x93)](_0x4d81aa => { const _0x15b989 = _0x2988a2; _0x4d81aa[_0x15b989(0x37e)][_0x15b989(0x16b)](_0x15b989(0x494)); }); const _0x213aa5 = document[_0x2988a2(0xd9)]('current-crumb-title'); if (_0x213aa5) { const _0x1a27a4 = { 'page-dashboard': 'Komuta\x20Merkezi', 'page-academy': _0x2988a2(0x2ec), 'page-commands': _0x2988a2(0x1d9), 'page-terminal': _0x2988a2(0x2ac), 'page-quiz': 'Siber\x20Rol\x20Testi', 'page-glossary': _0x2988a2(0x1c5), 'page-ctf': _0x2988a2(0x2b1), 'page-logs': _0x2988a2(0x358) }; _0x213aa5[_0x2988a2(0x19b)] = _0x1a27a4[_0x73dcf6] || _0x2988a2(0x296); } _0x1c2b7f(_0x73dcf6); _0x73dcf6 === _0x2988a2(0x12c) && _0x54bac7(); const _0x257fdd = document[_0x2988a2(0x316)](_0x2988a2(0x292)); if (_0x257fdd) _0x257fdd[_0x2988a2(0x2fb)]({ 'top': 0x0, 'behavior': _0x2988a2(0x158) }); } function _0x5259c6() { const _0x2670a0 = _0x48547c, _0x5689e2 = document[_0x2670a0(0xd9)](_0x2670a0(0x29a)), _0x313ea9 = document['getElementById'](_0x2670a0(0x17a)), _0x54a7b9 = document[_0x2670a0(0x316)](_0x2670a0(0x336)); function _0x43d9e0() { const _0x53388f = _0x2670a0; if (_0x5689e2) _0x5689e2[_0x53388f(0x37e)][_0x53388f(0x3e0)]('mobile-open'); if (_0x54a7b9) _0x54a7b9[_0x53388f(0x37e)][_0x53388f(0x3e0)](_0x53388f(0x4ed)); } document['querySelectorAll'](_0x2670a0(0x16c))[_0x2670a0(0x93)](_0x5bd6c2 => { const _0x3408a8 = _0x2670a0; _0x5bd6c2[_0x3408a8(0x7e)](_0x3408a8(0x266), () => { const _0x363430 = _0x3408a8, _0x516189 = _0x5bd6c2['dataset'][_0x363430(0x295)]; _0x516189 && (_0x3cd918(_0x516189), _0x43d9e0()); }); }); _0x313ea9 && _0x5689e2 && _0x313ea9[_0x2670a0(0x7e)]('click', () => { const _0x4c945d = _0x2670a0; if (window[_0x4c945d(0x11e)] <= 0x300) { _0x5689e2['classList'][_0x4c945d(0x3e0)]('sidebar-collapsed'); const _0x1d0bb4 = _0x5689e2['classList'][_0x4c945d(0x3a6)](_0x4c945d(0x44b)); if (_0x54a7b9) _0x54a7b9['classList'][_0x4c945d(0x3a6)](_0x4c945d(0x4ed), _0x1d0bb4); } else { _0x5689e2[_0x4c945d(0x37e)][_0x4c945d(0x3e0)](_0x4c945d(0x44b)); if (_0x54a7b9) _0x54a7b9[_0x4c945d(0x37e)][_0x4c945d(0x3e0)](_0x4c945d(0x4ed)); _0x5689e2[_0x4c945d(0x37e)][_0x4c945d(0x3a6)](_0x4c945d(0x2f9)); } }); window[_0x2670a0(0x7e)](_0x2670a0(0xab), () => { const _0x164f8a = _0x2670a0; if (window[_0x164f8a(0x11e)] <= 0x300 && _0x5689e2) _0x5689e2[_0x164f8a(0x37e)][_0x164f8a(0x3e0)](_0x164f8a(0x2f9)); else { if (_0x5689e2) { _0x5689e2['classList'][_0x164f8a(0x3e0)]('mobile-open'); if (_0x54a7b9) _0x54a7b9[_0x164f8a(0x37e)][_0x164f8a(0x3e0)]('active'); } } }); _0x54a7b9 && _0x54a7b9[_0x2670a0(0x7e)]('click', _0x43d9e0); const _0x744060 = document[_0x2670a0(0xd9)](_0x2670a0(0x1d0)); _0x744060 && _0x744060[_0x2670a0(0x7e)](_0x2670a0(0x266), () => _0x3cd918(_0x2670a0(0x3c0))); const _0x108369 = document['getElementById'](_0x2670a0(0xc4)); _0x108369 && _0x108369['addEventListener']('click', () => _0x3cd918('page-glossary')); const _0x28ada7 = document[_0x2670a0(0xd9)](_0x2670a0(0x176)); _0x28ada7 && _0x28ada7[_0x2670a0(0x7e)](_0x2670a0(0x266), () => _0x3cd918(_0x2670a0(0x34e))); document[_0x2670a0(0x2b3)]('.btn-copy-social')[_0x2670a0(0x93)](_0xfc5246 => { const _0x277bdd = _0x2670a0; _0xfc5246[_0x277bdd(0x7e)](_0x277bdd(0x266), _0x29c71d => { const _0x20bad2 = _0x277bdd; _0x29c71d[_0x20bad2(0x2d9)](); const _0x48e7bd = _0xfc5246['dataset'][_0x20bad2(0x371)]; if (!_0x48e7bd) return; const _0x17c4ae = _0xfc5246[_0x20bad2(0x316)]('.dev-copy-icon'); navigator[_0x20bad2(0x177)] && navigator['clipboard'][_0x20bad2(0x4af)] ? navigator['clipboard'][_0x20bad2(0x4af)](_0x48e7bd)[_0x20bad2(0x41b)](() => { const _0x5b44f4 = _0x20bad2; _0x17c4ae && (_0x17c4ae[_0x5b44f4(0x19b)] = '✔', _0x17c4ae['style'][_0x5b44f4(0x521)] = _0x5b44f4(0x40a)), _0x43b520(_0x5b44f4(0x47b), _0x5b44f4(0x200), '\x22' + _0x48e7bd + _0x5b44f4(0x41f)), setTimeout(() => { const _0x428c8b = _0x5b44f4; _0x17c4ae && (_0x17c4ae[_0x428c8b(0x19b)] = '⧉', _0x17c4ae[_0x428c8b(0xe6)][_0x428c8b(0x521)] = ''); }, 0x7d0); })['catch'](() => { prompt('Discord\x20Kullanıcı\x20Adı:', _0x48e7bd); }) : prompt(_0x20bad2(0x4cd), _0x48e7bd); }); }); const _0x335c3e = document[_0x2670a0(0xd9)](_0x2670a0(0x14c)) || document[_0x2670a0(0xd9)](_0x2670a0(0xc1)); _0x335c3e && _0x335c3e[_0x2670a0(0x7e)](_0x2670a0(0x266), () => _0x3cd918(_0x2670a0(0x3c0))); const _0x4abe5b = document[_0x2670a0(0xd9)](_0x2670a0(0x8d)); _0x4abe5b && _0x4abe5b[_0x2670a0(0x7e)](_0x2670a0(0x266), () => _0x3cd918(_0x2670a0(0x3c0))); const _0x5f436b = document[_0x2670a0(0xd9)](_0x2670a0(0xde)); _0x5f436b && _0x5f436b[_0x2670a0(0x7e)](_0x2670a0(0x266), () => _0x3cd918(_0x2670a0(0x34e))); const _0x11c33a = document[_0x2670a0(0xd9)](_0x2670a0(0x9b)); _0x11c33a && _0x11c33a[_0x2670a0(0x7e)]('click', () => _0x3cd918('page-terminal')); const _0x1025ce = document['getElementById'](_0x2670a0(0x1c6)); _0x1025ce && _0x1025ce['addEventListener'](_0x2670a0(0x266), () => _0x3cd918(_0x2670a0(0x19c))); const _0x5886e0 = document[_0x2670a0(0xd9)](_0x2670a0(0x41e)); _0x5886e0 && _0x5886e0[_0x2670a0(0x7e)](_0x2670a0(0x266), () => _0x3cd918('page-terminal')); const _0x44b656 = document[_0x2670a0(0xd9)](_0x2670a0(0x2e7)); _0x44b656 && _0x44b656[_0x2670a0(0x7e)]('click', () => { const _0x405e63 = _0x2670a0; _0x3cd918(_0x405e63(0x438)); const _0x5c6a8b = document[_0x405e63(0xd9)](_0x405e63(0xcf)); _0x5c6a8b && (_0x5c6a8b['focus'](), _0x5c6a8b[_0x405e63(0x4f1)]()); }), window[_0x2670a0(0x7e)]('keydown', _0x1e915b => { const _0x18ef35 = _0x2670a0; if ((_0x1e915b[_0x18ef35(0x262)] || _0x1e915b[_0x18ef35(0x4f4)]) && _0x1e915b[_0x18ef35(0x4ff)][_0x18ef35(0x377)]() === 'k') { _0x1e915b[_0x18ef35(0x2d9)](), _0x3cd918(_0x18ef35(0x438)); const _0x106b90 = document[_0x18ef35(0xd9)](_0x18ef35(0xcf)); _0x106b90 && (_0x106b90[_0x18ef35(0xf1)](), _0x106b90[_0x18ef35(0x4f1)]()); } }); } function _0x3a6d39() { const _0x3cb862 = _0x48547c, _0x3db2fe = document[_0x3cb862(0xd9)](_0x3cb862(0x21d)), _0x2047f8 = document['getElementById'](_0x3cb862(0x4c5)), _0x3cd93b = document[_0x3cb862(0xd9)](_0x3cb862(0x335)); function _0x2b0a46(_0x17afed) { const _0x26f264 = _0x3cb862; if (!_0x3cd93b) return; _0x3cd93b[_0x26f264(0x430)] = _0x17afed; } _0x3db2fe && _0x3db2fe[_0x3cb862(0x7e)]('click', () => { const _0x400619 = _0x3cb862; if (_0x5b0dcd[_0x400619(0x433)]) return; _0x5b0dcd['simRunning'] = !![], _0x2b0a46(_0x400619(0x280)), setTimeout(() => { const _0x46073f = _0x400619; _0x2b0a46('\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>[SAVUNMA\x20AKTİF]</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20EF\x20Core\x20LINQ\x20Parametrik\x20Filtreleme\x20devreye\x20girdi!\x20Giriş\x20ham\x20SQL\x20olarak\x20değil,\x20parametrik\x20literal\x20olarak\x20yorumlandı.\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#38bdf8;\x22>Sonuç:\x200\x20Veri\x20Sızıntısı\x20&bull;\x20Güvenlik\x20Seviyesi\x20100%</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'), _0x5b0dcd['simRunning'] = ![], _0x43b520('success', 'SQLi\x20Engellendi', _0x46073f(0x3c3)); }, 0x44c); }), _0x2047f8 && _0x2047f8['addEventListener'](_0x3cb862(0x266), () => { const _0x45fc1c = _0x3cb862; if (_0x5b0dcd[_0x45fc1c(0x433)]) return; _0x5b0dcd[_0x45fc1c(0x433)] = !![], _0x2b0a46(_0x45fc1c(0x3b7)), setTimeout(() => { const _0x457a5c = _0x45fc1c; _0x2b0a46(_0x457a5c(0xa0)), _0x5b0dcd[_0x457a5c(0x433)] = ![], _0x43b520(_0x457a5c(0x47b), 'Clickjacking\x20Engellendi', _0x457a5c(0x323)); }, 0x44c); }); } function _0x9e7295() { const _0x47c4a1 = _0x48547c, _0x10b962 = document[_0x47c4a1(0xd9)](_0x47c4a1(0x153)), _0x5dc84c = document[_0x47c4a1(0xd9)](_0x47c4a1(0xc5)), _0x3d3a89 = document[_0x47c4a1(0xd9)](_0x47c4a1(0x307)), _0x2ca16b = document[_0x47c4a1(0xd9)](_0x47c4a1(0x3b2)), _0x212a2f = document['getElementById'](_0x47c4a1(0x426)); if (!_0x10b962 || !_0x5dc84c || !_0x3d3a89) return; let _0x1cfbe9 = [{ 'id': 0x1, 'title': 'Sunny@SUNNY:\x20~', 'historyHtml': '', 'cmdHistory': [], 'historyCursor': -0x1 }], _0x27da5f = 0x1, _0xfb5844 = 0x2; function _0x2376af() { return _0x1cfbe9['find'](_0xb0689f => _0xb0689f['id'] === _0x27da5f) || _0x1cfbe9[0x0]; } function _0x3ba91d() { const _0x4a69f9 = _0x47c4a1; if (!_0x2ca16b) return; _0x2ca16b[_0x4a69f9(0x430)] = _0x1cfbe9[_0x4a69f9(0x30d)](_0x58aa01 => { const _0x30a0f1 = _0x4a69f9, _0xd1b0f = _0x58aa01['id'] === _0x27da5f, _0x55b2b8 = _0x1cfbe9[_0x30a0f1(0x14a)] > 0x1; return _0x30a0f1(0x288) + (_0xd1b0f ? _0x30a0f1(0x4ed) : '') + _0x30a0f1(0x344) + _0x58aa01['id'] + _0x30a0f1(0x1ba) + _0x44db8b(_0x58aa01[_0x30a0f1(0x4eb)]) + _0x30a0f1(0x49a) + (_0x55b2b8 ? '<button\x20type=\x22button\x22\x20class=\x22kali-tab-close\x22\x20data-close-tab-id=\x22' + _0x58aa01['id'] + _0x30a0f1(0x1b6) : '') + _0x30a0f1(0x2f8); })[_0x4a69f9(0x310)](''), _0x2ca16b['querySelectorAll']('.kali-tab-item')['forEach'](_0x40cac7 => { const _0x10bea9 = _0x4a69f9; _0x40cac7[_0x10bea9(0x7e)](_0x10bea9(0x266), _0xb10bcc => { const _0x5c51e6 = _0x10bea9; if (_0xb10bcc['target']['closest'](_0x5c51e6(0x51c))) return; const _0x36da7f = parseInt(_0x40cac7['dataset'][_0x5c51e6(0x29d)], 0xa); _0x39ee54(_0x36da7f); }); }), _0x2ca16b[_0x4a69f9(0x2b3)](_0x4a69f9(0x51c))['forEach'](_0x52ebd9 => { const _0x231ca5 = _0x4a69f9; _0x52ebd9[_0x231ca5(0x7e)]('click', _0x430e9e => { const _0x155aac = _0x231ca5; _0x430e9e['stopPropagation'](); const _0x592077 = parseInt(_0x52ebd9[_0x155aac(0x111)]['closeTabId'], 0xa); _0x37f92(_0x592077); }); }); } function _0x39ee54(_0xfe57c) { const _0x1c0df2 = _0x47c4a1, _0xa5548c = _0x2376af(); if (_0xa5548c) _0xa5548c[_0x1c0df2(0x43b)] = _0x5dc84c[_0x1c0df2(0x430)]; _0x27da5f = _0xfe57c; const _0x58e810 = _0x2376af(); _0x58e810 && (_0x5dc84c[_0x1c0df2(0x430)] = _0x58e810[_0x1c0df2(0x43b)]), _0x3ba91d(), _0x3d3a89[_0x1c0df2(0xf1)](), _0x10b962['scrollTop'] = _0x10b962[_0x1c0df2(0x4f8)]; } function _0x108f20() { const _0x4c83c7 = _0x47c4a1, _0x5dc78f = _0xfb5844++, _0xd36e1b = _0x4c83c7(0x353) + _0x5dc78f + ')', _0x58ef6a = { 'id': _0x5dc78f, 'title': _0xd36e1b, 'historyHtml': '<div\x20class=\x22kali-motd-tab\x22\x20style=\x22color:\x20#64748b;\x20font-size:\x2011px;\x20margin-bottom:\x208px;\x22>[Terminal\x20Sekmesi\x20#' + _0x5dc78f + _0x4c83c7(0xba), 'cmdHistory': [], 'historyCursor': -0x1 }; _0x1cfbe9[_0x4c83c7(0x4f5)](_0x58ef6a), _0x3ba91d(), _0x39ee54(_0x5dc78f), _0x43b520(_0x4c83c7(0x30b), _0x4c83c7(0x10d), 'Sekme\x20#' + _0x5dc78f + _0x4c83c7(0x251)); } function _0x37f92(_0xe82d0) { const _0x4d2848 = _0x47c4a1; if (_0x1cfbe9[_0x4d2848(0x14a)] <= 0x1) return; const _0x28280a = _0x1cfbe9[_0x4d2848(0x4d8)](_0x5c88e3 => _0x5c88e3['id'] === _0xe82d0); if (_0x28280a === -0x1) return; _0x1cfbe9['splice'](_0x28280a, 0x1), _0x27da5f === _0xe82d0 && (_0x27da5f = _0x1cfbe9[Math[_0x4d2848(0x190)](0x0, _0x28280a - 0x1)]['id']), _0x3ba91d(), _0x39ee54(_0x27da5f); } _0x212a2f && _0x212a2f[_0x47c4a1(0x7e)]('click', _0x5d7d7c => { const _0x3847c4 = _0x47c4a1; _0x5d7d7c[_0x3847c4(0x39b)](), _0x108f20(); }); _0x10b962['addEventListener'](_0x47c4a1(0x266), () => { const _0xd4b417 = _0x47c4a1; _0x3d3a89[_0xd4b417(0xf1)](); }); function _0x3f5ef3(_0x5becb3) { const _0x1a4275 = _0x47c4a1, _0x6e02f7 = _0x5becb3[_0x1a4275(0x2eb)](); if (!_0x6e02f7) return; const _0x419433 = _0x2376af(); _0x419433['cmdHistory'][_0x1a4275(0x4f5)](_0x6e02f7), _0x419433[_0x1a4275(0x49b)] = _0x419433[_0x1a4275(0x168)][_0x1a4275(0x14a)]; if (_0x6e02f7[_0x1a4275(0x377)]() === _0x1a4275(0x319)) { _0x5dc84c[_0x1a4275(0x430)] = '', _0x419433[_0x1a4275(0x43b)] = ''; return; } const _0x3171e5 = document['createElement'](_0x1a4275(0x223)); _0x3171e5[_0x1a4275(0x427)] = _0x1a4275(0xee), _0x3171e5['innerHTML'] = _0x1a4275(0xa7) + _0x44db8b(_0x6e02f7) + _0x1a4275(0x173), _0x5dc84c[_0x1a4275(0x49f)](_0x3171e5); const _0x435280 = _0x1662a0(_0x6e02f7), _0x814448 = document[_0x1a4275(0x315)](_0x1a4275(0x223)); _0x814448[_0x1a4275(0x427)] = _0x1a4275(0x3cd), _0x814448[_0x1a4275(0x430)] = _0x435280, _0x5dc84c['appendChild'](_0x814448), _0x419433[_0x1a4275(0x43b)] = _0x5dc84c[_0x1a4275(0x430)], _0x10b962[_0x1a4275(0x211)] = _0x10b962['scrollHeight']; } window[_0x47c4a1(0x39d)] = function (_0x29df5) { const _0x39a738 = _0x47c4a1; _0x3cd918(_0x39a738(0x34e)), _0x3d3a89['value'] = _0x29df5, _0x3f5ef3(_0x29df5), _0x3d3a89['value'] = '', _0x3d3a89[_0x39a738(0xf1)](); }, _0x1662a0 = function (_0x531ef6) { const _0x82ced0 = _0x47c4a1, _0x4cf0ce = (_0x531ef6 || '')['trim'](), _0x242a8e = _0x4cf0ce[_0x82ced0(0x377)](); if (_0x242a8e === _0x82ced0(0x399) || _0x242a8e === _0x82ced0(0x302)) { const _0x3e004c = _0x5b0dcd[_0x82ced0(0x37d)] && _0x5b0dcd[_0x82ced0(0x37d)][_0x82ced0(0x327)] === _0x82ced0(0x275); if (_0x3e004c) { const _0xb50e31 = _0x5b0dcd[_0x82ced0(0x379)] && Array[_0x82ced0(0x11a)](_0x5b0dcd[_0x82ced0(0x379)]) ? _0x5b0dcd[_0x82ced0(0x379)][_0x82ced0(0x14a)] : 0x0, _0x17fb8f = typeof _0x20de24 !== 'undefined' && _0x20de24[_0x82ced0(0x2d8)] ? _0x20de24[_0x82ced0(0x2d8)][_0x82ced0(0x14a)] : 0x0, _0x1be852 = typeof _0x20de24 !== 'undefined' && typeof _0x20de24['xp'] === _0x82ced0(0x8f) ? _0x20de24['xp'] : 0x0; return _0x82ced0(0x50c) + _0xb50e31 + _0x82ced0(0x42c) + _0x17fb8f + '/6\x20Görev\x20(%' + Math['round'](_0x17fb8f / 0x6 * 0x64) + ')\x20-\x20' + _0x1be852 + _0x82ced0(0x17c); } else return _0x82ced0(0x3d2); } if (_0x242a8e === _0x82ced0(0x154) || _0x242a8e === '?') return '\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>===\x20KALI\x20LINUX\x20&amp;\x20LFL\x20SİBER\x20SAVUNMA\x20KOMUT\x20KÜTÜPHANESİ\x20(140+\x20ARAÇ)\x20===</span>\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[AĞ\x20&amp;\x20PORT\x20TARAMA\x20-\x20NMAP]:</span>\x0a\x20\x20nmap\x20-p-\x20127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Tüm\x2065,535\x20portu\x20SYN\x20stealth\x20taramasıyla\x20inceler\x0a\x20\x20nmap\x208080/tcp\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Belirli\x20bir\x20portun\x20durumunu\x20ve\x20servisini\x20kontrol\x20eder\x0a\x20\x20nmap\x20-F\x20192.168.1.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20En\x20yaygın\x20100\x20portu\x20ultra\x20hızlı\x20tarar\x0a\x20\x20sudo\x20nmap\x20-sn\x20192.168.1.0/24\x20\x20:\x20Yerel\x20ağdaki\x20tüm\x20aktif\x20istemcileri\x20ping\x20taramasıyla\x20listeler\x0a\x20\x20sudo\x20nmap\x20-O\x20192.168.1.17\x20\x20\x20\x20\x20:\x20Hedef\x20cihazın\x20işletim\x20sistemini\x20(OS\x20Fingerprinting)\x20tahmin\x20eder\x0a\x20\x20nmap\x20-Pn\x20192.168.1.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Ping\x20cevap\x20vermeyen\x20gizli\x20sunucuları\x20taramaya\x20zorlar\x0a\x20\x20nmap\x20-sV\x20127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Çalışan\x20servislerin\x20adını\x20ve\x20tam\x20versiyonunu\x20deşifre\x20eder\x0a\x20\x20sudo\x20nmap\x20-sV\x20-p\x205000,7000...\x20:\x20Birden\x20fazla\x20spesifik\x20portun\x20servis\x20detaylarını\x20çıkarır\x0a\x20\x20nmap\x20-sS\x20-T2\x20192.168.1.1\x20\x20\x20\x20\x20\x20:\x20IDS/IPS\x20yakalamasını\x20engellemek\x20için\x20sessiz\x20ve\x20yavaş\x20tarama\x0a\x20\x20nmap\x20--script\x20vuln\x20192.168.1.1:\x20NSE\x20zafiyet\x20veritabanı\x20taraması\x0a\x20\x20nmap\x20-sU\x20-p\x2053,67,123...\x20\x20\x20\x20\x20\x20:\x20UDP\x20servislerini\x20denetler\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[WEB\x20DİZİN\x20&amp;\x20FUZZING\x20&amp;\x20OSINT]:</span>\x0a\x20\x20whois\x20lostfromlight.com\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Alan\x20adı\x20sahiplik\x20ve\x20DNS\x20kayıtlarını\x20sorgular\x0a\x20\x20dig\x20lostfromlight.com\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20DNS\x20A\x20ve\x20NS\x20kayıtlarını\x20çözer\x0a\x20\x20gobuster\x20dir\x20-u\x20http://127.0.0.1\x20-w\x20common.txt:\x20Web\x20sitesindeki\x20gizli\x20dizinleri\x20(/admin,\x20/backup)\x20bulur\x0a\x20\x20ffuf\x20-u\x20http://127.0.0.1/FUZZ\x20-w\x20common.txt\x20\x20\x20:\x20Yüksek\x20hızlı\x20web\x20fuzzer\x20ile\x20parametre\x20ve\x20rotaları\x20ortaya\x20çıkarır\x0a\x20\x20nikto\x20-h\x20192.168.1.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Web\x20sunucusundaki\x20zafiyetleri\x20ve\x20güvenlik\x20başlıklarını\x20tarar\x0a\x20\x20whatweb\x20http://127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Web\x20teknolojilerini\x20(CMS,\x20web\x20server,\x20kütüphaneler)\x20listeler\x0a\x20\x20dirb\x20http://127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Klasik\x20içerik\x20keşif\x20aracı\x0a\x20\x20wfuzz\x20-c\x20-z\x20file,common.txt\x20--hc\x20404\x20...\x20\x20\x20\x20\x20\x20:\x20Gelişmiş\x20filtreli\x20fuzzer\x0a\x20\x20sublist3r\x20-d\x20lfl.local\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Alt\x20alan\x20adlarını\x20(subdomain)\x20keşfeder\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[PAKET\x20ÜRETİMİ\x20&amp;\x20FIREWALL\x20TESTİ]:</span>\x0a\x20\x20sudo\x20hping3\x20-S\x20-p\x2080\x20-c\x201\x20192.168.1.1\x20\x20\x20:\x20Manuel\x20TCP\x20SYN\x20paketiyle\x20açık\x20port\x20doğrulaması\x0a\x20\x20sudo\x20hping3\x20-A\x20-p\x2080\x20-c\x201\x20192.168.1.1\x20\x20\x20:\x20ACK\x20bayrağıyla\x20güvenlik\x20duvarının\x20(Firewall)\x20tepkisini\x20ölçer\x0a\x20\x20hping3\x20-S\x20-p\x2022\x20127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Belirli\x20porta\x20TCP\x20SYN\x20gönderir\x0a\x20\x20hping3\x20-1\x20127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Hedefe\x20ICMP\x20ping\x20yollar\x0a\x20\x20sudo\x20hping3\x20--udp\x20--flood\x20...\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20DoS\x20/\x20Flood\x20dayanıklılık\x20testi\x20simülasyonu\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[ORTADAKİ\x20ADAM\x20(MITM)\x20&amp;\x20AĞ\x20ANALİZİ]:</span>\x0a\x20\x20bettercap\x20-iface\x20lo\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Dinleme\x20ve\x20paket\x20analiz\x20aracı\x0a\x20\x20tcpdump\x20-i\x20eth0\x20-nn\x20-s0\x20-v\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Ham\x20ağ\x20paketlerini\x20canlı\x20yakalar\x0a\x20\x20tshark\x20-i\x201\x20-Y\x20\x22http.request\x22\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Terminal\x20tabanlı\x20Wireshark\x20filtreleyicisi\x0a\x20\x20arpspoof\x20-i\x20eth0\x20-t\x20192.168.1.17...\x20\x20\x20\x20\x20:\x20ARP\x20zehirleme\x20simülasyonu\x0a\x20\x20responder\x20-I\x20eth0\x20-dwv\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20LLMNR/NBT-NS\x20zehirleme\x20analizörü\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[KİMLİK\x20DOĞRULAMA\x20&amp;\x20ŞİFRE\x20DENETİMİ]:</span>\x0a\x20\x20hydra\x20-l\x20admin\x20-p\x20Sebu132009\x20192.168.1.1\x20http-get\x20/\x20:\x20HTTP\x20GET\x20form\x20giriş\x20şifresini\x20test\x20eder\x0a\x20\x20john\x20--wordlist=rockyou.txt\x20hash.txt\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Parola\x20özetlerini\x20(hash)\x20çözer\x0a\x20\x20hashcat\x20-m\x200\x20-a\x200\x20hash.txt\x20rockyou.txt\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20GPU\x20destekli\x20hash\x20kırıcı\x0a\x20\x20cewl\x20https://127.0.0.1\x20-w\x20wordlist.txt\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Siteden\x20özel\x20kelime\x20listesi\x20üretir\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[ZAFİYET\x20&amp;\x20EXPLOIT\x20DENETİMİ]:</span>\x0a\x20\x20sqlmap\x20-u\x20http://127.0.0.1/api/search?q=test\x20--dbs\x20\x20\x20:\x20Otomatik\x20SQL\x20enjeksiyon\x20testi\x0a\x20\x20searchsploit\x20apache\x202.4.49\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Offline\x20Exploit-DB\x20arşivi\x0a\x20\x20nuclei\x20-u\x20http://127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Şablon\x20tabanlı\x20zafiyet\x20tarayıcı\x0a\x20\x20msfconsole\x20-q\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Metasploit\x20Framework\x20konsolu\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[TÜNEL\x20&amp;\x20PIVOTİNG]:</span>\x0a\x20\x20nc\x20-lvnp\x204444\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Netcat\x20port\x20dinleyicisi\x0a\x20\x20socat\x20TCP-LISTEN:8080,fork\x20TCP:127.0.0.1:80\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Çift\x20yönlü\x20soket\x20köprüsü\x0a\x20\x20chisel\x20server\x20-p\x208000\x20--reverse\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20TCP/UDP\x20HTTP\x20tüneli\x0a\x20\x20ssh\x20-D\x201080\x20-q\x20-C\x20-N\x20user@127.0.0.1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20SOCKS5\x20tüneli\x20kurar\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[POWERSHELL\x20&amp;\x20DEFANS]:</span>\x0a\x20\x20powershell\x20.\x5cAudit-Headers.ps1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Zorunlu\x20web\x20güvenlik\x20başlıklarını\x20doğrular\x0a\x20\x20powershell\x20.\x5cPort-Scan.ps1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Çok\x20kanallı\x20runspace\x20port\x20taraması\x20yapar\x0a\x20\x20powershell\x20.\x5cBanner-Grab.ps1\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Sunucu\x20banner\x20gizleme\x20denetimi\x0a\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>Komut\x20geçmişinde\x20gezinmek\x20için\x20[YUKARI/AŞAĞI\x20OK],\x20otomatik\x20tamamlamak\x20için\x20[TAB]\x20tuşuna\x20basın.\x20Temizlemek\x20için\x20\x27clear\x27\x20yazın.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e['includes'](_0x82ced0(0x50f)) || _0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x2d0)) || _0x242a8e['includes'](_0x82ced0(0x33c))) return _0x82ced0(0x39a); if (_0x242a8e[_0x82ced0(0x3d4)]('port-scan') || _0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0xc0))) return _0x82ced0(0x187); if (_0x242a8e['includes'](_0x82ced0(0xb2)) && _0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x1c2))) return '\x0aStarting\x20Nmap\x207.94\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2000:00\x20UTC\x0aInitiating\x20SYN\x20Stealth\x20Scan\x20at\x2000:00\x0aScanning\x20localhost\x20(127.0.0.1)\x20[65535\x20ports]\x0aDiscovered\x20open\x20port\x2080/tcp\x20on\x20127.0.0.1\x0aDiscovered\x20open\x20port\x20443/tcp\x20on\x20127.0.0.1\x0aDiscovered\x20open\x20port\x205000/tcp\x20on\x20127.0.0.1\x0aDiscovered\x20open\x20port\x208080/tcp\x20on\x20127.0.0.1\x0aCompleted\x20SYN\x20Stealth\x20Scan\x20at\x2000:00,\x203.82s\x20elapsed\x20(65535\x20total\x20ports)\x0aNmap\x20scan\x20report\x20for\x20localhost\x20(127.0.0.1)\x0aHost\x20is\x20up\x20(0.000082s\x20latency).\x0aNot\x20shown:\x2065531\x20closed\x20tcp\x20ports\x20(reset)\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>PORT\x20\x20\x20\x20\x20STATE\x20SERVICE\x20\x20\x20\x20\x20\x20REASON</span>\x0a80/tcp\x20\x20\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20http\x20\x20\x20\x20\x20\x20\x20\x20\x20syn-ack\x20ttl\x2064\x20(LFL\x20Kestrel\x20Proxy)\x0a443/tcp\x20\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20https\x20\x20\x20\x20\x20\x20\x20\x20syn-ack\x20ttl\x2064\x20(TLS\x201.3\x20/\x20HSTS\x20Strict)\x0a5000/tcp\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20lfl-api\x20\x20\x20\x20\x20\x20syn-ack\x20ttl\x2064\x20(ASP.NET\x20Core\x20Web\x20API)\x0a8080/tcp\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20http-proxy\x20\x20\x20syn-ack\x20ttl\x2064\x20(Dev\x20Gateway)\x0a\x0aNmap\x20done:\x201\x20IP\x20address\x20(1\x20host\x20up)\x20scanned\x20in\x203.89\x20seconds\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20-p-\x20bayrağı\x20tüm\x2065,535\x20portu\x20denetleyerek\x20hiçbir\x20gölge\x20servisin\x20(Shadow\x20IT)\x20unutulmamasını\x20sağlar.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e[_0x82ced0(0x3d4)]('nmap') && _0x242a8e['includes'](_0x82ced0(0x1e4))) return _0x82ced0(0x4a6); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0xb2)) && _0x242a8e['includes']('-f') && !_0x242a8e[_0x82ced0(0x3d4)]('-p')) return _0x82ced0(0x265); if (_0x242a8e['includes'](_0x82ced0(0xb2)) && _0x242a8e[_0x82ced0(0x3d4)]('-sn')) return _0x82ced0(0xbb); if (_0x242a8e[_0x82ced0(0x3d4)]('nmap') && _0x242a8e['includes']('-o')) return '\x0aStarting\x20Nmap\x207.94\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2000:04\x20UTC\x0aNmap\x20scan\x20report\x20for\x20192.168.1.17\x0aHost\x20is\x20up\x20(0.00034s\x20latency).\x0aDevice\x20type:\x20general\x20purpose\x0aRunning:\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>Microsoft\x20Windows\x2011\x20/\x20Server\x202022\x20(98%)</span>\x0aOS\x20CPE:\x20cpe:/o:microsoft:windows_11\x20cpe:/o:microsoft:windows_10\x0aOS\x20details:\x20Microsoft\x20Windows\x2011\x2023H2\x20(Build\x2022631)\x0aNetwork\x20Distance:\x201\x20hop\x0aTCP\x20Sequence\x20Prediction:\x20Difficulty=260\x20(Good\x20luck!)\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20İşletim\x20sistemi\x20parmak\x20izi\x20çıkarma,\x20TCP/IP\x20yığınındaki\x20TTL\x20ve\x20Window\x20Size\x20tepkilerini\x20inceler.\x20Güvenlik\x20duvarından\x20rastgele\x20TCP\x20ISN\x20üretimi\x20zorunlu\x20tutulmalıdır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e['includes'](_0x82ced0(0xb2)) && _0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x216))) return _0x82ced0(0x3f7); if (_0x242a8e[_0x82ced0(0x3d4)]('nmap') && _0x242a8e[_0x82ced0(0x3d4)]('-sv')) return _0x82ced0(0x22f); if (_0x242a8e[_0x82ced0(0x3d4)]('gobuster')) return _0x82ced0(0x10e); if (_0x242a8e['includes'](_0x82ced0(0x476))) return '\x0a\x20\x20\x20\x20\x20\x20\x20\x20/\x27___\x5c\x20\x20/\x27___\x5c\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20/\x5c_\x20\x5c\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20/\x5c\x20\x5c__/\x20/\x5c\x20\x5c__/\x20\x20__\x20\x20__\x20\x20\x5c//\x5c\x20\x5c\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x5c\x20\x5c\x20,__\x5c\x5c\x20\x5c\x20,__\x5c/\x5c\x20\x5c/\x5c\x20\x5c\x20\x20\x20\x5c\x20\x5c\x20\x5c\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x5c\x20\x5c\x20\x5c_/\x20\x5c\x20\x5c\x20\x5c_/\x5c\x20\x5c\x20\x5c_\x5c\x20\x5c\x20\x20\x20\x5c_\x5c\x20\x5c_\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5c/_/\x20\x20\x20\x20\x5c/_/\x20\x20\x20\x5c/_/____/\x20\x20/\x5c____\x5c\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5c/____/\x20\x20\x0av2.1.0-dev\x0a::\x20Method\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20GET\x0a::\x20URL\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20http://127.0.0.1/FUZZ\x0a::\x20Wordlist\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20/usr/share/wordlists/dirb/common.txt\x0a::\x20Threads\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x2040\x0a________________________________________________\x0a\x0a[Status:\x20<span\x20style=\x22color:\x20#22c55e;\x22>200</span>,\x20Size:\x201840,\x20Words:\x20210]\x20::\x20<span\x20style=\x22color:\x20#38bdf8;\x22>/api/blog</span>\x0a[Status:\x20<span\x20style=\x22color:\x20#eab308;\x22>301</span>,\x20Size:\x20120,\x20Words:\x2015]\x20\x20\x20::\x20<span\x20style=\x22color:\x20#38bdf8;\x22>/login</span>\x20-&gt;\x20/login/\x0a[Status:\x20<span\x20style=\x22color:\x20#ef4444;\x22>403</span>,\x20Size:\x20245,\x20Words:\x2028]\x20\x20\x20::\x20<span\x20style=\x22color:\x20#38bdf8;\x22>/admin</span>\x0a[Status:\x20<span\x20style=\x22color:\x20#22c55e;\x22>200</span>,\x20Size:\x2084,\x20Words:\x206]\x20\x20\x20\x20\x20::\x20<span\x20style=\x22color:\x20#38bdf8;\x22>/robots.txt</span>\x0a\x0a::\x20Progress:\x20[4614/4614]\x20::\x203845\x20req/sec\x20::\x20Duration:\x20[0:00:01]\x20::\x20Errors:\x200\x20::\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20FFuf\x203800+\x20req/sec\x20hızına\x20ulaşır.\x20Kurumsal\x20sunucularda\x20WAF\x20hız\x20sınırlama\x20(Rate\x20Limiting)\x20devreye\x20girerek\x20tek\x20IP\x27den\x20gelen\x20anormallikleri\x20bloke\x20eder.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x20a)) && _0x242a8e[_0x82ced0(0x3d4)]('-s')) return _0x82ced0(0x3b0); if (_0x242a8e[_0x82ced0(0x3d4)]('hping3') && _0x242a8e[_0x82ced0(0x3d4)]('-a')) return _0x82ced0(0xd1); if (_0x242a8e[_0x82ced0(0x3d4)]('hping3') && _0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x388))) return _0x82ced0(0x431); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x328))) return _0x82ced0(0x180); if (_0x242a8e['includes']('hydra')) return _0x82ced0(0x233); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x2a2))) return _0x82ced0(0x29c); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x505))) return _0x82ced0(0x320); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x449))) return '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20__\x20\x20\x20\x20\x20_\x0a\x20\x20\x20____\x20\x20__\x20\x20_______/\x20/__\x20\x20(_)\x0a\x20\x20/\x20__\x20\x5c/\x20/\x20/\x20/\x20___/\x20/\x20_\x20\x5c/\x20/\x0a\x20/\x20/\x20/\x20/\x20/_/\x20/\x20/__/\x20/\x20\x20__/\x20/\x0a/_/\x20/_/\x5c__,_/\x5c___/_/\x5c___/_/\x20\x20\x20v3.2.0\x0a\x0a[INF]\x20Loading\x20rules\x20from\x20/root/nuclei-templates...\x20[8,421\x20templates]\x0a[INF]\x20Targets\x20loaded:\x201\x0a[INF]\x20Running\x20scan\x20against\x20http://127.0.0.1\x20(all\x20protocols)\x0a[INF]\x20[http-missing-security-headers]\x20[http]\x20[info]\x20http://127.0.0.1\x20[0\x20missing\x20headers\x20-\x20100%\x20HARDENED]\x0a[INF]\x20[waf-detect]\x20[http]\x20[info]\x20http://127.0.0.1\x20[LFL\x20Kestrel\x20Custom\x20Defense]\x0a[INF]\x20[ssl-dns-names]\x20[ssl]\x20[info]\x20127.0.0.1:443\x20[*.lfl.defense.local]\x0a[INF]\x20Scan\x20completed\x20in\x202.14s.\x200\x20vulnerabilities\x20discovered.\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x36a))) return _0x82ced0(0x162); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x83))) return _0x82ced0(0x2a1); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0xe9))) return '\x0a--------------------------------------------------------------------------------------------------------\x20---------------------------------\x0a\x20Exploit\x20Title\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|\x20\x20Path\x0a--------------------------------------------------------------------------------------------------------\x20---------------------------------\x0a\x20Apache\x202.4.49\x20-\x20Path\x20Traversal\x20&\x20Remote\x20Code\x20Execution\x20(RCE)\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|\x20multiple/remote/50383.sh\x0a\x20Apache\x202.4.49/2.4.50\x20-\x20Remote\x20Code\x20Execution\x20(RCE)\x20(PoC)\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|\x20php/remote/50538.py\x0a--------------------------------------------------------------------------------------------------------\x20---------------------------------\x0aShellcodes:\x20No\x20Results\x0aPapers:\x20No\x20Results\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Searchsploit\x20yerel\x20Exploit-DB\x20veritabanında\x20CVE\x20araması\x20yapar.\x20Sistemleri\x20her\x20zaman\x20en\x20son\x20güvenlik\x20yamalarında\x20tutun.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x106))) return '\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20=[\x20metasploit\x20v6.3.42-dev\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20]\x0a+\x20--\x20--=[\x202382\x20exploits\x20-\x201234\x20auxiliary\x20-\x20418\x20post\x20\x20\x20\x20\x20\x20\x20]\x0a+\x20--\x20--=[\x201391\x20payloads\x20-\x2046\x20encoders\x20-\x2011\x20nops\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20]\x0a+\x20--\x20--=[\x20Free\x20Metasploit\x20Pro\x20trial:\x20http://r-f.lc/trymsp\x20]\x0a</span>\x0amsf6\x20&gt;\x20<span\x20style=\x22color:\x20#22c55e;\x22>use\x20exploit/multi/handler</span>\x0amsf6\x20exploit(multi/handler)\x20&gt;\x20<span\x20style=\x22color:\x20#94a3b8;\x22>[EDUCATIONAL\x20SANDBOX\x20ACTIVE\x20-\x20SESSIONS\x20CONFINED]</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x91)) || _0x242a8e === 'nc') return _0x82ced0(0x35c); if (_0x242a8e[_0x82ced0(0x3d4)]('tcpdump')) return _0x82ced0(0x4bb); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x26c)) || _0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x31b))) return _0x82ced0(0x2ea); if (_0x242a8e[_0x82ced0(0x3d4)]('chisel') || _0x242a8e['includes'](_0x82ced0(0x189))) return _0x82ced0(0x244); if (_0x242a8e[_0x82ced0(0x370)](_0x82ced0(0x4f0))) { const _0xcc6bd0 = _0x531ef6[_0x82ced0(0x2eb)]()[_0x82ced0(0x1c0)](/\s+/), _0x1c3725 = _0xcc6bd0[_0x82ced0(0x14a)] > 0x1 ? _0xcc6bd0[0x1][_0x82ced0(0x1ed)](/https?:\/\//i, '')['split']('/')[0x0] : _0x82ced0(0x3a0); return _0x82ced0(0x3ec) + _0x44db8b(_0x1c3725['toUpperCase']()) + _0x82ced0(0xbe); } if (_0x242a8e[_0x82ced0(0x370)](_0x82ced0(0x401)) || _0x242a8e[_0x82ced0(0x370)](_0x82ced0(0x9a))) { const _0x261ee5 = _0x531ef6[_0x82ced0(0x2eb)]()['split'](/\s+/), _0x188809 = _0x261ee5[_0x82ced0(0x14a)] > 0x1 ? _0x261ee5[0x1]['replace'](/https?:\/\//i, '')['split']('/')[0x0] : _0x82ced0(0x3a0); return _0x82ced0(0x460) + _0x44db8b(_0x188809) + '\x0a;;\x20global\x20options:\x20+cmd\x0a;;\x20Got\x20answer:\x0a;;\x20-&gt;&gt;HEADER&lt;&lt;-\x20opcode:\x20QUERY,\x20status:\x20NOERROR,\x20id:\x2048120\x0a;;\x20flags:\x20qr\x20rd\x20ra;\x20QUERY:\x201,\x20ANSWER:\x202,\x20AUTHORITY:\x202,\x20ADDITIONAL:\x201\x0a\x0a;;\x20QUESTION\x20SECTION:\x0a;' + _0x44db8b(_0x188809) + _0x82ced0(0x3de) + _0x44db8b(_0x188809) + _0x82ced0(0x20e) + _0x44db8b(_0x188809) + _0x82ced0(0x159) + _0x44db8b(_0x188809) + '.\x09\x09172800\x09IN\x09NS\x09ns1.lostfromlight.com.\x0a' + _0x44db8b(_0x188809) + _0x82ced0(0x326); } if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x1df))) return _0x82ced0(0x1d5); if (_0x242a8e === _0x82ced0(0x36c)) return _0x82ced0(0x2f7); if (_0x242a8e === 'id') return _0x82ced0(0x462); if (_0x242a8e[_0x82ced0(0x370)](_0x82ced0(0x524))) return _0x82ced0(0x33a); if (_0x242a8e === 'pwd') return _0x82ced0(0x44d); if (_0x242a8e[_0x82ced0(0x370)]('ls')) return '\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>Desktop</span>\x20\x20\x20<span\x20style=\x22color:\x20#38bdf8;\x22>Documents</span>\x20\x20\x20<span\x20style=\x22color:\x20#38bdf8;\x22>Downloads</span>\x20\x20\x20<span\x20style=\x22color:\x20#38bdf8;\x22>wordlists</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>Audit-Headers.ps1</span>\x20\x20\x20<span\x20style=\x22color:\x20#22c55e;\x22>Port-Scan.ps1</span>\x20\x20\x20<span\x20style=\x22color:\x20#94a3b8;\x22>common.txt</span>\x20\x20\x20<span\x20style=\x22color:\x20#94a3b8;\x22>targets.txt</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x157))) return '\x0aPRETTY_NAME=\x22Kali\x20GNU/Linux\x20Rolling\x22\x0aNAME=\x22Kali\x20GNU/Linux\x22\x0aVERSION_ID=\x222026.1\x22\x0aVERSION=\x222026.1\x22\x0aID=kali\x0aID_LIKE=debian\x0aHOME_URL=\x22https://www.kali.org/\x22\x0aSUPPORT_URL=\x22https://forums.kali.org/\x22\x0aBUG_REPORT_URL=\x22https://bugs.kali.org/\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x352))) return _0x82ced0(0x311); if (_0x242a8e[_0x82ced0(0x3d4)]('/etc/shadow')) return _0x82ced0(0x44e); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x1ac)) || _0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x3bf))) return _0x82ced0(0x143); if (_0x242a8e[_0x82ced0(0x3d4)](_0x82ced0(0x405)) || _0x242a8e['includes'](_0x82ced0(0x24d))) return _0x82ced0(0x3d0); if (_0x242a8e['startsWith']('ps')) return _0x82ced0(0x28c); if (_0x242a8e === _0x82ced0(0x1ae)) return new Date()[_0x82ced0(0x1ec)](); if (_0x242a8e === _0x82ced0(0x33e)) return _0x82ced0(0x368); if (window[_0x82ced0(0x45a)] && Array[_0x82ced0(0x11a)](window[_0x82ced0(0x45a)])) { const _0x30dde4 = _0x55eb10 => (_0x55eb10 || '')[_0x82ced0(0x1ed)](/["']/g, '\x27')['replace'](/^sudo\s+/, '')[_0x82ced0(0x1ed)](/^powershell\s+/, '')[_0x82ced0(0x1ed)](/^\.\//, '')['replace'](/;+\s*$/, '')[_0x82ced0(0x1ed)](/\s+/g, '\x20')[_0x82ced0(0x2eb)]()['toLowerCase'](), _0x168631 = _0x30dde4(_0x531ef6), _0x429af4 = window[_0x82ced0(0x45a)][_0x82ced0(0x482)](_0x51e112 => _0x30dde4(_0x51e112[_0x82ced0(0x525)]) === _0x168631); if (_0x429af4) return _0x82ced0(0x115) + '<div\x20style=\x22color:\x20#10b981;\x20font-weight:\x20800;\x20margin-bottom:\x206px;\x22>[🎯\x20SİBER\x20AKADEMİ\x20GÖREVİ\x20BAŞARILI\x20//\x20ODA:\x20' + _0x44db8b(_0x429af4['id'][_0x82ced0(0x3aa)]()) + _0x82ced0(0x1c9) + _0x44db8b(_0x429af4[_0x82ced0(0x4eb)]) + ']</div>' + _0x82ced0(0x3af) + _0x44db8b(_0x429af4[_0x82ced0(0xc6)]) + _0x82ced0(0x42d) + _0x82ced0(0x32c) + _0x44db8b(_0x429af4[_0x82ced0(0xb1)]) + _0x82ced0(0x167) + '</div>'; } if (_0x242a8e[_0x82ced0(0x370)](_0x82ced0(0x205))) { const _0x2dded4 = _0x531ef6[_0x82ced0(0x1c0)]('\x20')[0x1] || _0x82ced0(0x2a6); return _0x82ced0(0xcb) + _0x44db8b(_0x2dded4) + '\x20(' + _0x44db8b(_0x2dded4) + _0x82ced0(0x410) + _0x44db8b(_0x2dded4) + _0x82ced0(0xed) + _0x44db8b(_0x2dded4) + ':\x20icmp_seq=2\x20ttl=64\x20time=0.042\x20ms\x0a64\x20bytes\x20from\x20' + _0x44db8b(_0x2dded4) + _0x82ced0(0x3ac) + _0x44db8b(_0x2dded4) + _0x82ced0(0x85); } if (_0x242a8e[_0x82ced0(0x370)]('curl\x20') || _0x242a8e[_0x82ced0(0x370)](_0x82ced0(0x40f))) return _0x82ced0(0x4a7) + new Date()[_0x82ced0(0x1ec)]() + _0x82ced0(0x35d); if (_0x242a8e[_0x82ced0(0x370)]('echo\x20')) return _0x44db8b(_0x531ef6[_0x82ced0(0x1f3)](0x5)); if (_0x242a8e === _0x82ced0(0x21b)) return 'root:x:0:0:root:/root:/bin/bash\x0adaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin\x0akali:x:1000:1000:Kali\x20Linux,,,:/home/kali:/bin/bash\x0asshd:x:110:65534::/run/sshd:/usr/sbin/nologin\x0awww-data:x:33:33:www-data:/var/www:/usr/sbin/nologin'; if (_0x242a8e === _0x82ced0(0x126)) return _0x82ced0(0x4bf); if (_0x242a8e === _0x82ced0(0x185)) return _0x82ced0(0x182); if (window[_0x82ced0(0x43d)] && Array[_0x82ced0(0x11a)](window['ACADEMY_COMMANDS'])) { const _0x226f91 = _0x242a8e['replace'](/^sudo\s+/, '')['replace'](/^powershell\s+/, '')[_0x82ced0(0x1ed)](/^\.\//, '')[_0x82ced0(0x1ed)](/^\\/, '')[_0x82ced0(0x2eb)](), _0x410850 = _0x226f91['split']('\x20')[0x0] || '', _0x92092f = window[_0x82ced0(0x43d)][_0x82ced0(0x482)](_0x3c41db => { const _0x4bca2a = _0x82ced0, _0x540e55 = _0x3c41db[_0x4bca2a(0x21c)]['toLowerCase']()[_0x4bca2a(0x2eb)]()[_0x4bca2a(0x1ed)](/^sudo\s+/, '')[_0x4bca2a(0x1ed)](/^powershell\s+/, '')[_0x4bca2a(0x1ed)](/^\.\//, '')[_0x4bca2a(0x1ed)](/^\\/, '')[_0x4bca2a(0x2eb)](), _0x5cb728 = _0x540e55[_0x4bca2a(0x1c0)]('\x20')[0x0] || ''; if (_0x540e55 === _0x226f91 || _0x3c41db[_0x4bca2a(0x21c)][_0x4bca2a(0x377)]()[_0x4bca2a(0x2eb)]() === _0x242a8e) return !![]; if (_0x410850 && _0x410850 === _0x5cb728) return !![]; if (_0x226f91[_0x4bca2a(0x3d4)](_0x540e55) || _0x540e55['includes'](_0x226f91)) return !![]; return ![]; }); if (_0x92092f) return _0x82ced0(0xf8) + _0x44db8b(_0x531ef6) + _0x82ced0(0x472) + _0x44db8b(_0x92092f['categoryName']) + _0x82ced0(0x374) + _0x44db8b(_0x92092f['badge']) + _0x82ced0(0x23e) + Math[_0x82ced0(0x423)](0x3e8 + Math[_0x82ced0(0x1da)]() * 0x2328) + '</div>\x0a\x20\x20\x20\x20<div\x20style=\x22background:\x20rgba(0,\x200,\x200,\x200.45);\x20border-left:\x203px\x20solid\x20var(--cyan);\x20padding:\x208px\x2012px;\x20border-radius:\x204px;\x20margin:\x206px\x200;\x20color:\x20#e2e8f0;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x20margin-bottom:\x204px;\x22>▶\x20' + _0x44db8b(_0x92092f[_0x82ced0(0x4eb)]) + _0x82ced0(0x166) + _0x44db8b(_0x92092f['desc']) + _0x82ced0(0x31f); } return _0x82ced0(0x4ca) + _0x44db8b(_0x531ef6) + _0x82ced0(0x519); }; function _0x42da91() { const _0x4f7e4f = _0x47c4a1, _0x1beb54 = [_0x4f7e4f(0x154), 'clear', _0x4f7e4f(0x36c), 'id', _0x4f7e4f(0x2aa), _0x4f7e4f(0x21f), 'uname\x20-a', _0x4f7e4f(0x405), _0x4f7e4f(0x378), _0x4f7e4f(0x33e), _0x4f7e4f(0x1ae), 'whois\x20lostfromlight.com', _0x4f7e4f(0x412), 'curl.exe\x20-I\x20https://lostfromlight.com'], _0x57b68b = (window[_0x4f7e4f(0x43d)] || [])[_0x4f7e4f(0x30d)](_0x545487 => _0x545487['cmd']); return Array[_0x4f7e4f(0x1a3)](new Set([..._0x1beb54, ..._0x57b68b])); } let _0x52b1f7 = -0x1, _0x2538f2 = 0x0, _0x15eb3c = null; _0x3d3a89['addEventListener'](_0x47c4a1(0x2be), _0x42b3b7 => { const _0x25cf07 = _0x47c4a1, _0x5ac6e0 = _0x2376af(), _0x41bcec = _0x42da91(); if (_0x42b3b7[_0x25cf07(0x4ff)] === _0x25cf07(0x285)) { _0x42b3b7[_0x25cf07(0x2d9)](); const _0x5d5241 = _0x3d3a89[_0x25cf07(0x411)]; _0x3d3a89[_0x25cf07(0x411)] = '', _0x52b1f7 = -0x1, _0x2538f2 = 0x0, _0x15eb3c = null, _0x3f5ef3(_0x5d5241); } else { if (_0x42b3b7[_0x25cf07(0x4ff)] === _0x25cf07(0x133)) { _0x42b3b7['preventDefault'](), _0x2538f2 = 0x0, _0x15eb3c = null; if (_0x5ac6e0[_0x25cf07(0x168)] && _0x5ac6e0[_0x25cf07(0x168)][_0x25cf07(0x14a)] > 0x0) { if (_0x5ac6e0[_0x25cf07(0x49b)] > 0x0) _0x5ac6e0['historyCursor']--; _0x3d3a89[_0x25cf07(0x411)] = _0x5ac6e0[_0x25cf07(0x168)][_0x5ac6e0[_0x25cf07(0x49b)]] || ''; } else _0x52b1f7 > 0x0 ? _0x52b1f7-- : _0x52b1f7 = _0x41bcec[_0x25cf07(0x14a)] - 0x1, _0x3d3a89[_0x25cf07(0x411)] = _0x41bcec[_0x52b1f7] || ''; } else { if (_0x42b3b7['key'] === 'ArrowDown') _0x42b3b7[_0x25cf07(0x2d9)](), _0x2538f2 = 0x0, _0x15eb3c = null, _0x5ac6e0['cmdHistory'] && _0x5ac6e0[_0x25cf07(0x168)]['length'] > 0x0 ? _0x5ac6e0[_0x25cf07(0x49b)] < _0x5ac6e0[_0x25cf07(0x168)][_0x25cf07(0x14a)] - 0x1 ? (_0x5ac6e0[_0x25cf07(0x49b)]++, _0x3d3a89[_0x25cf07(0x411)] = _0x5ac6e0['cmdHistory'][_0x5ac6e0[_0x25cf07(0x49b)]] || '') : (_0x5ac6e0[_0x25cf07(0x49b)] = _0x5ac6e0[_0x25cf07(0x168)]['length'], _0x3d3a89[_0x25cf07(0x411)] = '') : (_0x52b1f7 < _0x41bcec[_0x25cf07(0x14a)] - 0x1 ? _0x52b1f7++ : _0x52b1f7 = 0x0, _0x3d3a89['value'] = _0x41bcec[_0x52b1f7] || ''); else { if (_0x42b3b7['key'] === 'Tab') { _0x42b3b7[_0x25cf07(0x2d9)](); const _0x4e6a3e = _0x3d3a89[_0x25cf07(0x411)][_0x25cf07(0x2eb)]()[_0x25cf07(0x377)](); let _0x1e51d5 = []; if (!_0x4e6a3e) _0x1e51d5 = _0x41bcec; else { const _0x59801a = _0x41bcec[_0x25cf07(0x129)](_0x2dc958 => _0x2dc958[_0x25cf07(0x377)]()[_0x25cf07(0x370)](_0x4e6a3e)), _0x234f50 = _0x41bcec[_0x25cf07(0x129)](_0x23d67f => !_0x23d67f['toLowerCase']()[_0x25cf07(0x370)](_0x4e6a3e) && _0x23d67f['toLowerCase']()[_0x25cf07(0x3d4)](_0x4e6a3e)); _0x1e51d5 = [..._0x59801a, ..._0x234f50]; } _0x1e51d5['length'] > 0x0 && (_0x15eb3c === _0x4e6a3e ? _0x2538f2 = (_0x2538f2 + 0x1) % _0x1e51d5[_0x25cf07(0x14a)] : (_0x2538f2 = 0x0, _0x15eb3c = _0x4e6a3e), _0x3d3a89[_0x25cf07(0x411)] = _0x1e51d5[_0x2538f2]); } else _0x15eb3c = null; } } } }), _0x3ba91d(); } function _0x2ce95a() { const _0x521997 = _0x48547c, _0x2a8018 = document[_0x521997(0xd9)](_0x521997(0x38f)), _0x2b8877 = document['getElementById'](_0x521997(0x417)); if (!_0x2a8018 || !_0x2b8877) return; window[_0x521997(0xfe)] = function (_0x4bab12) { const _0x1f49a2 = _0x521997, _0x22cd93 = _0x2a8018[_0x1f49a2(0x2b3)]('.curriculum-team-btn'); _0x22cd93[_0x1f49a2(0x93)](_0x5826de => _0x5826de[_0x1f49a2(0x37e)]['remove'](_0x1f49a2(0x4ed))); const _0x5add01 = _0x2a8018[_0x1f49a2(0x316)](_0x1f49a2(0x1a7) + _0x4bab12 + '\x22]') || _0x2a8018[_0x1f49a2(0x316)]('[data-curriculum-team=\x22all\x22]'); if (_0x5add01) _0x5add01[_0x1f49a2(0x37e)][_0x1f49a2(0x16b)]('active'); const _0x420968 = _0x2b8877[_0x1f49a2(0x2b3)](_0x1f49a2(0x26f)); _0x420968[_0x1f49a2(0x93)](_0x2b813b => { const _0x17829c = _0x1f49a2, _0x5665ac = _0x2b813b[_0x17829c(0x111)][_0x17829c(0x24c)]; _0x4bab12 === _0x17829c(0x3a3) || _0x5665ac === _0x4bab12 ? _0x2b813b[_0x17829c(0xe6)]['display'] = _0x17829c(0x1ad) : _0x2b813b[_0x17829c(0xe6)][_0x17829c(0x234)] = _0x17829c(0x140); }); }, _0x2a8018['addEventListener'](_0x521997(0x266), _0x2f0a5d => { const _0x4d6621 = _0x521997, _0x16a5ea = _0x2f0a5d['target'][_0x4d6621(0x1aa)]('.curriculum-team-btn'); if (!_0x16a5ea) return; const _0x3d7c79 = _0x16a5ea[_0x4d6621(0x111)][_0x4d6621(0xa6)] || _0x4d6621(0x3a3); window[_0x4d6621(0xfe)](_0x3d7c79); }), _0x2b8877['addEventListener'](_0x521997(0x266), _0x3ac5b7 => { const _0x102864 = _0x521997, _0x16a3e3 = _0x3ac5b7[_0x102864(0x497)][_0x102864(0x1aa)](_0x102864(0x2ba)); if (_0x16a3e3) { const _0x5751d2 = _0x16a3e3[_0x102864(0x111)]['cat'] || _0x102864(0x3a3); _0x3cd918(_0x102864(0x19c)); const _0x37fe97 = document[_0x102864(0x316)](_0x102864(0x312) + _0x5751d2 + '\x22]'); if (_0x37fe97) _0x37fe97['click'](); return; } const _0x38dbb1 = _0x3ac5b7['target'][_0x102864(0x1aa)]('.btn-jump-terminal-cmd'); if (_0x38dbb1) { const _0xf974da = _0x38dbb1['dataset'][_0x102864(0x21c)] || ''; _0x3cd918(_0x102864(0x34e)), _0xf974da && typeof window[_0x102864(0x39d)] === _0x102864(0x2e9) && window[_0x102864(0x39d)](_0xf974da); } }), window[_0x521997(0xfe)](_0x521997(0x3b3)); } function _0x1a0891() { const _0xb45f1c = _0x48547c, _0x57a567 = document['getElementById'](_0xb45f1c(0x2d5)), _0x4b19a8 = document[_0xb45f1c(0xd9)](_0xb45f1c(0x3da)), _0x4e6ddc = document['getElementById']('academy-category-pills'), _0x5806ad = document[_0xb45f1c(0xd9)]('academy-count-badge'), _0x3ddab7 = document[_0xb45f1c(0xd9)](_0xb45f1c(0x9b)); _0x3ddab7 && _0x3ddab7[_0xb45f1c(0x7e)]('click', () => _0x3cd918('page-terminal')); let _0x293300 = _0xb45f1c(0x3a3); function _0x41098d(_0x30d5f6, _0x58b35c) { const _0x4566ca = _0xb45f1c; if (!_0x57a567) return; const _0x1057e6 = window[_0x4566ca(0x43d)] || [], _0x1c748f = (_0x58b35c || '')[_0x4566ca(0x377)]()[_0x4566ca(0x2eb)](), _0x51b91b = _0x1057e6[_0x4566ca(0x129)](_0x1b3ba7 => { const _0x2d5e86 = _0x4566ca, _0x3900ac = _0x30d5f6 === _0x2d5e86(0x3a3) || _0x1b3ba7[_0x2d5e86(0x1de)] === _0x30d5f6, _0x3f3011 = !_0x1c748f || _0x1b3ba7[_0x2d5e86(0x4eb)]['toLowerCase']()[_0x2d5e86(0x3d4)](_0x1c748f) || _0x1b3ba7[_0x2d5e86(0x384)][_0x2d5e86(0x377)]()[_0x2d5e86(0x3d4)](_0x1c748f) || _0x1b3ba7[_0x2d5e86(0x21c)][_0x2d5e86(0x377)]()['includes'](_0x1c748f) || _0x1b3ba7[_0x2d5e86(0x375)][_0x2d5e86(0x377)]()[_0x2d5e86(0x3d4)](_0x1c748f) || _0x1b3ba7[_0x2d5e86(0x2dc)][_0x2d5e86(0x377)]()[_0x2d5e86(0x3d4)](_0x1c748f); return _0x3900ac && _0x3f3011; }); _0x5806ad && (_0x5806ad['textContent'] = _0x51b91b['length'] + _0x4566ca(0x37f) + _0x1057e6['length'] + '\x20KOMUT\x20LİSTELENDİ'); if (_0x51b91b[_0x4566ca(0x14a)] === 0x0) { _0x57a567[_0x4566ca(0x430)] = _0x4566ca(0x18f) + _0x44db8b(_0x58b35c) + '\x22\x20aramasına\x20uygun\x20komut\x20bulunamadı.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn-ghost-sm\x22\x20id=\x22btn-reset-academy-search\x22\x20style=\x22margin-top:\x2010px;\x22>Filtreleri\x20Temizle</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; const _0x35b533 = document[_0x4566ca(0xd9)](_0x4566ca(0x1e7)); _0x35b533 && _0x35b533[_0x4566ca(0x7e)](_0x4566ca(0x266), () => { const _0x13d990 = _0x4566ca; if (_0x4b19a8) _0x4b19a8[_0x13d990(0x411)] = ''; if (_0x4e6ddc) { _0x4e6ddc[_0x13d990(0x2b3)](_0x13d990(0x199))['forEach'](_0xc7fd89 => _0xc7fd89['classList'][_0x13d990(0x3e0)](_0x13d990(0x4ed))); const _0x1d41d8 = _0x4e6ddc[_0x13d990(0x316)](_0x13d990(0xfd)); if (_0x1d41d8) _0x1d41d8['classList'][_0x13d990(0x16b)](_0x13d990(0x4ed)); } _0x293300 = _0x13d990(0x3a3), _0x41098d(_0x13d990(0x3a3), ''); }); return; } _0x57a567[_0x4566ca(0x430)] = _0x51b91b[_0x4566ca(0x30d)](_0x2a0ab7 => '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22cheatsheet-card\x22\x20data-cmd-id=\x22' + _0x2a0ab7['id'] + _0x4566ca(0x119) + _0x2a0ab7['id'] + '.\x20' + _0x44db8b(_0x2a0ab7['title']) + _0x4566ca(0x442) + _0x44db8b(_0x2a0ab7[_0x4566ca(0x2dc)]) + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22badge-tech\x22>' + _0x44db8b(_0x2a0ab7['badge']) + _0x4566ca(0x29f) + _0x44db8b(_0x2a0ab7[_0x4566ca(0x384)]) + '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22cmd-code-line\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<code>' + _0x44db8b(_0x2a0ab7[_0x4566ca(0x21c)]) + _0x4566ca(0x44c) + _0x44db8b(_0x2a0ab7['cmd']) + _0x4566ca(0x4a0) + _0x44db8b(_0x2a0ab7[_0x4566ca(0x21c)]) + '\x22>⚡\x20Kali\x27de\x20Çalıştır</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20')['join'](''); } _0x4b19a8 && _0x4b19a8[_0xb45f1c(0x7e)](_0xb45f1c(0x4b4), () => { _0x41098d(_0x293300, _0x4b19a8['value']); }), _0x4e6ddc && _0x4e6ddc[_0xb45f1c(0x7e)](_0xb45f1c(0x266), _0x2f848f => { const _0x15fc08 = _0xb45f1c, _0x3a4a44 = _0x2f848f[_0x15fc08(0x497)][_0x15fc08(0x1aa)](_0x15fc08(0x199)); if (!_0x3a4a44) return; _0x4e6ddc[_0x15fc08(0x2b3)](_0x15fc08(0x199))[_0x15fc08(0x93)](_0x688ff8 => _0x688ff8[_0x15fc08(0x37e)][_0x15fc08(0x3e0)](_0x15fc08(0x4ed))), _0x3a4a44[_0x15fc08(0x37e)]['add']('active'), _0x293300 = _0x3a4a44[_0x15fc08(0x111)][_0x15fc08(0x18a)] || _0x15fc08(0x3a3), _0x41098d(_0x293300, _0x4b19a8 ? _0x4b19a8[_0x15fc08(0x411)] : ''); }), _0x57a567 && _0x57a567[_0xb45f1c(0x7e)](_0xb45f1c(0x266), _0xa8cb63 => { const _0x3352ec = _0xb45f1c, _0x301838 = _0xa8cb63[_0x3352ec(0x497)]['closest'](_0x3352ec(0x191)); if (_0x301838) { _0xa8cb63[_0x3352ec(0x39b)](); const _0xd77f8d = _0x301838[_0x3352ec(0x111)][_0x3352ec(0x371)] || ''; if (!_0xd77f8d) return; navigator[_0x3352ec(0x177)][_0x3352ec(0x4af)](_0xd77f8d)[_0x3352ec(0x41b)](() => { const _0x415233 = _0x3352ec, _0x291b8e = _0x301838['textContent']; _0x301838['textContent'] = _0x415233(0xb3), _0x301838[_0x415233(0xe6)][_0x415233(0x269)] = _0x415233(0x40a), _0x301838[_0x415233(0xe6)][_0x415233(0x521)] = 'var(--green)', _0x43b520('success', 'Komut\x20Kopyalandı', '\x22' + _0xd77f8d + _0x415233(0x41f)), setTimeout(() => { const _0x1aa900 = _0x415233; _0x301838[_0x1aa900(0x19b)] = _0x291b8e, _0x301838[_0x1aa900(0xe6)]['borderColor'] = '', _0x301838['style'][_0x1aa900(0x521)] = ''; }, 0x708); })[_0x3352ec(0x224)](() => { const _0x17467d = _0x3352ec; _0x43b520('error', _0x17467d(0x508), _0x17467d(0x447)); }); return; } const _0x450491 = _0xa8cb63['target']['closest'](_0x3352ec(0x392)); if (_0x450491) { _0xa8cb63['stopPropagation'](); const _0x23e849 = _0x450491[_0x3352ec(0x111)][_0x3352ec(0x3fc)] || ''; if (!_0x23e849) return; typeof window[_0x3352ec(0x39d)] === _0x3352ec(0x2e9) && (window[_0x3352ec(0x39d)](_0x23e849), _0x43b520(_0x3352ec(0x30b), _0x3352ec(0x4c8), '\x22' + _0x23e849 + _0x3352ec(0x517))); } }), document[_0xb45f1c(0x2b3)](_0xb45f1c(0x160))[_0xb45f1c(0x93)](_0x1854e0 => { const _0x592e81 = _0xb45f1c; _0x1854e0[_0x592e81(0x7e)]('click', () => { const _0x193b38 = _0x592e81, _0x5ef04d = _0x1854e0[_0x193b38(0x111)][_0x193b38(0x254)]; _0x5ef04d && typeof window[_0x193b38(0x39d)] === _0x193b38(0x2e9) && window['runKaliCommand'](_0x5ef04d); }); }), _0x41098d(_0xb45f1c(0x3a3), ''); } async function _0x333b74() { const _0x13b44d = _0x48547c, _0x3eb8c1 = localStorage[_0x13b44d(0x3ee)]('cyber_token') || sessionStorage[_0x13b44d(0x3ee)]('cyber_token'); if (!_0x3eb8c1) { _0x5c688a(null); return; } _0x5b0dcd['token'] = _0x3eb8c1; try { const _0x17438d = await _0x39c831['me'](); _0x17438d && _0x17438d[_0x13b44d(0xa8)] ? (_0x5b0dcd[_0x13b44d(0x37d)] = _0x17438d['user'], _0x5c688a(_0x17438d[_0x13b44d(0xa8)])) : _0xa9b1c3(); } catch { _0xa9b1c3(); } } function _0x5c688a(_0x1147ba) { const _0x5d5bb7 = _0x48547c, _0x29d54c = document[_0x5d5bb7(0xd9)](_0x5d5bb7(0x369)), _0x379ef8 = document['getElementById'](_0x5d5bb7(0x349)), _0x13ff9f = document[_0x5d5bb7(0xd9)](_0x5d5bb7(0x4e6)); if (!_0x29d54c) return; if (_0x1147ba) { const _0x1cdcad = _0x1147ba[_0x5d5bb7(0x2f0)] === _0x5d5bb7(0x416) || _0x1147ba['username']['toLowerCase']() === _0x5d5bb7(0x275); _0x29d54c[_0x5d5bb7(0x430)] = '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20align-items:\x20center;\x20gap:\x208px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22user-pill-badge\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22pulsing-beacon\x22\x20style=\x22background:\x20' + (_0x1cdcad ? _0x5d5bb7(0x2c5) : _0x5d5bb7(0x40a)) + ';\x22></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-weight:\x20700;\x20color:\x20#ffffff;\x22>' + _0x44db8b(_0x1147ba['username']) + _0x5d5bb7(0x3f9) + (_0x1cdcad ? 'admin' : '') + '\x22>' + (_0x1cdcad ? _0x5d5bb7(0x80) : _0x5d5bb7(0x4fd)) + _0x5d5bb7(0x298); const _0x3ec0b2 = document[_0x5d5bb7(0xd9)]('topbar-logout-btn'); if (_0x3ec0b2) _0x3ec0b2[_0x5d5bb7(0x7e)](_0x5d5bb7(0x266), _0xa9b1c3); if (_0x379ef8) _0x379ef8[_0x5d5bb7(0xe6)][_0x5d5bb7(0x234)] = _0x1cdcad ? _0x5d5bb7(0x1ad) : _0x5d5bb7(0x140); if (_0x13ff9f) _0x13ff9f[_0x5d5bb7(0xe6)]['display'] = _0x1cdcad ? _0x5d5bb7(0x354) : _0x5d5bb7(0x140); const _0x5671cc = document[_0x5d5bb7(0xd9)](_0x5d5bb7(0x4f9)); if (_0x5671cc) _0x5671cc['classList']['toggle'](_0x5d5bb7(0x89), !_0x1cdcad); } else { _0x29d54c[_0x5d5bb7(0x430)] = _0x5d5bb7(0x35f); const _0x1d08f9 = document[_0x5d5bb7(0xd9)](_0x5d5bb7(0x452)); if (_0x1d08f9) _0x1d08f9['addEventListener']('click', _0x194268); if (_0x379ef8) _0x379ef8[_0x5d5bb7(0xe6)][_0x5d5bb7(0x234)] = _0x5d5bb7(0x140); if (_0x13ff9f) _0x13ff9f[_0x5d5bb7(0xe6)][_0x5d5bb7(0x234)] = 'none'; } _0x628037(); } function _0xa9b1c3() { const _0x3bdb1c = _0x48547c; _0x5b0dcd[_0x3bdb1c(0x18c)] = null, _0x5b0dcd[_0x3bdb1c(0x37d)] = null, sessionStorage[_0x3bdb1c(0x394)]('cyber_token'), sessionStorage[_0x3bdb1c(0x394)](_0x3bdb1c(0x1e3)), sessionStorage[_0x3bdb1c(0x394)](_0x3bdb1c(0xb7)), sessionStorage['removeItem'](_0x3bdb1c(0x4e1)), sessionStorage['removeItem'](_0x3bdb1c(0x2fa)), localStorage['removeItem'](_0x3bdb1c(0x1d7)), localStorage[_0x3bdb1c(0x394)](_0x3bdb1c(0x2c8)), localStorage[_0x3bdb1c(0x394)](_0x3bdb1c(0x1e3)), localStorage[_0x3bdb1c(0x394)](_0x3bdb1c(0xb7)), _0x5c688a(null), _0x43b520(_0x3bdb1c(0x30b), _0x3bdb1c(0x47e), _0x3bdb1c(0x27b)), _0x5b0dcd['activePage'] === 'page-logs' && _0x3cd918(_0x3bdb1c(0xa5)); } function _0x1b8ee6() { const _0x28d04f = _0x48547c, _0x123b93 = document[_0x28d04f(0xd9)](_0x28d04f(0x4e4)), _0x4b20e1 = document[_0x28d04f(0xd9)]('btn-close-auth-modal'), _0x11957a = document[_0x28d04f(0xd9)](_0x28d04f(0x4df)), _0x5a0e20 = document['getElementById'](_0x28d04f(0xe3)), _0x2f68d2 = document['getElementById'](_0x28d04f(0x4d1)), _0x14dea4 = document[_0x28d04f(0xd9)]('auth-row-confirm'), _0x45268c = document[_0x28d04f(0xd9)](_0x28d04f(0x257)), _0x2a4ea9 = document[_0x28d04f(0xd9)](_0x28d04f(0x49c)), _0x300c17 = document[_0x28d04f(0xd9)](_0x28d04f(0x402)), _0x4b0fac = document[_0x28d04f(0xd9)](_0x28d04f(0xd8)), _0x3c6ec5 = document[_0x28d04f(0xd9)](_0x28d04f(0x184)), _0x5761fd = document[_0x28d04f(0xd9)](_0x28d04f(0x453)), _0x4ea1be = document[_0x28d04f(0xd9)]('auth-input-confirm'); let _0x2e1a72 = ![]; function _0x5137f7(_0x3eeb4e) { const _0x2770a0 = _0x28d04f; _0x2e1a72 = _0x3eeb4e; if (_0x4b0fac) _0x4b0fac[_0x2770a0(0x430)] = ''; if (_0x11957a) _0x11957a['classList'][_0x2770a0(0x3a6)](_0x2770a0(0x4ed), !_0x3eeb4e); if (_0x5a0e20) _0x5a0e20[_0x2770a0(0x37e)][_0x2770a0(0x3a6)](_0x2770a0(0x4ed), _0x3eeb4e); if (_0x14dea4) _0x14dea4['classList'][_0x2770a0(0x3a6)]('hidden', !_0x3eeb4e); if (_0x3eeb4e) { if (_0x45268c) _0x45268c[_0x2770a0(0x19b)] = 'Yeni\x20Operatör\x20Kaydı'; if (_0x2a4ea9) _0x2a4ea9['textContent'] = _0x2770a0(0x250); if (_0x300c17) _0x300c17[_0x2770a0(0x19b)] = _0x2770a0(0xf5); } else { if (_0x45268c) _0x45268c['textContent'] = _0x2770a0(0x13e); if (_0x2a4ea9) _0x2a4ea9[_0x2770a0(0x19b)] = 'Güvenli\x20Erişim\x20Ağ\x20Geçidi\x20•\x20JWT\x20Bearer\x20Token\x20Yönetimi'; if (_0x300c17) _0x300c17[_0x2770a0(0x19b)] = _0x2770a0(0x19e); } } if (_0x11957a) _0x11957a[_0x28d04f(0x7e)](_0x28d04f(0x266), () => _0x5137f7(![])); if (_0x5a0e20) _0x5a0e20[_0x28d04f(0x7e)](_0x28d04f(0x266), () => _0x5137f7(!![])); if (_0x4b20e1 && _0x123b93) _0x4b20e1[_0x28d04f(0x7e)](_0x28d04f(0x266), () => _0x123b93['classList'][_0x28d04f(0x16b)](_0x28d04f(0x89))); _0x123b93 && _0x123b93[_0x28d04f(0x7e)](_0x28d04f(0x266), _0x120f09 => { const _0x32f7da = _0x28d04f; if (_0x120f09[_0x32f7da(0x497)] === _0x123b93) _0x123b93[_0x32f7da(0x37e)][_0x32f7da(0x16b)]('hidden'); }), _0x2f68d2 && _0x2f68d2[_0x28d04f(0x7e)](_0x28d04f(0x421), async _0x264ef7 => { const _0x35461c = _0x28d04f; _0x264ef7[_0x35461c(0x2d9)](); const _0x4f8aee = _0x3c6ec5[_0x35461c(0x411)][_0x35461c(0x2eb)](), _0x538805 = _0x5761fd[_0x35461c(0x411)], _0x13f5e7 = _0x4ea1be ? _0x4ea1be['value'] : ''; if (_0x2e1a72 && _0x538805 !== _0x13f5e7) { _0x4b0fac && (_0x4b0fac[_0x35461c(0x430)] = _0x35461c(0xfc)); return; } _0x4b0fac && (_0x4b0fac[_0x35461c(0x430)] = _0x35461c(0x361)); try { const _0x4f5d5d = _0x2e1a72 ? await _0x39c831[_0x35461c(0x146)](_0x4f8aee, _0x538805) : await _0x39c831[_0x35461c(0x161)](_0x4f8aee, _0x538805); if (_0x4f5d5d['ok'] && _0x4f5d5d[_0x35461c(0x1e6)] && _0x4f5d5d['data']['token']) _0x5b0dcd['token'] = _0x4f5d5d[_0x35461c(0x1e6)][_0x35461c(0x18c)], _0x5b0dcd[_0x35461c(0x37d)] = _0x4f5d5d[_0x35461c(0x1e6)][_0x35461c(0xa8)], sessionStorage[_0x35461c(0x2ed)]('cyber_token', _0x4f5d5d[_0x35461c(0x1e6)][_0x35461c(0x18c)]), sessionStorage[_0x35461c(0x2ed)](_0x35461c(0x1e3), _0x4f5d5d['data'][_0x35461c(0xa8)][_0x35461c(0x327)]), sessionStorage[_0x35461c(0x2ed)]('cyber_role', _0x4f5d5d[_0x35461c(0x1e6)][_0x35461c(0xa8)][_0x35461c(0x2f0)]), sessionStorage[_0x35461c(0x2ed)](_0x35461c(0x4e1), _0x35461c(0x77)), sessionStorage[_0x35461c(0x2ed)](_0x35461c(0x2fa), new Date()[_0x35461c(0x439)]()), _0x5c688a(_0x4f5d5d[_0x35461c(0x1e6)][_0x35461c(0xa8)]), _0x123b93[_0x35461c(0x37e)]['add']('hidden'), _0x2f68d2[_0x35461c(0x481)](), _0x43b520(_0x35461c(0x47b), _0x35461c(0x424), 'Hoş\x20geldiniz\x20' + _0x4f5d5d[_0x35461c(0x1e6)][_0x35461c(0xa8)]['username'] + _0x35461c(0x1a8)), _0x1c2b7f(_0x5b0dcd[_0x35461c(0x511)]); else { const _0x524699 = _0x4f5d5d[_0x35461c(0x1e6)]?.[_0x35461c(0x2f2)] || 'Kullanıcı\x20adı\x20veya\x20şifre\x20hatalı.'; _0x4b0fac && (_0x4b0fac[_0x35461c(0x430)] = '<div\x20class=\x22alert-box-danger\x22>' + _0x44db8b(_0x524699) + _0x35461c(0x443)); } } catch (_0x23168c) { _0x4b0fac && (_0x4b0fac[_0x35461c(0x430)] = _0x35461c(0x3a8) + _0x44db8b(_0x23168c[_0x35461c(0x461)]) + _0x35461c(0x443)); } }); } function _0x194268() { const _0x5c2c98 = _0x48547c, _0x23cc2a = document[_0x5c2c98(0xd9)](_0x5c2c98(0x4e4)); if (_0x23cc2a) _0x23cc2a[_0x5c2c98(0x37e)][_0x5c2c98(0x3e0)](_0x5c2c98(0x89)); } function _0x628037() { const _0x21102d = _0x48547c, _0x2658cb = document[_0x21102d(0xd9)](_0x21102d(0x268)), _0x2d2f37 = document[_0x21102d(0xd9)](_0x21102d(0x41d)); if (!_0x2658cb) return; const _0x4e181c = [_0x21102d(0x1d7), _0x21102d(0x1e3), _0x21102d(0xb7), _0x21102d(0x4e1), _0x21102d(0x2fa), _0x21102d(0x1b5)]; let _0x59c5af = 0x0; _0x2658cb[_0x21102d(0x430)] = _0x4e181c['map'](_0x1cfa1a => { const _0x3230be = _0x21102d, _0x737150 = sessionStorage['getItem'](_0x1cfa1a), _0x29e223 = _0x737150 !== null && _0x737150 !== undefined && _0x737150 !== ''; if (_0x29e223) _0x59c5af++; const _0x413f6c = _0x29e223 ? _0x1cfa1a === 'cyber_token' ? _0x737150[_0x3230be(0x1f3)](0x0, 0x20) + _0x3230be(0x2fd) + _0x737150['length'] + _0x3230be(0x380) : _0x737150 : _0x3230be(0x16f); return _0x3230be(0x507) + (_0x29e223 ? 'filled' : _0x3230be(0x299)) + '\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22storage-key-name\x22>sessionStorage[\x27' + _0x1cfa1a + _0x3230be(0x4cf) + _0x44db8b(_0x413f6c) + _0x3230be(0x4e9); })[_0x21102d(0x310)](''), _0x2d2f37 && (_0x59c5af > 0x0 ? (_0x2d2f37['className'] = _0x21102d(0x4d5), _0x2d2f37[_0x21102d(0x19b)] = _0x21102d(0x4b9) + _0x59c5af + '\x20Anahtar)') : (_0x2d2f37[_0x21102d(0x427)] = _0x21102d(0xbf), _0x2d2f37[_0x21102d(0x19b)] = _0x21102d(0x16e))); } function _0x4320cf() { const _0x2d3672 = _0x48547c, _0x289de8 = document[_0x2d3672(0xd9)](_0x2d3672(0x1a6)), _0x431d7a = document['getElementById'](_0x2d3672(0x42f)); if (!_0x289de8) return; const _0x193cdd = [{ 'q': _0x2d3672(0x4dd), 'options': [{ 'text': _0x2d3672(0x117), 'team': _0x2d3672(0x3b3), 'icon': '' }, { 'text': _0x2d3672(0x2e2), 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x444), 'team': 'purple', 'icon': '' }] }, { 'q': _0x2d3672(0x49e), 'options': [{ 'text': 'Rakibin\x20hiç\x20beklemediği\x20gizli\x20yollardan\x20arkasına\x20dolanıp\x20sürpriz\x20hamleyle\x20kaleyi\x20düşürmek.', 'team': 'red', 'icon': '' }, { 'text': _0x2d3672(0x334), 'team': 'blue', 'icon': '' }, { 'text': 'Kimin\x20kime\x20saldıracağını\x20önceden\x20tahmin\x20edip\x20masadaki\x20dengeleri\x20ve\x20ortak\x20kuralları\x20yönetmek.', 'team': _0x2d3672(0x2a5), 'icon': '' }] }, { 'q': _0x2d3672(0x489), 'options': [{ 'text': _0x2d3672(0x13b), 'team': 'red', 'icon': '' }, { 'text': _0x2d3672(0x4c0), 'team': 'blue', 'icon': '' }, { 'text': _0x2d3672(0x31d), 'team': _0x2d3672(0x2a5), 'icon': '' }] }, { 'q': _0x2d3672(0x130), 'options': [{ 'text': _0x2d3672(0x1c4), 'team': 'red', 'icon': '' }, { 'text': 'Numarayı\x20anında\x20engeller,\x20mesajı\x20siler\x20ve\x20ailemi\x20bu\x20tür\x20tuzaklara\x20düşmemeleri\x20için\x20hemen\x20uyarırım.', 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x455), 'team': _0x2d3672(0x2a5), 'icon': '' }] }, { 'q': _0x2d3672(0x232), 'options': [{ 'text': _0x2d3672(0x279), 'team': 'red', 'icon': '' }, { 'text': _0x2d3672(0x7d), 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x46e), 'team': _0x2d3672(0x2a5), 'icon': '' }] }, { 'q': '6.\x20Büyük\x20bir\x20bankada\x20veya\x20kurumda\x20çalışsaydın\x20hangi\x20görev\x20sana\x20daha\x20heyecan\x20verici\x20gelirdi?', 'options': [{ 'text': _0x2d3672(0xe5), 'team': _0x2d3672(0x3b3), 'icon': '' }, { 'text': _0x2d3672(0x27c), 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x50a), 'team': 'purple', 'icon': '' }] }, { 'q': _0x2d3672(0x46d), 'options': [{ 'text': _0x2d3672(0x4f6), 'team': _0x2d3672(0x3b3), 'icon': '' }, { 'text': _0x2d3672(0x23b), 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x3f5), 'team': 'purple', 'icon': '' }] }, { 'q': _0x2d3672(0xb4), 'options': [{ 'text': _0x2d3672(0xd4), 'team': 'red', 'icon': '' }, { 'text': _0x2d3672(0x4ba), 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x528), 'team': 'purple', 'icon': '' }] }, { 'q': _0x2d3672(0x144), 'options': [{ 'text': _0x2d3672(0x24e), 'team': _0x2d3672(0x3b3), 'icon': '' }, { 'text': _0x2d3672(0x10f), 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x2ad), 'team': _0x2d3672(0x2a5), 'icon': '' }] }, { 'q': _0x2d3672(0x459), 'options': [{ 'text': _0x2d3672(0x450), 'team': _0x2d3672(0x3b3), 'icon': '' }, { 'text': 'Sistemleri\x20virüslere\x20ve\x20siber\x20korsanlara\x20karşı\x20bir\x20kale\x20gibi\x20koruyan\x20\x27Siber\x20Savunma\x20Muhafızı\x27\x20(Blue\x20Team).', 'team': _0x2d3672(0x164), 'icon': '' }, { 'text': _0x2d3672(0x107), 'team': _0x2d3672(0x2a5), 'icon': '' }] }]; let _0x361de2 = 0x0, _0x147915 = []; function _0x1b7063() { const _0x45217d = _0x2d3672; if (_0x361de2 >= _0x193cdd[_0x45217d(0x14a)]) { _0x255d86(); return; } const _0x4d209f = _0x193cdd[_0x361de2], _0x569177 = Math['round']((_0x361de2 + 0x1) / _0x193cdd['length'] * 0x64), _0x54f93f = _0x147915[_0x361de2]; _0x289de8[_0x45217d(0x430)] = _0x45217d(0x110) + _0x569177 + '%;\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-question-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22quiz-step-badge\x22>SORU\x20' + (_0x361de2 + 0x1) + _0x45217d(0x37f) + _0x193cdd['length'] + _0x45217d(0x4cc) + _0x569177 + _0x45217d(0x35e) + _0x44db8b(_0x4d209f['q']) + _0x45217d(0x40c) + _0x4d209f['options'][_0x45217d(0x30d)](_0x593c68 => _0x45217d(0x278) + (_0x54f93f === _0x593c68['team'] ? _0x45217d(0xb9) : '') + _0x45217d(0x22e) + _0x593c68[_0x45217d(0x26e)] + _0x45217d(0xce) + _0x593c68['icon'] + _0x45217d(0x1d2) + _0x44db8b(_0x593c68[_0x45217d(0x451)]) + _0x45217d(0x501))[_0x45217d(0x310)]('') + '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-nav-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' + (_0x361de2 > 0x0 ? _0x45217d(0x253) : _0x45217d(0x48b)) + _0x45217d(0x207), _0x289de8[_0x45217d(0x2b3)]('.quiz-option-item')[_0x45217d(0x93)](_0x4957a9 => { const _0x3ca458 = _0x45217d; _0x4957a9['addEventListener'](_0x3ca458(0x266), () => { const _0x474dee = _0x3ca458, _0x4df6f6 = _0x4957a9[_0x474dee(0x111)][_0x474dee(0x26e)]; _0x147915[_0x361de2] = _0x4df6f6, _0x4957a9[_0x474dee(0x37e)]['add'](_0x474dee(0xb9)), setTimeout(() => { _0x361de2++, _0x1b7063(); }, 0xf0); }); }); const _0x171502 = document[_0x45217d(0xd9)](_0x45217d(0x270)); _0x171502 && _0x171502[_0x45217d(0x7e)](_0x45217d(0x266), () => { _0x361de2 > 0x0 && (_0x361de2--, _0x1b7063()); }); } function _0x255d86() { const _0x484463 = _0x2d3672, _0x5e31ba = _0x147915['filter'](_0x225bd1 => _0x225bd1 === _0x484463(0x3b3))[_0x484463(0x14a)], _0x110d19 = _0x147915['filter'](_0x36341f => _0x36341f === 'blue')[_0x484463(0x14a)], _0x1aaa34 = _0x147915[_0x484463(0x129)](_0x435c49 => _0x435c49 === _0x484463(0x2a5))[_0x484463(0x14a)], _0x16d687 = Math[_0x484463(0x3f6)](_0x5e31ba / _0x147915[_0x484463(0x14a)] * 0x64), _0x2b744e = Math[_0x484463(0x3f6)](_0x110d19 / _0x147915[_0x484463(0x14a)] * 0x64), _0x4edc5a = Math[_0x484463(0x3f6)](_0x1aaa34 / _0x147915[_0x484463(0x14a)] * 0x64); let _0x24cdba = _0x484463(0x3b3), _0x347a75 = '⚔️', _0x813f6 = _0x484463(0x1e5), _0x4fe7b4 = '#f87171', _0x50f1a8 = _0x484463(0x3ff), _0x323894 = 'nmap'; if (_0x110d19 >= _0x5e31ba && _0x110d19 >= _0x1aaa34) _0x24cdba = 'blue', _0x347a75 = _0x484463(0x487), _0x813f6 = _0x484463(0x14f), _0x4fe7b4 = _0x484463(0x3e4), _0x50f1a8 = _0x484463(0x281), _0x323894 = _0x484463(0x164); else _0x1aaa34 > _0x5e31ba && _0x1aaa34 > _0x110d19 && (_0x24cdba = _0x484463(0x2a5), _0x347a75 = '🟣', _0x813f6 = _0x484463(0x267), _0x4fe7b4 = _0x484463(0x286), _0x50f1a8 = _0x484463(0x40b), _0x323894 = _0x484463(0x3a3)); _0x289de8['innerHTML'] = '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-result-box\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-result-hero-icon\x22>' + _0x347a75 + _0x484463(0x1fd) + _0x4fe7b4 + ';\x20border-color:\x20' + _0x4fe7b4 + ';\x20margin-bottom:\x208px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20ANALİZ\x20SONUCU\x20//\x20%100\x20TAMAMLANDI\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2\x20class=\x22quiz-result-role-title\x22\x20style=\x22color:\x20' + _0x4fe7b4 + _0x484463(0x34d) + _0x813f6 + _0x484463(0x3ce) + _0x44db8b(_0x50f1a8) + _0x484463(0x3ef) + _0x16d687 + _0x484463(0x4b2) + _0x5e31ba + _0x484463(0x1b4) + _0x16d687 + _0x484463(0x4d7) + _0x2b744e + '%\x20(' + _0x110d19 + _0x484463(0x1b4) + _0x2b744e + '%;\x20background:\x20#3b82f6;\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-item\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-label-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#c084fc;\x22>🟣\x20Purple\x20Team\x20(Entegre\x20Strateji):</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#c084fc;\x22>' + _0x4edc5a + _0x484463(0x4b2) + _0x1aaa34 + _0x484463(0x1b4) + _0x4edc5a + _0x484463(0x1cb); const _0x4de520 = document[_0x484463(0xd9)](_0x484463(0x8e)); _0x4de520 && _0x4de520['addEventListener'](_0x484463(0x266), () => { const _0x43e928 = _0x484463; window[_0x43e928(0xa2)][_0x43e928(0x28d)] = _0x43e928(0x355) + encodeURIComponent(_0x24cdba); }); const _0x292f93 = document[_0x484463(0xd9)]('btn-quiz-jump-commands'); _0x292f93 && _0x292f93[_0x484463(0x7e)](_0x484463(0x266), () => { const _0x4db3c7 = _0x484463; _0x3cd918(_0x4db3c7(0x19c)); const _0x8c5d6a = document[_0x4db3c7(0x316)](_0x4db3c7(0x312) + _0x323894 + '\x22]'); if (_0x8c5d6a) _0x8c5d6a[_0x4db3c7(0x266)](); }); const _0xe69b39 = document['getElementById'](_0x484463(0xfa)); _0xe69b39 && _0xe69b39[_0x484463(0x7e)]('click', () => _0x3cd918(_0x484463(0x34e))); const _0x439838 = document[_0x484463(0xd9)]('btn-quiz-restart-inner'); _0x439838 && _0x439838[_0x484463(0x7e)](_0x484463(0x266), () => { _0x361de2 = 0x0, _0x147915 = [], _0x1b7063(); }); } _0x431d7a && _0x431d7a[_0x2d3672(0x7e)]('click', () => { const _0x4c560b = _0x2d3672; _0x361de2 = 0x0, _0x147915 = [], _0x1b7063(), _0x43b520('info', _0x4c560b(0x138), _0x4c560b(0x156)); }), _0x1b7063(); } async function _0x54bac7() { const _0x15f188 = _0x48547c; if (!_0x5b0dcd['currentUser'] || _0x5b0dcd[_0x15f188(0x37d)]['role'] !== 'admin' && _0x5b0dcd[_0x15f188(0x37d)]['role'] !== _0x15f188(0x116)) return; try { const _0xa47139 = await _0x39c831[_0x15f188(0x420)](); _0x5b0dcd[_0x15f188(0x379)] = _0xa47139[_0x15f188(0x365)] || []; const _0x574866 = document['getElementById'](_0x15f188(0x484)); if (_0x574866) _0x574866[_0x15f188(0x19b)] = _0x5b0dcd[_0x15f188(0x379)][_0x15f188(0x14a)]; const _0x14306a = document[_0x15f188(0xd9)](_0x15f188(0x1d1)); if (_0x14306a) { const _0x9eb2f8 = new Set(_0x5b0dcd[_0x15f188(0x379)][_0x15f188(0x30d)](_0x4b6d81 => _0x4b6d81['ipAddress']))['size']; _0x14306a[_0x15f188(0x19b)] = _0x9eb2f8; } const _0x27746c = document[_0x15f188(0xd9)]('log-stat-admins'); if (_0x27746c) { const _0x7f136a = _0x5b0dcd['accessLogs'][_0x15f188(0x129)](_0x62dbaa => _0x62dbaa['role'] === _0x15f188(0x416) || _0x62dbaa[_0x15f188(0x327)] === _0x15f188(0x259) || _0x62dbaa['username'] === _0x15f188(0x416))[_0x15f188(0x14a)]; _0x27746c[_0x15f188(0x19b)] = _0x7f136a; } const _0x44618e = document[_0x15f188(0xd9)](_0x15f188(0x4e2)); if (_0x44618e) _0x44618e[_0x15f188(0x19b)] = _0x15f188(0x2ab); const _0x631a89 = document['getElementById'](_0x15f188(0x309)); _0x2f0ee0(_0x631a89 ? _0x631a89[_0x15f188(0x411)] : ''); } catch (_0x4cbff8) { console[_0x15f188(0x2f2)](_0x15f188(0x100), _0x4cbff8); } } function _0x2f0ee0(_0xbe5498 = '') { const _0x4a341e = _0x48547c, _0x2e6a6a = document[_0x4a341e(0xd9)]('access-logs-tbody'); if (!_0x2e6a6a) return; const _0x442e72 = (_0xbe5498 || '')[_0x4a341e(0x377)]()[_0x4a341e(0x2eb)](), _0x1e1c0d = _0x5b0dcd[_0x4a341e(0x379)]['filter'](_0x49cc5d => { const _0x44395 = _0x4a341e; if (!_0x442e72) return !![]; return _0x49cc5d[_0x44395(0xad)] && _0x49cc5d[_0x44395(0xad)][_0x44395(0x377)]()[_0x44395(0x3d4)](_0x442e72) || _0x49cc5d[_0x44395(0x264)] && _0x49cc5d[_0x44395(0x264)][_0x44395(0x377)]()[_0x44395(0x3d4)](_0x442e72) || _0x49cc5d[_0x44395(0x40e)] && _0x49cc5d['browser']['toLowerCase']()[_0x44395(0x3d4)](_0x442e72) || _0x49cc5d['deviceType'] && _0x49cc5d[_0x44395(0x26d)][_0x44395(0x377)]()[_0x44395(0x3d4)](_0x442e72) || _0x49cc5d[_0x44395(0x327)] && _0x49cc5d[_0x44395(0x327)][_0x44395(0x377)]()[_0x44395(0x3d4)](_0x442e72) || _0x49cc5d[_0x44395(0x2f0)] && _0x49cc5d['role']['toLowerCase']()[_0x44395(0x3d4)](_0x442e72) || _0x49cc5d[_0x44395(0x18d)] && _0x49cc5d[_0x44395(0x18d)][_0x44395(0x377)]()[_0x44395(0x3d4)](_0x442e72); }); if (_0x1e1c0d[_0x4a341e(0x14a)] === 0x0) { _0x2e6a6a[_0x4a341e(0x430)] = _0x4a341e(0x2b9); return; } _0x2e6a6a['innerHTML'] = _0x1e1c0d[_0x4a341e(0x30d)](_0x346b69 => { const _0x424158 = _0x4a341e, _0x1bac13 = _0x346b69[_0x424158(0x4d3)] ? new Date(_0x346b69[_0x424158(0x4d3)])[_0x424158(0x12e)]() : '--:--:--', _0x117e1d = _0x346b69[_0x424158(0x4d3)] ? new Date(_0x346b69[_0x424158(0x4d3)])[_0x424158(0x9c)]() : '', _0x4fd0d3 = _0x346b69[_0x424158(0x2f0)] === _0x424158(0x416) || _0x346b69[_0x424158(0x327)] === _0x424158(0x275), _0x560024 = _0x346b69['role'] === _0x424158(0x26a) || !_0x346b69['username'] || _0x346b69['username'] === _0x424158(0x1b3), _0x5c2697 = _0x4fd0d3 ? 'badge-role-admin' : _0x560024 ? _0x424158(0x142) : _0x424158(0x513), _0xe67ef8 = _0x346b69[_0x424158(0xaf)] >= 0xc8 && _0x346b69[_0x424158(0xaf)] < 0x12c ? _0x424158(0x36b) : _0x346b69[_0x424158(0xaf)] === 0x191 || _0x346b69[_0x424158(0xaf)] === 0x193 ? _0x424158(0x2ee) : _0x424158(0x32a), _0x55b56e = _0x346b69['screen'] ? _0x424158(0x1d4) + _0x44db8b(_0x346b69[_0x424158(0x498)]) + _0x424158(0x43e) : '', _0x152be2 = _0x346b69[_0x424158(0x2c0)] ? '<br/><span\x20style=\x22font-size:\x209.5px;\x20color:\x20#a7f3d0;\x20font-family:\x20var(--font-mono);\x22>⚡\x20' + _0x44db8b(_0x346b69['connection']) + _0x424158(0x43e) : '', _0x439ae0 = _0x346b69[_0x424158(0x31e)] ? _0x424158(0x256) + _0x44db8b(_0x346b69[_0x424158(0x31e)]) + _0x424158(0x43e) : '', _0x1b92c0 = _0x346b69[_0x424158(0x3b5)] ? _0x424158(0x195) + _0x44db8b(_0x346b69['country']) + _0x424158(0x43e) : ''; return _0x424158(0x21a) + _0x44db8b(_0x1bac13) + _0x424158(0x1b2) + _0x44db8b(_0x117e1d) + _0x424158(0x44f) + _0x44db8b(_0x346b69[_0x424158(0xad)]) + _0x424158(0x49a) + _0x1b92c0 + _0x424158(0x1ce) + _0x44db8b(_0x346b69['operatingSystem']) + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' + _0x439ae0 + _0x424158(0x2de) + _0x44db8b(_0x346b69[_0x424158(0x40e)]) + _0x424158(0x4a4) + _0x44db8b(_0x346b69[_0x424158(0x26d)] || _0x424158(0x13d)) + _0x424158(0x2a7) + _0x55b56e + _0x424158(0x467) + _0x152be2 + _0x424158(0x46c) + _0x5c2697 + '\x22>' + _0x44db8b(_0x346b69[_0x424158(0x327)]) + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22font-family:\x20var(--font-mono);\x20font-size:\x2011px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20var(--text-secondary);\x20font-weight:\x20600;\x22>' + _0x44db8b(_0x346b69[_0x424158(0xd0)] || 'GET') + _0x424158(0x325) + _0x44db8b(_0x346b69[_0x424158(0x18d)]) + _0x424158(0x287) + _0xe67ef8 + '\x22>' + _0x44db8b(String(_0x346b69[_0x424158(0xaf)] || 0xc8)) + '\x20OK</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; })[_0x4a341e(0x310)](''); } function _0x44854d() { const _0x475026 = _0x48547c, _0x14ff33 = document[_0x475026(0xd9)]('logs-search-input'); _0x14ff33 && _0x14ff33[_0x475026(0x7e)](_0x475026(0x4b4), () => { const _0x9135b3 = _0x475026; _0x2f0ee0(_0x14ff33[_0x9135b3(0x411)]); }); const _0x1d65f6 = document[_0x475026(0xd9)](_0x475026(0x4cb)); _0x1d65f6 && _0x1d65f6[_0x475026(0x7e)]('click', async () => { const _0x246681 = _0x475026; await _0x54bac7(), _0x43b520(_0x246681(0x30b), _0x246681(0x123), 'Ziyaretçi\x20erişim\x20logları\x20yenilendi.'); }); const _0x1c9b90 = document['getElementById'](_0x475026(0x17e)); _0x1c9b90 && _0x1c9b90['addEventListener'](_0x475026(0x266), () => { const _0x18f901 = _0x475026; if (_0x5b0dcd[_0x18f901(0x379)][_0x18f901(0x14a)] === 0x0) { _0x43b520('error', _0x18f901(0x1eb), _0x18f901(0x4ce)); return; } const _0x4d445f = new Blob([JSON[_0x18f901(0x19d)](_0x5b0dcd[_0x18f901(0x379)], null, 0x2)], { 'type': _0x18f901(0x47d) }), _0x64ab4a = URL[_0x18f901(0x3d5)](_0x4d445f), _0x458390 = document[_0x18f901(0x315)]('a'); _0x458390[_0x18f901(0x28d)] = _0x64ab4a, _0x458390[_0x18f901(0x372)] = _0x18f901(0x329) + Date[_0x18f901(0xd3)]() + _0x18f901(0x3a7), document[_0x18f901(0x18b)][_0x18f901(0x49f)](_0x458390), _0x458390[_0x18f901(0x266)](), _0x458390[_0x18f901(0x3e0)](), URL[_0x18f901(0x238)](_0x64ab4a), _0x43b520(_0x18f901(0x47b), 'İndirildi', _0x18f901(0x2d3)); }); } const _0x2d069d = [{ 'tag': 'MFA', 'title': 'Multi-Factor\x20Authentication\x20(Çok\x20Faktörlü\x20Doğrulama)', 'category': _0x48547c(0x151), 'desc': _0x48547c(0x46a), 'analogy': _0x48547c(0x4fa), 'mitigates': _0x48547c(0x35b) }, { 'tag': 'JWT', 'title': 'JSON\x20Web\x20Token\x20(Kriptografik\x20Oturum\x20Zarfı)', 'category': _0x48547c(0x151), 'desc': _0x48547c(0xb8), 'analogy': _0x48547c(0x24a), 'mitigates': _0x48547c(0x4c9) }, { 'tag': 'HASH-SALT', 'title': _0x48547c(0x523), 'category': _0x48547c(0x151), 'desc': _0x48547c(0x3e5), 'analogy': _0x48547c(0x1c8), 'mitigates': _0x48547c(0xd7), 'cmd': _0x48547c(0x124) }, { 'tag': 'OAUTH2', 'title': _0x48547c(0x3c9), 'category': 'auth', 'desc': _0x48547c(0x2f1), 'analogy': _0x48547c(0x2fc), 'mitigates': 'Parola\x20Paylaşımı,\x20Üçüncü\x20Parti\x20Veri\x20Hırsızlığı' }, { 'tag': _0x48547c(0x38e), 'title': _0x48547c(0x1c3), 'category': 'auth', 'desc': _0x48547c(0x50e), 'analogy': _0x48547c(0x373), 'mitigates': _0x48547c(0x305) }, { 'tag': _0x48547c(0xc2), 'title': _0x48547c(0x247), 'category': _0x48547c(0x30f), 'desc': 'Tarayıcıya\x20\x27Bu\x20web\x20sitesine\x20asla\x20güvensiz\x20HTTP\x20ile\x20bağlanma,\x20her\x20zaman\x20zorunlu\x20şifreli\x20HTTPS\x20(TLS\x201.3)\x20ile\x20bağlan\x27\x20talimatını\x20veren\x20güvenlik\x20başlığıdır.', 'analogy': _0x48547c(0x96), 'mitigates': _0x48547c(0x33d), 'cmd': _0x48547c(0x14e) }, { 'tag': 'CSP', 'title': _0x48547c(0x47a), 'category': _0x48547c(0x30f), 'desc': 'Tarayıcının\x20sayfada\x20hangi\x20JavaScript\x20kodlarını,\x20resimleri\x20ve\x20fontları\x20çalıştırabileceğini\x20belirten\x20katı\x20beyaz\x20listedir\x20(whitelist).', 'analogy': _0x48547c(0x3f2), 'mitigates': 'Cross-Site\x20Scripting\x20(XSS),\x20Zararlı\x20Kod\x20Enjeksiyonu' }, { 'tag': _0x48547c(0x1a0), 'title': _0x48547c(0x1d8), 'category': _0x48547c(0x30f), 'desc': 'Bilgisayar\x20ağlarında\x20çalışan\x20her\x20servis\x20için\x20ayrılmış\x20mantıksal\x20iletişim\x20kapısıdır.\x20Bir\x20IP\x20adresinde\x2065.535\x20port\x20bulunur.', 'analogy': 'Büyük\x20bir\x20plazadaki\x20oda\x20numaraları\x20gibidir.\x20Plaza\x20adresi\x20IP\x27dir,\x20plazadaki\x20Muhasebe\x20odası\x2080,\x20Yönetim\x20odası\x2022,\x20Güvenlik\x20odası\x20443\x27tür.', 'mitigates': 'Gereksiz\x20Açık\x20Portların\x20Kapatılması\x20Saldırı\x20Yüzeyini\x20Azaltır', 'cmd': _0x48547c(0x42a) }, { 'tag': _0x48547c(0xac), 'title': _0x48547c(0x3cf), 'category': _0x48547c(0x30f), 'desc': _0x48547c(0x527), 'analogy': 'Evinizin\x20tapudaki\x20açık\x20sokak\x20ve\x20posta\x20adresi\x20gibidir.\x20Kurye\x20paketi\x20teslim\x20etmek\x20için\x20evin\x20posta\x20adresini\x20bilmelidir.', 'mitigates': 'IP\x20Adresi\x20Gizleme\x20(VPN/Tor),\x20IP\x20Spoofing\x20Kalkanları', 'cmd': _0x48547c(0x405) }, { 'tag': 'DNS', 'title': _0x48547c(0x19a), 'category': 'network', 'desc': _0x48547c(0x332), 'analogy': _0x48547c(0x15d), 'mitigates': _0x48547c(0x4b6), 'cmd': _0x48547c(0xbc) }, { 'tag': _0x48547c(0x3e7), 'title': 'TCP\x203\x20Yollu\x20El\x20Sıkışma\x20(Three-Way\x20Handshake)', 'category': _0x48547c(0x30f), 'desc': _0x48547c(0x36e), 'analogy': _0x48547c(0x496), 'mitigates': _0x48547c(0x510), 'cmd': _0x48547c(0x230) }, { 'tag': 'VPN-TUNNEL', 'title': _0x48547c(0x87), 'category': 'network', 'desc': _0x48547c(0x3ae), 'analogy': _0x48547c(0x2cc), 'mitigates': _0x48547c(0x42e), 'cmd': _0x48547c(0x37a) }, { 'tag': _0x48547c(0x9e), 'title': 'SQL\x20Injection\x20(Veritabanı\x20Kod\x20Enjeksiyonu)', 'category': _0x48547c(0x112), 'desc': _0x48547c(0x25f), 'analogy': _0x48547c(0x422), 'mitigates': 'Tüm\x20Veritabanının\x20Çalınması,\x20Veri\x20Silinmesi', 'cmd': 'sqlmap\x20-u\x20\x22http://127.0.0.1/api/search?q=test\x22\x20--dbs' }, { 'tag': _0x48547c(0x436), 'title': _0x48547c(0x263), 'category': _0x48547c(0x112), 'desc': _0x48547c(0x237), 'analogy': _0x48547c(0x1a2), 'mitigates': _0x48547c(0x22b) }, { 'tag': _0x48547c(0x221), 'title': _0x48547c(0x409), 'category': _0x48547c(0x112), 'desc': 'Saldırganın\x20kendi\x20sitesinde\x20görünmez\x20bir\x20iframe\x20açarak\x20içine\x20banka\x20veya\x20yönetim\x20panelinizi\x20gizlemesi\x20ve\x20size\x20\x27Tebrikler\x20Ödül\x20Kazandınız\x27\x20butonuna\x20bastırırken\x20aslında\x20arkadaki\x20gizli\x20butona\x20tıklatmasıdır.', 'analogy': _0x48547c(0x49d), 'mitigates': _0x48547c(0x1d6) }, { 'tag': _0x48547c(0x3fb), 'title': 'Hizmet\x20Engelleme\x20Saldırısı\x20(Denial\x20of\x20Service)', 'category': _0x48547c(0x112), 'desc': _0x48547c(0x236), 'analogy': _0x48547c(0x4ef), 'mitigates': _0x48547c(0x490), 'cmd': _0x48547c(0x206) }, { 'tag': _0x48547c(0x19f), 'title': _0x48547c(0x3f1), 'category': _0x48547c(0x112), 'desc': 'Saldırganın\x20iki\x20taraf\x20(örneğin\x20kurban\x20ve\x20banka\x20sunucusu)\x20arasına\x20gizlice\x20girerek\x20tüm\x20konuşmayı\x20ve\x20şifreleri\x20dinlemesi\x20veya\x20değiştirmesidir.', 'analogy': _0x48547c(0x27e), 'mitigates': 'Zorunlu\x20Uçtan\x20Uca\x20HTTPS\x20(TLS\x201.3),\x20HSTS\x20Preload', 'cmd': _0x48547c(0x10b) }, { 'tag': _0x48547c(0x181), 'title': 'Kaba\x20Kuvvet\x20&\x20Sözlük\x20Parola\x20Saldırısı', 'category': 'attacks', 'desc': _0x48547c(0x1a4), 'analogy': _0x48547c(0x219), 'mitigates': _0x48547c(0x456), 'cmd': _0x48547c(0x42b) }, { 'tag': _0x48547c(0x9f), 'title': _0x48547c(0xea), 'category': _0x48547c(0x112), 'desc': _0x48547c(0x1bd), 'analogy': _0x48547c(0xf6), 'mitigates': 'Güvenlik\x20Farkındalık\x20Eğitimi,\x20FIDO2\x20Donanım\x20Anahtarı' }, { 'tag': 'ZERO-DAY', 'title': 'Sıfır\x20Gün\x20Zafiyeti\x20(Zero-Day\x20Vulnerability)', 'category': _0x48547c(0x112), 'desc': _0x48547c(0x518), 'analogy': 'Kasa\x20üreticisinin\x20dahi\x20bilmediği,\x20fabrikadan\x20çıkarken\x20kasada\x20unutulmuş\x20gizli\x20bir\x20mekanik\x20düğmenin\x20hırsız\x20tarafından\x20keşfedilmesidir.', 'mitigates': _0x48547c(0x3c8) }, { 'tag': _0x48547c(0x212), 'title': _0x48547c(0x350), 'category': _0x48547c(0x112), 'desc': 'Sisteme\x20sızarak\x20tüm\x20dosyaları\x20ve\x20veritabanlarını\x20kırılamaz\x20askeri\x20şifrelerle\x20(AES-256)\x20şifreleyen\x20ve\x20dosyaları\x20geri\x20açmak\x20için\x20milyonlarca\x20dolar\x20fidye\x20talep\x20eden\x20zararlı\x20yazılımdır.', 'analogy': _0x48547c(0x2d7), 'mitigates': _0x48547c(0x131) }, { 'tag': _0x48547c(0x2c7), 'title': _0x48547c(0x15a), 'category': _0x48547c(0x333), 'desc': _0x48547c(0x3d8), 'analogy': _0x48547c(0x11b), 'mitigates': 'MIME\x20Confuse\x20ve\x20Gizli\x20Betik\x20Çalıştırma\x20Saldırıları' }, { 'tag': _0x48547c(0x1f2), 'title': 'Durum\x20Takipli\x20Güvenlik\x20Duvarı\x20(Stateful\x20Firewall\x20/\x20WAF)', 'category': _0x48547c(0x333), 'desc': _0x48547c(0x314), 'analogy': _0x48547c(0x4ae), 'mitigates': _0x48547c(0xec), 'cmd': _0x48547c(0x25a) }, { 'tag': 'EDR-SIEM', 'title': _0x48547c(0x2dd), 'category': 'defense', 'desc': _0x48547c(0x197), 'analogy': 'Bir\x20müzedeki\x20binlerce\x20güvenlik\x20kamerasını\x20tek\x20bir\x20odada\x20canlı\x20izleyen\x20ve\x20alarm\x20çaldığında\x20otomatik\x20çelik\x20kapıları\x20kapatan\x20güvenlik\x20ekibidir.', 'mitigates': _0x48547c(0x39e) }, { 'tag': _0x48547c(0x101), 'title': _0x48547c(0x51a), 'category': _0x48547c(0x333), 'desc': _0x48547c(0x255), 'analogy': _0x48547c(0x194), 'mitigates': _0x48547c(0x125) }, { 'tag': 'ZERO-TRUST', 'title': 'Sıfır\x20Güven\x20Mimarisi\x20(Zero-Trust\x20Architecture)', 'category': _0x48547c(0x333), 'desc': _0x48547c(0x4ab), 'analogy': _0x48547c(0x122), 'mitigates': _0x48547c(0x12b) }, { 'tag': _0x48547c(0x4a5), 'title': _0x48547c(0x516), 'category': _0x48547c(0x333), 'desc': 'Ağda\x20bilerek\x20zafiyetli\x20gibi\x20gösterilen\x20sahte\x20bir\x20sunucu\x20kurarak\x20saldırganların\x20ilgisini\x20buraya\x20çekmek\x20ve\x20onların\x20yöntemlerini\x20analiz\x20etmek\x20için\x20kurulan\x20tuzaktır.', 'analogy': _0x48547c(0x2e6), 'mitigates': _0x48547c(0x3e2) }, { 'tag': 'NMAP', 'title': 'Network\x20Mapper\x20(Ağ\x20Haritalama\x20Aracı)', 'category': 'tools', 'desc': _0x48547c(0x1ef), 'analogy': _0x48547c(0x3cc), 'mitigates': _0x48547c(0x1fb), 'cmd': 'nmap\x20-p-\x20127.0.0.1' }, { 'tag': _0x48547c(0x34c), 'title': 'Gobuster\x20(Web\x20Dizin\x20&\x20Gizli\x20Rota\x20Avcısı)', 'category': _0x48547c(0x529), 'desc': _0x48547c(0x36d), 'analogy': _0x48547c(0x3df), 'mitigates': 'Unutulan\x20Yönetim\x20Panelleri\x20ve\x20Yedek\x20Dosyalarının\x20Tespiti', 'cmd': _0x48547c(0x36f) }, { 'tag': _0x48547c(0x277), 'title': _0x48547c(0x2cd), 'category': 'tools', 'desc': _0x48547c(0x514), 'analogy': _0x48547c(0x366), 'mitigates': _0x48547c(0x11d), 'cmd': 'sudo\x20hping3\x20-S\x20-p\x2080\x20-c\x201\x20192.168.1.1' }, { 'tag': _0x48547c(0x4b1), 'title': 'THC-Hydra\x20(Çok\x20Kanallı\x20Ağ\x20Giriş\x20Denetleyicisi)', 'category': _0x48547c(0x529), 'desc': _0x48547c(0x8a), 'analogy': 'Aynı\x20anda\x2016\x20farklı\x20anahtarı\x20aynı\x20kapının\x20kilidinde\x20deneyen\x20çok\x20kollu\x20robot\x20bir\x20hırsız\x20gibidir.', 'mitigates': _0x48547c(0xc9), 'cmd': _0x48547c(0x42b) }, { 'tag': _0x48547c(0x214), 'title': 'Sqlmap\x20(Otomatik\x20Veritabanı\x20Açık\x20Denetçisi)', 'category': _0x48547c(0x529), 'desc': _0x48547c(0x506), 'analogy': 'Binadaki\x20duvarları\x20özel\x20bir\x20cihazla\x20tarayıp\x20nerede\x20gizli\x20çatlak\x20ve\x20delik\x20olduğunu\x20bulan\x20dedektördür.', 'mitigates': _0x48547c(0x4dc), 'cmd': _0x48547c(0xa1) }, { 'tag': _0x48547c(0x45b), 'title': _0x48547c(0x351), 'category': _0x48547c(0x529), 'desc': _0x48547c(0x4ea), 'analogy': _0x48547c(0x2d6), 'mitigates': 'Ağ\x20Şifreleme\x20Eksikliklerinin\x20ve\x20ARP\x20Zafiyetlerinin\x20Tespiti', 'cmd': _0x48547c(0x10b) }, { 'tag': _0x48547c(0x3b1), 'title': 'CVE\x20(Common\x20Vulnerabilities\x20and\x20Exposures)', 'category': 'tools', 'desc': _0x48547c(0x165), 'analogy': _0x48547c(0x520), 'mitigates': _0x48547c(0x92) }]; function _0x21308a() { const _0x129fcf = _0x48547c, _0x1d6c82 = document[_0x129fcf(0xd9)](_0x129fcf(0xcf)), _0x2e2a33 = document['getElementById'](_0x129fcf(0x2a8)), _0x3247df = document['getElementById']('glossary-cards-container'), _0x3ae4ed = document[_0x129fcf(0xd9)]('glossary-badge-count'); let _0x449b13 = _0x129fcf(0x3a3); _0x3ae4ed && (_0x3ae4ed[_0x129fcf(0x19b)] = _0x2d069d[_0x129fcf(0x14a)] + _0x129fcf(0x28f)); function _0x50ae0d() { const _0x5da76d = _0x129fcf, _0x1a0476 = _0x1d6c82 ? _0x1d6c82[_0x5da76d(0x411)] : ''; _0x48c357(_0x449b13, _0x1a0476); } if (_0x1d6c82) _0x1d6c82[_0x129fcf(0x7e)](_0x129fcf(0x4b4), _0x50ae0d); _0x2e2a33 && _0x2e2a33[_0x129fcf(0x7e)]('click', _0x5f4a45 => { const _0x3167b5 = _0x129fcf, _0x10af0d = _0x5f4a45[_0x3167b5(0x497)][_0x3167b5(0x1aa)](_0x3167b5(0x199)); if (!_0x10af0d) return; _0x2e2a33[_0x3167b5(0x2b3)](_0x3167b5(0x199))[_0x3167b5(0x93)](_0x148610 => _0x148610[_0x3167b5(0x37e)][_0x3167b5(0x3e0)]('active')), _0x10af0d['classList'][_0x3167b5(0x16b)](_0x3167b5(0x4ed)), _0x449b13 = _0x10af0d[_0x3167b5(0x111)][_0x3167b5(0x18a)] || _0x3167b5(0x3a3), _0x50ae0d(); }), _0x3247df && _0x3247df['addEventListener'](_0x129fcf(0x266), _0x1c46a8 => { const _0x21cc5d = _0x129fcf, _0x15c62d = _0x1c46a8[_0x21cc5d(0x497)][_0x21cc5d(0x1aa)]('.btn-cmd-copy'); if (_0x15c62d) { _0x1c46a8['stopPropagation'](); const _0x3d174c = _0x15c62d[_0x21cc5d(0x111)][_0x21cc5d(0x371)] || ''; if (!_0x3d174c) return; navigator[_0x21cc5d(0x177)][_0x21cc5d(0x4af)](_0x3d174c)[_0x21cc5d(0x41b)](() => { const _0x24c1f4 = _0x21cc5d, _0x4c452a = _0x15c62d['textContent']; _0x15c62d[_0x24c1f4(0x19b)] = _0x24c1f4(0xb3), _0x15c62d[_0x24c1f4(0xe6)][_0x24c1f4(0x521)] = 'var(--green)', _0x43b520(_0x24c1f4(0x47b), _0x24c1f4(0x127), '\x22' + _0x3d174c + _0x24c1f4(0x41f)), setTimeout(() => { const _0x2b7942 = _0x24c1f4; _0x15c62d[_0x2b7942(0x19b)] = _0x4c452a, _0x15c62d[_0x2b7942(0xe6)][_0x2b7942(0x521)] = ''; }, 0x708); }); return; } const _0x45141e = _0x1c46a8[_0x21cc5d(0x497)][_0x21cc5d(0x1aa)](_0x21cc5d(0x392)); if (_0x45141e) { _0x1c46a8[_0x21cc5d(0x39b)](); const _0x41cfb7 = _0x45141e[_0x21cc5d(0x111)][_0x21cc5d(0x3fc)] || ''; if (!_0x41cfb7) return; typeof window['runKaliCommand'] === _0x21cc5d(0x2e9) && (window[_0x21cc5d(0x39d)](_0x41cfb7), _0x43b520(_0x21cc5d(0x30b), 'Kali\x20Terminali\x20Devrede', '\x22' + _0x41cfb7 + _0x21cc5d(0x517))); } }), _0x48c357(_0x129fcf(0x3a3), ''); } function _0x48c357(_0x52b51a, _0x2bda41) { const _0xddea23 = _0x48547c, _0x3513c0 = document[_0xddea23(0xd9)](_0xddea23(0xb6)); if (!_0x3513c0) return; const _0x475872 = { 'auth': { 'label': 'Kimlik\x20&\x20Oturum', 'icon': '🔐' }, 'network': { 'label': _0xddea23(0x504), 'icon': '🌐' }, 'attacks': { 'label': _0xddea23(0x2c1), 'icon': '⚔️' }, 'defense': { 'label': _0xddea23(0x43a), 'icon': _0xddea23(0x487) }, 'tools': { 'label': 'Siber\x20Araç\x20(Kali)', 'icon': '💻' } }; function _0x25b000(_0x123bea) { const _0x424dd = _0xddea23; if (!_0x123bea) return ''; return _0x123bea[_0x424dd(0x1c0)](',')[_0x424dd(0x30d)](_0x521dc7 => _0x521dc7['trim']())[_0x424dd(0x129)](Boolean)[_0x424dd(0x30d)](_0x5cf9a8 => '<span\x20class=\x22mitigation-tag-pill\x22>' + _0x44db8b(_0x5cf9a8) + _0x424dd(0x43e))[_0x424dd(0x310)](''); } const _0x9e1b94 = (_0x2bda41 || '')[_0xddea23(0x377)]()[_0xddea23(0x2eb)](), _0x4eca6c = _0x2d069d[_0xddea23(0x129)](_0x2c25f7 => { const _0x20ffcc = _0xddea23, _0x260403 = _0x52b51a === _0x20ffcc(0x3a3) || _0x2c25f7[_0x20ffcc(0x1de)] === _0x52b51a, _0x9137a9 = !_0x9e1b94 || _0x2c25f7[_0x20ffcc(0x491)][_0x20ffcc(0x377)]()['includes'](_0x9e1b94) || _0x2c25f7[_0x20ffcc(0x4eb)]['toLowerCase']()[_0x20ffcc(0x3d4)](_0x9e1b94) || _0x2c25f7[_0x20ffcc(0x384)][_0x20ffcc(0x377)]()[_0x20ffcc(0x3d4)](_0x9e1b94) || _0x2c25f7[_0x20ffcc(0x4c3)]['toLowerCase']()[_0x20ffcc(0x3d4)](_0x9e1b94) || _0x2c25f7['cmd'] && _0x2c25f7[_0x20ffcc(0x21c)][_0x20ffcc(0x377)]()[_0x20ffcc(0x3d4)](_0x9e1b94); return _0x260403 && _0x9137a9; }); if (_0x4eca6c[_0xddea23(0x14a)] === 0x0) { _0x3513c0[_0xddea23(0x430)] = _0xddea23(0x2bb) + _0x44db8b(_0x2bda41) + _0xddea23(0x4d4); return; } _0x3513c0['innerHTML'] = _0x4eca6c[_0xddea23(0x30d)](_0x33ea21 => { const _0xee093f = _0xddea23, _0x1a1795 = _0x475872[_0x33ea21['category']] || { 'label': _0x33ea21[_0xee093f(0x1de)][_0xee093f(0x3aa)](), 'icon': _0xee093f(0x487) }; return _0xee093f(0x3fe) + _0x44db8b(_0x33ea21[_0xee093f(0x1de)]) + '\x22\x20data-reveal>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-card-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-badges-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22glossary-tag-badge\x22>' + _0x44db8b(_0x33ea21[_0xee093f(0x491)]) + _0xee093f(0x108) + _0x44db8b(_0x33ea21['category']) + _0xee093f(0x21e) + _0x1a1795[_0xee093f(0x25d)] + '\x20' + _0x44db8b(_0x1a1795[_0xee093f(0x440)]) + _0xee093f(0x301) + _0x44db8b(_0x33ea21['title']) + _0xee093f(0x1b9) + _0x44db8b(_0x33ea21['desc']) + _0xee093f(0x339) + _0x44db8b(_0x33ea21['analogy']) + _0xee093f(0x50b) + _0x25b000(_0x33ea21[_0xee093f(0x382)]) + _0xee093f(0x136) + (_0x33ea21[_0xee093f(0x21c)] ? _0xee093f(0x241) + _0x44db8b(_0x33ea21[_0xee093f(0x21c)]) + '\x22>📋\x20Kopyala</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-cmd-run\x22\x20data-run=\x22' + _0x44db8b(_0x33ea21['cmd']) + _0xee093f(0x32f) + _0x44db8b(_0x33ea21[_0xee093f(0x21c)]) + '</code>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' : '') + '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; })[_0xddea23(0x310)](''); } const _0x15fe73 = [{ 'id': _0x48547c(0x4d9), 'level': _0x48547c(0x121), 'levelTier': 0x1, 'levelLabel': 'SEVİYE\x201.1\x20//\x20ÇAYLAK\x20SEVİYE', 'badgeColor': '#10b981', 'title': 'Operasyon\x20Kapı\x20Çalan\x20(Op:\x20Port\x20Knock)', 'target': _0x48547c(0x4c1), 'category': 'Ağ\x20&\x20Port\x20Keşfi', 'xp': 0x64, 'story': _0x48547c(0x346), 'tools': [_0x48547c(0xf0), _0x48547c(0xb2), _0x48547c(0x1df), 'base64'], 'quickCmds': [_0x48547c(0x4f3), _0x48547c(0x1cf), _0x48547c(0x28b), 'echo\x20\x22TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==\x22\x20|\x20base64\x20-d'], 'hint': _0x48547c(0x2a0), 'flag': _0x48547c(0x1db), 'successMsg': _0x48547c(0x418) }, { 'id': _0x48547c(0x3c4), 'level': _0x48547c(0x2c4), 'levelTier': 0x1, 'levelLabel': 'SEVİYE\x201.2\x20//\x20ÇAYLAK\x20SEVİYE', 'badgeColor': _0x48547c(0x2b2), 'title': _0x48547c(0x196), 'target': _0x48547c(0x457), 'category': _0x48547c(0x38a), 'xp': 0x96, 'story': _0x48547c(0x99), 'tools': ['ls', _0x48547c(0x18a), _0x48547c(0x16a), 'find'], 'quickCmds': [_0x48547c(0x1a9), 'cat\x20/var/backups/operator_note.txt', _0x48547c(0x271)], 'hint': _0x48547c(0x35a), 'flag': _0x48547c(0xf3), 'successMsg': _0x48547c(0x13a) }, { 'id': _0x48547c(0x337), 'level': _0x48547c(0x3ed), 'levelTier': 0x2, 'levelLabel': 'SEVİYE\x202.1\x20//\x20OPERATÖR\x20SEVİYE', 'badgeColor': _0x48547c(0x141), 'title': _0x48547c(0x348), 'target': _0x48547c(0x105), 'category': _0x48547c(0x134), 'xp': 0xfa, 'story': _0x48547c(0x137), 'tools': [_0x48547c(0x29e), 'gobuster', _0x48547c(0x1df), _0x48547c(0x2a2)], 'quickCmds': [_0x48547c(0x493), _0x48547c(0x52a), _0x48547c(0x27d), _0x48547c(0x3bd)], 'hint': _0x48547c(0x465), 'flag': _0x48547c(0x149), 'successMsg': _0x48547c(0x509) }, { 'id': _0x48547c(0x1fa), 'level': _0x48547c(0x148), 'levelTier': 0x2, 'levelLabel': _0x48547c(0x4c4), 'badgeColor': _0x48547c(0x141), 'title': _0x48547c(0x4d6), 'target': '/evidence/suspect_payload.bin\x20(Adli\x20Bilişim)', 'category': _0x48547c(0x390), 'xp': 0x12c, 'story': _0x48547c(0x20b), 'tools': [_0x48547c(0x485), 'strings', 'binwalk', 'md5sum'], 'quickCmds': [_0x48547c(0x3c5), _0x48547c(0x45e), 'md5sum\x20/evidence/suspect_payload.bin'], 'hint': _0x48547c(0x359), 'flag': _0x48547c(0x2f5), 'successMsg': _0x48547c(0x2e8) }, { 'id': _0x48547c(0x16d), 'level': '3.1', 'levelTier': 0x3, 'levelLabel': 'SEVİYE\x203.1\x20//\x20ROOT\x20HACKER\x20SEVİYE', 'badgeColor': _0x48547c(0x20f), 'title': _0x48547c(0x27f), 'target': _0x48547c(0x306), 'category': _0x48547c(0x3b6), 'xp': 0x1f4, 'story': _0x48547c(0xdc), 'tools': [_0x48547c(0x512), _0x48547c(0x1bb), _0x48547c(0x482), _0x48547c(0x3b9), 'cat'], 'quickCmds': [_0x48547c(0x495), _0x48547c(0x343), 'find\x20/\x20-perm\x20-4000\x202>/dev/null', _0x48547c(0x23d)], 'hint': _0x48547c(0x14b), 'flag': _0x48547c(0x228), 'successMsg': _0x48547c(0x150) }, { 'id': _0x48547c(0x448), 'level': _0x48547c(0xe0), 'levelTier': 0x3, 'levelLabel': 'SEVİYE\x203.2\x20//\x20BÜYÜK\x20FİNAL\x20&\x20ŞAMPİYONLUK', 'badgeColor': '#c084fc', 'title': _0x48547c(0x30e), 'target': 'http://10.10.3.99/api/search?q=test\x20(Finansal\x20Veritabanı)', 'category': 'SQL\x20Injection\x20&\x20Veritabanı\x20Sızması', 'xp': 0x3e8, 'story': 'Büyük\x20final\x20operasyonu!\x20Hedef\x20finans\x20kurumunun\x20arama\x20API\x27sinde\x20SQL\x20Injection\x20zafiyeti\x20keşfedildi.\x20<code>sqlmap</code>\x20ile\x20veritabanlarını\x20listele,\x20<code>lfl_master_vault</code>\x20veritabanındaki\x20tabloları\x20dök\x20ve\x20nihai\x20şampiyon\x20bayrağını\x20ele\x20geçir.', 'tools': [_0x48547c(0x505), _0x48547c(0x1df), _0x48547c(0x2bf)], 'quickCmds': ['curl\x20\x22http://10.10.3.99/api/search?q=test\x22', _0x48547c(0x1f8), _0x48547c(0x7a), _0x48547c(0x4bc)], 'hint': _0x48547c(0x387), 'flag': 'LFL{level3_2_sqli_grand_master_champion_2026}', 'successMsg': _0x48547c(0x1e8) }], _0x20de24 = { 'unlockedIdx': 0x0, 'activeIdx': 0x0, 'completed': [], 'xp': 0x0, 'history': [], 'historyIdx': -0x1, 'sshSessionActive': ![] }; function _0x58c3a9() { const _0x572d16 = _0x48547c; try { const _0x2e753c = localStorage[_0x572d16(0x3ee)](_0x572d16(0x419)); if (_0x2e753c) { const _0x32894f = JSON['parse'](_0x2e753c); if (_0x32894f && typeof _0x32894f === _0x572d16(0x2f4)) { if (Array[_0x572d16(0x11a)](_0x32894f[_0x572d16(0x2d8)])) _0x20de24[_0x572d16(0x2d8)] = _0x32894f[_0x572d16(0x2d8)]; if (typeof _0x32894f[_0x572d16(0xe2)] === _0x572d16(0x8f)) _0x20de24[_0x572d16(0xe2)] = _0x32894f[_0x572d16(0xe2)]; if (typeof _0x32894f[_0x572d16(0x4e0)] === _0x572d16(0x8f)) _0x20de24['activeIdx'] = _0x32894f[_0x572d16(0x4e0)]; if (typeof _0x32894f['xp'] === _0x572d16(0x8f)) _0x20de24['xp'] = _0x32894f['xp']; } } } catch (_0x15d0d8) { } } function _0xcd7074() { const _0x3e63d6 = _0x48547c; try { localStorage['setItem'](_0x3e63d6(0x419), JSON[_0x3e63d6(0x19d)]({ 'unlockedIdx': _0x20de24[_0x3e63d6(0xe2)], 'activeIdx': _0x20de24[_0x3e63d6(0x4e0)], 'completed': _0x20de24['completed'], 'xp': _0x20de24['xp'] })), localStorage[_0x3e63d6(0x2ed)](_0x3e63d6(0x304), String(_0x20de24['xp'])); } catch (_0x2f9d5e) { } } function _0x414195() { const _0x19a538 = _0x48547c; _0x58c3a9(), _0x20de24[_0x19a538(0x4e0)] = Math[_0x19a538(0x1f5)](_0x20de24['unlockedIdx'], _0x15fe73[_0x19a538(0x14a)] - 0x1), _0x1dc2c2(), _0x1cfb1f(), _0x264e11(_0x20de24[_0x19a538(0x4e0)]), _0x5d37ca(); const _0xc493f8 = document[_0x19a538(0xd9)]('btn-reset-ctf-progress'); _0xc493f8 && _0xc493f8[_0x19a538(0x7e)](_0x19a538(0x266), () => { const _0x459ae6 = _0x19a538; confirm(_0x459ae6(0x4ac)) && _0x2b632d(); }); } function _0x2b632d() { const _0x5111a9 = _0x48547c; _0x20de24[_0x5111a9(0xe2)] = 0x0, _0x20de24[_0x5111a9(0x4e0)] = 0x0, _0x20de24[_0x5111a9(0x2d8)] = [], _0x20de24['xp'] = 0x0, _0x20de24[_0x5111a9(0x1d3)] = ![]; try { localStorage['removeItem'](_0x5111a9(0x419)), localStorage['removeItem'](_0x5111a9(0x304)); } catch (_0x3a8297) { } _0x1dc2c2(), _0x1cfb1f(), _0x264e11(0x0), _0x3c5b81(), _0x43b520(_0x5111a9(0x30b), 'CTF\x20Sıfırlandı', 'Operasyon\x20ilerlemeniz\x20sıfırlandı.\x20Seviye\x201.1\x27den\x20başlayabilirsiniz.'); } function _0x26c6ee(_0x5eb889, _0x40bee1) { const _0x141a45 = _0x48547c; if (_0x5eb889 >= 0x6) return _0x141a45(0xe1); if (_0x5eb889 >= 0x5) return '👑\x20Root\x20Hacker\x20(Elite)'; if (_0x5eb889 >= 0x4) return _0x141a45(0x1dd); if (_0x5eb889 >= 0x3) return _0x141a45(0x32b); if (_0x5eb889 >= 0x2) return '🕵️\x20Sistem\x20Dedektifi'; if (_0x5eb889 >= 0x1) return '🌐\x20Ağ\x20Kaşifi'; return _0x141a45(0x88); } function _0x1dc2c2() { const _0x53e1f9 = _0x48547c, _0x3c3af3 = _0x20de24[_0x53e1f9(0x2d8)][_0x53e1f9(0x14a)], _0x252dc0 = _0x15fe73[_0x53e1f9(0x14a)], _0x3088b1 = Math[_0x53e1f9(0x3f6)](_0x3c3af3 / _0x252dc0 * 0x64), _0x5854c1 = document[_0x53e1f9(0xd9)](_0x53e1f9(0x23f)); if (_0x5854c1) _0x5854c1['textContent'] = _0x53e1f9(0x188) + _0x3c3af3 + '/' + _0x252dc0 + _0x53e1f9(0x3eb) + _0x3088b1 + ')'; const _0x4f8ef4 = document[_0x53e1f9(0xd9)](_0x53e1f9(0x2e5)); if (_0x4f8ef4) _0x4f8ef4['textContent'] = _0x53e1f9(0x9d) + _0x20de24['xp']; const _0x5397d6 = document[_0x53e1f9(0xd9)]('ctf-current-rank'); if (_0x5397d6) _0x5397d6['textContent'] = _0x53e1f9(0x283) + _0x26c6ee(_0x3c3af3, _0x20de24['xp']); const _0x445dcc = document[_0x53e1f9(0xd9)](_0x53e1f9(0x30a)); if (_0x445dcc) _0x445dcc[_0x53e1f9(0xe6)][_0x53e1f9(0x4a9)] = _0x3088b1 + '%'; } function _0x1cfb1f() { const _0x5e2e13 = _0x48547c, _0x4651fd = document['getElementById'](_0x5e2e13(0x23c)); if (!_0x4651fd) return; _0x4651fd[_0x5e2e13(0x430)] = _0x15fe73['map']((_0x163a6c, _0x12259e) => { const _0x3fec0c = _0x5e2e13, _0xff3789 = _0x20de24[_0x3fec0c(0x2d8)][_0x3fec0c(0x3d4)](_0x163a6c['id']), _0x26feef = _0x12259e <= _0x20de24[_0x3fec0c(0xe2)], _0x1e4da4 = _0x12259e === _0x20de24['activeIdx']; let _0xf3f524 = '🔒', _0x114cdb = _0x3fec0c(0x155), _0x5e4f75 = 'Kilitli'; if (_0xff3789) _0xf3f524 = '✔', _0x114cdb = _0x3fec0c(0x2d8), _0x5e4f75 = _0x3fec0c(0x469); else _0x26feef && (_0xf3f524 = '⚡', _0x114cdb = _0x3fec0c(0x432), _0x5e4f75 = 'Açık'); if (_0x1e4da4) _0x114cdb += _0x3fec0c(0xa4); const _0x2e5784 = _0x163a6c['title'][_0x3fec0c(0x1ed)]('Operasyon\x20', '')[_0x3fec0c(0x1c0)]('(')[0x0][_0x3fec0c(0x2eb)](); return _0x3fec0c(0x1b0) + _0x114cdb + '\x22\x20data-stage-idx=\x22' + _0x12259e + _0x3fec0c(0x174) + _0x163a6c[_0x3fec0c(0x7c)] + _0x3fec0c(0x273) + _0x163a6c[_0x3fec0c(0x2b6)] + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>' + _0xf3f524 + '\x20' + _0x5e4f75 + _0x3fec0c(0x1f0) + _0x44db8b(_0x163a6c[_0x3fec0c(0x4eb)]) + '\x22>' + _0x44db8b(_0x2e5784) + _0x3fec0c(0x4e9); })['join'](''), _0x4651fd[_0x5e2e13(0x2b3)]('.ctf-stepper-item')['forEach'](_0x2d7892 => { const _0x4a1a56 = _0x5e2e13; _0x2d7892[_0x4a1a56(0x7e)](_0x4a1a56(0x266), () => { const _0x10a1c2 = _0x4a1a56, _0x421e72 = parseInt(_0x2d7892['dataset'][_0x10a1c2(0x4e8)], 0xa); _0x421e72 <= _0x20de24['unlockedIdx'] ? (_0x20de24[_0x10a1c2(0x4e0)] = _0x421e72, _0xcd7074(), _0x1cfb1f(), _0x264e11(_0x421e72), _0x3c5b81()) : _0x43b520(_0x10a1c2(0x2f2), _0x10a1c2(0x229), _0x10a1c2(0x403) + _0x15fe73[_0x421e72 - 0x1][_0x10a1c2(0x2b6)] + _0x10a1c2(0xcc)); }); }); } function _0x264e11(_0x36573b) { const _0x3df2f1 = _0x48547c, _0x317ab3 = document['getElementById'](_0x3df2f1(0x4be)); if (!_0x317ab3) return; const _0xf2c058 = _0x15fe73[_0x36573b], _0x51be93 = _0x20de24[_0x3df2f1(0x2d8)][_0x3df2f1(0x3d4)](_0xf2c058['id']); _0x317ab3['innerHTML'] = _0x3df2f1(0x128) + _0x20ed26(_0xf2c058[_0x3df2f1(0x7c)]) + _0x3df2f1(0x414) + _0xf2c058[_0x3df2f1(0x7c)] + _0x3df2f1(0x480) + _0xf2c058[_0x3df2f1(0x7c)] + ';\x22>' + _0x44db8b(_0xf2c058[_0x3df2f1(0x3dc)]) + _0x3df2f1(0x313) + _0x44db8b(_0xf2c058[_0x3df2f1(0x1de)]) + _0x3df2f1(0xb0) + _0xf2c058['xp'] + _0x3df2f1(0x3fa) + _0x44db8b(_0xf2c058[_0x3df2f1(0x497)]) + _0x3df2f1(0x217) + _0x44db8b(_0xf2c058[_0x3df2f1(0x4eb)]) + '</h2>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Pure\x20Story\x20Narrative\x20&\x20Directive\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-brief-box\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' + _0xf2c058[_0x3df2f1(0x20d)] + _0x3df2f1(0x11f) + _0xf2c058[_0x3df2f1(0x2d4)] + _0x3df2f1(0x330) + _0xf2c058[_0x3df2f1(0xa9)][_0x3df2f1(0x30d)](_0x184daf => _0x3df2f1(0x4e7) + _0x44db8b(_0x184daf) + _0x3df2f1(0x290))['join']('') + _0x3df2f1(0x139) + (_0x51be93 ? _0x3df2f1(0x324) : '') + _0x3df2f1(0x3d1) + (_0x51be93 ? _0xf2c058[_0x3df2f1(0xb1)] : '') + '\x22\x20' + (_0x51be93 ? 'readonly' : '') + _0x3df2f1(0x220); const _0x268319 = document[_0x3df2f1(0xd9)](_0x3df2f1(0x282)), _0x19e127 = document[_0x3df2f1(0xd9)]('btn-toggle-ctf-hint'); _0x268319 && _0x19e127 && _0x19e127[_0x3df2f1(0x7e)](_0x3df2f1(0x266), () => { const _0x4443e6 = _0x3df2f1; _0x268319['classList'][_0x4443e6(0x3a6)](_0x4443e6(0x43c)); const _0x10551f = document['getElementById'](_0x4443e6(0x454)); if (_0x10551f) _0x10551f[_0x4443e6(0x19b)] = _0x268319[_0x4443e6(0x37e)][_0x4443e6(0x4e3)](_0x4443e6(0x43c)) ? '↑' : '↓'; }); const _0x17c3e9 = document[_0x3df2f1(0xd9)]('btn-submit-ctf-flag'), _0x1b129b = document[_0x3df2f1(0xd9)](_0x3df2f1(0x47c)); _0x17c3e9 && _0x1b129b && (_0x17c3e9[_0x3df2f1(0x7e)]('click', () => { _0x1130dd(_0x1b129b['value']); }), _0x1b129b[_0x3df2f1(0x7e)](_0x3df2f1(0x2be), _0x50af3c => { const _0x1f4cb6 = _0x3df2f1; _0x50af3c[_0x1f4cb6(0x4ff)] === _0x1f4cb6(0x285) && _0x1130dd(_0x1b129b['value']); })); } function _0x20ed26(_0x17b565) { const _0x3938dd = _0x48547c; _0x17b565 = _0x17b565['replace']('#', ''); if (_0x17b565[_0x3938dd(0x14a)] === 0x3) _0x17b565 = _0x17b565['split']('')[_0x3938dd(0x30d)](_0x5e78f6 => _0x5e78f6 + _0x5e78f6)[_0x3938dd(0x310)](''); const _0x13c125 = parseInt(_0x17b565, 0x10); return (_0x13c125 >> 0x10 & 0xff) + ',\x20' + (_0x13c125 >> 0x8 & 0xff) + ',\x20' + (_0x13c125 & 0xff); } function _0x1130dd(_0x37dcb3) { const _0x1fb3fb = _0x48547c, _0x5026e6 = (_0x37dcb3 || '')[_0x1fb3fb(0x2eb)](), _0x2fd705 = _0x15fe73[_0x20de24[_0x1fb3fb(0x4e0)]], _0x42c05d = document[_0x1fb3fb(0xd9)](_0x1fb3fb(0x193)); if (!_0x5026e6) { _0x42c05d && (_0x42c05d[_0x1fb3fb(0x427)] = _0x1fb3fb(0x204), _0x42c05d['innerHTML'] = _0x1fb3fb(0x3e3)); return; } _0x5026e6 === _0x2fd705[_0x1fb3fb(0xb1)] ? (!_0x20de24[_0x1fb3fb(0x2d8)][_0x1fb3fb(0x3d4)](_0x2fd705['id']) && (_0x20de24[_0x1fb3fb(0x2d8)][_0x1fb3fb(0x4f5)](_0x2fd705['id']), _0x20de24['xp'] += _0x2fd705['xp'], _0x20de24[_0x1fb3fb(0x4e0)] + 0x1 > _0x20de24[_0x1fb3fb(0xe2)] && _0x20de24['activeIdx'] + 0x1 < _0x15fe73['length'] && (_0x20de24[_0x1fb3fb(0xe2)] = _0x20de24[_0x1fb3fb(0x4e0)] + 0x1), _0xcd7074()), _0x42c05d && (_0x42c05d[_0x1fb3fb(0x427)] = 'ctf-feedback-msg\x20success', _0x42c05d[_0x1fb3fb(0x430)] = _0x1fb3fb(0x356) + _0x44db8b(_0x2fd705['successMsg']) + _0x1fb3fb(0x1c1) + _0x2fd705['xp'] + _0x1fb3fb(0xf9)), _0x43b520(_0x1fb3fb(0x47b), _0x1fb3fb(0x260), 'Tebrikler!\x20' + _0x2fd705[_0x1fb3fb(0x4eb)] + '\x20başarıyla\x20tamamlandı.\x20(+' + _0x2fd705['xp'] + _0x1fb3fb(0x90)), _0x20de24['completed'][_0x1fb3fb(0x14a)] >= _0x15fe73[_0x1fb3fb(0x14a)] && setTimeout(() => { const _0x4e5a0c = _0x1fb3fb; _0x43b520(_0x4e5a0c(0x47b), '🏆\x20CTF\x20Tamamlandı!', _0x4e5a0c(0x178)); }, 0x1f4), _0x1dc2c2(), _0x1cfb1f(), _0x2fa9f7(_0x1fb3fb(0xc7) + _0x44db8b(_0x2fd705['flag']) + '</span>\x0a<span\x20style=\x22color:\x20#10b981;\x20font-weight:\x20700;\x22>[+]\x20TEBRİKLER!\x20Seviye\x20' + _0x2fd705['level'] + _0x1fb3fb(0x218) + _0x2fd705['xp'] + _0x1fb3fb(0x23a)), _0x20de24[_0x1fb3fb(0x4e0)] < _0x15fe73['length'] - 0x1 && setTimeout(() => { const _0x352f35 = _0x1fb3fb; _0x20de24[_0x352f35(0x4e0)]++, _0x1cfb1f(), _0x264e11(_0x20de24['activeIdx']), _0x3c5b81(); }, 0x640)) : (_0x42c05d && (_0x42c05d[_0x1fb3fb(0x427)] = _0x1fb3fb(0x204), _0x42c05d[_0x1fb3fb(0x430)] = '❌\x20Hatalı\x20bayrak!\x20Lütfen\x20terminaldeki\x20çıktıları\x20ve\x20ipucunu\x20dikkatlice\x20inceleyerek\x20tekrar\x20deneyin.'), _0x43b520('error', _0x1fb3fb(0x502), _0x1fb3fb(0x2c3))); } function _0x3c5b81() { const _0x1e55b4 = _0x48547c, _0x477fa2 = _0x15fe73[_0x20de24[_0x1e55b4(0x4e0)]]; _0x20de24[_0x1e55b4(0x1d3)] = ![], _0xe65c4f(); const _0x379abe = document[_0x1e55b4(0xd9)](_0x1e55b4(0x3b4)); if (_0x379abe) _0x379abe[_0x1e55b4(0x19b)] = _0x1e55b4(0x210); const _0x537680 = document[_0x1e55b4(0xd9)](_0x1e55b4(0x38b)); _0x537680 && (_0x537680[_0x1e55b4(0x19b)] = _0x1e55b4(0x3a5) + _0x477fa2[_0x1e55b4(0x497)] + ']'); _0x2fa9f7('\x0a<span\x20style=\x22color:\x20#00e5ff;\x20font-weight:\x20800;\x22>┌──(root㉿kali-ctf)-[~]</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>│\x20LFL\x20CTF\x20OPERASYONU\x20//\x20SEVİYE\x20' + _0x477fa2[_0x1e55b4(0x2b6)] + ':\x20' + _0x44db8b(_0x477fa2[_0x1e55b4(0x4eb)]) + _0x1e55b4(0x18e) + _0x44db8b(_0x477fa2['target']) + _0x1e55b4(0x26b)); const _0x28a42f = document[_0x1e55b4(0xd9)](_0x1e55b4(0x22c)); _0x28a42f && (_0x28a42f[_0x1e55b4(0x411)] = '', _0x28a42f[_0x1e55b4(0xf1)]()); } function _0x2fa9f7(_0x388ed7) { const _0x59c9e4 = _0x48547c, _0x1fc002 = document[_0x59c9e4(0xd9)]('ctf-term-output-area'); if (!_0x1fc002) return; const _0x350fd3 = document['createElement'](_0x59c9e4(0x223)); _0x350fd3['innerHTML'] = _0x388ed7, _0x1fc002[_0x59c9e4(0x49f)](_0x350fd3); const _0x3d76e2 = document[_0x59c9e4(0xd9)](_0x59c9e4(0x48e)); if (_0x3d76e2) _0x3d76e2[_0x59c9e4(0x211)] = _0x3d76e2[_0x59c9e4(0x4f8)]; } function _0xe65c4f() { const _0xb38ff6 = _0x48547c, _0x4f1c5c = document['getElementById'](_0xb38ff6(0x12a)); if (_0x4f1c5c) _0x4f1c5c[_0xb38ff6(0x430)] = ''; } function _0x4729c9() { const _0x505101 = _0x48547c; _0xe65c4f(); const _0x1fc776 = _0x15fe73[_0x20de24[_0x505101(0x4e0)]]; _0x2fa9f7(_0x505101(0xb5) + _0x1fc776[_0x505101(0x2b6)] + _0x505101(0x18e) + _0x44db8b(_0x1fc776[_0x505101(0x497)]) + _0x505101(0x2cb)); } function _0x5d37ca() { const _0x2b6688 = _0x48547c; _0x4729c9(); const _0x393176 = document[_0x2b6688(0xd9)](_0x2b6688(0x22c)), _0x2e5ad9 = document[_0x2b6688(0xd9)]('btn-clear-ctf-term'), _0x2d198d = document[_0x2b6688(0xd9)]('btn-reset-ctf-term'); if (_0x2e5ad9) _0x2e5ad9[_0x2b6688(0x7e)]('click', _0xe65c4f); if (_0x2d198d) _0x2d198d[_0x2b6688(0x7e)](_0x2b6688(0x266), _0x4729c9); let _0x498180 = -0x1, _0x5ed9be = null; _0x393176 && _0x393176['addEventListener']('keydown', _0xc9c1ce => { const _0x514290 = _0x2b6688; if (_0xc9c1ce[_0x514290(0x4ff)] === _0x514290(0x285)) { const _0x1275af = _0x393176[_0x514290(0x411)]['trim'](); if (!_0x1275af) return; _0x20de24['history'][_0x514290(0x4f5)](_0x1275af), _0x20de24['historyIdx'] = _0x20de24[_0x514290(0x8c)][_0x514290(0x14a)], _0x393176[_0x514290(0x411)] = '', _0x498180 = -0x1, _0x5ed9be = null, _0x461785(_0x1275af); } else { if (_0xc9c1ce[_0x514290(0x4ff)] === 'Tab') { _0xc9c1ce[_0x514290(0x2d9)](); const _0xf4f7b4 = _0x15fe73[_0x20de24['activeIdx']], _0x57e055 = _0xf4f7b4 && _0xf4f7b4[_0x514290(0xa9)] ? _0xf4f7b4['quickCmds'] : [], _0x7b6338 = [_0x514290(0x154), _0x514290(0x319), _0x514290(0x36c), 'id', _0x514290(0x2aa), 'ls\x20-la', _0x514290(0x31c)], _0x811d99 = (window[_0x514290(0x43d)] || [])[_0x514290(0x30d)](_0x164ce3 => _0x164ce3[_0x514290(0x21c)]), _0x3edebc = Array[_0x514290(0x1a3)](new Set([..._0x57e055, ..._0x7b6338, ..._0x811d99])), _0x521a7b = _0x393176[_0x514290(0x411)][_0x514290(0x2eb)](), _0x582886 = _0x521a7b[_0x514290(0x377)](); let _0x5c16d5 = []; if (!_0x521a7b) _0x5c16d5 = _0x57e055[_0x514290(0x14a)] > 0x0 ? _0x57e055 : _0x3edebc['slice'](0x0, 0x8); else { const _0x487901 = _0x57e055[_0x514290(0x129)](_0x3bd648 => _0x3bd648[_0x514290(0x377)]()[_0x514290(0x370)](_0x582886)), _0x3892d6 = _0x3edebc[_0x514290(0x129)](_0x1be4a7 => _0x1be4a7['toLowerCase']()['startsWith'](_0x582886)), _0x431367 = _0x3edebc[_0x514290(0x129)](_0x42e980 => !_0x42e980[_0x514290(0x377)]()['startsWith'](_0x582886) && _0x42e980['toLowerCase']()['includes'](_0x582886)); _0x5c16d5 = Array[_0x514290(0x1a3)](new Set([..._0x487901, ..._0x3892d6, ..._0x431367])), (_0x582886[_0x514290(0x370)](_0x514290(0x1e1)) || _0x582886[_0x514290(0x370)]('lfl')) && (_0xf4f7b4 && _0xf4f7b4[_0x514290(0xb1)] && _0x5c16d5['unshift']('submit\x20' + _0xf4f7b4['flag'])); } _0x5c16d5[_0x514290(0x14a)] > 0x0 && (_0x5ed9be === _0x582886 ? _0x498180 = (_0x498180 + 0x1) % _0x5c16d5[_0x514290(0x14a)] : (_0x498180 = 0x0, _0x5ed9be = _0x582886), _0x393176[_0x514290(0x411)] = _0x5c16d5[_0x498180], _0x393176[_0x514290(0x113)] = _0x393176['selectionEnd'] = _0x393176[_0x514290(0x411)][_0x514290(0x14a)]); } else { if (_0xc9c1ce[_0x514290(0x4ff)] === _0x514290(0x133)) _0xc9c1ce[_0x514290(0x2d9)](), _0x5ed9be = null, _0x20de24[_0x514290(0x4bd)] > 0x0 && (_0x20de24[_0x514290(0x4bd)]--, _0x393176[_0x514290(0x411)] = _0x20de24[_0x514290(0x8c)][_0x20de24[_0x514290(0x4bd)]] || ''); else _0xc9c1ce['key'] === 'ArrowDown' ? (_0xc9c1ce[_0x514290(0x2d9)](), _0x5ed9be = null, _0x20de24[_0x514290(0x4bd)] < _0x20de24[_0x514290(0x8c)][_0x514290(0x14a)] - 0x1 ? (_0x20de24['historyIdx']++, _0x393176[_0x514290(0x411)] = _0x20de24['history'][_0x20de24[_0x514290(0x4bd)]] || '') : (_0x20de24[_0x514290(0x4bd)] = _0x20de24[_0x514290(0x8c)][_0x514290(0x14a)], _0x393176[_0x514290(0x411)] = '')) : _0x5ed9be = null; } } }); } function _0x461785(_0x56255c) { const _0x2e46f0 = _0x48547c, _0x1e53c1 = _0x56255c[_0x2e46f0(0x2eb)](), _0x3b2690 = _0x1e53c1['toLowerCase'](), _0x34b888 = _0x15fe73[_0x20de24[_0x2e46f0(0x4e0)]], _0x2d2b25 = _0x20de24[_0x2e46f0(0x1d3)] ? _0x2e46f0(0x46f) : _0x2e46f0(0x210); _0x2fa9f7('<div\x20style=\x22margin-top:\x206px;\x22><span\x20style=\x22color:\x20#00e5ff;\x20font-weight:\x20700;\x22>' + _0x2d2b25 + _0x2e46f0(0x515) + _0x44db8b(_0x1e53c1) + '</span></div>'); if (_0x3b2690 === _0x2e46f0(0x319) || _0x3b2690 === 'cls') { _0xe65c4f(); return; } if (_0x3b2690[_0x2e46f0(0x370)](_0x2e46f0(0x198)) || _0x3b2690['startsWith'](_0x2e46f0(0xdd))) { const _0x2ca110 = _0x1e53c1[_0x2e46f0(0x370)](_0x2e46f0(0x198)) ? _0x1e53c1['substring'](0x7)[_0x2e46f0(0x2eb)]() : _0x1e53c1; _0x1130dd(_0x2ca110); return; } if (_0x3b2690 === _0x2e46f0(0x399) || _0x3b2690 === 'admin') { const _0x5652c9 = _0x5b0dcd[_0x2e46f0(0x37d)] && _0x5b0dcd[_0x2e46f0(0x37d)][_0x2e46f0(0x327)] === _0x2e46f0(0x275); _0x5652c9 ? _0x2fa9f7('\x0a<pre\x20style=\x22color:\x20#10b981;\x20font-weight:\x20800;\x20font-family:\x20var(--font-mono);\x22>\x0a[★]\x20==============================================================\x0a[★]\x20LFL\x20CYBER\x20CTF\x20//\x20ROOT\x20MASTER\x20CONSOLE\x20(burak_wyxz)\x0a[★]\x20==============================================================\x0a[+]\x20Operatör\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20burak_wyxz\x20(Baş\x20Yönetici)\x0a[+]\x20CTF\x20Puanı\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20' + _0x20de24['xp'] + _0x2e46f0(0x1e2) + _0x20de24[_0x2e46f0(0x2d8)][_0x2e46f0(0x14a)] + _0x2e46f0(0x37f) + _0x15fe73[_0x2e46f0(0x14a)] + _0x2e46f0(0x340)) : _0x2fa9f7(_0x2e46f0(0x2d2)); return; } if (_0x3b2690 === _0x2e46f0(0x154)) { _0x2fa9f7(_0x2e46f0(0x172) + _0x34b888[_0x2e46f0(0x2b6)] + _0x2e46f0(0x435) + _0x34b888['tools']['map'](_0x2fdb83 => _0x2e46f0(0x363) + _0x2fdb83 + _0x2e46f0(0x43e))[_0x2e46f0(0x310)](_0x2e46f0(0x342)) + _0x2e46f0(0x468)); return; } if (_0x3b2690 === _0x2e46f0(0x36c)) { _0x2fa9f7(_0x2e46f0(0x4a3) + (_0x20de24[_0x2e46f0(0x1d3)] ? _0x2e46f0(0x1bc) : _0x2e46f0(0x1a1)) + _0x2e46f0(0x42d)); return; } if (_0x3b2690 === _0x2e46f0(0x2aa)) { _0x2fa9f7('<pre\x20style=\x22color:\x20#a7f3d0;\x22>' + (_0x20de24['sshSessionActive'] ? _0x2e46f0(0x95) : _0x2e46f0(0x4b5)) + _0x2e46f0(0x42d)); return; } if (_0x3b2690 === 'id') { _0x2fa9f7('<pre\x20style=\x22color:\x20#a7f3d0;\x22>' + (_0x20de24[_0x2e46f0(0x1d3)] ? _0x2e46f0(0x474) : _0x2e46f0(0x51b)) + '</pre>'); return; } if (_0x3b2690 === _0x2e46f0(0x31c)) { _0x2fa9f7(_0x2e46f0(0x522)); return; } if (_0x34b888['id'] === _0x2e46f0(0x4d9)) { if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0xf0)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x15f))) { _0x2fa9f7(_0x2e46f0(0x2fe)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0xb2)) && _0x3b2690['includes']('10.10.1.5')) { _0x2fa9f7('\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aStarting\x20Nmap\x207.94SVN\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2002:00\x20UTC\x0aNmap\x20scan\x20report\x20for\x2010.10.1.5\x0aHost\x20is\x20up\x20(0.0012s\x20latency).\x0aNot\x20shown:\x20998\x20closed\x20tcp\x20ports\x20(reset)\x0aPORT\x20\x20\x20STATE\x20SERVICE\x20VERSION\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20700;\x22>22/tcp\x20open\x20\x20ssh\x20\x20\x20\x20\x20OpenSSH\x208.9p1\x20Ubuntu\x203ubuntu0.6\x20(Ubuntu\x20Linux;\x20protocol\x202.0)</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>80/tcp\x20open\x20\x20http\x20\x20\x20\x20Apache\x20httpd\x202.4.52\x20((Ubuntu))</span>\x0a|_http-server-header:\x20Apache/2.4.52\x20(Ubuntu)\x0a|_http-title:\x20LFL\x20Internal\x20Gateway\x20Portal\x0a\x0aService\x20Info:\x20OS:\x20Linux;\x20CPE:\x20cpe:/o:linux:linux_kernel\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20Port\x2080\x20HTTP\x20Servisi\x20açık!\x20curl\x20-I\x20http://10.10.1.5\x20ile\x20başlıkları\x20inceleyin.</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x1df)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x15f))) { _0x2fa9f7(_0x2e46f0(0x179)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x2b0)) && (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x391)) || _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x215)))) { _0x2fa9f7(_0x2e46f0(0x4e5)); return; } } if (_0x34b888['id'] === _0x2e46f0(0x3c4)) { if (_0x3b2690[_0x2e46f0(0x3d4)]('ls') && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x34a))) { _0x2fa9f7(_0x2e46f0(0x347)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x18a)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x357))) { _0x2fa9f7('\x0a<pre\x20style=\x22color:\x20#f59e0b;\x22>\x0a=====================================================\x0aAJAN\x20NOTU\x20//\x20GİZLİ\x0a=====================================================\x0aSistem\x20günlüğünü\x20temizleyemedim.\x20Sızma\x20testi\x20sırasında\x0aoluşan\x20denetim\x20izleri\x20doğrudan\x20/var/log/syslog\x20dosyasına\x0adamgalandı.\x20Bayrak\x20anahtarı\x20\x22LFL{\x22\x20ifadesiyle\x20başlıyor.\x0a=====================================================\x0a</pre>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20İpucu\x20alındı!\x20grep\x20-i\x20\x22LFL{\x22\x20/var/log/syslog\x20komutuyla\x20bayrağı\x20çekin.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x16a)) && (_0x3b2690['includes']('syslog') || _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x31a)))) { _0x2fa9f7(_0x2e46f0(0x4de)); return; } } if (_0x34b888['id'] === 'm2_1') { if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x29e)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x317))) { _0x2fa9f7('\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0ahttp://10.10.2.10\x20[200\x20OK]\x20Apache[2.4.56],\x20Bootstrap[5.3.0],\x20Country[RESERVED],\x20HTML5,\x20HTTPServer[Ubuntu\x20Linux][Apache/2.4.56\x20(Ubuntu)],\x20IP[10.10.2.10],\x20PHP[8.2.14],\x20Title[LFL\x20Corporate\x20Intranet]\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20Web\x20altyapısı\x20PHP/Apache\x20olarak\x20belirlendi.\x20gobuster\x20ile\x20dizinleri\x20tarayın.</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x27a)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x317))) { _0x2fa9f7('\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0a===============================================================\x0aGobuster\x20v3.6\x20-\x20Directory\x20brute\x20forcing\x20mode\x0a===============================================================\x0a[+]\x20Url:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20http://10.10.2.10\x0a[+]\x20Method:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20GET\x0a[+]\x20Threads:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2010\x0a[+]\x20Wordlist:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20common.txt\x0a===============================================================\x0aStarting\x20gobuster...\x0a===============================================================\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>/robots.txt\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20200)\x20[Size:\x2078]</span>\x0a/index.php\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20200)\x20[Size:\x202410]\x0a/login\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20301)\x20[Size:\x20180]\x20--&gt;\x20/login/\x0a<span\x20style=\x22color:\x20#f59e0b;\x20font-weight:\x20700;\x22>/admin_vault\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20301)\x20[Size:\x20195]\x20--&gt;\x20/admin_vault/</span>\x0a/assets\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20301)\x20[Size:\x20184]\x0a===============================================================\x0aFinished\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20/robots.txt\x20ve\x20/admin_vault\x20bulundu!\x20curl\x20http://10.10.2.10/robots.txt\x20ile\x20inceleyin.</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'); return; } if (_0x3b2690['includes'](_0x2e46f0(0x1df)) && _0x3b2690['includes'](_0x2e46f0(0x208))) { _0x2fa9f7(_0x2e46f0(0x341)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x1df)) && _0x3b2690['includes']('confidential_token.json')) { _0x2fa9f7(_0x2e46f0(0x34f)); return; } } if (_0x34b888['id'] === _0x2e46f0(0x1fa)) { if (_0x3b2690[_0x2e46f0(0x3d4)]('file') && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x2b8))) { _0x2fa9f7(_0x2e46f0(0x526)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)]('strings') && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x2b8))) { _0x2fa9f7(_0x2e46f0(0xf2)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x7f)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x2b8))) { _0x2fa9f7(_0x2e46f0(0xc8)); return; } } if (_0x34b888['id'] === _0x2e46f0(0x16d)) { if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x512)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x17d))) { _0x2fa9f7(_0x2e46f0(0x51e)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x1bb)) && _0x3b2690[_0x2e46f0(0x3d4)]('10.10.3.50')) { _0x20de24[_0x2e46f0(0x1d3)] = !![]; const _0x4bb443 = document['getElementById'](_0x2e46f0(0x3b4)); if (_0x4bb443) _0x4bb443[_0x2e46f0(0x19b)] = 'operator@fortress:~$'; _0x2fa9f7('\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aoperator@10.10.3.50\x27s\x20password:\x20<span\x20style=\x22color:\x20#22c55e;\x22>********</span>\x0aWelcome\x20to\x20Ubuntu\x2022.04.4\x20LTS\x20(GNU/Linux\x205.15.0-105-generic\x20x86_64)\x0a\x0a\x20*\x20Documentation:\x20\x20https://help.ubuntu.com\x0a\x20*\x20Management:\x20\x20\x20\x20\x20https://landscape.canonical.com\x0a\x20*\x20Support:\x20\x20\x20\x20\x20\x20\x20\x20https://ubuntu.com/pro\x0a\x0aLast\x20login:\x20Sun\x20Nov\x20\x208\x2001:14:22\x202026\x20from\x2010.10.14.2\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>operator@fortress:~$</span>\x0a</pre>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20SSH\x20Oturumu\x20Açıldı!\x20Şimdi\x20SUID\x20izinli\x20açıkları\x20arayın:\x20find\x20/\x20-perm\x20-4000\x202&gt;/dev/null</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x482)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x163))) { _0x2fa9f7(_0x2e46f0(0x437)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x18a)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x38c))) { _0x2fa9f7(_0x2e46f0(0x3a1)); return; } } if (_0x34b888['id'] === _0x2e46f0(0x448)) { if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x1df)) && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x227))) { _0x2fa9f7('\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aHTTP/1.1\x20200\x20OK\x0aContent-Type:\x20application/json;\x20charset=utf-8\x0a\x0a{\x0a\x20\x20\x22endpoint\x22:\x20\x22/api/search\x22,\x0a\x20\x20\x22query\x22:\x20\x22test\x22,\x0a\x20\x20\x22backend_db\x22:\x20\x22SQLite\x20/\x20MySQL\x208.0.35\x20Enterprise\x22,\x0a\x20\x20\x22vulnerable_param\x22:\x20\x22q\x22,\x0a\x20\x20\x22results_count\x22:\x201,\x0a\x20\x20\x22message\x22:\x20\x22Query\x20executed\x20directly\x20via\x20string\x20concatenation\x20(Unsafe\x20SQL\x20query\x20detected).\x22\x0a}\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20SQL\x20Injection\x20açığı\x20doğrulandı!\x20sqlmap\x20-u\x20\x22http://10.10.3.99/api/search?q=test\x22\x20--dbs\x20ile\x20veritabanlarını\x20çekin.</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'); return; } if (_0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x505)) && _0x3b2690['includes'](_0x2e46f0(0x464))) { _0x2fa9f7(_0x2e46f0(0x169)); return; } if (_0x3b2690[_0x2e46f0(0x3d4)]('sqlmap') && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x434))) { _0x2fa9f7(_0x2e46f0(0x1ea)); return; } if (_0x3b2690['includes']('sqlmap') && _0x3b2690[_0x2e46f0(0x3d4)](_0x2e46f0(0x44a))) { _0x2fa9f7(_0x2e46f0(0x22a)); return; } } if (typeof _0x1662a0 === _0x2e46f0(0x2e9)) { const _0x58474c = _0x1662a0(_0x1e53c1); _0x2fa9f7(_0x2e46f0(0x345) + _0x58474c + _0x2e46f0(0x443)); return; } _0x2fa9f7(_0x2e46f0(0x14d) + _0x44db8b(_0x1e53c1) + _0x2e46f0(0x1f7)); } async function _0x1c2b7f(_0x106fbf) { const _0x166849 = _0x48547c; try { const _0x2fcaae = _0x106fbf ? '/' + _0x106fbf[_0x166849(0x1ed)](_0x166849(0x466), '') : window['location']['pathname'] || _0x166849(0x503), _0x66369f = { 'screen': window[_0x166849(0x498)][_0x166849(0x4a9)] + 'x' + window[_0x166849(0x498)][_0x166849(0x1e9)], 'language': navigator[_0x166849(0x29b)] || 'tr', 'platform': navigator[_0x166849(0x4b7)] || navigator[_0x166849(0x10c)] && navigator['userAgentData'][_0x166849(0x4b7)] || _0x166849(0x376), 'path': _0x2fcaae }; await _0x39c831['sendVisitTelemetry'](_0x66369f); } catch { } } function _0x45cd29() { const _0x1dc08b = _0x48547c, _0x1080c4 = document['getElementById']('lfl-radar-canvas') || document['getElementById']('aegis-radar-canvas'); if (!_0x1080c4) return; const _0x287c57 = _0x1080c4[_0x1dc08b(0x407)]('2d'), _0x4a7d2c = _0x1080c4['width'] || 0x104, _0xb7d60a = _0x1080c4['height'] || 0x104, _0x3ac6ea = _0x4a7d2c / 0x2, _0x5f5b68 = _0xb7d60a / 0x2, _0x529c2e = _0x4a7d2c / 0x2 - 0xa; let _0x1c8a49 = 0x0; const _0x3ed86a = 0.038, _0x1ccdab = [{ 'r': 0x2d, 'angle': 0.8, 'label': 'CVE-2026-X', 'intensity': 0x0 }, { 'r': 0x4b, 'angle': 2.2, 'label': 'SQLi-SCAN', 'intensity': 0x0 }, { 'r': 0x5f, 'angle': 4.1, 'label': _0x1dc08b(0x33f), 'intensity': 0x0 }, { 'r': 0x69, 'angle': 5.6, 'label': _0x1dc08b(0x78), 'intensity': 0x0 }], _0x3b2264 = []; _0x1080c4[_0x1dc08b(0x7e)](_0x1dc08b(0x266), _0xf5abee => { const _0x4c3cab = _0x1dc08b, _0x5127a2 = _0x1080c4[_0x4c3cab(0x3c6)](), _0x27043a = (_0xf5abee[_0x4c3cab(0x118)] - _0x5127a2['left']) * (_0x4a7d2c / _0x5127a2['width']), _0x54e65e = (_0xf5abee['clientY'] - _0x5127a2[_0x4c3cab(0x3c1)]) * (_0xb7d60a / _0x5127a2['height']), _0x3c1571 = _0x27043a - _0x3ac6ea, _0x3d81ba = _0x54e65e - _0x5f5b68, _0x130510 = Math[_0x4c3cab(0x3e1)](_0x3c1571 * _0x3c1571 + _0x3d81ba * _0x3d81ba); _0x130510 <= _0x529c2e && (_0x3b2264[_0x4c3cab(0x4f5)]({ 'x': _0x27043a, 'y': _0x54e65e, 'radius': 0x2, 'maxRadius': 0x24, 'alpha': 0x1 }), _0x43b520(_0x4c3cab(0x47b), _0x4c3cab(0x1f6), _0x4c3cab(0x13f) + Math['round'](_0x3c1571) + ',\x20' + Math[_0x4c3cab(0x3f6)](_0x3d81ba) + _0x4c3cab(0x203))); }); const _0x4cbebe = document[_0x1dc08b(0xd9)](_0x1dc08b(0x397)); function _0x20daea() { const _0xcb232 = _0x1dc08b; _0x287c57[_0xcb232(0x15b)](0x0, 0x0, _0x4a7d2c, _0xb7d60a), _0x287c57['strokeStyle'] = _0xcb232(0x303), _0x287c57[_0xcb232(0xff)] = 0x1, [_0x529c2e * 0.28, _0x529c2e * 0.55, _0x529c2e * 0.82, _0x529c2e][_0xcb232(0x93)](_0x114849 => { const _0x12bc81 = _0xcb232; _0x287c57['beginPath'](), _0x287c57[_0x12bc81(0x28e)](_0x3ac6ea, _0x5f5b68, _0x114849, 0x0, Math['PI'] * 0x2), _0x287c57[_0x12bc81(0x8b)](); }), _0x287c57[_0xcb232(0x1c7)] = 'rgba(0,\x20229,\x20255,\x200.12)', _0x287c57[_0xcb232(0xf7)](), _0x287c57['moveTo'](_0x3ac6ea, _0x5f5b68 - _0x529c2e), _0x287c57[_0xcb232(0x1fe)](_0x3ac6ea, _0x5f5b68 + _0x529c2e), _0x287c57[_0xcb232(0x3a2)](_0x3ac6ea - _0x529c2e, _0x5f5b68), _0x287c57[_0xcb232(0x1fe)](_0x3ac6ea + _0x529c2e, _0x5f5b68), _0x287c57[_0xcb232(0x8b)](); const _0x11c26a = 0.55, _0xdd4110 = _0x1c8a49 - _0x11c26a, _0x251e6e = _0x287c57[_0xcb232(0x3ca)](_0x3ac6ea, _0x5f5b68, 0x5, _0x3ac6ea, _0x5f5b68, _0x529c2e); _0x251e6e[_0xcb232(0x34b)](0x0, _0xcb232(0x30c)), _0x251e6e['addColorStop'](0x1, 'rgba(0,\x20229,\x20255,\x200.02)'), _0x287c57[_0xcb232(0x38d)](), _0x287c57['beginPath'](), _0x287c57[_0xcb232(0x3a2)](_0x3ac6ea, _0x5f5b68), _0x287c57[_0xcb232(0x28e)](_0x3ac6ea, _0x5f5b68, _0x529c2e, _0xdd4110, _0x1c8a49, ![]), _0x287c57[_0xcb232(0x395)](), _0x287c57['fillStyle'] = _0x251e6e, _0x287c57[_0xcb232(0x48f)](), _0x287c57[_0xcb232(0x308)](), _0x287c57[_0xcb232(0x1c7)] = '#00e5ff', _0x287c57[_0xcb232(0xff)] = 0x2, _0x287c57['beginPath'](), _0x287c57[_0xcb232(0x3a2)](_0x3ac6ea, _0x5f5b68), _0x287c57['lineTo'](_0x3ac6ea + Math[_0xcb232(0x429)](_0x1c8a49) * _0x529c2e, _0x5f5b68 + Math[_0xcb232(0x3f8)](_0x1c8a49) * _0x529c2e), _0x287c57['stroke'](), _0x1ccdab[_0xcb232(0x93)](_0x130d64 => { const _0x4d0e37 = _0xcb232, _0x90d9f5 = _0x3ac6ea + Math['cos'](_0x130d64['angle']) * _0x130d64['r'], _0x428d78 = _0x5f5b68 + Math[_0x4d0e37(0x3f8)](_0x130d64[_0x4d0e37(0xc3)]) * _0x130d64['r']; let _0x4ab38f = _0x1c8a49 % (Math['PI'] * 0x2) - _0x130d64['angle']; while (_0x4ab38f < 0x0) _0x4ab38f += Math['PI'] * 0x2; _0x4ab38f < 0.25 ? _0x130d64[_0x4d0e37(0x3d6)] = 0x1 : _0x130d64['intensity'] = Math[_0x4d0e37(0x190)](0x0, _0x130d64[_0x4d0e37(0x3d6)] - 0.012), _0x130d64[_0x4d0e37(0x3d6)] > 0.05 && (_0x287c57[_0x4d0e37(0x38d)](), _0x287c57['fillStyle'] = 'rgba(239,\x2068,\x2068,\x20' + _0x130d64[_0x4d0e37(0x3d6)] + ')', _0x287c57[_0x4d0e37(0x4a8)] = _0x4d0e37(0x20f), _0x287c57[_0x4d0e37(0x483)] = 0xa * _0x130d64[_0x4d0e37(0x3d6)], _0x287c57['beginPath'](), _0x287c57[_0x4d0e37(0x28e)](_0x90d9f5, _0x428d78, 0x3 + _0x130d64[_0x4d0e37(0x3d6)] * 0x2, 0x0, Math['PI'] * 0x2), _0x287c57[_0x4d0e37(0x48f)](), _0x287c57[_0x4d0e37(0x3dd)] = _0x4d0e37(0x3bb) + _0x130d64[_0x4d0e37(0x3d6)] * 0.8 + ')', _0x287c57['font'] = _0x4d0e37(0x37b), _0x287c57[_0x4d0e37(0x318)](_0x130d64[_0x4d0e37(0x440)], _0x90d9f5 + 0x6, _0x428d78 - 0x4), _0x287c57[_0x4d0e37(0x308)]()); }); for (let _0x3ca484 = _0x3b2264[_0xcb232(0x14a)] - 0x1; _0x3ca484 >= 0x0; _0x3ca484--) { const _0x3be85b = _0x3b2264[_0x3ca484]; _0x287c57[_0xcb232(0x38d)](), _0x287c57[_0xcb232(0x1c7)] = _0xcb232(0x213) + _0x3be85b['alpha'] + ')', _0x287c57[_0xcb232(0xff)] = 0x2, _0x287c57[_0xcb232(0xf7)](), _0x287c57[_0xcb232(0x28e)](_0x3be85b['x'], _0x3be85b['y'], _0x3be85b[_0xcb232(0x3a4)], 0x0, Math['PI'] * 0x2), _0x287c57[_0xcb232(0x8b)](), _0x287c57[_0xcb232(0x308)](), _0x3be85b[_0xcb232(0x3a4)] += 1.2, _0x3be85b[_0xcb232(0x294)] -= 0.035, _0x3be85b['alpha'] <= 0x0 && _0x3b2264[_0xcb232(0x492)](_0x3ca484, 0x1); } _0x1c8a49 += _0x3ed86a; if (_0x1c8a49 > Math['PI'] * 0x2) _0x1c8a49 -= Math['PI'] * 0x2; if (_0x4cbebe) { const _0x1713fd = Math[_0xcb232(0x3f6)](_0x1c8a49 / (Math['PI'] * 0x2) * 0x168); _0x4cbebe[_0xcb232(0x19b)] = String(_0x1713fd)[_0xcb232(0x10a)](0x3, '0') + '°'; } requestAnimationFrame(_0x20daea); } _0x20daea(); } function _0x246785() { const _0x212d85 = _0x48547c, _0x156cd9 = document['getElementById'](_0x212d85(0x171)); if (!_0x156cd9) return; const _0x1d6208 = [{ 'ip': '185.220.101.4', 'type': _0x212d85(0x98), 'act': _0x212d85(0x39f), 'target': '/api/blog?tag=' }, { 'ip': _0x212d85(0x15e), 'type': _0x212d85(0x4c2), 'act': _0x212d85(0x338), 'target': '/index.html' }, { 'ip': _0x212d85(0x4a2), 'type': 'MIME\x20Sniff', 'act': _0x212d85(0x463), 'target': _0x212d85(0x40d) }, { 'ip': _0x212d85(0x441), 'type': 'Banner\x20Grabbing', 'act': _0x212d85(0x1cd), 'target': _0x212d85(0xca) }, { 'ip': _0x212d85(0x41a), 'type': _0x212d85(0x50d), 'act': _0x212d85(0x25e), 'target': '/login' }, { 'ip': _0x212d85(0x473), 'type': _0x212d85(0x2ce), 'act': _0x212d85(0x37c), 'target': _0x212d85(0x41c) }]; let _0x56ddfd = 0x0; function _0x3e067d() { const _0x44710d = _0x212d85, _0x408c4d = _0x1d6208[_0x56ddfd % _0x1d6208[_0x44710d(0x14a)]]; _0x56ddfd++; const _0x2fb62e = document[_0x44710d(0x315)](_0x44710d(0x223)); _0x2fb62e[_0x44710d(0x427)] = _0x44710d(0x4f7), _0x2fb62e[_0x44710d(0x430)] = _0x44710d(0x17b) + _0x44db8b(_0x408c4d[_0x44710d(0x209)]) + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22attack-ip\x22>' + _0x44db8b(_0x408c4d['ip']) + _0x44710d(0x2e4) + _0x44db8b(_0x408c4d[_0x44710d(0x497)]) + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20align-items:\x20center;\x20gap:\x2010px;\x20flex-wrap:\x20wrap;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22attack-verdict\x22>' + _0x44db8b(_0x408c4d[_0x44710d(0x45d)]) + _0x44710d(0x2e4) + new Date()[_0x44710d(0x12e)]() + _0x44710d(0x173), _0x156cd9[_0x44710d(0x383)](_0x2fb62e); while (_0x156cd9[_0x44710d(0x500)][_0x44710d(0x14a)] > 0x5) { _0x156cd9['removeChild'](_0x156cd9[_0x44710d(0x47f)]); } } _0x3e067d(), _0x3e067d(), _0x3e067d(), setInterval(_0x3e067d, 0xfa0); } function _0x19b5b1() { const _0x45df93 = _0x48547c, _0x23438e = document[_0x45df93(0xd9)](_0x45df93(0x249)); if (!_0x23438e) return; const _0x1c45ee = () => { const _0x286546 = _0x45df93, _0x257805 = new Date(); _0x23438e[_0x286546(0x19b)] = _0x257805[_0x286546(0x439)]()[_0x286546(0x1f3)](0xb, 0x13) + _0x286546(0x4fc); }; _0x1c45ee(), setInterval(_0x1c45ee, 0x3e8); } function _0x35d4ed() { const _0x44a571 = _0x48547c, _0x5526e4 = document['querySelectorAll'](_0x44a571(0x4ee)); if (!_0x5526e4['length']) return; document[_0x44a571(0x2d1)][_0x44a571(0x37e)][_0x44a571(0x16b)](_0x44a571(0x479)), _0x5526e4[_0x44a571(0x93)](_0x7b3066 => { const _0x333b5a = _0x44a571; _0x7b3066[_0x333b5a(0x37e)][_0x333b5a(0x16b)](_0x333b5a(0x494)); }); if (_0x44a571(0x7b) in window) { const _0xcb7aa = new IntersectionObserver(_0x14d9c4 => { const _0x238850 = _0x44a571; _0x14d9c4[_0x238850(0x93)](_0x2bda9e => { const _0x31108b = _0x238850; _0x2bda9e[_0x31108b(0x360)] && _0x2bda9e[_0x31108b(0x497)][_0x31108b(0x37e)][_0x31108b(0x16b)]('is-visible'); }); }, { 'rootMargin': _0x44a571(0x458), 'threshold': 0.05 }); _0x5526e4[_0x44a571(0x93)](_0x43499b => _0xcb7aa[_0x44a571(0x1f9)](_0x43499b)); } } function _0x30ec10() { const _0x4e0b8d = _0x48547c, _0x4e35cd = localStorage[_0x4e0b8d(0x3ee)](_0x4e0b8d(0x192)) || '5'; _0xd8f7b(_0x4e35cd, ![]), ['1', '3', '5'][_0x4e0b8d(0x93)](_0x250aef => { const _0x1ca7c3 = _0x4e0b8d, _0x3e9feb = document[_0x1ca7c3(0xd9)](_0x1ca7c3(0xfb) + _0x250aef); _0x3e9feb && _0x3e9feb[_0x1ca7c3(0x7e)]('click', () => { _0xd8f7b(_0x250aef, !![]); }); }); const _0x195cfe = document[_0x4e0b8d(0xd9)](_0x4e0b8d(0x2a9)); _0x195cfe && _0x195cfe['addEventListener'](_0x4e0b8d(0x266), () => { const _0x237942 = _0x4e0b8d; if (confirm('Tüm\x20ziyaretçi\x20ve\x20telemetri\x20log\x20kayıtlarını\x20silmek\x20istediğinize\x20emin\x20misiniz?')) { localStorage[_0x237942(0x394)]('lfl_access_logs'), _0x5b0dcd[_0x237942(0x379)] = [], _0x2f0ee0(''); const _0x33399b = document[_0x237942(0xd9)](_0x237942(0x484)); if (_0x33399b) _0x33399b[_0x237942(0x19b)] = '0'; const _0x5b0d27 = document[_0x237942(0xd9)](_0x237942(0x1d1)); if (_0x5b0d27) _0x5b0d27[_0x237942(0x19b)] = '0'; _0x43b520(_0x237942(0x30b), _0x237942(0x446), _0x237942(0x97)); } }); const _0x19d6e3 = localStorage[_0x4e0b8d(0x3ee)]('lfl_broadcast_msg'); _0x19d6e3 && _0x5f3a51(_0x19d6e3); const _0x1070c3 = document[_0x4e0b8d(0xd9)](_0x4e0b8d(0x3db)), _0x28da1d = document[_0x4e0b8d(0xd9)]('admin-broadcast-input'); _0x1070c3 && _0x28da1d && _0x1070c3[_0x4e0b8d(0x7e)]('click', () => { const _0xcf0998 = _0x4e0b8d, _0x55bb91 = _0x28da1d[_0xcf0998(0x411)]['trim'](); if (!_0x55bb91) { _0x43b520('error', _0xcf0998(0x1eb), _0xcf0998(0x170)); return; } localStorage[_0xcf0998(0x2ed)](_0xcf0998(0x39c), _0x55bb91), _0x5f3a51(_0x55bb91), _0x43b520(_0xcf0998(0x47b), 'Duyuru\x20Yayınlandı', 'Neon\x20acil\x20durum\x20bandı\x20tüm\x20platformda\x20yayına\x20girdi.'); }); const _0x579c14 = document[_0x4e0b8d(0xd9)](_0x4e0b8d(0x4da)), _0xf3424 = document[_0x4e0b8d(0xd9)](_0x4e0b8d(0x1af)), _0x116536 = () => { const _0x546074 = _0x4e0b8d; localStorage[_0x546074(0x394)](_0x546074(0x39c)); const _0x562213 = document[_0x546074(0xd9)](_0x546074(0x2c6)); if (_0x562213) _0x562213[_0x546074(0x37e)][_0x546074(0x16b)](_0x546074(0x89)); _0x43b520(_0x546074(0x30b), _0x546074(0x3c2), _0x546074(0xeb)); }; if (_0x579c14) _0x579c14[_0x4e0b8d(0x7e)]('click', _0x116536); if (_0xf3424) _0xf3424[_0x4e0b8d(0x7e)]('click', _0x116536); const _0x1e76bd = document[_0x4e0b8d(0xd9)]('btn-admin-bypass-ctf'); _0x1e76bd && _0x1e76bd[_0x4e0b8d(0x7e)](_0x4e0b8d(0x266), () => { const _0xb688d5 = _0x4e0b8d; confirm(_0xb688d5(0x293)) && (_0x20de24[_0xb688d5(0x2d8)] = _0x15fe73['map'](_0x5663c6 => _0x5663c6['id']), _0x20de24[_0xb688d5(0xe2)] = _0x15fe73[_0xb688d5(0x14a)] - 0x1, _0x20de24['xp'] = 0x8fc, _0xcd7074(), _0x1dc2c2(), _0x1cfb1f(), _0x264e11(_0x20de24[_0xb688d5(0x4e0)]), _0x43b520('success', _0xb688d5(0x4d0), _0xb688d5(0x4ad)), _0x2fa9f7(_0xb688d5(0x46b))); }); } function _0xd8f7b(_0x35075d, _0x3c54af = ![]) { const _0x29ba9a = _0x48547c; localStorage['setItem']('lfl_defcon', _0x35075d), ['1', '3', '5']['forEach'](_0x1ef76e => { const _0xf0c531 = _0x78d9, _0x58aba8 = document[_0xf0c531(0xd9)](_0xf0c531(0xfb) + _0x1ef76e); if (_0x58aba8) _0x58aba8[_0xf0c531(0x37e)][_0xf0c531(0x3a6)](_0xf0c531(0x4ed), _0x1ef76e === _0x35075d); }); const _0xd2f7ab = document[_0x29ba9a(0x316)]('.cluster-status-row\x20.pulsing-beacon'), _0x4aa842 = document['querySelector'](_0x29ba9a(0x1fc)); if (_0x35075d === '1') { _0xd2f7ab && (_0xd2f7ab[_0x29ba9a(0xe6)][_0x29ba9a(0xd5)] = _0x29ba9a(0x20f), _0xd2f7ab['style'][_0x29ba9a(0x398)] = _0x29ba9a(0x102)); _0x4aa842 && (_0x4aa842[_0x29ba9a(0xe6)]['color'] = _0x29ba9a(0x20f), _0x4aa842[_0x29ba9a(0x19b)] = 'DEFCON\x201\x20//\x20KIRMIZI\x20ALARM'); if (_0x3c54af) _0x43b520(_0x29ba9a(0x2f2), _0x29ba9a(0x2a3), _0x29ba9a(0x15c)); } else { if (_0x35075d === '3') { _0xd2f7ab && (_0xd2f7ab[_0x29ba9a(0xe6)][_0x29ba9a(0xd5)] = _0x29ba9a(0x364), _0xd2f7ab[_0x29ba9a(0xe6)]['boxShadow'] = _0x29ba9a(0x4c6)); _0x4aa842 && (_0x4aa842['style']['color'] = '#f59e0b', _0x4aa842[_0x29ba9a(0x19b)] = _0x29ba9a(0x1f1)); if (_0x3c54af) _0x43b520(_0x29ba9a(0x240), _0x29ba9a(0x2b7), _0x29ba9a(0x32e)); } else { _0xd2f7ab && (_0xd2f7ab['style'][_0x29ba9a(0xd5)] = 'var(--green)', _0xd2f7ab[_0x29ba9a(0xe6)][_0x29ba9a(0x398)] = _0x29ba9a(0x239)); _0x4aa842 && (_0x4aa842[_0x29ba9a(0xe6)]['color'] = 'var(--green)', _0x4aa842[_0x29ba9a(0x19b)] = _0x29ba9a(0x2c9)); if (_0x3c54af) _0x43b520(_0x29ba9a(0x47b), _0x29ba9a(0x147), _0x29ba9a(0x478)); } } } function _0x5f3a51(_0x1c396b) { const _0x1e00eb = _0x48547c, _0x19daa9 = document[_0x1e00eb(0xd9)](_0x1e00eb(0x2c6)), _0x1ce9e0 = document[_0x1e00eb(0xd9)](_0x1e00eb(0x25b)); _0x19daa9 && _0x1ce9e0 && (_0x1ce9e0['innerHTML'] = '🚨\x20<strong>DUYURU:</strong>\x20' + _0x44db8b(_0x1c396b) + _0x1e00eb(0x2bc), _0x19daa9[_0x1e00eb(0x37e)][_0x1e00eb(0x3e0)]('hidden')); } async function _0x5db69b() { const _0x463d24 = _0x48547c; try { _0x488ab0(); } catch (_0x42479c) { console[_0x463d24(0x2f2)](_0x463d24(0x82), _0x42479c); } _0x19b5b1(), _0x30ec10(); const _0xf524c1 = document[_0x463d24(0xd9)](_0x463d24(0x231)); _0xf524c1 && _0xf524c1[_0x463d24(0x7e)](_0x463d24(0x266), () => { }), _0x1618ee(), _0x5259c6(), _0x3a6d39(), _0x1b8ee6(), _0x44854d(), _0x9e7295(), _0x2ce95a(), _0x1a0891(), _0x4320cf(), _0x21308a(), _0x414195(), _0x48c357(_0x463d24(0x3a3), ''), _0x20ad86(_0x5b0dcd['theme']), _0x35d4ed(), _0x1c2b7f(_0x463d24(0x503)), await _0x333b74(), _0x246785(), _0x628037(); } document['readyState'] === _0x48547c(0x4b3) ? document[_0x48547c(0x7e)](_0x48547c(0x3fd), _0x5db69b) : _0x5db69b(); }())); function initAnimationEngine() { const _0x1a2ff = _0x78d9, _0x28756b = document[_0x1a2ff(0xd9)]('scroll-progress-bar'), _0x1a036f = document[_0x1a2ff(0x316)]('.app-main'); _0x28756b && _0x1a036f && _0x1a036f[_0x1a2ff(0x7e)](_0x1a2ff(0xda), () => { const _0x1eefd7 = _0x1a2ff, { scrollTop: _0xe9fabb, scrollHeight: _0x452451, clientHeight: _0x2dfae8 } = _0x1a036f, _0x1245ff = _0x452451 > _0x2dfae8 ? Math[_0x1eefd7(0x3f6)](_0xe9fabb / (_0x452451 - _0x2dfae8) * 0x64) : 0x0; _0x28756b[_0x1eefd7(0xe6)]['width'] = _0x1245ff + '%'; const _0x3bc451 = document[_0x1eefd7(0x316)](_0x1eefd7(0xcd)); if (_0x3bc451) _0x3bc451['classList'][_0x1eefd7(0x3a6)]('topbar-elevated', _0xe9fabb > 0xa); }, { 'passive': !![] }); const _0x2a7301 = document[_0x1a2ff(0xd9)](_0x1a2ff(0x4b0)) || document[_0x1a2ff(0xd9)](_0x1a2ff(0x1e0)); if (_0x2a7301) { const _0x3c4c7f = _0x2a7301[_0x1a2ff(0x407)]('2d'); let _0x199d03 = _0x2a7301[_0x1a2ff(0x4a9)] = window[_0x1a2ff(0x11e)], _0x1cd2b6 = _0x2a7301[_0x1a2ff(0x1e9)] = window['innerHeight']; window['addEventListener'](_0x1a2ff(0xab), () => { const _0x3778b8 = _0x1a2ff; _0x199d03 = _0x2a7301[_0x3778b8(0x4a9)] = window[_0x3778b8(0x11e)], _0x1cd2b6 = _0x2a7301['height'] = window[_0x3778b8(0x3e6)]; }); const _0x41630d = Array[_0x1a2ff(0x1a3)]({ 'length': 0x2d }, () => ({ 'x': Math[_0x1a2ff(0x1da)]() * _0x199d03, 'y': Math[_0x1a2ff(0x1da)]() * _0x1cd2b6, 'vx': (Math[_0x1a2ff(0x1da)]() - 0.5) * 0.4, 'vy': (Math[_0x1a2ff(0x1da)]() - 0.5) * 0.4, 'radius': Math[_0x1a2ff(0x1da)]() * 1.5 + 0.5, 'alpha': Math['random']() * 0.5 + 0.2 })); function _0x27b05e() { const _0x3f454c = _0x1a2ff; _0x3c4c7f[_0x3f454c(0x15b)](0x0, 0x0, _0x199d03, _0x1cd2b6), _0x3c4c7f[_0x3f454c(0x3dd)] = _0x3f454c(0x81), _0x41630d['forEach'](_0x2ac576 => { const _0xfcd1aa = _0x3f454c; _0x2ac576['x'] += _0x2ac576['vx'], _0x2ac576['y'] += _0x2ac576['vy']; if (_0x2ac576['x'] < 0x0) _0x2ac576['x'] = _0x199d03; if (_0x2ac576['x'] > _0x199d03) _0x2ac576['x'] = 0x0; if (_0x2ac576['y'] < 0x0) _0x2ac576['y'] = _0x1cd2b6; if (_0x2ac576['y'] > _0x1cd2b6) _0x2ac576['y'] = 0x0; _0x3c4c7f[_0xfcd1aa(0xf7)](), _0x3c4c7f[_0xfcd1aa(0x28e)](_0x2ac576['x'], _0x2ac576['y'], _0x2ac576['radius'], 0x0, Math['PI'] * 0x2), _0x3c4c7f[_0xfcd1aa(0x48f)](); }), requestAnimationFrame(_0x27b05e); } _0x27b05e(); } } function _0x78d9(_0x667728, _0x3b0397) { _0x667728 = _0x667728 - 0x77; const _0x473324 = _0x4733(); let _0x78d91d = _0x473324[_0x667728]; return _0x78d91d; } function _0x4733() { const _0x138b6b = ['Muhteşem!\x20Sen\x20hem\x20saldırıyı\x20hem\x20savunmayı\x20aynı\x20anda\x20dengeli\x20gören\x20stratejik\x20bir\x20lidersin.\x20Bir\x20suçlunun\x20nasıl\x20düşüneceğini\x20de,\x20güvenliğin\x20nasıl\x20sağlanması\x20gerektiğini\x20de\x20büyük\x20resimden\x20görüyorsun.\x20İki\x20tarafı\x20buluşturan,\x20tatbikatları\x20yöneten\x20ve\x20kriz\x20anında\x20doğru\x20kararları\x20alan\x20bir\x20\x22Siber\x20Güvenlik\x20Stratejisti\x22\x20(Purple\x20Team)\x20kumaşına\x20sahipsin!', '</h3>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-options-list\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '/app.js', 'browser', 'curl.exe\x20', ')\x2056(84)\x20bytes\x20of\x20data.\x0a64\x20bytes\x20from\x20', 'value', 'dig\x20lostfromlight.com', 'setAttribute', ',\x200.15);\x20color:\x20', 'Kullanıcı\x20adı\x20yalnızca\x20harf,\x20rakam\x20ve\x20alt\x20çizgi\x20içerebilir.', 'admin', 'curriculum-chapters-container', 'Harika!\x20Ağ\x20keşfini\x20tamamladın\x20ve\x20HTTP\x20başlığına\x20gizlenmiş\x20Base64\x20tokenını\x20çözdün.', 'lfl_ctf_state', '103.145.13.2', 'then', 'Port\x2080', 'storage-status-pill', 'btn-open-terminal-from-commands', '\x22\x20panoya\x20kopyalandı.', 'getAccessLogs', 'submit', 'Mektup\x20atma\x20kutusuna\x20mektup\x20yerine\x20dinamit\x20atmaktır.\x20Parametrik\x20koruma\x20ise\x20mektubu\x20kutuya\x20atmadan\x20önce\x20X-ray\x20cihazından\x20geçirip\x20sadece\x20kağıt\x20olduğunu\x20doğrulamaktır.', 'floor', 'Giriş\x20Başarılı', 'GET', 'btn-kali-add-tab', 'className', 'Katman-7\x20WAF\x20ve\x20IDS\x20tüm\x20istemci\x20isteklerini\x20şifreli\x20telemetriye\x20kaydeder.', 'cos', 'nmap\x20-p-\x20127.0.0.1', 'hydra\x20-l\x20admin\x20-p\x20Sebu132009\x20192.168.1.1\x20http-get\x20/', '\x20adet\x20gerçek\x20istemci\x20IP\x20ve\x20telemetrisi\x20kayıt\x20altında\x0a[+]\x20CTF\x20İlerlemesi\x20\x20\x20\x20\x20\x20\x20:\x20', '</pre>', 'Halka\x20Açık\x20Wi-Fi\x20Dinleme,\x20Trafik\x20Analizi', 'btn-restart-quiz', 'innerHTML', '\x0a<div\x20style=\x22background:\x20rgba(239,\x2068,\x2068,\x200.15);\x20border-left:\x203px\x20solid\x20#ef4444;\x20padding:\x208px\x2012px;\x20margin-bottom:\x208px;\x22>\x0a\x20\x20<span\x20style=\x22color:\x20#ef4444;\x20font-weight:\x20bold;\x22>[EĞİTİMCİ\x20SİMÜLASYON\x20//\x20TCK\x20244\x20UYARISI]</span>\x0a\x20\x20<div\x20style=\x22color:\x20#f1f5f9;\x20font-size:\x2012px;\x20margin-top:\x204px;\x22>DDoS\x20ve\x20Flood\x20saldırıları\x20bilişim\x20sistemlerini\x20engelleme/bozma\x20suçudur.\x20Bu\x20platformda\x20yalnızca\x20eğitim\x20amaçlı\x20simüle\x20edilir.</div>\x0a</div>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>hping3\x20--udp\x20--flood\x20--rand-source\x20-p\x2080\x20[HEDEF_IP]</span>\x0a-------------------------------------------------------------\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[SAVUNMA\x20ANALİZİ]:\x20Kurumsal\x20LFL\x20Savunma\x20Mimarisi\x20bu\x20saldırıyı\x20şu\x20şekilde\x20engeller:</span>\x0a\x20\x201.\x20<span\x20style=\x22color:\x20#38bdf8;\x22>SYN\x20Cookies:</span>\x20Yarı\x20açık\x20TCP\x20bağlantı\x20tablolarının\x20dolmasını\x20önler.\x0a\x20\x202.\x20<span\x20style=\x22color:\x20#38bdf8;\x22>BGP\x20Anycast:</span>\x20Saldırı\x20trafiğini\x20dünya\x20genelindeki\x20300+\x20veri\x20merkezine\x20dağıtıp\x20eritir.\x0a\x20\x203.\x20<span\x20style=\x22color:\x20#38bdf8;\x22>Rate\x20Limiting:</span>\x20Sahte\x20kaynaklı\x20(spoofed)\x20IP\x20paketlerini\x20ISP\x20seviyesinde\x20filtreler.\x0a<span\x20style=\x22color:\x20#22c55e;\x22>Simülasyon\x20güvenli\x20sandbox\x20ortamında\x20tamamlandı.\x20Hedef\x20sistem\x20%100\x20ayakta.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'unlocked', 'simRunning', '--tables', ')\x20için\x20önerilen\x20komutlar:\x0a\x20\x20', 'XSS', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0a/usr/lib/openssh/ssh-keysign\x0a/usr/lib/dbus-1.0/dbus-daemon-launch-helper\x0a/usr/bin/passwd\x0a/usr/bin/gpasswd\x0a/usr/bin/newgrp\x0a/usr/bin/chsh\x0a/usr/bin/chfn\x0a<span\x20style=\x22color:\x20#ef4444;\x20font-weight:\x20800;\x22>/usr/bin/python3\x20(CRITICAL\x20SUID\x20BIT\x20SET\x20-\x20root\x20execution\x20allowed!)</span>\x0a/usr/bin/sudo\x0a</pre>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20/usr/bin/python3\x20üzerinde\x20SUID\x20yetkisi\x20tespit\x20edildi!</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20/root/flag.txt\x20dosyasını\x20cat\x20ile\x20okuyun\x20(veya\x20python3\x20ile\x20root\x20yetkisini\x20çalıştırın).</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'page-glossary', 'toISOString', 'Savunma\x20&\x20Kripto', 'historyHtml', 'open', 'ACADEMY_COMMANDS', '</span>', 'Win', 'label', '91.240.118.17', '</strong>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20gap:\x206px;\x20align-items:\x20center;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22badge-soft-cyan\x22\x20style=\x22font-size:\x2010px;\x20font-weight:\x20700;\x22>', '</div>', 'Otelin\x20genel\x20güvenlik\x20planını\x20merak\x20ederim;\x20yangın\x20çıkarsa\x20veya\x20elektrik\x20kesilirse\x20kapılar\x20ne\x20yapıyor?', '&amp;', 'Loglar\x20Temizlendi', 'Panoya\x20kopyalama\x20izni\x20verilmedi.', 'm3_2', 'nuclei', '--dump', 'mobile-open', '</code>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22cmd-actions\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-cmd-copy\x22\x20data-copy=\x22', '/home/Sunny', '<span\x20style=\x22color:\x20#ef4444;\x22>cat:\x20/etc/shadow:\x20İzin\x20reddedildi\x20(Permission\x20denied).\x20root\x20yetkisi\x20gereklidir.</span>', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22badge-ip-mono\x22\x20style=\x22font-weight:\x20800;\x20color:\x20#38bdf8;\x22>', 'Sistemlerin\x20açık\x20kapılarını\x20bularak\x20şirketlerin\x20korunmasını\x20sağlayan\x20\x27Etik\x20Hacker\x27\x20(Red\x20Team).', 'text', 'topbar-login-btn', 'auth-input-password', 'ctf-hint-icon', 'Bu\x20tür\x20dolandırıcılık\x20yöntemlerini\x20inceleyip\x20insanların\x20kandırılmasını\x20önleyecek\x20bir\x20bilinçlendirme\x20rehberi\x20hazırlarım.', 'Hesap\x20Kilitleme\x20Politikası,\x20Güçlü\x20MFA,\x20Fail2ban', 'local-audit\x20(/var/backups\x20&\x20/var/log)', '0px\x200px\x20-20px\x200px', '10.\x20Siber\x20dünyada\x20ilerlemek\x20istesen\x20hangi\x20unvan\x20kulağına\x20en\x20havalı\x20ve\x20sana\x20en\x20uygun\x20geliyor?', 'ACADEMY_ROOMS', 'BETTERCAP', 'parse', 'act', 'strings\x20/evidence/suspect_payload.bin\x20|\x20grep\x20\x22LFL{\x22', '🚨\x20ASKERİ\x20WAF\x20BLOKAJI:\x20Zararlı\x20saldırı\x20imzası\x20(', '\x0a;\x20&lt;&lt;&gt;&gt;\x20DiG\x209.18.28-1-Debian\x20&lt;&lt;&gt;&gt;\x20', 'message', 'uid=1000(Sunny)\x20gid=1000(Sunny)\x20groups=1000(Sunny),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),122(kvm)', 'nosniff\x20başlığı\x20ile\x20düşürüldü', '--dbs', '1)\x20<code>whatweb\x20http://10.10.2.10</code>\x20ile\x20web\x20teknolojilerini\x20gör.<br>2)\x20<code>gobuster\x20dir\x20-u\x20http://10.10.2.10\x20-w\x20common.txt</code>\x20ile\x20gizli\x20yolları\x20keşfet.<br>3)\x20<code>curl\x20http://10.10.2.10/robots.txt</code>\x20dosyasını\x20oku.<br>4)\x20Oradaki\x20<code>/admin_vault/confidential_token.json</code>\x20yolunu\x20curl\x20ile\x20aç!', 'page-', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x0a\x0aHızlı\x20Kullanım:\x0a\x20\x20submit\x20LFL{...}\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Bulduğun\x20bayrağı\x20terminalden\x20teslim\x20et\x0a\x20\x20clear\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Ekranı\x20temizle\x0a\x20\x20help\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20Bu\x20yardım\x20ekranını\x20göster\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Bitti', 'Kullanıcının\x20hesabına\x20girmesi\x20için\x20yalnızca\x20şifrenin\x20yetmediği;\x20telefonuna\x20gelen\x20kod\x20(SMS/Authenticator)\x20veya\x20donanım\x20güvenlik\x20anahtarı\x20(FIDO2/YubiKey)\x20gibi\x20ikinci\x20bir\x20delil\x20sunmasını\x20şart\x20koşan\x20güvenlik\x20mekanizmasıdır.', '\x0a<span\x20style=\x22color:\x20#f59e0b;\x20font-weight:\x20800;\x22>[ROOT\x20MASTER\x20BYPASS]</span>\x20<span\x20style=\x22color:\x20#10b981;\x22>Tüm\x20sızma\x20seviyeleri\x20Platform\x20Mimarı\x20burak_wyxz\x20tarafından\x20%100\x20açıldı!\x20(+2300\x20XP)</span>\x0a', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22', '7.\x20Bir\x20zeka\x20bulmacası\x20veya\x20kaçış\x20odası\x20oyununda\x20seni\x20en\x20çok\x20tatmin\x20eden\x20an\x20hangisidir?', 'Kullanım\x20kılavuzunu\x20inceleyip\x20cihazın\x20hem\x20sunduğu\x20avantajları\x20hem\x20de\x20zayıf\x20yönlerini\x20eksiksiz\x20öğrenirim.', 'operator@fortress:~$', 'attempts', 'unshift', '</code></div>\x0a\x20\x20\x20\x20<div\x20style=\x22color:\x20#64748b;\x20font-size:\x2010.5px;\x20margin-bottom:\x206px;\x22>Kategori:\x20<span\x20style=\x22color:\x20#a5f3fc;\x22>', '178.62.204.99', 'uid=1001(operator)\x20gid=1001(operator)\x20groups=1001(operator)', 'inspectPayload', 'ffuf', '81LYhddO', 'Platform\x20standart\x20güvenli\x20savunma\x20moduna\x20döndü.', 'js-reveal-ready', 'Content\x20Security\x20Policy\x20(İçerik\x20Güvenliği\x20Politikası)', 'success', 'ctf-flag-input-field', 'application/json', 'Oturum\x20Kapatıldı', 'lastChild', ';\x20border:\x201px\x20solid\x20', 'reset', 'find', 'shadowBlur', 'log-stat-total', 'file', 'PROTOTYPE_POLLUTION', '🛡️', '13827187qGqHdj', '3.\x20Bir\x20polisiye\x20veya\x20casusluk\x20filminde\x20hangi\x20karakterin\x20yerinde\x20olmak\x20isterdin?', 'Android\x20OS\x20(Mobil)', '<div></div>', '@lostfromlight.local', 'page-active', 'ctf-term-screen', 'fill', 'Rate\x20Limiting,\x20Cloudflare\x20WAF,\x20SYN\x20Cookies', 'tag', 'splice', 'whatweb\x20http://10.10.2.10', 'is-visible', 'hydra\x20-l\x20operator\x20-P\x20rockyou.txt\x2010.10.3.50\x20ssh', 'Telefonda\x20\x27Alo\x20sesimi\x20alıyor\x20musun?\x27\x20(SYN),\x20karşı\x20tarafın\x20\x27Evet\x20duyuyorum,\x20sen\x20beni\x20duyuyor\x20musun?\x27\x20(SYN-ACK)\x20ve\x20sizin\x20\x27Tamam\x20anlaştık\x20konuşalım\x27\x20(ACK)\x20demenizdir.', 'target', 'screen', 'data-theme', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'historyCursor', 'auth-main-subtitle', 'Şeffaf\x20bir\x20kağıdın\x20altına\x20banka\x20dekontunu\x20koyup,\x20size\x20\x27Anketi\x20imzala\x27\x20diyerek\x20fark\x20ettirmeden\x20alttaki\x20para\x20transferi\x20dekontunu\x20imzalatmaktır.', '2.\x20Arkadaşlarınla\x20kutu\x20oyunu\x20veya\x20strateji\x20oyunu\x20oynarken\x20hangi\x20taktik\x20seni\x20daha\x20çok\x20eğlendirir?', 'appendChild', '\x22>📋\x20Kopyala</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-cmd-run\x22\x20data-run=\x22', 'msg', '194.26.29.112', '<pre\x20style=\x22color:\x20#a7f3d0;\x22>', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20var(--text-muted);\x20font-size:\x2011px;\x22>(', 'HONEYPOT', '\x0aStarting\x20Nmap\x207.94\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2000:01\x20UTC\x0aNmap\x20scan\x20report\x20for\x20127.0.0.1\x0aHost\x20is\x20up\x20(0.000078s\x20latency).\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>PORT\x20\x20\x20\x20\x20STATE\x20SERVICE\x20\x20\x20\x20VERSION</span>\x0a8080/tcp\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20http-proxy\x20LFL\x20Enterprise\x20API\x20(Zero-Trust\x20Shield\x20Enforced)\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x208080\x20alternatif\x20web\x20portudur.\x20Üretim\x20ortamında\x20Kestrel\x20güvenlik\x20middleware\x27i\x20ve\x20JWT\x20Bearer\x20doğrulaması\x20olmadan\x20dış\x20dünyaya\x20açılmamalıdır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'HTTP/1.1\x20200\x20OK\x0aDate:\x20', 'shadowColor', 'width', '🚨\x20ASKERİ\x20SAVUNMA\x20KİLİDİ:\x205\x20başarısız\x20deneme\x20nedeniyle\x20sistem\x20', '\x27Asla\x20güvenme,\x20her\x20zaman\x20doğrula\x27\x20felsefesidir.\x20Şirket\x20ağının\x20içindeki\x20çalışanlar\x20da\x20dahil\x20olmak\x20üzere\x20her\x20isteğin\x20kimliği\x20ve\x20yetkisi\x20her\x20adımda\x20yeniden\x20doğrulanır.', 'Tüm\x20CTF\x20operasyon\x20ilerlemenizi\x20sıfırlayıp\x201.\x20seviyeden\x20baştan\x20başlamak\x20istediğinize\x20emin\x20misiniz?', 'Tüm\x206\x20operasyon\x20ve\x202300\x20XP\x20yönetici\x20olarak\x20açıldı!', 'Havalimanı\x20kapısındaki\x20X-ray\x20cihazı\x20ve\x20güvenlik\x20görevlileridir.\x20Yasaklı\x20eşyaları\x20valizinizden\x20çıkarır,\x20içeri\x20sokmaz.', 'writeText', 'lfl-particle-canvas', 'HYDRA', '%\x20(', 'loading', 'input', '/root', 'DNS\x20Zehirleme\x20(DNS\x20Spoofing),\x20DNSSEC\x20Koruması', 'platform', 'Saldırı\x20Girişimi', '●\x20Session\x20Storage:\x20Aktif\x20(', '\x27Bu\x20şirket\x20neden\x20iki\x20aşamalı\x20SMS\x20onayı\x20ve\x20şifreli\x20kalkanlar\x20kullanmamış,\x20bu\x20kabul\x20edilemez!\x27', '\x0atcpdump:\x20verbose\x20output\x20suppressed,\x20use\x20-v[v]...\x20for\x20full\x20protocol\x20decode\x0alistening\x20on\x20eth0,\x20link-type\x20EN10MB\x20(Ethernet),\x20snapshot\x20length\x20262144\x20bytes\x0a00:12:01.402\x20IP\x20192.168.1.17.51234\x20>\x20127.0.0.1.5000:\x20Flags\x20[S],\x20seq\x201849201,\x20win\x2065535,\x20options\x20[mss\x201460,nop,wscale\x208]\x0a00:12:01.402\x20IP\x20127.0.0.1.5000\x20>\x20192.168.1.17.51234:\x20Flags\x20[S.],\x20seq\x20491204,\x20ack\x201849202,\x20win\x2065535,\x20options\x20[mss\x201460]\x0a00:12:01.403\x20IP\x20192.168.1.17.51234\x20>\x20127.0.0.1.5000:\x20Flags\x20[.],\x20ack\x201,\x20win\x20512\x0a3\x20packets\x20captured,\x203\x20packets\x20received\x20by\x20filter,\x200\x20packets\x20dropped\x20by\x20kernel\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'sqlmap\x20-u\x20\x22http://10.10.3.99/api/search?q=test\x22\x20-D\x20lfl_master_vault\x20-T\x20master_classified_flags\x20--dump', 'historyIdx', 'ctf-briefing-box', 'PRETTY_NAME=\x22Kali\x20GNU/Linux\x20Rolling\x22\x0aNAME=\x22Kali\x20GNU/Linux\x22\x0aVERSION_ID=\x222026.1\x22\x0aVERSION=\x222026.1\x22\x0aID=kali\x0aID_LIKE=debian', 'Olay\x20yerindeki\x20en\x20ufak\x20ayak\x20izini\x20veya\x20parmak\x20izini\x20büyüteçle\x20inceleyip\x20suçluyu\x20yakalayan\x20adli\x20tıp\x20uzmanı.', '10.10.1.5\x20(Dış\x20Güvenlik\x20Ağ\x20Geçidi)', 'Clickjacking', 'analogy', 'SEVİYE\x202.2\x20//\x20OPERATÖR\x20SEVİYE', 'btn-sim-iframe', '0\x200\x2014px\x20#f59e0b', 'WAF\x20Savunma\x20Kalkanı', 'Kali\x20Terminali\x20Devrede', 'Oturum\x20Sahteciliği\x20(Session\x20Hijacking),\x20Yetkisiz\x20Yetki\x20Yükseltme', '\x0a<span\x20style=\x22color:\x20#fca5a5;\x22>bash:\x20', 'btn-refresh-logs', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:\x2012px;\x20color:\x20var(--text-muted);\x20font-family:\x20var(--font-mono);\x22>', 'Discord\x20Kullanıcı\x20Adı:', 'Dışa\x20aktarılacak\x20log\x20verisi\x20bulunmuyor.', '\x27]</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22storage-key-value\x22>', '👑\x20Master\x20Key\x20Aktif', 'auth-modal-form', 'Şifre\x20en\x20az\x204\x20karakter\x20olmalıdır.', 'timestamp', '\x22\x20terimi\x20bulunamadı.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'storage-status-pill\x20active', 'Operasyon\x20Gömülü\x20Bellek\x20(Op:\x20Memory\x20Forensics)', '%;\x20background:\x20#ef4444;\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-item\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-label-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#60a5fa;\x22>🛡️\x20Blue\x20Team\x20(Defansif\x20/\x20Savunma):</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#60a5fa;\x22>', 'findIndex', 'm1_1', 'btn-clear-broadcast', 'checkRateLimit', 'Veritabanı\x20Açıklarının\x20Yama\x20Öncesi\x20Doğrulanması', '1.\x20Bir\x20otele\x20gittiğinde\x20oda\x20kapısındaki\x20elektronik\x20kartlı\x20kilidi\x20görünce\x20aklından\x20ilk\x20ne\x20geçer?', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aNov\x20\x208\x2001:44:12\x20fortress\x20kernel:\x20[\x20\x20184.20914]\x20audit:\x20type=1400\x20audit(1794092000.104:45):\x20apparmor=\x22DENIED\x22\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20800;\x22>Nov\x20\x208\x2001:45:00\x20fortress\x20security_daemon[4091]:\x20[FLAG_LEAK]\x20Operator\x20token\x20verified:\x20LFL{level1_2_linux_dosya_adli_analiz}</span>\x0aNov\x20\x208\x2001:45:15\x20fortress\x20sshd[4102]:\x20Accepted\x20publickey\x20for\x20operator\x20from\x2010.10.14.2\x0a</pre>\x0a<span\x20style=\x22color:\x20#00e5ff;\x22>[+]\x20Bayrak\x20bulundu:\x20LFL{level1_2_linux_dosya_adli_analiz}</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'modal-tab-signin', 'activeIdx', 'cyber_status', 'log-stat-status', 'contains', 'auth-modal', '\x0a<pre\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>\x0aLFL{level1_1_ag_kesif_basarans}\x0a</pre>\x0a<span\x20style=\x22color:\x20#00e5ff;\x22>[+]\x20Bayrak\x20çözüldü!\x20Sol\x20taraftaki\x20teslim\x20kutusuna\x20yapıştırıp\x20doğrulayın\x20veya\x20\x27submit\x20LFL{...}\x27\x20yazın.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'nav-btn-logs', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22font-family:\x20var(--font-mono);\x20background:\x20rgba(0,\x200,\x200,\x200.5);\x20border:\x201px\x20solid\x20rgba(0,\x20229,\x20255,\x200.2);\x20padding:\x206px\x2010px;\x20border-radius:\x204px;\x20color:\x20#a7f3d0;\x20font-size:\x2011.5px;\x20user-select:\x20text;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20var(--cyan);\x20font-weight:\x20700;\x22>$</span>\x20', 'stageIdx', '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Yerel\x20ağ\x20trafiğini\x20gerçek\x20zamanlı\x20izlemek,\x20ARP\x20zehirleme\x20saldırılarını\x20test\x20etmek\x20ve\x20şifrelenmemiş\x20protokolleri\x20analiz\x20etmek\x20için\x20kullanılır.', 'title', 'Cyber\x20Midnight', 'active', '[data-reveal],\x20[data-reveal-stagger]', 'Bir\x20kahve\x20dükkanına\x20aynı\x20anda\x2010.000\x20kişinin\x20hücum\x20edip\x20hiçbir\x20şey\x20almadan\x20kasayı\x20meşgul\x20ederek\x20gerçek\x20müşterilerin\x20içeri\x20girmesini\x20engellemesi\x20gibidir.', 'whois', 'select', 'lfl_waf_bruteforce', 'ping\x20-c\x203\x2010.10.1.5', 'metaKey', 'push', 'Oyun\x20kurucusunun\x20fark\x20etmediği\x20bir\x20kestirme\x20yol\x20veya\x20ipucu\x20bularak\x20odayı\x20herkesten\x20önce\x20açmak.', 'attack-row', 'scrollHeight', 'btn-admin-bypass-ctf', 'Evin\x20kapısını\x20hem\x20anahtarla\x20açıp,\x20hem\x20de\x20içerideki\x20güvenlik\x20paneline\x20parmak\x20izinizi\x20okutmak\x20gibidir.\x20Hırsız\x20anahtarı\x20çalsa\x20bile\x20eve\x20giremez.', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22toast-close-btn\x22>&times;</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', '\x20UTC', 'KULLANICI', 'blocked', 'key', 'children', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Hatalı\x20Bayrak', '/dashboard', 'Ağ\x20&\x20Protokol', 'sqlmap', 'Web\x20sitelerindeki\x20SQL\x20enjeksiyon\x20açıklarını\x20otomatik\x20olarak\x20tespit\x20eden,\x20veritabanı\x20parmak\x20izini\x20çıkaran\x20ve\x20güvenliğini\x20denetleyen\x20araçtır.', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22storage-key-card\x20', 'Kopyalama\x20Hatası', 'Kusursuz!\x20Web\x20dizin\x20taraması\x20(directory\x20brute-force)\x20ve\x20robots.txt\x20analiziyle\x20gizli\x20anahtarı\x20ele\x20geçirdin.', 'Hem\x20güvenlik\x20görevlilerini\x20hem\x20teftiş\x20ekibini\x20toplayıp\x20acil\x20durum\x20ve\x20güvenlik\x20tatbikatları\x20yaptırmak.', '”</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Mitigations\x20Tag\x20Row\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-mitigations-box\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22mitigation-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22mitigation-icon\x22>🛡️</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>KORUDUĞU\x20TEHDİTLER:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22mitigation-pills-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x0a<pre\x20style=\x22color:\x20#10b981;\x20font-weight:\x20800;\x20font-family:\x20var(--font-mono);\x22>\x0a[★]\x20==============================================================\x0a[★]\x20LFL\x20DEFENSE\x20//\x20ROOT\x20GOD\x20MODE\x20(YÖNETİCİ:\x20burak_wyxz)\x0a[★]\x20==============================================================\x0a[+]\x20Kimlik\x20Yetkisi\x20\x20\x20\x20\x20\x20\x20:\x20BAŞ\x20YÖNETİCİ\x20&amp;\x20PLATFORM\x20MİMARI\x20(burak_wyxz)\x0a[+]\x20Savunma\x20Alarmı\x20\x20\x20\x20\x20\x20\x20:\x20DEFCON\x20Seviyesi\x20Aktif\x0a[+]\x20Canlı\x20Ziyaretçi\x20Logu\x20:\x20', 'XSS\x20Reflection', 'Saldırganın\x20aktif\x20bir\x20web\x20oturumuna\x20ait\x20çerezleri\x20(Session\x20Cookie)\x20veya\x20JWT\x20tokenini\x20çalarak\x20kullanıcı\x20adına\x20işlem\x20yapması\x20durumudur.', 'audit-headers', 'Eksik\x20Paket\x20Tespiti,\x20Bağlantı\x20Doğrulama', 'activePage', 'hydra', 'badge-role-user', 'İstediğiniz\x20TCP,\x20UDP\x20veya\x20ICMP\x20bayraklarını\x20elle\x20ayarlayarak\x20güvenlik\x20duvarı\x20kurallarını\x20test\x20edebileceğiniz\x20esnek\x20ağ\x20aracıdır.', '</span>\x20<span\x20style=\x22color:\x20#ffffff;\x22>', 'Siber\x20Bal\x20Küpü\x20(Honeypot\x20-\x20Tuzak\x20Sistem)', '\x22\x20terminalde\x20çalıştırıldı.', 'Yazılım\x20üreticisinin\x20henüz\x20farkında\x20olmadığı\x20ve\x20bu\x20nedenle\x20dünyada\x20hiçbir\x20güvenlik\x20yaması\x20veya\x20güncellemesi\x20bulunmayan\x20tehlikeli\x20güvenlik\x20açığıdır.', ':\x20komut\x20simülasyon\x20labında\x20bulunamadı.</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>Kullanılabilir\x20140+\x20komutu\x20görmek\x20için\x20<code\x20style=\x22color:\x20#22c55e;\x22>help</code>\x20yazın\x20veya\x20Siber\x20Akademi\x20sayfasındaki\x20komutlara\x20tıklayın.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Hava\x20Boşluklu\x20Yedekleme\x20(Air-Gapped\x20Backup)', 'uid=0(root)\x20gid=0(root)\x20groups=0(root)', '.kali-tab-close', 'pct', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aHydra\x20v9.5\x20(c)\x202023\x20by\x20van\x20Hauser/THC\x20&amp;\x20David\x20Maciejak\x20-\x20Please\x20do\x20not\x20use\x20in\x20military\x20or\x20secret\x20service\x20organizations\x0a[DATA]\x20max\x2016\x20tasks\x20per\x201\x20target,\x20overall\x2016\x20tasks,\x2014344\x20login\x20tries\x20(l:1/p:14344),\x20~896\x20tries\x20per\x20task\x0a[DATA]\x20attacking\x20ssh://10.10.3.50:22/\x0a[STATUS]\x20148.00\x20tries/min,\x20148\x20tries\x20in\x2000:01h,\x2014196\x20to\x20do\x20in\x2001:36h,\x2016\x20active\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20800;\x22>[22][ssh]\x20host:\x2010.10.3.50\x20\x20\x20login:\x20operator\x20\x20\x20password:\x20cyber2026</span>\x0a1\x20of\x201\x20target\x20successfully\x20completed,\x201\x20valid\x20password\x20found\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20PAROLA\x20KIRILDI!\x20Kullanıcı:\x20operator,\x20Şifre:\x20cyber2026</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20Şimdi\x20sisteme\x20bağlanın:\x20ssh\x20operator@10.10.3.50</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x20Mbps)', 'Dünyadaki\x20her\x20hastalığa\x20tıp\x20literatüründe\x20verilen\x20uluslararası\x20resmi\x20teşhis\x20kodu\x20gibidir.\x20Herkes\x20aynı\x20hastalıktan\x20bahsettiğini\x20anlar.', 'color', '<pre\x20style=\x22color:\x20#a7f3d0;\x22>Linux\x20lfl-ctf-node\x206.8.11-kali-amd64\x20#1\x20SMP\x20PREEMPT_DYNAMIC\x20Kali\x202026.1\x20x86_64\x20GNU/Linux</pre>', 'Parola\x20Kriptografik\x20Özeti\x20&\x20Tuzlama\x20(Salted\x20Hashing)', 'uname', 'expectedCommand', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0a/evidence/suspect_payload.bin:\x20ELF\x2064-bit\x20LSB\x20shared\x20object,\x20x86-64,\x20version\x201\x20(SYSV),\x20dynamically\x20linked,\x20BuildID[sha1]=f84a1e9b2,\x20stripped\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20Dosya\x2064-bit\x20ikili\x20çalıştırılabilir\x20(stripped).\x20strings\x20ile\x20metinleri\x20ayıklayın.</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'İnternete\x20bağlı\x20her\x20cihazın\x20dünyadaki\x20benzersiz\x20dijital\x20kimliğidir.\x20127.0.0.1\x20kendi\x20makinemizi,\x20192.168.x.x\x20yerel\x20ağı\x20temsil\x20eder.', '\x27Bu\x20durum\x20şirketin\x20geleceğini\x20nasıl\x20etkiler\x20ve\x20sistemi\x20yeniden\x20kurarken\x20ne\x20tür\x20kurallar\x20koymalılar?\x27', 'tools', 'gobuster\x20dir\x20-u\x20http://10.10.2.10\x20-w\x20common.txt', 'AUTHORIZED_BEARER', 'SYN-FLOOD', 'Operatör\x20', 'sqlmap\x20-u\x20\x22http://10.10.3.99/api/search?q=test\x22\x20-D\x20lfl_master_vault\x20--tables', 'IntersectionObserver', 'badgeColor', 'Hemen\x20koruyucu\x20kılıf\x20takıp;\x20yüz\x20tanıma,\x20çift\x20adımlı\x20SMS\x20doğrulama\x20ve\x20konum\x20güvenliği\x20ayarlarını\x20açarım.', 'addEventListener', 'md5sum', 'YÖNETİCİ', 'rgba(0,\x20229,\x20255,\x200.4)', '[IntroSplash\x20Boot\x20Error]', 'hashcat', '1491800nEmAJw', '\x20ping\x20statistics\x20---\x0a3\x20packets\x20transmitted,\x203\x20received,\x200%\x20packet\x20loss,\x20time\x202048ms\x0artt\x20min/avg/max/mdev\x20=\x200.035/0.038/0.042/0.003\x20ms', 'hardwareConcurrency', 'Sanal\x20Özel\x20Ağ\x20&\x20Şifreli\x20Tünel\x20(VPN)', '🔰\x20Çaylak\x20Analist', 'hidden', 'SSH,\x20FTP,\x20HTTP\x20ve\x20RDP\x20gibi\x2050\x27den\x20fazla\x20ağ\x20protokolünde\x20kaba\x20kuvvet\x20giriş\x20denemesi\x20yaparak\x20zayıf\x20parolaları\x20denetleyen\x20araçtır.', 'stroke', 'history', 'btn-hero-role-quiz', 'btn-quiz-jump-academy', 'number', '\x20XP)', 'nc\x20', 'Evrensel\x20Zafiyet\x20Takibi\x20ve\x20Yama\x20Yönetimi', 'forEach', 'page-hidden', '/home/operator', 'Taksiye\x20bindiğinizde\x20şoföre\x20\x27Sadece\x20zırhlı\x20ve\x20camları\x20kurşun\x20geçirmez\x20arabayla\x20giderim,\x20normal\x20arabaya\x20asla\x20binmem\x27\x20demek\x20gibidir.', 'Ziyaretçi\x20telemetri\x20veritabanı\x20başarıyla\x20sıfırlandı.', 'SQLi\x20Prob', 'Sızılan\x20bir\x20Linux\x20sunucusunda\x20şüpheli\x20bir\x20operatör\x20iz\x20bırakıp\x20kaçmış.\x20<code>/var/backups</code>\x20dizinini\x20incele,\x20operatörün\x20bıraktığı\x20nottaki\x20ipucunu\x20oku\x20ve\x20<code>/var/log/syslog</code>\x20içerisinden\x20<strong>LFL{...}</strong>\x20formatındaki\x20bayrağı\x20<code>grep</code>\x20ile\x20filtrele.', 'nslookup', 'btn-open-terminal-from-academy', 'toLocaleDateString', 'TOPLAM\x20XP:\x20', 'SQLI', 'PHISHING', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>[SAVUNMA\x20AKTİF]</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Kestrel\x20<code>X-Frame-Options:\x20DENY</code>\x20başlığı\x20yanıt\x20verdi!\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Tarayıcı\x20iframe\x20içine\x20sayfayı\x20yüklemeyi\x20tamamen\x20reddetti.\x20UI\x20Redressing\x20imkansız\x20kılındı.\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'sqlmap\x20-u\x20\x22http://127.0.0.1/api/search?q=test\x22\x20--dbs', 'location', 'Safari/', '\x20active', 'page-dashboard', 'curriculumTeam', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22kali-prompt-line1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20┌──(<span\x20class=\x22kali-user\x22>Sunny</span><span\x20class=\x22kali-skull\x22>㉿</span><span\x20class=\x22kali-host\x22>SUNNY</span>)-[<span\x20class=\x22kali-path\x22>~</span>]\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22kali-input-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22kali-prompt-line2\x22>└─$</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22kali-executed-text\x22>', 'user', 'quickCmds', 'DİKKAT:\x20Bu\x20konsol\x20sistem\x20yöneticisi\x20(burak_wyxz)\x20denetimindedir.\x0a', 'resize', 'IP-ADDRESS', 'ipAddress', 'self', 'statusCode', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22ctf-mini-pill\x22\x20style=\x22background:\x20rgba(16,\x20185,\x20129,\x200.15);\x20color:\x20#10b981;\x20border:\x201px\x20solid\x20#10b981;\x22>+', 'flag', 'nmap', '✔\x20Kopyalandı!', '8.\x20Büyük\x20bir\x20şirketin\x20müşteri\x20şifrelerini\x20çaldırdığı\x20haberini\x20duydun.\x20Aklından\x20geçen\x20ilk\x20düşünce\x20ne\x20olur?', '\x0a<span\x20style=\x22color:\x20#00e5ff;\x20font-weight:\x20800;\x22>┌──(root㉿kali-ctf)-[~]</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>│\x20LFL\x20SİBER\x20CTF\x20OPERASYON\x20LABORATUVARI\x20//\x20KADEME:\x20SEVİYE\x20', 'glossary-cards-container', 'cyber_role', 'Kullanıcı\x20giriş\x20yaptıktan\x20sonra\x20sunucunun\x20ürettiği,\x20içinde\x20kullanıcının\x20rolü\x20ve\x20yetkilerini\x20taşıyan,\x20kriptografik\x20HMAC-SHA256\x20ile\x20imzalanmış\x20dijital\x20kimlik\x20kartıdır.', 'selected', '\x20Açıldı\x20&bull;\x20Sandbox\x20Ortamı\x20Aktif]</div>', '\x0aStarting\x20Nmap\x207.94\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2000:03\x20UTC\x0aNmap\x20scan\x20report\x20for\x20192.168.1.1\x20(Gateway\x20/\x20Modem)\x0aHost\x20is\x20up\x20(0.00084s\x20latency).\x20MAC\x20Address:\x2000:1A:2B:3C:4D:5E\x20(Cisco-Linksys)\x0aNmap\x20scan\x20report\x20for\x20192.168.1.17\x20(Workstation)\x0aHost\x20is\x20up\x20(0.00021s\x20latency).\x20MAC\x20Address:\x2034:97:F6:11:22:33\x20(Dell\x20Inc.)\x0aNmap\x20scan\x20report\x20for\x20192.168.1.22\x20(LFL\x20Security\x20Node)\x0aHost\x20is\x20up\x20(0.00009s\x20latency).\x20MAC\x20Address:\x2052:54:00:12:34:56\x20(QEMU\x20Virtual\x20NIC)\x0aNmap\x20scan\x20report\x20for\x20192.168.1.105\x20(Mobile\x20Client)\x0aHost\x20is\x20up\x20(0.014s\x20latency).\x20MAC\x20Address:\x2088:66:5A:99:88:77\x20(Apple\x20Inc.)\x0a\x0aNmap\x20done:\x20256\x20IP\x20addresses\x20(4\x20hosts\x20up)\x20scanned\x20in\x200.89\x20seconds\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Port\x20taraması\x20yapmadan\x20yalnızca\x20ICMP\x20ping\x20ile\x20yerel\x20alt\x20ağdaki\x20aktif\x20cihazları\x20haritalandırır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'nmap\x20-sU\x20-p\x2053\x20192.168.1.1', 'Masaüstü\x20Terminal', '\x0aRegistry\x20Domain\x20ID:\x202981048122_DOMAIN_COM-VRSN\x0aRegistrar\x20WHOIS\x20Server:\x20whois.cloudflare.com\x0aRegistrar\x20URL:\x20https://www.cloudflare.com\x0aUpdated\x20Date:\x202026-11-01T04:12:00Z\x0aCreation\x20Date:\x202024-05-18T10:20:00Z\x0aRegistry\x20Expiry\x20Date:\x202028-05-18T10:20:00Z\x0aRegistrar:\x20Cloudflare,\x20Inc.\x0aRegistrar\x20IANA\x20ID:\x201910\x0aReseller:\x20LFL\x20Cyber\x20Defense\x20Systems\x0aDomain\x20Status:\x20clientTransferProhibited\x20https://icann.org/epp#clientTransferProhibited\x0aName\x20Server:\x20NS1.LOSTFROMLIGHT.COM\x20(192.168.1.10)\x0aName\x20Server:\x20NS2.LOSTFROMLIGHT.COM\x20(192.168.1.11)\x0aDNSSEC:\x20signedDelegation\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[✔]\x20WHOIS\x20sorgusu\x20tamamlandı.\x20Alan\x20adı\x20Cloudflare\x20ve\x20LFL\x20zırhı\x20ile\x20korunmaktadır.</span>\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:</span>\x20<span\x20style=\x22color:\x20#cbd5e1;\x22>Whois\x20sorgusu\x20hedefin\x20DNS\x20sunucularını\x20ve\x20servis\x20sağlayıcısını\x20açığa\x20çıkarır.\x20Kurumsal\x20sistemlerde\x20WHOIS\x20Privacy\x20aktif\x20edilmelidir.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'storage-status-pill\x20empty', 'runspace', 'btn-intro-to-academy', 'HSTS', 'angle', 'dash-view-glossary-btn', 'kali-history-zone', 'terminalSuccessOutput', '\x0a<span\x20style=\x22color:\x20#10b981;\x20font-weight:\x20700;\x22>[+]\x20==============================================================</span>\x0a<span\x20style=\x22color:\x20#10b981;\x20font-weight:\x20800;\x22>[+]\x20FLAG\x20CAPTURED:\x20', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20700;\x22>8f4b23d91e60cb27a819ec41d08c5b91</span>\x20\x20/evidence/suspect_payload.bin\x0a[+]\x20Dosya\x20bütünlüğü\x20onaylandı\x20(Adli\x20kopya\x20ile\x20eşleşiyor).\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Zayıf\x20veya\x20Varsayılan\x20Şifrelerin\x20Tespit\x20Edilip\x20Güçlendirilmesi', 'HTTP\x20/', 'PING\x20', '\x20operasyonunu\x20tamamlamalısınız.', '.app-topbar', '\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22quiz-option-icon\x22>', 'glossary-search-input', 'method', '\x0aHPING\x20192.168.1.1\x20(eth0\x20192.168.1.1):\x20A\x20set,\x2040\x20headers\x20+\x200\x20data\x20bytes\x0alen=46\x20ip=192.168.1.1\x20ttl=64\x20DF\x20id=0\x20sport=80\x20<span\x20style=\x22color:\x20#ef4444;\x20font-weight:\x20bold;\x22>flags=R</span>\x20seq=0\x20win=0\x20rtt=0.9\x20ms\x0a\x0a---\x20192.168.1.1\x20hping\x20statistic\x20---\x0a1\x20packets\x20transmitted,\x201\x20packets\x20received,\x200%\x20packet\x20loss\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>[SONUÇ]:\x20flags=R\x20(RST)\x20bayrağı\x20döndü!\x20Güvenlik\x20Duvarı\x20durum\x20takiplidir\x20(Stateful).\x20Önceden\x20başlatılmamış\x20sahte\x20ACK\x20paketi\x20anında\x20reddedildi.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '.popup-item', 'now', '\x27Hırsızlar\x20hangi\x20akıllıca\x20yöntemle\x20veya\x20hangi\x20gizli\x20açık\x20kapıdan\x20içeri\x20sızmayı\x20başardı\x20acaba?\x27', 'background', '<div\x20style=\x22background:#040711;color:#ef4444;height:100vh;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:18px;font-weight:bold;\x22>[BLOCKED]\x20CLICKJACKING_DETECTED:\x20Yetkisiz\x20çerçeveleme\x20engellendi.</div>', 'Gökkuşağı\x20Tablosu\x20(Rainbow\x20Table)\x20Saldırıları,\x20Veritabanı\x20Sızıntıları', 'auth-modal-alert', 'getElementById', 'scroll', '5171304mOzaRw', 'Korumalı\x20Linux\x20sunucusu\x20(<strong>10.10.3.50</strong>)\x20zayıf\x20bir\x20SSH\x20parolası\x20kullanıyor.\x20<code>hydra</code>\x20ile\x20parola\x20kırma\x20saldırısı\x20yap,\x20sisteme\x20<code>ssh</code>\x20ile\x20bağlan,\x20ardından\x20<code>find</code>\x20ile\x20SUID\x20izinli\x20dosya\x20açığını\x20tespit\x20edip\x20root\x20haklarıyla\x20<code>/root/flag.txt</code>\x20dosyasını\x20ele\x20geçir.', 'lfl{', 'btn-intro-to-terminal', 'PATH_TRAVERSAL', '3.2', '🏆\x20Efsanevi\x20Siber\x20Şampiyon', 'unlockedIdx', 'modal-tab-signup', 'Chrome\x20Standart', 'Yönetimin\x20izniyle\x20şirketin\x20binasına\x20veya\x20sistemine\x20gizlice\x20sızmayı\x20deneyip\x20güvenlik\x20açıklarını\x20ispatlamak.', 'style', 'Android', 'burak_wyxz@lostfromlight.local', 'searchsploit', 'Oltalama\x20&\x20Sosyal\x20Mühendislik\x20(Phishing)', 'Duyuru\x20bandı\x20kaldırıldı.', 'Port\x20Taramaları,\x20Yetkisiz\x20Bağlantılar,\x20Zararlı\x20İstekler', ':\x20icmp_seq=1\x20ttl=64\x20time=0.038\x20ms\x0a64\x20bytes\x20from\x20', 'kali-history-cmd', '🚨\x20Tehdit\x20Algılandı', 'ping', 'focus', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0a/lib64/ld-linux-x86-64.so.2\x0alibc.so.6\x0aprintf\x0amalloc\x0a__cxa_finalize\x0a__libc_start_main\x0aGLIBC_2.2.5\x0aAWAVAUATUSH\x0a[]AA]A^A_\x0aLFL_SUSPECT_PAYLOAD_INTERNAL_v2.4\x0aDEBUG_KEY=0x7ffcd3e0\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20800;\x22>CONFIDENTIAL_REVERSED_FLAG=LFL{level2_2_adli_bilisim_strings_ustasi}</span>\x0aPAYLOAD_DELIVERY_TIME=2026-11-08T02:15:00Z\x0aGCC:\x20(Debian\x2013.2.0-25)\x2013.2.0\x0a.shstrtab\x0a.interp\x0a.note.gnu.build-id\x0a</pre>\x0a<span\x20style=\x22color:\x20#00e5ff;\x22>[+]\x20Bayrak\x20ayıklandı:\x20LFL{level2_2_adli_bilisim_strings_ustasi}</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'LFL{level1_2_linux_dosya_adli_analiz}', 'Tebrikler\x20', 'Kayıt\x20Ol\x20&\x20Token\x20Al\x20→', 'Kapınıza\x20polis\x20üniforması\x20giyerek\x20gelen\x20bir\x20hırsızın\x20\x27Güvenlik\x20denetimi\x20yapıyoruz,\x20kasanızın\x20şifresini\x20verin\x27\x20demesi\x20ve\x20sizin\x20inanmanızdır.', 'beginPath', '\x0a<div\x20style=\x22font-family:\x20var(--font-mono);\x20font-size:\x2011.5px;\x20line-height:\x201.5;\x20margin:\x204px\x200;\x22>\x0a\x20\x20\x20\x20<div\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20700;\x22>[+]\x20EXEC:\x20<code\x20style=\x22color:\x20#ffffff;\x20font-weight:\x20800;\x22>', '\x20XP)</span>', 'btn-quiz-jump-terminal', 'btn-defcon-', '<div\x20class=\x22alert-box-danger\x22>Şifreler\x20birbiriyle\x20eşleşmiyor!</div>', '[data-cat=\x22all\x22]', 'activateAcademyTeamTab', 'lineWidth', '[LFL]\x20Log\x20yükleme\x20hatası:', 'AIR-GAP', '0\x200\x2016px\x20#ef4444', 'Bilinmeyen\x20OS', 'bezmen132009', 'http://10.10.2.10\x20(İntranet\x20Web\x20Portalı)', 'msfconsole', 'Hem\x20saldırıyı\x20hem\x20savunmayı\x20yöneten\x20ve\x20büyük\x20stratejiyi\x20belirleyen\x20\x27Siber\x20Güvenlik\x20Lideri\x27\x20(Purple\x20Team).', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22glossary-cat-badge\x20cat-', ']\x20->\x20', 'padStart', 'bettercap\x20-iface\x20lo', 'userAgentData', 'Yeni\x20Terminal\x20Sekmesi', '\x0a===============================================================\x0aGobuster\x20v3.6\x0aby\x20OJ\x20Reeves\x20(@TheColonial)\x20&\x20Christian\x20Mehlmauer\x20(@firefart)\x0a===============================================================\x0a[+]\x20Url:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20http://192.168.1.1\x0a[+]\x20Method:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20GET\x0a[+]\x20Threads:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2010\x0a[+]\x20Wordlist:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20/usr/share/wordlists/dirb/common.txt\x0a[+]\x20Negative\x20Status\x20codes:\x20\x20\x20404\x0a===============================================================\x0aStarting\x20gobuster\x20in\x20directory\x20enumeration\x20mode\x0a===============================================================\x0a<span\x20style=\x22color:\x20#ef4444;\x22>/admin\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20403)\x20[Size:\x20154]</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>/api\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20200)\x20[Size:\x201420]</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>/login\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20200)\x20[Size:\x20840]</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>/dashboard\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20200)\x20[Size:\x203100]</span>\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>/robots.txt\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(Status:\x20200)\x20[Size:\x2064]</span>\x0a===============================================================\x0aFinished.\x204,614\x20requests\x20dispatched\x20in\x201.42s.\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20/admin\x20dizini\x20403\x20Forbidden\x20ile\x20kilitlenmiştir.\x20Kurumsal\x20yapılarda\x20admin\x20arayüzleri\x20internete\x20açık\x20tutulmamalıdır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Kendini\x20ve\x20tüm\x20sevdiklerini\x20her\x20türlü\x20tehlikeden\x20koruyan\x20kurşun\x20geçirmez\x20aşılmaz\x20bir\x20enerji\x20kalkanı.', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-progress-bar-wrap\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-progress-fill\x22\x20style=\x22width:\x20', 'dataset', 'attacks', 'selectionStart', '.app-page', '<div\x20style=\x22font-family:\x20var(--font-mono);\x20font-size:\x2011.5px;\x20line-height:\x201.5;\x20margin:\x204px\x200;\x22>', 'operative', 'Bu\x20kart\x20okuyucu\x20acaba\x20manyetik\x20bir\x20hileyle\x20kandırılabilir\x20mi\x20veya\x20kilitte\x20gizli\x20bir\x20açık\x20var\x20mıdır?', 'clientX', '\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20justify-content:\x20space-between;\x20align-items:\x20center;\x20margin-bottom:\x206px;\x20flex-wrap:\x20wrap;\x20gap:\x208px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong\x20style=\x22color:\x20#ffffff;\x20font-size:\x2014px;\x22>', 'isArray', 'İlaç\x20kutusunun\x20üzerinde\x20\x27Aspirin\x27\x20yazıyorsa,\x20kutuyu\x20açıp\x20kokusuna\x20bakarak\x20\x27bu\x20şeker\x20galiba\x27\x20deyip\x20yememek;\x20kutudaki\x20etikete\x20sadık\x20kalmaktır.', 'toast-exit', 'Güvenlik\x20Duvarı\x20Kural\x20Doğrulama,\x20DoS\x20Dayanıklılık\x20Testi', 'innerWidth', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Tactical\x20Hint\x20Accordion:\x20Commands\x20are\x20displayed\x20only\x20here\x20for\x20manual\x20typing\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-hint-container\x22\x20id=\x22ctf-hint-accordion\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22ctf-hint-btn\x22\x20id=\x22btn-toggle-ctf-hint\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22display:\x20flex;\x20align-items:\x20center;\x20gap:\x206px;\x22>💡\x20Taktik\x20İpucu\x20&amp;\x20Önerilen\x20Kodlar\x20(Takılırsan\x20Tıkla)</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20id=\x22ctf-hint-icon\x22>&darr;</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-hint-body\x22\x20id=\x22ctf-hint-text-area\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22margin-bottom:\x2010px;\x20line-height:\x201.55;\x22>', '9aivEOo', '1.1', 'Çok\x20gizli\x20bir\x20askeri\x20üste,\x20komutan\x20olsanız\x20bile\x20geçtiğiniz\x20her\x20koridorda\x20yeniden\x20parmak\x20izinizi\x20ve\x20retinanızı\x20okutmanız\x20gibidir.', 'Loglar\x20Güncellendi', 'hashcat\x20-m\x200\x20-a\x200\x20hash.txt\x20rockyou.txt', 'Fidye\x20Yazılımları\x20(Ransomware),\x20Ağ\x20Sızıntıları', 'cat\x20/etc/os-release', 'Komut\x20Kopyalandı', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-card-top\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-card-badges\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22ctf-mini-pill\x22\x20style=\x22background:\x20rgba(', 'filter', 'ctf-term-output-area', 'İç\x20Tehditler\x20(Insider\x20Threat),\x20Ağ\x20İçi\x20Yatay\x20Yayılma\x20(Lateral\x20Movement)', 'page-logs', 'tr-TR', 'toLocaleTimeString', 'Slate\x20Corporate', '4.\x20Telefonuna\x20\x27Tebrikler!\x2025.000\x20TL\x20hediye\x20kazandınız,\x20hemen\x20linke\x20tıklayın\x27\x20mesajı\x20gelse\x20ne\x20yaparsın?', 'Hava\x20Boşluklu\x20(Air-Gapped)\x20Soğuk\x20Yedekleme,\x20EDR\x20Koruması', 'lfl_cached_visitor_ip', 'ArrowUp', 'Web\x20Güvenliği\x20&\x20Dizin\x20Avı', 'KAYIT_KULLANICI_ADI', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Hedef\x20intranet\x20portalında\x20(<strong>10.10.2.10</strong>)\x20gizli\x20bir\x20robot\x20direktifi\x20ve\x20konfigürasyon\x20yedeği\x20unutulmuş.\x20<code>whatweb</code>\x20ile\x20altyapıyı\x20incele,\x20<code>gobuster</code>\x20ile\x20gizli\x20dizinleri\x20tara,\x20<code>robots.txt</code>\x20dosyasındaki\x20gizli\x20yolu\x20bulup\x20json\x20verisindeki\x20bayrağı\x20çek.', 'Test\x20Sıfırlandı', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Flag\x20Submission\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-flag-container\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20justify-content:\x20space-between;\x20align-items:\x20center;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:\x2011px;\x20font-family:\x20var(--font-mono);\x20font-weight:\x20700;\x20color:\x20#cbd5e1;\x22>BAYRAK\x20TESLİM\x20ALANI:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Tebrikler!\x20Linux\x20dosya\x20sisteminde\x20iz\x20sürme\x20ve\x20grep\x20ile\x20hassas\x20veri\x20filtreleme\x20görevini\x20başarıyla\x20tamamladın.', 'En\x20karmaşık\x20şifreli\x20kasaları\x20çözen\x20ve\x20kimseye\x20görünmeden\x20içeri\x20sızabilen\x20dahi\x20casus.', 'toast-container', 'Masaüstü', 'Operatör\x20Kimlik\x20Doğrulama', 'Vektör\x20(', 'none', '#00e5ff', 'badge-role-guest', '\x0aState\x20\x20\x20\x20\x20\x20Recv-Q\x20Send-Q\x20Local\x20Address:Port\x20\x20Peer\x20Address:PortProcess\x0aLISTEN\x20\x20\x20\x20\x200\x20\x20\x20\x20\x20\x20511\x20\x20\x20\x200.0.0.0:80\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200.0.0.0:*\x20\x20\x20\x20users:((\x22kestrel\x22,pid=1420,fd=7))\x0aLISTEN\x20\x20\x20\x20\x200\x20\x20\x20\x20\x20\x20511\x20\x20\x20\x200.0.0.0:443\x20\x20\x20\x20\x20\x20\x20\x20\x200.0.0.0:*\x20\x20\x20\x20users:((\x22kestrel\x22,pid=1420,fd=8))\x0aLISTEN\x20\x20\x20\x20\x200\x20\x20\x20\x20\x20\x20128\x20\x20\x20\x20127.0.0.1:5000\x20\x20\x20\x20\x20\x200.0.0.0:*\x20\x20\x20\x20users:((\x22dotnet\x22,pid=1502,fd=12))\x0aLISTEN\x20\x20\x20\x20\x200\x20\x20\x20\x20\x20\x20128\x20\x20\x20\x20127.0.0.1:8080\x20\x20\x20\x20\x20\x200.0.0.0:*\x20\x20\x20\x20users:((\x22gateway\x22,pid=1890,fd=4))\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '9.\x20Sana\x20bir\x20süper\x20kahraman\x20gücü\x20verilseydi\x20hangisini\x20seçerdin?', ')\x20tespit\x20edildi\x20ve\x20düşürüldü!', 'register', 'DEFCON\x205\x20Aktif', '2.2', 'LFL{level2_1_web_dizin_firtinasi}', 'length', '1)\x20<code>hydra\x20-l\x20operator\x20-P\x20rockyou.txt\x2010.10.3.50\x20ssh</code>\x20ile\x20şifreyi\x20kır.<br>2)\x20<code>ssh\x20operator@10.10.3.50</code>\x20ile\x20bağlan.<br>3)\x20<code>find\x20/\x20-perm\x20-4000\x202>/dev/null</code>\x20ile\x20SUID\x20açıklarını\x20listele.<br>4)\x20<code>cat\x20/root/flag.txt</code>\x20veya\x20<code>sudo\x20cat\x20/root/flag.txt</code>\x20ile\x20son\x20bayrağı\x20oku!', 'btn-intro-to-quiz', '\x0a<pre\x20style=\x22color:\x20#ef4444;\x22>\x0abash:\x20', 'powershell\x20.\x5cAudit-Headers.ps1', 'BLUE\x20TEAM\x20//\x20SİBER\x20SAVUNMA\x20&\x20KALE\x20MUHAFIZI', 'İnanılmaz\x20bir\x20sızma!\x20SSH\x20kaba\x20kuvvet\x20saldırısı\x20ve\x20SUID\x20yetki\x20yükseltme\x20(Privilege\x20Escalation)\x20ile\x20tam\x20yetkili\x20root\x20oldun.', 'auth', 'color:\x20#00e5ff;\x20font-family:\x20monospace;\x20font-size:\x2011px;', 'kali-terminal-body', 'help', 'locked', '10\x20soruluk\x20test\x20baştan\x20başlatıldı.', 'os-release', 'smooth', '.\x09\x09300\x09IN\x09A\x09172.67.182.91\x0a\x0a;;\x20AUTHORITY\x20SECTION:\x0a', 'X-Content-Type-Options:\x20nosniff\x20(MIME\x20Kalkanı)', 'clearRect', 'Platform\x20KIRMIZI\x20ALARM\x20moduna\x20geçirildi!\x20Ağ\x20savunması\x20maksimum\x20seviyede.', 'Akıllı\x20telefonunuzdaki\x20rehber\x20gibidir.\x20\x27Ahmet\x27\x20ismine\x20basarsınız\x20ama\x20telefon\x20arkada\x20onun\x20numarasını\x20çevirir.', '45.154.255.89', '10.10.1.5', '.quick-cmd-btn', 'login', '\x0aCreated\x20directory:\x20/root/.john\x0aLoaded\x201\x20password\x20hash\x20(raw-sha256,\x20Generic\x20SHA-256\x20[64/64])\x0aCost\x201\x20(iteration\x20count)\x20is\x201\x20for\x20all\x20loaded\x20hashes\x0aWill\x20run\x208\x20OpenMP\x20threads\x0aPress\x20\x27q\x27\x20or\x20Ctrl-C\x20to\x20abort,\x20almost\x20any\x20other\x20key\x20for\x20status\x0a<span\x20style=\x22color:\x20#22c55e;\x22>lostfromlight\x20\x20\x20\x20(admin_hash)</span>\x0a1g\x200:00:00:00\x20DONE\x20(2026-11-08\x2000:11)\x2050.00g/s\x20452000p/s\x20452000c/s\x20452000C/s\x0aUse\x20the\x20\x22--show\x22\x20option\x20to\x20display\x20all\x20of\x20the\x20cracked\x20passwords\x20reliably\x0aSession\x20completed.\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Basit\x20şifreler\x20rockyou.txt\x20gibi\x20listelerle\x20saniyeler\x20içinde\x20kırılır.\x20Argon2id\x20/\x20bcrypt\x20gibi\x20tuzlanmış\x20(salted)\x20algoritmalar\x20zorunludur.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '-4000', 'blue', 'Dünyada\x20keşfedilen\x20tüm\x20siber\x20güvenlik\x20açıklarına\x20verilen\x20resmi,\x20evrensel\x20kimlik\x20kodudur\x20(örn:\x20CVE-2021-44228\x20Log4j).', '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22color:\x20#cbd5e1;\x20font-size:\x2011.5px;\x22>', '</code></div>', 'cmdHistory', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20___\x0a\x20\x20\x20\x20\x20\x20\x20__H__\x0a\x20___\x20___[.]_____\x20___\x20___\x20\x20{1.8#stable}\x0a|_\x20-|\x20.\x20[,]\x20\x20\x20\x20\x20|\x20.\x27|\x20.\x20|\x0a|___|_\x20\x20[\x22]_|_|_|__,|\x20\x20_|\x0a\x20\x20\x20\x20\x20\x20|_|\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|_|\x20\x20\x20https://sqlmap.org\x0a\x0a[!]\x20legal\x20disclaimer:\x20Usage\x20of\x20sqlmap\x20for\x20attacking\x20targets\x20without\x20prior\x20mutual\x20consent\x20is\x20illegal.\x0a[*]\x20starting\x20@\x2002:18:00\x20/2026-11-08/\x0a\x0a[INFO]\x20testing\x20connection\x20to\x20the\x20target\x20URL\x0a[INFO]\x20checking\x20if\x20the\x20target\x20is\x20protected\x20by\x20some\x20kind\x20of\x20WAF/IPS\x0a[INFO]\x20testing\x20if\x20the\x20target\x20URL\x20content\x20is\x20stable\x0a[INFO]\x20heuristic\x20(basic)\x20test\x20shows\x20that\x20GET\x20parameter\x20\x27q\x27\x20might\x20be\x20injectable\x0a[INFO]\x20parameter\x20\x27q\x27\x20is\x20vulnerable.\x20Do\x20you\x20want\x20to\x20keep\x20testing\x20the\x20others?\x20[y/N]\x20N\x0asqlmap\x20identified\x20the\x20following\x20injection\x20point(s)\x20with\x20a\x20total\x20of\x2048\x20HTTP(s)\x20requests:\x0a---\x0aParameter:\x20q\x20(GET)\x0a\x20\x20\x20\x20Type:\x20boolean-based\x20blind\x0a\x20\x20\x20\x20Title:\x20AND\x20boolean-based\x20blind\x20-\x20WHERE\x20or\x20HAVING\x20clause\x0a\x20\x20\x20\x20Payload:\x20q=test\x27\x20AND\x204912=4912--\x20-\x0a---\x0a[INFO]\x20the\x20back-end\x20DBMS\x20is\x20MySQL\x0aavailable\x20databases\x20[2]:\x0a[*]\x20information_schema\x0a<span\x20style=\x22color:\x20#f59e0b;\x20font-weight:\x20800;\x22>[*]\x20lfl_master_vault</span>\x0a\x0a[+]\x20lfl_master_vault\x20tespit\x20edildi!\x20Tabloları\x20listelemek\x20için:\x0asqlmap\x20-u\x20\x22http://10.10.3.99/api/search?q=test\x22\x20-D\x20lfl_master_vault\x20--tables\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'grep', 'add', '.sidebar-nav\x20.nav-btn', 'm3_1', '●\x20Session\x20Storage:\x20Boş', '<span\x20style=\x22color:\x20var(--text-muted);\x22>(sessionStorage\x20içinde\x20yok)</span>', 'Lütfen\x20yayınlamak\x20için\x20bir\x20duyuru\x20mesajı\x20yazın.', 'dashboard-attack-stream', '\x0a<pre\x20style=\x22color:\x20#38bdf8;\x22>\x0aLFL\x20CYBER\x20CTF\x20//\x20YARDIM\x20&amp;\x20KULLANILABİLİR\x20KOMUTLAR\x0a===================================================================\x0aBu\x20operasyonda\x20LFL\x20Siber\x20Kütüphanesi\x27ndeki\x20142\x20Kali\x20aracı\x20çalışır.\x0aAktif\x20Seviye\x20(', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-stepper-top-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20', '🌐\x20Canlı\x20Bağlantı', 'btn-jump-terminal-direct', 'clipboard', 'Tebrikler!\x206\x20kademeli\x20operasyonun\x20tamamını\x20başarıyla\x20bitirdiniz.', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aHTTP/1.1\x20200\x20OK\x0aDate:\x20Sun,\x2008\x20Nov\x202026\x2002:01:10\x20GMT\x0aServer:\x20Apache/2.4.52\x20(Ubuntu)\x0aLast-Modified:\x20Sat,\x2007\x20Nov\x202026\x2021:10:00\x20GMT\x0aETag:\x20\x2229b-61019f88c7\x22\x0aAccept-Ranges:\x20bytes\x0aContent-Length:\x20667\x0aContent-Type:\x20text/html\x0a<span\x20style=\x22color:\x20#f59e0b;\x20font-weight:\x20800;\x22>X-Secret-Auth:\x20TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==</span>\x0aConnection:\x20close\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20GİZLİ\x20BAŞLIK\x20BULUNDU:\x20X-Secret-Auth:\x20TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20Bu\x20değeri\x20echo\x20\x22...\x22\x20|\x20base64\x20-d\x20ile\x20çözün!</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'btn-toggle-sidebar', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22attack-meta\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22badge-soft-red\x22\x20style=\x22font-size:\x2011px;\x20font-weight:\x20700;\x20padding:\x202px\x208px;\x22>', '\x20XP\x0a[+]\x20Oturum\x20Bütünlüğü\x20\x20\x20\x20\x20:\x20LocalStorage\x20+\x20SessionStorage\x20Şifreli\x0a[★]\x20==============================================================\x0a</pre>', '10.10.3.50', 'btn-export-logs', '\x20olarak\x20giriş\x20başarılı.', '\x0abettercap\x20v2.32\x20(built\x20for\x20linux/amd64\x20with\x20go1.21)\x20[type\x20\x27help\x27\x20for\x20a\x20list\x20of\x20commands]\x0a\x0a[00:08:00]\x20[sys.log]\x20[inf]\x20bettercap\x20started\x20on\x20interface\x20lo\x20(127.0.0.1)\x0a[00:08:01]\x20[net.recon]\x20[inf]\x20endpoint\x20discovery\x20started.\x0a[00:08:02]\x20[net.recon]\x20[inf]\x20found\x201\x20active\x20gateway\x20host\x20127.0.0.1\x0a[00:08:03]\x20[arp.spoof]\x20[inf]\x20ARP\x20spoofing\x20engine\x20initialized\x20(EDUCATIONAL\x20SANDBOX\x20MODE)\x0a[00:08:04]\x20[packet.proxy]\x20[inf]\x20TLS\x20SNI\x20inspection\x20enabled\x20for\x20local\x20development.\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Ortadaki\x20Adam\x20(MITM)\x20ve\x20ARP\x20Zehirleme\x20saldırıları,\x20kurumsal\x20ağ\x20anahtarlarında\x20\x22Dynamic\x20ARP\x20Inspection\x20(DAI)\x22\x20ve\x20\x22DHCP\x20Snooping\x22\x20açılarak\x20engellenir.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'BRUTE-FORCE', 'USER=kali\x0aHOME=/home/kali\x0aSHELL=/bin/bash\x0aTERM=xterm-256color\x0aPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'test', 'auth-input-username', 'env', 'Firefox/', '\x0a<span\x20style=\x22color:\x20#c084fc;\x20font-weight:\x20bold;\x22>===\x20MULTI-THREAD\x20(RUNSPACE\x20POOL)\x20PORT\x20TARAMA\x20RAPORU\x20===</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>Hedef\x20Sistem:\x20127.0.0.1</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>Eşzamanlı\x20İş\x20Parçacığı:\x2016\x20Core\x20RunspacePool</span>\x0a\x0aPort\x2021\x20\x20\x20(FTP)\x20\x20\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#64748b;\x22>Kapalı</span>\x0aPort\x2022\x20\x20\x20(SSH)\x20\x20\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#64748b;\x22>Kapalı</span>\x0aPort\x2025\x20\x20\x20(SMTP)\x20\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#64748b;\x22>Kapalı</span>\x0aPort\x2053\x20\x20\x20(DNS)\x20\x20\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#64748b;\x22>Kapalı</span>\x0aPort\x2080\x20\x20\x20(HTTP)\x20\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>AÇIK</span>\x20[LFL\x20Kestrel\x20Proxy]\x0aPort\x20443\x20\x20(HTTPS)\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>AÇIK</span>\x20[TLS\x201.3\x20/\x20Strict-Transport-Security]\x0aPort\x20445\x20\x20(SMB)\x20\x20\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#64748b;\x22>Kapalı</span>\x20(Fidye\x20Yazılımı\x20Kalkanı)\x0aPort\x203389\x20(RDP)\x20\x20\x20\x20\x20\x20\x20:\x20<span\x20style=\x22color:\x20#64748b;\x22>Kapalı</span>\x20(Uzaktan\x20Masaüstü\x20Kilitli)\x0aPort\x205000\x20(LFL-API)\x20\x20\x20:\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>AÇIK</span>\x20[ASP.NET\x20Core\x208\x20Web\x20API]\x0aPort\x208080\x20(Dev-Proxy)\x20:\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>AÇIK</span>\x20[Kısıtlı\x20Geliştirici\x20Tüneli]\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>Tarama\x200.38\x20saniyede\x20tamamlandı.\x2016\x20Runspace\x20başarıyla\x20kapatıldı.</span>\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20SMB\x20(445)\x20ve\x20RDP\x20(3389)\x20tamamen\x20kapalı\x20tutulmalıdır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'İlerleme:\x20', 'socat', 'cat', 'body', 'token', 'path', '</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>│\x20Hedef\x20Sistem:\x20', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22text-align:\x20center;\x20padding:\x2040px;\x20background:\x20var(--bg-card);\x20border-radius:\x20var(--radius-md);\x20border:\x201px\x20dashed\x20var(--border);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20style=\x22color:\x20var(--text-muted);\x20font-size:\x2013.5px;\x22>\x22', 'max', '.btn-cmd-copy', 'lfl_defcon', 'ctf-feedback-msg-box', 'Çok\x20değerli\x20altınlarınızı\x20banka\x20hesabında\x20tutmak\x20yerine\x20yerin\x2050\x20metre\x20altındaki\x20çevrimdışı\x20çelik\x20kasada\x20saklamaktır.\x20Hiçbir\x20hacker\x20kablosu\x20olmayan\x20bir\x20cihaza\x20sızamaz.', '<br/><span\x20style=\x22font-size:\x2010px;\x20color:\x20#38bdf8;\x22>📍\x20', 'Operasyon\x20Hayalet\x20Not\x20(Op:\x20Phantom\x20Log)', 'Şirketteki\x20tüm\x20bilgisayarları\x207/24\x20izleyen,\x20anormal\x20bir\x20dosya\x20indirme\x20veya\x20şüpheli\x20komut\x20çalıştığında\x20anında\x20alarm\x20üreten\x20merkezi\x20güvenlik\x20merkezidir.', 'submit\x20', '.filter-pill', 'Alan\x20Adı\x20Sistemi\x20(Domain\x20Name\x20System)', 'textContent', 'page-commands', 'stringify', 'Giriş\x20Yap\x20&\x20Session\x20Storage\x27a\x20Kaydet\x20→', 'MITM', 'PORT', 'root', 'Mahallenin\x20ortak\x20duyuru\x20panosuna\x20ilan\x20asmak\x20yerine,\x20panoya\x20yaklaşan\x20herkesin\x20cebindeki\x20cüzdanı\x20çalan\x20görünmez\x20bir\x20el\x20yerleştirmektir.', 'from', 'Bir\x20giriş\x20ekranında\x20binlerce\x20veya\x20milyonlarca\x20yaygın\x20parolayı\x20sırayla\x20deneyerek\x20doğru\x20şifreyi\x20bulmaya\x20çalışma\x20yöntemidir.', 'GİRİŞ_KULLANICI_ADI', 'quiz-main-container', '[data-curriculum-team=\x22', '.\x20JWT\x20token\x20Session\x20Storage\x27a\x20kaydedildi.', 'ls\x20-la\x20/var/backups', 'closest', 'btn-theme-toggle', 'netstat', 'block', 'date', 'btn-dismiss-broadcast', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-stepper-item\x20', 'name', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br/>', 'Anonim\x20Ziyaretçi', '/10\x20Soru)</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-track\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-fill\x22\x20style=\x22width:\x20', 'cyber_theme', '\x22>&times;</button>', 'Tablet', '[3.980120]\x20kali-terminal:\x20Initializing\x20Multi-Tab\x20Sandbox\x20with\x20142+\x20cyber\x20tools...', '</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22glossary-desc\x22>', '\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22kali-tab-icon\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<svg\x20width=\x2212\x22\x20height=\x2212\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<polyline\x20points=\x224\x2017\x2010\x2011\x204\x205\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<line\x20x1=\x2212\x22\x20y1=\x2219\x22\x20x2=\x2220\x22\x20y2=\x2219\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</svg>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22kali-tab-title\x22>', 'ssh', 'operator', 'Kullanıcıya\x20güvenilir\x20bir\x20banka\x20veya\x20şirket\x20gibi\x20davranarak\x20e-posta\x20veya\x20sahte\x20web\x20sitesi\x20yoluyla\x20şifrelerini\x20ve\x20kredi\x20kartı\x20bilgilerini\x20kendi\x20eliyle\x20girmesini\x20sağlama\x20tuzağıdır.', 'theme', 'lfl_access_logs', 'split', '\x20<span\x20style=\x22color:\x20#10b981;\x20font-weight:\x20700;\x22>(+', '-p-', 'Oturum\x20Kaçırma\x20(Session\x20Hijacking\x20/\x20Sidejacking)', 'Bu\x20sahte\x20linkin\x20arkasında\x20kimin\x20olduğunu\x20ve\x20insanları\x20nasıl\x20kandırdıklarını\x20merak\x20edip\x20perde\x20arkasını\x20incelerim.', 'Siber\x20Kılavuz\x20&\x20Sözlük', 'btn-academy-to-commands', 'strokeStyle', 'Bir\x20elmayı\x20püre\x20haline\x20getirip\x20içine\x20bir\x20avuç\x20kum\x20atmak\x20gibidir.\x20Püreyi\x20tekrar\x20eski\x20sağlam\x20elmaya\x20dönüştüremezsiniz\x20ama\x20iki\x20pürenin\x20aynı\x20olup\x20olmadığını\x20karşılaştırabilirsiniz.', '\x20-\x20', 'page-academy', '%;\x20background:\x20#a855f7;\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-actions-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-glow-blue\x22\x20id=\x22btn-quiz-jump-academy\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20🎓\x20Sana\x20Özel\x20Akademi\x20Odalarını\x20Aç\x20&rarr;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-secondary\x22\x20id=\x22btn-quiz-jump-commands\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20📚\x20140+\x20Kod\x20Kütüphanesini\x20Aç\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-secondary\x22\x20id=\x22btn-quiz-jump-terminal\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20💻\x20Kali\x20Web\x20Terminalini\x20Aç\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-secondary\x22\x20id=\x22btn-quiz-restart-inner\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20🔄\x20Testi\x20Tekrar\x20Çöz\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Kali\x20/\x20Linux\x20x86_64', 'Kestrel\x20Server\x20başlığı\x20gizlendi', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22badge-os\x22\x20style=\x22font-weight:\x20700;\x22>', 'nmap\x20-sV\x2010.10.1.5', 'dash-card-purple-team', 'log-stat-ips', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22quiz-option-text\x22>', 'sshSessionActive', '<br/><span\x20style=\x22font-size:\x2010px;\x20color:\x20var(--text-muted);\x20font-family:\x20var(--font-mono);\x22>', '\x0a*\x20Connected\x20to\x20127.0.0.1\x20(127.0.0.1)\x20port\x20443\x20(#0)\x0a*\x20ALPN:\x20offers\x20h2,http/1.1\x0a*\x20TLSv1.3\x20(OUT),\x20TLS\x20handshake,\x20Client\x20hello\x20(1):\x0a*\x20TLSv1.3\x20(IN),\x20TLS\x20handshake,\x20Server\x20hello\x20(2):\x0a*\x20TLSv1.3\x20(IN),\x20TLS\x20handshake,\x20[Certificate\x20verification\x20successful]\x0a&gt;\x20GET\x20/\x20HTTP/1.1\x0a&gt;\x20Host:\x20lostfromlight.com\x0a&gt;\x20User-Agent:\x20curl/8.5.0\x0a&gt;\x20Accept:\x20*/*\x0a&lt;\x20HTTP/1.1\x20200\x20OK\x0a<span\x20style=\x22color:\x20#22c55e;\x22>&lt;\x20Strict-Transport-Security:\x20max-age=31536000;\x20includeSubDomains;\x20preload</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>&lt;\x20X-Frame-Options:\x20DENY</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>&lt;\x20X-Content-Type-Options:\x20nosniff</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>&lt;\x20Content-Security-Policy:\x20default-src\x20\x27self\x27</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>&lt;\x20X-LFL-Shield:\x20ACTIVE\x20[Zero-Trust\x20Defense]</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>&lt;\x20Server:\x20[REDACTED\x20BY\x20LFL\x20DEFENSE]</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'X-Frame-Options:\x20DENY,\x20CSP\x20frame-ancestors\x20\x27none\x27', 'cyber_token', 'Ağ\x20Portu\x20(Network\x20Port\x20-\x201-65535)', 'Siber\x20Kod\x20Kütüphanesi', 'random', 'LFL{level1_1_ag_kesif_basarans}', '97672jEefZI', '🔍\x20Adli\x20Bilişim\x20Uzmanı', 'category', 'curl', 'aegis-particle-canvas', 'sub', '\x20XP\x0a[+]\x20Tamamlanan\x20Görev\x20\x20:\x20', 'cyber_callsign', '8080', 'RED\x20TEAM\x20//\x20ETİK\x20HACKER\x20&\x20AÇIK\x20AVCISI', 'data', 'btn-reset-academy-search', '🏆\x20TEBRİKLER\x20ŞAMPİYON!\x20SQL\x20Injection\x20zafiyetini\x20sömürerek\x20büyük\x20final\x20veritabanını\x20ele\x20geçirdin\x20ve\x20LFL\x20Siber\x20Arenası\x27nı\x20%100\x20tamamladın!', 'height', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aDatabase:\x20lfl_master_vault\x0a[1\x20table]\x0a+---------------------------------------+\x0a|\x20<span\x20style=\x22color:\x20#f59e0b;\x20font-weight:\x20800;\x22>master_classified_flags</span>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|\x0a+---------------------------------------+\x0a\x0a[+]\x20master_classified_flags\x20tablosu\x20bulundu!\x20Tabloyu\x20dökmek\x20için:\x0asqlmap\x20-u\x20\x22http://10.10.3.99/api/search?q=test\x22\x20-D\x20lfl_master_vault\x20-T\x20master_classified_flags\x20--dump\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Hata', 'toUTCString', 'replace', 'abort', 'Ağdaki\x20cihazları,\x20açık\x20portları,\x20çalışan\x20servisleri\x20ve\x20işletim\x20sistemlerini\x20tespit\x20etmek\x20için\x20tüm\x20dünyada\x20standart\x20kabul\x20edilen\x20güvenlik\x20aracıdır.', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-stepper-title\x22\x20title=\x22', 'DEFCON\x203\x20//\x20YÜKSEK\x20GÜVENLİK', 'FIREWALL', 'substring', 'userAgent', 'min', 'Savunma\x20Önlemi\x20Fırlatıldı', ':\x20komut\x20simülasyon\x20labında\x20bulunamadı.\x0aKullanılabilir\x20142\x20aracı\x20görmek\x20için\x20\x27help\x27\x20yazın\x20veya\x20sol\x20paneldeki\x20hızlı\x20butonlara\x20tıklayın.\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', 'sqlmap\x20-u\x20\x22http://10.10.3.99/api/search?q=test\x22\x20--dbs', 'observe', 'm2_2', 'Bilinmeyen\x20Açık\x20Portların\x20ve\x20Eski\x20Servislerin\x20Keşfi', '.cluster-status-row\x20.cluster-label', '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22page-tier-badge\x22\x20style=\x22background:\x20rgba(255,255,255,0.06);\x20color:\x20', 'lineTo', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22toast-indicator\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22toast-body\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong\x20class=\x22toast-title\x22>', 'Discord\x20Kopyalandı', 'OPR/', 'some', ')\x20üzerine\x20kalkan\x20pinglemesi\x20gönderildi.', 'ctf-feedback-msg\x20error', 'ping\x20', 'sudo\x20hping3\x20--udp\x20--flood\x20-p\x2080\x20192.168.1.1', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-size:\x2011.5px;\x20color:\x20var(--text-muted);\x22>Bir\x20seçeneğe\x20tıkladığınızda\x20otomatik\x20ilerler</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'robots.txt', 'type', 'hping3', 'Ele\x20geçirilen\x20şüpheli\x20bir\x20ikili\x20bellek\x20dökümü\x20(<strong>/evidence/suspect_payload.bin</strong>)\x20analiz\x20masasında.\x20<code>file</code>\x20komutuyla\x20dosya\x20türünü\x20doğrula,\x20<code>strings</code>\x20ile\x20ikili\x20dosyadaki\x20okunabilir\x20metinleri\x20dök\x20ve\x20<code>md5sum</code>\x20ile\x20bütünlüğünü\x20kontrol\x20et.', 'Bilinmeyen\x20İstemci', 'story', '.\x09\x09300\x09IN\x09A\x09104.21.44.18\x0a', '#ef4444', 'root@kali-ctf:~#', 'scrollTop', 'RANSOMWARE', 'rgba(34,\x20197,\x2094,\x20', 'SQLMAP', 'echo', '-pn', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2\x20class=\x22ctf-mission-heading\x22>', '\x20başarıyla\x20tamamlandı!\x20(+', 'Bir\x20asma\x20kilidi\x20açmak\x20için\x20elinizdeki\x20binlerce\x20anahtarı\x20tek\x20tek\x20kilidin\x20içine\x20sokup\x20çevirmeyi\x20denemektir.', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22font-family:\x20var(--font-mono);\x20font-size:\x2011px;\x20color:\x20var(--text-muted);\x20white-space:\x20nowrap;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20var(--cyan);\x20font-weight:\x20700;\x22>', 'cat\x20/etc/passwd', 'cmd', 'btn-sim-sqli', '\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'ls\x20-la', '\x20autocomplete=\x22off\x22\x20spellcheck=\x22false\x22\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22ctf-btn-verify\x22\x20id=\x22btn-submit-ctf-flag\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>🚩\x20Doğrula</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-alert-box\x22\x20id=\x22ctf-feedback-msg-box\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', 'CLICKJACKING', 'https://api.ipify.org?format=json', 'div', 'catch', 'Linux', '.toast-close-btn', '10.10.3.99', 'LFL{level3_1_suid_privesc_root_fatihi}', 'Kilitli\x20Seviye', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aDatabase:\x20lfl_master_vault\x0aTable:\x20master_classified_flags\x0a[1\x20entry]\x0a+----+---------------------+------------------------------------------------+\x0a|\x20id\x20|\x20security_level\x20\x20\x20\x20\x20\x20|\x20grand_master_flag\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|\x0a+----+---------------------+------------------------------------------------+\x0a|\x201\x20\x20|\x20DEFCON_1_MAXIMUM\x20\x20\x20\x20|\x20<span\x20style=\x22color:\x20#c084fc;\x20font-weight:\x20800;\x20font-size:\x2014px;\x22>LFL{level3_2_sqli_grand_master_champion_2026}</span>\x20|\x0a+----+---------------------+------------------------------------------------+\x0a\x0a[INFO]\x20table\x20\x27lfl_master_vault.master_classified_flags\x27\x20dumped\x20to\x20CSV\x20file\x0a<span\x20style=\x22color:\x20#c084fc;\x20font-weight:\x20800;\x20font-size:\x2013px;\x22>🏆\x20ŞAMPİYONLUK\x20BAYRAĞI\x20ELE\x20GEÇİRİLDİ:\x20LFL{level3_2_sqli_grand_master_champion_2026}</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'HTML\x20Encode,\x20Katı\x20Content-Security-Policy\x20(CSP)', 'ctf-term-command-input', 'WAF_SALDIRI', '\x22\x20data-team=\x22', '\x0aStarting\x20Nmap\x207.94\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2000:06\x20UTC\x0aNmap\x20scan\x20report\x20for\x20192.168.1.17\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>PORT\x20\x20\x20\x20\x20\x20STATE\x20\x20SERVICE\x20\x20\x20\x20\x20\x20\x20VERSION</span>\x0a5000/tcp\x20\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20\x20http\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Kestrel\x20(ASP.NET\x20Core\x208.0\x20-\x20Hardened)\x0a7000/tcp\x20\x20closed\x20afs3-fileserver\x0a7100/tcp\x20\x20closed\x20font-service\x0a49152/tcp\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20\x20upnp\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Supermicro\x20IPMI\x20/\x20MiniUPnPd\x201.9\x0a62078/tcp\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20\x20tcpwrapped\x20\x20\x20\x20Encrypted\x20Internal\x20RPC\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Servis\x20versiyon\x20tespile\x20güncel\x20olmayan\x20veya\x20yama\x20almamış\x20kütüphaneler\x20(CVE)\x20hızla\x20tespit\x20edilir.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'sudo\x20hping3\x20-S\x20-p\x2080\x20-c\x201\x20192.168.1.1', 'btn-sound-toggle', '5.\x20Yeni\x20aldığın\x20akıllı\x20telefon\x20veya\x20cihazın\x20kutusunu\x20ilk\x20açtığında\x20ne\x20yaparsın?', '\x0aHydra\x20v9.5\x20(c)\x202023\x20by\x20van\x20Hauser\x20/\x20THC\x20&\x20David\x20Maciejak\x20-\x20Please\x20use\x20responsibly\x0a[DATA]\x20max\x2016\x20tasks\x20per\x201\x20server,\x20overall\x2016\x20tasks,\x201\x20login\x20try\x20(l:1/p:1)\x0a[DATA]\x20attacking\x20http-get://192.168.1.1:80/\x0a[ATTEMPT]\x20target:\x20192.168.1.1\x20-\x20login:\x20\x22admin\x22\x20-\x20pass:\x20\x22Sebu132009\x22\x20-\x20child:\x201/16\x0a<span\x20style=\x22color:\x20#ef4444;\x22>[429]\x20TOO\x20MANY\x20REQUESTS:\x20IP\x20192.168.1.15\x20exceeded\x20threshold\x20(5\x20failed\x20attempts).</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[LFL\x20SHIELD\x20TRIGGERED]:\x20Account\x20locked\x20for\x2015\x20minutes.</span>\x0a\x0a1\x20of\x201\x20target\x20completed,\x200\x20valid\x20password\x20found\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Kaba\x20kuvvet\x20(Brute-Force)\x20saldırılarına\x20karşı\x20\x22Account\x20Lockout\x22\x20ve\x20\x22Rate\x20Limiting\x22\x20kullanılır.\x205\x20hatalı\x20denemede\x20IP\x20askıya\x20alınır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'display', 'resetFailedAttempts', 'Bir\x20sunucuya\x20saniyede\x20kapasitesinin\x20üzerinde\x20milyonlarca\x20yapay\x20istek\x20göndererek\x20sistemin\x20çökmesine\x20ve\x20gerçek\x20kullanıcıların\x20siteye\x20girememesine\x20yol\x20açan\x20saldırıdır.', 'Web\x20sitesindeki\x20yorum\x20veya\x20girdi\x20kutularına\x20zararlı\x20JavaScript\x20kodu\x20yerleştirerek,\x20sayfayı\x20ziyaret\x20eden\x20diğer\x20masum\x20kullanıcıların\x20oturum\x20çerezlerini\x20çalma\x20saldırısıdır.', 'revokeObjectURL', '0\x200\x2010px\x20var(--green)', '\x20XP)</span>\x0a<span\x20style=\x22color:\x20#10b981;\x20font-weight:\x20700;\x22>[+]\x20==============================================================</span>\x0a', 'Odadaki\x20tüm\x20ipuçlarını\x20ve\x20şifreleri\x20adım\x20adım,\x20sırayla\x20ve\x20hiçbir\x20detayı\x20atlamadan\x20eksiksiz\x20çözmek.', 'ctf-stage-nav', 'cat\x20/root/flag.txt', ']</span>\x20&bull;\x20Durum:\x20200\x20OK\x20&bull;\x20PID:\x20', 'ctf-progress-text', 'warning', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-cli-box\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-cli-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>⚡\x20İLGİLİ\x20KALİ\x20/\x20GÜVENLİK\x20KOMUTU:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22cmd-actions\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-cmd-copy\x22\x20data-copy=\x22', '[1.820180]\x20lfl-shield:\x20Katman-7\x20WAF\x20&\x20Anti-Brute-Force\x20Shield\x20active\x20[ARMED]', 'lockedUntil', '\x0a2026/11/08\x2000:13:00\x20server:\x20Reverse\x20tunnelling\x20enabled\x0a2026/11/08\x2000:13:00\x20server:\x20Fingerprint\x208a:12:bf:44:9c:...\x0a2026/11/08\x2000:13:00\x20server:\x20Listening\x20on\x20http://0.0.0.0:8000\x0a2026/11/08\x2000:13:02\x20server:\x20session#1:\x20client\x20(127.0.0.1:52134)\x20connected\x0a<span\x20style=\x22color:\x20#22c55e;\x22>2026/11/08\x2000:13:02\x20server:\x20session#1:\x20Reverse\x20tunnel\x20socks\x20active\x20on\x201080</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Kullanıcı\x20adı\x203\x20ile\x2020\x20karakter\x20arasında\x20olmalıdır.', 'intro-progress-bar', 'HTTP\x20Strict\x20Transport\x20Security\x20(Zorunlu\x20HTTPS)', 'getTime', 'live-system-time', 'Konsere\x20girerken\x20bileğinize\x20takılan,\x20taklit\x20edilemez\x20hologramlı\x20ve\x20barkodlu\x20giriş\x20bilekliği\x20gibidir.\x20Görevliler\x20her\x20kapıda\x20kimliğinizi\x20sormaz,\x20bilekliği\x20okutursunuz.', '315150hGKJKA', 'teamScope', 'ifconfig', 'Görünmez\x20olup\x20kilitli\x20kapıların\x20arkasından\x20rahatça\x20geçebilme\x20ve\x20gizli\x20sırları\x20keşfetme\x20gücü.', 'Genişbant\x20/\x20WiFi', 'Yeni\x20kullanıcı\x20hesabı\x20oluşturun\x20ve\x20Session\x20Storage\x20tokeni\x20edinin', '\x20başarıyla\x20açıldı.', '%c[LFL\x20ASKERİ\x20SAVUNMA\x20KALKANI\x20AKTİF]%c\x0a', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn-secondary\x20btn-sm\x22\x20id=\x22btn-quiz-prev\x22>&larr;\x20Önceki\x20Soru</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'terminalCmd', 'Yedeklenen\x20verilerin\x20bulunduğu\x20diskin\x20internetten\x20ve\x20şirket\x20ağından\x20fiziksel\x20olarak\x20kablosu\x20çekilerek\x20tamamen\x20izole\x20bir\x20kasada\x20saklanmasıdır.', '<br/><span\x20style=\x22font-size:\x2010px;\x20color:\x20#94a3b8;\x20font-family:\x20var(--font-mono);\x22>', 'auth-main-title', 'json', 'lostfromlight', 'sudo\x20ufw\x20status\x20verbose', 'admin-broadcast-text', 'firstAttemptTime', 'icon', 'CSP\x20Script-Whitelist\x20ile\x20bloke\x20edildi', 'Saldırganın\x20web\x20arama\x20veya\x20form\x20alanlarına\x20zararlı\x20SQL\x20veritabanı\x20komutları\x20yazarak\x20tüm\x20müşteri\x20kayıtlarını\x20ve\x20şifreleri\x20çalmasıdır.\x20Entity\x20Framework\x20Core\x20LINQ\x20parametrik\x20sorguları\x20bu\x20açığı\x20tamamen\x20engeller.', 'Bayrak\x20Yakalandı!', 'lfl_registered_users', 'ctrlKey', 'Cross-Site\x20Scripting\x20(Siteler\x20Arası\x20Betik\x20Çalıştırma)', 'operatingSystem', '\x0aStarting\x20Nmap\x207.94\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2000:02\x20UTC\x0aNmap\x20scan\x20report\x20for\x20192.168.1.1\x20(Gateway\x20Router)\x0aHost\x20is\x20up\x20(0.0012s\x20latency).\x0aNot\x20shown:\x2097\x20closed\x20tcp\x20ports\x20(reset)\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>PORT\x20\x20\x20\x20STATE\x20SERVICE</span>\x0a53/tcp\x20\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20domain\x20(DNS\x20Resolver)\x0a80/tcp\x20\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20http\x20(Web\x20Management\x20UI)\x0a443/tcp\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20https\x20(TLS\x20Management)\x0a\x0aNmap\x20done:\x201\x20IP\x20address\x20(1\x20host\x20up)\x20scanned\x20in\x200.28\x20seconds\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20-F\x20parametresi\x20en\x20yaygın\x20100\x20portu\x20saniyeler\x20içinde\x20tarayarak\x20hızlı\x20ilk\x20keşif\x20yapılmasını\x20sağlar.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'click', 'PURPLE\x20TEAM\x20//\x20STRATEJİST\x20&\x20SİBER\x20GÜVENLİK\x20LİDERİ', 'storage-keys-grid', 'borderColor', 'guest', '</span>\x0a<span\x20style=\x22color:\x20#00e5ff;\x20font-weight:\x20800;\x22>└─#</span>\x20<span\x20style=\x22color:\x20#10b981;\x22>Terminal\x20temizlendi\x20ve\x20hazırlandı.\x20Komutları\x20aşağıya\x20yazıp\x20Enter\x27a\x20basın.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', 'arpspoof', 'deviceType', 'team', '.curriculum-chapter-card', 'btn-quiz-prev', 'grep\x20-i\x20\x22LFL{\x22\x20/var/log/syslog', 'CMD_INJECTION', ';\x22>SEVİYE\x20', 'Hatalı\x20kullanıcı\x20adı\x20veya\x20parola!', 'burak_wyxz', '8mhTfoN', 'HPING3', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-option-item\x20', 'Ayarlarını\x20kurcalayıp\x20gizli\x20menüleri,\x20kısıtlamaları\x20veya\x20üreticinin\x20kapatmak\x20istediği\x20şeyleri\x20açmaya\x20çalışırım.', 'gobuster', 'Session\x20Storage\x20temizlendi.', 'Bankanın\x20kasasını\x20ve\x20müşteri\x20hesaplarını\x207/24\x20izleyip\x20hiçbir\x20şüpheli\x20para\x20hareketine\x20izin\x20vermemek.', 'curl\x20http://10.10.2.10/robots.txt', 'Postacı\x20mektubunuzu\x20postaneye\x20götürürken\x20yolda\x20zarfı\x20gizlice\x20açıp\x20içini\x20okur,\x20içine\x20sahte\x20mektup\x20koyup\x20zarfı\x20tekrar\x20yapıştırır.', 'Operasyon\x20Kale\x20Kuşatması\x20(Op:\x20Fortress\x20Breach)', '<span\x20style=\x22color:\x20#f87171;\x22>[SALDIRI\x20BAŞLATILDI]</span>\x20<code>\x27\x20OR\x201=1;\x20DROP\x20TABLE\x20Users;\x20--</code>\x20SQL\x20Enjeksiyon\x20probu\x20gönderiliyor...', 'Harika!\x20Zihnin\x20koruyucu\x20bir\x20kale\x20muhafızı\x20ve\x20dikkatli\x20bir\x20nöbetçi\x20gibi\x20çalışıyor.\x20Sistemleri\x20aşılmaz\x20bir\x20zırhla\x20donatmak,\x20şüpheli\x20hareketleri\x20anında\x20sezmek\x20ve\x20izinsiz\x20girişleri\x20kapıda\x20durdurmak\x20senin\x20uzmanlık\x20alanın.\x20Kurumları\x20ve\x20insanları\x20siber\x20korsanlara\x20karşı\x20koruyan\x20bir\x20\x22Siber\x20Savunma\x20Uzmanı\x22\x20(Blue\x20Team)\x20potansiyelin\x20çok\x20yüksek!', 'ctf-hint-accordion', 'Rütbe:\x20', 'Google\x20Chrome', 'Enter', '#c084fc', '</code>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22kali-tab-item\x20', '&quot;', '&gt;', 'curl\x20-I\x20http://10.10.1.5', '\x0aUSER\x20\x20\x20\x20\x20\x20\x20PID\x20%CPU\x20%MEM\x20\x20\x20\x20VSZ\x20\x20\x20RSS\x20TTY\x20\x20\x20\x20\x20\x20STAT\x20START\x20\x20\x20TIME\x20COMMAND\x0aroot\x20\x20\x20\x20\x20\x20\x20\x20\x201\x20\x200.0\x20\x200.1\x20168204\x2011204\x20?\x20\x20\x20\x20\x20\x20\x20\x20Ss\x20\x20\x2000:00\x20\x20\x200:01\x20/sbin/init\x0aSunny\x20\x20\x20\x20\x201420\x20\x200.2\x20\x201.8\x20842100\x2089204\x20?\x20\x20\x20\x20\x20\x20\x20\x20Sl\x20\x20\x2000:01\x20\x20\x200:08\x20/usr/bin/dotnet\x20CyberBlog.dll\x0aSunny\x20\x20\x20\x20\x202401\x20\x200.0\x20\x200.3\x20\x2024520\x20\x206820\x20pts/0\x20\x20\x20\x20Ss\x20\x20\x2000:05\x20\x20\x200:00\x20-bash\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'href', 'arc', '\x20TEMEL\x20SİBER\x20TERİM', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Akıllı\x20Telefon\x20(Mobil)', '.app-main', '👑\x20MASTER\x20ROOT\x20KEY:\x0a\x0aTüm\x206\x20CTF\x20sızma\x20seviyesini\x20ve\x202300\x20XP\x20puanını\x20yönetici\x20yetkisiyle\x20anında\x20tamamlamak\x20istiyor\x20musunuz?', 'alpha', 'page', 'LFL\x20Platform', '#theme-menu-popup\x20.popup-item', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn-ghost-sm\x22\x20id=\x22topbar-logout-btn\x22\x20title=\x22Oturumu\x20Kapat\x22>Çıkış</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'empty', 'app-sidebar', 'language', '\x0a-\x20Nikto\x20v2.5.0\x0a---------------------------------------------------------------------------\x0a+\x20Target\x20IP:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20192.168.1.1\x0a+\x20Target\x20Hostname:\x20\x20\x20\x20lfl.defense.local\x0a+\x20Target\x20Port:\x20\x20\x20\x20\x20\x20\x20\x20443\x0a---------------------------------------------------------------------------\x0a+\x20<span\x20style=\x22color:\x20#22c55e;\x22>Server:\x20[REDACTED\x20BY\x20LFL\x20DEFENSE]\x20(Information\x20disclosure\x20prevented)</span>\x0a+\x20<span\x20style=\x22color:\x20#22c55e;\x22>The\x20anti-clickjacking\x20X-Frame-Options\x20header\x20is\x20present:\x20DENY</span>\x0a+\x20<span\x20style=\x22color:\x20#22c55e;\x22>The\x20X-Content-Type-Options\x20header\x20is\x20present:\x20nosniff</span>\x0a+\x20<span\x20style=\x22color:\x20#22c55e;\x22>Strict-Transport-Security\x20(HSTS)\x20is\x20configured\x20with\x20preload\x20directive</span>\x0a+\x20<span\x20style=\x22color:\x20#22c55e;\x22>Content-Security-Policy\x20(CSP)\x20is\x20active:\x20default-src\x20\x27self\x27</span>\x0a+\x20No\x20CGI\x20Directories\x20found\x20(mount\x20points\x20checked:\x20118)\x0a+\x207842\x20requests:\x200\x20error(s)\x20and\x200\x20critical\x20item(s)\x20reported\x20on\x20remote\x20host\x0a---------------------------------------------------------------------------\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Nikto\x20web\x20sunucusundaki\x20güvenlik\x20başlıklarını\x20doğrular.\x20LFL\x20tüm\x20sunucu\x20sürüm\x20numaralarını\x20gizlemiştir.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'tabId', 'whatweb', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20style=\x22font-size:\x2012.5px;\x20color:\x20var(--text-secondary);\x20margin-bottom:\x208px;\x20line-height:\x201.5;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '1)\x20<code>ping\x20-c\x203\x2010.10.1.5</code>\x20ile\x20bağlantıyı\x20test\x20et.<br>2)\x20<code>nmap\x20-sV\x2010.10.1.5</code>\x20yazarak\x20açık\x20portu\x20gör\x20(Port\x2080\x20HTTP\x20açık).<br>3)\x20<code>curl\x20-I\x20http://10.10.1.5</code>\x20ile\x20sunucu\x20yanıt\x20başlıklarını\x20incele.<br>4)\x20Başlıkta\x20gördüğün\x20<code>X-Secret-Auth</code>\x20Base64\x20değerini\x20<code>echo\x20\x22...\x22\x20|\x20base64\x20-d</code>\x20ile\x20çöz!', '\x0ahashcat\x20(v6.2.6)\x20starting...\x0a\x0aOpenCL\x20API\x20(OpenCL\x203.0\x20CUDA\x2012.2.140)\x20-\x20Platform\x20#1\x20[NVIDIA\x20Corporation]\x0a========================================================================\x0a*\x20Device\x20#1:\x20NVIDIA\x20GeForce\x20RTX\x204090,\x2024150/24564\x20MB,\x20128MCU\x0a\x0aHash.Mode........:\x201000\x20(NTLM)\x0aSpeed.#1.........:\x2098,420\x20MH/s\x20(98.42\x20GH/s)\x0aStatus...........:\x20Cracked\x0a<span\x20style=\x22color:\x20#22c55e;\x22>e4f8c1...\x20:\x20P@ssw0rd2026!</span>\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Modern\x20GPU\x27lar\x20saniyede\x20100\x20milyar\x20NTLM\x20denemesi\x20yapabilir.\x20Bu\x20nedenle\x20minimum\x2014\x20karakterli\x20karmaşık\x20şifreler\x20şarttır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'nikto', 'DEFCON\x201\x20Aktif', 'Tehdit\x20engellendi:\x20[', 'purple', '127.0.0.1', ')</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'glossary-category-pills', 'btn-clear-logs', 'pwd', '100%\x20YAKALANIYOR', 'Kali\x20Web\x20Terminal', 'Olayları\x20daha\x20gerçekleşmeden\x20hissedip\x20hem\x20savunmayı\x20hem\x20hamleleri\x20yönetebilen\x20geleceği\x20sezme\x20gücü.', 'indexOf', 'Sistem\x20Yöneticisi\x20burak_wyxz\x20olarak\x20başarıyla\x20giriş\x20yapıldı.', 'base64', 'Siber\x20CTF\x20Arenası', '#10b981', 'querySelectorAll', 'ceil', 'log', 'level', 'DEFCON\x203\x20Aktif', 'suspect_payload.bin', '<tr><td\x20colspan=\x227\x22\x20class=\x22text-center\x20text-muted\x22\x20style=\x22padding:\x2024px;\x22>Filtreye\x20uygun\x20log\x20kaydı\x20bulunamadı.</td></tr>', '.btn-jump-commands-cat', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22grid-column:\x201/-1;\x20text-align:\x20center;\x20padding:\x2048px;\x20background:\x20var(--bg-card);\x20border-radius:\x20var(--radius-lg);\x20border:\x201px\x20solid\x20var(--border);\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20style=\x22color:\x20var(--text-muted);\x20font-size:\x2014px;\x22>\x22', '\x20&bull;\x20<span\x20style=\x22color:\x20#a7f3d0;\x20font-family:\x20var(--font-mono);\x22>[YÖNETİCİ:\x20burak_wyxz]</span>', 'iPad', 'keydown', 'tcpdump', 'connection', 'Saldırı\x20Türü', 'Yerel\x20Ağ\x20/\x20Localhost', 'Girdiğiniz\x20bayrak\x20bu\x20görevle\x20eşleşmedi.\x20İpuçlarını\x20kontrol\x20edin.', '1.2', 'var(--red)', 'admin-global-broadcast-bar', 'NOSNIFF', 'cyber_user', 'NODE\x20CLUSTER\x20//\x20AKTİF', 'WAF_INTERCEPT', '</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>│\x20Sadece\x20kütüphanedeki\x20142\x20Kali\x20Linux\x20kodu\x20kullanılabilir.</span>\x0a<span\x20style=\x22color:\x20#00e5ff;\x20font-weight:\x20800;\x22>└─#</span>\x20<span\x20style=\x22color:\x20#10b981;\x22>Simülasyon\x20hazır.\x20Başlamak\x20için\x20soldaki\x20komutlara\x20tıklayın\x20veya\x20doğrudan\x20yazın.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', 'Halka\x20açık\x20bir\x20otoyolda\x20giderken\x20arabanızın\x20etrafına\x20görünmez\x20ve\x20kurşun\x20geçirmez\x20bir\x20zırhlı\x20tünel\x20inşa\x20etmek\x20gibidir.', 'Hping3\x20(Özel\x20TCP/IP\x20Paket\x20Sentezleyici)', 'SSL\x20Strip', '7518186mqZKVd', 'strict-transport-security', 'documentElement', '<span\x20style=\x22color:\x20#ef4444;\x20font-weight:\x20700;\x22>[!]\x20Erişim\x20Reddedildi:\x20God\x20Mode\x20yalnızca\x20yönetici\x20burak_wyxz\x20içindir.</span>', 'Log\x20verisi\x20JSON\x20formatında\x20indirildi.', 'hint', 'academy-commands-container', 'Ağdaki\x20tüm\x20konuşmaları\x20dinleyen\x20hassas\x20bir\x20mikrofon\x20ve\x20santral\x20yönlendiricisidir.', 'Evinize\x20girip\x20tüm\x20mobilya\x20ve\x20eşyalarınızı\x20dev\x20bir\x20çelik\x20kasaya\x20kilitleyen\x20ve\x20\x27Anahtar\x20için\x20bana\x20para\x20öde\x27\x20diyen\x20bir\x20gaspçıdır.', 'completed', 'preventDefault', 'visualsBooted', 'GİRİŞ', 'categoryName', 'Uç\x20Nokta\x20Tespiti\x20&\x20Olay\x20Yönetimi\x20(EDR\x20/\x20SIEM)', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22font-size:\x2012px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22font-weight:\x20600;\x20color:\x20#ffffff;\x22>', 'Chrome/', 'iOS\x20(iPhone)', '\x20Çekirdek', 'Umarım\x20kapı\x20zorlandığında\x20içerideki\x20güvenlik\x20paneline\x20ve\x20resepsiyona\x20anında\x20alarm\x20gidiyordur.', 'academy.html', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20var(--text-muted);\x20font-size:\x2011px;\x20font-family:\x20var(--font-mono);\x22>', 'ctf-total-xp', 'Bahçeye\x20sahte\x20bir\x20mücevher\x20kutusu\x20koyup\x20hırsızın\x20oraya\x20yönelmesini\x20izlemek\x20ve\x20gerçek\x20eve\x20girmesini\x20engellemektir.', 'btn-quick-search', 'Harika\x20bir\x20adli\x20bilişim\x20analizi!\x20Gömülü\x20ikili\x20dosya\x20içindeki\x20dizeleri\x20ayıklayarak\x20gizli\x20bayrağa\x20ulaştın.', 'function', '\x0a<span\x20style=\x22color:\x20#eab308;\x20font-weight:\x20bold;\x22>[+]\x20[Poisoning\x20LLMNR/NBT-NS/mDNS]</span>\x0a[+]\x20Responder\x20v3.1.4.0\x20is\x20listening\x20for\x20events\x20on\x20interface\x20eth0\x0a[+]\x20Listening\x20for\x20NBT-NS,\x20LLMNR,\x20MDNS\x20requests...\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[LLMNR]\x20Poisoned\x20answer\x20sent\x20to\x20192.168.1.17\x20for\x20name\x20FILESERVER</span>\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Ağınızda\x20LLMNR\x20ve\x20NBT-NS\x20protokollerini\x20GPO\x20(Group\x20Policy)\x20üzerinden\x20tamamen\x20kapatın!</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'trim', 'Siber\x20Akademi\x20(Eğitim\x20Planı)', 'setItem', 'badge-soft-red', '\x20Çekirdekli\x20CPU', 'role', 'Kullanıcının\x20şifresini\x20üçüncü\x20parti\x20uygulamalara\x20vermeden\x20\x27Google\x20ile\x20Giriş\x20Yap\x27\x20veya\x20\x27GitHub\x20ile\x20Giriş\x20Yap\x27\x20butonlarıyla\x20güvenle\x20yetkilendirilmesini\x20sağlayan\x20açık\x20standarttır.', 'error', 'iPhone', 'object', 'LFL{level2_2_adli_bilisim_strings_ustasi}', '7pOocvZ', '<span\x20style=\x22color:\x20#22c55e;\x22>Sunny</span>', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'sidebar-collapsed', 'cyber_auth_timestamp', 'scrollTo', 'Otelde\x20vale\x20hizmetine\x20arabanızın\x20anahtarını\x20değil,\x20sadece\x20arabayı\x20park\x20etmeye\x20yarayan\x20kısıtlı\x20bir\x20vale\x20anahtarını\x20vermek\x20gibidir.\x20Torpidonuzu\x20açamaz.', '...\x20(', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0aPING\x2010.10.1.5\x20(10.10.1.5)\x2056(84)\x20bytes\x20of\x20data.\x0a64\x20bytes\x20from\x2010.10.1.5:\x20icmp_seq=1\x20ttl=64\x20time=1.24\x20ms\x0a64\x20bytes\x20from\x2010.10.1.5:\x20icmp_seq=2\x20ttl=64\x20time=1.12\x20ms\x0a64\x20bytes\x20from\x2010.10.1.5:\x20icmp_seq=3\x20ttl=64\x20time=1.18\x20ms\x0a\x0a---\x2010.10.1.5\x20ping\x20statistics\x20---\x0a3\x20packets\x20transmitted,\x203\x20received,\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>0%\x20packet\x20loss</span>,\x20time\x202004ms\x0artt\x20min/avg/max/mdev\x20=\x201.120/1.180/1.240/0.048\x20ms\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20HEDEF\x20AKTİF!\x20Sunucu\x20ayakta.\x20Şimdi\x20nmap\x20ile\x20servisleri\x20tarayın.</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'toString', 'regex', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22glossary-watermark\x22>A-Z</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22glossary-title\x22>', 'admininfo', 'rgba(0,\x20229,\x20255,\x200.18)', 'lfl_ctf_xp', 'HttpOnly\x20&\x20Secure\x20Cookie\x20Bayrakları,\x20Kısa\x20Ömürlü\x20JWT', '10.10.3.50\x20(Kilitli\x20Linux\x20&\x20SSH)', 'kali-cmd-input', 'restore', 'logs-search-input', 'ctf-progress-bar-fill', 'info', 'rgba(0,\x20229,\x20255,\x200.35)', 'map', 'Operasyon\x20Büyük\x20Sızıntı\x20(Op:\x20Grand\x20SQLi\x20-\x20Final\x20Boss)', 'network', 'join', '\x0aroot:x:0:0:root:/root:/bin/bash\x0adaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin\x0abin:x:2:2:bin:/bin:/usr/sbin/nologin\x0aSunny:x:1000:1000:Sunny,,,:/home/Sunny:/bin/bash\x0alostfromlight:x:1001:1001:Operator,,,:/home/lostfromlight:/bin/bash\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '#academy-category-pills\x20[data-cat=\x22', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22ctf-mini-pill\x22\x20style=\x22background:\x20rgba(255,\x20255,\x20255,\x200.05);\x20color:\x20#cbd5e1;\x20border:\x201px\x20solid\x20rgba(255,\x20255,\x20255,\x200.1);\x22>', 'Gelen\x20ve\x20giden\x20tüm\x20ağ\x20paketlerini\x20inceleyerek\x20zararlı\x20olanları\x20engelleyen,\x20yalnızca\x20meşru\x20trafiğe\x20izin\x20veren\x20dijital\x20güvenlik\x20kalkanıdır.', 'createElement', 'querySelector', '10.10.2.10', 'fillText', 'clear', 'lfl', 'responder', 'uname\x20-a', 'Hem\x20suçlunun\x20psikolojisini\x20çözen\x20hem\x20de\x20ekibin\x20operasyonunu\x20yöneten\x20büyük\x20resmi\x20gören\x20başkomiser.', 'cores', '</div>\x0a\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20<div\x20style=\x22color:\x20#10b981;\x20font-size:\x2011px;\x22>[✔]\x20Araç\x20simülasyonu\x20başarıyla\x20tamamlandı.\x20Detaylar\x20ve\x20kullanım\x20parametreleri\x20için\x20Siber\x20Akademi\x20modülünü\x20inceleyebilirsiniz.</div>\x0a</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20___\x0a\x20\x20\x20\x20\x20\x20\x20__H__\x0a\x20___\x20___[.]_____\x20___\x20___\x20\x20{1.7.11#stable}\x0a|_\x20-|\x20.\x20[\x22]\x20\x20\x20\x20\x20|\x20.\x27|\x20.\x20|\x0a|___|_\x20\x20[\x22]_|_|_|__,|\x20\x20_|\x0a\x20\x20\x20\x20\x20\x20|_|V...\x20\x20\x20\x20\x20\x20\x20|_|\x20\x20\x20https://sqlmap.org\x0a\x0a[*]\x20starting\x20@\x2000:10:15\x20/2026-11-08/\x0a[00:10:15]\x20[INFO]\x20testing\x20connection\x20to\x20the\x20target\x20URL\x0a[00:10:15]\x20[INFO]\x20checking\x20if\x20the\x20target\x20is\x20protected\x20by\x20some\x20kind\x20of\x20WAF/IPS\x0a[00:10:16]\x20[INFO]\x20testing\x20if\x20the\x20target\x20URL\x20content\x20is\x20stable\x0a[00:10:16]\x20[INFO]\x20target\x20URL\x20content\x20is\x20stable\x0a[00:10:16]\x20[INFO]\x20testing\x20if\x20GET\x20parameter\x20\x27q\x27\x20is\x20dynamic\x0a[00:10:17]\x20[INFO]\x20heuristics\x20detected\x20that\x20GET\x20parameter\x20\x27q\x27\x20might\x20not\x20be\x20injectable\x0a[00:10:18]\x20[INFO]\x20testing\x20for\x20SQL\x20injection\x20on\x20GET\x20parameter\x20\x27q\x27\x0a[00:10:18]\x20[INFO]\x20testing\x20\x27AND\x20boolean-based\x20blind\x20-\x20WHERE\x20or\x20HAVING\x20clause\x27\x0a[00:10:19]\x20[INFO]\x20testing\x20\x27Generic\x20UNION\x20query\x20(NULL)\x20-\x201\x20to\x2020\x20columns\x27\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[CRITICAL]\x20all\x20tested\x20parameters\x20do\x20not\x20appear\x20to\x20be\x20injectable.</span>\x0a[00:10:20]\x20[WARNING]\x20target\x20utilizes\x20Entity\x20Framework\x20Core\x20LINQ\x20Parameterized\x20Queries.\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Parametrik\x20sorgular\x20SQL\x20enjeksiyon\x20açıklarını\x20%100\x20kapatır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'iPadOS', 'Zararlı\x20İstek\x20Engellendi', 'X-Frame-Options:\x20DENY\x20başlığı\x20harici\x20çerçeveleme\x20girişimini\x20kesti.', '<span\x20style=\x22color:\x20#10b981;\x20font-weight:\x20700;\x20font-size:\x2010.5px;\x20font-family:\x20var(--font-mono);\x22>✔\x20ÇÖZÜLDÜ</span>', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<code\x20style=\x22color:\x20var(--cyan);\x20margin-left:\x204px;\x22>', '.\x09\x09172800\x09IN\x09NS\x09ns2.lostfromlight.com.\x0a\x0a;;\x20Query\x20time:\x2012\x20msec\x0a;;\x20SERVER:\x201.1.1.1#53(1.1.1.1)\x20(UDP)\x0a;;\x20WHEN:\x20Sun\x20Nov\x2008\x2001:28:00\x20UTC\x202026\x0a;;\x20MSG\x20SIZE\x20\x20rcvd:\x20124\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[✔]\x20DNS\x20çözümlemesi\x20başarılı:\x20Hedef\x20A\x20ve\x20NS\x20kayıtları\x20listelendi.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'username', 'bettercap', 'lfl-access-telemetry-', 'badge-soft-cyan', '⚡\x20Web\x20Sızma\x20Operatörü', '<div\x20style=\x22color:\x20#38bdf8;\x20font-size:\x2011px;\x20margin-top:\x206px;\x22>[★\x20BAYRAK]:\x20<code\x20style=\x22color:\x20#facc15;\x20font-weight:\x20bold;\x22>', 'moderator', 'Platform\x20SARI\x20UYARI\x20moduna\x20geçirildi.', '\x22>⚡\x20Çalıştır</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-cli-code\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22prompt-sign\x22>$</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<code>', '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22font-family:\x20var(--font-mono);\x20font-weight:\x20700;\x20color:\x20var(--cyan);\x20margin-bottom:\x206px;\x20font-size:\x2011px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20KULLANILABİLİR\x20KOMUTLAR\x20(Öğrenmek\x20için\x20terminale\x20kendi\x20elinle\x20yaz):\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;\x20flex-direction:\x20column;\x20gap:\x205px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'theme-corporate-cyber\x20theme-', 'İnsanların\x20aklında\x20tutması\x20kolay\x20olan\x20alan\x20adlarını\x20(örn:\x20google.com)\x20makinelerin\x20anladığı\x20IP\x20adreslerine\x20(142.250.x.x)\x20çeviren\x20telefon\x20rehberidir.', 'defense', 'Kendi\x20bölgemi\x20aşılmaz\x20bir\x20kale\x20haline\x20getirip\x20gelen\x20tüm\x20saldırıları\x20tek\x20tek\x20püskürtmek.', 'sim-terminal-text', '.sidebar-mobile-backdrop', 'm2_1', 'X-Frame-Options:\x20DENY\x20ile\x20Reddedildi', '</p>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Analogy\x20Callout\x20Box\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-analogy-box\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-analogy-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22analogy-icon\x22>💡</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22analogy-heading\x22>GÜNLÜK\x20HAYATTAN\x20BENZETME</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22glossary-analogy-quote\x22>“', 'Linux\x20SUNNY\x206.8.11-kali-amd64\x20#1\x20SMP\x20PREEMPT_DYNAMIC\x20Kali\x206.8.11-1kali1\x20(2026-11-08)\x20x86_64\x20GNU/Linux', 'lfl_cached_visitor_loc', 'headers', 'SSL\x20Strip,\x20Man-in-the-Middle\x20(Araya\x20Girme)\x20Saldırıları', 'uptime', 'X-FRAME', '\x0a[+]\x20İpucu\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20:\x20\x27👑\x20Master\x20Root\x20Key\x27\x20butonuna\x20basarak\x20tüm\x20aşamaları\x20anında\x20açabilirsiniz.\x0a[★]\x20==============================================================\x0a</pre>', '\x0a<pre\x20style=\x22color:\x20#f59e0b;\x22>\x0aUser-agent:\x20*\x0aDisallow:\x20/admin_vault/confidential_token.json\x0aDisallow:\x20/server-status\x0a</pre>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20Gizli\x20dosya\x20yolu\x20ifşa\x20oldu:\x20/admin_vault/confidential_token.json</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20curl\x20http://10.10.2.10/admin_vault/confidential_token.json\x20ile\x20içeriği\x20okuyun!</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x20&bull;\x20', 'ssh\x20operator@10.10.3.50', '\x22\x20data-tab-id=\x22', '<div\x20class=\x22ctf-general-output\x22\x20style=\x22margin-top:\x204px;\x22>', 'Hedef\x20şirketin\x20dışa\x20açık\x20sunucusu\x20(<strong>10.10.1.5</strong>)\x20üzerinde\x20kritik\x20bir\x20güvenlik\x20açığı\x20şüphesi\x20var.\x20Önce\x20sunucunun\x20ayakta\x20olduğunu\x20<code>ping</code>\x20ile\x20doğrula,\x20ardından\x20servis\x20portlarını\x20<code>nmap</code>\x20ile\x20tara\x20ve\x20HTTP\x20yanıt\x20başlıklarındaki\x20(Header)\x20Base64\x20kodlu\x20gizli\x20anahtarı\x20çözerek\x20ilk\x20bayrağı\x20kap.', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0atotal\x2016\x0adrwxr-xr-x\x202\x20root\x20root\x204096\x20Nov\x20\x208\x2001:40\x20.\x0adrwxr-xr-x\x2014\x20root\x20root\x204096\x20Nov\x20\x208\x2001:20\x20..\x0a-rw-r--r--\x201\x20root\x20root\x20\x20512\x20Nov\x20\x208\x2001:42\x20backup_system.tar.gz\x0a<span\x20style=\x22color:\x20#f59e0b;\x20font-weight:\x20700;\x22>-rw-r--r--\x201\x20root\x20root\x20\x20240\x20Nov\x20\x208\x2001:45\x20operator_note.txt</span>\x0a-rw-r--r--\x201\x20root\x20root\x201024\x20Nov\x20\x208\x2001:41\x20shadow.bak\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[+]\x20/var/backups/operator_note.txt\x20dosyası\x20bulundu!\x20cat\x20komutuyla\x20okuyun.</span>\x0a</pre>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Operasyon\x20Derin\x20Dizin\x20(Op:\x20Deep\x20Enum)', 'nav-section-admin', '/var/backups', 'addColorStop', 'GOBUSTER', ';\x22>', 'page-terminal', '\x0a<pre\x20style=\x22color:\x20#94a3b8;\x22>\x0a{\x0a\x20\x20\x22vault_name\x22:\x20\x22LFL_RESTRICTED_ACCESS_PORTAL\x22,\x0a\x20\x20\x22build\x22:\x20\x222026.1-patch3\x22,\x0a\x20\x20\x22encryption\x22:\x20\x22AES-GCM-256\x22,\x0a\x20\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20800;\x22>\x22master_flag\x22:\x20\x22LFL{level2_1_web_dizin_firtinasi}\x22</span>,\x0a\x20\x20\x22status\x22:\x20\x22ACTIVE_DEFENSE\x22\x0a}\x0a</pre>\x0a<span\x20style=\x22color:\x20#00e5ff;\x22>[+]\x20Bayrak\x20bulundu:\x20LFL{level2_1_web_dizin_firtinasi}</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Fidye\x20Yazılımı\x20(Ransomware)', 'Bettercap\x20(Ağ\x20Analiz\x20ve\x20MITM\x20Çerçevesi)', '/etc/passwd', 'Sunny@SUNNY:\x20~\x20(', 'flex', 'academy.html?track=', '<strong>✔\x20TEBRİKLER!</strong>\x20', 'operator_note.txt', 'Ziyaretçi\x20&\x20Sistem\x20Logları', '1)\x20<code>file\x20/evidence/suspect_payload.bin</code>\x20komutuyla\x20dosya\x20tipini\x20gör.<br>2)\x20<code>strings\x20/evidence/suspect_payload.bin\x20|\x20grep\x20\x22LFL{\x22</code>\x20komutunu\x20çalıştırarak\x20ikili\x20dosyanın\x20içindeki\x20gizli\x20bayrağı\x20anında\x20ayıkla!', '1)\x20<code>ls\x20-la\x20/var/backups</code>\x20yazarak\x20yedek\x20dizinindeki\x20gizli\x20dosyaları\x20listele.<br>2)\x20<code>cat\x20/var/backups/operator_note.txt</code>\x20dosyasını\x20oku.<br>3)\x20Notta\x20belirtilen\x20log\x20kaydını\x20<code>grep\x20-i\x20\x22LFL{\x22\x20/var/log/syslog</code>\x20komutuyla\x20ayıkla!', 'Şifre\x20Çalma,\x20Credential\x20Stuffing,\x20Phishing\x20(Oltalama)', '\x0a<span\x20style=\x22color:\x20#22c55e;\x22>listening\x20on\x20[any]\x204444\x20...</span>\x0aconnect\x20to\x20[127.0.0.1]\x20from\x20(UNKNOWN)\x20[127.0.0.1]\x2051234\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>Linux\x20lfl-core\x206.8.11\x20#1\x20SMP\x20PREEMPT\x20x86_64</span>\x0a<span\x20style=\x22color:\x20#22c55e;\x22>Sunny@SUNNY:~$\x20id</span>\x0auid=1000(Sunny)\x20gid=1000(Sunny)\x20groups=1000(Sunny),27(sudo)\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x0aServer:\x20Kestrel\x20(LFL-Secured)\x0aContent-Type:\x20text/html;\x20charset=utf-8\x0aStrict-Transport-Security:\x20max-age=31536000;\x20includeSubDomains\x0aX-Content-Type-Options:\x20nosniff\x0aX-Frame-Options:\x20DENY\x0aContent-Length:\x2010420', '%\x20Tamamlandı</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22quiz-question-title\x22>', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn-glow-blue\x20btn-sm\x22\x20id=\x22topbar-login-btn\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<svg\x20width=\x2214\x22\x20height=\x2214\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<path\x20d=\x22M15\x203h4a2\x202\x200\x200\x201\x202\x202v14a2\x202\x200\x200\x201-2\x202h-4\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<polyline\x20points=\x2210\x2017\x2015\x2012\x2010\x207\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<line\x20x1=\x2215\x22\x20y1=\x2212\x22\x20x2=\x223\x22\x20y2=\x2212\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</svg>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>Giriş</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'isIntersecting', '<div\x20class=\x22alert-box-info\x22>Doğrulanıyor,\x20lütfen\x20bekleyin...</div>', 'JWT', '<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20700;\x22>', '#f59e0b', 'logs', 'Postacıya\x20\x27Bu\x20mektubun\x20üzerine\x20sahte\x20bir\x20mühür\x20vur\x20ve\x20kapıyı\x20çalmadan\x20kapının\x20altından\x20at\x27\x20diyebildiğiniz\x20özel\x20kargo\x20servisidir.', 'GİRİŞ_PAROLA', '\x2000:14:12\x20up\x202\x20days,\x2014:02,\x20\x202\x20users,\x20\x20load\x20average:\x200.12,\x200.08,\x200.05', 'user-auth-zone', 'john', 'badge-soft-green', 'whoami', 'Go\x20dilinde\x20yazılmış\x20ultra\x20hızlı\x20bir\x20araçtır;\x20web\x20sitelerinde\x20menülerde\x20görünmeyen\x20gizli\x20admin\x20panellerini\x20ve\x20yedek\x20dosyalarını\x20bulur.', 'İki\x20bilgisayar\x20arasında\x20veri\x20aktarımı\x20başlamadan\x20önce\x20yapılan\x203\x20adımlı\x20selamlama\x20protokolüdür:\x20SYN\x20->\x20SYN-ACK\x20->\x20ACK.', 'gobuster\x20dir\x20-u\x20http://192.168.1.1\x20-w\x20/usr/share/wordlists/dirb/common.txt', 'startsWith', 'copy', 'download', 'Otobüs\x20biletinizi\x20cebinizden\x20gizlice\x20alıp\x20otobüse\x20sizin\x20yerinize\x20binen\x20yabancı\x20bir\x20yolcu\x20gibidir.', '</span>\x20&bull;\x20<span\x20style=\x22color:\x20#22c55e;\x22>[', 'badge', 'Desktop', 'toLowerCase', 'ps\x20aux', 'accessLogs', 'ssh\x20-D\x201080\x20-q\x20-C\x20-N\x20user@remote', '9px\x20monospace', 'HSTS\x20Preload\x20ile\x20engellendi', 'currentUser', 'classList', '\x20/\x20', '\x20chars)', 'recordFailedAttempt', 'mitigates', 'prepend', 'desc', 'safe', 'aegis_theme', '1)\x20<code>curl\x20\x22http://10.10.3.99/api/search?q=test\x22</code>\x20ile\x20API\x20yanıtını\x20gör.<br>2)\x20<code>sqlmap\x20-u\x20\x22http://10.10.3.99/api/search?q=test\x22\x20--dbs</code>\x20ile\x20veritabanlarını\x20çek.<br>3)\x20<code>sqlmap\x20...\x20-D\x20lfl_master_vault\x20--tables</code>\x20ile\x20tabloları\x20listele.<br>4)\x20<code>sqlmap\x20...\x20-T\x20master_classified_flags\x20--dump</code>\x20ile\x20şampiyonluk\x20bayrağını\x20dök!', 'flood', 'toast-item\x20toast-', 'Linux\x20Temelleri\x20&\x20Dosya\x20Analizi', 'ctf-term-title-text', '/root/flag.txt', 'save', 'SESSION-HIJACK', 'curriculum-tabs-bar', 'Adli\x20Bilişim\x20&\x20Kripto', 'tezme', '.btn-cmd-run', 'lfl_theme', 'removeItem', 'closePath', 'Emerald\x20Matrix', 'radar-sweep-angle', 'boxShadow', 'godmode', '\x0a<span\x20style=\x22color:\x20#00e5ff;\x20font-weight:\x20bold;\x22>===\x20GÜVENLİK\x20BAŞLIĞI\x20DENETİM\x20RAPORU\x20(PowerShell\x20Invoke-WebRequest)\x20===</span>\x0a<span\x20style=\x22color:\x20#94a3b8;\x22>Hedef:\x20https://localhost:5000</span>\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[✔]\x20GÜVENLİ:\x20\x27Strict-Transport-Security\x27\x20(HSTS)\x20başlığı\x20tanımlanmış.</span>\x0a\x20\x20\x20\x20<span\x20style=\x22color:\x20#94a3b8;\x22>Değer:\x20max-age=31536000;\x20includeSubDomains;\x20preload</span>\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[✔]\x20GÜVENLİ:\x20\x27Content-Security-Policy\x27\x20(CSP)\x20başlığı\x20tanımlanmış.</span>\x0a\x20\x20\x20\x20<span\x20style=\x22color:\x20#94a3b8;\x22>Değer:\x20default-src\x20\x27self\x27;\x20script-src\x20\x27self\x27\x20\x27unsafe-inline\x27</span>\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[✔]\x20GÜVENLİ:\x20\x27X-Frame-Options\x27\x20başlığı\x20tanımlanmış.</span>\x0a\x20\x20\x20\x20<span\x20style=\x22color:\x20#94a3b8;\x22>Değer:\x20DENY\x20(Clickjacking\x20Korumalı)</span>\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[✔]\x20GÜVENLİ:\x20\x27X-Content-Type-Options\x27\x20başlığı\x20tanımlanmış.</span>\x0a\x20\x20\x20\x20<span\x20style=\x22color:\x20#94a3b8;\x22>Değer:\x20nosniff\x20(MIME\x20Confuse\x20Saldırısı\x20Engellendi)</span>\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x22>[✔]\x20GÜVENLİ:\x20\x27Referrer-Policy\x27\x20başlığı\x20tanımlanmış.</span>\x0a\x20\x20\x20\x20<span\x20style=\x22color:\x20#94a3b8;\x22>Değer:\x20strict-origin-when-cross-origin</span>\x0a\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>Sonuç:\x20Sunucu\x20%100\x20SOC2\x20ve\x20ISO\x2027001\x20kurumsal\x20standartlarına\x20uygundur!</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'stopPropagation', 'lfl_broadcast_msg', 'runKaliCommand', 'Gelişmiş\x20Kalıcı\x20Tehditler\x20(APT),\x20Şüpheli\x20Davranışlar', 'LINQ\x20Parametrik\x20Sorgusu\x20ile\x20Engellendi', 'lostfromlight.com', '\x0a<pre\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20800;\x22>\x0a=====================================================\x0aROOT\x20YETKİSİ\x20ALINDI\x20//\x20FORTRESS\x20OWNED\x0a=====================================================\x0aFLAG:\x20LFL{level3_1_suid_privesc_root_fatihi}\x0a=====================================================\x0a</pre>\x0a<span\x20style=\x22color:\x20#00e5ff;\x22>[+]\x20Bayrak\x20bulundu:\x20LFL{level3_1_suid_privesc_root_fatihi}</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'moveTo', 'all', 'radius', 'root@kali-ctf:~#\x20[', 'toggle', '.json', '<div\x20class=\x22alert-box-danger\x22>Bağlantı\x20hatası\x20oluştu:\x20', 'Escape', 'toUpperCase', 'XSS_PAYLOAD', ':\x20icmp_seq=3\x20ttl=64\x20time=0.035\x20ms\x0a---\x20', 'btn-replay-intro', 'Genel\x20ve\x20güvensiz\x20internet\x20ağları\x20üzerinde\x20iki\x20uç\x20nokta\x20arasında\x20tüm\x20paketleri\x20şifreleyerek\x20görünmez\x20bir\x20koridor\x20(tünel)\x20oluşturan\x20teknolojidir.', '<pre\x20style=\x22background:\x20rgba(0,\x200,\x200,\x200.55);\x20border-left:\x203px\x20solid\x20#10b981;\x20padding:\x2010px\x2014px;\x20border-radius:\x204px;\x20color:\x20#f1f5f9;\x20white-space:\x20pre-wrap;\x20font-family:\x20var(--font-mono);\x22>', '\x0aHPING\x20192.168.1.1\x20(eth0\x20192.168.1.1):\x20S\x20set,\x2040\x20headers\x20+\x200\x20data\x20bytes\x0alen=46\x20ip=192.168.1.1\x20ttl=64\x20DF\x20id=0\x20sport=80\x20<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>flags=SA</span>\x20seq=0\x20win=65535\x20rtt=1.4\x20ms\x0a\x0a---\x20192.168.1.1\x20hping\x20statistic\x20---\x0a1\x20packets\x20transmitted,\x201\x20packets\x20received,\x200%\x20packet\x20loss\x0around-trip\x20min/avg/max\x20=\x201.4/1.4/1.4\x20ms\x0a<span\x20style=\x22color:\x20#22c55e;\x20font-weight:\x20bold;\x22>[SONUÇ]:\x20flags=SA\x20(SYN-ACK)\x20bayrağı\x20döndü!\x20Port\x2080\x20açık\x20ve\x20TCP\x20el\x20sıkışmasına\x20hazır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'CVE', 'kali-tabs-bar', 'red', 'ctf-term-prompt-label', 'country', 'Kaba\x20Kuvvet\x20(Brute\x20Force)\x20&\x20SUID\x20PrivEsc', '<span\x20style=\x22color:\x20#38bdf8;\x22>[SALDIRI\x20BAŞLATILDI]</span>\x20Saldırgan\x20harici\x20bir\x20web\x20sitesine\x20gizli\x20iframe\x20gömerek\x20clickjacking\x20deniyor...', 'Clean\x20Light', 'sudo', 'Bu\x20kullanıcı\x20adı\x20rezerve\x20edilmiş\x20ve\x20sisteme\x20aittir.', 'rgba(255,\x20255,\x20255,\x20', 'Canlı\x20İnternet\x20İstemcisi\x20🌐', 'curl\x20http://10.10.2.10/admin_vault/confidential_token.json', '&lt;', 'ss\x20-', 'page-quiz', 'top', 'Duyuru\x20Kaldırıldı', 'Parametrik\x20LINQ\x20sorgusu\x20saldırıyı\x20başarıyla\x20nötralize\x20etti.', 'm1_2', 'file\x20/evidence/suspect_payload.bin', 'getBoundingClientRect', 'string', 'Zero-Trust\x20Mimarisi,\x20Derinlemesine\x20Savunma\x20(Defense-in-Depth)', 'OAuth\x202.0\x20&\x20OpenID\x20Connect', 'createRadialGradient', '\x20[data-reveal],\x20#', 'Bir\x20kalenin\x20etrafında\x20dolaşıp\x20hangi\x20kapıların\x20açık,\x20hangi\x20pencerelerin\x20kilitli\x20olduğunu\x20not\x20alan\x20keşif\x20gözcüsüdür.', 'kali-output-block', '</h2>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22quiz-result-desc\x22>', 'IP\x20Adresi\x20(Internet\x20Protocol\x20Address)', '\x0a1:\x20lo:\x20&lt;LOOPBACK,UP,LOWER_UP&gt;\x20mtu\x2065536\x20qdisc\x20noqueue\x20state\x20UNKNOWN\x20group\x20default\x20qlen\x201000\x0a\x20\x20\x20\x20inet\x20127.0.0.1/8\x20scope\x20host\x20lo\x0a2:\x20eth0:\x20&lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt;\x20mtu\x201500\x20qdisc\x20fq_codel\x20state\x20UP\x20group\x20default\x20qlen\x201000\x0a\x20\x20\x20\x20inet\x20192.168.1.22/24\x20brd\x20192.168.1.255\x20scope\x20global\x20dynamic\x20eth0\x0a\x20\x20\x20\x20inet6\x20fe80::5054:ff:fe12:3456/64\x20scope\x20link\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-flag-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22text\x22\x20class=\x22ctf-input-field\x22\x20id=\x22ctf-flag-input-field\x22\x20placeholder=\x22Örn:\x20LFL{...}\x22\x20value=\x22', '<span\x20style=\x22color:\x20#ef4444;\x20font-weight:\x20700;\x22>[!]\x20ERİŞİM\x20ENGELLENDİ:\x20God\x20Mode\x20yalnızca\x20yetkili\x20yönetici\x20burak_wyxz\x20tarafından\x20çalıştırılabilir.</span>', 'devicePixelRatio', 'includes', 'createObjectURL', 'intensity', '956021QSHZVB', 'Tarayıcının\x20bir\x20dosyanın\x20türünü\x20tahmin\x20etmesini\x20engeller.\x20Sunucu\x20bir\x20dosyaya\x20\x27resim\x27\x20dediyse,\x20içinde\x20gizli\x20kod\x20olsa\x20bile\x20tarayıcının\x20onu\x20kod\x20olarak\x20çalıştırmasını\x20yasaklar.', 'password', 'academy-cmd-search', 'btn-publish-broadcast', 'levelLabel', 'fillStyle', '.\x09\x09\x09IN\x09A\x0a\x0a;;\x20ANSWER\x20SECTION:\x0a', 'Büyük\x20bir\x20kütüphanede\x20gizli\x20bölmeleri\x20ve\x20kilitli\x20odaları\x20anahtar\x20kelimelerle\x20arayan\x20araştırmacı\x20dedektiftir.', 'remove', 'sqrt', 'Saldırgan\x20Tespiti,\x20Tehdit\x20İstihbaratı\x20Toplama', 'Lütfen\x20bir\x20bayrak\x20(LFL{...})\x20giriniz!', '#60a5fa', 'Veritabanında\x20şifrelerin\x20açık\x20metin\x20değil,\x20tek\x20yönlü\x20matematiksel\x20algoritmalarla\x20(BCrypt,\x20Argon2,\x20PBKDF2)\x20ve\x20her\x20kullanıcıya\x20özel\x20rastgele\x20bir\x20\x27tuz\x27\x20(salt)\x20eklenerek\x20saklanmasıdır.', 'innerHeight', 'TCP-HANDSHAKE', 'current-theme-label', '4\x20Çekirdekli\x20CPU', 'themeVal', '\x20Görev\x20Tamamlandı\x20(%', '\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>[WHOIS\x20QUERY\x20//\x20LFL\x20INTELLIGENCE]</span>\x0aDomain\x20Name:\x20', '2.1', 'getItem', '</p>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-breakdown-bars\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-item\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22quiz-bar-label-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#f87171;\x22>⚔️\x20Red\x20Team\x20(Ofansif\x20/\x20Hücum):</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x22color:\x20#f87171;\x22>', '[0.840210]\x20lfl-core:\x20Enforcing\x20Zero-Trust\x20Defense\x20&\x20Strict\x20HSTS\x20(31536000s)', 'Man-in-the-Middle\x20(Ortadaki\x20Adam\x20Saldırısı)', 'Şirket\x20binasına\x20girebilecek\x20kuryelerin\x20ve\x20ziyaretçilerin\x20önceden\x20danışmaya\x20isimlerinin\x20bildirilmesi\x20gibidir.\x20İsmi\x20listede\x20olmayan\x20içeri\x20adım\x20atamaz.', 'Bilinmeyen\x20Saldırgan', 'ATTACKER_BLOCKED', 'Bulmacanın\x20ardındaki\x20ana\x20mekanizmayı\x20kavrayıp\x20diğer\x20oyunculara\x20taktik\x20vermek\x20ve\x20oyunu\x20yönetmek.', 'round', '\x0aStarting\x20Nmap\x207.94\x20(\x20https://nmap.org\x20)\x20at\x202026-11-08\x2000:05\x20UTC\x0aHost\x20discovery\x20disabled\x20(-Pn).\x20All\x20addresses\x20specified\x20will\x20be\x20assumed\x20to\x20be\x20up.\x0aNmap\x20scan\x20report\x20for\x20192.168.1.1\x0aHost\x20is\x20up.\x0a<span\x20style=\x22color:\x20#38bdf8;\x20font-weight:\x20bold;\x22>PORT\x20\x20\x20\x20STATE\x20SERVICE</span>\x0a80/tcp\x20\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20http\x0a443/tcp\x20<span\x20style=\x22color:\x20#22c55e;\x22>open</span>\x20\x20https\x0a\x0a<span\x20style=\x22color:\x20#38bdf8;\x22>[DEFENSIVE\x20TAKEAWAY]:\x20Ping\x20(ICMP\x20Echo)\x20yanıtlarını\x20engelleyen\x20güvenlik\x20duvarlarının\x20arkasındaki\x20sunucuları\x20taramak\x20için\x20-Pn\x20kullanılır.</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'sin', '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22user-role-tag\x20', '\x20XP</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ctf-target-label\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22pulsing-beacon\x22\x20style=\x22width:\x205px;\x20height:\x205px;\x20background:\x20var(--cyan);\x20display:\x20inline-block;\x20vertical-align:\x20middle;\x20margin-right:\x204px;\x22></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>🎯\x20', 'DOS-DDOS', 'run', 'DOMContentLoaded', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22glossary-card\x20cat-', 'Tebrikler!\x20Zihnin\x20tıpkı\x20bir\x20dedektif\x20veya\x20kilit\x20ustası\x20gibi\x20meraklı\x20ve\x20sorgulayıcı\x20çalışıyor.\x20Sistemlerin\x20açık\x20kapılarını,\x20unutulan\x20şifrelerini\x20ve\x20gözden\x20kaçan\x20zayıf\x20noktalarını\x20sezmekte\x20doğuştan\x20gelen\x20bir\x20avcı\x20içgüdün\x20var.\x20Sıfır\x20yazılım\x20bilsen\x20bile\x20bu\x20merak\x20seni\x20sistemleri\x20kötü\x20niyetli\x20saldırganlardan\x20önce\x20test\x20edip\x20koruyan\x20bir\x20\x22Etik\x20Hacker\x22\x20(Red\x20Team)\x20yapabilir!', 'KAYIT_PAROLA', 'dig', 'auth-btn-execute', 'Bu\x20seviyeyi\x20açmak\x20için\x20önce\x20Seviye\x20', 'Buraya\x20yapıştıracağınız\x20yabancı\x20betikler\x20oturumunuzun\x20ele\x20geçirilmesine\x20yol\x20açabilir.\x0a', 'ip\x20a', 'administrator', 'getContext', '[2.920490]\x20lfl-auth:\x20HMAC-SHA256\x20Token\x20&\x20Telemetry\x20Engine\x20initialized', 'Clickjacking\x20&\x20UI\x20Redressing\x20(Tıklama\x20Kaçırma)', 'var(--green)']; _0x4733 = function () { return _0x138b6b; }; return _0x4733(); }
+
+/**
+ * LFL // LOST FROM LIGHT CYBER DEFENSE ENGINE
+     * Pure Vanilla JavaScript:
+     *  - Official Kali Linux Dragon Geometric Intro Animation & Progress Engine
+     *  - Multi-Tab Kali Web Terminal ("+" New Tab, Close Tab, History Per Tab)
+     *  - 140+ Realistic Cyber Defense & Offensive CLI Commands (Nmap, Gobuster, FFuf, Hydra, Hping3, Bettercap, PowerShell, etc.)
+     *  - 100% Turkish Native Interface
+     *  - Admin-Only Visitor & Device Telemetry Logs Panel
+     *  - Holographic 2D Canvas Threat Radar & Parallax Particles
+     */
+
+(function () {
+    'use strict';
+
+    // ==========================================
+    // GLOBAL STATE
+    // ==========================================
+    const state = {
+        theme: localStorage.getItem('lfl_theme') || localStorage.getItem('aegis_theme') || 'cyber-midnight',
+        token: localStorage.getItem('cyber_token') || sessionStorage.getItem('cyber_token') || null,
+        currentUser: null,
+        activePage: 'page-dashboard',
+        accessLogs: [],
+        simRunning: false
+    };
+
+    let generateTerminalResponse = null;
+
+
+
+
+    // ==========================================
+    // IN-BROWSER ZERO-BACKEND MOCK API CLIENT
+    // 100% Client-Side Simulation - No C# Backend Required
+    // ==========================================
+    function generateMockJwt(username, role) {
+        const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).replace(/=/g, '');
+        const payload = btoa(JSON.stringify({
+            sub: '1',
+            uname: username,
+            role: role,
+            iat: Math.floor(Date.now() / 1000),
+            exp: Math.floor(Date.now() / 1000) + 86400 * 30
+        })).replace(/=/g, '');
+        const signature = btoa('lfl_defense_simulated_hmac_sha256_sig').replace(/=/g, '');
+        return `${header}.${payload}.${signature}`;
+    }
+
+
+    // ==========================================================================
+    // LFL MILITARY-GRADE CYBER DEFENSE SHIELD (WAF, IDS, EDR, ANTI-BRUTEFORCE)
+    // 100% Client-Side High-Sec Defense Engine & Threat Inspector
+    // ==========================================================================
+    const lflSecurityShield = (() => {
+        // 1. Anti-Clickjacking / Frame-Buster Defense
+        if (window.top !== window.self) {
+            try {
+                window.top.location = window.self.location;
+            } catch (e) {
+                document.documentElement.innerHTML = '<div style="background:#040711;color:#ef4444;height:100vh;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:18px;font-weight:bold;">[BLOCKED] CLICKJACKING_DETECTED: Yetkisiz çerçeveleme engellendi.</div>';
+            }
+        }
+
+        // 2. Anti-Self-XSS Console Security Warning
+        try {
+            console.log(
+                '%c[LFL ASKERİ SAVUNMA KALKANI AKTİF]%c\n' +
+                'DİKKAT: Bu konsol sistem yöneticisi (burak_wyxz) denetimindedir.\n' +
+                'Buraya yapıştıracağınız yabancı betikler oturumunuzun ele geçirilmesine yol açabilir.\n' +
+                'Katman-7 WAF ve IDS tüm istemci isteklerini şifreli telemetriye kaydeder.',
+                'background: #ef4444; color: #ffffff; font-weight: 800; font-size: 13px; padding: 4px 10px; border-radius: 4px;',
+                'color: #00e5ff; font-family: monospace; font-size: 11px;'
+            );
+        } catch (e) { }
+
+        // 3. Rate-Limiting & Anti-Brute-Force Shield
+        const FAILED_LIMIT = 5;
+        const LOCKOUT_MS = 60 * 1000; // 60s cooldown
+
+        function getBruteForceState() {
+            try {
+                return JSON.parse(localStorage.getItem('lfl_waf_bruteforce') || '{}');
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function checkRateLimit() {
+            const state = getBruteForceState();
+            const now = Date.now();
+            if (state.lockedUntil && state.lockedUntil > now) {
+                const remainingSec = Math.ceil((state.lockedUntil - now) / 1000);
+                return {
+                    blocked: true,
+                    remainingSec,
+                    message: `🚨 ASKERİ SAVUNMA KİLİDİ: 5 başarısız deneme nedeniyle sistem ${remainingSec} saniye kilitlendi!`
+                };
+            }
+            return { blocked: false };
+        }
+
+        function recordFailedAttempt(action = 'GİRİŞ') {
+            const state = getBruteForceState();
+            const now = Date.now();
+            if (!state.attempts || (now - (state.firstAttemptTime || now) > LOCKOUT_MS)) {
+                state.attempts = 1;
+                state.firstAttemptTime = now;
+            } else {
+                state.attempts++;
+            }
+
+            if (state.attempts >= FAILED_LIMIT) {
+                state.lockedUntil = now + LOCKOUT_MS;
+                state.attempts = 0;
+                logSecurityIncident('BRUTE_FORCE_LOCKOUT', `5 başarısız deneme sonrası ${action} 60sn süreyle donduruldu.`);
+            }
+
+            try {
+                localStorage.setItem('lfl_waf_bruteforce', JSON.stringify(state));
+            } catch (e) { }
+
+            return state;
+        }
+
+        function resetFailedAttempts() {
+            try {
+                localStorage.removeItem('lfl_waf_bruteforce');
+            } catch (e) { }
+        }
+
+        // 4. Katman-7 WAF (Web Application Firewall) Deep Payload Inspector
+        const ATTACK_SIGNATURES = [
+            { name: 'XSS_PAYLOAD', regex: /<script|javascript:|data:text\/html|onload\s*=|onerror\s*=|document\.cookie/i },
+            { name: 'SQLI_PAYLOAD', regex: /('|")\s*or\s*('|")?\d+('|")?=('|")?\d+|union\s+select|drop\s+table|xp_cmdshell|--|;\s*drop/i },
+            { name: 'PATH_TRAVERSAL', regex: /\.\.\/|\.\.\|\/etc\/passwd|c:\windows\system32/i },
+            { name: 'CMD_INJECTION', regex: /;\s*(cat|ls|rm|nc|curl|wget)\s+|\|\s*nc\s+|\$\(whoami\)/i },
+            { name: 'PROTOTYPE_POLLUTION', regex: /__proto__|constructor\s*\[\s*['"]prototype['"]\s*\]/i }
+        ];
+
+        function inspectPayload(inputString, context = 'GİRDİ') {
+            if (!inputString || typeof inputString !== 'string') return { safe: true };
+
+            for (const sig of ATTACK_SIGNATURES) {
+                if (sig.regex.test(inputString)) {
+                    logSecurityIncident(sig.name, `Tehdit engellendi: [${context}] -> ${inputString.substring(0, 45)}`);
+                    return {
+                        safe: false,
+                        threat: sig.name,
+                        message: `🚨 ASKERİ WAF BLOKAJI: Zararlı saldırı imzası (${sig.name}) tespit edildi ve düşürüldü!`
+                    };
+                }
+            }
+            return { safe: true };
+        }
+
+        // 5. Güvenlik Olayı Kaydedici (lfl_access_logs içine 403 ile ekler)
+        function logSecurityIncident(threatType, details) {
+            try {
+                let logs = JSON.parse(localStorage.getItem('lfl_access_logs') || '[]');
+                const incidentLog = {
+                    id: Date.now() + Math.random().toString(36).substring(2, 6),
+                    timestamp: new Date().toISOString(),
+                    ipAddress: sessionStorage.getItem('lfl_cached_visitor_ip') || '127.0.0.1',
+                    country: '🚨 Tehdit Algılandı',
+                    operatingSystem: navigator.platform || 'Bilinmeyen İstemci',
+                    browser: 'WAF Savunma Kalkanı',
+                    deviceType: 'Saldırı Girişimi',
+                    screen: `${window.screen.width}x${window.screen.height}`,
+                    cores: navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} Çekirdek` : '4 Çekirdek',
+                    connection: 'Zararlı İstek Engellendi',
+                    language: navigator.language || 'tr-TR',
+                    username: (state.currentUser && state.currentUser.username) ? state.currentUser.username : 'Bilinmeyen Saldırgan',
+                    role: 'ATTACKER_BLOCKED',
+                    method: 'WAF_INTERCEPT',
+                    path: `[${threatType}] ${details}`,
+                    statusCode: 403
+                };
+                logs.unshift(incidentLog);
+                if (logs.length > 200) logs = logs.slice(0, 200);
+                localStorage.setItem('lfl_access_logs', JSON.stringify(logs));
+            } catch (e) { }
+        }
+
+        return {
+            checkRateLimit,
+            recordFailedAttempt,
+            resetFailedAttempts,
+            inspectPayload,
+            logSecurityIncident
+        };
+    })();
+
+    const api = {
+        async login(username, password) {
+            await new Promise(r => setTimeout(r, 100));
+            const u = (username || '').trim();
+            const p = (password || '');
+
+            // 1. Askeri Savunma: Rate-Limit / Kaba Kuvvet Engelleme
+            const rateLimit = lflSecurityShield.checkRateLimit();
+            if (rateLimit.blocked) {
+                return { ok: false, status: 429, data: { error: rateLimit.message } };
+            }
+
+            // 2. Askeri Savunma: Katman-7 WAF Payload Denetimi (XSS / SQLi / Injection)
+            const uWaf = lflSecurityShield.inspectPayload(u, 'GİRİŞ_KULLANICI_ADI');
+            if (!uWaf.safe) {
+                lflSecurityShield.recordFailedAttempt('WAF_SALDIRI');
+                return { ok: false, status: 403, data: { error: uWaf.message } };
+            }
+            const pWaf = lflSecurityShield.inspectPayload(p, 'GİRİŞ_PAROLA');
+            if (!pWaf.safe) {
+                lflSecurityShield.recordFailedAttempt('WAF_SALDIRI');
+                return { ok: false, status: 403, data: { error: pWaf.message } };
+            }
+
+            // 3. TEK VE MUTLAK YETKİLİ ADMİN: burak_wyxz / bezmen132009
+            if (u.toLowerCase() === 'burak_wyxz' && p === 'bezmen132009') {
+                lflSecurityShield.resetFailedAttempts();
+                const token = generateMockJwt('burak_wyxz', 'admin');
+                const user = { id: 1, username: 'burak_wyxz', email: 'burak_wyxz@lostfromlight.local', role: 'admin' };
+                localStorage.setItem('cyber_token', token);
+                localStorage.setItem('cyber_user', JSON.stringify(user));
+                localStorage.setItem('cyber_callsign', user.username);
+                localStorage.setItem('cyber_role', user.role);
+                return {
+                    ok: true,
+                    status: 200,
+                    data: {
+                        token,
+                        user,
+                        message: 'Sistem Yöneticisi burak_wyxz olarak başarıyla giriş yapıldı.'
+                    }
+                };
+            }
+
+            // 4. Normal Kayıtlı Kullanıcılar (Başlangıçta 0 kullanıcı; kaydolanlar burada oturum açar)
+            try {
+                const registeredUsers = JSON.parse(localStorage.getItem('lfl_registered_users') || '[]');
+                const found = registeredUsers.find(x => x.username.toLowerCase() === u.toLowerCase() && x.password === p);
+                if (found) {
+                    lflSecurityShield.resetFailedAttempts();
+                    const token = generateMockJwt(found.username, 'operator');
+                    const user = { id: found.id || Date.now(), username: found.username, email: `${found.username}@lostfromlight.local`, role: 'operator' };
+                    localStorage.setItem('cyber_token', token);
+                    localStorage.setItem('cyber_user', JSON.stringify(user));
+                    localStorage.setItem('cyber_callsign', user.username);
+                    localStorage.setItem('cyber_role', user.role);
+                    return {
+                        ok: true,
+                        status: 200,
+                        data: {
+                            token,
+                            user,
+                            message: `Operatör ${user.username} olarak giriş başarılı.`
+                        }
+                    };
+                }
+            } catch (e) { }
+
+            // Hatalı Giriş Sayacını Artır
+            lflSecurityShield.recordFailedAttempt('HATALI_GİRİŞ');
+            return {
+                ok: false,
+                status: 401,
+                data: {
+                    error: 'Hatalı kullanıcı adı veya parola!'
+                }
+            };
+        },
+
+        async register(username, password) {
+            await new Promise(r => setTimeout(r, 100));
+            const u = (username || '').trim();
+            const p = (password || '');
+
+            // 1. Askeri Savunma: Rate-Limit
+            const rateLimit = lflSecurityShield.checkRateLimit();
+            if (rateLimit.blocked) {
+                return { ok: false, status: 429, data: { error: rateLimit.message } };
+            }
+
+            // 2. Askeri Savunma: WAF Denetimi
+            const uWaf = lflSecurityShield.inspectPayload(u, 'KAYIT_KULLANICI_ADI');
+            if (!uWaf.safe) return { ok: false, status: 403, data: { error: uWaf.message } };
+            const pWaf = lflSecurityShield.inspectPayload(p, 'KAYIT_PAROLA');
+            if (!pWaf.safe) return { ok: false, status: 403, data: { error: pWaf.message } };
+
+            // 3. Giriş Validasyonu (Güvenli format)
+            if (!u || u.length < 3 || u.length > 20) {
+                return { ok: false, status: 400, data: { error: 'Kullanıcı adı 3 ile 20 karakter arasında olmalıdır.' } };
+            }
+            if (!/^[a-zA-Z0-9_]+$/.test(u)) {
+                return { ok: false, status: 400, data: { error: 'Kullanıcı adı yalnızca harf, rakam ve alt çizgi içerebilir.' } };
+            }
+            if (!p || p.length < 4) {
+                return { ok: false, status: 400, data: { error: 'Şifre en az 4 karakter olmalıdır.' } };
+            }
+
+            // 4. Rezerve Edilmiş Yönetici İsimleri Kontrolü (Askeri Seviye İzolasyon)
+            const reserved = ['burak_wyxz', 'admin', 'root', 'system', 'superuser', 'moderator', 'administrator'];
+            if (reserved.includes(u.toLowerCase())) {
+                return { ok: false, status: 409, data: { error: 'Bu kullanıcı adı rezerve edilmiş ve sisteme aittir.' } };
+            }
+
+            // 5. Mevcut kayıtlı kullanıcılar kontrolü
+            let localUsers = [];
+            try {
+                localUsers = JSON.parse(localStorage.getItem('lfl_registered_users') || '[]');
+            } catch (e) {
+                localUsers = [];
+            }
+
+            if (localUsers.some(x => x.username.toLowerCase() === u.toLowerCase())) {
+                return { ok: false, status: 409, data: { error: 'Bu kullanıcı adı zaten alınmış.' } };
+            }
+
+            // 6. Yeni Kullanıcıyı Kaydet (Normal Operatör Yetkisi ile)
+            const newUser = {
+                id: Date.now(),
+                username: u,
+                password: p,
+                role: 'operator',
+                registeredAt: new Date().toISOString()
+            };
+            localUsers.push(newUser);
+            localStorage.setItem('lfl_registered_users', JSON.stringify(localUsers));
+
+            // Otomatik Token Üret & Oturum Aç
+            const token = generateMockJwt(u, 'operator');
+            const userObj = { id: newUser.id, username: u, email: `${u}@lostfromlight.local`, role: 'operator' };
+            localStorage.setItem('cyber_token', token);
+            localStorage.setItem('cyber_user', JSON.stringify(userObj));
+            localStorage.setItem('cyber_callsign', userObj.username);
+            localStorage.setItem('cyber_role', userObj.role);
+
+            return {
+                ok: true,
+                status: 201,
+                data: {
+                    token,
+                    user: userObj,
+                    message: `Tebrikler ${u}! Operatör hesabınız başarıyla oluşturuldu.`
+                }
+            };
+        },
+        async me() {
+            const token = localStorage.getItem('cyber_token') || sessionStorage.getItem('cyber_token');
+            if (!token) return null;
+            const savedUser = localStorage.getItem('cyber_user');
+            if (savedUser) {
+                try {
+                    return { user: JSON.parse(savedUser) };
+                } catch (e) { }
+            }
+            return {
+                user: {
+                    id: 1,
+                    username: 'burak_wyxz',
+                    role: 'admin',
+                    email: 'burak_wyxz@lostfromlight.local'
+                }
+            };
+        },
+
+        // GERÇEK İSTEMCİ & ZİYARETÇİ TELEMETRİ YAKALAYICI (IP, OS, CİHAZ, KONUM)
+        async sendVisitTelemetry(payload) {
+            try {
+                const ua = navigator.userAgent;
+
+                // 1. Gerçek İşletim Sistemi Tespiti
+                let os = 'Bilinmeyen OS';
+                if (ua.indexOf('Win') !== -1) {
+                    os = ua.indexOf('Windows NT 10.0') !== -1 ? 'Windows 10/11 x64' : 'Windows x64';
+                } else if (ua.indexOf('Mac') !== -1) {
+                    os = ua.indexOf('iPhone') !== -1 ? 'iOS (iPhone)' : (ua.indexOf('iPad') !== -1 ? 'iPadOS' : 'macOS Sonoma');
+                } else if (ua.indexOf('Android') !== -1) {
+                    os = 'Android OS (Mobil)';
+                } else if (ua.indexOf('Linux') !== -1) {
+                    os = 'Kali / Linux x86_64';
+                }
+
+                // 2. Gerçek Tarayıcı Tespiti
+                let browser = 'Chrome Standart';
+                if (ua.indexOf('Edg/') !== -1) browser = 'Microsoft Edge';
+                else if (ua.indexOf('Chrome/') !== -1) browser = 'Google Chrome';
+                else if (ua.indexOf('Firefox/') !== -1) browser = 'Mozilla Firefox';
+                else if (ua.indexOf('Safari/') !== -1 && ua.indexOf('Chrome/') === -1) browser = 'Apple Safari';
+                else if (ua.indexOf('OPR/') !== -1) browser = 'Opera';
+
+                // 3. Cihaz Türü
+                let device = 'Masaüstü Terminal';
+                if (/Mobi|Android|iPhone/i.test(ua)) device = 'Akıllı Telefon (Mobil)';
+                else if (/Tablet|iPad/i.test(ua)) device = 'Tablet';
+
+                // 4. Donanım & Ekran Özellikleri
+                const screenRes = `${window.screen.width}x${window.screen.height} (${window.devicePixelRatio || 1}x)`;
+                const cores = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} Çekirdekli CPU` : '4 Çekirdekli CPU';
+                const conn = navigator.connection ? `${(navigator.connection.effectiveType || '4G').toUpperCase()} (${navigator.connection.downlink || 15} Mbps)` : 'Genişbant / WiFi';
+
+                // 5. Gerçek Public IP & Coğrafi Konum Çekme (Hafif ve Hızlı)
+                let publicIp = sessionStorage.getItem('lfl_cached_visitor_ip');
+                let locationStr = sessionStorage.getItem('lfl_cached_visitor_loc');
+
+                if (!publicIp) {
+                    try {
+                        const controller = new AbortController();
+                        const timer = setTimeout(() => controller.abort(), 2000);
+                        const ipFetch = await fetch('https://api.ipify.org?format=json', { signal: controller.signal });
+                        clearTimeout(timer);
+                        if (ipFetch.ok) {
+                            const ipJson = await ipFetch.json();
+                            if (ipJson && ipJson.ip) {
+                                publicIp = ipJson.ip;
+                                locationStr = 'Canlı İnternet İstemcisi 🌐';
+                                sessionStorage.setItem('lfl_cached_visitor_ip', publicIp);
+                                sessionStorage.setItem('lfl_cached_visitor_loc', locationStr);
+                            }
+                        }
+                    } catch (e) {
+                        // Offline or localhost
+                    }
+                }
+
+                if (!publicIp) {
+                    publicIp = '127.0.0.1 (Yerel İstemci)';
+                    locationStr = 'Yerel Ağ / Localhost';
+                }
+
+                const currentUser = state.currentUser;
+                const username = currentUser ? currentUser.username : 'Anonim Ziyaretçi';
+                const role = currentUser ? currentUser.role : 'guest';
+
+                let logs = [];
+                try {
+                    logs = JSON.parse(localStorage.getItem('lfl_access_logs') || '[]');
+                } catch (e) {
+                    logs = [];
+                }
+
+                const newLog = {
+                    id: Date.now() + Math.random().toString(36).substring(2, 6),
+                    timestamp: new Date().toISOString(),
+                    ipAddress: publicIp,
+                    country: locationStr || '🌐 Canlı Bağlantı',
+                    operatingSystem: os,
+                    browser: browser,
+                    deviceType: device,
+                    screen: screenRes,
+                    cores: cores,
+                    connection: conn,
+                    language: navigator.language || 'tr-TR',
+                    username: username,
+                    role: role,
+                    method: 'GET',
+                    path: (payload && payload.path) ? payload.path : '/dashboard',
+                    statusCode: 200
+                };
+
+                // Prevent spamming exact duplicate path within 5s
+                const last = logs[0];
+                if (last && last.ipAddress === newLog.ipAddress && last.path === newLog.path && (Date.now() - new Date(last.timestamp).getTime() < 5000)) {
+                    return { ok: true };
+                }
+
+                logs.unshift(newLog);
+                if (logs.length > 200) logs = logs.slice(0, 200);
+                localStorage.setItem('lfl_access_logs', JSON.stringify(logs));
+            } catch (e) { }
+            return { ok: true, status: 200 };
+        },
+
+        async getAccessLogs() {
+            let logs = [];
+            try {
+                logs = JSON.parse(localStorage.getItem('lfl_access_logs') || '[]');
+            } catch (e) {
+                logs = [];
+            }
+            return { logs };
+        }
+    };
+
+    // ==========================================
+    // UTILITIES
+    // ==========================================
+    function escapeHtml(str) {
+        if (!str && str !== 0) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function showToast(type, title, message) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = `toast-item toast-${type}`;
+        toast.innerHTML = `
+            <div class="toast-indicator"></div>
+            <div class="toast-body">
+                <strong class="toast-title">${escapeHtml(title)}</strong>
+                <span class="toast-msg">${escapeHtml(message)}</span>
+            </div>
+            <button class="toast-close-btn">&times;</button>
+        `;
+
+        const closeBtn = toast.querySelector('.toast-close-btn');
+        const dismiss = () => {
+            toast.classList.add('toast-exit');
+            setTimeout(() => toast.remove(), 260);
+        };
+        closeBtn.addEventListener('click', dismiss);
+        setTimeout(dismiss, 4200);
+
+        container.appendChild(toast);
+    }
+
+    // ==========================================
+    // KALI LINUX OFFICIAL DRAGON INTRO ANIMATION
+    // ==========================================
+    function initIntroSplash() {
+        const splash = document.getElementById('kali-intro-splash');
+        if (!splash) return;
+
+        const progressBar = document.getElementById('intro-progress-bar');
+        const cliText = document.getElementById('intro-cli-text');
+        const skipBtn = document.getElementById('btn-skip-intro');
+        const replayBtn = document.getElementById('btn-replay-intro');
+
+        const kernelBootSteps = [
+            { pct: 10, msg: "[0.000000] Linux version 6.8.11-kali-amd64 (devel@kali.org) #1 SMP PREEMPT_DYNAMIC" },
+            { pct: 25, msg: "[0.840210] lfl-core: Enforcing Zero-Trust Defense & Strict HSTS (31536000s)" },
+            { pct: 45, msg: "[1.820180] lfl-shield: Katman-7 WAF & Anti-Brute-Force Shield active [ARMED]" },
+            { pct: 65, msg: "[2.920490] lfl-auth: HMAC-SHA256 Token & Telemetry Engine initialized" },
+            { pct: 85, msg: "[3.980120] kali-terminal: Initializing Multi-Tab Sandbox with 142+ cyber tools..." },
+            { pct: 100, msg: "[4.920440] lfl-radar: Defense radar telemetry locked - DEFCON 4 STABLE" }
+        ];
+
+        let animationFrame = null;
+        let isClosed = false;
+
+        function closeSplash() {
+            if (isClosed) return;
+            isClosed = true;
+            if (animationFrame) cancelAnimationFrame(animationFrame);
+            splash.classList.add('fade-out');
+            setTimeout(() => {
+                splash.style.display = 'none';
+                if (!state.visualsBooted) {
+                    state.visualsBooted = true;
+                    initRadarAnimation();
+                    if (typeof initAnimationEngine === 'function') {
+                        initAnimationEngine();
+                    }
+                }
+            }, 350);
+        }
+
+        function playIntroSequence() {
+            isClosed = false;
+            splash.style.display = 'flex';
+            splash.classList.remove('fade-out');
+            if (progressBar) progressBar.style.width = '0%';
+            if (cliText) cliText.textContent = "modprobe --force-vermagic lfl_kernel_shield.ko";
+
+            const duration = 3200; // 5 saniye sinematik Kali Linux Dragon intro
+            const startTime = performance.now();
+
+            // Hard fail-safe: sekme arka plana atılsa veya donma olsa bile 5.5s sonra kesin kapat
+            setTimeout(() => {
+                if (!isClosed) closeSplash();
+            }, 3800);
+
+            function frame(now) {
+                if (isClosed) return;
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1.0);
+                const pct = Math.round(progress * 100);
+
+                if (progressBar) progressBar.style.width = pct + '%';
+
+                for (let i = kernelBootSteps.length - 1; i >= 0; i--) {
+                    if (pct >= kernelBootSteps[i].pct) {
+                        if (cliText && cliText.textContent !== kernelBootSteps[i].msg) {
+                            cliText.textContent = kernelBootSteps[i].msg;
+                        }
+                        break;
+                    }
+                }
+
+                if (progress < 1.0) {
+                    animationFrame = requestAnimationFrame(frame);
+                } else {
+                    setTimeout(() => {
+                        closeSplash();
+                    }, 280);
+                }
+            }
+
+            animationFrame = requestAnimationFrame(frame);
+        }
+
+        // Skip button handler
+        if (skipBtn) {
+            skipBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeSplash();
+            });
+        }
+
+        // ESC key handler
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && splash.style.display !== 'none' && !isClosed) {
+                closeSplash();
+            }
+        });
+
+        // Replay button in topbar
+        if (replayBtn) {
+            replayBtn.addEventListener('click', () => {
+                playIntroSequence();
+            });
+        }
+
+        // Start initial intro
+        playIntroSequence();
+    }
+
+    // ==========================================
+    // THEME ENGINE
+    // ==========================================
+    function setTheme(theme) {
+        state.theme = theme;
+        localStorage.setItem('lfl_theme', theme);
+        document.documentElement.setAttribute('data-theme', theme);
+        document.body.setAttribute('data-theme', theme);
+        document.body.className = `theme-corporate-cyber theme-${theme}`;
+
+        const label = document.getElementById('current-theme-label');
+        if (label) {
+            const labels = {
+                'cyber-midnight': 'Cyber Midnight',
+                'emerald-matrix': 'Emerald Matrix',
+                'slate-corporate': 'Slate Corporate',
+                'clean-light': 'Clean Light'
+            };
+            label.textContent = labels[theme] || 'Cyber Midnight';
+        }
+
+        document.querySelectorAll('#theme-menu-popup .popup-item').forEach(item => {
+            item.classList.toggle('active', item.dataset.themeVal === theme);
+        });
+
+        // Mirror in session storage
+        sessionStorage.setItem('cyber_theme', theme);
+        renderSessionStorageInspector();
+    }
+
+    // ==========================================
+    // DROPDOWNS & NAVIGATION
+    // ==========================================
+    function bindDropdowns() {
+        const btnTheme = document.getElementById('btn-theme-toggle');
+        const menuTheme = document.getElementById('theme-menu-popup');
+
+        if (btnTheme && menuTheme) {
+            btnTheme.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuTheme.classList.toggle('hidden');
+            });
+
+            menuTheme.querySelectorAll('.popup-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const chosen = item.dataset.themeVal;
+                    setTheme(chosen);
+                    menuTheme.classList.add('hidden');
+                });
+            });
+        }
+
+        document.addEventListener('click', () => {
+            if (menuTheme) menuTheme.classList.add('hidden');
+        });
+    }
+
+    function navigateToPage(pageId) {
+        if (pageId === 'page-academy') { window.location.href = 'academy.html'; return; }
+        state.activePage = pageId;
+
+        // Hide all pages, show target
+        document.querySelectorAll('.app-page').forEach(page => {
+            if (page.id === pageId) {
+                page.classList.remove('page-hidden');
+                page.classList.add('page-active');
+            } else {
+                page.classList.add('page-hidden');
+                page.classList.remove('page-active');
+            }
+        });
+
+        // Update active sidebar nav button
+        document.querySelectorAll('.sidebar-nav .nav-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.page === pageId);
+        });
+
+        // Reveal any items on target page immediately
+        document.querySelectorAll(`#${pageId} [data-reveal], #${pageId} [data-reveal-stagger]`).forEach(el => {
+            el.classList.add('is-visible');
+        });
+
+        // Update breadcrumb
+        const crumbTitle = document.getElementById('current-crumb-title');
+        if (crumbTitle) {
+            const titles = {
+                'page-dashboard': 'Komuta Merkezi',
+                'page-academy': 'Siber Akademi (Eğitim Planı)',
+                'page-commands': 'Siber Kod Kütüphanesi',
+                'page-terminal': 'Kali Web Terminal',
+                'page-quiz': 'Siber Rol Testi',
+                'page-glossary': 'Siber Kılavuz & Sözlük',
+                'page-ctf': 'Siber CTF Arenası',
+                'page-logs': 'Ziyaretçi & Sistem Logları'
+            };
+            crumbTitle.textContent = titles[pageId] || 'LFL Platform';
+        }
+
+        // Telemetry ping
+        pingVisitorTelemetry(pageId);
+
+        // Load logs if opening logs page
+        if (pageId === 'page-logs') {
+            loadAccessLogs();
+        }
+
+        // Scroll main stage to top smoothly
+        const main = document.querySelector('.app-main');
+        if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Expose navigateToPage globally so inline triggers and external modules can invoke it safely
+    window.navigateToPage = navigateToPage;
+
+    function bindNavigation() {
+        const sidebar = document.getElementById('app-sidebar');
+        const toggleBtn = document.getElementById('btn-toggle-sidebar');
+        const backdrop = document.querySelector('.sidebar-mobile-backdrop');
+
+        function closeMobileSidebar() {
+            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (backdrop) backdrop.classList.remove('active');
+        }
+
+        // Sidebar buttons
+        document.querySelectorAll('.sidebar-nav .nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.page;
+                if (target) {
+                    navigateToPage(target);
+                    closeMobileSidebar();
+                }
+            });
+        });
+
+        // Sidebar toggle
+        if (toggleBtn && sidebar) {
+            toggleBtn.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    const isOpen = sidebar.classList.toggle('mobile-open');
+                    if (backdrop) backdrop.classList.toggle('active', isOpen);
+                } else {
+                    sidebar.classList.remove('mobile-open');
+                    if (backdrop) backdrop.classList.remove('active');
+                    sidebar.classList.toggle('sidebar-collapsed');
+                }
+            });
+        }
+
+        // Auto-clean collapsed state on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768 && sidebar) {
+                sidebar.classList.remove('sidebar-collapsed');
+            } else if (sidebar) {
+                sidebar.classList.remove('mobile-open');
+                if (backdrop) backdrop.classList.remove('active');
+            }
+        });
+
+        if (backdrop) {
+            backdrop.addEventListener('click', closeMobileSidebar);
+        }
+
+        // Purple Team dashboard card jump to quiz
+        const btnPurpleCard = document.getElementById('dash-card-purple-team');
+        if (btnPurpleCard) {
+            btnPurpleCard.addEventListener('click', () => navigateToPage('page-quiz'));
+        }
+
+        // Glossary quick jump button from dashboard card
+        const btnGlossaryJump = document.getElementById('dash-view-glossary-btn');
+        if (btnGlossaryJump) {
+            btnGlossaryJump.addEventListener('click', () => navigateToPage('page-glossary'));
+        }
+
+        // Quick jump buttons from dashboard to terminal/academy
+        const btnJumpTermDirect = document.getElementById('btn-jump-terminal-direct');
+        if (btnJumpTermDirect) {
+            btnJumpTermDirect.addEventListener('click', () => navigateToPage('page-terminal'));
+        }
+
+        // Copy developer social contact (Discord)
+        document.querySelectorAll('.btn-copy-social').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const copyText = btn.dataset.copy;
+                if (!copyText) return;
+                const icon = btn.querySelector('.dev-copy-icon');
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(copyText).then(() => {
+                        if (icon) {
+                            icon.textContent = '✔';
+                            icon.style.color = 'var(--green)';
+                        }
+                        showToast('success', 'Discord Kopyalandı', `"${copyText}" panoya kopyalandı.`);
+                        setTimeout(() => {
+                            if (icon) {
+                                icon.textContent = '⧉';
+                                icon.style.color = '';
+                            }
+                        }, 2000);
+                    }).catch(() => {
+                        prompt('Discord Kullanıcı Adı:', copyText);
+                    });
+                } else {
+                    prompt('Discord Kullanıcı Adı:', copyText);
+                }
+            });
+        });
+
+        const btnIntroQuiz = document.getElementById('btn-intro-to-quiz') || document.getElementById('btn-intro-to-academy');
+        if (btnIntroQuiz) {
+            btnIntroQuiz.addEventListener('click', () => navigateToPage('page-quiz'));
+        }
+
+        const btnHeroRoleQuiz = document.getElementById('btn-hero-role-quiz');
+        if (btnHeroRoleQuiz) {
+            btnHeroRoleQuiz.addEventListener('click', () => navigateToPage('page-quiz'));
+        }
+
+        const btnTreeQuizAction = document.getElementById('btn-tree-quiz-action');
+        if (btnTreeQuizAction) {
+            btnTreeQuizAction.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateToPage('page-quiz');
+                const main = document.querySelector('.app-main');
+                if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        const btnIntroTerminal = document.getElementById('btn-intro-to-terminal');
+        if (btnIntroTerminal) {
+            btnIntroTerminal.addEventListener('click', () => navigateToPage('page-terminal'));
+        }
+
+        const btnAcademyTerminal = document.getElementById('btn-open-terminal-from-academy');
+        if (btnAcademyTerminal) {
+            btnAcademyTerminal.addEventListener('click', () => navigateToPage('page-terminal'));
+        }
+
+        const btnAcademyToCommands = document.getElementById('btn-academy-to-commands');
+        if (btnAcademyToCommands) {
+            btnAcademyToCommands.addEventListener('click', () => navigateToPage('page-commands'));
+        }
+
+        const btnCommandsTerminal = document.getElementById('btn-open-terminal-from-commands');
+        if (btnCommandsTerminal) {
+            btnCommandsTerminal.addEventListener('click', () => navigateToPage('page-terminal'));
+        }
+
+        // Search button triggers glossary or terminal
+        const btnSearch = document.getElementById('btn-quick-search');
+        if (btnSearch) {
+            btnSearch.addEventListener('click', () => {
+                navigateToPage('page-glossary');
+                const inp = document.getElementById('glossary-search-input');
+                if (inp) {
+                    inp.focus();
+                    inp.select();
+                }
+            });
+        }
+
+        // Hotkey Ctrl+K / Cmd+K
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                navigateToPage('page-glossary');
+                const inp = document.getElementById('glossary-search-input');
+                if (inp) {
+                    inp.focus();
+                    inp.select();
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // 10-SECOND CYBER DEFENSE SIMULATOR
+    // ==========================================
+    function bindSimulator() {
+        const btnSqli = document.getElementById('btn-sim-sqli');
+        const btnIframe = document.getElementById('btn-sim-iframe');
+        const simText = document.getElementById('sim-terminal-text');
+
+        function setTerminalMsg(html) {
+            if (!simText) return;
+            simText.innerHTML = html;
+        }
+
+        if (btnSqli) {
+            btnSqli.addEventListener('click', () => {
+                if (state.simRunning) return;
+                state.simRunning = true;
+                setTerminalMsg(`<span style="color: #f87171;">[SALDIRI BAŞLATILDI]</span> <code>' OR 1=1; DROP TABLE Users; --</code> SQL Enjeksiyon probu gönderiliyor...`);
+
+                setTimeout(() => {
+                    setTerminalMsg(`
+                        <span style="color: #22c55e; font-weight: 700;">[SAVUNMA AKTİF]</span>
+                        EF Core LINQ Parametrik Filtreleme devreye girdi! Giriş ham SQL olarak değil, parametrik literal olarak yorumlandı.
+                        <span style="color: #38bdf8;">Sonuç: 0 Veri Sızıntısı &bull; Güvenlik Seviyesi 100%</span>
+                    `);
+                    state.simRunning = false;
+                    showToast('success', 'SQLi Engellendi', 'Parametrik LINQ sorgusu saldırıyı başarıyla nötralize etti.');
+                }, 1100);
+            });
+        }
+
+        if (btnIframe) {
+            btnIframe.addEventListener('click', () => {
+                if (state.simRunning) return;
+                state.simRunning = true;
+                setTerminalMsg(`<span style="color: #38bdf8;">[SALDIRI BAŞLATILDI]</span> Saldırgan harici bir web sitesine gizli iframe gömerek clickjacking deniyor...`);
+
+                setTimeout(() => {
+                    setTerminalMsg(`
+                        <span style="color: #22c55e; font-weight: 700;">[SAVUNMA AKTİF]</span>
+                        Kestrel <code>X-Frame-Options: DENY</code> başlığı yanıt verdi!
+                        Tarayıcı iframe içine sayfayı yüklemeyi tamamen reddetti. UI Redressing imkansız kılındı.
+                    `);
+                    state.simRunning = false;
+                    showToast('success', 'Clickjacking Engellendi', 'X-Frame-Options: DENY başlığı harici çerçeveleme girişimini kesti.');
+                }, 1100);
+            });
+        }
+    }
+
+    // ==========================================
+    // MULTI-TAB KALI WEB TERMINAL ENGINE
+    // ==========================================
+    function initKaliTerminal() {
+        const terminalBody = document.getElementById('kali-terminal-body');
+        const historyZone = document.getElementById('kali-history-zone');
+        const input = document.getElementById('kali-cmd-input');
+        const tabsBar = document.getElementById('kali-tabs-bar');
+        const addTabBtn = document.getElementById('btn-kali-add-tab');
+
+        if (!terminalBody || !historyZone || !input) return;
+
+        // Multi-tab state
+        let termTabs = [
+            { id: 1, title: 'Sunny@SUNNY: ~', historyHtml: '', cmdHistory: [], historyCursor: -1 }
+        ];
+        let activeTabId = 1;
+        let nextTabSeq = 2;
+
+        function getActiveTab() {
+            return termTabs.find(t => t.id === activeTabId) || termTabs[0];
+        }
+
+        function renderTabs() {
+            if (!tabsBar) return;
+            tabsBar.innerHTML = termTabs.map(tab => {
+                const isActive = tab.id === activeTabId;
+                const canClose = termTabs.length > 1;
+                return `
+                    <div class="kali-tab-item ${isActive ? 'active' : ''}" data-tab-id="${tab.id}">
+                        <span class="kali-tab-icon">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="4 17 10 11 4 5"/>
+                                <line x1="12" y1="19" x2="20" y2="19"/>
+                            </svg>
+                        </span>
+                        <span class="kali-tab-title">${escapeHtml(tab.title)}</span>
+                        ${canClose ? `<button type="button" class="kali-tab-close" data-close-tab-id="${tab.id}">&times;</button>` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            // Bind click to activate tab
+            tabsBar.querySelectorAll('.kali-tab-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (e.target.closest('.kali-tab-close')) return;
+                    const id = parseInt(item.dataset.tabId, 10);
+                    switchTab(id);
+                });
+            });
+
+            // Bind tab close
+            tabsBar.querySelectorAll('.kali-tab-close').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(btn.dataset.closeTabId, 10);
+                    closeTab(id);
+                });
+            });
+        }
+
+        function switchTab(tabId) {
+            // Save current history HTML to active tab before switching
+            const cur = getActiveTab();
+            if (cur) cur.historyHtml = historyZone.innerHTML;
+
+            activeTabId = tabId;
+            const next = getActiveTab();
+            if (next) {
+                historyZone.innerHTML = next.historyHtml;
+            }
+            renderTabs();
+            input.focus();
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+
+        function addTab() {
+            const newId = nextTabSeq++;
+            const newTitle = `Sunny@SUNNY: ~ (${newId})`;
+            const newTab = {
+                id: newId,
+                title: newTitle,
+                historyHtml: `<div class="kali-motd-tab" style="color: #64748b; font-size: 11px; margin-bottom: 8px;">[Terminal Sekmesi #${newId} Açıldı &bull; Sandbox Ortamı Aktif]</div>`,
+                cmdHistory: [],
+                historyCursor: -1
+            };
+            termTabs.push(newTab);
+            renderTabs();
+            switchTab(newId);
+            showToast('info', 'Yeni Terminal Sekmesi', `Sekme #${newId} başarıyla açıldı.`);
+        }
+
+        function closeTab(tabId) {
+            if (termTabs.length <= 1) return;
+            const idx = termTabs.findIndex(t => t.id === tabId);
+            if (idx === -1) return;
+
+            termTabs.splice(idx, 1);
+            if (activeTabId === tabId) {
+                activeTabId = termTabs[Math.max(0, idx - 1)].id;
+            }
+            renderTabs();
+            switchTab(activeTabId);
+        }
+
+        if (addTabBtn) {
+            addTabBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                addTab();
+            });
+        }
+
+        // Focus input when clicking anywhere in terminal body
+        terminalBody.addEventListener('click', () => {
+            input.focus();
+        });
+
+        // Command Execution Engine
+        function executeCommand(raw) {
+            const trimmed = raw.trim();
+            if (!trimmed) return;
+
+            const activeTab = getActiveTab();
+            activeTab.cmdHistory.push(trimmed);
+            activeTab.historyCursor = activeTab.cmdHistory.length;
+
+            if (trimmed.toLowerCase() === 'clear') {
+                historyZone.innerHTML = '';
+                activeTab.historyHtml = '';
+                return;
+            }
+
+            // Create command echo row
+            const cmdRow = document.createElement('div');
+            cmdRow.className = 'kali-history-cmd';
+            cmdRow.innerHTML = `
+                <div class="kali-prompt-line1">
+                    ┌──(<span class="kali-user">Sunny</span><span class="kali-skull">㉿</span><span class="kali-host">SUNNY</span>)-[<span class="kali-path">~</span>]
+                </div>
+                <div class="kali-input-row">
+                    <span class="kali-prompt-line2">└─$</span>
+                    <span class="kali-executed-text">${escapeHtml(trimmed)}</span>
+                </div>
+            `;
+            historyZone.appendChild(cmdRow);
+
+            // Generate realistic output
+            const output = generateTerminalResponse(trimmed);
+            const outputBox = document.createElement('div');
+            outputBox.className = 'kali-output-block';
+            outputBox.innerHTML = output;
+            historyZone.appendChild(outputBox);
+
+            // Update active tab history
+            activeTab.historyHtml = historyZone.innerHTML;
+
+            // Scroll down
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+
+        // Expose globally so buttons can run commands directly
+        window.runKaliCommand = function (cmd) {
+            navigateToPage('page-terminal');
+            input.value = cmd;
+            executeCommand(cmd);
+            input.value = '';
+            input.focus();
+        };
+
+        // ==========================================
+        // 140+ REALISTIC COMMAND SIMULATOR ROUTER
+        // ==========================================
+        generateTerminalResponse = function (rawCmd) {
+            const trimmed = (rawCmd || '').trim();
+            const lower = trimmed.toLowerCase();
+            if (lower === 'godmode' || lower === 'admininfo') {
+                const isAdmin = state.currentUser && state.currentUser.username === 'burak_wyxz';
+                if (isAdmin) {
+                    const logsCount = (state.accessLogs && Array.isArray(state.accessLogs)) ? state.accessLogs.length : 0;
+                    const ctfCompleted = (typeof ctfState !== 'undefined' && ctfState.completed) ? ctfState.completed.length : 0;
+                    const ctfXp = (typeof ctfState !== 'undefined' && typeof ctfState.xp === 'number') ? ctfState.xp : 0;
+                    return `
+<pre style="color: #10b981; font-weight: 800; font-family: var(--font-mono);">
+[★] ==============================================================
+[★] LFL DEFENSE // ROOT GOD MODE (YÖNETİCİ: burak_wyxz)
+[★] ==============================================================
+[+] Kimlik Yetkisi       : BAŞ YÖNETİCİ &amp; PLATFORM MİMARI (burak_wyxz)
+[+] Savunma Alarmı       : DEFCON Seviyesi Aktif
+[+] Canlı Ziyaretçi Logu : ${logsCount} adet gerçek istemci IP ve telemetrisi kayıt altında
+[+] CTF İlerlemesi       : ${ctfCompleted}/6 Görev (%${Math.round((ctfCompleted / 6) * 100)}) - ${ctfXp} XP
+[+] Oturum Bütünlüğü     : LocalStorage + SessionStorage Şifreli
+[★] ==============================================================
+</pre>`;
+                } else {
+                    return `<span style="color: #ef4444; font-weight: 700;">[!] ERİŞİM ENGELLENDİ: God Mode yalnızca yetkili yönetici burak_wyxz tarafından çalıştırılabilir.</span>`;
+                }
+            }
+
+            // =========================================================================
+            // LFL UNIVERSAL KALI WEB TERMINAL ENGINE (v3.7)
+            // 1) 69 Siber Akademi Odası (Tüm oda komutları çalışır + bayrak kazanılır)
+            // 2) 143+ Siber Komut Kütüphanesi (window.ACADEMY_COMMANDS)
+            // 3) 85+ Siber Kılavuz & Sözlük (Analojili ve Mitigasyonlu Ansiklopedi)
+            // 4) 6 CTF Arenası Operasyonları & Bayrak Motoru (CTF_MISSIONS)
+            // =========================================================================
+
+            const cleanCliCmd = (lower || '')
+                .trim()
+                .replace(/^sudo\s+/, '')
+                .replace(/^powershell\s+/, '')
+                .replace(/^\.\//, '')
+                .replace(/^\\/, '')
+                .replace(/\s+/g, ' ');
+
+            // Helper: Mark room completed in local storage
+            function markRoomCompletedInStorage(roomId) {
+                try {
+                    const key = 'lfl_academy_progress_v3';
+                    const raw = localStorage.getItem(key);
+                    const data = raw ? JSON.parse(raw) : { completedRooms: [] };
+                    if (!Array.isArray(data.completedRooms)) data.completedRooms = [];
+                    if (!data.completedRooms.includes(roomId)) {
+                        data.completedRooms.push(roomId);
+                        localStorage.setItem(key, JSON.stringify(data));
+                    }
+                } catch (e) { }
+            }
+
+            // Helper: Universal Flag Submission (CTF + Academy)
+            function handleUniversalFlag(flagCandidate) {
+                const cleanFlag = (flagCandidate || '').trim();
+                if (!cleanFlag) return '<span style="color: #ef4444;">[!] Lütfen bir bayrak girin. Örn: submit LFL{...}</span>';
+
+                // 1. Check CTF Missions
+                if (typeof CTF_MISSIONS !== 'undefined' && Array.isArray(CTF_MISSIONS)) {
+                    const matchedCtf = CTF_MISSIONS.find(m => m.flag && m.flag.toLowerCase() === cleanFlag.toLowerCase());
+                    if (matchedCtf) {
+                        if (typeof ctfState !== 'undefined') {
+                            if (!ctfState.completed.includes(matchedCtf.id)) {
+                                ctfState.completed.push(matchedCtf.id);
+                                ctfState.xp = (ctfState.xp || 0) + matchedCtf.xp;
+                                if (ctfState.unlockedIdx < CTF_MISSIONS.length - 1) {
+                                    ctfState.unlockedIdx++;
+                                }
+                                try {
+                                    localStorage.setItem('lfl_ctf_progress', JSON.stringify({
+                                        unlockedIdx: ctfState.unlockedIdx,
+                                        activeIdx: ctfState.activeIdx,
+                                        completed: ctfState.completed,
+                                        xp: ctfState.xp
+                                    }));
+                                    localStorage.setItem('lfl_ctf_xp', String(ctfState.xp));
+                                } catch (e) { }
+                            }
+                        }
+                        return `
+<div style="border: 2px solid #10b981; background: rgba(16, 185, 129, 0.12); border-radius: 8px; padding: 14px 16px; margin: 8px 0; font-family: var(--font-mono); box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);">
+    <div style="color: #34d399; font-weight: 800; font-size: 14px; margin-bottom: 6px;">🎉 [★] TEBRİKLER! CTF OPERASYON BAYRAĞI ONAYLANDI! [★]</div>
+    <div style="color: #f8fafc; font-weight: 700; font-size: 13px;">OPERASYON: ${escapeHtml(matchedCtf.title)} (${escapeHtml(matchedCtf.levelLabel)})</div>
+    <div style="color: #a7f3d0; font-size: 12px; margin: 6px 0;">${escapeHtml(matchedCtf.successMsg)}</div>
+    <div style="background: rgba(0, 0, 0, 0.5); padding: 8px 12px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+        <span style="color: #fbbf24; font-weight: bold;">+${matchedCtf.xp} XP KAZANILDI!</span>
+        <code style="color: #00e5ff; font-weight: 700;">${escapeHtml(matchedCtf.flag)}</code>
+    </div>
+</div>
+                        `;
+                    }
+                }
+
+                // 2. Check Academy Rooms
+                if (window.ACADEMY_ROOMS && Array.isArray(window.ACADEMY_ROOMS)) {
+                    const matchedRoom = window.ACADEMY_ROOMS.find(r => r.flag && r.flag.toLowerCase() === cleanFlag.toLowerCase());
+                    if (matchedRoom) {
+                        markRoomCompletedInStorage(matchedRoom.id);
+                        return `
+<div style="border: 2px solid #00e5ff; background: rgba(0, 229, 255, 0.12); border-radius: 8px; padding: 14px 16px; margin: 8px 0; font-family: var(--font-mono); box-shadow: 0 0 25px rgba(0, 229, 255, 0.25);">
+    <div style="color: #00e5ff; font-weight: 800; font-size: 14px; margin-bottom: 6px;">🛡️ [★] SİBER AKADEMİ ODA BAYRAĞI ONAYLANDI! [★]</div>
+    <div style="color: #ffffff; font-weight: 700; font-size: 13px;">ODA ${escapeHtml(matchedRoom.id.toUpperCase())}: ${escapeHtml(matchedRoom.title)} (${escapeHtml(matchedRoom.track.toUpperCase())} TEAM)</div>
+    <div style="color: #94a3b8; font-size: 11.5px; margin: 6px 0;">🎯 Görev: ${escapeHtml(matchedRoom.mission)}</div>
+    <div style="background: rgba(0, 0, 0, 0.5); padding: 8px 12px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+        <span style="color: #34d399; font-weight: bold;">[✔] ODA BAŞARIYLA TAMAMLANDI!</span>
+        <code style="color: #fde047; font-weight: 700;">${escapeHtml(matchedRoom.flag)}</code>
+        <a href="academy.html?room=${escapeHtml(matchedRoom.id)}" target="_blank" style="color: #38bdf8; text-decoration: underline; font-size: 11.5px;">Akademi Odasında Gör &rarr;</a>
+    </div>
+</div>
+                        `;
+                    }
+                }
+
+                return `<span style="color: #ef4444; font-weight: 700;">[!] GEÇERSİZ BAYRAK: '${escapeHtml(cleanFlag)}' veritabanındaki hiçbir CTF operasyonu veya Akademi odasıyla eşleşmedi.</span>`;
+            }
+
+            // A. DIRECT FLAG SUBMISSIONS
+            if (cleanCliCmd.startsWith('submit ') || cleanCliCmd.startsWith('flag ') || cleanCliCmd.startsWith('lfl{')) {
+                let candidate = trimmed;
+                if (cleanCliCmd.startsWith('submit ')) candidate = trimmed.substring(7).trim();
+                else if (cleanCliCmd.startsWith('flag ')) candidate = trimmed.substring(5).trim();
+                return handleUniversalFlag(candidate);
+            }
+
+            // B. CTF STATUS & LISTING
+            if (cleanCliCmd === 'ctf' || cleanCliCmd === 'ctf status' || cleanCliCmd === 'ctf list' || cleanCliCmd === 'ctf help') {
+                if (typeof CTF_MISSIONS !== 'undefined' && Array.isArray(CTF_MISSIONS)) {
+                    const completedCount = (typeof ctfState !== 'undefined' && Array.isArray(ctfState.completed)) ? ctfState.completed.length : 0;
+                    const totalXp = (typeof ctfState !== 'undefined' && typeof ctfState.xp === 'number') ? ctfState.xp : 0;
+                    const missionRows = CTF_MISSIONS.map((m, idx) => {
+                        const isDone = typeof ctfState !== 'undefined' && ctfState.completed.includes(m.id);
+                        const isUnlocked = typeof ctfState !== 'undefined' && idx <= ctfState.unlockedIdx;
+                        const statusBadge = isDone ? '<span style="color: #10b981; font-weight: bold;">[TAMAMLANDI ✔]</span>' : (isUnlocked ? '<span style="color: #00e5ff; font-weight: bold;">[AÇIK ▶]</span>' : '<span style="color: #64748b;">[KİLİTLİ 🔒]</span>');
+                        return `  ${statusBadge} Seviye ${escapeHtml(m.level)}: ${escapeHtml(m.title)} (+${m.xp} XP)\n       Hedef: <code style="color: #fde047;">${escapeHtml(m.target)}</code> | Araçlar: ${m.tools.join(', ')}`;
+                    }).join('\n\n');
+
+                    return `
+<pre style="color: #38bdf8; font-family: var(--font-mono); font-size: 12px; line-height: 1.5;">
+[★] ======================================================================
+[★] LFL SİBER CTF ARENASI // CANLI OPERASYON DURUMU
+[★] ======================================================================
+[+] Toplam Operasyon   : ${CTF_MISSIONS.length} Seviye
+[+] Tamamlanan Görev  : ${completedCount}/${CTF_MISSIONS.length} (%${Math.round((completedCount / CTF_MISSIONS.length) * 100)})
+[+] Kazanılan CTF XP  : ${totalXp} XP
+[+] Bayrak Gönderme   : submit LFL{...}
+
+OPERASYON LİSTESİ:
+${missionRows}
+
+[!] İpucu: Herhangi bir operasyon komutunu (örn: ping -c 3 10.10.1.5 veya whatweb http://10.10.2.10)
+    bu terminalde doğrudan çalıştırabilirsiniz!
+======================================================================
+</pre>
+                    `;
+                }
+            }
+
+            // C. CTF SPECIFIC MISSION COMMANDS (Level 1.1 to 3.2)
+            if (cleanCliCmd.includes('10.10.1.5') && cleanCliCmd.startsWith('ping')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+PING 10.10.1.5 (10.10.1.5) 56(84) bytes of data.
+64 bytes from 10.10.1.5: icmp_seq=1 ttl=64 time=0.824 ms
+64 bytes from 10.10.1.5: icmp_seq=2 ttl=64 time=0.612 ms
+64 bytes from 10.10.1.5: icmp_seq=3 ttl=64 time=0.749 ms
+
+--- 10.10.1.5 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 0.612/0.728/0.824/0.088 ms
+
+<span style="color: #38bdf8; font-weight: bold;">[+] CTF [Seviye 1.1]: Hedef sunucu aktif ve yanıt veriyor.</span>
+<span style="color: #94a3b8;">Servis portlarını taramak için: <code style="color: #22c55e;">nmap -sV 10.10.1.5</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.1.5') && cleanCliCmd.startsWith('nmap')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 22:00 +03
+Nmap scan report for 10.10.1.5
+Host is up (0.00078s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (protocol 2.0)
+80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu) OpenSSL/3.0.2)
+|_http-server-header: Apache/2.4.52 (Ubuntu)
+
+<span style="color: #38bdf8; font-weight: bold;">[+] CTF [Seviye 1.1]: Port 80 HTTP servisi açık!</span>
+<span style="color: #94a3b8;">HTTP yanıt başlıklarını incelemek için: <code style="color: #22c55e;">curl -I http://10.10.1.5</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.1.5') && cleanCliCmd.startsWith('curl')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+HTTP/1.1 200 OK
+Date: Sun, 08 Nov 2026 22:00:15 GMT
+Server: Apache/2.4.52 (Ubuntu)
+<span style="color: #fbbf24; font-weight: bold;">X-Secret-Auth: TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==</span>
+X-Content-Type-Options: nosniff
+Content-Type: text/html; charset=UTF-8
+
+<span style="color: #38bdf8; font-weight: bold;">[★] CTF [Seviye 1.1]: HTTP Başlığında gizli Base64 tokenı bulundu!</span>
+<span style="color: #94a3b8;">Tokenı deşifre etmek için: <code style="color: #22c55e;">echo "TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==" | base64 -d</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('tezme2xldmvs') && cleanCliCmd.includes('base64')) {
+                return `
+<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+LFL{level1_1_ag_kesif_basarans}
+
+<span style="color: #fbbf24; font-weight: bold;">[★] TEBRİKLER! Seviye 1.1 Bayrağı deşifre edildi!</span>
+<span style="color: #ffffff;">Bayrağı doğrulamak ve +100 XP kazanmak için yazın: <code style="color: #00e5ff;">submit LFL{level1_1_ag_kesif_basarans}</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('/var/backups') && cleanCliCmd.startsWith('ls')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+total 16
+drwxr-xr-x  2 root     root     4096 Nov  8 14:00 .
+drwxr-xr-x 14 root     root     4096 Nov  8 13:50 ..
+-rw-r--r--  1 operator operator  142 Nov  8 14:15 operator_note.txt
+-rw-r-----  1 root     shadow    820 Nov  8 14:05 shadow.bak
+
+<span style="color: #38bdf8; font-weight: bold;">[+] CTF [Seviye 1.2]: Şüpheli not tespit edildi: operator_note.txt</span>
+<span style="color: #94a3b8;">Notu okumak için: <code style="color: #22c55e;">cat /var/backups/operator_note.txt</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('operator_note.txt')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+======================================================
+[OPERATÖR GİZLİ NOTU - LFL SİBER DENETİM 2026]
+Sistem denetimi için geçici bayrağı /var/log/syslog
+içerisine 'LFL{' ön ekiyle bıraktım.
+Filtrelemek için grep kullan: grep -i "LFL{" /var/log/syslog
+======================================================
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('/var/log/syslog') && cleanCliCmd.includes('grep')) {
+                return `
+<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+Nov  8 14:22:01 lfl-srv systemd[1]: AUDIT_KEY_VAULT: token_flag="LFL{level1_2_linux_dosya_adli_analiz}"
+
+<span style="color: #fbbf24; font-weight: bold;">[★] TEBRİKLER! Seviye 1.2 Bayrağı loglardan ayıklandı!</span>
+<span style="color: #ffffff;">Bayrağı teslim etmek için: <code style="color: #00e5ff;">submit LFL{level1_2_linux_dosya_adli_analiz}</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.2.10') && cleanCliCmd.startsWith('whatweb')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+http://10.10.2.10 [200 OK] Apache[2.4.52], HTTPServer[Ubuntu Linux], IP[10.10.2.10], PHP[8.1.2], Title[Intranet Portal], X-Powered-By[PHP/8.1.2]
+<span style="color: #38bdf8; font-weight: bold;">[+] CTF [Seviye 2.1]: Web portalı keşfedildi. Gizli dizinleri taramak için:</span>
+<span style="color: #22c55e;">gobuster dir -u http://10.10.2.10 -w common.txt</span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.2.10') && cleanCliCmd.startsWith('gobuster')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+===============================================================
+Gobuster v3.6 - Directory Brute-Force Mode
+===============================================================
+[+] Target URL:   http://10.10.2.10
+[+] Wordlist:     common.txt
+===============================================================
+/admin_vault          (Status: 301) [Size: 178]
+/index.php            (Status: 200) [Size: 4210]
+/robots.txt           (Status: 200) [Size: 112]
+===============================================================
+<span style="color: #38bdf8; font-weight: bold;">[+] Kritik rota bulundu! İncelemek için: <code style="color: #22c55e;">curl http://10.10.2.10/robots.txt</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.2.10/robots.txt')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+User-agent: *
+Disallow: /admin_vault/confidential_token.json
+
+<span style="color: #fbbf24; font-weight: bold;">[+] Gizli JSON anahtar yolu deşifre edildi!</span>
+<span style="color: #ffffff;">Dosyayı okumak için: <code style="color: #00e5ff;">curl http://10.10.2.10/admin_vault/confidential_token.json</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('confidential_token.json')) {
+                return `
+<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+{
+  "vault_id": "LFL-INTRA-8891",
+  "status": "unlocked",
+  "flag": "LFL{level2_1_web_dizin_firtinasi}"
+}
+
+<span style="color: #fbbf24; font-weight: bold;">[★] Seviye 2.1 Bayrağı ele geçirildi!</span>
+<span style="color: #ffffff;">Bayrağı teslim etmek için: <code style="color: #00e5ff;">submit LFL{level2_1_web_dizin_firtinasi}</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('suspect_payload.bin') && cleanCliCmd.startsWith('file')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+/evidence/suspect_payload.bin: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, stripped
+<span style="color: #38bdf8; font-weight: bold;">[+] CTF [Seviye 2.2]: İkili dosyadaki gizli metinleri ayıklamak için:</span>
+<span style="color: #22c55e;">strings /evidence/suspect_payload.bin | grep "LFL{"</span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('suspect_payload.bin') && cleanCliCmd.includes('strings')) {
+                return `
+<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+OFFSET:0x0041a0  FLAG_TOKEN: LFL{level2_2_adli_bilisim_strings_ustasi}
+
+<span style="color: #fbbf24; font-weight: bold;">[★] Adli analiz başarılı! Seviye 2.2 Bayrağı bulundu!</span>
+<span style="color: #ffffff;">Bayrağı teslim etmek için: <code style="color: #00e5ff;">submit LFL{level2_2_adli_bilisim_strings_ustasi}</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('suspect_payload.bin') && cleanCliCmd.startsWith('md5sum')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+e4d909c290d0fb1ca068ffaddf22cbd0  /evidence/suspect_payload.bin
+<span style="color: #10b981;">[✔] Dosya MD5 özeti doğrulandı.</span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.3.50') && cleanCliCmd.startsWith('hydra')) {
+                return `
+<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+Hydra v9.5 (c) 2023 by THC - SSH Protocol Brute-force
+[ATTACK] targeting 10.10.3.50:22 (SSH)
+[22][ssh] host: 10.10.3.50   login: operator   password: Summer2026!
+1 of 1 target completed, 1 valid password found!
+
+<span style="color: #fbbf24; font-weight: bold;">[+] SSH Parolası Kırıldı: operator / Summer2026!</span>
+<span style="color: #ffffff;">Sunucuya bağlanmak için: <code style="color: #00e5ff;">ssh operator@10.10.3.50</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('operator@10.10.3.50')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+operator@10.10.3.50's password: [Summer2026!]
+Welcome to Fortress Linux Server (Ubuntu 22.04.3 LTS)
+operator@fortress:~$ 
+
+<span style="color: #38bdf8; font-weight: bold;">[+] CTF [Seviye 3.1]: Düşük yetkili SSH oturumu açıldı!</span>
+<span style="color: #94a3b8;">Yetki yükseltmek için SUID dosyaları arayın: <code style="color: #22c55e;">find / -perm -4000 2>/dev/null</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('-perm -4000') || cleanCliCmd.includes('-perm -u=s')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+/usr/lib/openssh/ssh-keysign
+<span style="color: #ef4444; font-weight: bold;">/usr/bin/python3 (!!! SUID BİTİ AÇIK - ROOT YETKİSİYLE ÇALIŞIR !!!)</span>
+/usr/bin/passwd
+/usr/bin/su
+
+<span style="color: #fbbf24; font-weight: bold;">[★] ZAFİYET KEŞFİ: /usr/bin/python3 SUID yetkisine sahip!</span>
+<span style="color: #ffffff;">Root bayrağını okumak için: <code style="color: #00e5ff;">cat /root/flag.txt</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd === 'cat /root/flag.txt' || cleanCliCmd === 'sudo cat /root/flag.txt') {
+                return `
+<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+====================================================
+ROOT PRIVILEGE ESCALATION SUCCESSFUL!
+FLAG: LFL{level3_1_suid_privesc_root_fatihi}
+====================================================
+
+<span style="color: #fbbf24; font-weight: bold;">[★] TEBRİKLER! Seviye 3.1 Root Bayrağı ele geçirildi!</span>
+<span style="color: #ffffff;">Bayrağı teslim etmek için: <code style="color: #00e5ff;">submit LFL{level3_1_suid_privesc_root_fatihi}</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.3.99') && cleanCliCmd.startsWith('curl')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+HTTP/1.1 200 OK
+Content-Type: application/json
+{"query": "test", "results": [], "db_engine": "MySQL 8.0.35", "warning": "Unescaped parameter detected"}
+
+<span style="color: #38bdf8; font-weight: bold;">[+] CTF Büyük Final [Seviye 3.2]: API SQL Injection açığı içeriyor!</span>
+<span style="color: #94a3b8;">Veritabanlarını dökmek için: <code style="color: #22c55e;">sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs</code></span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.3.99') && cleanCliCmd.includes('--dbs')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+[+] GET parameter 'q' is vulnerable to SQL injection (UNION query, error-based)
+available databases [2]:
+[*] information_schema
+[*] <span style="color: #fbbf24; font-weight: bold;">lfl_master_vault</span>
+
+<span style="color: #38bdf8; font-weight: bold;">[+] Tabloları listelemek için:</span>
+<span style="color: #22c55e;">sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault --tables</span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.3.99') && cleanCliCmd.includes('--tables')) {
+                return `
+<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+Database: lfl_master_vault
+[1 table]
++--------------------------------+
+| <span style="color: #fbbf24; font-weight: bold;">master_classified_flags</span>        |
++--------------------------------+
+
+<span style="color: #38bdf8; font-weight: bold;">[+] Nihai bayrağı dökmek için:</span>
+<span style="color: #22c55e;">sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault -T master_classified_flags --dump</span>
+</pre>
+                `;
+            }
+
+            if (cleanCliCmd.includes('10.10.3.99') && cleanCliCmd.includes('--dump')) {
+                return `
+<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px; line-height: 1.45;">
+Database: lfl_master_vault
+Table: master_classified_flags
+[1 entry]
++----+-------------------+---------------------------------------------------+
+| id | mission_code      | flag_token                                        |
++----+-------------------+---------------------------------------------------+
+| 1  | OP_GRAND_FINAL    | LFL{level3_2_sqli_grand_master_champion_2026}     |
++----+-------------------+---------------------------------------------------+
+
+<span style="color: #fbbf24; font-weight: 800; font-size: 14px;">🏆 [★] BÜYÜK FİNAL ŞAMPİYONLUK BAYRAĞI ELE GEÇİRİLDİ! [★] 🏆</span>
+<span style="color: #ffffff;">Şampiyonluğunuzu onaylamak ve +1000 XP almak için yazın:</span>
+<code style="color: #00e5ff; font-size: 13px; font-weight: 800;">submit LFL{level3_2_sqli_grand_master_champion_2026}</code>
+</pre>
+                `;
+            }
+
+            // D. SİBER KILAVUZ & SÖZLÜK (85+ Terim Analojili Manpage)
+            if (cleanCliCmd === 'sozluk' || cleanCliCmd === 'sozluk list' || cleanCliCmd === 'dict' || cleanCliCmd === 'dict list' || cleanCliCmd === 'kilavuz' || cleanCliCmd === 'kılavuz') {
+                const gData = (typeof glossaryData !== 'undefined' && Array.isArray(glossaryData)) ? glossaryData : (window.glossaryData || []);
+                const termPills = gData.map(item => `<code style="background: rgba(168, 85, 247, 0.15); color: #c084fc; padding: 2px 6px; border-radius: 4px; font-size: 11px; display: inline-block; margin: 2px;">${escapeHtml(item.tag)}</code>`).join(' ');
+                return `
+<div style="font-family: var(--font-mono); font-size: 12px; line-height: 1.5; border: 1px solid rgba(168, 85, 247, 0.35); background: rgba(15, 10, 30, 0.85); border-radius: 8px; padding: 14px; margin: 8px 0;">
+    <div style="color: #c084fc; font-weight: 800; font-size: 13px; margin-bottom: 6px;">📖 SİBER KILAVUZ &amp; SÖZLÜK (TOPLAM ${gData.length}+ KAPSAMLI TERİM)</div>
+    <div style="color: #94a3b8; font-size: 11.5px; margin-bottom: 10px;">Herhangi bir terimin analojili ve teknik detayını görmek için terminale <code style="color: #38bdf8;">sozluk &lt;terim&gt;</code> veya doğrudan terimin adını yazın (Örn: <code style="color: #22c55e;">sozluk waf</code>, <code style="color: #22c55e;">honeypot</code>, <code style="color: #22c55e;">siem</code>, <code style="color: #22c55e;">mitm</code>).</div>
+    <div style="max-height: 240px; overflow-y: auto; padding-right: 6px; line-height: 1.8;">
+        ${termPills}
+    </div>
+</div>
+                `;
+            }
+
+            // Check if user is searching glossary via sozluk <query> or man <query> or direct tag
+            let glossaryQuery = null;
+            if (cleanCliCmd.startsWith('sozluk ') || cleanCliCmd.startsWith('dict ') || cleanCliCmd.startsWith('explain ') || cleanCliCmd.startsWith('kılavuz ') || cleanCliCmd.startsWith('kilavuz ') || cleanCliCmd.startsWith('man ') || cleanCliCmd.startsWith('whatis ')) {
+                glossaryQuery = cleanCliCmd.split(' ').slice(1).join(' ').trim();
+            } else {
+                glossaryQuery = cleanCliCmd;
+            }
+
+            if (glossaryQuery) {
+                const gData = (typeof glossaryData !== 'undefined' && Array.isArray(glossaryData)) ? glossaryData : (window.glossaryData || []);
+                const qClean = glossaryQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const foundTerm = gData.find(item => {
+                    const tagClean = (item.tag || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                    if (tagClean === qClean) return true;
+                    if ((item.tag || '').toLowerCase() === glossaryQuery.toLowerCase()) return true;
+                    if (qClean.length >= 3 && tagClean.includes(qClean)) return true;
+                    return false;
+                });
+
+                if (foundTerm && (cleanCliCmd.startsWith('sozluk') || cleanCliCmd.startsWith('dict') || cleanCliCmd.startsWith('explain') || cleanCliCmd.startsWith('man') || cleanCliCmd.startsWith('whatis') || foundTerm.tag.toLowerCase().replace(/[^a-z0-9]/g, '') === qClean)) {
+                    return `
+<div class="kali-glossary-card" style="margin: 8px 0; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; border: 1px solid rgba(168, 85, 247, 0.45); background: rgba(15, 10, 30, 0.9); border-radius: 8px; padding: 14px; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15);">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(168, 85, 247, 0.25); padding-bottom: 6px; margin-bottom: 8px;">
+        <span style="color: #c084fc; font-weight: 800; font-size: 12px;">📖 LFL SİBER KILAVUZ &amp; SÖZLÜK // TERİM DOSYASI</span>
+        <span style="background: rgba(168, 85, 247, 0.2); color: #d8b4fe; font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(168, 85, 247, 0.35);">[${escapeHtml(foundTerm.tag)}]</span>
+    </div>
+    <div style="color: #ffffff; font-weight: 700; font-size: 13.5px; margin-bottom: 8px;">▶ ${escapeHtml(foundTerm.title)}</div>
+    
+    <div style="background: rgba(0, 229, 255, 0.06); border-left: 3px solid #00e5ff; padding: 8px 12px; border-radius: 4px; margin: 8px 0; color: #e2e8f0;">
+        <div style="color: #38bdf8; font-weight: bold; font-size: 11px; margin-bottom: 3px;">💡 GÜNLÜK HAYATTAN BENZETME (MALA ANLATIR GİBİ):</div>
+        <div style="color: #cbd5e1; font-size: 12px;">${escapeHtml(foundTerm.analogy)}</div>
+    </div>
+
+    <div style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid #a855f7; padding: 8px 12px; border-radius: 4px; margin: 8px 0; color: #e2e8f0;">
+        <div style="color: #c084fc; font-weight: bold; font-size: 11px; margin-bottom: 3px;">🛡️ TEKNİK DERİNLİK &amp; MİMARİ:</div>
+        <div style="color: #e2e8f0; font-size: 12px;">${escapeHtml(foundTerm.desc)}</div>
+    </div>
+
+    <div style="background: rgba(16, 185, 129, 0.06); border-left: 3px solid #10b981; padding: 8px 12px; border-radius: 4px; margin: 8px 0; color: #e2e8f0;">
+        <div style="color: #34d399; font-weight: bold; font-size: 11px; margin-bottom: 3px;">🔒 SAVUNMA &amp; ENGELLEME (MİTİGASYON):</div>
+        <div style="color: #a7f3d0; font-size: 12px;">${escapeHtml(foundTerm.mitigates || 'Güvenlik sertleştirmesi ve güncel yamalar.')}</div>
+    </div>
+</div>
+                    `;
+                }
+            }
+
+            // E. SİBER AKADEMİ ODALARI (69 Oda - Tümü Çalıştırılabilir)
+            if (cleanCliCmd === 'rooms' || cleanCliCmd === 'rooms list' || cleanCliCmd === 'odalar' || cleanCliCmd === 'oda listesi') {
+                if (window.ACADEMY_ROOMS && Array.isArray(window.ACADEMY_ROOMS)) {
+                    const tracks = { starter: [], red: [], blue: [], purple: [] };
+                    window.ACADEMY_ROOMS.forEach(r => {
+                        if (tracks[r.track]) tracks[r.track].push(r);
+                    });
+                    return `
+<pre style="color: #38bdf8; font-family: var(--font-mono); font-size: 12px; line-height: 1.5;">
+[★] ======================================================================
+[★] LFL SİBER AKADEMİ GÖREV ODALARI (TOPLAM ${window.ACADEMY_ROOMS.length} ODA)
+[★] ======================================================================
+🌱 STARTER TRACK (18 Oda)  : starter-01 ... starter-18
+⚔️ RED TEAM (20 Oda)       : red-101 ... red-312
+🛡️ BLUE TEAM (17 Oda)      : blue-101 ... blue-311
+🔮 PURPLE TEAM (14 Oda)    : purple-101 ... purple-310
+
+[!] KULLANIM İPUCU:
+  1) Belirli bir odayı çalıştırmak için: <code style="color: #00e5ff;">room starter-01</code> veya <code style="color: #00e5ff;">room red-101</code>
+  2) Odanın doğrudan kendi komutunu yazabilirsiniz (Örn: <code style="color: #22c55e;">ip a</code>, <code style="color: #22c55e;">mimikatz</code>, <code style="color: #22c55e;">tcpdump</code>)
+  3) Odayı tamamladığınızda bayrak otomatik kazanılır ve ilerlemeniz kaydedilir!
+======================================================================
+</pre>
+                    `;
+                }
+            }
+
+            // Check if user types "room <id>" or "oda <id>"
+            let targetRoomId = null;
+            if (cleanCliCmd.startsWith('room ') || cleanCliCmd.startsWith('oda ') || cleanCliCmd.startsWith('run room-') || cleanCliCmd.startsWith('run starter-') || cleanCliCmd.startsWith('run red-') || cleanCliCmd.startsWith('run blue-') || cleanCliCmd.startsWith('run purple-')) {
+                targetRoomId = cleanCliCmd.replace(/^(room|oda|run)\s+/, '').trim().toLowerCase();
+            }
+
+            if (window.ACADEMY_ROOMS && Array.isArray(window.ACADEMY_ROOMS)) {
+                let matchedRoom = null;
+
+                // 1. Matched by ID
+                if (targetRoomId) {
+                    matchedRoom = window.ACADEMY_ROOMS.find(r => r.id.toLowerCase() === targetRoomId);
+                }
+
+                // 2. Matched by acceptedCommands or expectedCommand
+                if (!matchedRoom) {
+                    matchedRoom = window.ACADEMY_ROOMS.find(r => {
+                        if (r.expectedCommand && r.expectedCommand.toLowerCase().trim() === cleanCliCmd) return true;
+                        if (Array.isArray(r.acceptedCommands)) {
+                            return r.acceptedCommands.some(ac => {
+                                const acClean = ac.toLowerCase().trim().replace(/^sudo\s+/, '').replace(/\s+/g, ' ');
+                                return acClean === cleanCliCmd || ac.toLowerCase().trim() === lower;
+                            });
+                        }
+                        return false;
+                    });
+                }
+
+                if (matchedRoom) {
+                    markRoomCompletedInStorage(matchedRoom.id);
+                    return `
+<div class="kali-room-exec-card" style="margin: 8px 0; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; border: 1px solid rgba(0, 229, 255, 0.4); background: rgba(5, 15, 30, 0.85); border-radius: 8px; padding: 12px 14px; box-shadow: 0 4px 20px rgba(0, 229, 255, 0.12);">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0, 229, 255, 0.2); padding-bottom: 6px; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+            <span style="color: #38bdf8; font-weight: 800; font-size: 12px;">🛡️ LFL SİBER AKADEMİ GÖREV SİMÜLASYONU</span>
+        </div>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.3);">${escapeHtml(matchedRoom.badge || matchedRoom.track.toUpperCase() + ' TEAM')}</span>
+    </div>
+    <div style="color: #ffffff; font-weight: 700; font-size: 13px; margin-bottom: 4px;">ODA ${escapeHtml(matchedRoom.id.toUpperCase())}: ${escapeHtml(matchedRoom.title)}</div>
+    <div style="color: #94a3b8; font-size: 11.5px; margin-bottom: 8px;">🎯 <strong>Görev Yönergesi:</strong> ${escapeHtml(matchedRoom.mission)}</div>
+    
+    <div style="background: #020617; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; padding: 10px 12px; color: #a7f3d0; font-size: 11.5px; white-space: pre-wrap; word-break: break-all; margin: 8px 0; line-height: 1.45;">${escapeHtml(matchedRoom.terminalSuccessOutput || matchedRoom.terminalOutput || '[✔] Görev komutu başarıyla icra edildi.')}</div>
+
+    <div style="background: rgba(251, 191, 36, 0.08); border: 1px dashed rgba(251, 191, 36, 0.35); border-radius: 6px; padding: 8px 12px; margin-top: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+        <div>
+            <span style="color: #fbbf24; font-weight: 800; font-size: 11.5px;">🚩 TEBRİKLER! ODA BAYRAĞI ELE GEÇİRİLDİ:</span>
+            <code style="background: rgba(0, 0, 0, 0.5); color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: bold; margin-left: 6px; border: 1px solid rgba(251, 191, 36, 0.4);">${escapeHtml(matchedRoom.flag)}</code>
+        </div>
+        <a href="academy.html?room=${escapeHtml(matchedRoom.id)}" target="_blank" style="color: #38bdf8; font-size: 11.5px; text-decoration: underline; font-weight: 600;">Akademi Laboratuvarında Aç &rarr;</a>
+    </div>
+</div>
+                    `;
+                }
+            }
+
+            // F. 143+ SİBER KOMUT MOTORU (window.ACADEMY_COMMANDS)
+            if (window.ACADEMY_COMMANDS && Array.isArray(window.ACADEMY_COMMANDS)) {
+                const foundCmd = window.ACADEMY_COMMANDS.find(c => {
+                    const cClean = c.cmd.toLowerCase().trim().replace(/^sudo\s+/, '').replace(/^powershell\s+/, '').replace(/^\.\//, '').replace(/^\\/, '').replace(/\s+/g, ' ');
+                    if (cClean === cleanCliCmd || c.cmd.toLowerCase().trim() === lower) return true;
+                    const cFirst = cClean.split(' ')[0] || '';
+                    const uFirst = cleanCliCmd.split(' ')[0] || '';
+                    if (uFirst && (uFirst === cFirst) && cleanCliCmd.length <= cClean.length + 5) return true;
+                    return false;
+                });
+
+                if (foundCmd && !cleanCliCmd.startsWith('nmap') && !cleanCliCmd.startsWith('hydra') && !cleanCliCmd.startsWith('gobuster') && !cleanCliCmd.startsWith('sqlmap')) {
+                    return `
+<div style="font-family: var(--font-mono); font-size: 12px; line-height: 1.5; margin: 6px 0; border: 1px solid rgba(0, 229, 255, 0.3); background: rgba(5, 15, 30, 0.7); border-radius: 6px; padding: 10px 12px;">
+    <div style="color: #38bdf8; font-weight: 700;">[⚙️] EXEC: <code style="color: #ffffff; font-weight: 800;">${escapeHtml(rawCmd)}</code></div>
+    <div style="color: #64748b; font-size: 10.5px; margin-bottom: 6px;">Kategori: <span style="color: #a5f3fc;">${escapeHtml(foundCmd.categoryName)}</span> &bull; <span style="color: #22c55e;">[${escapeHtml(foundCmd.badge)}]</span> &bull; Durum: 200 OK &bull; PID: ${Math.floor(1000 + Math.random() * 9000)}</div>
+    <div style="background: rgba(0, 0, 0, 0.45); border-left: 3px solid var(--cyan); padding: 8px 12px; border-radius: 4px; margin: 6px 0; color: #e2e8f0;">
+        <div style="color: #38bdf8; font-weight: bold; margin-bottom: 4px;">▶ ${escapeHtml(foundCmd.title)}</div>
+        <div style="color: #cbd5e1; font-size: 11.5px;">${escapeHtml(foundCmd.desc)}</div>
+    </div>
+    <div style="color: #10b981; font-size: 11px;">[✔] Komut simülasyonu başarıyla yürütüldü. (Siber Akademi modülünde daha fazla pratik yapabilirsiniz)</div>
+</div>
+                    `;
+                }
+            }
+
+
+
+            // 1. HELP
+            if (lower === 'help' || lower === '?') {
+                return `
+<span style="color: #38bdf8; font-weight: bold;">=== KALI LINUX &amp; LFL SİBER SAVUNMA KOMUT KÜTÜPHANESİ (140+ ARAÇ) ===</span>
+
+<span style="color: #22c55e; font-weight: bold;">[AĞ &amp; PORT TARAMA - NMAP]:</span>
+  nmap -p- 127.0.0.1           : Tüm 65,535 portu SYN stealth taramasıyla inceler
+  nmap 8080/tcp                 : Belirli bir portun durumunu ve servisini kontrol eder
+  nmap -F 192.168.1.1           : En yaygın 100 portu ultra hızlı tarar
+  sudo nmap -sn 192.168.1.0/24  : Yerel ağdaki tüm aktif istemcileri ping taramasıyla listeler
+  sudo nmap -O 192.168.1.17     : Hedef cihazın işletim sistemini (OS Fingerprinting) tahmin eder
+  nmap -Pn 192.168.1.1          : Ping cevap vermeyen gizli sunucuları taramaya zorlar
+  nmap -sV 127.0.0.1            : Çalışan servislerin adını ve tam versiyonunu deşifre eder
+  sudo nmap -sV -p 5000,7000... : Birden fazla spesifik portun servis detaylarını çıkarır
+  nmap -sS -T2 192.168.1.1      : IDS/IPS yakalamasını engellemek için sessiz ve yavaş tarama
+  nmap --script vuln 192.168.1.1: NSE zafiyet veritabanı taraması
+  nmap -sU -p 53,67,123...      : UDP servislerini denetler
+
+<span style="color: #22c55e; font-weight: bold;">[WEB DİZİN &amp; FUZZING &amp; OSINT]:</span>
+  whois lostfromlight.com                       : Alan adı sahiplik ve DNS kayıtlarını sorgular
+  dig lostfromlight.com                         : DNS A ve NS kayıtlarını çözer
+  gobuster dir -u http://127.0.0.1 -w common.txt: Web sitesindeki gizli dizinleri (/admin, /backup) bulur
+  ffuf -u http://127.0.0.1/FUZZ -w common.txt   : Yüksek hızlı web fuzzer ile parametre ve rotaları ortaya çıkarır
+  nikto -h 192.168.1.1                          : Web sunucusundaki zafiyetleri ve güvenlik başlıklarını tarar
+  whatweb http://127.0.0.1                      : Web teknolojilerini (CMS, web server, kütüphaneler) listeler
+  dirb http://127.0.0.1                         : Klasik içerik keşif aracı
+  wfuzz -c -z file,common.txt --hc 404 ...      : Gelişmiş filtreli fuzzer
+  sublist3r -d lfl.local                        : Alt alan adlarını (subdomain) keşfeder
+
+<span style="color: #22c55e; font-weight: bold;">[PAKET ÜRETİMİ &amp; FIREWALL TESTİ]:</span>
+  sudo hping3 -S -p 80 -c 1 192.168.1.1   : Manuel TCP SYN paketiyle açık port doğrulaması
+  sudo hping3 -A -p 80 -c 1 192.168.1.1   : ACK bayrağıyla güvenlik duvarının (Firewall) tepkisini ölçer
+  hping3 -S -p 22 127.0.0.1               : Belirli porta TCP SYN gönderir
+  hping3 -1 127.0.0.1                     : Hedefe ICMP ping yollar
+  sudo hping3 --udp --flood ...           : DoS / Flood dayanıklılık testi simülasyonu
+
+<span style="color: #22c55e; font-weight: bold;">[ORTADAKİ ADAM (MITM) &amp; AĞ ANALİZİ]:</span>
+  bettercap -iface lo                     : Dinleme ve paket analiz aracı
+  tcpdump -i eth0 -nn -s0 -v              : Ham ağ paketlerini canlı yakalar
+  tshark -i 1 -Y "http.request"           : Terminal tabanlı Wireshark filtreleyicisi
+  arpspoof -i eth0 -t 192.168.1.17...     : ARP zehirleme simülasyonu
+  responder -I eth0 -dwv                  : LLMNR/NBT-NS zehirleme analizörü
+
+<span style="color: #22c55e; font-weight: bold;">[KİMLİK DOĞRULAMA &amp; ŞİFRE DENETİMİ]:</span>
+  hydra -l admin -p Sebu132009 192.168.1.1 http-get / : HTTP GET form giriş şifresini test eder
+  john --wordlist=rockyou.txt hash.txt                 : Parola özetlerini (hash) çözer
+  hashcat -m 0 -a 0 hash.txt rockyou.txt              : GPU destekli hash kırıcı
+  cewl https://127.0.0.1 -w wordlist.txt               : Siteden özel kelime listesi üretir
+
+<span style="color: #22c55e; font-weight: bold;">[ZAFİYET &amp; EXPLOIT DENETİMİ]:</span>
+  sqlmap -u http://127.0.0.1/api/search?q=test --dbs   : Otomatik SQL enjeksiyon testi
+  searchsploit apache 2.4.49                           : Offline Exploit-DB arşivi
+  nuclei -u http://127.0.0.1                           : Şablon tabanlı zafiyet tarayıcı
+  msfconsole -q                                        : Metasploit Framework konsolu
+
+<span style="color: #22c55e; font-weight: bold;">[TÜNEL &amp; PIVOTİNG]:</span>
+  nc -lvnp 4444                                        : Netcat port dinleyicisi
+  socat TCP-LISTEN:8080,fork TCP:127.0.0.1:80          : Çift yönlü soket köprüsü
+  chisel server -p 8000 --reverse                      : TCP/UDP HTTP tüneli
+  ssh -D 1080 -q -C -N user@127.0.0.1                  : SOCKS5 tüneli kurar
+
+<span style="color: #22c55e; font-weight: bold;">[POWERSHELL &amp; DEFANS]:</span>
+  powershell .\\Audit-Headers.ps1                      : Zorunlu web güvenlik başlıklarını doğrular
+  powershell .\\Port-Scan.ps1                          : Çok kanallı runspace port taraması yapar
+  powershell .\\Banner-Grab.ps1                        : Sunucu banner gizleme denetimi
+
+<span style="color: #94a3b8;">Komut geçmişinde gezinmek için [YUKARI/AŞAĞI OK], otomatik tamamlamak için [TAB] tuşuna basın. Temizlemek için 'clear' yazın.</span>
+                `;
+            }
+
+            // 2. POWERSHELL AUDIT HEADERS
+            if (lower.includes('audit-headers') || lower.includes('strict-transport-security') || lower.includes('headers')) {
+                return `
+<span style="color: #00e5ff; font-weight: bold;">=== GÜVENLİK BAŞLIĞI DENETİM RAPORU (PowerShell Invoke-WebRequest) ===</span>
+<span style="color: #94a3b8;">Hedef: https://localhost:5000</span>
+
+<span style="color: #22c55e;">[✔] GÜVENLİ: 'Strict-Transport-Security' (HSTS) başlığı tanımlanmış.</span>
+    <span style="color: #94a3b8;">Değer: max-age=31536000; includeSubDomains; preload</span>
+
+<span style="color: #22c55e;">[✔] GÜVENLİ: 'Content-Security-Policy' (CSP) başlığı tanımlanmış.</span>
+    <span style="color: #94a3b8;">Değer: default-src 'self'; script-src 'self' 'unsafe-inline'</span>
+
+<span style="color: #22c55e;">[✔] GÜVENLİ: 'X-Frame-Options' başlığı tanımlanmış.</span>
+    <span style="color: #94a3b8;">Değer: DENY (Clickjacking Korumalı)</span>
+
+<span style="color: #22c55e;">[✔] GÜVENLİ: 'X-Content-Type-Options' başlığı tanımlanmış.</span>
+    <span style="color: #94a3b8;">Değer: nosniff (MIME Confuse Saldırısı Engellendi)</span>
+
+<span style="color: #22c55e;">[✔] GÜVENLİ: 'Referrer-Policy' başlığı tanımlanmış.</span>
+    <span style="color: #94a3b8;">Değer: strict-origin-when-cross-origin</span>
+
+<span style="color: #22c55e; font-weight: bold;">Sonuç: Sunucu %100 SOC2 ve ISO 27001 kurumsal standartlarına uygundur!</span>
+                `;
+            }
+
+            // 3. POWERSHELL PORT SCAN
+            if (lower.includes('port-scan') || lower.includes('runspace')) {
+                return `
+<span style="color: #c084fc; font-weight: bold;">=== MULTI-THREAD (RUNSPACE POOL) PORT TARAMA RAPORU ===</span>
+<span style="color: #94a3b8;">Hedef Sistem: 127.0.0.1</span>
+<span style="color: #94a3b8;">Eşzamanlı İş Parçacığı: 16 Core RunspacePool</span>
+
+Port 21   (FTP)       : <span style="color: #64748b;">Kapalı</span>
+Port 22   (SSH)       : <span style="color: #64748b;">Kapalı</span>
+Port 25   (SMTP)      : <span style="color: #64748b;">Kapalı</span>
+Port 53   (DNS)       : <span style="color: #64748b;">Kapalı</span>
+Port 80   (HTTP)      : <span style="color: #22c55e; font-weight: bold;">AÇIK</span> [LFL Kestrel Proxy]
+Port 443  (HTTPS)     : <span style="color: #22c55e; font-weight: bold;">AÇIK</span> [TLS 1.3 / Strict-Transport-Security]
+Port 445  (SMB)       : <span style="color: #64748b;">Kapalı</span> (Fidye Yazılımı Kalkanı)
+Port 3389 (RDP)       : <span style="color: #64748b;">Kapalı</span> (Uzaktan Masaüstü Kilitli)
+Port 5000 (LFL-API)   : <span style="color: #22c55e; font-weight: bold;">AÇIK</span> [ASP.NET Core 8 Web API]
+Port 8080 (Dev-Proxy) : <span style="color: #22c55e; font-weight: bold;">AÇIK</span> [Kısıtlı Geliştirici Tüneli]
+
+<span style="color: #22c55e;">Tarama 0.38 saniyede tamamlandı. 16 Runspace başarıyla kapatıldı.</span>
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: SMB (445) ve RDP (3389) tamamen kapalı tutulmalıdır.</span>
+                `;
+            }
+
+            // 4. NMAP -P-
+            if (lower.includes('nmap') && lower.includes('-p-')) {
+                return `
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 00:00 UTC
+Initiating SYN Stealth Scan at 00:00
+Scanning localhost (127.0.0.1) [65535 ports]
+Discovered open port 80/tcp on 127.0.0.1
+Discovered open port 443/tcp on 127.0.0.1
+Discovered open port 5000/tcp on 127.0.0.1
+Discovered open port 8080/tcp on 127.0.0.1
+Completed SYN Stealth Scan at 00:00, 3.82s elapsed (65535 total ports)
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000082s latency).
+Not shown: 65531 closed tcp ports (reset)
+
+<span style="color: #38bdf8; font-weight: bold;">PORT     STATE SERVICE      REASON</span>
+80/tcp   <span style="color: #22c55e;">open</span>  http         syn-ack ttl 64 (LFL Kestrel Proxy)
+443/tcp  <span style="color: #22c55e;">open</span>  https        syn-ack ttl 64 (TLS 1.3 / HSTS Strict)
+5000/tcp <span style="color: #22c55e;">open</span>  lfl-api      syn-ack ttl 64 (ASP.NET Core Web API)
+8080/tcp <span style="color: #22c55e;">open</span>  http-proxy   syn-ack ttl 64 (Dev Gateway)
+
+Nmap done: 1 IP address (1 host up) scanned in 3.89 seconds
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: -p- bayrağı tüm 65,535 portu denetleyerek hiçbir gölge servisin (Shadow IT) unutulmamasını sağlar.</span>
+                `;
+            }
+
+            // 5. NMAP 8080
+            if (lower.includes('nmap') && lower.includes('8080')) {
+                return `
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 00:01 UTC
+Nmap scan report for 127.0.0.1
+Host is up (0.000078s latency).
+
+<span style="color: #38bdf8; font-weight: bold;">PORT     STATE SERVICE    VERSION</span>
+8080/tcp <span style="color: #22c55e;">open</span>  http-proxy LFL Enterprise API (Zero-Trust Shield Enforced)
+
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: 8080 alternatif web portudur. Üretim ortamında Kestrel güvenlik middleware'i ve JWT Bearer doğrulaması olmadan dış dünyaya açılmamalıdır.</span>
+                `;
+            }
+
+            // 6. NMAP -F
+            if (lower.includes('nmap') && lower.includes('-f') && !lower.includes('-p')) {
+                return `
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 00:02 UTC
+Nmap scan report for 192.168.1.1 (Gateway Router)
+Host is up (0.0012s latency).
+Not shown: 97 closed tcp ports (reset)
+
+<span style="color: #38bdf8; font-weight: bold;">PORT    STATE SERVICE</span>
+53/tcp  <span style="color: #22c55e;">open</span>  domain (DNS Resolver)
+80/tcp  <span style="color: #22c55e;">open</span>  http (Web Management UI)
+443/tcp <span style="color: #22c55e;">open</span>  https (TLS Management)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.28 seconds
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: -F parametresi en yaygın 100 portu saniyeler içinde tarayarak hızlı ilk keşif yapılmasını sağlar.</span>
+                `;
+            }
+
+            // 7. NMAP -SN
+            if (lower.includes('nmap') && lower.includes('-sn')) {
+                return `
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 00:03 UTC
+Nmap scan report for 192.168.1.1 (Gateway / Modem)
+Host is up (0.00084s latency). MAC Address: 00:1A:2B:3C:4D:5E (Cisco-Linksys)
+Nmap scan report for 192.168.1.17 (Workstation)
+Host is up (0.00021s latency). MAC Address: 34:97:F6:11:22:33 (Dell Inc.)
+Nmap scan report for 192.168.1.22 (LFL Security Node)
+Host is up (0.00009s latency). MAC Address: 52:54:00:12:34:56 (QEMU Virtual NIC)
+Nmap scan report for 192.168.1.105 (Mobile Client)
+Host is up (0.014s latency). MAC Address: 88:66:5A:99:88:77 (Apple Inc.)
+
+Nmap done: 256 IP addresses (4 hosts up) scanned in 0.89 seconds
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Port taraması yapmadan yalnızca ICMP ping ile yerel alt ağdaki aktif cihazları haritalandırır.</span>
+                `;
+            }
+
+            // 8. NMAP -O
+            if (lower.includes('nmap') && lower.includes('-o')) {
+                return `
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 00:04 UTC
+Nmap scan report for 192.168.1.17
+Host is up (0.00034s latency).
+Device type: general purpose
+Running: <span style="color: #22c55e; font-weight: bold;">Microsoft Windows 11 / Server 2022 (98%)</span>
+OS CPE: cpe:/o:microsoft:windows_11 cpe:/o:microsoft:windows_10
+OS details: Microsoft Windows 11 23H2 (Build 22631)
+Network Distance: 1 hop
+TCP Sequence Prediction: Difficulty=260 (Good luck!)
+
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: İşletim sistemi parmak izi çıkarma, TCP/IP yığınındaki TTL ve Window Size tepkilerini inceler. Güvenlik duvarından rastgele TCP ISN üretimi zorunlu tutulmalıdır.</span>
+                `;
+            }
+
+            // 9. NMAP -PN
+            if (lower.includes('nmap') && lower.includes('-pn')) {
+                return `
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 00:05 UTC
+Host discovery disabled (-Pn). All addresses specified will be assumed to be up.
+Nmap scan report for 192.168.1.1
+Host is up.
+<span style="color: #38bdf8; font-weight: bold;">PORT    STATE SERVICE</span>
+80/tcp  <span style="color: #22c55e;">open</span>  http
+443/tcp <span style="color: #22c55e;">open</span>  https
+
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Ping (ICMP Echo) yanıtlarını engelleyen güvenlik duvarlarının arkasındaki sunucuları taramak için -Pn kullanılır.</span>
+                `;
+            }
+
+            // 10. NMAP -SV
+            if (lower.includes('nmap') && lower.includes('-sv')) {
+                return `
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-11-08 00:06 UTC
+Nmap scan report for 192.168.1.17
+<span style="color: #38bdf8; font-weight: bold;">PORT      STATE  SERVICE       VERSION</span>
+5000/tcp  <span style="color: #22c55e;">open</span>   http          Kestrel (ASP.NET Core 8.0 - Hardened)
+7000/tcp  closed afs3-fileserver
+7100/tcp  closed font-service
+49152/tcp <span style="color: #22c55e;">open</span>   upnp          Supermicro IPMI / MiniUPnPd 1.9
+62078/tcp <span style="color: #22c55e;">open</span>   tcpwrapped    Encrypted Internal RPC
+
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Servis versiyon tespile güncel olmayan veya yama almamış kütüphaneler (CVE) hızla tespit edilir.</span>
+                `;
+            }
+
+            // 11. GOBUSTER
+            if (lower.includes('gobuster')) {
+                return `
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://192.168.1.1
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+<span style="color: #ef4444;">/admin                (Status: 403) [Size: 154]</span>
+<span style="color: #22c55e;">/api                  (Status: 200) [Size: 1420]</span>
+<span style="color: #22c55e;">/login                (Status: 200) [Size: 840]</span>
+<span style="color: #22c55e;">/dashboard            (Status: 200) [Size: 3100]</span>
+<span style="color: #38bdf8;">/robots.txt           (Status: 200) [Size: 64]</span>
+===============================================================
+Finished. 4,614 requests dispatched in 1.42s.
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: /admin dizini 403 Forbidden ile kilitlenmiştir. Kurumsal yapılarda admin arayüzleri internete açık tutulmamalıdır.</span>
+                `;
+            }
+
+            // 12. FFUF
+            if (lower.includes('ffuf')) {
+                return `
+        /'___\\  /'___\\           /\\_ \\       
+       /\\ \\__/ /\\ \\__/  __  __  \\//\\ \\      
+       \\ \\ ,__\\\\ \\ ,__\\/\\ \\/\\ \\   \\ \\ \\     
+        \\ \\ \\_/ \\ \\ \\_/\\ \\ \\_\\ \\   \\_\\ \\_   
+         \\/_/    \\/_/   \\/_/____/  /\\____\\  
+                                   \\/____/  
+v2.1.0-dev
+:: Method           : GET
+:: URL              : http://127.0.0.1/FUZZ
+:: Wordlist         : /usr/share/wordlists/dirb/common.txt
+:: Threads          : 40
+________________________________________________
+
+[Status: <span style="color: #22c55e;">200</span>, Size: 1840, Words: 210] :: <span style="color: #38bdf8;">/api/blog</span>
+[Status: <span style="color: #eab308;">301</span>, Size: 120, Words: 15]   :: <span style="color: #38bdf8;">/login</span> -&gt; /login/
+[Status: <span style="color: #ef4444;">403</span>, Size: 245, Words: 28]   :: <span style="color: #38bdf8;">/admin</span>
+[Status: <span style="color: #22c55e;">200</span>, Size: 84, Words: 6]     :: <span style="color: #38bdf8;">/robots.txt</span>
+
+:: Progress: [4614/4614] :: 3845 req/sec :: Duration: [0:00:01] :: Errors: 0 ::
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: FFuf 3800+ req/sec hızına ulaşır. Kurumsal sunucularda WAF hız sınırlama (Rate Limiting) devreye girerek tek IP'den gelen anormallikleri bloke eder.</span>
+                `;
+            }
+
+            // 13. HPING3 SYN PROBE
+            if (lower.includes('hping3') && lower.includes('-s')) {
+                return `
+HPING 192.168.1.1 (eth0 192.168.1.1): S set, 40 headers + 0 data bytes
+len=46 ip=192.168.1.1 ttl=64 DF id=0 sport=80 <span style="color: #22c55e; font-weight: bold;">flags=SA</span> seq=0 win=65535 rtt=1.4 ms
+
+--- 192.168.1.1 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 1.4/1.4/1.4 ms
+<span style="color: #22c55e; font-weight: bold;">[SONUÇ]: flags=SA (SYN-ACK) bayrağı döndü! Port 80 açık ve TCP el sıkışmasına hazır.</span>
+                `;
+            }
+
+            // 14. HPING3 ACK FIREWALL
+            if (lower.includes('hping3') && lower.includes('-a')) {
+                return `
+HPING 192.168.1.1 (eth0 192.168.1.1): A set, 40 headers + 0 data bytes
+len=46 ip=192.168.1.1 ttl=64 DF id=0 sport=80 <span style="color: #ef4444; font-weight: bold;">flags=R</span> seq=0 win=0 rtt=0.9 ms
+
+--- 192.168.1.1 hping statistic ---
+1 packets transmitted, 1 packets received, 0% packet loss
+<span style="color: #38bdf8; font-weight: bold;">[SONUÇ]: flags=R (RST) bayrağı döndü! Güvenlik Duvarı durum takiplidir (Stateful). Önceden başlatılmamış sahte ACK paketi anında reddedildi.</span>
+                `;
+            }
+
+            // 15. HPING3 FLOOD
+            if (lower.includes('hping3') && lower.includes('flood')) {
+                return `
+<div style="background: rgba(239, 68, 68, 0.15); border-left: 3px solid #ef4444; padding: 8px 12px; margin-bottom: 8px;">
+  <span style="color: #ef4444; font-weight: bold;">[EĞİTİMCİ SİMÜLASYON // TCK 244 UYARISI]</span>
+  <div style="color: #f1f5f9; font-size: 12px; margin-top: 4px;">DDoS ve Flood saldırıları bilişim sistemlerini engelleme/bozma suçudur. Bu platformda yalnızca eğitim amaçlı simüle edilir.</div>
+</div>
+<span style="color: #94a3b8;">hping3 --udp --flood --rand-source -p 80 [HEDEF_IP]</span>
+-------------------------------------------------------------
+<span style="color: #22c55e; font-weight: bold;">[SAVUNMA ANALİZİ]: Kurumsal LFL Savunma Mimarisi bu saldırıyı şu şekilde engeller:</span>
+  1. <span style="color: #38bdf8;">SYN Cookies:</span> Yarı açık TCP bağlantı tablolarının dolmasını önler.
+  2. <span style="color: #38bdf8;">BGP Anycast:</span> Saldırı trafiğini dünya genelindeki 300+ veri merkezine dağıtıp eritir.
+  3. <span style="color: #38bdf8;">Rate Limiting:</span> Sahte kaynaklı (spoofed) IP paketlerini ISP seviyesinde filtreler.
+<span style="color: #22c55e;">Simülasyon güvenli sandbox ortamında tamamlandı. Hedef sistem %100 ayakta.</span>
+                `;
+            }
+
+            // 16. BETTERCAP
+            if (lower.includes('bettercap')) {
+                return `
+bettercap v2.32 (built for linux/amd64 with go1.21) [type 'help' for a list of commands]
+
+[00:08:00] [sys.log] [inf] bettercap started on interface lo (127.0.0.1)
+[00:08:01] [net.recon] [inf] endpoint discovery started.
+[00:08:02] [net.recon] [inf] found 1 active gateway host 127.0.0.1
+[00:08:03] [arp.spoof] [inf] ARP spoofing engine initialized (EDUCATIONAL SANDBOX MODE)
+[00:08:04] [packet.proxy] [inf] TLS SNI inspection enabled for local development.
+
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Ortadaki Adam (MITM) ve ARP Zehirleme saldırıları, kurumsal ağ anahtarlarında "Dynamic ARP Inspection (DAI)" ve "DHCP Snooping" açılarak engellenir.</span>
+                `;
+            }
+
+            // 17. HYDRA
+            if (lower.includes('hydra')) {
+                return `
+Hydra v9.5 (c) 2023 by van Hauser / THC & David Maciejak - Please use responsibly
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 1 login try (l:1/p:1)
+[DATA] attacking http-get://192.168.1.1:80/
+[ATTEMPT] target: 192.168.1.1 - login: "admin" - pass: "Sebu132009" - child: 1/16
+<span style="color: #ef4444;">[429] TOO MANY REQUESTS: IP 192.168.1.15 exceeded threshold (5 failed attempts).</span>
+<span style="color: #22c55e;">[LFL SHIELD TRIGGERED]: Account locked for 15 minutes.</span>
+
+1 of 1 target completed, 0 valid password found
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Kaba kuvvet (Brute-Force) saldırılarına karşı "Account Lockout" ve "Rate Limiting" kullanılır. 5 hatalı denemede IP askıya alınır.</span>
+                `;
+            }
+
+            // 18. NIKTO
+            if (lower.includes('nikto')) {
+                return `
+- Nikto v2.5.0
+---------------------------------------------------------------------------
++ Target IP:          192.168.1.1
++ Target Hostname:    lfl.defense.local
++ Target Port:        443
+---------------------------------------------------------------------------
++ <span style="color: #22c55e;">Server: [REDACTED BY LFL DEFENSE] (Information disclosure prevented)</span>
++ <span style="color: #22c55e;">The anti-clickjacking X-Frame-Options header is present: DENY</span>
++ <span style="color: #22c55e;">The X-Content-Type-Options header is present: nosniff</span>
++ <span style="color: #22c55e;">Strict-Transport-Security (HSTS) is configured with preload directive</span>
++ <span style="color: #22c55e;">Content-Security-Policy (CSP) is active: default-src 'self'</span>
++ No CGI Directories found (mount points checked: 118)
++ 7842 requests: 0 error(s) and 0 critical item(s) reported on remote host
+---------------------------------------------------------------------------
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Nikto web sunucusundaki güvenlik başlıklarını doğrular. LFL tüm sunucu sürüm numaralarını gizlemiştir.</span>
+                `;
+            }
+
+            // 19. SQLMAP
+            if (lower.includes('sqlmap')) {
+                return `
+        ___
+       __H__
+ ___ ___[.]_____ ___ ___  {1.7.11#stable}
+|_ -| . ["]     | .'| . |
+|___|_  ["]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[*] starting @ 00:10:15 /2026-11-08/
+[00:10:15] [INFO] testing connection to the target URL
+[00:10:15] [INFO] checking if the target is protected by some kind of WAF/IPS
+[00:10:16] [INFO] testing if the target URL content is stable
+[00:10:16] [INFO] target URL content is stable
+[00:10:16] [INFO] testing if GET parameter 'q' is dynamic
+[00:10:17] [INFO] heuristics detected that GET parameter 'q' might not be injectable
+[00:10:18] [INFO] testing for SQL injection on GET parameter 'q'
+[00:10:18] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[00:10:19] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+<span style="color: #22c55e; font-weight: bold;">[CRITICAL] all tested parameters do not appear to be injectable.</span>
+[00:10:20] [WARNING] target utilizes Entity Framework Core LINQ Parameterized Queries.
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Parametrik sorgular SQL enjeksiyon açıklarını %100 kapatır.</span>
+                `;
+            }
+
+            // 20. NUCLEI
+            if (lower.includes('nuclei')) {
+                return `
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \\/ / / / ___/ / _ \\/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\\__,_/\\___/_/\\___/_/   v3.2.0
+
+[INF] Loading rules from /root/nuclei-templates... [8,421 templates]
+[INF] Targets loaded: 1
+[INF] Running scan against http://127.0.0.1 (all protocols)
+[INF] [http-missing-security-headers] [http] [info] http://127.0.0.1 [0 missing headers - 100% HARDENED]
+[INF] [waf-detect] [http] [info] http://127.0.0.1 [LFL Kestrel Custom Defense]
+[INF] [ssl-dns-names] [ssl] [info] 127.0.0.1:443 [*.lfl.defense.local]
+[INF] Scan completed in 2.14s. 0 vulnerabilities discovered.
+                `;
+            }
+
+            // 21. JOHN THE RIPPER
+            if (lower.includes('john')) {
+                return `
+Created directory: /root/.john
+Loaded 1 password hash (raw-sha256, Generic SHA-256 [64/64])
+Cost 1 (iteration count) is 1 for all loaded hashes
+Will run 8 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+<span style="color: #22c55e;">lostfromlight    (admin_hash)</span>
+1g 0:00:00:00 DONE (2026-11-08 00:11) 50.00g/s 452000p/s 452000c/s 452000C/s
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Basit şifreler rockyou.txt gibi listelerle saniyeler içinde kırılır. Argon2id / bcrypt gibi tuzlanmış (salted) algoritmalar zorunludur.</span>
+                `;
+            }
+
+            // 22. HASHCAT
+            if (lower.includes('hashcat')) {
+                return `
+hashcat (v6.2.6) starting...
+
+OpenCL API (OpenCL 3.0 CUDA 12.2.140) - Platform #1 [NVIDIA Corporation]
+========================================================================
+* Device #1: NVIDIA GeForce RTX 4090, 24150/24564 MB, 128MCU
+
+Hash.Mode........: 1000 (NTLM)
+Speed.#1.........: 98,420 MH/s (98.42 GH/s)
+Status...........: Cracked
+<span style="color: #22c55e;">e4f8c1... : P@ssw0rd2026!</span>
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Modern GPU'lar saniyede 100 milyar NTLM denemesi yapabilir. Bu nedenle minimum 14 karakterli karmaşık şifreler şarttır.</span>
+                `;
+            }
+
+            // 23. SEARCHSPLOIT
+            if (lower.includes('searchsploit')) {
+                return `
+-------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                          |  Path
+-------------------------------------------------------------------------------------------------------- ---------------------------------
+ Apache 2.4.49 - Path Traversal & Remote Code Execution (RCE)                                            | multiple/remote/50383.sh
+ Apache 2.4.49/2.4.50 - Remote Code Execution (RCE) (PoC)                                                | php/remote/50538.py
+-------------------------------------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+Papers: No Results
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Searchsploit yerel Exploit-DB veritabanında CVE araması yapar. Sistemleri her zaman en son güvenlik yamalarında tutun.</span>
+                `;
+            }
+
+            // 24. MSFCONSOLE
+            if (lower.includes('msfconsole')) {
+                return `
+<span style="color: #38bdf8;">
+       =[ metasploit v6.3.42-dev                          ]
++ -- --=[ 2382 exploits - 1234 auxiliary - 418 post       ]
++ -- --=[ 1391 payloads - 46 encoders - 11 nops           ]
++ -- --=[ Free Metasploit Pro trial: http://r-f.lc/trymsp ]
+</span>
+msf6 &gt; <span style="color: #22c55e;">use exploit/multi/handler</span>
+msf6 exploit(multi/handler) &gt; <span style="color: #94a3b8;">[EDUCATIONAL SANDBOX ACTIVE - SESSIONS CONFINED]</span>
+                `;
+            }
+
+            // 25. NETCAT / NC
+            if (lower.includes('nc ') || lower === 'nc') {
+                return `
+<span style="color: #22c55e;">listening on [any] 4444 ...</span>
+connect to [127.0.0.1] from (UNKNOWN) [127.0.0.1] 51234
+<span style="color: #38bdf8;">Linux lfl-core 6.8.11 #1 SMP PREEMPT x86_64</span>
+<span style="color: #22c55e;">Sunny@SUNNY:~$ id</span>
+uid=1000(Sunny) gid=1000(Sunny) groups=1000(Sunny),27(sudo)
+                `;
+            }
+
+            // 26. TCPDUMP
+            if (lower.includes('tcpdump')) {
+                return `
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+00:12:01.402 IP 192.168.1.17.51234 > 127.0.0.1.5000: Flags [S], seq 1849201, win 65535, options [mss 1460,nop,wscale 8]
+00:12:01.402 IP 127.0.0.1.5000 > 192.168.1.17.51234: Flags [S.], seq 491204, ack 1849202, win 65535, options [mss 1460]
+00:12:01.403 IP 192.168.1.17.51234 > 127.0.0.1.5000: Flags [.], ack 1, win 512
+3 packets captured, 3 packets received by filter, 0 packets dropped by kernel
+                `;
+            }
+
+            // 27. ARPSPOOF / RESPONDER
+            if (lower.includes('arpspoof') || lower.includes('responder')) {
+                return `
+<span style="color: #eab308; font-weight: bold;">[+] [Poisoning LLMNR/NBT-NS/mDNS]</span>
+[+] Responder v3.1.4.0 is listening for events on interface eth0
+[+] Listening for NBT-NS, LLMNR, MDNS requests...
+<span style="color: #22c55e;">[LLMNR] Poisoned answer sent to 192.168.1.17 for name FILESERVER</span>
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]: Ağınızda LLMNR ve NBT-NS protokollerini GPO (Group Policy) üzerinden tamamen kapatın!</span>
+                `;
+            }
+
+            // 28. CHISEL / SOCAT
+            if (lower.includes('chisel') || lower.includes('socat')) {
+                return `
+2026/11/08 00:13:00 server: Reverse tunnelling enabled
+2026/11/08 00:13:00 server: Fingerprint 8a:12:bf:44:9c:...
+2026/11/08 00:13:00 server: Listening on http://0.0.0.0:8000
+2026/11/08 00:13:02 server: session#1: client (127.0.0.1:52134) connected
+<span style="color: #22c55e;">2026/11/08 00:13:02 server: session#1: Reverse tunnel socks active on 1080</span>
+                `;
+            }
+
+            // 29. WHOIS LOOKUP
+            if (lower.startsWith('whois')) {
+                const parts = rawCmd.trim().split(/\s+/);
+                const targetDomain = parts.length > 1 ? parts[1].replace(/https?:\/\//i, '').split('/')[0] : 'lostfromlight.com';
+                return `
+<span style="color: #38bdf8; font-weight: bold;">[WHOIS QUERY // LFL INTELLIGENCE]</span>
+Domain Name: ${escapeHtml(targetDomain.toUpperCase())}
+Registry Domain ID: 2981048122_DOMAIN_COM-VRSN
+Registrar WHOIS Server: whois.cloudflare.com
+Registrar URL: https://www.cloudflare.com
+Updated Date: 2026-11-01T04:12:00Z
+Creation Date: 2024-05-18T10:20:00Z
+Registry Expiry Date: 2028-05-18T10:20:00Z
+Registrar: Cloudflare, Inc.
+Registrar IANA ID: 1910
+Reseller: LFL Cyber Defense Systems
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Name Server: NS1.LOSTFROMLIGHT.COM (192.168.1.10)
+Name Server: NS2.LOSTFROMLIGHT.COM (192.168.1.11)
+DNSSEC: signedDelegation
+<span style="color: #22c55e;">[✔] WHOIS sorgusu tamamlandı. Alan adı Cloudflare ve LFL zırhı ile korunmaktadır.</span>
+<span style="color: #38bdf8;">[DEFENSIVE TAKEAWAY]:</span> <span style="color: #cbd5e1;">Whois sorgusu hedefin DNS sunucularını ve servis sağlayıcısını açığa çıkarır. Kurumsal sistemlerde WHOIS Privacy aktif edilmelidir.</span>
+                `;
+            }
+
+            // 30. DIG / NSLOOKUP
+            if (lower.startsWith('dig') || lower.startsWith('nslookup')) {
+                const parts = rawCmd.trim().split(/\s+/);
+                const targetDomain = parts.length > 1 ? parts[1].replace(/https?:\/\//i, '').split('/')[0] : 'lostfromlight.com';
+                return `
+; &lt;&lt;&gt;&gt; DiG 9.18.28-1-Debian &lt;&lt;&gt;&gt; ${escapeHtml(targetDomain)}
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 48120
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 2, ADDITIONAL: 1
+
+;; QUESTION SECTION:
+;${escapeHtml(targetDomain)}.			IN	A
+
+;; ANSWER SECTION:
+${escapeHtml(targetDomain)}.		300	IN	A	104.21.44.18
+${escapeHtml(targetDomain)}.		300	IN	A	172.67.182.91
+
+;; AUTHORITY SECTION:
+${escapeHtml(targetDomain)}.		172800	IN	NS	ns1.lostfromlight.com.
+${escapeHtml(targetDomain)}.		172800	IN	NS	ns2.lostfromlight.com.
+
+;; Query time: 12 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)
+;; WHEN: Sun Nov 08 01:28:00 UTC 2026
+;; MSG SIZE  rcvd: 124
+<span style="color: #22c55e;">[✔] DNS çözümlemesi başarılı: Hedef A ve NS kayıtları listelendi.</span>
+                `;
+            }
+
+            // 31. CURL
+            if (lower.includes('curl')) {
+                return `
+* Connected to 127.0.0.1 (127.0.0.1) port 443 (#0)
+* ALPN: offers h2,http/1.1
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.3 (IN), TLS handshake, [Certificate verification successful]
+&gt; GET / HTTP/1.1
+&gt; Host: lostfromlight.com
+&gt; User-Agent: curl/8.5.0
+&gt; Accept: */*
+&lt; HTTP/1.1 200 OK
+<span style="color: #22c55e;">&lt; Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</span>
+<span style="color: #22c55e;">&lt; X-Frame-Options: DENY</span>
+<span style="color: #22c55e;">&lt; X-Content-Type-Options: nosniff</span>
+<span style="color: #22c55e;">&lt; Content-Security-Policy: default-src 'self'</span>
+<span style="color: #22c55e;">&lt; X-LFL-Shield: ACTIVE [Zero-Trust Defense]</span>
+<span style="color: #94a3b8;">&lt; Server: [REDACTED BY LFL DEFENSE]</span>
+                `;
+            }
+
+            // 30. WHOAMI / ID / UNAME / SYSADMIN
+            if (lower === 'whoami') {
+                return `<span style="color: #22c55e;">Sunny</span>`;
+            }
+            if (lower === 'id') {
+                return `uid=1000(Sunny) gid=1000(Sunny) groups=1000(Sunny),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),122(kvm)`;
+            }
+            if (lower.startsWith('uname')) {
+                return `Linux SUNNY 6.8.11-kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.8.11-1kali1 (2026-11-08) x86_64 GNU/Linux`;
+            }
+            if (lower === 'pwd') {
+                return `/home/Sunny`;
+            }
+            if (lower.startsWith('ls')) {
+                return `
+<span style="color: #38bdf8;">Desktop</span>   <span style="color: #38bdf8;">Documents</span>   <span style="color: #38bdf8;">Downloads</span>   <span style="color: #38bdf8;">wordlists</span>
+<span style="color: #22c55e;">Audit-Headers.ps1</span>   <span style="color: #22c55e;">Port-Scan.ps1</span>   <span style="color: #94a3b8;">common.txt</span>   <span style="color: #94a3b8;">targets.txt</span>
+                `;
+            }
+            if (lower.includes('os-release')) {
+                return `
+PRETTY_NAME="Kali GNU/Linux Rolling"
+NAME="Kali GNU/Linux"
+VERSION_ID="2026.1"
+VERSION="2026.1"
+ID=kali
+ID_LIKE=debian
+HOME_URL="https://www.kali.org/"
+SUPPORT_URL="https://forums.kali.org/"
+BUG_REPORT_URL="https://bugs.kali.org/"
+                `;
+            }
+            if (lower.includes('/etc/passwd')) {
+                return `
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+Sunny:x:1000:1000:Sunny,,,:/home/Sunny:/bin/bash
+lostfromlight:x:1001:1001:Operator,,,:/home/lostfromlight:/bin/bash
+                `;
+            }
+            if (lower.includes('/etc/shadow')) {
+                return `<span style="color: #ef4444;">cat: /etc/shadow: İzin reddedildi (Permission denied). root yetkisi gereklidir.</span>`;
+            }
+            if (lower.includes('netstat') || lower.includes('ss -')) {
+                return `
+State      Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+LISTEN     0      511    0.0.0.0:80          0.0.0.0:*    users:(("kestrel",pid=1420,fd=7))
+LISTEN     0      511    0.0.0.0:443         0.0.0.0:*    users:(("kestrel",pid=1420,fd=8))
+LISTEN     0      128    127.0.0.1:5000      0.0.0.0:*    users:(("dotnet",pid=1502,fd=12))
+LISTEN     0      128    127.0.0.1:8080      0.0.0.0:*    users:(("gateway",pid=1890,fd=4))
+                `;
+            }
+            if (lower.includes('ip a') || lower.includes('ifconfig')) {
+                return `
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 127.0.0.1/8 scope host lo
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    inet 192.168.1.22/24 brd 192.168.1.255 scope global dynamic eth0
+    inet6 fe80::5054:ff:fe12:3456/64 scope link
+                `;
+            }
+            if (lower.startsWith('ps')) {
+                return `
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1 168204 11204 ?        Ss   00:00   0:01 /sbin/init
+Sunny     1420  0.2  1.8 842100 89204 ?        Sl   00:01   0:08 /usr/bin/dotnet CyberBlog.dll
+Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
+                `;
+            }
+            if (lower === 'date') {
+                return new Date().toUTCString();
+            }
+            if (lower === 'uptime') {
+                return ` 00:14:12 up 2 days, 14:02,  2 users,  load average: 0.12, 0.08, 0.05`;
+            }
+
+            // 1. Check Academy Rooms Expected Commands (Red, Blue, Purple)
+            if (window.ACADEMY_ROOMS && Array.isArray(window.ACADEMY_ROOMS)) {
+                const norm = (s) => (s || '').replace(/["']/g, "'").replace(/^sudo\s+/, '').replace(/^powershell\s+/, '').replace(/^\.\//, '').replace(/;+\s*$/, '').replace(/\s+/g, ' ').trim().toLowerCase();
+                const enteredNorm = norm(rawCmd);
+                const matchedRoom = window.ACADEMY_ROOMS.find(r => norm(r.expectedCommand) === enteredNorm);
+                if (matchedRoom) {
+                    return '<div style="font-family: var(--font-mono); font-size: 11.5px; line-height: 1.5; margin: 4px 0;">' +
+                        '<div style="color: #10b981; font-weight: 800; margin-bottom: 6px;">[🎯 SİBER AKADEMİ GÖREVİ BAŞARILI // ODA: ' + escapeHtml(matchedRoom.id.toUpperCase()) + ' - ' + escapeHtml(matchedRoom.title) + ']</div>' +
+                        '<pre style="background: rgba(0, 0, 0, 0.55); border-left: 3px solid #10b981; padding: 10px 14px; border-radius: 4px; color: #f1f5f9; white-space: pre-wrap; font-family: var(--font-mono);">' + escapeHtml(matchedRoom.terminalSuccessOutput) + '</pre>' +
+                        '<div style="color: #38bdf8; font-size: 11px; margin-top: 6px;">[★ BAYRAK]: <code style="color: #facc15; font-weight: bold;">' + escapeHtml(matchedRoom.flag) + '</code></div>' +
+                        '</div>';
+                }
+            }
+
+            // 2. Extra Native Utilities
+            if (lower.startsWith('ping ')) {
+                const host = rawCmd.split(' ')[1] || '127.0.0.1';
+                return 'PING ' + escapeHtml(host) + ' (' + escapeHtml(host) + ') 56(84) bytes of data.\n64 bytes from ' + escapeHtml(host) + ': icmp_seq=1 ttl=64 time=0.038 ms\n64 bytes from ' + escapeHtml(host) + ': icmp_seq=2 ttl=64 time=0.042 ms\n64 bytes from ' + escapeHtml(host) + ': icmp_seq=3 ttl=64 time=0.035 ms\n--- ' + escapeHtml(host) + ' ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2048ms\nrtt min/avg/max/mdev = 0.035/0.038/0.042/0.003 ms';
+            }
+            if (lower.startsWith('curl ') || lower.startsWith('curl.exe ')) {
+                return 'HTTP/1.1 200 OK\nDate: ' + new Date().toUTCString() + '\nServer: Kestrel (LFL-Secured)\nContent-Type: text/html; charset=utf-8\nStrict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nX-Frame-Options: DENY\nContent-Length: 10420';
+            }
+            if (lower.startsWith('echo ')) {
+                return escapeHtml(rawCmd.substring(5));
+            }
+            if (lower === 'cat /etc/passwd') {
+                return 'root:x:0:0:root:/root:/bin/bash\ndaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin\nkali:x:1000:1000:Kali Linux,,,:/home/kali:/bin/bash\nsshd:x:110:65534::/run/sshd:/usr/sbin/nologin\nwww-data:x:33:33:www-data:/var/www:/usr/sbin/nologin';
+            }
+            if (lower === 'cat /etc/os-release') {
+                return 'PRETTY_NAME="Kali GNU/Linux Rolling"\nNAME="Kali GNU/Linux"\nVERSION_ID="2026.1"\nVERSION="2026.1"\nID=kali\nID_LIKE=debian';
+            }
+            if (lower === 'env') {
+                return 'USER=kali\nHOME=/home/kali\nSHELL=/bin/bash\nTERM=xterm-256color\nPATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin';
+            }
+            // Smart Academy 142+ Command Simulation Fallback
+            if (window.ACADEMY_COMMANDS && Array.isArray(window.ACADEMY_COMMANDS)) {
+                const cleanLower = lower.replace(/^sudo\s+/, '').replace(/^powershell\s+/, '').replace(/^\.\//, '').replace(/^\\/, '').trim();
+                const userFirstWord = cleanLower.split(' ')[0] || '';
+
+                const found = window.ACADEMY_COMMANDS.find(c => {
+                    const cClean = c.cmd.toLowerCase().trim().replace(/^sudo\s+/, '').replace(/^powershell\s+/, '').replace(/^\.\//, '').replace(/^\\/, '').trim();
+                    const cFirstWord = cClean.split(' ')[0] || '';
+
+                    // 1. Exact match (with or without sudo/powershell)
+                    if (cClean === cleanLower || c.cmd.toLowerCase().trim() === lower) return true;
+
+                    // 2. Exact match of primary command binary
+                    if (userFirstWord && (userFirstWord === cFirstWord)) return true;
+
+                    // 3. Substring match
+                    if (cleanLower.includes(cClean) || cClean.includes(cleanLower)) return true;
+
+                    return false;
+                });
+
+                if (found) {
+                    return `
+<div style="font-family: var(--font-mono); font-size: 11.5px; line-height: 1.5; margin: 4px 0;">
+    <div style="color: #38bdf8; font-weight: 700;">[+] EXEC: <code style="color: #ffffff; font-weight: 800;">${escapeHtml(rawCmd)}</code></div>
+    <div style="color: #64748b; font-size: 10.5px; margin-bottom: 6px;">Kategori: <span style="color: #a5f3fc;">${escapeHtml(found.categoryName)}</span> &bull; <span style="color: #22c55e;">[${escapeHtml(found.badge)}]</span> &bull; Durum: 200 OK &bull; PID: ${Math.floor(1000 + Math.random() * 9000)}</div>
+    <div style="background: rgba(0, 0, 0, 0.45); border-left: 3px solid var(--cyan); padding: 8px 12px; border-radius: 4px; margin: 6px 0; color: #e2e8f0;">
+        <div style="color: #38bdf8; font-weight: bold; margin-bottom: 4px;">▶ ${escapeHtml(found.title)}</div>
+        <div style="color: #cbd5e1; font-size: 11.5px;">${escapeHtml(found.desc)}</div>
+    </div>
+    <div style="color: #10b981; font-size: 11px;">[✔] Araç simülasyonu başarıyla tamamlandı. Detaylar ve kullanım parametreleri için Siber Akademi modülünü inceleyebilirsiniz.</div>
+</div>
+                    `;
+                }
+            }
+
+            // Generic fallback
+            return `
+<span style="color: #fca5a5;">bash: ${escapeHtml(rawCmd)}: komut simülasyon labında bulunamadı.</span>
+<span style="color: #94a3b8;">Kullanılabilir 140+ komutu görmek için <code style="color: #22c55e;">help</code> yazın veya Siber Akademi sayfasındaki komutlara tıklayın.</span>
+            `;
+        }
+
+        function getTerminalAllCommands() {
+            const defaults = [
+                'help', 'clear', 'whoami', 'id', 'pwd', 'ls -la', 'uname -a', 'ip a', 'ps aux',
+                'uptime', 'date', 'whois lostfromlight.com', 'dig lostfromlight.com', 'curl.exe -I https://lostfromlight.com'
+            ];
+            const academyList = (window.ACADEMY_COMMANDS || []).map(c => c.cmd);
+            return Array.from(new Set([...defaults, ...academyList]));
+        }
+
+        let paletteCursor = -1;
+        let tabMatchIndex = 0;
+        let lastTabPrefix = null;
+
+        // Keydown handling for input (Enter, Up, Down, Tab)
+        input.addEventListener('keydown', (e) => {
+            const activeTab = getActiveTab();
+            const allCmds = getTerminalAllCommands();
+
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const cmd = input.value;
+                input.value = '';
+                paletteCursor = -1;
+                tabMatchIndex = 0;
+                lastTabPrefix = null;
+                executeCommand(cmd);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                tabMatchIndex = 0;
+                lastTabPrefix = null;
+                if (activeTab.cmdHistory && activeTab.cmdHistory.length > 0) {
+                    if (activeTab.historyCursor > 0) activeTab.historyCursor--;
+                    input.value = activeTab.cmdHistory[activeTab.historyCursor] || '';
+                } else {
+                    // History is empty: cycle through all 142+ academy commands!
+                    if (paletteCursor > 0) {
+                        paletteCursor--;
+                    } else {
+                        paletteCursor = allCmds.length - 1;
+                    }
+                    input.value = allCmds[paletteCursor] || '';
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                tabMatchIndex = 0;
+                lastTabPrefix = null;
+                if (activeTab.cmdHistory && activeTab.cmdHistory.length > 0) {
+                    if (activeTab.historyCursor < activeTab.cmdHistory.length - 1) {
+                        activeTab.historyCursor++;
+                        input.value = activeTab.cmdHistory[activeTab.historyCursor] || '';
+                    } else {
+                        activeTab.historyCursor = activeTab.cmdHistory.length;
+                        input.value = '';
+                    }
+                } else {
+                    // History is empty: cycle through all 142+ academy commands!
+                    if (paletteCursor < allCmds.length - 1) {
+                        paletteCursor++;
+                    } else {
+                        paletteCursor = 0;
+                    }
+                    input.value = allCmds[paletteCursor] || '';
+                }
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                const current = input.value.trim().toLowerCase();
+                let matches = [];
+
+                if (!current) {
+                    matches = allCmds;
+                } else {
+                    const prefixMatches = allCmds.filter(c => c.toLowerCase().startsWith(current));
+                    const containsMatches = allCmds.filter(c => !c.toLowerCase().startsWith(current) && c.toLowerCase().includes(current));
+                    matches = [...prefixMatches, ...containsMatches];
+                }
+
+                if (matches.length > 0) {
+                    if (lastTabPrefix === current) {
+                        tabMatchIndex = (tabMatchIndex + 1) % matches.length;
+                    } else {
+                        tabMatchIndex = 0;
+                        lastTabPrefix = current;
+                    }
+                    input.value = matches[tabMatchIndex];
+                }
+            } else {
+                lastTabPrefix = null;
+            }
+        });
+
+        // Initialize tabs UI
+        renderTabs();
+    }
+
+    // ==========================================
+    // SİBER AKADEMİ 15 BÖLÜM EĞİTİM PLANI ENGINE
+    // ==========================================
+    function bindAcademyCurriculum() {
+        const tabsBar = document.getElementById('curriculum-tabs-bar');
+        const container = document.getElementById('curriculum-chapters-container');
+        if (!tabsBar || !container) return;
+
+        window.activateAcademyTeamTab = function (team) {
+            const tabs = tabsBar.querySelectorAll('.curriculum-team-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            const targetTab = tabsBar.querySelector(`[data-curriculum-team="${team}"]`) || tabsBar.querySelector('[data-curriculum-team="all"]');
+            if (targetTab) targetTab.classList.add('active');
+
+            const cards = container.querySelectorAll('.curriculum-chapter-card');
+            cards.forEach(card => {
+                const scope = card.dataset.teamScope;
+                if (team === 'all' || scope === team) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        };
+
+        // Tab click delegation
+        tabsBar.addEventListener('click', (e) => {
+            const btn = e.target.closest('.curriculum-team-btn');
+            if (!btn) return;
+            const team = btn.dataset.curriculumTeam || 'all';
+            window.activateAcademyTeamTab(team);
+        });
+
+        // Jump buttons delegation inside curriculum cards
+        container.addEventListener('click', (e) => {
+            const btnJumpCat = e.target.closest('.btn-jump-commands-cat');
+            if (btnJumpCat) {
+                const cat = btnJumpCat.dataset.cat || 'all';
+                navigateToPage('page-commands');
+                const pill = document.querySelector(`#academy-category-pills [data-cat="${cat}"]`);
+                if (pill) pill.click();
+                return;
+            }
+
+            const btnJumpCmd = e.target.closest('.btn-jump-terminal-cmd');
+            if (btnJumpCmd) {
+                const cmd = btnJumpCmd.dataset.cmd || '';
+                navigateToPage('page-terminal');
+                if (cmd && typeof window.runKaliCommand === 'function') {
+                    window.runKaliCommand(cmd);
+                }
+            }
+        });
+
+        // Initialize default tab: red team active
+        window.activateAcademyTeamTab('red');
+    }
+
+    // ==========================================
+    // SİBER AKADEMİ 140+ COMMANDS ENGINE & FILTER
+    // ==========================================
+    function bindAcademyCheatsheet() {
+        const container = document.getElementById('academy-commands-container');
+        const searchInput = document.getElementById('academy-cmd-search');
+        const pillContainer = document.getElementById('academy-category-pills');
+        const countBadge = document.getElementById('academy-count-badge');
+        const btnOpenTerminal = document.getElementById('btn-open-terminal-from-academy');
+
+        if (btnOpenTerminal) {
+            btnOpenTerminal.addEventListener('click', () => navigateToPage('page-terminal'));
+        }
+
+        let activeCat = 'all';
+
+        function renderAcademyCommands(category, query) {
+            if (!container) return;
+            const commands = window.ACADEMY_COMMANDS || [];
+            const q = (query || '').toLowerCase().trim();
+
+            const filtered = commands.filter(item => {
+                const matchesCat = category === 'all' || item.category === category;
+                const matchesQuery = !q ||
+                    item.title.toLowerCase().includes(q) ||
+                    item.desc.toLowerCase().includes(q) ||
+                    item.cmd.toLowerCase().includes(q) ||
+                    item.badge.toLowerCase().includes(q) ||
+                    item.categoryName.toLowerCase().includes(q);
+                return matchesCat && matchesQuery;
+            });
+
+            if (countBadge) {
+                countBadge.textContent = `${filtered.length} / ${commands.length} KOMUT LİSTELENDİ`;
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px; background: var(--bg-card); border-radius: var(--radius-md); border: 1px dashed var(--border);">
+                        <p style="color: var(--text-muted); font-size: 13.5px;">"${escapeHtml(query)}" aramasına uygun komut bulunamadı.</p>
+                        <button class="btn-ghost-sm" id="btn-reset-academy-search" style="margin-top: 10px;">Filtreleri Temizle</button>
+                    </div>
+                `;
+                const btnReset = document.getElementById('btn-reset-academy-search');
+                if (btnReset) {
+                    btnReset.addEventListener('click', () => {
+                        if (searchInput) searchInput.value = '';
+                        if (pillContainer) {
+                            pillContainer.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                            const allPill = pillContainer.querySelector('[data-cat="all"]');
+                            if (allPill) allPill.classList.add('active');
+                        }
+                        activeCat = 'all';
+                        renderAcademyCommands('all', '');
+                    });
+                }
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => `
+                <div class="cheatsheet-card" data-cmd-id="${item.id}">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
+                        <strong style="color: #ffffff; font-size: 14px;">${item.id}. ${escapeHtml(item.title)}</strong>
+                        <div style="display: flex; gap: 6px; align-items: center;">
+                            <span class="badge-soft-cyan" style="font-size: 10px; font-weight: 700;">${escapeHtml(item.categoryName)}</span>
+                            <span class="badge-tech">${escapeHtml(item.badge)}</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 12.5px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.5;">
+                        ${escapeHtml(item.desc)}
+                    </p>
+                    <div class="cmd-code-line">
+                        <code>${escapeHtml(item.cmd)}</code>
+                        <div class="cmd-actions">
+                            <button type="button" class="btn-cmd-copy" data-copy="${escapeHtml(item.cmd)}">📋 Kopyala</button>
+                            <button type="button" class="btn-cmd-run" data-run="${escapeHtml(item.cmd)}">⚡ Kali'de Çalıştır</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search input event
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                renderAcademyCommands(activeCat, searchInput.value);
+            });
+        }
+
+        // Category pills click via delegation
+        if (pillContainer) {
+            pillContainer.addEventListener('click', (e) => {
+                const pill = e.target.closest('.filter-pill');
+                if (!pill) return;
+                pillContainer.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                activeCat = pill.dataset.cat || 'all';
+                renderAcademyCommands(activeCat, searchInput ? searchInput.value : '');
+            });
+        }
+
+        // Delegated click handler on container for copy & run
+        if (container) {
+            container.addEventListener('click', (e) => {
+                const copyBtn = e.target.closest('.btn-cmd-copy');
+                if (copyBtn) {
+                    e.stopPropagation();
+                    const textToCopy = copyBtn.dataset.copy || '';
+                    if (!textToCopy) return;
+
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = copyBtn.textContent;
+                        copyBtn.textContent = '✔ Kopyalandı!';
+                        copyBtn.style.borderColor = 'var(--green)';
+                        copyBtn.style.color = 'var(--green)';
+                        showToast('success', 'Komut Kopyalandı', `"${textToCopy}" panoya kopyalandı.`);
+                        setTimeout(() => {
+                            copyBtn.textContent = originalText;
+                            copyBtn.style.borderColor = '';
+                            copyBtn.style.color = '';
+                        }, 1800);
+                    }).catch(() => {
+                        showToast('error', 'Kopyalama Hatası', 'Panoya kopyalama izni verilmedi.');
+                    });
+                    return;
+                }
+
+                const runBtn = e.target.closest('.btn-cmd-run');
+                if (runBtn) {
+                    e.stopPropagation();
+                    const cmdToRun = runBtn.dataset.run || '';
+                    if (!cmdToRun) return;
+
+                    if (typeof window.runKaliCommand === 'function') {
+                        window.runKaliCommand(cmdToRun);
+                        showToast('info', 'Kali Terminali Devrede', `"${cmdToRun}" terminalde çalıştırıldı.`);
+                    }
+                }
+            });
+        }
+
+        // Quick Command Chips Bar on Terminal Page
+        document.querySelectorAll('.quick-cmd-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cmd = btn.dataset.terminalCmd;
+                if (cmd && typeof window.runKaliCommand === 'function') {
+                    window.runKaliCommand(cmd);
+                }
+            });
+        });
+
+        // Initial render of all 142 commands
+        renderAcademyCommands('all', '');
+    }
+
+    // ==========================================
+    // AUTHENTICATION & SESSION STORAGE ENGINE
+    // ==========================================
+    async function restoreSession() {
+        const token = localStorage.getItem('cyber_token') || sessionStorage.getItem('cyber_token');
+        if (!token) {
+            updateAuthUI(null);
+            return;
+        }
+
+        state.token = token;
+        try {
+            const data = await api.me();
+            if (data && data.user) {
+                state.currentUser = data.user;
+                updateAuthUI(data.user);
+            } else {
+                clearSession();
+            }
+        } catch {
+            clearSession();
+        }
+    }
+
+    function updateAuthUI(user) {
+        const zone = document.getElementById('user-auth-zone');
+        const adminSection = document.getElementById('nav-section-admin');
+        const btnLogs = document.getElementById('nav-btn-logs');
+
+        if (!zone) return;
+
+        if (user) {
+            const isAdmin = user.role === 'admin' || user.username.toLowerCase() === 'burak_wyxz';
+            zone.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="user-pill-badge">
+                        <span class="pulsing-beacon" style="background: ${isAdmin ? 'var(--red)' : 'var(--green)'};"></span>
+                        <span style="font-weight: 700; color: #ffffff;">${escapeHtml(user.username)}</span>
+                        <span class="user-role-tag ${isAdmin ? 'admin' : ''}">${isAdmin ? 'YÖNETİCİ' : 'KULLANICI'}</span>
+                    </div>
+                    <button class="btn-ghost-sm" id="topbar-logout-btn" title="Oturumu Kapat">Çıkış</button>
+                </div>
+            `;
+
+            const logoutBtn = document.getElementById('topbar-logout-btn');
+            if (logoutBtn) logoutBtn.addEventListener('click', clearSession);
+
+            // Show admin visitor logs & admin superpowers if burak_wyxz
+            if (adminSection) adminSection.style.display = isAdmin ? 'block' : 'none';
+            if (btnLogs) btnLogs.style.display = isAdmin ? 'flex' : 'none';
+            const btnBypass = document.getElementById('btn-admin-bypass-ctf');
+            if (btnBypass) btnBypass.classList.toggle('hidden', !isAdmin);
+        } else {
+            zone.innerHTML = `
+                <button class="btn-glow-blue btn-sm" id="topbar-login-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                        <polyline points="10 17 15 12 10 7"/>
+                        <line x1="15" y1="12" x2="3" y2="12"/>
+                    </svg>
+                    <span>Giriş</span>
+                </button>
+            `;
+
+            const loginBtn = document.getElementById('topbar-login-btn');
+            if (loginBtn) loginBtn.addEventListener('click', openAuthModal);
+
+            if (adminSection) adminSection.style.display = 'none';
+            if (btnLogs) btnLogs.style.display = 'none';
+        }
+
+        renderSessionStorageInspector();
+    }
+
+    function clearSession() {
+        state.token = null;
+        state.currentUser = null;
+        sessionStorage.removeItem('cyber_token');
+        sessionStorage.removeItem('cyber_callsign');
+        sessionStorage.removeItem('cyber_role');
+        sessionStorage.removeItem('cyber_status');
+        sessionStorage.removeItem('cyber_auth_timestamp');
+        localStorage.removeItem('cyber_token');
+        localStorage.removeItem('cyber_user');
+        localStorage.removeItem('cyber_callsign');
+        localStorage.removeItem('cyber_role');
+
+        updateAuthUI(null);
+        showToast('info', 'Oturum Kapatıldı', 'Session Storage temizlendi.');
+        if (state.activePage === 'page-logs') {
+            navigateToPage('page-dashboard');
+        }
+    }
+
+    function bindAuthModal() {
+        const modal = document.getElementById('auth-modal');
+        const closeBtn = document.getElementById('btn-close-auth-modal');
+        const tabSignin = document.getElementById('modal-tab-signin');
+        const tabSignup = document.getElementById('modal-tab-signup');
+        const form = document.getElementById('auth-modal-form');
+        const rowConfirm = document.getElementById('auth-row-confirm');
+        const titleEl = document.getElementById('auth-main-title');
+        const subEl = document.getElementById('auth-main-subtitle');
+        const btnExec = document.getElementById('auth-btn-execute');
+        const alertBox = document.getElementById('auth-modal-alert');
+        const inpUser = document.getElementById('auth-input-username');
+        const inpPass = document.getElementById('auth-input-password');
+        const inpConf = document.getElementById('auth-input-confirm');
+
+        let isSignup = false;
+
+        function setMode(signup) {
+            isSignup = signup;
+            if (alertBox) alertBox.innerHTML = '';
+            if (tabSignin) tabSignin.classList.toggle('active', !signup);
+            if (tabSignup) tabSignup.classList.toggle('active', signup);
+            if (rowConfirm) rowConfirm.classList.toggle('hidden', !signup);
+
+            if (signup) {
+                if (titleEl) titleEl.textContent = 'Yeni Operatör Kaydı';
+                if (subEl) subEl.textContent = 'Yeni kullanıcı hesabı oluşturun ve Session Storage tokeni edinin';
+                if (btnExec) btnExec.textContent = 'Kayıt Ol & Token Al →';
+            } else {
+                if (titleEl) titleEl.textContent = 'Operatör Kimlik Doğrulama';
+                if (subEl) subEl.textContent = 'Güvenli Erişim Ağ Geçidi • JWT Bearer Token Yönetimi';
+                if (btnExec) btnExec.textContent = 'Giriş Yap & Session Storage\'a Kaydet →';
+            }
+        }
+
+        if (tabSignin) tabSignin.addEventListener('click', () => setMode(false));
+        if (tabSignup) tabSignup.addEventListener('click', () => setMode(true));
+        if (closeBtn && modal) closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.add('hidden');
+            });
+        }
+
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const username = inpUser.value.trim();
+                const password = inpPass.value;
+                const confirm = inpConf ? inpConf.value : '';
+
+                if (isSignup && password !== confirm) {
+                    if (alertBox) {
+                        alertBox.innerHTML = `<div class="alert-box-danger">Şifreler birbiriyle eşleşmiyor!</div>`;
+                    }
+                    return;
+                }
+
+                if (alertBox) {
+                    alertBox.innerHTML = `<div class="alert-box-info">Doğrulanıyor, lütfen bekleyin...</div>`;
+                }
+
+                try {
+                    const res = isSignup
+                        ? await api.register(username, password)
+                        : await api.login(username, password);
+
+                    if (res.ok && res.data && res.data.token) {
+                        state.token = res.data.token;
+                        state.currentUser = res.data.user;
+
+                        // Save directly into window.sessionStorage
+                        sessionStorage.setItem('cyber_token', res.data.token);
+                        sessionStorage.setItem('cyber_callsign', res.data.user.username);
+                        sessionStorage.setItem('cyber_role', res.data.user.role);
+                        sessionStorage.setItem('cyber_status', 'AUTHORIZED_BEARER');
+                        sessionStorage.setItem('cyber_auth_timestamp', new Date().toISOString());
+
+                        updateAuthUI(res.data.user);
+                        modal.classList.add('hidden');
+                        form.reset();
+
+                        showToast('success', 'Giriş Başarılı', `Hoş geldiniz ${res.data.user.username}. JWT token Session Storage'a kaydedildi.`);
+
+                        // Telemetry ping
+                        pingVisitorTelemetry(state.activePage);
+                    } else {
+                        const errMsg = res.data?.error || 'Kullanıcı adı veya şifre hatalı.';
+                        if (alertBox) {
+                            alertBox.innerHTML = `<div class="alert-box-danger">${escapeHtml(errMsg)}</div>`;
+                        }
+                    }
+                } catch (err) {
+                    if (alertBox) {
+                        alertBox.innerHTML = `<div class="alert-box-danger">Bağlantı hatası oluştu: ${escapeHtml(err.message)}</div>`;
+                    }
+                }
+            });
+        }
+    }
+
+    function openAuthModal() {
+        const modal = document.getElementById('auth-modal');
+        if (modal) modal.classList.remove('hidden');
+    }
+
+    // ==========================================
+    // JWT LAB & SESSION STORAGE INSPECTOR
+    // ==========================================
+    function renderSessionStorageInspector() {
+        const grid = document.getElementById('storage-keys-grid');
+        const pill = document.getElementById('storage-status-pill');
+        if (!grid) return;
+
+        const keys = [
+            'cyber_token',
+            'cyber_callsign',
+            'cyber_role',
+            'cyber_status',
+            'cyber_auth_timestamp',
+            'cyber_theme'
+        ];
+
+        let activeCount = 0;
+        grid.innerHTML = keys.map(k => {
+            const val = sessionStorage.getItem(k);
+            const hasVal = val !== null && val !== undefined && val !== '';
+            if (hasVal) activeCount++;
+
+            const displayVal = hasVal
+                ? (k === 'cyber_token' ? `${val.substring(0, 32)}... (${val.length} chars)` : val)
+                : '<span style="color: var(--text-muted);">(sessionStorage içinde yok)</span>';
+
+            return `
+                <div class="storage-key-card ${hasVal ? 'filled' : 'empty'}">
+                    <div class="storage-key-name">sessionStorage['${k}']</div>
+                    <div class="storage-key-value">${escapeHtml(displayVal)}</div>
+                </div>
+            `;
+        }).join('');
+
+        if (pill) {
+            if (activeCount > 0) {
+                pill.className = 'storage-status-pill active';
+                pill.textContent = `● Session Storage: Aktif (${activeCount} Anahtar)`;
+            } else {
+                pill.className = 'storage-status-pill empty';
+                pill.textContent = '● Session Storage: Boş';
+            }
+        }
+    }
+
+    // ==========================================
+    // SİBER ROL & TAKIM TESTİ (RED vs BLUE vs PURPLE)
+    // ==========================================
+    function bindCyberRoleQuiz() {
+        const container = document.getElementById('quiz-main-container');
+        const btnRestart = document.getElementById('btn-restart-quiz');
+        if (!container) return;
+
+        const quizQuestions = [
+            {
+                q: "1. Bir otele gittiğinde oda kapısındaki elektronik kartlı kilidi görünce aklından ilk ne geçer?",
+                options: [
+                    { text: "Bu kart okuyucu acaba manyetik bir hileyle kandırılabilir mi veya kilitte gizli bir açık var mıdır?", team: "red", icon: "" },
+                    { text: "Umarım kapı zorlandığında içerideki güvenlik paneline ve resepsiyona anında alarm gidiyordur.", team: "blue", icon: "" },
+                    { text: "Otelin genel güvenlik planını merak ederim; yangın çıkarsa veya elektrik kesilirse kapılar ne yapıyor?", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "2. Arkadaşlarınla kutu oyunu veya strateji oyunu oynarken hangi taktik seni daha çok eğlendirir?",
+                options: [
+                    { text: "Rakibin hiç beklemediği gizli yollardan arkasına dolanıp sürpriz hamleyle kaleyi düşürmek.", team: "red", icon: "" },
+                    { text: "Kendi bölgemi aşılmaz bir kale haline getirip gelen tüm saldırıları tek tek püskürtmek.", team: "blue", icon: "" },
+                    { text: "Kimin kime saldıracağını önceden tahmin edip masadaki dengeleri ve ortak kuralları yönetmek.", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "3. Bir polisiye veya casusluk filminde hangi karakterin yerinde olmak isterdin?",
+                options: [
+                    { text: "En karmaşık şifreli kasaları çözen ve kimseye görünmeden içeri sızabilen dahi casus.", team: "red", icon: "" },
+                    { text: "Olay yerindeki en ufak ayak izini veya parmak izini büyüteçle inceleyip suçluyu yakalayan adli tıp uzmanı.", team: "blue", icon: "" },
+                    { text: "Hem suçlunun psikolojisini çözen hem de ekibin operasyonunu yöneten büyük resmi gören başkomiser.", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "4. Telefonuna 'Tebrikler! 25.000 TL hediye kazandınız, hemen linke tıklayın' mesajı gelse ne yaparsın?",
+                options: [
+                    { text: "Bu sahte linkin arkasında kimin olduğunu ve insanları nasıl kandırdıklarını merak edip perde arkasını incelerim.", team: "red", icon: "" },
+                    { text: "Numarayı anında engeller, mesajı siler ve ailemi bu tür tuzaklara düşmemeleri için hemen uyarırım.", team: "blue", icon: "" },
+                    { text: "Bu tür dolandırıcılık yöntemlerini inceleyip insanların kandırılmasını önleyecek bir bilinçlendirme rehberi hazırlarım.", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "5. Yeni aldığın akıllı telefon veya cihazın kutusunu ilk açtığında ne yaparsın?",
+                options: [
+                    { text: "Ayarlarını kurcalayıp gizli menüleri, kısıtlamaları veya üreticinin kapatmak istediği şeyleri açmaya çalışırım.", team: "red", icon: "" },
+                    { text: "Hemen koruyucu kılıf takıp; yüz tanıma, çift adımlı SMS doğrulama ve konum güvenliği ayarlarını açarım.", team: "blue", icon: "" },
+                    { text: "Kullanım kılavuzunu inceleyip cihazın hem sunduğu avantajları hem de zayıf yönlerini eksiksiz öğrenirim.", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "6. Büyük bir bankada veya kurumda çalışsaydın hangi görev sana daha heyecan verici gelirdi?",
+                options: [
+                    { text: "Yönetimin izniyle şirketin binasına veya sistemine gizlice sızmayı deneyip güvenlik açıklarını ispatlamak.", team: "red", icon: "" },
+                    { text: "Bankanın kasasını ve müşteri hesaplarını 7/24 izleyip hiçbir şüpheli para hareketine izin vermemek.", team: "blue", icon: "" },
+                    { text: "Hem güvenlik görevlilerini hem teftiş ekibini toplayıp acil durum ve güvenlik tatbikatları yaptırmak.", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "7. Bir zeka bulmacası veya kaçış odası oyununda seni en çok tatmin eden an hangisidir?",
+                options: [
+                    { text: "Oyun kurucusunun fark etmediği bir kestirme yol veya ipucu bularak odayı herkesten önce açmak.", team: "red", icon: "" },
+                    { text: "Odadaki tüm ipuçlarını ve şifreleri adım adım, sırayla ve hiçbir detayı atlamadan eksiksiz çözmek.", team: "blue", icon: "" },
+                    { text: "Bulmacanın ardındaki ana mekanizmayı kavrayıp diğer oyunculara taktik vermek ve oyunu yönetmek.", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "8. Büyük bir şirketin müşteri şifrelerini çaldırdığı haberini duydun. Aklından geçen ilk düşünce ne olur?",
+                options: [
+                    { text: "'Hırsızlar hangi akıllıca yöntemle veya hangi gizli açık kapıdan içeri sızmayı başardı acaba?'", team: "red", icon: "" },
+                    { text: "'Bu şirket neden iki aşamalı SMS onayı ve şifreli kalkanlar kullanmamış, bu kabul edilemez!'", team: "blue", icon: "" },
+                    { text: "'Bu durum şirketin geleceğini nasıl etkiler ve sistemi yeniden kurarken ne tür kurallar koymalılar?'", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "9. Sana bir süper kahraman gücü verilseydi hangisini seçerdin?",
+                options: [
+                    { text: "Görünmez olup kilitli kapıların arkasından rahatça geçebilme ve gizli sırları keşfetme gücü.", team: "red", icon: "" },
+                    { text: "Kendini ve tüm sevdiklerini her türlü tehlikeden koruyan kurşun geçirmez aşılmaz bir enerji kalkanı.", team: "blue", icon: "" },
+                    { text: "Olayları daha gerçekleşmeden hissedip hem savunmayı hem hamleleri yönetebilen geleceği sezme gücü.", team: "purple", icon: "" }
+                ]
+            },
+            {
+                q: "10. Siber dünyada ilerlemek istesen hangi unvan kulağına en havalı ve sana en uygun geliyor?",
+                options: [
+                    { text: "Sistemlerin açık kapılarını bularak şirketlerin korunmasını sağlayan 'Etik Hacker' (Red Team).", team: "red", icon: "" },
+                    { text: "Sistemleri virüslere ve siber korsanlara karşı bir kale gibi koruyan 'Siber Savunma Muhafızı' (Blue Team).", team: "blue", icon: "" },
+                    { text: "Hem saldırıyı hem savunmayı yöneten ve büyük stratejiyi belirleyen 'Siber Güvenlik Lideri' (Purple Team).", team: "purple", icon: "" }
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+        let answers = [];
+
+        function renderStep() {
+            if (currentStep >= quizQuestions.length) {
+                renderResults();
+                return;
+            }
+
+            const qObj = quizQuestions[currentStep];
+            const progressPct = Math.round(((currentStep + 1) / quizQuestions.length) * 100);
+            const currentSelected = answers[currentStep];
+
+            container.innerHTML = `
+                <div class="quiz-progress-bar-wrap">
+                    <div class="quiz-progress-fill" style="width: ${progressPct}%;"></div>
+                </div>
+
+                <div class="quiz-question-header">
+                    <span class="quiz-step-badge">SORU ${currentStep + 1} / ${quizQuestions.length}</span>
+                    <span style="font-size: 12px; color: var(--text-muted); font-family: var(--font-mono);">${progressPct}% Tamamlandı</span>
+                </div>
+
+                <h3 class="quiz-question-title">${escapeHtml(qObj.q)}</h3>
+
+                <div class="quiz-options-list">
+                    ${qObj.options.map(opt => `
+                        <div class="quiz-option-item ${currentSelected === opt.team ? 'selected' : ''}" data-team="${opt.team}">
+                            <span class="quiz-option-icon">${opt.icon}</span>
+                            <span class="quiz-option-text">${escapeHtml(opt.text)}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="quiz-nav-row">
+                    ${currentStep > 0 ? `
+                        <button type="button" class="btn-secondary btn-sm" id="btn-quiz-prev">&larr; Önceki Soru</button>
+                    ` : `<div></div>`}
+                    <span style="font-size: 11.5px; color: var(--text-muted);">Bir seçeneğe tıkladığınızda otomatik ilerler</span>
+                </div>
+            `;
+
+            container.querySelectorAll('.quiz-option-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const team = item.dataset.team;
+                    answers[currentStep] = team;
+                    item.classList.add('selected');
+                    setTimeout(() => {
+                        currentStep++;
+                        renderStep();
+                    }, 240);
+                });
+            });
+
+            const prevBtn = document.getElementById('btn-quiz-prev');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentStep > 0) {
+                        currentStep--;
+                        renderStep();
+                    }
+                });
+            }
+        }
+
+        function renderResults() {
+            const redCount = answers.filter(a => a === 'red').length;
+            const blueCount = answers.filter(a => a === 'blue').length;
+            const purpleCount = answers.filter(a => a === 'purple').length;
+
+            const redPct = Math.round((redCount / answers.length) * 100);
+            const bluePct = Math.round((blueCount / answers.length) * 100);
+            const purplePct = Math.round((purpleCount / answers.length) * 100);
+
+            let winningTeam = 'red';
+            let roleIcon = '⚔️';
+            let roleTitle = 'RED TEAM // ETİK HACKER & AÇIK AVCISI';
+            let roleColor = '#f87171';
+            let roleDesc = 'Tebrikler! Zihnin tıpkı bir dedektif veya kilit ustası gibi meraklı ve sorgulayıcı çalışıyor. Sistemlerin açık kapılarını, unutulan şifrelerini ve gözden kaçan zayıf noktalarını sezmekte doğuştan gelen bir avcı içgüdün var. Sıfır yazılım bilsen bile bu merak seni sistemleri kötü niyetli saldırganlardan önce test edip koruyan bir "Etik Hacker" (Red Team) yapabilir!';
+            let targetCategory = 'nmap';
+
+            if (blueCount >= redCount && blueCount >= purpleCount) {
+                winningTeam = 'blue';
+                roleIcon = '🛡️';
+                roleTitle = 'BLUE TEAM // SİBER SAVUNMA & KALE MUHAFIZI';
+                roleColor = '#60a5fa';
+                roleDesc = 'Harika! Zihnin koruyucu bir kale muhafızı ve dikkatli bir nöbetçi gibi çalışıyor. Sistemleri aşılmaz bir zırhla donatmak, şüpheli hareketleri anında sezmek ve izinsiz girişleri kapıda durdurmak senin uzmanlık alanın. Kurumları ve insanları siber korsanlara karşı koruyan bir "Siber Savunma Uzmanı" (Blue Team) potansiyelin çok yüksek!';
+                targetCategory = 'blue';
+            } else if (purpleCount > redCount && purpleCount > blueCount) {
+                winningTeam = 'purple';
+                roleIcon = '🟣';
+                roleTitle = 'PURPLE TEAM // STRATEJİST & SİBER GÜVENLİK LİDERİ';
+                roleColor = '#c084fc';
+                roleDesc = 'Muhteşem! Sen hem saldırıyı hem savunmayı aynı anda dengeli gören stratejik bir lidersin. Bir suçlunun nasıl düşüneceğini de, güvenliğin nasıl sağlanması gerektiğini de büyük resimden görüyorsun. İki tarafı buluşturan, tatbikatları yöneten ve kriz anında doğru kararları alan bir "Siber Güvenlik Stratejisti" (Purple Team) kumaşına sahipsin!';
+                targetCategory = 'all';
+            }
+
+            container.innerHTML = `
+                <div class="quiz-result-box">
+                    <div class="quiz-result-hero-icon">${roleIcon}</div>
+                    <div class="page-tier-badge" style="background: rgba(255,255,255,0.06); color: ${roleColor}; border-color: ${roleColor}; margin-bottom: 8px;">
+                        ANALİZ SONUCU // %100 TAMAMLANDI
+                    </div>
+                    <h2 class="quiz-result-role-title" style="color: ${roleColor};">${roleTitle}</h2>
+                    <p class="quiz-result-desc">${escapeHtml(roleDesc)}</p>
+
+                    <div class="quiz-breakdown-bars">
+                        <div class="quiz-bar-item">
+                            <div class="quiz-bar-label-row">
+                                <span style="color: #f87171;">⚔️ Red Team (Ofansif / Hücum):</span>
+                                <span style="color: #f87171;">${redPct}% (${redCount}/10 Soru)</span>
+                            </div>
+                            <div class="quiz-bar-track">
+                                <div class="quiz-bar-fill" style="width: ${redPct}%; background: #ef4444;"></div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-bar-item">
+                            <div class="quiz-bar-label-row">
+                                <span style="color: #60a5fa;">🛡️ Blue Team (Defansif / Savunma):</span>
+                                <span style="color: #60a5fa;">${bluePct}% (${blueCount}/10 Soru)</span>
+                            </div>
+                            <div class="quiz-bar-track">
+                                <div class="quiz-bar-fill" style="width: ${bluePct}%; background: #3b82f6;"></div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-bar-item">
+                            <div class="quiz-bar-label-row">
+                                <span style="color: #c084fc;">🟣 Purple Team (Entegre Strateji):</span>
+                                <span style="color: #c084fc;">${purplePct}% (${purpleCount}/10 Soru)</span>
+                            </div>
+                            <div class="quiz-bar-track">
+                                <div class="quiz-bar-fill" style="width: ${purplePct}%; background: #a855f7;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions-row">
+                        <button type="button" class="btn-glow-blue" id="btn-quiz-jump-academy">
+                            🎓 Sana Özel Akademi Odalarını Aç &rarr;
+                        </button>
+                        <button type="button" class="btn-secondary" id="btn-quiz-jump-commands">
+                            📚 140+ Kod Kütüphanesini Aç
+                        </button>
+                        <button type="button" class="btn-secondary" id="btn-quiz-jump-terminal">
+                            💻 Kali Web Terminalini Aç
+                        </button>
+                        <button type="button" class="btn-secondary" id="btn-quiz-restart-inner">
+                            🔄 Testi Tekrar Çöz
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            const btnJumpAcad = document.getElementById('btn-quiz-jump-academy');
+            if (btnJumpAcad) {
+                btnJumpAcad.addEventListener('click', () => {
+                    window.location.href = `academy.html?track=${encodeURIComponent(winningTeam)}`;
+                });
+            }
+
+            const btnJumpCommands = document.getElementById('btn-quiz-jump-commands');
+            if (btnJumpCommands) {
+                btnJumpCommands.addEventListener('click', () => {
+                    navigateToPage('page-commands');
+                    const catPill = document.querySelector(`#academy-category-pills [data-cat="${targetCategory}"]`);
+                    if (catPill) catPill.click();
+                });
+            }
+
+            const btnJumpTerm = document.getElementById('btn-quiz-jump-terminal');
+            if (btnJumpTerm) {
+                btnJumpTerm.addEventListener('click', () => navigateToPage('page-terminal'));
+            }
+
+            const btnRestartInner = document.getElementById('btn-quiz-restart-inner');
+            if (btnRestartInner) {
+                btnRestartInner.addEventListener('click', () => {
+                    currentStep = 0;
+                    answers = [];
+                    renderStep();
+                });
+            }
+        }
+
+        if (btnRestart) {
+            btnRestart.addEventListener('click', () => {
+                currentStep = 0;
+                answers = [];
+                renderStep();
+                showToast('info', 'Test Sıfırlandı', '10 soruluk test baştan başlatıldı.');
+            });
+        }
+
+        renderStep();
+    }
+
+    // ==========================================
+    // VISITOR & ACCESS LOGS PANEL (ADMIN ONLY)
+    // ==========================================
+    async function loadAccessLogs() {
+        if (!state.currentUser || (state.currentUser.role !== 'admin' && state.currentUser.role !== 'operative')) {
+            return;
+        }
+
+        try {
+            const data = await api.getAccessLogs();
+            state.accessLogs = data.logs || [];
+
+            const totalEl = document.getElementById('log-stat-total');
+            if (totalEl) totalEl.textContent = state.accessLogs.length;
+
+            const ipsEl = document.getElementById('log-stat-ips');
+            if (ipsEl) {
+                const uniqueIps = new Set(state.accessLogs.map(l => l.ipAddress)).size;
+                ipsEl.textContent = uniqueIps;
+            }
+
+            const adminsEl = document.getElementById('log-stat-admins');
+            if (adminsEl) {
+                const adminCount = state.accessLogs.filter(l => l.role === 'admin' || l.username === 'lostfromlight' || l.username === 'admin').length;
+                adminsEl.textContent = adminCount;
+            }
+
+            const statusEl = document.getElementById('log-stat-status');
+            if (statusEl) statusEl.textContent = '100% YAKALANIYOR';
+
+            const searchInput = document.getElementById('logs-search-input');
+            renderAccessLogs(searchInput ? searchInput.value : '');
+        } catch (err) {
+            console.error('[LFL] Log yükleme hatası:', err);
+        }
+    }
+
+    function renderAccessLogs(filterQuery = '') {
+        const tbody = document.getElementById('access-logs-tbody');
+        if (!tbody) return;
+
+        const q = (filterQuery || '').toLowerCase().trim();
+        const filtered = state.accessLogs.filter(item => {
+            if (!q) return true;
+            return (item.ipAddress && item.ipAddress.toLowerCase().includes(q)) ||
+                (item.operatingSystem && item.operatingSystem.toLowerCase().includes(q)) ||
+                (item.browser && item.browser.toLowerCase().includes(q)) ||
+                (item.deviceType && item.deviceType.toLowerCase().includes(q)) ||
+                (item.username && item.username.toLowerCase().includes(q)) ||
+                (item.role && item.role.toLowerCase().includes(q)) ||
+                (item.path && item.path.toLowerCase().includes(q));
+        });
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted" style="padding: 24px;">Filtreye uygun log kaydı bulunamadı.</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = filtered.map(log => {
+            const timeStr = log.timestamp ? new Date(log.timestamp).toLocaleTimeString() : '--:--:--';
+            const dateStr = log.timestamp ? new Date(log.timestamp).toLocaleDateString() : '';
+            const isAdmin = log.role === 'admin' || log.username === 'burak_wyxz';
+            const isGuest = log.role === 'guest' || !log.username || log.username === 'Anonim Ziyaretçi';
+            const roleBadgeClass = isAdmin ? 'badge-role-admin' : isGuest ? 'badge-role-guest' : 'badge-role-user';
+
+            const statusBadgeClass = log.statusCode >= 200 && log.statusCode < 300
+                ? 'badge-soft-green'
+                : log.statusCode === 401 || log.statusCode === 403
+                    ? 'badge-soft-red'
+                    : 'badge-soft-cyan';
+
+            const screenText = log.screen ? `<br/><span style="font-size: 10px; color: var(--text-muted); font-family: var(--font-mono);">${escapeHtml(log.screen)}</span>` : '';
+            const connText = log.connection ? `<br/><span style="font-size: 9.5px; color: #a7f3d0; font-family: var(--font-mono);">⚡ ${escapeHtml(log.connection)}</span>` : '';
+            const coresText = log.cores ? `<br/><span style="font-size: 10px; color: #94a3b8; font-family: var(--font-mono);">${escapeHtml(log.cores)}</span>` : '';
+            const locText = log.country ? `<br/><span style="font-size: 10px; color: #38bdf8;">📍 ${escapeHtml(log.country)}</span>` : '';
+
+            return `
+                <tr>
+                    <td style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); white-space: nowrap;">
+                        <span style="color: var(--cyan); font-weight: 700;">${escapeHtml(timeStr)}</span>
+                        <br/>${escapeHtml(dateStr)}
+                    </td>
+                    <td>
+                        <span class="badge-ip-mono" style="font-weight: 800; color: #38bdf8;">${escapeHtml(log.ipAddress)}</span>
+                        ${locText}
+                    </td>
+                    <td>
+                        <span class="badge-os" style="font-weight: 700;">${escapeHtml(log.operatingSystem)}</span>
+                        ${coresText}
+                    </td>
+                    <td style="font-size: 12px;">
+                        <span style="font-weight: 600; color: #ffffff;">${escapeHtml(log.browser)}</span>
+                        <span style="color: var(--text-muted); font-size: 11px;">(${escapeHtml(log.deviceType || 'Masaüstü')})</span>
+                        ${screenText}
+                        ${connText}
+                    </td>
+                    <td>
+                        <span class="${roleBadgeClass}">${escapeHtml(log.username)}</span>
+                    </td>
+                    <td style="font-family: var(--font-mono); font-size: 11px;">
+                        <span style="color: var(--text-secondary); font-weight: 600;">${escapeHtml(log.method || 'GET')}</span>
+                        <code style="color: var(--cyan); margin-left: 4px;">${escapeHtml(log.path)}</code>
+                    </td>
+                    <td>
+                        <span class="${statusBadgeClass}">${escapeHtml(String(log.statusCode || 200))} OK</span>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function bindAccessLogsPanel() {
+        const searchInput = document.getElementById('logs-search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                renderAccessLogs(searchInput.value);
+            });
+        }
+
+        const btnRefresh = document.getElementById('btn-refresh-logs');
+        if (btnRefresh) {
+            btnRefresh.addEventListener('click', async () => {
+                await loadAccessLogs();
+                showToast('info', 'Loglar Güncellendi', 'Ziyaretçi erişim logları yenilendi.');
+            });
+        }
+
+        const btnExport = document.getElementById('btn-export-logs');
+        if (btnExport) {
+            btnExport.addEventListener('click', () => {
+                if (state.accessLogs.length === 0) {
+                    showToast('error', 'Hata', 'Dışa aktarılacak log verisi bulunmuyor.');
+                    return;
+                }
+                const blob = new Blob([JSON.stringify(state.accessLogs, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `lfl-access-telemetry-${Date.now()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                URL.revokeObjectURL(url);
+                showToast('success', 'İndirildi', 'Log verisi JSON formatında indirildi.');
+            });
+        }
+    }
+
+    // ==========================================
+    // SİBER KILAVUZ & SÖZLÜK (A-Z) // 30+ ZENGİN TERİM
+    // ==========================================
+    const glossaryData = [
+        // --- KİMLİK & OTURUM (auth) ---
+        {
+            tag: "MFA",
+            title: "Multi-Factor Authentication (Çok Faktörlü Doğrulama)",
+            category: "auth",
+            desc: "Kullanıcının hesabına girmesi için yalnızca şifrenin yetmediği; telefonuna gelen kod (SMS/Authenticator) veya donanım güvenlik anahtarı (FIDO2/YubiKey) gibi ikinci bir delil sunmasını şart koşan güvenlik mekanizmasıdır.",
+            analogy: "Evin kapısını hem anahtarla açıp, hem de içerideki güvenlik paneline parmak izinizi okutmak gibidir. Hırsız anahtarı çalsa bile eve giremez.",
+            mitigates: "Şifre Çalma, Credential Stuffing, Phishing (Oltalama)"
+        },
+        {
+            tag: "JWT",
+            title: "JSON Web Token (Kriptografik Oturum Zarfı)",
+            category: "auth",
+            desc: "Kullanıcı giriş yaptıktan sonra sunucunun ürettiği, içinde kullanıcının rolü ve yetkilerini taşıyan, kriptografik HMAC-SHA256 ile imzalanmış dijital kimlik kartıdır.",
+            analogy: "Konsere girerken bileğinize takılan, taklit edilemez hologramlı ve barkodlu giriş bilekliği gibidir. Görevliler her kapıda kimliğinizi sormaz, bilekliği okutursunuz.",
+            mitigates: "Oturum Sahteciliği (Session Hijacking), Yetkisiz Yetki Yükseltme"
+        },
+        {
+            tag: "HASH-SALT",
+            title: "Parola Kriptografik Özeti & Tuzlama (Salted Hashing)",
+            category: "auth",
+            desc: "Veritabanında şifrelerin açık metin değil, tek yönlü matematiksel algoritmalarla (BCrypt, Argon2, PBKDF2) ve her kullanıcıya özel rastgele bir 'tuz' (salt) eklenerek saklanmasıdır.",
+            analogy: "Bir elmayı püre haline getirip içine bir avuç kum atmak gibidir. Püreyi tekrar eski sağlam elmaya dönüştüremezsiniz ama iki pürenin aynı olup olmadığını karşılaştırabilirsiniz.",
+            mitigates: "Gökkuşağı Tablosu (Rainbow Table) Saldırıları, Veritabanı Sızıntıları",
+            cmd: "hashcat -m 0 -a 0 hash.txt rockyou.txt"
+        },
+        {
+            tag: "OAUTH2",
+            title: "OAuth 2.0 & OpenID Connect",
+            category: "auth",
+            desc: "Kullanıcının şifresini üçüncü parti uygulamalara vermeden 'Google ile Giriş Yap' veya 'GitHub ile Giriş Yap' butonlarıyla güvenle yetkilendirilmesini sağlayan açık standarttır.",
+            analogy: "Otelde vale hizmetine arabanızın anahtarını değil, sadece arabayı park etmeye yarayan kısıtlı bir vale anahtarını vermek gibidir. Torpidonuzu açamaz.",
+            mitigates: "Parola Paylaşımı, Üçüncü Parti Veri Hırsızlığı"
+        },
+        {
+            tag: "SESSION-HIJACK",
+            title: "Oturum Kaçırma (Session Hijacking / Sidejacking)",
+            category: "auth",
+            desc: "Saldırganın aktif bir web oturumuna ait çerezleri (Session Cookie) veya JWT tokenini çalarak kullanıcı adına işlem yapması durumudur.",
+            analogy: "Otobüs biletinizi cebinizden gizlice alıp otobüse sizin yerinize binen yabancı bir yolcu gibidir.",
+            mitigates: "HttpOnly & Secure Cookie Bayrakları, Kısa Ömürlü JWT"
+        },
+
+        // --- AĞ & PROTOKOLLER (network) ---
+        {
+            tag: "HSTS",
+            title: "HTTP Strict Transport Security (Zorunlu HTTPS)",
+            category: "network",
+            desc: "Tarayıcıya 'Bu web sitesine asla güvensiz HTTP ile bağlanma, her zaman zorunlu şifreli HTTPS (TLS 1.3) ile bağlan' talimatını veren güvenlik başlığıdır.",
+            analogy: "Taksiye bindiğinizde şoföre 'Sadece zırhlı ve camları kurşun geçirmez arabayla giderim, normal arabaya asla binmem' demek gibidir.",
+            mitigates: "SSL Strip, Man-in-the-Middle (Araya Girme) Saldırıları",
+            cmd: "powershell .\\Audit-Headers.ps1"
+        },
+        {
+            tag: "CSP",
+            title: "Content Security Policy (İçerik Güvenliği Politikası)",
+            category: "network",
+            desc: "Tarayıcının sayfada hangi JavaScript kodlarını, resimleri ve fontları çalıştırabileceğini belirten katı beyaz listedir (whitelist).",
+            analogy: "Şirket binasına girebilecek kuryelerin ve ziyaretçilerin önceden danışmaya isimlerinin bildirilmesi gibidir. İsmi listede olmayan içeri adım atamaz.",
+            mitigates: "Cross-Site Scripting (XSS), Zararlı Kod Enjeksiyonu"
+        },
+        {
+            tag: "PORT",
+            title: "Ağ Portu (Network Port - 1-65535)",
+            category: "network",
+            desc: "Bilgisayar ağlarında çalışan her servis için ayrılmış mantıksal iletişim kapısıdır. Bir IP adresinde 65.535 port bulunur.",
+            analogy: "Büyük bir plazadaki oda numaraları gibidir. Plaza adresi IP'dir, plazadaki Muhasebe odası 80, Yönetim odası 22, Güvenlik odası 443'tür.",
+            mitigates: "Gereksiz Açık Portların Kapatılması Saldırı Yüzeyini Azaltır",
+            cmd: "nmap -p- 127.0.0.1"
+        },
+        {
+            tag: "IP-ADDRESS",
+            title: "IP Adresi (Internet Protocol Address)",
+            category: "network",
+            desc: "İnternete bağlı her cihazın dünyadaki benzersiz dijital kimliğidir. 127.0.0.1 kendi makinemizi, 192.168.x.x yerel ağı temsil eder.",
+            analogy: "Evinizin tapudaki açık sokak ve posta adresi gibidir. Kurye paketi teslim etmek için evin posta adresini bilmelidir.",
+            mitigates: "IP Adresi Gizleme (VPN/Tor), IP Spoofing Kalkanları",
+            cmd: "ip a"
+        },
+        {
+            tag: "DNS",
+            title: "Alan Adı Sistemi (Domain Name System)",
+            category: "network",
+            desc: "İnsanların aklında tutması kolay olan alan adlarını (örn: google.com) makinelerin anladığı IP adreslerine (142.250.x.x) çeviren telefon rehberidir.",
+            analogy: "Akıllı telefonunuzdaki rehber gibidir. 'Ahmet' ismine basarsınız ama telefon arkada onun numarasını çevirir.",
+            mitigates: "DNS Zehirleme (DNS Spoofing), DNSSEC Koruması",
+            cmd: "nmap -sU -p 53 192.168.1.1"
+        },
+        {
+            tag: "TCP-HANDSHAKE",
+            title: "TCP 3 Yollu El Sıkışma (Three-Way Handshake)",
+            category: "network",
+            desc: "İki bilgisayar arasında veri aktarımı başlamadan önce yapılan 3 adımlı selamlama protokolüdür: SYN -> SYN-ACK -> ACK.",
+            analogy: "Telefonda 'Alo sesimi alıyor musun?' (SYN), karşı tarafın 'Evet duyuyorum, sen beni duyuyor musun?' (SYN-ACK) ve sizin 'Tamam anlaştık konuşalım' (ACK) demenizdir.",
+            mitigates: "Eksik Paket Tespiti, Bağlantı Doğrulama",
+            cmd: "sudo hping3 -S -p 80 -c 1 192.168.1.1"
+        },
+        {
+            tag: "VPN-TUNNEL",
+            title: "Sanal Özel Ağ & Şifreli Tünel (VPN)",
+            category: "network",
+            desc: "Genel ve güvensiz internet ağları üzerinde iki uç nokta arasında tüm paketleri şifreleyerek görünmez bir koridor (tünel) oluşturan teknolojidir.",
+            analogy: "Halka açık bir otoyolda giderken arabanızın etrafına görünmez ve kurşun geçirmez bir zırhlı tünel inşa etmek gibidir.",
+            mitigates: "Halka Açık Wi-Fi Dinleme, Trafik Analizi",
+            cmd: "ssh -D 1080 -q -C -N user@remote"
+        },
+
+        // --- SALDIRI TÜRLERİ (attacks) ---
+        {
+            tag: "SQLI",
+            title: "SQL Injection (Veritabanı Kod Enjeksiyonu)",
+            category: "attacks",
+            desc: "Saldırganın web arama veya form alanlarına zararlı SQL veritabanı komutları yazarak tüm müşteri kayıtlarını ve şifreleri çalmasıdır. Entity Framework Core LINQ parametrik sorguları bu açığı tamamen engeller.",
+            analogy: "Mektup atma kutusuna mektup yerine dinamit atmaktır. Parametrik koruma ise mektubu kutuya atmadan önce X-ray cihazından geçirip sadece kağıt olduğunu doğrulamaktır.",
+            mitigates: "Tüm Veritabanının Çalınması, Veri Silinmesi",
+            cmd: "sqlmap -u \"http://127.0.0.1/api/search?q=test\" --dbs"
+        },
+        {
+            tag: "XSS",
+            title: "Cross-Site Scripting (Siteler Arası Betik Çalıştırma)",
+            category: "attacks",
+            desc: "Web sitesindeki yorum veya girdi kutularına zararlı JavaScript kodu yerleştirerek, sayfayı ziyaret eden diğer masum kullanıcıların oturum çerezlerini çalma saldırısıdır.",
+            analogy: "Mahallenin ortak duyuru panosuna ilan asmak yerine, panoya yaklaşan herkesin cebindeki cüzdanı çalan görünmez bir el yerleştirmektir.",
+            mitigates: "HTML Encode, Katı Content-Security-Policy (CSP)"
+        },
+        {
+            tag: "CLICKJACKING",
+            title: "Clickjacking & UI Redressing (Tıklama Kaçırma)",
+            category: "attacks",
+            desc: "Saldırganın kendi sitesinde görünmez bir iframe açarak içine banka veya yönetim panelinizi gizlemesi ve size 'Tebrikler Ödül Kazandınız' butonuna bastırırken aslında arkadaki gizli butona tıklatmasıdır.",
+            analogy: "Şeffaf bir kağıdın altına banka dekontunu koyup, size 'Anketi imzala' diyerek fark ettirmeden alttaki para transferi dekontunu imzalatmaktır.",
+            mitigates: "X-Frame-Options: DENY, CSP frame-ancestors 'none'"
+        },
+        {
+            tag: "DOS-DDOS",
+            title: "Hizmet Engelleme Saldırısı (Denial of Service)",
+            category: "attacks",
+            desc: "Bir sunucuya saniyede kapasitesinin üzerinde milyonlarca yapay istek göndererek sistemin çökmesine ve gerçek kullanıcıların siteye girememesine yol açan saldırıdır.",
+            analogy: "Bir kahve dükkanına aynı anda 10.000 kişinin hücum edip hiçbir şey almadan kasayı meşgul ederek gerçek müşterilerin içeri girmesini engellemesi gibidir.",
+            mitigates: "Rate Limiting, Cloudflare WAF, SYN Cookies",
+            cmd: "sudo hping3 --udp --flood -p 80 192.168.1.1"
+        },
+        {
+            tag: "MITM",
+            title: "Man-in-the-Middle (Ortadaki Adam Saldırısı)",
+            category: "attacks",
+            desc: "Saldırganın iki taraf (örneğin kurban ve banka sunucusu) arasına gizlice girerek tüm konuşmayı ve şifreleri dinlemesi veya değiştirmesidir.",
+            analogy: "Postacı mektubunuzu postaneye götürürken yolda zarfı gizlice açıp içini okur, içine sahte mektup koyup zarfı tekrar yapıştırır.",
+            mitigates: "Zorunlu Uçtan Uca HTTPS (TLS 1.3), HSTS Preload",
+            cmd: "bettercap -iface lo"
+        },
+        {
+            tag: "BRUTE-FORCE",
+            title: "Kaba Kuvvet & Sözlük Parola Saldırısı",
+            category: "attacks",
+            desc: "Bir giriş ekranında binlerce veya milyonlarca yaygın parolayı sırayla deneyerek doğru şifreyi bulmaya çalışma yöntemidir.",
+            analogy: "Bir asma kilidi açmak için elinizdeki binlerce anahtarı tek tek kilidin içine sokup çevirmeyi denemektir.",
+            mitigates: "Hesap Kilitleme Politikası, Güçlü MFA, Fail2ban",
+            cmd: "hydra -l admin -p Sebu132009 192.168.1.1 http-get /"
+        },
+        {
+            tag: "PHISHING",
+            title: "Oltalama & Sosyal Mühendislik (Phishing)",
+            category: "attacks",
+            desc: "Kullanıcıya güvenilir bir banka veya şirket gibi davranarak e-posta veya sahte web sitesi yoluyla şifrelerini ve kredi kartı bilgilerini kendi eliyle girmesini sağlama tuzağıdır.",
+            analogy: "Kapınıza polis üniforması giyerek gelen bir hırsızın 'Güvenlik denetimi yapıyoruz, kasanızın şifresini verin' demesi ve sizin inanmanızdır.",
+            mitigates: "Güvenlik Farkındalık Eğitimi, FIDO2 Donanım Anahtarı"
+        },
+        {
+            tag: "ZERO-DAY",
+            title: "Sıfır Gün Zafiyeti (Zero-Day Vulnerability)",
+            category: "attacks",
+            desc: "Yazılım üreticisinin henüz farkında olmadığı ve bu nedenle dünyada hiçbir güvenlik yaması veya güncellemesi bulunmayan tehlikeli güvenlik açığıdır.",
+            analogy: "Kasa üreticisinin dahi bilmediği, fabrikadan çıkarken kasada unutulmuş gizli bir mekanik düğmenin hırsız tarafından keşfedilmesidir.",
+            mitigates: "Zero-Trust Mimarisi, Derinlemesine Savunma (Defense-in-Depth)"
+        },
+        {
+            tag: "RANSOMWARE",
+            title: "Fidye Yazılımı (Ransomware)",
+            category: "attacks",
+            desc: "Sisteme sızarak tüm dosyaları ve veritabanlarını kırılamaz askeri şifrelerle (AES-256) şifreleyen ve dosyaları geri açmak için milyonlarca dolar fidye talep eden zararlı yazılımdır.",
+            analogy: "Evinize girip tüm mobilya ve eşyalarınızı dev bir çelik kasaya kilitleyen ve 'Anahtar için bana para öde' diyen bir gaspçıdır.",
+            mitigates: "Hava Boşluklu (Air-Gapped) Soğuk Yedekleme, EDR Koruması"
+        },
+
+        // --- SAVUNMA & ŞİFRELEME (defense) ---
+        {
+            tag: "NOSNIFF",
+            title: "X-Content-Type-Options: nosniff (MIME Kalkanı)",
+            category: "defense",
+            desc: "Tarayıcının bir dosyanın türünü tahmin etmesini engeller. Sunucu bir dosyaya 'resim' dediyse, içinde gizli kod olsa bile tarayıcının onu kod olarak çalıştırmasını yasaklar.",
+            analogy: "İlaç kutusunun üzerinde 'Aspirin' yazıyorsa, kutuyu açıp kokusuna bakarak 'bu şeker galiba' deyip yememek; kutudaki etikete sadık kalmaktır.",
+            mitigates: "MIME Confuse ve Gizli Betik Çalıştırma Saldırıları"
+        },
+        {
+            tag: "FIREWALL",
+            title: "Durum Takipli Güvenlik Duvarı (Stateful Firewall / WAF)",
+            category: "defense",
+            desc: "Gelen ve giden tüm ağ paketlerini inceleyerek zararlı olanları engelleyen, yalnızca meşru trafiğe izin veren dijital güvenlik kalkanıdır.",
+            analogy: "Havalimanı kapısındaki X-ray cihazı ve güvenlik görevlileridir. Yasaklı eşyaları valizinizden çıkarır, içeri sokmaz.",
+            mitigates: "Port Taramaları, Yetkisiz Bağlantılar, Zararlı İstekler",
+            cmd: "sudo ufw status verbose"
+        },
+        {
+            tag: "EDR-SIEM",
+            title: "Uç Nokta Tespiti & Olay Yönetimi (EDR / SIEM)",
+            category: "defense",
+            desc: "Şirketteki tüm bilgisayarları 7/24 izleyen, anormal bir dosya indirme veya şüpheli komut çalıştığında anında alarm üreten merkezi güvenlik merkezidir.",
+            analogy: "Bir müzedeki binlerce güvenlik kamerasını tek bir odada canlı izleyen ve alarm çaldığında otomatik çelik kapıları kapatan güvenlik ekibidir.",
+            mitigates: "Gelişmiş Kalıcı Tehditler (APT), Şüpheli Davranışlar"
+        },
+        {
+            tag: "AIR-GAP",
+            title: "Hava Boşluklu Yedekleme (Air-Gapped Backup)",
+            category: "defense",
+            desc: "Yedeklenen verilerin bulunduğu diskin internetten ve şirket ağından fiziksel olarak kablosu çekilerek tamamen izole bir kasada saklanmasıdır.",
+            analogy: "Çok değerli altınlarınızı banka hesabında tutmak yerine yerin 50 metre altındaki çevrimdışı çelik kasada saklamaktır. Hiçbir hacker kablosu olmayan bir cihaza sızamaz.",
+            mitigates: "Fidye Yazılımları (Ransomware), Ağ Sızıntıları"
+        },
+        {
+            tag: "ZERO-TRUST",
+            title: "Sıfır Güven Mimarisi (Zero-Trust Architecture)",
+            category: "defense",
+            desc: "'Asla güvenme, her zaman doğrula' felsefesidir. Şirket ağının içindeki çalışanlar da dahil olmak üzere her isteğin kimliği ve yetkisi her adımda yeniden doğrulanır.",
+            analogy: "Çok gizli bir askeri üste, komutan olsanız bile geçtiğiniz her koridorda yeniden parmak izinizi ve retinanızı okutmanız gibidir.",
+            mitigates: "İç Tehditler (Insider Threat), Ağ İçi Yatay Yayılma (Lateral Movement)"
+        },
+        {
+            tag: "HONEYPOT",
+            title: "Siber Bal Küpü (Honeypot - Tuzak Sistem)",
+            category: "defense",
+            desc: "Ağda bilerek zafiyetli gibi gösterilen sahte bir sunucu kurarak saldırganların ilgisini buraya çekmek ve onların yöntemlerini analiz etmek için kurulan tuzaktır.",
+            analogy: "Bahçeye sahte bir mücevher kutusu koyup hırsızın oraya yönelmesini izlemek ve gerçek eve girmesini engellemektir.",
+            mitigates: "Saldırgan Tespiti, Tehdit İstihbaratı Toplama"
+        },
+
+        // --- SİBER ARAÇLAR & PROTOKOLLER (tools) ---
+        {
+            tag: "NMAP",
+            title: "Network Mapper (Ağ Haritalama Aracı)",
+            category: "tools",
+            desc: "Ağdaki cihazları, açık portları, çalışan servisleri ve işletim sistemlerini tespit etmek için tüm dünyada standart kabul edilen güvenlik aracıdır.",
+            analogy: "Bir kalenin etrafında dolaşıp hangi kapıların açık, hangi pencerelerin kilitli olduğunu not alan keşif gözcüsüdür.",
+            mitigates: "Bilinmeyen Açık Portların ve Eski Servislerin Keşfi",
+            cmd: "nmap -p- 127.0.0.1"
+        },
+        {
+            tag: "GOBUSTER",
+            title: "Gobuster (Web Dizin & Gizli Rota Avcısı)",
+            category: "tools",
+            desc: "Go dilinde yazılmış ultra hızlı bir araçtır; web sitelerinde menülerde görünmeyen gizli admin panellerini ve yedek dosyalarını bulur.",
+            analogy: "Büyük bir kütüphanede gizli bölmeleri ve kilitli odaları anahtar kelimelerle arayan araştırmacı dedektiftir.",
+            mitigates: "Unutulan Yönetim Panelleri ve Yedek Dosyalarının Tespiti",
+            cmd: "gobuster dir -u http://192.168.1.1 -w /usr/share/wordlists/dirb/common.txt"
+        },
+        {
+            tag: "HPING3",
+            title: "Hping3 (Özel TCP/IP Paket Sentezleyici)",
+            category: "tools",
+            desc: "İstediğiniz TCP, UDP veya ICMP bayraklarını elle ayarlayarak güvenlik duvarı kurallarını test edebileceğiniz esnek ağ aracıdır.",
+            analogy: "Postacıya 'Bu mektubun üzerine sahte bir mühür vur ve kapıyı çalmadan kapının altından at' diyebildiğiniz özel kargo servisidir.",
+            mitigates: "Güvenlik Duvarı Kural Doğrulama, DoS Dayanıklılık Testi",
+            cmd: "sudo hping3 -S -p 80 -c 1 192.168.1.1"
+        },
+        {
+            tag: "HYDRA",
+            title: "THC-Hydra (Çok Kanallı Ağ Giriş Denetleyicisi)",
+            category: "tools",
+            desc: "SSH, FTP, HTTP ve RDP gibi 50'den fazla ağ protokolünde kaba kuvvet giriş denemesi yaparak zayıf parolaları denetleyen araçtır.",
+            analogy: "Aynı anda 16 farklı anahtarı aynı kapının kilidinde deneyen çok kollu robot bir hırsız gibidir.",
+            mitigates: "Zayıf veya Varsayılan Şifrelerin Tespit Edilip Güçlendirilmesi",
+            cmd: "hydra -l admin -p Sebu132009 192.168.1.1 http-get /"
+        },
+        {
+            tag: "SQLMAP",
+            title: "Sqlmap (Otomatik Veritabanı Açık Denetçisi)",
+            category: "tools",
+            desc: "Web sitelerindeki SQL enjeksiyon açıklarını otomatik olarak tespit eden, veritabanı parmak izini çıkaran ve güvenliğini denetleyen araçtır.",
+            analogy: "Binadaki duvarları özel bir cihazla tarayıp nerede gizli çatlak ve delik olduğunu bulan dedektördür.",
+            mitigates: "Veritabanı Açıklarının Yama Öncesi Doğrulanması",
+            cmd: "sqlmap -u \"http://127.0.0.1/api/search?q=test\" --dbs"
+        },
+        {
+            tag: "BETTERCAP",
+            title: "Bettercap (Ağ Analiz ve MITM Çerçevesi)",
+            category: "tools",
+            desc: "Yerel ağ trafiğini gerçek zamanlı izlemek, ARP zehirleme saldırılarını test etmek ve şifrelenmemiş protokolleri analiz etmek için kullanılır.",
+            analogy: "Ağdaki tüm konuşmaları dinleyen hassas bir mikrofon ve santral yönlendiricisidir.",
+            mitigates: "Ağ Şifreleme Eksikliklerinin ve ARP Zafiyetlerinin Tespiti",
+            cmd: "bettercap -iface lo"
+        },
+        {
+            tag: "CVE",
+            title: "CVE (Common Vulnerabilities and Exposures)",
+            category: "tools",
+            desc: "Dünyada keşfedilen tüm siber güvenlik açıklarına verilen resmi, evrensel kimlik kodudur (örn: CVE-2021-44228 Log4j).",
+            analogy: "Dünyadaki her hastalığa tıp literatüründe verilen uluslararası resmi teşhis kodu gibidir. Herkes aynı hastalıktan bahsettiğini anlar.",
+            mitigates: "Evrensel Zafiyet Takibi ve Yama Yönetimi"
+        }
+    ,
+{
+                "tag": "EDR-BYPASS",
+                "title": "EDR & Antivirus Bypass (Uç Nokta Kalkanını Atlama)",
+                "category": "attacks",
+                "desc": "Zararlı kodun statik imza taramalarını ve davranışsal EDR alarmlarını tetiklemeden belleğe enjekte edilmesi (Process Injection, Syscalls, Obfuscation) teknikleridir.",
+                "analogy": "Bir casusun havalimanındaki X-Ray cihazına yakalanmamak için metal bıçak yerine seramik bıçak taşıması veya bekçiyi uyutacak sahte kimlik göstermesi gibidir.",
+                "mitigates": "Statik İmza Taraması, API Hooking, Davranışsal EDR Analizi",
+                "cmd": "msfvenom -p windows/x64/meterpreter/reverse_tcp -e x64/zutto_dekiru -i 5 -f exe"
+        },
+        {
+                "tag": "C2-FRAMEWORK",
+                "title": "C2 (Command & Control) Frameworks (Komuta Kontrol Sunucusu)",
+                "category": "attacks",
+                "desc": "Hedef bilgisayara sızdıktan sonra kurulan ve saldırganın kurbana uzaktan komut göndermesini sağlayan merkezi yönetim altyapısıdır (Cobalt Strike, Havoc, Mythic, Sliver).",
+                "analogy": "Uzaktan kumandalı arabanın elinizdeki kumandasıdır. Araba (kurban) nereye giderse gitsin kumandadan gelen sinyallere göre yön alır.",
+                "mitigates": "Düzenli Beacon Sinyalleri, DNS Tünelleme, Uzaktan Gizli Erişim",
+                "cmd": "sliver-server"
+        },
+        {
+                "tag": "KERBEROASTING",
+                "title": "Kerberoasting (Active Directory Hizmet Hesabı Saldırısı)",
+                "category": "attacks",
+                "desc": "Active Directory ortamında SPN atanmış servis hesaplarının TGS (Ticket Granting Service) biletlerini talep edip çekerek kendi makinesinde parola hash'ini offline kırma saldırısıdır.",
+                "analogy": "Bir kurumda çalışan personelin yemek fişlerini toplayıp eve götürmesi ve arkasındaki gizli damgayı evinde büyüteçle çözmeye çalışması gibidir.",
+                "mitigates": "gMSA (Group Managed Service Accounts) Kullanımı, Güçlü 25+ Karakter Parolalar",
+                "cmd": "GetUserSPNs.py corp.local/user:password -request -dc-ip 10.10.1.5"
+        },
+        {
+                "tag": "BLOODHOUND",
+                "title": "BloodHound & Cypher Graph (AD İlişki Haritalama)",
+                "category": "tools",
+                "desc": "Active Directory ağındaki tüm kullanıcılar, gruplar, bilgisayarlar ve ACL izinleri arasındaki gizli ve zafiyetli ilişkileri grafik teorisiyle haritalayan araçtır.",
+                "analogy": "Bir labirentin tepeden çekilmiş dron fotoğrafıdır; en çaylak stajyer kullanıcısından en yetkili Domain Admin koltuğuna giden en kısa patikayı anında gösterir.",
+                "mitigates": "Zafiyetli ACL Yetkilendirmeleri, Aşırı Domain Admin Dağıtımı",
+                "cmd": "bloodhound-python -u user -p pass -d corp.local -c All"
+        },
+        {
+                "tag": "MIMIKATZ",
+                "title": "Mimikatz & LSASS Dump (RAM Bellekten Parola Avcılığı)",
+                "category": "tools",
+                "desc": "Windows işletim sisteminde oturum açmış kullanıcıların açık metin parolalarını, NTLM hash'lerini ve Kerberos biletlerini LSASS proses belleğinden çeken efsanevi araçtır.",
+                "analogy": "Otel lobisindeki resepsiyonistin çekmecesine el çabukluğuyla uzanıp müşterilerin bıraktığı tüm oda anahtarlarını kopyalamak gibidir.",
+                "mitigates": "LSA Protection (RunAsPPL), Credential Guard, Sysmon Event ID 10",
+                "cmd": "mimikatz.exe \"privilege::debug\" \"sekurlsa::logonpasswords\" exit"
+        },
+        {
+                "tag": "SNORT-SURICATA",
+                "title": "Snort & Suricata (Ağ Tabanlı Tehdit Algılama - NIDS)",
+                "category": "defense",
+                "desc": "Ağ kablosundan geçen her baytı kural tabanlı imza motoruyla gerçek zamanlı tarayan, SQLi, port taraması veya zararlı C2 trafiği gördüğünde alarm üreten IDS/IPS sistemleridir.",
+                "analogy": "Havalimanı girişindeki X-Ray cihazı ve metal dedektörüdür. Çantada silah veya patlayıcı gördüğü an siren çalar.",
+                "mitigates": "Ağ İhlalleri, SYN Flood, Exploit Paketleri, Port Taraması",
+                "cmd": "suricata -c /etc/suricata/suricata.yaml -i eth0"
+        },
+        {
+                "tag": "YARA",
+                "title": "YARA Kuralları (Zararlı Yazılım İmza & Örüntü Avcısı)",
+                "category": "defense",
+                "desc": "Zararlı yazılımların ve tehdit gruplarının kod bloklarını, metin dizgilerini ve ikili bayt kalıplarını metinsel kurallarla tanımlayıp uç noktalarda avlayan motordur.",
+                "analogy": "Polisin elindeki 'Arananlar Robot Resmi' gibidir. Şüphelinin yüz hatları robottaki tarife uyuyorsa polis onu kalabalığın içinde anında yakalar.",
+                "mitigates": "Zero-Day Zararlıları, Truva Atları, Dosyasız Zararlılar (Fileless)",
+                "cmd": "yara -r rules.yar /var/www/uploads/"
+        },
+        {
+                "tag": "VOLATILITY",
+                "title": "Volatility Framework (RAM / Bellek Adli Bilişimi)",
+                "category": "tools",
+                "desc": "Çalışan bir sistemden alınan RAM bellek imajını (Memory Dump) ayrıştırarak çalışan gizli prosesleri, enjekte edilmiş DLL'leri ve açık ağ bağlantılarını ortaya çıkaran adli bilişim aracıdır.",
+                "analogy": "Bir cinayet mahallinde zamanı dondurup o an odada nefes alan herkesin röntgenini çekmek gibidir. Bilgisayar kapandığında silinecek her şey RAM'dedir.",
+                "mitigates": "Dosyasız Zararlı Tespiti, Rootkit Tespiti, Bellek İhlalleri",
+                "cmd": "vol -f mem.dmp windows.pstree"
+        },
+        {
+                "tag": "MITRE-ATTCK",
+                "title": "MITRE ATT&CK & Cyber Kill Chain (Tehdit Matrisi)",
+                "category": "defense",
+                "desc": "Gerçek dünya saldırganlarının kullandığı taktik, teknik ve prosedürleri (TTP) doğrusal olmayan küresel bir matris şeklinde sınıflandıran endüstri standardı çerçevedir.",
+                "analogy": "Bir futbol takımının rakip takımı analiz ettiği taktik tahtasıdır; rakibin kornerden mi, kontrataktan mı, yoksa kanattan mı saldırdığını madde madde gösterir.",
+                "mitigates": "Savunma Boşlukları (Gap Analysis), Tehdit Tespiti Validasyonu"
+        },
+        {
+                "tag": "ATOMIC-RED",
+                "title": "Atomic Red Team & BAS (Birim Test Mantığıyla Güvenlik)",
+                "category": "defense",
+                "desc": "MITRE ATT&CK tekniklerini tek tek, kontrollü ve güvenli küçük birim testleri (Atomic Tests) şeklinde çalıştırarak EDR ve SIEM alarmlarının çalışıp çalışmadığını test eden araçtır.",
+                "analogy": "Binadaki yangın alarmının düğmesine bilerek basıp sirenlerin çalıp çalmadığını ve itfaiyeye sinyal gidip gitmediğini test etmek gibidir.",
+                "mitigates": "Sessiz Kalan Alarmlar, Yanlış Yapılandırılmış EDR Kuralları"
+        },
+        {
+                "tag": "SIGMA",
+                "title": "Sigma Kuralları (Evrensel SIEM / SOC Tespit Dili)",
+                "category": "defense",
+                "desc": "Splunk, QRadar, Microsoft Sentinel veya Elastic gibi farklı SIEM ürünlerine kolayca dönüştürülebilen, YAML tabanlı ortak siber tehdit kural formatıdır.",
+                "analogy": "Dünya genelinde herkesin anladığı ortak İngilizce dili gibidir; bir kez yazarsınız, tüm yabancı sistemler kendi diline çevirip anında uygular.",
+                "mitigates": "Üreticiye Bağımlı Kural Kilitlenmesi (Vendor Lock-in)"
+        },
+        {
+                "tag": "STRIDE",
+                "title": "STRIDE Tehdit Modellemesi (Tasarım Güvenliği)",
+                "category": "defense",
+                "desc": "Bir yazılım henüz kodlanmadan önce 6 kategori üzerinden (Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Elevation of Privilege) mimari zafiyetlerini öngörme metodolojisidir.",
+                "analogy": "Bir binanın mimari çizimini incelerken 'Buraya deprem kolonu koymazsak bina çöker' diyerek inşaat başlamadan hatayı düzeltmektir.",
+                "mitigates": "Tasarım Hataları, Mimari Güvenlik Açıkları"
+        },
+        {
+                "tag": "REVERSE-SHELL",
+                "title": "Reverse Shell vs Bind Shell (Tersine Kabuk Bağlantısı)",
+                "category": "attacks",
+                "desc": "Hedef bilgisayarın saldırgana bağlanmasını sağlayarak güvenlik duvarının (Firewall) gelen istekleri engelleme kuralını baypas eden saldırı yöntemidir.",
+                "analogy": "Korumalı bir kalenin kapısını dışarıdan kırıp içeri giremiyorsanız, içerideki bir ajanın dışarıya telefon açıp kapıyı size açması gibidir.",
+                "mitigates": "Egress (Giden Trafik) Filtreleme, Port Kısıtlamaları",
+                "cmd": "nc -lvnp 4444"
+        },
+        {
+                "tag": "SUID-PRIV",
+                "title": "SUID Biti & Linux Yetki Yükseltme (Privilege Escalation)",
+                "category": "attacks",
+                "desc": "Linux sistemlerde bir ikili dosyaya `chmod u+s` verildiğinde, sıradan bir kullanıcı çalıştırsa bile dosya sahibinin (genellikle root) tam yetkisiyle ayağa kalkmasıdır.",
+                "analogy": "Sıradan bir veznedarın eline genel müdür mühürlü bir belge verildiğinde o dakika boyunca genel müdür adına karar alabilmesi gibidir.",
+                "mitigates": "Gereksiz SUID Bitlerinin Temizlenmesi, NoExec Bayrağı",
+                "cmd": "find / -perm -u=s -type f 2>/dev/null"
+        },
+        {
+                "tag": "DNS-TUNNEL",
+                "title": "DNS Tünelleme (DNS Tunneling ile Veri Sızdırma)",
+                "category": "attacks",
+                "desc": "Tüm giden portların kapalı olduğu kurumsal ağlarda, yalnızca açık bırakılan 53 numaralı DNS portunu kullanarak verileri Base64 formatında dışarıya kaçırma tekniğidir.",
+                "analogy": "Hapishanedeki mahkumun dışarıya mektup göndermesi yasakken, gardiyana sorduğu 'Bugün hava nasıl?' sorusunun içine gizli şifreli kelimeler ekleyerek dışarıya mesaj sızdırmasıdır.",
+                "mitigates": "DNS Sinkholing, TXT Sorgu Boyutu Sınırlandırması",
+                "cmd": "iodine -f -r 10.0.0.1 tunnel.corp.com"
+        },
+        {
+                "tag": "KESTREL",
+                "title": "Kestrel Web Server & Server Banner Redaction",
+                "category": "defense",
+                "desc": ".NET Core'un hafif ve yüksek performanslı web sunucusudur. HTTP yanıt başlıklarındaki `Server: Kestrel` imzasını silerek saldırganların sürüm açığı aramasını engeller.",
+                "analogy": "Bir askerin üniformasından rütbe ve birlik armasını sökerek düşman keskin nişancısına kim olduğunu belli etmemesidir.",
+                "mitigates": "Sunucu Sürüm Keşfi (Reconnaissance), Sürüme Özel Hedefli Exploitler"
+        },
+{
+        "tag": "WAF",
+        "title": "Web Application Firewall (Web Uygulama Güvenlik Duvarı)",
+        "category": "defense",
+        "desc": "Web uygulamasına gelen HTTP/HTTPS isteklerini uygulama katmanında (Layer 7) inceleyen; SQLi, XSS, CSRF gibi saldırıları sunucuya ulaşmadan önce engelleyen kalkandır.",
+        "analogy": "Havalimanı kapısındaki x-ray ve bagaj tarama cihazıdır. İçeriye girmek isteyen her yolcunun çantasını açıp yasaklı sıvı veya kesici alet arar.",
+        "mitigates": "OWASP Top 10 Zafiyetleri, SQL Injection, Cross-Site Scripting, HTTP Flood",
+        "cmd": "modsecurity -t /etc/nginx/modsec/main.conf"
+},
+        {
+        "tag": "SIEM",
+        "title": "Security Information & Event Management (Merkezi Log ve Olay Yönetimi)",
+        "category": "defense",
+        "desc": "Tüm güvenlik duvarları, sunucular, veritabanları ve uç noktalardan gelen milyonlarca logu tek merkezde toplayıp korelasyon kurarak şüpheli olayları alarmlaştıran beyindir.",
+        "analogy": "Koca bir şehrin tüm MOBESE kameralarını, trafik ışıklarını ve yangın sensörlerini tek bir odada toplayıp şüpheli bir aracı anında takip eden afet koordinasyon merkezidir.",
+        "mitigates": "Log Dağınıklığı, Kör Noktalar, Geç Tehdit Tespiti"
+},
+        {
+        "tag": "SOAR",
+        "title": "Security Orchestration, Automation & Response (Siber Güvenlik Otomasyonu)",
+        "category": "defense",
+        "desc": "SIEM'in ürettiği alarmları insan müdahalesi beklemeden önceden tanımlı senaryolarla (Playbook) saniyeler içinde otomatik çözüme ulaştıran (IP engelleme, hesabı kilitleme) orkestrasyondur.",
+        "analogy": "Evde duman kokusu alındığında insanın düğmeye basmasını beklemeden yangın vanalarını açıp itfaiyeyi otomatik arayan akıllı yangın söndürme sistemidir.",
+        "mitigates": "Analist Alarm Yorgunluğu (Alert Fatigue), Yavaş Olay Müdahale Süreleri"
+},
+        {
+        "tag": "DLP",
+        "title": "Data Loss Prevention (Veri Sızıntısı ve Kaybı Önleme)",
+        "category": "defense",
+        "desc": "Kurum içindeki kredi kartı numaraları, TC kimlikleri veya gizli şirket belgelerinin e-posta, USB bellek veya bulut yüklemeleriyle dışarı kaçırılmasını engelleyen güvenlik çözümüdür.",
+        "analogy": "Bir fabrikanın çıkışındaki güvenlik dedektörünün personelin çantasındaki şirket malını algılayıp kapıları kilitlemesi gibidir.",
+        "mitigates": "İç Tehditler (Insider Threat), Veri Sızıntıları, KVKK / GDPR İhlalleri"
+},
+        {
+        "tag": "XDR",
+        "title": "Extended Detection & Response (Genişletilmiş Tehdit Avı)",
+        "category": "defense",
+        "desc": "Yalnızca bilgisayarları değil; ağ trafiğini, bulut hesaplarını ve e-postaları tek bir yapay zeka motoruyla birleştirerek sofistike saldırı zincirlerini uçtan uca yakalayan sistemdir.",
+        "analogy": "Hem binanın içindeki kameraları, hem dış kapıdaki nöbetçiyi, hem de helikopter pistini aynı anda dinleyip şüpheliyi her noktada takip eden koruma ordusudur.",
+        "mitigates": "Gelişmiş Kalıcı Tehditler (APT), Çok Kanallı Saldırılar"
+},
+        {
+        "tag": "WATERING-HOLE",
+        "title": "Watering Hole Saldırısı (Su Kaynağı Pusu Tekniği)",
+        "category": "attacks",
+        "desc": "Hedef şirkete doğrudan saldırmak yerine, şirket çalışanlarının sık sık ziyaret ettiği güvenilir sektörel bir web sitesini (örneğin mühendislik forumu) ele geçirip oraya zararlı kod yerleştirme taktiğidir.",
+        "analogy": "Aslanın ceylanları tek tek kovalamak yerine, tüm ceylanların her akşam su içtiği nehir kenarındaki gölette pusuya yatması gibidir.",
+        "mitigates": "Web Filtreleme, Tarayıcı İzolasyonu (RBI), Güncel Sandbox Taramaları"
+},
+        {
+        "tag": "ARP-SPOOF",
+        "title": "ARP Poisoning / Spoofing (Yerel Ağ Sahteciliği)",
+        "category": "network",
+        "desc": "Aynı yerel ağdaki (LAN) bilgisayarlara sahte ARP yanıtları göndererek kendini modem (Router / Gateway) gibi tanıtıp tüm ağ trafiğini kendi üzerinden geçirme saldırısıdır.",
+        "analogy": "Sınıfta öğretmenin 'Müdür kim?' sorusuna arka sıradaki afacan öğrencinin ayağa kalkıp 'Benim!' diyerek tüm evrakları kendi masasına yönlendirmesi gibidir.",
+        "mitigates": "Dynamic ARP Inspection (DAI), Statik ARP Tabloları, 802.1X Port Güvenliği",
+        "cmd": "arpspoof -i eth0 -t 192.168.1.100 192.168.1.1"
+},
+        {
+        "tag": "BGP-HIJACK",
+        "title": "BGP Hijacking (Küresel İnternet Rota Gaspı)",
+        "category": "network",
+        "desc": "İnternet servis sağlayıcıları arasındaki Border Gateway Protocol anonslarını sahte rotalarla yanıltarak tüm dünya internet trafiğini veya belirli bir IP bloğunu başka bir ülkeye saptırma saldırısıdır.",
+        "analogy": "Otoyoldaki 'Ankara' tabelasını gizlice söküp 'Çıkmaz Sokak' yönüne çevirerek tüm arabaları kendi benzinliğine mecbur bırakmak gibidir.",
+        "mitigates": "RPKI (Resource Public Key Infrastructure) Doğrulaması, ROA İmzaları"
+},
+        {
+        "tag": "DDOS-SYN",
+        "title": "SYN Flood & Distributed Denial of Service (DDoS)",
+        "category": "network",
+        "desc": "Milyonlarca zombi bilgisayardan (Botnet) aynı anda hedefe eksik TCP el sıkışma paketleri (SYN) yağdırarak sunucunun bağlantı tablosunu tüketip çökertme saldırısıdır.",
+        "analogy": "Bir kafeye aynı anda 1000 kişinin girip 'Bir çay ver' demesi ama parayı ödemeden kapıda dikilerek gerçek müşterilerin içeri girmesine engel olması gibidir.",
+        "mitigates": "SYN Cookies, Anycast DNS Yönlendirmesi, Cloudflare / Akamai DDoS Koruması",
+        "cmd": "hping3 -S -p 80 --flood 10.0.0.1"
+},
+        {
+        "tag": "SYN-SCAN",
+        "title": "SYN Stealth Scan (-sS Gizli Port Taraması)",
+        "category": "network",
+        "desc": "TCP 3 yönlü el sıkışmasını tamamlamadan (SYN gönderip SYN-ACK aldıktan sonra RST atarak) portun açık olup olmadığını anlayan ve eski sistem loglarında iz bırakmayan taramadır.",
+        "analogy": "Bir evin kapısını çalıp içeriden 'Kim o?' sesini duyar duymaz kapı açılmadan arkasını dönüp kaçmak gibidir. Evde birinin olduğunu anlarsınız ama içeri girmezsiniz.",
+        "mitigates": "Stateful Firewall Kuralı, Snort/Suricata Port Tarama İmzaları",
+        "cmd": "nmap -sS -Pn 192.168.1.50"
+},
+        {
+        "tag": "CIDR-SUBNET",
+        "title": "Subnetting & CIDR (Alt Ağ Maskeleme: /24, /16)",
+        "category": "network",
+        "desc": "Büyük bir IP havuzunu mantıksal küçük güvenlik bölgelerine ayırma yöntemidir. Örneğin /24 notasyonu ilk 24 bitin ağ adresi, son 8 bitin (254 host) cihaz adresi olduğunu belirtir.",
+        "analogy": "Büyük bir şirketin genel binasını Muhasebe, İK ve Yazılım diye ayrı katlara bölüp kapılarına güvenlik kilidi takmak gibidir.",
+        "mitigates": "Geniş Yayın (Broadcast) Fırtınaları, Kontrolsüz Yatay Ağ Geçişi (Lateral Movement)",
+        "cmd": "ipcalc 192.168.1.0/24"
+},
+        {
+        "tag": "VLAN",
+        "title": "Virtual Local Area Network (Sanal Ağ İzolasyonu)",
+        "category": "network",
+        "desc": "Aynı fiziksel ağ anahtarı (Switch) üzerindeki portları yazılımsal olarak birbirinden tamamen bağımsız ve birbirini göremeyen sanal ağlara (VLAN 10, VLAN 20) ayırma teknolojisidir.",
+        "analogy": "Aynı apartmanda yan yana oturan komşuların birbirinin dairesine kapıdan geçememesi, yalnızca ortak binada bulunmaları gibidir.",
+        "mitigates": "Ağ Dinleme (Sniffing), Yetkisiz Dahili Ağ Sızmaları"
+},
+        {
+        "tag": "TOR-ROUTING",
+        "title": "Onion Routing (Soğan Yönlendirme & Anonimlik)",
+        "category": "network",
+        "desc": "Veriyi kat kat şifreleyerek dünya çapındaki gönüllü aktarıcılar (Entry, Middle, Exit Node) üzerinden sektiren; ne kaynak ne hedef sunucunun kimliği tek başına bilemediği anonim ağdır.",
+        "analogy": "Mektubu iç içe 3 farklı kilitli zarfa koyup 3 farklı kuryeye teslim etmek gibidir. Hiçbir kurye mektubun asıl sahibini ve son varış noktasını aynı anda bilmez.",
+        "mitigates": "Coğrafi IP Takibi, Sansür ve Trafik Analizi"
+},
+        {
+        "tag": "SMB-RELAY",
+        "title": "SMB Relay & NTLM NetNTLMv2 Aktarım Saldırısı",
+        "category": "attacks",
+        "desc": "Ağdaki bir kullanıcının SMB üzerinden gönderdiği NTLM kimlik doğrulama isteğini yakalayıp şifresini kırmadan doğrudan ağdaki başka bir sunucuya ileterek oturum açma saldırısıdır.",
+        "analogy": "Bir kişinin başkasının kimlik kartını alıp fotoğrafına bakmadan güvenlik görevlisine 'Ben buyum' diyerek içeri sızması gibidir.",
+        "mitigates": "SMB Signing Zorunluluğu, NTLMv1 Devre Dışı Bırakılması",
+        "cmd": "ntlmrelayx.py -tf targets.txt -smb2support"
+},
+        {
+        "tag": "PASS-THE-HASH",
+        "title": "Pass-the-Hash (Parolayı Kırmadan Hash ile Giriş)",
+        "category": "attacks",
+        "desc": "Windows işletim sisteminde kurbanın açık metin şifresini bilmeye gerek kalmadan, ele geçirilen NTLM hash'ini doğrudan kimlik doğrulama paketine enjekte ederek sisteme sızma tekniğidir.",
+        "analogy": "Kasanın anahtarının şifresini bilmek yerine anahtarın bal mumu kalıbını alıp kilide sokarak kapıyı açmak gibidir.",
+        "mitigates": "LSA Protection, Credential Guard, Domain Protected Users Grubu",
+        "cmd": "psexec.py -hashes :aad3b... admin@10.0.0.5"
+},
+        {
+        "tag": "GOLDEN-TICKET",
+        "title": "Kerberos Golden Ticket (Active Directory Mutlak Hükümdarlık)",
+        "category": "attacks",
+        "desc": "Active Directory'deki KRBTGT hesabının hash'i ele geçirildiğinde, saldırganın istediği kullanıcı adına (hatta sahte kullanıcılara) 10 yıllık sınırsız TGT bileti üreterek ormandaki her makineyi ele geçirmesidir.",
+        "analogy": "Devletin darphanesindeki mühür ve kaşe makinesini çalıp kendi adına sınırsız geçerli sahte diplomatik pasaport basmak gibidir.",
+        "mitigates": "KRBTGT Parolasının Yılda 2 Kez Düzenli Sıfırlanması, Tiering Mimarisi",
+        "cmd": "mimikatz \"kerberos::golden /user:Administrator /domain:corp.local ...\""
+},
+        {
+        "tag": "LFI-RFI",
+        "title": "Local File Inclusion & Path Traversal (../../etc/passwd)",
+        "category": "attacks",
+        "desc": "Web uygulamasının kullanıcıdan aldığı dosya parametresini denetlemeden include etmesi sonucu, saldırganın `../../` karakterleriyle sistemin hassas dosyalarını (/etc/passwd, web.config) okuması veya kod çalıştırmasıdır.",
+        "analogy": "Bir kütüphaneciye 'Bana 3. raftaki kitabı getir' demek yerine 'Bana kütüphanenin arka odasındaki gizli kasa defterini getir' deyip kütüphanecinin bunu sorgulamadan getirmesidir.",
+        "mitigates": "Girdi Doğrulama (Whitelist), open_basedir Kısıtlaması, Doğrudan Dosya Yolu Kabul Etmeme",
+        "cmd": "curl http://target.local/view.php?file=../../../../etc/passwd"
+},
+        {
+        "tag": "RCE",
+        "title": "Remote Code Execution (Uzaktan Kod ve Komut Çalıştırma)",
+        "category": "attacks",
+        "desc": "Saldırganın hedef sunucuda istediği herhangi bir işletim sistemi komutunu (bash/cmd) uzaktan çalıştırabilmesini sağlayan, en yüksek kritiklik seviyesine (CVSS 10.0) sahip zafiyet türüdür.",
+        "analogy": "Bir evin kapı zilindeki konuşma butonundan evin içine seslenirken 'Mutfaktaki gazı aç ve kibriti yak' dediğinizde evin içindeki akıllı sistemin bunu yapması gibidir.",
+        "mitigates": "exec() / system() / eval() Fonksiyonlarının Yasaklanması, Katı Parametrizasyon, Sandboxing"
+},
+        {
+        "tag": "BUFFER-OVERFLOW",
+        "title": "Buffer Overflow (Bellek Taşması & EIP Kontrolü)",
+        "category": "attacks",
+        "desc": "C/C++ gibi dillerde ayrılan bellek alanından daha fazla veri yazılarak bitişik bellek hücrelerinin (Instruction Pointer - EIP/RIP) ezilmesi ve işlemcinin saldırganın zararlı koduna yönlendirilmesidir.",
+        "analogy": "1 litrelik bir sürahiye 5 litre su dökmek gibidir; taşan su masadaki diğer önemli evrakların ve elektrik prizinin üzerine akarak sistemi bozar.",
+        "mitigates": "ASLR (Address Space Layout Randomization), DEP / NX Biti, Stack Canaries"
+},
+        {
+        "tag": "BURP-SUITE",
+        "title": "Burp Suite (Web Güvenliği ve İstismar Proxy Laboratuvarı)",
+        "category": "tools",
+        "desc": "Tarayıcı ile web sunucusu arasına oturarak giden ve gelen tüm HTTP paketlerini yakalayan, parametreleri değiştiren, otomatik zafiyet tarayan siber güvenlik uzmanlarının bir numaralı web aracıdır.",
+        "analogy": "Mektubu postacıya vermeden önce açıp içindeki kelimeleri silip yerine başka şeyler yazmanızı sağlayan profesyonel bir büyüteçli yazı masası gibidir.",
+        "mitigates": "Web Uygulama Güvenlik Testleri, Manuel Pentest Validasyonu"
+},
+        {
+        "tag": "METASPLOIT",
+        "title": "Metasploit Framework (Otomatize Exploit Geliştirme Motoru)",
+        "category": "tools",
+        "desc": "Binlerce doğrulanmış zafiyet sömürü kodunu (Exploit), zararlı yükü (Payload) ve dinleyiciyi (Handler) tek bir konsol altında toplayan dünyanın en popüler sızma testi çerçevesidir.",
+        "analogy": "İsviçre çakısının bin kat büyüğü; içinde her türlü kapıyı açacak özel maymuncuk ve aletlerin düzenli çekmecelerde dizildiği bir istismar dolabıdır.",
+        "mitigates": "Sistem Yamalama, Düzenli Güvenlik Taramaları",
+        "cmd": "msfconsole -q -x 'use exploit/multi/handler; set PAYLOAD ...'"
+},
+        {
+        "tag": "JOHN-RIPPER",
+        "title": "John the Ripper (Çevrimdışı Kriptografik Hash Kırıcı)",
+        "category": "tools",
+        "desc": "Ele geçirilen şifreli hash dosyalarını (MD5, SHA-256, NTLM, Unix crypt) sözlük ve kaba kuvvet yöntemleriyle kendi işlemcinizde kırarak açık metin şifreyi bulan araçtır.",
+        "analogy": "Yerde bulduğunuz bir kilitli günlüğü evinize götürüp oturup günlerce farklı kombinasyonlar deneyerek kilidi sessizce açmaya çalışmaktır.",
+        "mitigates": "Argon2 / BCrypt Gibi Yavaşlatılmış ve Tuzlanmış Güçlü Algoritmalar",
+        "cmd": "john --wordlist=rockyou.txt hashes.txt"
+},
+        {
+        "tag": "AIRCRACK",
+        "title": "Aircrack-ng (Wi-Fi Kablosuz Ağ Güvenlik Paketi)",
+        "category": "tools",
+        "desc": "Kablosuz ağ kartlarını monitör moduna alarak havadaki 802.11 WPA/WPA2 4 yönlü el sıkışma paketlerini yakalayan ve sözlük saldırısıyla Wi-Fi şifresini kıran araç takımıdır.",
+        "analogy": "Havada uçuşan radyo dalgalarını özel bir antenle dinleyip iki kişinin fısıldaşırken söylediği gizli parolayı kaydetmek gibidir.",
+        "mitigates": "WPA3 Şifreleme, 802.1X Enterprise Doğrulaması, Karmaşık 16+ Parolalar",
+        "cmd": "aircrack-ng -w wordlist.txt capture.cap"
+},
+        {
+        "tag": "TCPDUMP-CMD",
+        "title": "tcpdump CLI (Komut Satırı Ağ Paketi Röntgeni)",
+        "category": "tools",
+        "desc": "Grafik arayüzü olmayan sunucularda ağ kartından geçen ham paketleri filtreleyerek analiz etmeyi ve PCAP dosyası olarak kaydetmeyi sağlayan temel ağ dinleme komutudur.",
+        "analogy": "Su borusuna şeffaf bir cam takıp içinden geçen her damla suyun rengini ve hızını saymak gibidir.",
+        "mitigates": "Şifresiz Protokollerin Tespiti, Ağ Anomalisi Avcılığı",
+        "cmd": "tcpdump -i any -nn -s0 -w traffic.pcap"
+},
+        {
+        "tag": "SOC",
+        "title": "Security Operations Center (Siber Güvenlik Operasyon Merkezi)",
+        "category": "defense",
+        "desc": "Kurumun dijital varlıklarını 7/24 kesintisiz izleyen, gelen tehdit alarmlarını filtreleyen, analiz eden ve olaylara ilk müdahaleyi gerçekleştiren uzman ekibin çalıştığı komuta merkezidir.",
+        "analogy": "Bir hastanenin acil servis odası gibidir; 24 saat nöbettedirler, ambulans (alarm) geldiğinde hastaya anında müdahale ederler.",
+        "mitigates": "Fark Edilmeyen Sızıntılar, Geciken Tehdit Müdahaleleri"
+},
+        {
+        "tag": "CERT-CSIRT",
+        "title": "CERT / CSIRT (Siber Olaylara Müdahale Ekibi)",
+        "category": "defense",
+        "desc": "Büyük bir siber saldırı veya veri ihlali meydana geldiğinde sahaya inen, yangını söndüren, zararlı yazılımı temizleyen ve sistemleri ayağa kaldıran özel harekat siber ekibidir.",
+        "analogy": "Yangın çıktığında binaya giren itfaiye ve olay yeri inceleme ekibidir; hem yangını söndürürler hem de yangının nereden başladığını araştırırlar.",
+        "mitigates": "Kriz Anında Veri Kaybı, Sistem Çöküşleri, İtibar Kaybı"
+},
+        {
+        "tag": "ASLR-DEP",
+        "title": "ASLR & DEP / NX (İşletim Sistemi Bellek Savunma Zırhları)",
+        "category": "defense",
+        "desc": "ASLR proses belleğindeki fonksiyon adreslerini her çalıştırmada rastgele karıştırır; DEP (Data Execution Prevention) ise veri alanlarında kod çalıştırılmasını engelleyerek bellek istismarlarını felç eder.",
+        "analogy": "Bir labirentin tüm odalarının yerini ve kapı numaralarını her 5 dakikada bir otomatik değiştirmek; saldırgan labirenti ezberlese bile içeri girdiğinde kaybolur.",
+        "mitigates": "Buffer Overflow, Return-Oriented Programming (ROP), Shellcode Enjeksiyonu"
+},
+{
+        "tag": "TYPOSQUATTING",
+        "title": "Typosquatting & URL Hijacking (Yazım Hatası Pusu Saldırısı)",
+        "category": "attacks",
+        "desc": "Kullanıcıların popüler web adreslerini (örneğin google yerine gogle) yanlış yazmasını fırsat bilip sahte etki alanları kaydederek kurbanı zararlı yazılıma veya oltalamaya çekme tekniğidir.",
+        "analogy": "Meşhur bir kebapçının hemen yanına tabeladaki bir harfi değiştirip aynı renkte sahte dükkan açarak müşterileri yanıltmak gibidir.",
+        "mitigates": "Benzer Domainlerin Önceden Kurum Tarafından Satın Alınması, DNS Filtreleme"
+},
+        {
+        "tag": "DNS-POISONING",
+        "title": "DNS Cache Poisoning / Spoofing (DNS Önbellek Zehirleme)",
+        "category": "network",
+        "desc": "DNS sunucularının önbelleğine sahte IP adresleri enjekte ederek kullanıcılar banka veya şirket adresini yazdığında onları gizlice saldırganın sahte sunucusuna yönlendirmektir.",
+        "analogy": "Postanenin telefon fihristindeki doktorun telefon numarasını silip yerine bir hırsızın numarasını yazmak gibidir; arayan herkes hırsıza bağlanır.",
+        "mitigates": "DNSSEC (Domain Name System Security Extensions) İmzaları, Rastgele Kaynak Portu (Kaminisky Yaması)"
+},
+        {
+        "tag": "SUPPLY-CHAIN",
+        "title": "Supply Chain Attack (Tedarik Zinciri Siber Saldırısı)",
+        "category": "attacks",
+        "desc": "Hedef şirkete doğrudan sızmak yerine, şirketin kullandığı güvenilir bir üçüncü parti yazılım kütüphanesini (npm, PyPI) veya güncelleme sunucusunu (SolarWinds) hackleyip zararlı kodu oradan yaymaktır.",
+        "analogy": "Kralın sarayına doğrudan saldıramayan bir casusun, saraya her sabah taze ekmek getiren fırıncının ununa zehir karıştırması gibidir.",
+        "mitigates": "Yazılım Malzeme Listesi (SBOM), Bağımlılık İmzalaması, Güvenli Kaynak Denetimi"
+},
+        {
+        "tag": "CONTAINER-ESCAPE",
+        "title": "Docker & Container Escape (Konteyner İzolasyonunu Kırma)",
+        "category": "attacks",
+        "desc": "Docker veya Kubernetes konteyneri içine sızan bir saldırganın, zafiyetli Linux cgroups/namespaces veya yetkili bayraklar (--privileged) üzerinden ana fiziksel sunucuya (Host) atlamasıdır.",
+        "analogy": "Hapishane hücresindeki mahkumun havalandırma borusunu söküp doğrudan gardiyanın ana nöbet odasına tırmanması gibidir.",
+        "mitigates": "Root Olmayan Konteyner Kullanımı (Non-Root User), AppArmor, seccomp Profilleri",
+        "cmd": "docker run --rm -it --privileged alpine sh"
+},
+        {
+        "tag": "SHODAN",
+        "title": "Shodan (İnternete Bağlı Cihazların Arama Motoru)",
+        "category": "tools",
+        "desc": "Google web sayfalarını tararken, Shodan dünyadaki tüm internete açık IP'leri tarayarak güvenlik kameraları, endüstriyel SCADA vanaları, sunucular ve açık portları haritalar.",
+        "analogy": "Şehirdeki tüm evlerin kapı zillerini tek tek çalıp 'İçeride kim var, kapı kilitli mi?' diye not tutan devasa bir şehir gözlemcisidir.",
+        "mitigates": "Açık Yönetim Portlarının İnternetten Kapatılması, VPN Zorunluluğu",
+        "cmd": "shodan host 8.8.8.8"
+},
+        {
+        "tag": "K8S-RBAC",
+        "title": "Kubernetes RBAC & Cluster Security (K8s Küme Güvenliği)",
+        "category": "defense",
+        "desc": "Mikroservis mimarilerinde pod'ların, servis hesaplarının ve kullanıcıların sadece kendilerine tahsis edilen namespace ve API endpoint'lerine erişebilmesini sağlayan rol bazlı kurallar bütünüdür.",
+        "analogy": "Havalimanındaki temizlik personeli kartının sadece bekleme salonuna açılması, pilot kartının ise sadece kokpite açılması gibi sıkı bir kartlı geçiş hiyerarşisidir.",
+        "mitigates": "Konteynerler Arası Yatay Sızma, Küme Seviyesinde Yetki Yükseltme",
+        "cmd": "kubectl auth can-i create pods --as=developer"
+},
+        {
+        "tag": "PADDING-ORACLE",
+        "title": "Padding Oracle Attack (Blok Şifreleme Dolgu Saldırısı)",
+        "category": "attacks",
+        "desc": "CBC modunda şifrelenmiş verileri çözerken sunucunun verdiği dolgu (padding) hata mesajlarını analiz ederek, gizli anahtara sahip olmadan şifreli metnin bayt bayt açık halini ele geçirme tekniğidir.",
+        "analogy": "Kombinasyonlu kasanın çarkını çevirirken kulağınızı kasaya dayayıp doğru sayıya her bastığınızda kasanın içinden gelen küçük 'klik' sesini dinleyerek şifreyi çözmektir.",
+        "mitigates": "GCM (Galois/Counter Mode) Gibi Doğrulanmış Şifreleme (AEAD) Kullanımı"
+},
+        {
+        "tag": "STUXNET",
+        "title": "Stuxnet & SCADA / ICS Siber Fiziksel Silahları",
+        "category": "attacks",
+        "desc": "İran nükleer santrallerindeki uranyum zenginleştirme santrifüjlerinin motor hızlarını değiştirerek fiziksel olarak parçalanmalarını sağlayan dünyanın ilk siber-fiziksel silahıdır.",
+        "analogy": "Fabrikanın kazan dairesindeki sıcaklık göstergesini normal gösterirken arkadan vanayı sonuna kadar açarak kazanı patlatan görünmez hayalet casus gibidir.",
+        "mitigates": "Hava Boşluğu (Air-Gap), PLC Yazılım Bütünlük Doğrulaması, SCADA İzolasyonu"
+},
+];
+    window.glossaryData = glossaryData;
+
+
+    function bindGlossary() {
+        const input = document.getElementById('glossary-search-input');
+        const pillContainer = document.getElementById('glossary-category-pills');
+        const container = document.getElementById('glossary-cards-container');
+        const badgeCount = document.getElementById('glossary-badge-count');
+
+        let activeCat = 'all';
+
+        if (badgeCount) {
+            badgeCount.textContent = `${glossaryData.length}+ KAPSAMLI SİBER TERİM & ANALOJİ`;
+        }
+        if (pillContainer) {
+            const allPill = pillContainer.querySelector('.filter-pill[data-cat="all"]');
+            if (allPill) allPill.textContent = `Tümü (${glossaryData.length}+)`;
+        }
+
+        function applyFilter() {
+            const query = input ? input.value : '';
+            renderGlossary(activeCat, query);
+        }
+
+        if (input) input.addEventListener('input', applyFilter);
+
+        // Fixed pill click listener with delegation
+        if (pillContainer) {
+            pillContainer.addEventListener('click', (e) => {
+                const pill = e.target.closest('.filter-pill');
+                if (!pill) return;
+                pillContainer.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                activeCat = pill.dataset.cat || 'all';
+                applyFilter();
+            });
+        }
+
+        // Delegated click handler for copy/run buttons inside glossary cards
+        if (container) {
+            container.addEventListener('click', (e) => {
+                const copyBtn = e.target.closest('.btn-cmd-copy');
+                if (copyBtn) {
+                    e.stopPropagation();
+                    const text = copyBtn.dataset.copy || '';
+                    if (!text) return;
+                    navigator.clipboard.writeText(text).then(() => {
+                        const orig = copyBtn.textContent;
+                        copyBtn.textContent = '✔ Kopyalandı!';
+                        copyBtn.style.color = 'var(--green)';
+                        showToast('success', 'Komut Kopyalandı', `"${text}" panoya kopyalandı.`);
+                        setTimeout(() => {
+                            copyBtn.textContent = orig;
+                            copyBtn.style.color = '';
+                        }, 1800);
+                    });
+                    return;
+                }
+
+                const runBtn = e.target.closest('.btn-cmd-run');
+                if (runBtn) {
+                    e.stopPropagation();
+                    const cmd = runBtn.dataset.run || '';
+                    if (!cmd) return;
+                    if (typeof window.runKaliCommand === 'function') {
+                        window.runKaliCommand(cmd);
+                        showToast('info', 'Kali Terminali Devrede', `"${cmd}" terminalde çalıştırıldı.`);
+                    }
+                }
+            });
+        }
+
+        // Initial render
+        renderGlossary('all', '');
+    }
+
+    function renderGlossary(category, query) {
+        const container = document.getElementById('glossary-cards-container');
+        if (!container) return;
+
+        const catMeta = {
+            auth: { label: 'Kimlik & Oturum', icon: '🔐' },
+            network: { label: 'Ağ & Protokol', icon: '🌐' },
+            attacks: { label: 'Saldırı Türü', icon: '⚔️' },
+            defense: { label: 'Savunma & Kripto', icon: '🛡️' },
+            tools: { label: 'Siber Araç (Kali)', icon: '💻' }
+        };
+
+        function renderMitigationPills(mitigatesStr) {
+            if (!mitigatesStr) return '';
+            return mitigatesStr
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean)
+                .map(pill => `<span class="mitigation-tag-pill">${escapeHtml(pill)}</span>`)
+                .join('');
+        }
+
+        const q = (query || '').toLowerCase().trim();
+        const filtered = glossaryData.filter(item => {
+            const matchesCat = category === 'all' || item.category === category;
+            const matchesQuery = !q ||
+                item.tag.toLowerCase().includes(q) ||
+                item.title.toLowerCase().includes(q) ||
+                item.desc.toLowerCase().includes(q) ||
+                item.analogy.toLowerCase().includes(q) ||
+                (item.cmd && item.cmd.toLowerCase().includes(q));
+            return matchesCat && matchesQuery;
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 48px; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border);">
+                    <p style="color: var(--text-muted); font-size: 14px;">"${escapeHtml(query)}" terimi bulunamadı.</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = filtered.map(item => {
+            const meta = catMeta[item.category] || { label: item.category.toUpperCase(), icon: '🛡️' };
+            return `
+                <div class="glossary-card cat-${escapeHtml(item.category)}" data-reveal>
+                    <div class="glossary-card-header">
+                        <div class="glossary-badges-row">
+                            <span class="glossary-tag-badge">${escapeHtml(item.tag)}</span>
+                            <span class="glossary-cat-badge cat-${escapeHtml(item.category)}">
+                                ${meta.icon} ${escapeHtml(meta.label)}
+                            </span>
+                        </div>
+                        <span class="glossary-watermark">A-Z</span>
+                    </div>
+
+                    <h3 class="glossary-title">${escapeHtml(item.title)}</h3>
+                    
+                    <p class="glossary-desc">${escapeHtml(item.desc)}</p>
+
+                    <!-- Analogy Callout Box -->
+                    <div class="glossary-analogy-box">
+                        <div class="glossary-analogy-header">
+                            <span class="analogy-icon">💡</span>
+                            <span class="analogy-heading">GÜNLÜK HAYATTAN BENZETME</span>
+                        </div>
+                        <p class="glossary-analogy-quote">“${escapeHtml(item.analogy)}”</p>
+                    </div>
+
+                    <!-- Mitigations Tag Row -->
+                    <div class="glossary-mitigations-box">
+                        <div class="mitigation-header">
+                            <span class="mitigation-icon">🛡️</span>
+                            <span>KORUDUĞU TEHDİTLER:</span>
+                        </div>
+                        <div class="mitigation-pills-row">
+                            ${renderMitigationPills(item.mitigates)}
+                        </div>
+                    </div>
+
+                    ${item.cmd ? `
+                        <div class="glossary-cli-box">
+                            <div class="glossary-cli-header">
+                                <span>⚡ İLGİLİ KALİ / GÜVENLİK KOMUTU:</span>
+                                <div class="cmd-actions">
+                                    <button type="button" class="btn-cmd-copy" data-copy="${escapeHtml(item.cmd)}">📋 Kopyala</button>
+                                    <button type="button" class="btn-cmd-run" data-run="${escapeHtml(item.cmd)}">⚡ Çalıştır</button>
+                                </div>
+                            </div>
+                            <div class="glossary-cli-code">
+                                <span class="prompt-sign">$</span>
+                                <code>${escapeHtml(item.cmd)}</code>
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+                `;
+        }).join('');
+    }
+
+    // ==========================================
+
+    // ==========================================
+    // SİBER CTF ARENASI (6 KADEMELİ OPERASYON MOTORU)
+    // ==========================================
+    const CTF_MISSIONS = [
+        {
+            id: 'm1_1',
+            level: '1.1',
+            levelTier: 1,
+            levelLabel: 'SEVİYE 1.1 // ÇAYLAK SEVİYE',
+            badgeColor: '#10b981',
+            title: 'Operasyon Kapı Çalan (Op: Port Knock)',
+            target: '10.10.1.5 (Dış Güvenlik Ağ Geçidi)',
+            category: 'Ağ & Port Keşfi',
+            xp: 100,
+            story: 'Hedef şirketin dışa açık sunucusu (<strong>10.10.1.5</strong>) üzerinde kritik bir güvenlik açığı şüphesi var. Önce sunucunun ayakta olduğunu <code>ping</code> ile doğrula, ardından servis portlarını <code>nmap</code> ile tara ve HTTP yanıt başlıklarındaki (Header) Base64 kodlu gizli anahtarı çözerek ilk bayrağı kap.',
+            tools: ['ping', 'nmap', 'curl', 'base64'],
+            quickCmds: [
+                'ping -c 3 10.10.1.5',
+                'nmap -sV 10.10.1.5',
+                'curl -I http://10.10.1.5',
+                'echo "TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==" | base64 -d'
+            ],
+            hint: '1) <code>ping -c 3 10.10.1.5</code> ile bağlantıyı test et.<br>2) <code>nmap -sV 10.10.1.5</code> yazarak açık portu gör (Port 80 HTTP açık).<br>3) <code>curl -I http://10.10.1.5</code> ile sunucu yanıt başlıklarını incele.<br>4) Başlıkta gördüğün <code>X-Secret-Auth</code> Base64 değerini <code>echo "..." | base64 -d</code> ile çöz!',
+            flag: 'LFL{level1_1_ag_kesif_basarans}',
+            successMsg: 'Harika! Ağ keşfini tamamladın ve HTTP başlığına gizlenmiş Base64 tokenını çözdün.'
+        },
+        {
+            id: 'm1_2',
+            level: '1.2',
+            levelTier: 1,
+            levelLabel: 'SEVİYE 1.2 // ÇAYLAK SEVİYE',
+            badgeColor: '#10b981',
+            title: 'Operasyon Hayalet Not (Op: Phantom Log)',
+            target: 'local-audit (/var/backups & /var/log)',
+            category: 'Linux Temelleri & Dosya Analizi',
+            xp: 150,
+            story: 'Sızılan bir Linux sunucusunda şüpheli bir operatör iz bırakıp kaçmış. <code>/var/backups</code> dizinini incele, operatörün bıraktığı nottaki ipucunu oku ve <code>/var/log/syslog</code> içerisinden <strong>LFL{...}</strong> formatındaki bayrağı <code>grep</code> ile filtrele.',
+            tools: ['ls', 'cat', 'grep', 'find'],
+            quickCmds: [
+                'ls -la /var/backups',
+                'cat /var/backups/operator_note.txt',
+                'grep -i "LFL{" /var/log/syslog'
+            ],
+            hint: '1) <code>ls -la /var/backups</code> yazarak yedek dizinindeki gizli dosyaları listele.<br>2) <code>cat /var/backups/operator_note.txt</code> dosyasını oku.<br>3) Notta belirtilen log kaydını <code>grep -i "LFL{" /var/log/syslog</code> komutuyla ayıkla!',
+            flag: 'LFL{level1_2_linux_dosya_adli_analiz}',
+            successMsg: 'Tebrikler! Linux dosya sisteminde iz sürme ve grep ile hassas veri filtreleme görevini başarıyla tamamladın.'
+        },
+        {
+            id: 'm2_1',
+            level: '2.1',
+            levelTier: 2,
+            levelLabel: 'SEVİYE 2.1 // OPERATÖR SEVİYE',
+            badgeColor: '#00e5ff',
+            title: 'Operasyon Derin Dizin (Op: Deep Enum)',
+            target: 'http://10.10.2.10 (İntranet Web Portalı)',
+            category: 'Web Güvenliği & Dizin Avı',
+            xp: 250,
+            story: 'Hedef intranet portalında (<strong>10.10.2.10</strong>) gizli bir robot direktifi ve konfigürasyon yedeği unutulmuş. <code>whatweb</code> ile altyapıyı incele, <code>gobuster</code> ile gizli dizinleri tara, <code>robots.txt</code> dosyasındaki gizli yolu bulup json verisindeki bayrağı çek.',
+            tools: ['whatweb', 'gobuster', 'curl', 'nikto'],
+            quickCmds: [
+                'whatweb http://10.10.2.10',
+                'gobuster dir -u http://10.10.2.10 -w common.txt',
+                'curl http://10.10.2.10/robots.txt',
+                'curl http://10.10.2.10/admin_vault/confidential_token.json'
+            ],
+            hint: '1) <code>whatweb http://10.10.2.10</code> ile web teknolojilerini gör.<br>2) <code>gobuster dir -u http://10.10.2.10 -w common.txt</code> ile gizli yolları keşfet.<br>3) <code>curl http://10.10.2.10/robots.txt</code> dosyasını oku.<br>4) Oradaki <code>/admin_vault/confidential_token.json</code> yolunu curl ile aç!',
+            flag: 'LFL{level2_1_web_dizin_firtinasi}',
+            successMsg: 'Kusursuz! Web dizin taraması (directory brute-force) ve robots.txt analiziyle gizli anahtarı ele geçirdin.'
+        },
+        {
+            id: 'm2_2',
+            level: '2.2',
+            levelTier: 2,
+            levelLabel: 'SEVİYE 2.2 // OPERATÖR SEVİYE',
+            badgeColor: '#00e5ff',
+            title: 'Operasyon Gömülü Bellek (Op: Memory Forensics)',
+            target: '/evidence/suspect_payload.bin (Adli Bilişim)',
+            category: 'Adli Bilişim & Kripto',
+            xp: 300,
+            story: 'Ele geçirilen şüpheli bir ikili bellek dökümü (<strong>/evidence/suspect_payload.bin</strong>) analiz masasında. <code>file</code> komutuyla dosya türünü doğrula, <code>strings</code> ile ikili dosyadaki okunabilir metinleri dök ve <code>md5sum</code> ile bütünlüğünü kontrol et.',
+            tools: ['file', 'strings', 'binwalk', 'md5sum'],
+            quickCmds: [
+                'file /evidence/suspect_payload.bin',
+                'strings /evidence/suspect_payload.bin | grep "LFL{"',
+                'md5sum /evidence/suspect_payload.bin'
+            ],
+            hint: '1) <code>file /evidence/suspect_payload.bin</code> komutuyla dosya tipini gör.<br>2) <code>strings /evidence/suspect_payload.bin | grep "LFL{"</code> komutunu çalıştırarak ikili dosyanın içindeki gizli bayrağı anında ayıkla!',
+            flag: 'LFL{level2_2_adli_bilisim_strings_ustasi}',
+            successMsg: 'Harika bir adli bilişim analizi! Gömülü ikili dosya içindeki dizeleri ayıklayarak gizli bayrağa ulaştın.'
+        },
+        {
+            id: 'm3_1',
+            level: '3.1',
+            levelTier: 3,
+            levelLabel: 'SEVİYE 3.1 // ROOT HACKER SEVİYE',
+            badgeColor: '#ef4444',
+            title: 'Operasyon Kale Kuşatması (Op: Fortress Breach)',
+            target: '10.10.3.50 (Kilitli Linux & SSH)',
+            category: 'Kaba Kuvvet (Brute Force) & SUID PrivEsc',
+            xp: 500,
+            story: 'Korumalı Linux sunucusu (<strong>10.10.3.50</strong>) zayıf bir SSH parolası kullanıyor. <code>hydra</code> ile parola kırma saldırısı yap, sisteme <code>ssh</code> ile bağlan, ardından <code>find</code> ile SUID izinli dosya açığını tespit edip root haklarıyla <code>/root/flag.txt</code> dosyasını ele geçir.',
+            tools: ['hydra', 'ssh', 'find', 'sudo', 'cat'],
+            quickCmds: [
+                'hydra -l operator -P rockyou.txt 10.10.3.50 ssh',
+                'ssh operator@10.10.3.50',
+                'find / -perm -4000 2>/dev/null',
+                'cat /root/flag.txt'
+            ],
+            hint: '1) <code>hydra -l operator -P rockyou.txt 10.10.3.50 ssh</code> ile şifreyi kır.<br>2) <code>ssh operator@10.10.3.50</code> ile bağlan.<br>3) <code>find / -perm -4000 2>/dev/null</code> ile SUID açıklarını listele.<br>4) <code>cat /root/flag.txt</code> veya <code>sudo cat /root/flag.txt</code> ile son bayrağı oku!',
+            flag: 'LFL{level3_1_suid_privesc_root_fatihi}',
+            successMsg: 'İnanılmaz bir sızma! SSH kaba kuvvet saldırısı ve SUID yetki yükseltme (Privilege Escalation) ile tam yetkili root oldun.'
+        },
+        {
+            id: 'm3_2',
+            level: '3.2',
+            levelTier: 3,
+            levelLabel: 'SEVİYE 3.2 // BÜYÜK FİNAL & ŞAMPİYONLUK',
+            badgeColor: '#c084fc',
+            title: 'Operasyon Büyük Sızıntı (Op: Grand SQLi - Final Boss)',
+            target: 'http://10.10.3.99/api/search?q=test (Finansal Veritabanı)',
+            category: 'SQL Injection & Veritabanı Sızması',
+            xp: 1000,
+            story: 'Büyük final operasyonu! Hedef finans kurumunun arama API\'sinde SQL Injection zafiyeti keşfedildi. <code>sqlmap</code> ile veritabanlarını listele, <code>lfl_master_vault</code> veritabanındaki tabloları dök ve nihai şampiyon bayrağını ele geçir.',
+            tools: ['sqlmap', 'curl', 'tcpdump'],
+            quickCmds: [
+                'curl "http://10.10.3.99/api/search?q=test"',
+                'sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs',
+                'sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault --tables',
+                'sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault -T master_classified_flags --dump'
+            ],
+            hint: '1) <code>curl "http://10.10.3.99/api/search?q=test"</code> ile API yanıtını gör.<br>2) <code>sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs</code> ile veritabanlarını çek.<br>3) <code>sqlmap ... -D lfl_master_vault --tables</code> ile tabloları listele.<br>4) <code>sqlmap ... -T master_classified_flags --dump</code> ile şampiyonluk bayrağını dök!',
+            flag: 'LFL{level3_2_sqli_grand_master_champion_2026}',
+            successMsg: '🏆 TEBRİKLER ŞAMPİYON! SQL Injection zafiyetini sömürerek büyük final veritabanını ele geçirdin ve LFL Siber Arenası\'nı %100 tamamladın!'
+        }
+    ];
+    window.CTF_MISSIONS = CTF_MISSIONS;
+    
+
+    const ctfState = {
+        unlockedIdx: 0,
+        activeIdx: 0,
+        completed: [],
+        xp: 0,
+        history: [],
+        historyIdx: -1,
+        sshSessionActive: false
+    };
+    window.ctfState = ctfState;
+
+
+    function loadCtfProgressFromStorage() {
+        try {
+            const raw = localStorage.getItem('lfl_ctf_state');
+            if (raw) {
+                const saved = JSON.parse(raw);
+                if (saved && typeof saved === 'object') {
+                    if (Array.isArray(saved.completed)) ctfState.completed = saved.completed;
+                    if (typeof saved.unlockedIdx === 'number') ctfState.unlockedIdx = saved.unlockedIdx;
+                    if (typeof saved.activeIdx === 'number') ctfState.activeIdx = saved.activeIdx;
+                    if (typeof saved.xp === 'number') ctfState.xp = saved.xp;
+                }
+            }
+        } catch (e) { }
+    }
+
+    function saveCtfProgressToStorage() {
+        try {
+            localStorage.setItem('lfl_ctf_state', JSON.stringify({
+                unlockedIdx: ctfState.unlockedIdx,
+                activeIdx: ctfState.activeIdx,
+                completed: ctfState.completed,
+                xp: ctfState.xp
+            }));
+            localStorage.setItem('lfl_ctf_xp', String(ctfState.xp));
+        } catch (e) { }
+    }
+
+    function initCtfArena() {
+        loadCtfProgressFromStorage();
+        ctfState.activeIdx = Math.min(ctfState.unlockedIdx, CTF_MISSIONS.length - 1);
+        renderCtfProgress();
+        renderCtfStageTabs();
+        renderCtfBriefing(ctfState.activeIdx);
+        bindCtfTerminal();
+
+        const btnReset = document.getElementById('btn-reset-ctf-progress');
+        if (btnReset) {
+            btnReset.addEventListener('click', () => {
+                if (confirm('Tüm CTF operasyon ilerlemenizi sıfırlayıp 1. seviyeden baştan başlamak istediğinize emin misiniz?')) {
+                    resetCtfProgress();
+                }
+            });
+        }
+    }
+
+    function resetCtfProgress() {
+        ctfState.unlockedIdx = 0;
+        ctfState.activeIdx = 0;
+        ctfState.completed = [];
+        ctfState.xp = 0;
+        ctfState.sshSessionActive = false;
+        try {
+            localStorage.removeItem('lfl_ctf_state');
+            localStorage.removeItem('lfl_ctf_xp');
+        } catch (e) { }
+        renderCtfProgress();
+        renderCtfStageTabs();
+        renderCtfBriefing(0);
+        updateCtfTerminalTarget();
+        showToast('info', 'CTF Sıfırlandı', 'Operasyon ilerlemeniz sıfırlandı. Seviye 1.1\'den başlayabilirsiniz.');
+    }
+
+    function getCtfRank(count, xp) {
+        if (count >= 6) return '🏆 Efsanevi Siber Şampiyon';
+        if (count >= 5) return '👑 Root Hacker (Elite)';
+        if (count >= 4) return '🔍 Adli Bilişim Uzmanı';
+        if (count >= 3) return '⚡ Web Sızma Operatörü';
+        if (count >= 2) return '🕵️ Sistem Dedektifi';
+        if (count >= 1) return '🌐 Ağ Kaşifi';
+        return '🔰 Çaylak Analist';
+    }
+
+    function renderCtfProgress() {
+        const completedCount = ctfState.completed.length;
+        const total = CTF_MISSIONS.length;
+        const pct = Math.round((completedCount / total) * 100);
+
+        const textEl = document.getElementById('ctf-progress-text');
+        if (textEl) textEl.textContent = `İlerleme: ${completedCount}/${total} Görev Tamamlandı (%${pct})`;
+
+        const xpEl = document.getElementById('ctf-total-xp');
+        if (xpEl) xpEl.textContent = `TOPLAM XP: ${ctfState.xp}`;
+
+        const rankEl = document.getElementById('ctf-current-rank');
+        if (rankEl) rankEl.textContent = `Rütbe: ${getCtfRank(completedCount, ctfState.xp)}`;
+
+        const fillEl = document.getElementById('ctf-progress-bar-fill');
+        if (fillEl) fillEl.style.width = `${pct}%`;
+    }
+
+    function renderCtfStageTabs() {
+        const nav = document.getElementById('ctf-stage-nav');
+        if (!nav) return;
+
+        nav.innerHTML = CTF_MISSIONS.map((m, idx) => {
+            const isCompleted = ctfState.completed.includes(m.id);
+            const isUnlocked = idx <= ctfState.unlockedIdx;
+            const isActive = idx === ctfState.activeIdx;
+
+            let statusIcon = '🔒';
+            let statusClass = 'locked';
+            let statusText = 'Kilitli';
+
+            if (isCompleted) {
+                statusIcon = '✔';
+                statusClass = 'completed';
+                statusText = 'Bitti';
+            } else if (isUnlocked) {
+                statusIcon = '⚡';
+                statusClass = 'unlocked';
+                statusText = 'Açık';
+            }
+
+            if (isActive) statusClass += ' active';
+
+            // Clean short title for stepper button
+            const shortTitle = m.title.replace('Operasyon ', '').split('(')[0].trim();
+
+            return `
+                <div class="ctf-stepper-item ${statusClass}" data-stage-idx="${idx}">
+                    <div class="ctf-stepper-top-row">
+                        <span style="color: ${m.badgeColor};">SEVİYE ${m.level}</span>
+                        <span>${statusIcon} ${statusText}</span>
+                    </div>
+                    <div class="ctf-stepper-title" title="${escapeHtml(m.title)}">${escapeHtml(shortTitle)}</div>
+                </div>
+            `;
+        }).join('');
+
+        nav.querySelectorAll('.ctf-stepper-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const idx = parseInt(item.dataset.stageIdx, 10);
+                if (idx <= ctfState.unlockedIdx) {
+                    ctfState.activeIdx = idx;
+                    saveCtfProgressToStorage();
+                    renderCtfStageTabs();
+                    renderCtfBriefing(idx);
+                    updateCtfTerminalTarget();
+                } else {
+                    showToast('error', 'Kilitli Seviye', `Bu seviyeyi açmak için önce Seviye ${CTF_MISSIONS[idx - 1].level} operasyonunu tamamlamalısınız.`);
+                }
+            });
+        });
+    }
+
+    function renderCtfBriefing(idx) {
+        const box = document.getElementById('ctf-briefing-box');
+        if (!box) return;
+
+        const m = CTF_MISSIONS[idx];
+        const isCompleted = ctfState.completed.includes(m.id);
+
+        box.innerHTML = `
+            <div class="ctf-card-top">
+                <div class="ctf-card-badges">
+                    <span class="ctf-mini-pill" style="background: rgba(${hexToRgb(m.badgeColor)}, 0.15); color: ${m.badgeColor}; border: 1px solid ${m.badgeColor};">${escapeHtml(m.levelLabel)}</span>
+                    <span class="ctf-mini-pill" style="background: rgba(255, 255, 255, 0.05); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.1);">${escapeHtml(m.category)}</span>
+                    <span class="ctf-mini-pill" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981;">+${m.xp} XP</span>
+                </div>
+                <div class="ctf-target-label">
+                    <span class="pulsing-beacon" style="width: 5px; height: 5px; background: var(--cyan); display: inline-block; vertical-align: middle; margin-right: 4px;"></span>
+                    <span>🎯 ${escapeHtml(m.target)}</span>
+                </div>
+            </div>
+
+            <h2 class="ctf-mission-heading">${escapeHtml(m.title)}</h2>
+
+            <!-- Pure Story Narrative & Directive -->
+            <div class="ctf-brief-box">
+                ${m.story}
+            </div>
+
+            <!-- Tactical Hint Accordion: Commands are displayed only here for manual typing -->
+            <div class="ctf-hint-container" id="ctf-hint-accordion">
+                <button type="button" class="ctf-hint-btn" id="btn-toggle-ctf-hint">
+                    <span style="display: flex; align-items: center; gap: 6px;">💡 Taktik İpucu &amp; Önerilen Kodlar (Takılırsan Tıkla)</span>
+                    <span id="ctf-hint-icon">&darr;</span>
+                </button>
+                <div class="ctf-hint-body" id="ctf-hint-text-area">
+                    <div style="margin-bottom: 10px; line-height: 1.55;">${m.hint}</div>
+                    <div style="font-family: var(--font-mono); font-weight: 700; color: var(--cyan); margin-bottom: 6px; font-size: 11px;">
+                        KULLANILABİLİR KOMUTLAR (Öğrenmek için terminale kendi elinle yaz):
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        ${m.quickCmds.map(c => `
+                            <div style="font-family: var(--font-mono); background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 229, 255, 0.2); padding: 6px 10px; border-radius: 4px; color: #a7f3d0; font-size: 11.5px; user-select: text;">
+                                <span style="color: var(--cyan); font-weight: 700;">$</span> ${escapeHtml(c)}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flag Submission -->
+            <div class="ctf-flag-container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 11px; font-family: var(--font-mono); font-weight: 700; color: #cbd5e1;">BAYRAK TESLİM ALANI:</span>
+                    ${isCompleted ? '<span style="color: #10b981; font-weight: 700; font-size: 10.5px; font-family: var(--font-mono);">✔ ÇÖZÜLDÜ</span>' : ''}
+                </div>
+                <div class="ctf-flag-row">
+                    <input type="text" class="ctf-input-field" id="ctf-flag-input-field" placeholder="Örn: LFL{...}" value="${isCompleted ? m.flag : ''}" ${isCompleted ? 'readonly' : ''} autocomplete="off" spellcheck="false" />
+                    <button type="button" class="ctf-btn-verify" id="btn-submit-ctf-flag">
+                        <span>🚩 Doğrula</span>
+                    </button>
+                </div>
+                <div class="ctf-alert-box" id="ctf-feedback-msg-box"></div>
+            </div>
+        `;
+
+        // Hint toggle listener
+        const hintBox = document.getElementById('ctf-hint-accordion');
+        const btnHint = document.getElementById('btn-toggle-ctf-hint');
+        if (hintBox && btnHint) {
+            btnHint.addEventListener('click', () => {
+                hintBox.classList.toggle('open');
+                const icon = document.getElementById('ctf-hint-icon');
+                if (icon) icon.textContent = hintBox.classList.contains('open') ? '↑' : '↓';
+            });
+        }
+
+        // Flag submit listener
+        const btnSubmit = document.getElementById('btn-submit-ctf-flag');
+        const flagInput = document.getElementById('ctf-flag-input-field');
+        if (btnSubmit && flagInput) {
+            btnSubmit.addEventListener('click', () => {
+                submitCtfFlag(flagInput.value);
+            });
+            flagInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    submitCtfFlag(flagInput.value);
+                }
+            });
+        }
+    }
+
+    function hexToRgb(hex) {
+        hex = hex.replace('#', '');
+        if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+        const num = parseInt(hex, 16);
+        return `${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}`;
+    }
+
+    function submitCtfFlag(rawFlag) {
+        const flag = (rawFlag || '').trim();
+        const m = CTF_MISSIONS[ctfState.activeIdx];
+        const feedback = document.getElementById('ctf-feedback-msg-box');
+
+        if (!flag) {
+            if (feedback) {
+                feedback.className = 'ctf-feedback-msg error';
+                feedback.innerHTML = 'Lütfen bir bayrak (LFL{...}) giriniz!';
+            }
+            return;
+        }
+
+        if (flag === m.flag) {
+
+
+            if (!ctfState.completed.includes(m.id)) {
+                ctfState.completed.push(m.id);
+                ctfState.xp += m.xp;
+
+                // Unlock next stage
+                if (ctfState.activeIdx + 1 > ctfState.unlockedIdx && ctfState.activeIdx + 1 < CTF_MISSIONS.length) {
+                    ctfState.unlockedIdx = ctfState.activeIdx + 1;
+                }
+                saveCtfProgressToStorage();
+            }
+
+            if (feedback) {
+                feedback.className = 'ctf-feedback-msg success';
+                feedback.innerHTML = `<strong>✔ TEBRİKLER!</strong> ${escapeHtml(m.successMsg)} <span style="color: #10b981; font-weight: 700;">(+${m.xp} XP)</span>`;
+            }
+
+            showToast('success', 'Bayrak Yakalandı!', `Tebrikler! ${m.title} başarıyla tamamlandı. (+${m.xp} XP)`);
+
+            // Check if all 6 completed
+            if (ctfState.completed.length >= CTF_MISSIONS.length) {
+                setTimeout(() => {
+                    showToast('success', '🏆 CTF Tamamlandı!', 'Tebrikler! 6 kademeli operasyonun tamamını başarıyla bitirdiniz.');
+                }, 500);
+            }
+
+            renderCtfProgress();
+            renderCtfStageTabs();
+
+            // Print in CTF terminal
+            printCtfOutput(`\n<span style="color: #10b981; font-weight: 700;">[+] ==============================================================</span>\n<span style="color: #10b981; font-weight: 800;">[+] FLAG CAPTURED: ${escapeHtml(m.flag)}</span>\n<span style="color: #10b981; font-weight: 700;">[+] TEBRİKLER! Seviye ${m.level} başarıyla tamamlandı! (+${m.xp} XP)</span>\n<span style="color: #10b981; font-weight: 700;">[+] ==============================================================</span>\n`);
+
+            // Transition to next level after delay
+            if (ctfState.activeIdx < CTF_MISSIONS.length - 1) {
+                setTimeout(() => {
+                    ctfState.activeIdx++;
+                    renderCtfStageTabs();
+                    renderCtfBriefing(ctfState.activeIdx);
+                    updateCtfTerminalTarget();
+                }, 1600);
+            }
+        } else {
+
+            if (feedback) {
+                feedback.className = 'ctf-feedback-msg error';
+                feedback.innerHTML = '❌ Hatalı bayrak! Lütfen terminaldeki çıktıları ve ipucunu dikkatlice inceleyerek tekrar deneyin.';
+            }
+            showToast('error', 'Hatalı Bayrak', 'Girdiğiniz bayrak bu görevle eşleşmedi. İpuçlarını kontrol edin.');
+        }
+    }
+
+    function updateCtfTerminalTarget() {
+        const m = CTF_MISSIONS[ctfState.activeIdx];
+        ctfState.sshSessionActive = false;
+
+        // 1. Her yeni seviyede terminali tamamen temizle
+        clearCtfTerminal();
+
+        // 2. Prompt etiketini varsayılana getir
+        const promptEl = document.getElementById('ctf-term-prompt-label');
+        if (promptEl) promptEl.textContent = 'root@kali-ctf:~#';
+
+        // 3. Başlık çubuğundaki hedef bilgisini güncelle
+        const badgeText = document.getElementById('ctf-term-title-text');
+        if (badgeText) {
+            badgeText.textContent = `root@kali-ctf:~# [${m.target}]`;
+        }
+
+        // 4. Yeni seviye için tertemiz ve net karşılama mesajı bas
+        printCtfOutput(`
+<span style="color: #00e5ff; font-weight: 800;">┌──(root㉿kali-ctf)-[~]</span>
+<span style="color: #94a3b8;">│ LFL CTF OPERASYONU // SEVİYE ${m.level}: ${escapeHtml(m.title)}</span>
+<span style="color: #94a3b8;">│ Hedef Sistem: ${escapeHtml(m.target)}</span>
+<span style="color: #00e5ff; font-weight: 800;">└─#</span> <span style="color: #10b981;">Terminal temizlendi ve hazırlandı. Komutları aşağıya yazıp Enter'a basın.</span>
+        `);
+
+        // 5. Giriş alanını temizle ve odakla
+        const input = document.getElementById('ctf-term-command-input');
+        if (input) {
+            input.value = '';
+            input.focus();
+        }
+    }
+
+    function printCtfOutput(html) {
+        const out = document.getElementById('ctf-term-output-area');
+        if (!out) return;
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        out.appendChild(div);
+
+        const screen = document.getElementById('ctf-term-screen');
+        if (screen) screen.scrollTop = screen.scrollHeight;
+    }
+
+    function clearCtfTerminal() {
+        const out = document.getElementById('ctf-term-output-area');
+        if (out) out.innerHTML = '';
+    }
+
+    function resetCtfTerminal() {
+        clearCtfTerminal();
+        const m = CTF_MISSIONS[ctfState.activeIdx];
+        printCtfOutput(`
+<span style="color: #00e5ff; font-weight: 800;">┌──(root㉿kali-ctf)-[~]</span>
+<span style="color: #94a3b8;">│ LFL SİBER CTF OPERASYON LABORATUVARI // KADEME: SEVİYE ${m.level}</span>
+<span style="color: #94a3b8;">│ Hedef Sistem: ${escapeHtml(m.target)}</span>
+<span style="color: #94a3b8;">│ Sadece kütüphanedeki 142 Kali Linux kodu kullanılabilir.</span>
+<span style="color: #00e5ff; font-weight: 800;">└─#</span> <span style="color: #10b981;">Simülasyon hazır. Başlamak için soldaki komutlara tıklayın veya doğrudan yazın.</span>
+        `);
+    }
+
+    function bindCtfTerminal() {
+        resetCtfTerminal();
+
+        const input = document.getElementById('ctf-term-command-input');
+        const btnClear = document.getElementById('btn-clear-ctf-term');
+        const btnReset = document.getElementById('btn-reset-ctf-term');
+
+        if (btnClear) btnClear.addEventListener('click', clearCtfTerminal);
+        if (btnReset) btnReset.addEventListener('click', resetCtfTerminal);
+
+        let ctfTabCursor = -1;
+        let lastCtfPrefix = null;
+
+        if (input) {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const cmd = input.value.trim();
+                    if (!cmd) return;
+
+                    ctfState.history.push(cmd);
+                    ctfState.historyIdx = ctfState.history.length;
+                    input.value = '';
+                    ctfTabCursor = -1;
+                    lastCtfPrefix = null;
+
+                    executeCtfCommand(cmd);
+                } else if (e.key === 'Tab') {
+                    // TAB KEY AUTO-COMPLETION (Oto Tamamlama)
+                    e.preventDefault();
+                    const m = CTF_MISSIONS[ctfState.activeIdx];
+                    const missionCmds = (m && m.quickCmds) ? m.quickCmds : [];
+                    const baseCmds = ['help', 'clear', 'whoami', 'id', 'pwd', 'ls -la', 'uname -a'];
+                    const academyCmds = (window.ACADEMY_COMMANDS || []).map(c => c.cmd);
+                    const pool = Array.from(new Set([...missionCmds, ...baseCmds, ...academyCmds]));
+
+                    const currentVal = input.value.trim();
+                    const currentLower = currentVal.toLowerCase();
+                    let matches = [];
+
+                    if (!currentVal) {
+                        // Empty line: cycle through current mission's recommended commands!
+                        matches = missionCmds.length > 0 ? missionCmds : pool.slice(0, 8);
+                    } else {
+                        // Priority 1: Mission commands that start with currentVal
+                        const mPrefix = missionCmds.filter(c => c.toLowerCase().startsWith(currentLower));
+                        // Priority 2: All 142 Kali commands that start with currentVal
+                        const allPrefix = pool.filter(c => c.toLowerCase().startsWith(currentLower));
+                        // Priority 3: Substring matches
+                        const allSubstr = pool.filter(c => !c.toLowerCase().startsWith(currentLower) && c.toLowerCase().includes(currentLower));
+
+                        matches = Array.from(new Set([...mPrefix, ...allPrefix, ...allSubstr]));
+
+                        // If user typed "sub" or "lfl", offer submitting flag directly
+                        if (currentLower.startsWith('sub') || currentLower.startsWith('lfl')) {
+                            if (m && m.flag) {
+                                matches.unshift(`submit ${m.flag}`);
+                            }
+                        }
+                    }
+
+                    if (matches.length > 0) {
+                        if (lastCtfPrefix === currentLower) {
+                            ctfTabCursor = (ctfTabCursor + 1) % matches.length;
+                        } else {
+                            ctfTabCursor = 0;
+                            lastCtfPrefix = currentLower;
+                        }
+                        input.value = matches[ctfTabCursor];
+                        input.selectionStart = input.selectionEnd = input.value.length;
+                    }
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    lastCtfPrefix = null;
+                    if (ctfState.historyIdx > 0) {
+                        ctfState.historyIdx--;
+                        input.value = ctfState.history[ctfState.historyIdx] || '';
+                    }
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    lastCtfPrefix = null;
+                    if (ctfState.historyIdx < ctfState.history.length - 1) {
+                        ctfState.historyIdx++;
+                        input.value = ctfState.history[ctfState.historyIdx] || '';
+                    } else {
+                        ctfState.historyIdx = ctfState.history.length;
+                        input.value = '';
+                    }
+                } else {
+                    lastCtfPrefix = null;
+                }
+            });
+        }
+    }
+
+    function executeCtfCommand(rawCmd) {
+        const cmd = rawCmd.trim();
+        const lower = cmd.toLowerCase();
+        const m = CTF_MISSIONS[ctfState.activeIdx];
+        const promptLabel = ctfState.sshSessionActive ? 'operator@fortress:~$' : 'root@kali-ctf:~#';
+
+        // Echo prompt & command
+        printCtfOutput(`<div style="margin-top: 6px;"><span style="color: #00e5ff; font-weight: 700;">${promptLabel}</span> <span style="color: #ffffff;">${escapeHtml(cmd)}</span></div>`);
+
+        // Check clear
+        if (lower === 'clear' || lower === 'cls') {
+            clearCtfTerminal();
+            return;
+        }
+
+        // Direct flag submission via terminal
+        if (lower.startsWith('submit ') || lower.startsWith('lfl{')) {
+            const flagCandidate = cmd.startsWith('submit ') ? cmd.substring(7).trim() : cmd;
+            submitCtfFlag(flagCandidate);
+            return;
+        }
+
+        // God Mode for burak_wyxz
+        if (lower === 'godmode' || lower === 'admin') {
+            const isAdmin = state.currentUser && state.currentUser.username === 'burak_wyxz';
+            if (isAdmin) {
+                printCtfOutput(`
+<pre style="color: #10b981; font-weight: 800; font-family: var(--font-mono);">
+[★] ==============================================================
+[★] LFL CYBER CTF // ROOT MASTER CONSOLE (burak_wyxz)
+[★] ==============================================================
+[+] Operatör          : burak_wyxz (Baş Yönetici)
+[+] CTF Puanı         : ${ctfState.xp} XP
+[+] Tamamlanan Görev  : ${ctfState.completed.length} / ${CTF_MISSIONS.length}
+[+] İpucu             : '👑 Master Root Key' butonuna basarak tüm aşamaları anında açabilirsiniz.
+[★] ==============================================================
+</pre>`);
+            } else {
+                printCtfOutput(`<span style="color: #ef4444; font-weight: 700;">[!] Erişim Reddedildi: God Mode yalnızca yönetici burak_wyxz içindir.</span>`);
+            }
+            return;
+        }
+
+        // Help
+        if (lower === 'help') {
+            printCtfOutput(`
+<pre style="color: #38bdf8;">
+LFL CYBER CTF // YARDIM &amp; KULLANILABİLİR KOMUTLAR
+===================================================================
+Bu operasyonda LFL Siber Kütüphanesi'ndeki 142 Kali aracı çalışır.
+Aktif Seviye (${m.level}) için önerilen komutlar:
+  ${m.tools.map(t => `<span style="color: #22c55e; font-weight: 700;">${t}</span>`).join(' &bull; ')}
+
+Hızlı Kullanım:
+  submit LFL{...}           : Bulduğun bayrağı terminalden teslim et
+  clear                     : Ekranı temizle
+  help                      : Bu yardım ekranını göster
+</pre>
+            `);
+            return;
+        }
+
+        // Standard Linux inspection commands
+        if (lower === 'whoami') {
+            printCtfOutput(`<pre style="color: #a7f3d0;">${ctfState.sshSessionActive ? 'operator' : 'root'}</pre>`);
+            return;
+        }
+        if (lower === 'pwd') {
+            printCtfOutput(`<pre style="color: #a7f3d0;">${ctfState.sshSessionActive ? '/home/operator' : '/root'}</pre>`);
+            return;
+        }
+        if (lower === 'id') {
+            printCtfOutput(`<pre style="color: #a7f3d0;">${ctfState.sshSessionActive ? 'uid=1001(operator) gid=1001(operator) groups=1001(operator)' : 'uid=0(root) gid=0(root) groups=0(root)'}</pre>`);
+            return;
+        }
+        if (lower === 'uname -a') {
+            printCtfOutput(`<pre style="color: #a7f3d0;">Linux lfl-ctf-node 6.8.11-kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali 2026.1 x86_64 GNU/Linux</pre>`);
+            return;
+        }
+
+        // ==========================================
+        // MISSION 1.1: Operasyon Kapı Çalan
+        // ==========================================
+        if (m.id === 'm1_1') {
+            if (lower.includes('ping') && lower.includes('10.10.1.5')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+PING 10.10.1.5 (10.10.1.5) 56(84) bytes of data.
+64 bytes from 10.10.1.5: icmp_seq=1 ttl=64 time=1.24 ms
+64 bytes from 10.10.1.5: icmp_seq=2 ttl=64 time=1.12 ms
+64 bytes from 10.10.1.5: icmp_seq=3 ttl=64 time=1.18 ms
+
+--- 10.10.1.5 ping statistics ---
+3 packets transmitted, 3 received, <span style="color: #22c55e; font-weight: 700;">0% packet loss</span>, time 2004ms
+rtt min/avg/max/mdev = 1.120/1.180/1.240/0.048 ms
+<span style="color: #22c55e;">[+] HEDEF AKTİF! Sunucu ayakta. Şimdi nmap ile servisleri tarayın.</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('nmap') && lower.includes('10.10.1.5')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-11-08 02:00 UTC
+Nmap scan report for 10.10.1.5
+Host is up (0.0012s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+<span style="color: #38bdf8; font-weight: 700;">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)</span>
+<span style="color: #22c55e; font-weight: 700;">80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))</span>
+|_http-server-header: Apache/2.4.52 (Ubuntu)
+|_http-title: LFL Internal Gateway Portal
+
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+<span style="color: #22c55e;">[+] Port 80 HTTP Servisi açık! curl -I http://10.10.1.5 ile başlıkları inceleyin.</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('curl') && lower.includes('10.10.1.5')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+HTTP/1.1 200 OK
+Date: Sun, 08 Nov 2026 02:01:10 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Last-Modified: Sat, 07 Nov 2026 21:10:00 GMT
+ETag: "29b-61019f88c7"
+Accept-Ranges: bytes
+Content-Length: 667
+Content-Type: text/html
+<span style="color: #f59e0b; font-weight: 800;">X-Secret-Auth: TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==</span>
+Connection: close
+
+<span style="color: #22c55e;">[+] GİZLİ BAŞLIK BULUNDU: X-Secret-Auth: TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==</span>
+<span style="color: #22c55e;">[+] Bu değeri echo "..." | base64 -d ile çözün!</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('base64') && (lower.includes('tezme') || lower.includes('echo'))) {
+                printCtfOutput(`
+<pre style="color: #22c55e; font-weight: 700;">
+LFL{level1_1_ag_kesif_basarans}
+</pre>
+<span style="color: #00e5ff;">[+] Bayrak çözüldü! Sol taraftaki teslim kutusuna yapıştırıp doğrulayın veya 'submit LFL{...}' yazın.</span>
+                `);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 1.2: Operasyon Hayalet Not
+        // ==========================================
+        if (m.id === 'm1_2') {
+            if (lower.includes('ls') && lower.includes('/var/backups')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+total 16
+drwxr-xr-x 2 root root 4096 Nov  8 01:40 .
+drwxr-xr-x 14 root root 4096 Nov  8 01:20 ..
+-rw-r--r-- 1 root root  512 Nov  8 01:42 backup_system.tar.gz
+<span style="color: #f59e0b; font-weight: 700;">-rw-r--r-- 1 root root  240 Nov  8 01:45 operator_note.txt</span>
+-rw-r--r-- 1 root root 1024 Nov  8 01:41 shadow.bak
+
+<span style="color: #22c55e;">[+] /var/backups/operator_note.txt dosyası bulundu! cat komutuyla okuyun.</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('cat') && lower.includes('operator_note.txt')) {
+                printCtfOutput(`
+<pre style="color: #f59e0b;">
+=====================================================
+AJAN NOTU // GİZLİ
+=====================================================
+Sistem günlüğünü temizleyemedim. Sızma testi sırasında
+oluşan denetim izleri doğrudan /var/log/syslog dosyasına
+damgalandı. Bayrak anahtarı "LFL{" ifadesiyle başlıyor.
+=====================================================
+</pre>
+<span style="color: #22c55e;">[+] İpucu alındı! grep -i "LFL{" /var/log/syslog komutuyla bayrağı çekin.</span>
+                `);
+                return;
+            }
+            if (lower.includes('grep') && (lower.includes('syslog') || lower.includes('lfl'))) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Nov  8 01:44:12 fortress kernel: [  184.20914] audit: type=1400 audit(1794092000.104:45): apparmor="DENIED"
+<span style="color: #22c55e; font-weight: 800;">Nov  8 01:45:00 fortress security_daemon[4091]: [FLAG_LEAK] Operator token verified: LFL{level1_2_linux_dosya_adli_analiz}</span>
+Nov  8 01:45:15 fortress sshd[4102]: Accepted publickey for operator from 10.10.14.2
+</pre>
+<span style="color: #00e5ff;">[+] Bayrak bulundu: LFL{level1_2_linux_dosya_adli_analiz}</span>
+                `);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 2.1: Operasyon Derin Dizin
+        // ==========================================
+        if (m.id === 'm2_1') {
+            if (lower.includes('whatweb') && lower.includes('10.10.2.10')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+http://10.10.2.10 [200 OK] Apache[2.4.56], Bootstrap[5.3.0], Country[RESERVED], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.56 (Ubuntu)], IP[10.10.2.10], PHP[8.2.14], Title[LFL Corporate Intranet]
+<span style="color: #22c55e;">[+] Web altyapısı PHP/Apache olarak belirlendi. gobuster ile dizinleri tarayın.</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('gobuster') && lower.includes('10.10.2.10')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+===============================================================
+Gobuster v3.6 - Directory brute forcing mode
+===============================================================
+[+] Url:                     http://10.10.2.10
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                common.txt
+===============================================================
+Starting gobuster...
+===============================================================
+<span style="color: #22c55e; font-weight: 700;">/robots.txt           (Status: 200) [Size: 78]</span>
+/index.php            (Status: 200) [Size: 2410]
+/login                (Status: 301) [Size: 180] --&gt; /login/
+<span style="color: #f59e0b; font-weight: 700;">/admin_vault          (Status: 301) [Size: 195] --&gt; /admin_vault/</span>
+/assets               (Status: 301) [Size: 184]
+===============================================================
+Finished
+<span style="color: #22c55e;">[+] /robots.txt ve /admin_vault bulundu! curl http://10.10.2.10/robots.txt ile inceleyin.</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('curl') && lower.includes('robots.txt')) {
+                printCtfOutput(`
+<pre style="color: #f59e0b;">
+User-agent: *
+Disallow: /admin_vault/confidential_token.json
+Disallow: /server-status
+</pre>
+<span style="color: #22c55e;">[+] Gizli dosya yolu ifşa oldu: /admin_vault/confidential_token.json</span>
+<span style="color: #22c55e;">[+] curl http://10.10.2.10/admin_vault/confidential_token.json ile içeriği okuyun!</span>
+                `);
+                return;
+            }
+            if (lower.includes('curl') && lower.includes('confidential_token.json')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+{
+  "vault_name": "LFL_RESTRICTED_ACCESS_PORTAL",
+  "build": "2026.1-patch3",
+  "encryption": "AES-GCM-256",
+  <span style="color: #22c55e; font-weight: 800;">"master_flag": "LFL{level2_1_web_dizin_firtinasi}"</span>,
+  "status": "ACTIVE_DEFENSE"
+}
+</pre>
+<span style="color: #00e5ff;">[+] Bayrak bulundu: LFL{level2_1_web_dizin_firtinasi}</span>
+                `);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 2.2: Operasyon Gömülü Bellek
+        // ==========================================
+        if (m.id === 'm2_2') {
+            if (lower.includes('file') && lower.includes('suspect_payload.bin')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+/evidence/suspect_payload.bin: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=f84a1e9b2, stripped
+<span style="color: #22c55e;">[+] Dosya 64-bit ikili çalıştırılabilir (stripped). strings ile metinleri ayıklayın.</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('strings') && lower.includes('suspect_payload.bin')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+printf
+malloc
+__cxa_finalize
+__libc_start_main
+GLIBC_2.2.5
+AWAVAUATUSH
+[]A\A]A^A_
+LFL_SUSPECT_PAYLOAD_INTERNAL_v2.4
+DEBUG_KEY=0x7ffcd3e0
+<span style="color: #22c55e; font-weight: 800;">CONFIDENTIAL_REVERSED_FLAG=LFL{level2_2_adli_bilisim_strings_ustasi}</span>
+PAYLOAD_DELIVERY_TIME=2026-11-08T02:15:00Z
+GCC: (Debian 13.2.0-25) 13.2.0
+.shstrtab
+.interp
+.note.gnu.build-id
+</pre>
+<span style="color: #00e5ff;">[+] Bayrak ayıklandı: LFL{level2_2_adli_bilisim_strings_ustasi}</span>
+                `);
+                return;
+            }
+            if (lower.includes('md5sum') && lower.includes('suspect_payload.bin')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+<span style="color: #38bdf8; font-weight: 700;">8f4b23d91e60cb27a819ec41d08c5b91</span>  /evidence/suspect_payload.bin
+[+] Dosya bütünlüğü onaylandı (Adli kopya ile eşleşiyor).
+</pre>
+                `);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 3.1: Operasyon Kale Kuşatması
+        // ==========================================
+        if (m.id === 'm3_1') {
+            if (lower.includes('hydra') && lower.includes('10.10.3.50')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Hydra v9.5 (c) 2023 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations
+[DATA] max 16 tasks per 1 target, overall 16 tasks, 14344 login tries (l:1/p:14344), ~896 tries per task
+[DATA] attacking ssh://10.10.3.50:22/
+[STATUS] 148.00 tries/min, 148 tries in 00:01h, 14196 to do in 01:36h, 16 active
+<span style="color: #22c55e; font-weight: 800;">[22][ssh] host: 10.10.3.50   login: operator   password: cyber2026</span>
+1 of 1 target successfully completed, 1 valid password found
+<span style="color: #22c55e;">[+] PAROLA KIRILDI! Kullanıcı: operator, Şifre: cyber2026</span>
+<span style="color: #22c55e;">[+] Şimdi sisteme bağlanın: ssh operator@10.10.3.50</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('ssh') && lower.includes('10.10.3.50')) {
+                ctfState.sshSessionActive = true;
+                const promptEl = document.getElementById('ctf-term-prompt-label');
+                if (promptEl) promptEl.textContent = 'operator@fortress:~$';
+
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+operator@10.10.3.50's password: <span style="color: #22c55e;">********</span>
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-105-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Last login: Sun Nov  8 01:14:22 2026 from 10.10.14.2
+<span style="color: #22c55e; font-weight: 700;">operator@fortress:~$</span>
+</pre>
+<span style="color: #22c55e;">[+] SSH Oturumu Açıldı! Şimdi SUID izinli açıkları arayın: find / -perm -4000 2&gt;/dev/null</span>
+                `);
+                return;
+            }
+            if (lower.includes('find') && lower.includes('-4000')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/newgrp
+/usr/bin/chsh
+/usr/bin/chfn
+<span style="color: #ef4444; font-weight: 800;">/usr/bin/python3 (CRITICAL SUID BIT SET - root execution allowed!)</span>
+/usr/bin/sudo
+</pre>
+<span style="color: #22c55e;">[+] /usr/bin/python3 üzerinde SUID yetkisi tespit edildi!</span>
+<span style="color: #22c55e;">[+] /root/flag.txt dosyasını cat ile okuyun (veya python3 ile root yetkisini çalıştırın).</span>
+                `);
+                return;
+            }
+            if (lower.includes('cat') && lower.includes('/root/flag.txt')) {
+                printCtfOutput(`
+<pre style="color: #22c55e; font-weight: 800;">
+=====================================================
+ROOT YETKİSİ ALINDI // FORTRESS OWNED
+=====================================================
+FLAG: LFL{level3_1_suid_privesc_root_fatihi}
+=====================================================
+</pre>
+<span style="color: #00e5ff;">[+] Bayrak bulundu: LFL{level3_1_suid_privesc_root_fatihi}</span>
+                `);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 3.2: Operasyon Büyük Sızıntı (Final Boss)
+        // ==========================================
+        if (m.id === 'm3_2') {
+            if (lower.includes('curl') && lower.includes('10.10.3.99')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "endpoint": "/api/search",
+  "query": "test",
+  "backend_db": "SQLite / MySQL 8.0.35 Enterprise",
+  "vulnerable_param": "q",
+  "results_count": 1,
+  "message": "Query executed directly via string concatenation (Unsafe SQL query detected)."
+}
+<span style="color: #22c55e;">[+] SQL Injection açığı doğrulandı! sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs ile veritabanlarını çekin.</span>
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('sqlmap') && lower.includes('--dbs')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+        ___
+       __H__
+ ___ ___[.]_____ ___ ___  {1.8#stable}
+|_ -| . [,]     | .'| . |
+|___|_  ["]_|_|_|__,|  _|
+      |_|           |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal.
+[*] starting @ 02:18:00 /2026-11-08/
+
+[INFO] testing connection to the target URL
+[INFO] checking if the target is protected by some kind of WAF/IPS
+[INFO] testing if the target URL content is stable
+[INFO] heuristic (basic) test shows that GET parameter 'q' might be injectable
+[INFO] parameter 'q' is vulnerable. Do you want to keep testing the others? [y/N] N
+sqlmap identified the following injection point(s) with a total of 48 HTTP(s) requests:
+---
+Parameter: q (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: q=test' AND 4912=4912-- -
+---
+[INFO] the back-end DBMS is MySQL
+available databases [2]:
+[*] information_schema
+<span style="color: #f59e0b; font-weight: 800;">[*] lfl_master_vault</span>
+
+[+] lfl_master_vault tespit edildi! Tabloları listelemek için:
+sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault --tables
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('sqlmap') && lower.includes('--tables')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Database: lfl_master_vault
+[1 table]
++---------------------------------------+
+| <span style="color: #f59e0b; font-weight: 800;">master_classified_flags</span>               |
++---------------------------------------+
+
+[+] master_classified_flags tablosu bulundu! Tabloyu dökmek için:
+sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault -T master_classified_flags --dump
+</pre>
+                `);
+                return;
+            }
+            if (lower.includes('sqlmap') && lower.includes('--dump')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Database: lfl_master_vault
+Table: master_classified_flags
+[1 entry]
++----+---------------------+------------------------------------------------+
+| id | security_level      | grand_master_flag                              |
++----+---------------------+------------------------------------------------+
+| 1  | DEFCON_1_MAXIMUM    | <span style="color: #c084fc; font-weight: 800; font-size: 14px;">LFL{level3_2_sqli_grand_master_champion_2026}</span> |
++----+---------------------+------------------------------------------------+
+
+[INFO] table 'lfl_master_vault.master_classified_flags' dumped to CSV file
+<span style="color: #c084fc; font-weight: 800; font-size: 13px;">🏆 ŞAMPİYONLUK BAYRAĞI ELE GEÇİRİLDİ: LFL{level3_2_sqli_grand_master_champion_2026}</span>
+</pre>
+                `);
+                return;
+            }
+        }
+
+        // Generic fallback for all 142+ Kali Linux commands in our catalog
+        if (typeof generateTerminalResponse === 'function') {
+            const fullOutput = generateTerminalResponse(cmd);
+            printCtfOutput(`<div class="ctf-general-output" style="margin-top: 4px;">${fullOutput}</div>`);
+            return;
+        }
+
+        // Strict unrecognized command response
+        printCtfOutput(`
+<pre style="color: #ef4444;">
+bash: ${escapeHtml(cmd)}: komut simülasyon labında bulunamadı.
+Kullanılabilir 142 aracı görmek için 'help' yazın veya sol paneldeki hızlı butonlara tıklayın.
+</pre>
+        `);
+    }
+
+    // VISITOR CLIENT TELEMETRY TRACKER
+    // ==========================================
+    async function pingVisitorTelemetry(pathOverride) {
+        try {
+            const path = pathOverride ? `/${pathOverride.replace('page-', '')}` : (window.location.pathname || '/dashboard');
+            const payload = {
+                screen: `${window.screen.width}x${window.screen.height}`,
+                language: navigator.language || 'tr',
+                platform: navigator.platform || (navigator.userAgentData && navigator.userAgentData.platform) || 'Desktop',
+                path: path
+            };
+            await api.sendVisitTelemetry(payload);
+        } catch {
+            // Non-blocking
+        }
+    }
+
+    // ==========================================
+    // CANLI TEHDİT RADARI (CANVAS 2D)
+    // ==========================================
+    function initRadarAnimation() {
+        const canvas = document.getElementById('lfl-radar-canvas') || document.getElementById('aegis-radar-canvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width || 260;
+        const height = canvas.height || 260;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = (width / 2) - 10;
+
+        let sweepAngle = 0;
+        const sweepSpeed = 0.038;
+
+        const targets = [
+            { r: 45, angle: 0.8, label: 'CVE-2026-X', intensity: 0 },
+            { r: 75, angle: 2.2, label: 'SQLi-SCAN', intensity: 0 },
+            { r: 95, angle: 4.1, label: 'X-FRAME', intensity: 0 },
+            { r: 105, angle: 5.6, label: 'SYN-FLOOD', intensity: 0 }
+        ];
+
+        const pings = [];
+
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const clickX = (e.clientX - rect.left) * (width / rect.width);
+            const clickY = (e.clientY - rect.top) * (height / rect.height);
+            const dx = clickX - centerX;
+            const dy = clickY - centerY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist <= maxRadius) {
+                pings.push({
+                    x: clickX,
+                    y: clickY,
+                    radius: 2,
+                    maxRadius: 36,
+                    alpha: 1.0
+                });
+                showToast('success', 'Savunma Önlemi Fırlatıldı', `Vektör (${Math.round(dx)}, ${Math.round(dy)}) üzerine kalkan pinglemesi gönderildi.`);
+            }
+        });
+
+        const angleEl = document.getElementById('radar-sweep-angle');
+
+        function drawRadar() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Circles
+            ctx.strokeStyle = 'rgba(0, 229, 255, 0.18)';
+            ctx.lineWidth = 1;
+            [maxRadius * 0.28, maxRadius * 0.55, maxRadius * 0.82, maxRadius].forEach(r => {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+
+            // Crosshair
+            ctx.strokeStyle = 'rgba(0, 229, 255, 0.12)';
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY - maxRadius);
+            ctx.lineTo(centerX, centerY + maxRadius);
+            ctx.moveTo(centerX - maxRadius, centerY);
+            ctx.lineTo(centerX + maxRadius, centerY);
+            ctx.stroke();
+
+            // Sweeping Sector
+            const coneAngle = 0.55;
+            const startAngle = sweepAngle - coneAngle;
+            const grad = ctx.createRadialGradient(centerX, centerY, 5, centerX, centerY, maxRadius);
+            grad.addColorStop(0, 'rgba(0, 229, 255, 0.35)');
+            grad.addColorStop(1, 'rgba(0, 229, 255, 0.02)');
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.arc(centerX, centerY, maxRadius, startAngle, sweepAngle, false);
+            ctx.closePath();
+            ctx.fillStyle = grad;
+            ctx.fill();
+            ctx.restore();
+
+            // Sweep Line
+            ctx.strokeStyle = '#00e5ff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(
+                centerX + Math.cos(sweepAngle) * maxRadius,
+                centerY + Math.sin(sweepAngle) * maxRadius
+            );
+            ctx.stroke();
+
+            // Targets
+            targets.forEach(t => {
+                const tx = centerX + Math.cos(t.angle) * t.r;
+                const ty = centerY + Math.sin(t.angle) * t.r;
+
+                let diff = (sweepAngle % (Math.PI * 2)) - t.angle;
+                while (diff < 0) diff += Math.PI * 2;
+                if (diff < 0.25) {
+                    t.intensity = 1.0;
+                } else {
+                    t.intensity = Math.max(0, t.intensity - 0.012);
+                }
+
+                if (t.intensity > 0.05) {
+                    ctx.save();
+                    ctx.fillStyle = `rgba(239, 68, 68, ${t.intensity})`;
+                    ctx.shadowColor = '#ef4444';
+                    ctx.shadowBlur = 10 * t.intensity;
+                    ctx.beginPath();
+                    ctx.arc(tx, ty, 3 + t.intensity * 2, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = `rgba(255, 255, 255, ${t.intensity * 0.8})`;
+                    ctx.font = '9px monospace';
+                    ctx.fillText(t.label, tx + 6, ty - 4);
+                    ctx.restore();
+                }
+            });
+
+            // Pings
+            for (let i = pings.length - 1; i >= 0; i--) {
+                const p = pings[i];
+                ctx.save();
+                ctx.strokeStyle = `rgba(34, 197, 94, ${p.alpha})`;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.restore();
+
+                p.radius += 1.2;
+                p.alpha -= 0.035;
+                if (p.alpha <= 0) {
+                    pings.splice(i, 1);
+                }
+            }
+
+            sweepAngle += sweepSpeed;
+            if (sweepAngle > Math.PI * 2) sweepAngle -= Math.PI * 2;
+
+            if (angleEl) {
+                const deg = Math.round((sweepAngle / (Math.PI * 2)) * 360);
+                angleEl.textContent = `${String(deg).padStart(3, '0')}°`;
+            }
+
+            requestAnimationFrame(drawRadar);
+        }
+
+        drawRadar();
+    }
+
+    // ==========================================
+    // CANLI TEHDİT AKIŞI
+    // ==========================================
+    function startAttackStream() {
+        const streamContainer = document.getElementById('dashboard-attack-stream');
+        if (!streamContainer) return;
+
+        const events = [
+            { ip: '185.220.101.4', type: 'SQLi Prob', act: 'LINQ Parametrik Sorgusu ile Engellendi', target: '/api/blog?tag=' },
+            { ip: '45.154.255.89', type: 'Clickjacking', act: 'X-Frame-Options: DENY ile Reddedildi', target: '/index.html' },
+            { ip: '194.26.29.112', type: 'MIME Sniff', act: 'nosniff başlığı ile düşürüldü', target: '/app.js' },
+            { ip: '91.240.118.17', type: 'Banner Grabbing', act: 'Kestrel Server başlığı gizlendi', target: 'HTTP /' },
+            { ip: '103.145.13.2', type: 'XSS Reflection', act: 'CSP Script-Whitelist ile bloke edildi', target: '/login' },
+            { ip: '178.62.204.99', type: 'SSL Strip', act: 'HSTS Preload ile engellendi', target: 'Port 80' }
+        ];
+
+        let index = 0;
+        function pushEvent() {
+            const ev = events[index % events.length];
+            index++;
+
+            const item = document.createElement('div');
+            item.className = 'attack-row';
+            item.innerHTML = `
+                <div class="attack-meta">
+                    <span class="badge-soft-red" style="font-size: 11px; font-weight: 700; padding: 2px 8px;">${escapeHtml(ev.type)}</span>
+                    <span class="attack-ip">${escapeHtml(ev.ip)}</span>
+                    <span style="color: var(--text-muted); font-size: 11px; font-family: var(--font-mono);">${escapeHtml(ev.target)}</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span class="attack-verdict">${escapeHtml(ev.act)}</span>
+                    <span style="color: var(--text-muted); font-size: 11px; font-family: var(--font-mono);">${new Date().toLocaleTimeString()}</span>
+                </div>
+            `;
+
+            streamContainer.prepend(item);
+            while (streamContainer.children.length > 5) {
+                streamContainer.removeChild(streamContainer.lastChild);
+            }
+        }
+
+        pushEvent();
+        pushEvent();
+        pushEvent();
+        setInterval(pushEvent, 4000);
+    }
+
+    // ==========================================
+    // SAAT
+    // ==========================================
+    function startClock() {
+        const clock = document.getElementById('live-system-time');
+        if (!clock) return;
+        const update = () => {
+            const now = new Date();
+            clock.textContent = `${now.toISOString().substring(11, 19)} UTC`;
+        };
+        update();
+        setInterval(update, 1000);
+    }
+
+    // ==========================================
+    // SCROLL REVEAL ENGINE (FAIL-SAFE)
+    // ==========================================
+    function initScrollReveal() {
+        const reveals = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
+        if (!reveals.length) return;
+
+        document.documentElement.classList.add('js-reveal-ready');
+
+        // Immediately reveal all elements in initial viewport
+        reveals.forEach(el => {
+            el.classList.add('is-visible');
+        });
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { rootMargin: '0px 0px -20px 0px', threshold: 0.05 });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+    }
+
+    // ==========================================
+    // INITIALIZATION
+    // ==========================================
+
+    // ==========================================
+    // EXCLUSIVE ADMIN SUPERPOWERS FOR burak_wyxz
+    // ==========================================
+    function initAdminSuperpowers() {
+        // 1. DEFCON Platform Defense Level Controller
+        const savedDefcon = localStorage.getItem('lfl_defcon') || '5';
+        setDefconLevel(savedDefcon, false);
+
+        ['1', '3', '5'].forEach(lvl => {
+            const btn = document.getElementById(`btn-defcon-${lvl}`);
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    setDefconLevel(lvl, true);
+                });
+            }
+        });
+
+        // 2. Clear / Purge Access Logs
+        const btnClearLogs = document.getElementById('btn-clear-logs');
+        if (btnClearLogs) {
+            btnClearLogs.addEventListener('click', () => {
+                if (confirm('Tüm ziyaretçi ve telemetri log kayıtlarını silmek istediğinize emin misiniz?')) {
+                    localStorage.removeItem('lfl_access_logs');
+                    state.accessLogs = [];
+                    renderAccessLogs('');
+                    const totalEl = document.getElementById('log-stat-total');
+                    if (totalEl) totalEl.textContent = '0';
+                    const ipsEl = document.getElementById('log-stat-ips');
+                    if (ipsEl) ipsEl.textContent = '0';
+                    showToast('info', 'Loglar Temizlendi', 'Ziyaretçi telemetri veritabanı başarıyla sıfırlandı.');
+                }
+            });
+        }
+
+        // 3. Admin Broadcast Announcement
+        const savedBroadcast = localStorage.getItem('lfl_broadcast_msg');
+        if (savedBroadcast) {
+            showBroadcastBanner(savedBroadcast);
+        }
+
+        const btnPublish = document.getElementById('btn-publish-broadcast');
+        const inputBroadcast = document.getElementById('admin-broadcast-input');
+        if (btnPublish && inputBroadcast) {
+            btnPublish.addEventListener('click', () => {
+                const msg = inputBroadcast.value.trim();
+                if (!msg) {
+                    showToast('error', 'Hata', 'Lütfen yayınlamak için bir duyuru mesajı yazın.');
+                    return;
+                }
+                localStorage.setItem('lfl_broadcast_msg', msg);
+                showBroadcastBanner(msg);
+                showToast('success', 'Duyuru Yayınlandı', 'Neon acil durum bandı tüm platformda yayına girdi.');
+            });
+        }
+
+        const btnClearBroadcast = document.getElementById('btn-clear-broadcast');
+        const btnDismissBroadcast = document.getElementById('btn-dismiss-broadcast');
+        const handleDismiss = () => {
+            localStorage.removeItem('lfl_broadcast_msg');
+            const bar = document.getElementById('admin-global-broadcast-bar');
+            if (bar) bar.classList.add('hidden');
+            showToast('info', 'Duyuru Kaldırıldı', 'Duyuru bandı kaldırıldı.');
+        };
+        if (btnClearBroadcast) btnClearBroadcast.addEventListener('click', handleDismiss);
+        if (btnDismissBroadcast) btnDismissBroadcast.addEventListener('click', handleDismiss);
+
+        // 4. CTF Master Root Key (Unlock all 6 levels instantly)
+        const btnBypassCtf = document.getElementById('btn-admin-bypass-ctf');
+        if (btnBypassCtf) {
+            btnBypassCtf.addEventListener('click', () => {
+                if (confirm('👑 MASTER ROOT KEY:\n\nTüm 6 CTF sızma seviyesini ve 2300 XP puanını yönetici yetkisiyle anında tamamlamak istiyor musunuz?')) {
+                    ctfState.completed = CTF_MISSIONS.map(m => m.id);
+                    ctfState.unlockedIdx = CTF_MISSIONS.length - 1;
+                    ctfState.xp = 2300;
+                    saveCtfProgressToStorage();
+                    renderCtfProgress();
+                    renderCtfStageTabs();
+                    renderCtfBriefing(ctfState.activeIdx);
+                    showToast('success', '👑 Master Key Aktif', 'Tüm 6 operasyon ve 2300 XP yönetici olarak açıldı!');
+                    printCtfOutput(`\n<span style="color: #f59e0b; font-weight: 800;">[ROOT MASTER BYPASS]</span> <span style="color: #10b981;">Tüm sızma seviyeleri Platform Mimarı burak_wyxz tarafından %100 açıldı! (+2300 XP)</span>\n`);
+                }
+            });
+        }
+    }
+
+    function setDefconLevel(level, notify = false) {
+        localStorage.setItem('lfl_defcon', level);
+        ['1', '3', '5'].forEach(lvl => {
+            const b = document.getElementById(`btn-defcon-${lvl}`);
+            if (b) b.classList.toggle('active', lvl === level);
+        });
+
+        const beacon = document.querySelector('.cluster-status-row .pulsing-beacon');
+        const label = document.querySelector('.cluster-status-row .cluster-label');
+
+        if (level === '1') {
+            if (beacon) { beacon.style.background = '#ef4444'; beacon.style.boxShadow = '0 0 16px #ef4444'; }
+            if (label) { label.style.color = '#ef4444'; label.textContent = 'DEFCON 1 // KIRMIZI ALARM'; }
+            if (notify) showToast('error', 'DEFCON 1 Aktif', 'Platform KIRMIZI ALARM moduna geçirildi! Ağ savunması maksimum seviyede.');
+        } else if (level === '3') {
+            if (beacon) { beacon.style.background = '#f59e0b'; beacon.style.boxShadow = '0 0 14px #f59e0b'; }
+            if (label) { label.style.color = '#f59e0b'; label.textContent = 'DEFCON 3 // YÜKSEK GÜVENLİK'; }
+            if (notify) showToast('warning', 'DEFCON 3 Aktif', 'Platform SARI UYARI moduna geçirildi.');
+        } else {
+            if (beacon) { beacon.style.background = 'var(--green)'; beacon.style.boxShadow = '0 0 10px var(--green)'; }
+            if (label) { label.style.color = 'var(--green)'; label.textContent = 'NODE CLUSTER // AKTİF'; }
+            if (notify) showToast('success', 'DEFCON 5 Aktif', 'Platform standart güvenli savunma moduna döndü.');
+        }
+    }
+
+    function showBroadcastBanner(text) {
+        const bar = document.getElementById('admin-global-broadcast-bar');
+        const txt = document.getElementById('admin-broadcast-text');
+        if (bar && txt) {
+            txt.innerHTML = `🚨 <strong>DUYURU:</strong> ${escapeHtml(text)} &bull; <span style="color: #a7f3d0; font-family: var(--font-mono);">[YÖNETİCİ: burak_wyxz]</span>`;
+            bar.classList.remove('hidden');
+        }
+    }
+
+    async function init() {
+        // 1. Boot Dragon Intro Splash immediately
+        try { initIntroSplash(); } catch (e) { console.error('[IntroSplash Error]', e); }
+
+        // 2. Core navigation & UI controls (Never let secondary modules block navigation)
+        try { startClock(); } catch (e) { }
+        try { bindDropdowns(); } catch (e) { }
+        try { bindNavigation(); } catch (e) { console.error('[bindNavigation Error]', e); }
+        try { initKaliTerminal(); } catch (e) { console.error('[initKaliTerminal Error]', e); }
+
+        // 3. Educational & interactive sub-modules
+        try { bindAcademyCurriculum(); } catch (e) { }
+        try { bindAcademyCheatsheet(); } catch (e) { }
+        try { bindCyberRoleQuiz(); } catch (e) { }
+        try { bindGlossary(); } catch (e) { }
+        try { initCtfArena(); } catch (e) { }
+        try { renderGlossary('all', ''); } catch (e) { }
+
+        // 4. Admin, simulator, auth & telemetry
+        try { initAdminSuperpowers(); } catch (e) { }
+        try { bindSimulator(); } catch (e) { }
+        try { bindAuthModal(); } catch (e) { }
+        try { bindAccessLogsPanel(); } catch (e) { }
+
+        // 5. Theme & fail-safe content reveal
+        try { setTheme(state.theme); } catch (e) { }
+        try { initScrollReveal(); } catch (e) { }
+        try { pingVisitorTelemetry('/dashboard'); } catch (e) { }
+        try { await restoreSession(); } catch (e) { }
+        try { startAttackStream(); } catch (e) { }
+        try { renderSessionStorageInspector(); } catch (e) { }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+/* ==========================================================================
+   LFL (LOST FROM LIGHT) ANIMATION ENGINE V3.0 — Visual Parallax & Particles
+   ========================================================================== */
+function initAnimationEngine() {
+    const progressBar = document.getElementById('scroll-progress-bar');
+    const mainArea = document.querySelector('.app-main');
+
+    if (progressBar && mainArea) {
+        mainArea.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = mainArea;
+            const pct = scrollHeight > clientHeight
+                ? Math.round((scrollTop / (scrollHeight - clientHeight)) * 100)
+                : 0;
+            progressBar.style.width = pct + '%';
+
+            const topbar = document.querySelector('.app-topbar');
+            if (topbar) topbar.classList.toggle('topbar-elevated', scrollTop > 10);
+        }, { passive: true });
+    }
+
+    // Particle Canvas Background
+    const canvas = document.getElementById('lfl-particle-canvas') || document.getElementById('aegis-particle-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = Array.from({ length: 45 }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            radius: Math.random() * 1.5 + 0.5,
+            alpha: Math.random() * 0.5 + 0.2
+        }));
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(0, 229, 255, 0.4)';
+
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            requestAnimationFrame(drawParticles);
+        }
+
+        drawParticles();
+    }
+}
+
+

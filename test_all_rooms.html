@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Room Transition Tester</title>
+</head>
+<body>
+    <div id="results">Running tests...</div>
+    <div id="error-log"></div>
+
+    <!-- Hidden elements required by academy_engine -->
+    <div style="display:none;">
+        <span id="room-title"></span>
+        <span id="room-track"></span>
+        <span id="room-level"></span>
+        <div id="room-theory"></div>
+        <div id="room-mission"></div>
+        <div id="room-hint-container"></div>
+        <button id="btn-toggle-room-hint"></button>
+        <div id="room-hint-body"></div>
+        <span id="room-hint-icon"></span>
+        <div id="room-hint-explanation"></div>
+        <code id="room-hint-code"></code>
+        <button id="btn-hint-fill"></button>
+        <div id="room-hint-code-box"></div>
+        <div id="room-terminal-history"></div>
+        <input id="room-terminal-input" />
+        <form id="room-terminal-form"></form>
+        <div id="room-flag-display"></div>
+        <button id="btn-next-room"></button>
+        <div id="room-list-container"></div>
+        <span id="room-progress-text"></span>
+        <div id="room-progress-bar"></div>
+        <button class="track-filter-btn track-btn-all" data-track="all"></button>
+        <button class="track-filter-btn track-btn-starter" data-track="starter"></button>
+        <button class="track-filter-btn track-btn-red" data-track="red"></button>
+        <button class="track-filter-btn track-btn-blue" data-track="blue"></button>
+        <button class="track-filter-btn track-btn-purple" data-track="purple"></button>
+    </div>
+
+    <script src="rooms_data.js"></script>
+    <script src="js/academy_engine.js"></script>
+
+    <script>
+    window.errors = [];
+    window.onerror = function(msg, url, line, col, err) {
+        window.errors.push({msg: msg, line: line, col: col});
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const resultsEl = document.getElementById('results');
+        const errEl = document.getElementById('error-log');
+
+        try {
+            if (!window.ACADEMY_ROOMS) {
+                resultsEl.textContent = 'FAIL: window.ACADEMY_ROOMS not defined!';
+                return;
+            }
+
+            const engine = new AcademyEngine({
+                storageKey: 'test_engine_progress_' + Date.now(),
+                roomTitleId: 'room-title',
+                roomTrackId: 'room-track',
+                roomLevelId: 'room-level',
+                roomTheoryId: 'room-theory',
+                roomMissionId: 'room-mission',
+                roomHintContainerId: 'room-hint-container',
+                btnToggleRoomHintId: 'btn-toggle-room-hint',
+                roomHintBodyId: 'room-hint-body',
+                roomHintIconId: 'room-hint-icon',
+                roomHintExplanationId: 'room-hint-explanation',
+                roomHintCodeId: 'room-hint-code',
+                btnHintFillId: 'btn-hint-fill',
+                roomHintCodeBoxId: 'room-hint-code-box',
+                terminalHistoryId: 'room-terminal-history',
+                terminalInputId: 'room-terminal-input',
+                terminalFormId: 'room-terminal-form',
+                flagDisplayId: 'room-flag-display',
+                btnNextRoomId: 'btn-next-room',
+                roomListId: 'room-list-container',
+                progressTextId: 'room-progress-text',
+                progressBarId: 'room-progress-bar'
+            });
+
+            const failedTransitions = [];
+            const rooms = window.ACADEMY_ROOMS;
+
+            // Test 1: Try selecting every room directly
+            for (let i = 0; i < rooms.length; i++) {
+                const r = rooms[i];
+                try {
+                    engine.selectRoom(r.id);
+                    if (!engine.currentRoom || engine.currentRoom.id !== r.id) {
+                        failedTransitions.push({ from: 'direct', to: r.id, reason: 'currentRoom mismatch' });
+                    }
+                } catch (e) {
+                    failedTransitions.push({ from: 'direct', to: r.id, reason: e.message });
+                }
+            }
+
+            // Test 2: Try stepping through nextId sequentially
+            let current = rooms[0].id;
+            for (let step = 0; step < rooms.length; step++) {
+                const roomObj = rooms.find(x => x.id === current);
+                if (!roomObj) {
+                    failedTransitions.push({ from: current, to: 'unknown', reason: 'Room not found' });
+                    break;
+                }
+                const nxt = roomObj.nextId;
+                try {
+                    engine.selectRoom(nxt);
+                    if (engine.currentRoom.id !== nxt) {
+                        failedTransitions.push({ from: current, to: nxt, reason: 'Failed nextId step' });
+                    }
+                    current = nxt;
+                } catch (e) {
+                    failedTransitions.push({ from: current, to: nxt, reason: e.message });
+                    break;
+                }
+            }
+
+            // Test 3: Check track filtering
+            const tracks = ['all', 'starter', 'red', 'blue', 'purple'];
+            for (const t of tracks) {
+                try {
+                    engine.setTrackFilter(t);
+                } catch (e) {
+                    failedTransitions.push({ from: 'filter', to: t, reason: e.message });
+                }
+            }
+
+            if (failedTransitions.length === 0 && window.errors.length === 0) {
+                resultsEl.textContent = 'ALL_TESTS_PASSED: ' + rooms.length + ' rooms tested successfully!';
+            } else {
+                resultsEl.textContent = 'FAIL: ' + JSON.stringify(failedTransitions);
+                errEl.textContent = 'WINDOW_ERRORS: ' + JSON.stringify(window.errors);
+            }
+        } catch (e) {
+            resultsEl.textContent = 'CRITICAL_ERROR: ' + e.message;
+        }
+    });
+    </script>
+</body>
+</html>

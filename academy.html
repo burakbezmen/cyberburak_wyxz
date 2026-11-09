@@ -10,8 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.2">
-    <link rel="stylesheet" href="animations.css?v=3.2">
+    <link rel="stylesheet" href="style.css?v=3.9">
+    <link rel="stylesheet" href="animations.css?v=3.9">
 
     <style>
         /* ==========================================================================
@@ -646,8 +646,37 @@
         .room-actions-row {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            margin-top: 10px;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .btn-prev-room-style {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #94a3b8;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: var(--radius-sm, 8px);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-prev-room-style:hover:not(:disabled) {
+            background: rgba(30, 41, 59, 0.9);
+            color: #ffffff;
+            border-color: rgba(0, 229, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-prev-room-style:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .btn-next-room-style {
@@ -1155,6 +1184,23 @@
             color: #94a3b8;
         }
 
+        /* Active: Starter */
+        .track-filter-btn.track-btn-starter.active {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: #34d399;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
+        }
+        .track-filter-btn.track-btn-starter.active .track-btn-count {
+            background: rgba(16, 185, 129, 0.35);
+            color: #a7f3d0;
+        }
+        .room-track-badge.track-starter {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
         /* Active: All */
         .track-filter-btn.track-btn-all.active {
             color: #ffffff;
@@ -1541,19 +1587,23 @@
             <div class="track-filter-bar">
                 <button type="button" class="track-filter-btn track-btn-all active" data-track="all">
                     <span class="track-btn-main">🌐 TÜMÜ</span>
-                    <span class="track-btn-count">27</span>
+                    <span class="track-btn-count">69</span>
+                </button>
+                <button type="button" class="track-filter-btn track-btn-starter" data-track="starter">
+                    <span class="track-btn-main">🌱 STARTER</span>
+                    <span class="track-btn-count">18</span>
                 </button>
                 <button type="button" class="track-filter-btn track-btn-red" data-track="red">
                     <span class="track-btn-main">⚔️ RED</span>
-                    <span class="track-btn-count">12</span>
+                    <span class="track-btn-count">20</span>
                 </button>
                 <button type="button" class="track-filter-btn track-btn-blue" data-track="blue">
                     <span class="track-btn-main">🛡️ BLUE</span>
-                    <span class="track-btn-count">9</span>
+                    <span class="track-btn-count">17</span>
                 </button>
                 <button type="button" class="track-filter-btn track-btn-purple" data-track="purple">
                     <span class="track-btn-main">🔮 PURPLE</span>
-                    <span class="track-btn-count">6</span>
+                    <span class="track-btn-count">14</span>
                 </button>
             </div>
 
@@ -1617,9 +1667,13 @@
             <!-- Flag Solved Box -->
             <div class="room-flag-box" id="room-flag-display"></div>
 
-            <!-- Action: Next Room Button -->
+            <!-- Action: Prev & Next Room Buttons -->
             <div class="room-actions-row">
-                <button type="button" class="btn-next-room-style" id="btn-next-room" disabled style="display: none;">
+                <button type="button" class="btn-prev-room-style" id="btn-prev-room" title="Önceki odaya dön">
+                    <span>&larr;</span>
+                    <span>Önceki Oda</span>
+                </button>
+                <button type="button" class="btn-next-room-style" id="btn-next-room" title="Sonraki odaya geç">
                     <span>Sonraki Odaya Geç</span>
                     <span>&rarr;</span>
                 </button>
@@ -1697,11 +1751,11 @@
     </div>
 
     <!-- 142+ Siber Komut Veritabanı -->
-    <script src="academy-data.js?v=3.2"></script>
+    <script src="academy-data.js?v=3.9"></script>
     <!-- Akademi Odaları Veritabanı (Fetch / CORS gerektirmez) -->
-    <script src="rooms_data.js?v=3.2"></script>
+    <script src="rooms_data.js?v=3.9"></script>
     <!-- İzole Akademi Motoru -->
-    <script src="js/academy_engine.js?v=3.2"></script>
+    <script src="js/academy_engine.js?v=3.9"></script>
 
     <script>
         // Initialize Isolated Academy Engine directly from memory
@@ -1731,11 +1785,72 @@
                 progressBarId: 'room-progress-bar'
             });
 
+            window.academyEngine = engine;
+
+            // Helper to get active room index accurately
+            function getActiveRoomIndex() {
+                if (!engine || !engine.rooms || !engine.currentRoom) return -1;
+                return engine.rooms.findIndex(r => r.id === engine.currentRoom.id);
+            }
+
+            window.updateNavButtons = function () {
+                const cur = getActiveRoomIndex();
+                const total = (engine && engine.rooms) ? engine.rooms.length : 0;
+                const btnP = document.getElementById('btn-prev-room');
+                const btnN = document.getElementById('btn-next-room');
+                if (btnP) {
+                    btnP.disabled = (cur <= 0);
+                    btnP.style.display = 'inline-flex';
+                }
+                if (btnN) {
+                    btnN.disabled = (cur < 0 || cur >= total - 1);
+                    btnN.style.display = 'inline-flex';
+                }
+            };
+
+            const btnPrev = document.getElementById('btn-prev-room');
+            const btnNext = document.getElementById('btn-next-room');
+
+            if (btnPrev) {
+                btnPrev.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const cur = getActiveRoomIndex();
+                    if (cur > 0) {
+                        const prevRoom = engine.rooms[cur - 1];
+                        if (prevRoom && typeof engine.selectRoom === 'function') {
+                            engine.selectRoom(prevRoom.id);
+                            window.updateNavButtons();
+                        }
+                    }
+                });
+            }
+
+            if (btnNext) {
+                btnNext.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const cur = getActiveRoomIndex();
+                    if (cur >= 0 && cur < engine.rooms.length - 1) {
+                        const nextRoom = engine.rooms[cur + 1];
+                        if (nextRoom && typeof engine.selectRoom === 'function') {
+                            engine.selectRoom(nextRoom.id);
+                            window.updateNavButtons();
+                        }
+                    }
+                });
+            }
+
+            window.addEventListener('roomSelected', () => {
+                setTimeout(window.updateNavButtons, 30);
+            });
+
+            setTimeout(window.updateNavButtons, 150);
+
             // Bind Reset Progress Button
             const btnReset = document.getElementById('btn-reset-progress');
             if (btnReset) {
                 btnReset.addEventListener('click', () => {
                     engine.resetProgress();
+                    setTimeout(window.updateNavButtons, 100);
                 });
             }
 
