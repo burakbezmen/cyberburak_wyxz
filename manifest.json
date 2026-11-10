@@ -1,0 +1,17 @@
+{
+  "name": "LFL // Lost From Light Siber Eğitim Platformu",
+  "short_name": "LFL Cyber",
+  "description": "Tarayıcı tabanlı interaktif siber güvenlik akademisi, 69 görev odası, 143+ Kali Linux aracı ve CTF arenası.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#00e5ff",
+  "icons": [
+    {
+      "src": "kali_dragon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+

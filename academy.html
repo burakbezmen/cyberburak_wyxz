@@ -10,8 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.9">
-    <link rel="stylesheet" href="animations.css?v=3.9">
+    <link rel="stylesheet" href="style.css?v=4.3">
+    <link rel="stylesheet" href="animations.css?v=4.3">
 
     <style>
         /* ==========================================================================
@@ -1527,6 +1527,477 @@
             margin: 6px 0;
             border-radius: 0 4px 4px 0;
         }
+
+        /* ============================================================================
+           AKADEMİ 2.0: SIFIRDAN ÖĞRETİCİ KOMUT RÖNTGENİ & PEDAGOJİK REHBER (v4.3)
+           ============================================================================ */
+        .room-theory-content ul.pedagogy-md-list {
+            margin: 10px 0 16px 0;
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .room-theory-content ul.pedagogy-md-list li {
+            position: relative;
+            padding: 10px 14px 10px 34px;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(56, 189, 248, 0.14);
+            border-left: 3px solid var(--cyan, #00e5ff);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+        .room-theory-content ul.pedagogy-md-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 14px;
+            top: 10px;
+            color: var(--cyan, #00e5ff);
+            font-weight: 800;
+        }
+        .analogy-callout-box {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(15, 23, 42, 0.85) 100%);
+            border: 1px solid rgba(234, 179, 8, 0.35);
+            border-left: 4px solid #eab308;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin: 12px 0 18px 0;
+            color: #fef08a;
+            font-size: 13.5px;
+            line-height: 1.65;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        .room-pedagogy-guide {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 8px 0 22px 0;
+        }
+        .pedagogy-section-card {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(9, 14, 28, 0.96) 100%);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px 18px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+        .pedagogy-section-card.card-why {
+            border-left: 4px solid #10b981;
+            border-color: rgba(16, 185, 129, 0.28);
+        }
+        .pedagogy-section-card.card-anatomy {
+            border-left: 4px solid #00e5ff;
+            border-color: rgba(0, 229, 255, 0.28);
+        }
+        .pedagogy-section-card.card-output {
+            border-left: 4px solid #a855f7;
+            border-color: rgba(168, 85, 247, 0.28);
+        }
+        .pedagogy-section-card.card-terms {
+            border-left: 4px solid #f59e0b;
+            border-color: rgba(245, 158, 11, 0.28);
+        }
+        .pedagogy-section-card.card-quiz {
+            border-left: 4px solid #3b82f6;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .pedagogy-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            flex-wrap: wrap;
+        }
+        .pedagogy-card-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: #f8fafc;
+        }
+        .pedagogy-card-badge {
+            font-size: 10.5px;
+            font-family: var(--font-mono, monospace);
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(0, 229, 255, 0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            font-weight: 700;
+        }
+        .pedagogy-why-text {
+            font-size: 13.8px;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin: 0;
+        }
+        .pedagogy-why-text strong {
+            color: #34d399;
+        }
+        .cmd-xray-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(2, 6, 23, 0.9);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .cmd-xray-tokens-inline {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            font-family: var(--font-mono, monospace);
+            font-size: 13.5px;
+        }
+        .cmd-xray-chip {
+            padding: 3px 8px;
+            border-radius: 5px;
+            background: rgba(0, 229, 255, 0.14);
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            color: #67e8f9;
+            font-weight: 700;
+        }
+        .cmd-xray-chip:first-child {
+            background: rgba(16, 185, 129, 0.18);
+            border-color: rgba(16, 185, 129, 0.45);
+            color: #6ee7b7;
+        }
+        .btn-xray-send {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(37, 99, 235, 0.35));
+            border: 1px solid rgba(0, 229, 255, 0.45);
+            color: #ffffff;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-xray-send:hover {
+            background: rgba(0, 229, 255, 0.32);
+            transform: translateY(-1px);
+        }
+        .cmd-anatomy-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .cmd-anatomy-row {
+            display: grid;
+            grid-template-columns: minmax(110px, auto) 1fr;
+            gap: 12px;
+            align-items: start;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+        .cmd-anatomy-token-box {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .cmd-anatomy-token {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 800;
+            color: #00e5ff;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 3px 8px;
+            border-radius: 5px;
+            display: inline-block;
+            width: fit-content;
+            word-break: break-all;
+        }
+        .cmd-anatomy-role {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+        .cmd-anatomy-desc {
+            font-size: 13px;
+            line-height: 1.55;
+            color: #e2e8f0;
+            white-space: pre-line;
+        }
+        .output-guide-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .output-guide-item {
+            background: rgba(2, 6, 23, 0.65);
+            border: 1px solid rgba(168, 85, 247, 0.22);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .output-guide-snippet {
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            color: #d8b4fe;
+            background: rgba(168, 85, 247, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .output-guide-meaning {
+            font-size: 13px;
+            line-height: 1.55;
+            color: #cbd5e1;
+        }
+        .output-guide-meaning strong {
+            color: #f3e8ff;
+        }
+        .beginner-terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 10px;
+        }
+        .beginner-term-card {
+            background: rgba(245, 158, 11, 0.06);
+            border: 1px solid rgba(245, 158, 11, 0.22);
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+        .beginner-term-name {
+            font-family: var(--font-mono, monospace);
+            font-size: 12.5px;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 4px;
+        }
+        .beginner-term-desc {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #cbd5e1;
+        }
+        .quick-check-question {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .quick-check-options {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .quick-check-btn {
+            text-align: left;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: #e2e8f0;
+            padding: 9px 12px;
+            border-radius: 7px;
+            font-size: 12.8px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        .quick-check-btn:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+        .quick-check-btn.correct {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: #6ee7b7;
+            font-weight: 700;
+        }
+        .quick-check-btn.wrong {
+            background: rgba(239, 68, 68, 0.18);
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+        .quick-check-feedback {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 7px;
+            font-size: 12.8px;
+            line-height: 1.55;
+            display: none;
+        }
+
+
+        /* ============================================================================
+           AKADEMİ v4.5: GÖRSEL PAKET AKIŞI, LFL SENTINEL ASİSTAN, SES & SPEEDRUN
+           ============================================================================ */
+        .acad-util-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .acad-util-btn:hover {
+            border-color: #00e5ff;
+            background: rgba(0, 229, 255, 0.14);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+        .acad-util-btn.active-mode {
+            background: rgba(16, 185, 129, 0.18);
+            border-color: #10b981;
+            color: #6ee7b7;
+        }
+        /* Visual Packet Flow Simulator Bar inside Terminal Panel */
+        .packet-flow-visualizer {
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .packet-flow-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            font-family: var(--font-mono, monospace);
+            color: #94a3b8;
+        }
+        .packet-flow-stage {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .pf-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            z-index: 2;
+            min-width: 78px;
+            text-align: center;
+        }
+        .pf-node-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            background: rgba(0, 229, 255, 0.12);
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            transition: all 0.25s ease;
+        }
+        .pf-node.node-pulse .pf-node-icon {
+            box-shadow: 0 0 16px #00e5ff;
+            transform: scale(1.12);
+            border-color: #10b981;
+        }
+        .pf-node-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #cbd5e1;
+            font-family: var(--font-mono, monospace);
+        }
+        .pf-wire {
+            flex: 1;
+            height: 2px;
+            background: rgba(148, 163, 184, 0.25);
+            position: relative;
+            margin: 0 8px;
+        }
+        .pf-packet-dot {
+            position: absolute;
+            top: -5px;
+            left: 0%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00e5ff;
+            box-shadow: 0 0 12px #00e5ff;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .pf-packet-dot.anim-forward {
+            animation: packetForward 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .pf-packet-dot.anim-return {
+            background: #10b981;
+            box-shadow: 0 0 12px #10b981;
+            animation: packetReturn 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes packetForward {
+            0% { left: 0%; opacity: 1; }
+            90% { left: 96%; opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+        @keyframes packetReturn {
+            0% { left: 100%; opacity: 1; }
+            90% { left: 4%; opacity: 1; }
+            100% { left: 0%; opacity: 0; }
+        }
+        .pf-status-caption {
+            font-size: 11.5px;
+            color: #67e8f9;
+            font-family: var(--font-mono, monospace);
+            text-align: center;
+        }
+
+        /* LFL Sentinel Cyber Mentor Assistant Box */
+        .sentinel-mentor-bar {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border-top: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 9px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.2px;
+            color: #e2e8f0;
+            line-height: 1.45;
+        }
+        .sentinel-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10b981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+        }
+        .sentinel-msg strong {
+            color: #34d399;
+        }
+
     </style>
 </head>
 
@@ -1543,6 +2014,30 @@
         </a>
 
         <div class="academy-nav-right">
+            <!-- Hacker Ses Efektleri (Web Audio API) -->
+            <button type="button" class="acad-util-btn active-mode" id="btn-toggle-sfx" title="Terminal Ses Efektlerini Aç/Kapat">
+                <span id="sfx-icon">🔊</span>
+                <span id="sfx-label">Ses: Açık</span>
+            </button>
+
+            <!-- Speedrun Kronometre Modu -->
+            <button type="button" class="acad-util-btn" id="btn-speedrun-timer" title="Speedrun Kronometresini Başlat/Durdur">
+                <span>⏱️</span>
+                <span id="speedrun-display">Speedrun: 00:00</span>
+            </button>
+
+            <!-- Kişisel Siber Not Defteri (Cheatsheet Export) -->
+            <button type="button" class="acad-util-btn" id="btn-export-notes" title="Tüm Öğrendiğin Komutları ve Açıklamalarını Not Defteri (.md) Olarak İndir">
+                <span>📥</span>
+                <span>Not Defterini İndir</span>
+            </button>
+
+            <!-- Starter Mezuniyet Sertifikası -->
+            <button type="button" class="acad-util-btn" id="btn-open-certificate" title="Starter Patikası Mezuniyet Sertifikanı Görüntüle / Yazdır" style="border-color: rgba(234, 179, 8, 0.45); color: #fde047;">
+                <span>🎓</span>
+                <span>Sertifika</span>
+            </button>
+
             <!-- 10-Question Cyber Role Quiz Trigger -->
             <button type="button" class="btn-role-quiz" id="btn-start-quiz" title="Siber Rolünü Belirle">
                 <span>🎯</span>
@@ -1630,6 +2125,9 @@
                 <p>Oda teorik dokümantasyonu yükleniyor...</p>
             </article>
 
+            <!-- Akademi 2.0: Sıfırdan Öğretici Komut Röntgeni & Rehber -->
+            <div id="room-pedagogy-guide" class="room-pedagogy-guide"></div>
+
             <!-- Mission Scenario Box -->
             <div class="room-mission-card">
                 <div class="mission-card-header">
@@ -1705,6 +2203,37 @@
                 </div>
             </div>
 
+            <!-- Görsel Paket Akışı Simülatörü (Canlı Ağ Haritası) -->
+            <div class="packet-flow-visualizer" id="packet-flow-visualizer">
+                <div class="packet-flow-top">
+                    <span>🖲️ CANLI PAKET YOLCULUĞU SİMÜLATÖRÜ</span>
+                    <button type="button" id="btn-replay-packet" style="background:rgba(0,229,255,0.12); border:1px solid rgba(0,229,255,0.35); color:#67e8f9; border-radius:4px; padding:2px 8px; font-size:10.5px; cursor:pointer; font-family:monospace;">📡 Paketi Canlandır</button>
+                </div>
+                <div class="packet-flow-stage">
+                    <div class="pf-node" id="pf-node-client">
+                        <div class="pf-node-icon">💻</div>
+                        <span class="pf-node-label" id="pf-label-client">Sen (Kali)</span>
+                    </div>
+                    <div class="pf-wire">
+                        <div class="pf-packet-dot" id="pf-dot-1"></div>
+                    </div>
+                    <div class="pf-node" id="pf-node-mid">
+                        <div class="pf-node-icon" id="pf-icon-mid">🌐</div>
+                        <span class="pf-node-label" id="pf-label-mid">Ağ / Protokol</span>
+                    </div>
+                    <div class="pf-wire">
+                        <div class="pf-packet-dot" id="pf-dot-2"></div>
+                    </div>
+                    <div class="pf-node" id="pf-node-target">
+                        <div class="pf-node-icon" id="pf-icon-target">🖥️</div>
+                        <span class="pf-node-label" id="pf-label-target">Hedef Sistem</span>
+                    </div>
+                </div>
+                <div class="pf-status-caption" id="pf-status-caption">
+                    Komut çalıştırdığında paketin ağdaki yolculuğu burada canlı görünür.
+                </div>
+            </div>
+
             <!-- Quick Terminal Helper Chips -->
             <div class="terminal-chips-bar">
                 <span class="terminal-chip" onclick="quickFillCmd('help')">help</span>
@@ -1717,6 +2246,14 @@
             <!-- Terminal Output History -->
             <div class="mini-terminal-body" id="room-terminal-history">
                 <!-- Terminal outputs and echo injected here -->
+            </div>
+
+            <!-- LFL Sentinel: Akıllı Siber Mentor & Hata Rehberi -->
+            <div class="sentinel-mentor-bar" id="sentinel-mentor-bar">
+                <div class="sentinel-avatar">🤖</div>
+                <div class="sentinel-msg" id="sentinel-mentor-msg">
+                    <strong>LFL Sentinel:</strong> Merhaba! Komutu yazarken takılırsan veya bir parametreyi unutursan sana anında nerede hata yaptığını söyleyeceğim.
+                </div>
             </div>
 
             <!-- Terminal Input Row Form -->
@@ -1751,15 +2288,281 @@
     </div>
 
     <!-- 142+ Siber Komut Veritabanı -->
-    <script src="academy-data.js?v=3.9"></script>
+    <script src="academy-data.js?v=4.3"></script>
     <!-- Akademi Odaları Veritabanı (Fetch / CORS gerektirmez) -->
-    <script src="rooms_data.js?v=3.9"></script>
+    <script src="rooms_data.js?v=4.3"></script>
     <!-- İzole Akademi Motoru -->
-    <script src="js/academy_engine.js?v=3.9"></script>
+    <script src="js/academy_engine.js?v=4.3"></script>
 
     <script>
         // Initialize Isolated Academy Engine directly from memory
         document.addEventListener('DOMContentLoaded', () => {
+            // Akademi 2.0: Gelişmiş Markdown Ayrıştırıcı (Liste ve Benzetme Kutusu Desteği)
+            if (typeof AcademyEngine !== 'undefined' && AcademyEngine.prototype) {
+                AcademyEngine.prototype.formatMarkdown = function (rawText) {
+                    if (!rawText) return '';
+                    const lines = String(rawText).split('\n');
+                    let htmlOut = '';
+                    let inList = false;
+
+                    const formatInline = (str) => {
+                        return str
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/`(.*?)`/g, '<code class="inline-code">$1</code>');
+                    };
+
+                    for (let i = 0; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        if (!line) {
+                            if (inList) {
+                                htmlOut += '</ul>';
+                                inList = false;
+                            }
+                            continue;
+                        }
+                        if (line.startsWith('#### ')) {
+                            if (inList) { htmlOut += '</ul>'; inList = false; }
+                            htmlOut += '<h4 class="theory-h4">' + formatInline(line.slice(5)) + '</h4>';
+                        } else if (line.startsWith('### ')) {
+                            if (inList) { htmlOut += '</ul>'; inList = false; }
+                            htmlOut += '<h3 class="theory-h3">' + formatInline(line.slice(4)) + '</h3>';
+                        } else if (line.startsWith('* ') || line.startsWith('- ')) {
+                            if (!inList) {
+                                htmlOut += '<ul class="pedagogy-md-list">';
+                                inList = true;
+                            }
+                            htmlOut += '<li>' + formatInline(line.slice(2)) + '</li>';
+                        } else if (/^\d+\.\s+/.test(line)) {
+                            if (!inList) {
+                                htmlOut += '<ul class="pedagogy-md-list">';
+                                inList = true;
+                            }
+                            htmlOut += '<li>' + formatInline(line.replace(/^\d+\.\s+/, '')) + '</li>';
+                        } else if (line.includes('GÜNLÜK HAYATTAN BENZETME')) {
+                            if (inList) { htmlOut += '</ul>'; inList = false; }
+                            let analogyBody = formatInline(line);
+                            if (i + 1 < lines.length && lines[i + 1].trim() && !lines[i + 1].trim().startsWith('#') && !lines[i + 1].trim().startsWith('*')) {
+                                analogyBody += '<br>' + formatInline(lines[i + 1].trim());
+                                i++;
+                            }
+                            htmlOut += '<div class="analogy-callout-box">' + analogyBody + '</div>';
+                        } else {
+                            if (inList) { htmlOut += '</ul>'; inList = false; }
+                            htmlOut += '<p class="theory-p">' + formatInline(line) + '</p>';
+                        }
+                    }
+                    if (inList) htmlOut += '</ul>';
+                    return htmlOut;
+                };
+            }
+
+            window.renderRoomPedagogyGuide = function (room) {
+                const container = document.getElementById('room-pedagogy-guide');
+                if (!container || !room) return;
+
+                const formatInline = (str) => {
+                    return String(str || '')
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/`(.*?)`/g, '<code class="inline-code">$1</code>');
+                };
+
+                const escapeHtml = (str) => {
+                    return String(str || '')
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;');
+                };
+
+                let sectionsHtml = '';
+
+                // 1. Neden Bu Komutu Kullanıyoruz?
+                if (room.whyWeUse) {
+                    sectionsHtml += `
+                        <div class="pedagogy-section-card card-why">
+                            <div class="pedagogy-card-header">
+                                <div class="pedagogy-card-title">
+                                    <span>❓</span>
+                                    <span>1. BU KOMUTU NEDEN KULLANIYORUZ? (GERÇEK HAYAT MANTIĞI)</span>
+                                </div>
+                                <span class="pedagogy-card-badge" style="color:#34d399; border-color:rgba(16,185,129,0.3); background:rgba(16,185,129,0.12);">EZBER YOK // MANTIK VAR</span>
+                            </div>
+                            <p class="pedagogy-why-text">${formatInline(room.whyWeUse)}</p>
+                        </div>
+                    `;
+                }
+
+                // 2. Komutun Kelime Kelime Röntgeni
+                if (Array.isArray(room.cmdAnatomy) && room.cmdAnatomy.length > 0) {
+                    const inlineChips = room.cmdAnatomy.map(item => `<span class="cmd-xray-chip">${escapeHtml(item.token)}</span>`).join('');
+                    const anatomyRows = room.cmdAnatomy.map(item => `
+                        <div class="cmd-anatomy-row">
+                            <div class="cmd-anatomy-token-box">
+                                <span class="cmd-anatomy-token">${escapeHtml(item.token)}</span>
+                                <span class="cmd-anatomy-role">${escapeHtml(item.role)}</span>
+                            </div>
+                            <div class="cmd-anatomy-desc">${formatInline(item.desc)}</div>
+                        </div>
+                    `).join('');
+
+                    const safeCmdAttr = escapeHtml(room.expectedCommand || '');
+
+                    sectionsHtml += `
+                        <div class="pedagogy-section-card card-anatomy">
+                            <div class="pedagogy-card-header">
+                                <div class="pedagogy-card-title">
+                                    <span>🔬</span>
+                                    <span>2. KOMUTUN KELİME KELİME RÖNTGENİ (PARÇA PARÇA NE İŞE YARAR?)</span>
+                                </div>
+                                <span class="pedagogy-card-badge">KOMUT ANATOMİSİ</span>
+                            </div>
+                            <div class="cmd-xray-bar">
+                                <div class="cmd-xray-tokens-inline">
+                                    <span style="color:#94a3b8; font-weight:700; margin-right:4px;">$</span>
+                                    ${inlineChips}
+                                </div>
+                                <button type="button" class="btn-xray-send" data-fill-cmd="${safeCmdAttr}">
+                                    ⚡ Komutu Terminale Yaz
+                                </button>
+                            </div>
+                            <div class="cmd-anatomy-grid">
+                                ${anatomyRows}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // 3. Terminal Çıktısını Nasıl Okumalısın?
+                if (Array.isArray(room.outputGuide) && room.outputGuide.length > 0) {
+                    const outItems = room.outputGuide.map(item => `
+                        <div class="output-guide-item">
+                            <div class="output-guide-snippet">&gt; ${escapeHtml(item.snippet)}</div>
+                            <div class="output-guide-meaning">↳ ${formatInline(item.meaning)}</div>
+                        </div>
+                    `).join('');
+
+                    sectionsHtml += `
+                        <div class="pedagogy-section-card card-output">
+                            <div class="pedagogy-card-header">
+                                <div class="pedagogy-card-title">
+                                    <span>🖥️</span>
+                                    <span>3. TERMİNAL ÇIKTISINI NASIL OKUMALISIN? (SATIR SATIR TERCÜME)</span>
+                                </div>
+                                <span class="pedagogy-card-badge" style="color:#d8b4fe; border-color:rgba(168,85,247,0.3); background:rgba(168,85,247,0.12);">ÇIKTI REHBERİ</span>
+                            </div>
+                            <div class="output-guide-list">
+                                ${outItems}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // 4. Sıfırdan Terimler Sözlüğü
+                if (Array.isArray(room.beginnerTerms) && room.beginnerTerms.length > 0) {
+                    const termCards = room.beginnerTerms.map(t => `
+                        <div class="beginner-term-card">
+                            <div class="beginner-term-name">📌 ${escapeHtml(t.term)}</div>
+                            <div class="beginner-term-desc">${formatInline(t.desc)}</div>
+                        </div>
+                    `).join('');
+
+                    sectionsHtml += `
+                        <div class="pedagogy-section-card card-terms">
+                            <div class="pedagogy-card-header">
+                                <div class="pedagogy-card-title">
+                                    <span>📖</span>
+                                    <span>4. BU ODADAKİ YABANCI TERİMLER (SIFIRDAN MİNİ SÖZLÜK)</span>
+                                </div>
+                                <span class="pedagogy-card-badge" style="color:#fbbf24; border-color:rgba(245,158,11,0.3); background:rgba(245,158,11,0.12);">KAVRAM REHBERİ</span>
+                            </div>
+                            <div class="beginner-terms-grid">
+                                ${termCards}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // 5. Mini Mantık Kontrolü (Self-Check Quiz)
+                if (room.quickCheck && Array.isArray(room.quickCheck.options)) {
+                    const optsHtml = room.quickCheck.options.map((opt, idx) => `
+                        <button type="button" class="quick-check-btn" data-opt-idx="${idx}">
+                            ${String.fromCharCode(65 + idx)}) ${formatInline(opt)}
+                        </button>
+                    `).join('');
+
+                    sectionsHtml += `
+                        <div class="pedagogy-section-card card-quiz">
+                            <div class="pedagogy-card-header">
+                                <div class="pedagogy-card-title">
+                                    <span>🧠</span>
+                                    <span>5. MİNİ MANTIK KONTROLÜ (ÖĞRENDİĞİNİ TEST ET)</span>
+                                </div>
+                                <span class="pedagogy-card-badge" style="color:#60a5fa; border-color:rgba(59,130,246,0.3); background:rgba(59,130,246,0.12);">1 TIKLA KENDİNİ DENE</span>
+                            </div>
+                            <div class="quick-check-question">${formatInline(room.quickCheck.question)}</div>
+                            <div class="quick-check-options">
+                                ${optsHtml}
+                            </div>
+                            <div class="quick-check-feedback" id="quick-check-feedback"></div>
+                        </div>
+                    `;
+                }
+
+                container.innerHTML = sectionsHtml;
+
+                // Bind "Komutu Terminale Yaz" button
+                const fillBtn = container.querySelector('.btn-xray-send');
+                if (fillBtn) {
+                    fillBtn.addEventListener('click', () => {
+                        const cmd = fillBtn.getAttribute('data-fill-cmd') || '';
+                        if (typeof window.quickFillCmd === 'function') {
+                            window.quickFillCmd(cmd);
+                        }
+                    });
+                }
+
+                // Bind Mini Logic Check option buttons
+                const quizBtns = container.querySelectorAll('.quick-check-btn');
+                const feedbackEl = container.querySelector('#quick-check-feedback');
+                if (quizBtns.length > 0 && room.quickCheck) {
+                    quizBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const chosen = parseInt(btn.getAttribute('data-opt-idx'), 10);
+                            const correct = room.quickCheck.answer || 0;
+                            quizBtns.forEach((b, i) => {
+                                b.classList.remove('correct', 'wrong');
+                                if (i === correct) b.classList.add('correct');
+                            });
+                            if (chosen !== correct) {
+                                btn.classList.add('wrong');
+                            }
+                            if (feedbackEl) {
+                                feedbackEl.style.display = 'block';
+                                if (chosen === correct) {
+                                    feedbackEl.style.background = 'rgba(16, 185, 129, 0.14)';
+                                    feedbackEl.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+                                    feedbackEl.style.color = '#a7f3d0';
+                                    feedbackEl.innerHTML = '✅ <strong>Harika! Mantığı Tam Kavradın:</strong> ' + formatInline(room.quickCheck.explanation);
+                                } else {
+                                    feedbackEl.style.background = 'rgba(239, 68, 68, 0.14)';
+                                    feedbackEl.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+                                    feedbackEl.style.color = '#fecaca';
+                                    feedbackEl.innerHTML = '💡 <strong>Doğru Cevap A Şıkkı:</strong> ' + formatInline(room.quickCheck.explanation);
+                                }
+                            }
+                        });
+                    });
+                }
+            };
+
+            window.addEventListener('roomSelected', () => {
+                setTimeout(() => {
+                    if (window.academyEngine && window.academyEngine.currentRoom) {
+                        window.renderRoomPedagogyGuide(window.academyEngine.currentRoom);
+                    }
+                }, 10);
+            });
+
             const engine = new AcademyEngine({
                 storageKey: 'lfl_academy_progress_v3',
                 roomTitleId: 'room-title',
@@ -1786,6 +2589,9 @@
             });
 
             window.academyEngine = engine;
+            if (engine && engine.currentRoom && typeof window.renderRoomPedagogyGuide === 'function') {
+                window.renderRoomPedagogyGuide(engine.currentRoom);
+            }
 
             // Helper to get active room index accurately
             function getActiveRoomIndex() {
@@ -1854,6 +2660,383 @@
                 });
             }
 
+            // =========================================================================
+            // 1. WEB AUDIO API HACKER SES EFEKTLERİ MOTORU (Harici Dosya Gerektirmez)
+            // =========================================================================
+            let sfxEnabled = localStorage.getItem('lfl_sfx_enabled') !== '0';
+            let audioCtx = null;
+
+            function getAudioCtx() {
+                if (!audioCtx) {
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContextClass) audioCtx = new AudioContextClass();
+                }
+                if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+                return audioCtx;
+            }
+
+            window.playCyberSound = function (type) {
+                if (!sfxEnabled) return;
+                try {
+                    const ctx = getAudioCtx();
+                    if (!ctx) return;
+                    const now = ctx.currentTime;
+
+                    if (type === 'key') {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(680 + Math.random() * 180, now);
+                        gain.gain.setValueAtTime(0.025, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.026);
+                    } else if (type === 'cmd') {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(520, now);
+                        osc.frequency.exponentialRampToValueAtTime(880, now + 0.09);
+                        gain.gain.setValueAtTime(0.06, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.11);
+                    } else if (type === 'flag') {
+                        [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+                            const osc = ctx.createOscillator();
+                            const gain = ctx.createGain();
+                            osc.type = 'triangle';
+                            osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                            gain.gain.setValueAtTime(0.08, now + idx * 0.08);
+                            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.22);
+                            osc.connect(gain);
+                            gain.connect(ctx.destination);
+                            osc.start(now + idx * 0.08);
+                            osc.stop(now + idx * 0.08 + 0.24);
+                        });
+                    } else if (type === 'warn') {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(220, now);
+                        osc.frequency.setValueAtTime(180, now + 0.08);
+                        gain.gain.setValueAtTime(0.05, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.19);
+                    }
+                } catch (e) {}
+            };
+
+            const btnSfx = document.getElementById('btn-toggle-sfx');
+            const sfxIcon = document.getElementById('sfx-icon');
+            const sfxLabel = document.getElementById('sfx-label');
+            function updateSfxUI() {
+                if (!btnSfx) return;
+                btnSfx.classList.toggle('active-mode', sfxEnabled);
+                if (sfxIcon) sfxIcon.textContent = sfxEnabled ? '🔊' : '🔇';
+                if (sfxLabel) sfxLabel.textContent = sfxEnabled ? 'Ses: Açık' : 'Ses: Kapalı';
+            }
+            updateSfxUI();
+            if (btnSfx) {
+                btnSfx.addEventListener('click', () => {
+                    sfxEnabled = !sfxEnabled;
+                    localStorage.setItem('lfl_sfx_enabled', sfxEnabled ? '1' : '0');
+                    updateSfxUI();
+                    if (sfxEnabled) window.playCyberSound('cmd');
+                });
+            }
+
+            const termInputEl = document.getElementById('room-terminal-input');
+            if (termInputEl) {
+                termInputEl.addEventListener('keydown', (e) => {
+                    if (e.key.length === 1 || e.key === 'Backspace') {
+                        window.playCyberSound('key');
+                    }
+                });
+            }
+
+            // =========================================================================
+            // 2. GÖRSEL PAKET AKIŞI SİMÜLATÖRÜ (CANLI AĞ HARİTASI)
+            // =========================================================================
+            window.animatePacketFlow = function (room, customStatus) {
+                if (!room) room = engine ? engine.currentRoom : null;
+                if (!room) return;
+
+                const cmd = (room.expectedCommand || '').trim();
+                const mainTool = cmd.split(' ')[0] || 'cmd';
+                const midLabel = document.getElementById('pf-label-mid');
+                const targetLabel = document.getElementById('pf-label-target');
+                const caption = document.getElementById('pf-status-caption');
+                const dot1 = document.getElementById('pf-dot-1');
+                const dot2 = document.getElementById('pf-dot-2');
+                const nClient = document.getElementById('pf-node-client');
+                const nMid = document.getElementById('pf-node-mid');
+                const nTarget = document.getElementById('pf-node-target');
+
+                if (midLabel) midLabel.textContent = 'Protokol: ' + mainTool.toUpperCase();
+                if (targetLabel) {
+                    const ipMatch = cmd.match(/\d+\.\d+\.\d+\.\d+/) || cmd.match(/https?:\/\/[^\s/]+/) || cmd.match(/\/[a-zA-Z0-9_./-]+/);
+                    targetLabel.textContent = ipMatch ? ipMatch[0].slice(0, 18) : 'Hedef Sistem';
+                }
+
+                if (dot1 && dot2) {
+                    dot1.className = 'pf-packet-dot';
+                    dot2.className = 'pf-packet-dot';
+                    void dot1.offsetWidth;
+                    dot1.classList.add('anim-forward');
+                    if (nClient) nClient.classList.add('node-pulse');
+
+                    setTimeout(() => {
+                        if (nMid) nMid.classList.add('node-pulse');
+                        dot2.classList.add('anim-forward');
+                    }, 450);
+
+                    setTimeout(() => {
+                        if (nTarget) nTarget.classList.add('node-pulse');
+                        dot2.className = 'pf-packet-dot anim-return';
+                    }, 950);
+
+                    setTimeout(() => {
+                        dot1.className = 'pf-packet-dot anim-return';
+                    }, 1400);
+
+                    setTimeout(() => {
+                        [nClient, nMid, nTarget].forEach(n => n && n.classList.remove('node-pulse'));
+                    }, 2100);
+                }
+
+                if (caption) {
+                    caption.innerHTML = customStatus || (`📡 <strong>${mainTool}</strong> paketi gönderildi ➔ Hedef yanıtı (Flag/Çıktı) terminale döndü!`);
+                }
+            };
+
+            const btnReplayPacket = document.getElementById('btn-replay-packet');
+            if (btnReplayPacket) {
+                btnReplayPacket.addEventListener('click', () => {
+                    window.playCyberSound('cmd');
+                    window.animatePacketFlow(engine.currentRoom);
+                });
+            }
+
+            // =========================================================================
+            // 3. LFL SENTINEL: AKILLI SİBER MENTOR & YAZIM HATASI REHBERİ
+            // =========================================================================
+            function inspectUserCommandWithSentinel(typedCmd, room) {
+                const msgEl = document.getElementById('sentinel-mentor-msg');
+                if (!msgEl || !room) return;
+
+                const cleanTyped = (typedCmd || '').trim();
+                const expected = (room.expectedCommand || '').trim();
+                const accepted = Array.isArray(room.acceptedCommands) ? room.acceptedCommands : [expected];
+
+                if (!cleanTyped) return;
+                if (['help', 'clear', 'reset', 'quiz'].includes(cleanTyped.toLowerCase())) {
+                    window.playCyberSound('cmd');
+                    return;
+                }
+
+                const isMatch = accepted.some(a => a.trim().toLowerCase() === cleanTyped.toLowerCase());
+                if (isMatch) {
+                    window.playCyberSound('flag');
+                    window.animatePacketFlow(room, `✅ <strong>BAŞARILI:</strong> <code>${expected}</code> paketi hedefe ulaştı ve bayrak yakalandı!`);
+                    msgEl.innerHTML = `<strong>LFL Sentinel (Tebrikler! 🎉):</strong> Harika iş! <code>${expected}</code> komutunu doğru çalıştırdın. Şimdi yukarıdaki <strong>3. Terminal Çıktısı Tercümesi</strong> kutusundan ekrana gelen satırların ne anlama geldiğini inceleyebilirsin.`;
+                    return;
+                }
+
+                window.playCyberSound('warn');
+                const expParts = expected.split(' ');
+                const expTool = expParts[0];
+                const typedParts = cleanTyped.split(' ');
+                const typedTool = typedParts[0];
+
+                let advice = '';
+                if (typedTool.toLowerCase() === 'ipconfig' && expTool === 'ip') {
+                    advice = `Windows'taki <code>ipconfig</code> yerine Linux'ta ağ kartlarını görmek için <strong><code>ip a</code></strong> (veya <code>ifconfig</code>) kullanıyoruz.`;
+                } else if (typedTool.toLowerCase() !== expTool.toLowerCase()) {
+                    advice = `Bu odada ana aracımız <strong><code>${expTool}</code></strong>, ama sen <code>${typedTool}</code> yazdın. Komuta <code>${expTool}</code> ile başlamalısın.`;
+                } else if (expected.includes('|') && !cleanTyped.includes('|')) {
+                    advice = `Ana komutu doğru yazdın ama çıktıyı ikinci komuta aktaran <strong><code>|</code> (boru / pipe)</strong> işaretini unuttun! Tam komut: <code>${expected}</code>`;
+                } else if (expected.includes('-c') && !cleanTyped.includes('-c')) {
+                    advice = `Neredeyse doğru! Ancak paket sayısını sınırlayan <strong><code>-c</code></strong> parametresini unuttun. Örnek: <code>${expected}</code>`;
+                } else {
+                    const missingFlags = expParts.filter(p => !cleanTyped.toLowerCase().includes(p.toLowerCase()));
+                    if (missingFlags.length > 0) {
+                        advice = `<code>${expTool}</code> aracını doğru seçtin ama şu parametre/hedef eksik veya hatalı görünüyor: <strong><code>${missingFlags.join(' ')}</code></strong>. Tam komut: <code>${expected}</code>`;
+                    } else {
+                        advice = `Yazım sırasını kontrol et! Bu görev için beklenen tam komut: <strong><code>${expected}</code></strong>`;
+                    }
+                }
+
+                msgEl.innerHTML = `<strong>LFL Sentinel (İpucu 💡):</strong> ${advice}`;
+            }
+
+            const termFormEl = document.getElementById('room-terminal-form');
+            if (termFormEl && termInputEl) {
+                termFormEl.addEventListener('submit', () => {
+                    const val = termInputEl.value;
+                    setTimeout(() => inspectUserCommandWithSentinel(val, engine.currentRoom), 20);
+                }, true);
+            }
+
+            window.addEventListener('roomSelected', () => {
+                setTimeout(() => {
+                    const r = engine.currentRoom;
+                    const msgEl = document.getElementById('sentinel-mentor-msg');
+                    if (msgEl && r) {
+                        msgEl.innerHTML = `<strong>LFL Sentinel:</strong> Şu an <strong>${r.title}</strong> odasındasın. Bu odada <code>${r.expectedCommand}</code> komutunun mantığını öğreniyoruz!`;
+                    }
+                    const cap = document.getElementById('pf-status-caption');
+                    if (cap && r) {
+                        cap.innerHTML = `Hazır: <code>${r.expectedCommand}</code> çalıştırıldığında paket akışı başlayacak.`;
+                    }
+                }, 30);
+            });
+
+            // =========================================================================
+            // 4. SPEEDRUN KRONOMETRE MODU
+            // =========================================================================
+            let speedrunActive = false;
+            let speedrunStart = 0;
+            let speedrunInterval = null;
+            const btnSpeedrun = document.getElementById('btn-speedrun-timer');
+            const speedrunDisp = document.getElementById('speedrun-display');
+
+            if (btnSpeedrun && speedrunDisp) {
+                btnSpeedrun.addEventListener('click', () => {
+                    if (!speedrunActive) {
+                        speedrunActive = true;
+                        speedrunStart = Date.now();
+                        btnSpeedrun.classList.add('active-mode');
+                        window.playCyberSound('cmd');
+                        speedrunInterval = setInterval(() => {
+                            const sec = Math.floor((Date.now() - speedrunStart) / 1000);
+                            const mm = String(Math.floor(sec / 60)).padStart(2, '0');
+                            const ss = String(sec % 60).padStart(2, '0');
+                            speedrunDisp.textContent = `⚡ ${mm}:${ss}`;
+                        }, 500);
+                    } else {
+                        speedrunActive = false;
+                        clearInterval(speedrunInterval);
+                        btnSpeedrun.classList.remove('active-mode');
+                        speedrunDisp.textContent = ' - Durdu (' + speedrunDisp.textContent.replace('⚡ ', '') + ')';
+                    }
+                });
+            }
+
+            // =========================================================================
+            // 5. TEK TIKLA KİŞİSEL SİBER NOT DEFTERİ (.MD CHEATSHEET) İNDİRİCİ
+            // =========================================================================
+            const btnExportNotes = document.getElementById('btn-export-notes');
+            if (btnExportNotes) {
+                btnExportNotes.addEventListener('click', () => {
+                    window.playCyberSound('cmd');
+                    const allRooms = window.ACADEMY_ROOMS || [];
+                    let md = `# 🛡️ LFL SİBER AKADEMİ - KİŞİSEL KOMUT & MANTIĞI NOT DEFTERİ (CHEATSHEET)
+`;
+                    md += `> Otomatik Oluşturulma Tarihi: ${new Date().toLocaleDateString('tr-TR')}
+
+---
+
+`;
+
+                    allRooms.forEach((r, idx) => {
+                        md += `## ${idx + 1}. [${r.id.toUpperCase()}] ${r.title}
+`;
+                        md += `- **Kategori / Seviye:** ${r.track.toUpperCase()} (${r.level})
+`;
+                        md += `- **Görev Komutu:** \`${r.expectedCommand}\`
+`;
+                        if (r.whyWeUse) {
+                            md += `- **Neden Kullanıyoruz?:** ${r.whyWeUse.replace(/\*\*/g, '')}
+`;
+                        }
+                        if (Array.isArray(r.cmdAnatomy) && r.cmdAnatomy.length > 0) {
+                            md += `- **Komutun Parçaları:**
+`;
+                            r.cmdAnatomy.forEach(a => {
+                                md += `  * \`${a.token}\` (${a.role}): ${a.desc.replace(/\n/g, ' ')}
+`;
+                            });
+                        }
+                        md += `
+---
+
+`;
+                    });
+
+                    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'LFL_Siber_Akademi_Not_Defterim.md';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            }
+
+            // =========================================================================
+            // 6. STARTER MEZUNİYET SERTİFİKASI OLUŞTURUCU
+            // =========================================================================
+            const btnCert = document.getElementById('btn-open-certificate');
+            if (btnCert) {
+                btnCert.addEventListener('click', () => {
+                    window.playCyberSound('flag');
+                    const studentName = prompt('Sertifika üzerinde yer alacak Ad Soyad veya Kullanıcı Adınızı girin:', 'Siber Güvenlik Adayı') || 'Siber Güvenlik Adayı';
+                    const solvedCount = (engine && engine.completedRooms) ? engine.completedRooms.size || engine.completedRooms.length || 18 : 18;
+                    const certHash = 'LFL-CERT-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+
+                    const certWin = window.open('', '_blank', 'width=920,height=660');
+                    if (!certWin) return;
+                    certWin.document.write(`<!DOCTYPE html>
+                    <html lang="tr">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>LFL Siber Akademi Sertifikası - ${studentName}</title>
+                        <style>
+                            body { margin:0; background:#020617; color:#f8fafc; font-family:'Segoe UI',sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; }
+                            .cert-box { width:800px; padding:48px; border-radius:20px; background:radial-gradient(circle at top,#0f172a,#020617); border:3px solid #00e5ff; box-shadow:0 0 50px rgba(0,229,255,0.25); text-align:center; position:relative; }
+                            .badge { display:inline-block; padding:6px 16px; border-radius:99px; background:rgba(16,185,129,0.15); border:1px solid #10b981; color:#34d399; font-weight:800; font-size:12px; letter-spacing:1px; }
+                            h1 { font-size:32px; margin:16px 0 8px 0; color:#fff; letter-spacing:1px; }
+                            .sub { color:#94a3b8; font-size:14px; margin-bottom:28px; }
+                            .name { font-size:36px; font-weight:900; color:#00e5ff; margin:18px 0; border-bottom:2px solid rgba(0,229,255,0.3); display:inline-block; padding:0 32px 8px 32px; }
+                            .desc { font-size:15px; color:#cbd5e1; line-height:1.7; max-width:640px; margin:0 auto 32px auto; }
+                            .footer { display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:12px; color:#94a3b8; font-family:monospace; }
+                            .print-btn { margin-top:20px; padding:10px 24px; background:#10b981; color:#fff; border:none; border-radius:8px; font-weight:800; cursor:pointer; font-size:14px; }
+                            @media print { .print-btn { display:none; } body { background:#020617; -webkit-print-color-adjust:exact; } }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="cert-box">
+                            <div class="badge">⚔️ LFL // LOST FROM LIGHT CYBER ACADEMY</div>
+                            <h1>SİBER GÜVENLİK BAŞARI SERTİFİKASI</h1>
+                            <div class="sub">FOUNDATIONAL & TACTICAL CYBER RANGE COMPLETION</div>
+                            <div>Bu sertifika, aşağıda ismi yer alan siber güvenlik adayına verilmiştir:</div>
+                            <div class="name">${studentName}</div>
+                            <p class="desc">
+                                LFL Siber Akademi bünyesindeki <strong>Starter Track (18 Temel Eğitim Odası)</strong> ve interaktif Kali Linux terminal simülasyonlarını (Ağ Temelleri, Port Analizi, DNS, Linux Mimarisi, Nmap, Kriptografi, Log Analizi, Paket Yakalama ve Güvenlik Duvarı) başarıyla uygulayarak bu belgeyi almaya hak kazanmıştır.
+                            </p>
+                            <div class="footer">
+                                <span>TARİH: ${new Date().toLocaleDateString('tr-TR')}</span>
+                                <span>DOĞRULAMA KODU: ${certHash}</span>
+                                <span>PLATFORM MİMARI: burak_wyxz</span>
+                            </div>
+                        </div>
+                        <button class="print-btn" onclick="window.print()">🖨️ PDF Olarak Kaydet / Yazdır</button>
+                    </body>
+                    </html>`);
+                    certWin.document.close();
+                });
+            }
+
             // Expose quick fill helper for chip clicks
             window.quickFillCmd = function (cmd) {
                 const input = document.getElementById('room-terminal-input');
@@ -1868,4 +3051,3 @@
 </body>
 
 </html>
-

