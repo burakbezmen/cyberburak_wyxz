@@ -1532,11 +1532,14 @@ body.theme-corporate-cyber {
     height: 100vh;
     background: rgba(6, 9, 19, 0.85);
     backdrop-filter: blur(10px);
-    z-index: 1000;
+    z-index: 10005;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: 12vh;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .palette-dialog {
@@ -1708,13 +1711,30 @@ body.theme-corporate-cyber {
 
 .modal-close-icon {
     position: absolute;
-    top: 18px;
+    top: 16px;
     right: 20px;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 24px;
+    z-index: 100;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #94a3b8;
+    font-size: 22px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.2s ease;
+}
+
+.modal-close-icon:hover {
+    color: #ffffff;
+    background: rgba(239, 68, 68, 0.25);
+    border-color: #ef4444;
+    transform: scale(1.1);
 }
 
 .modal-close-icon:hover {
@@ -7281,5 +7301,323 @@ code,
 @media (max-width: 560px) {
     .ctf-hud-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   CYBER PAGINATION STYLING (SWEET SQUIRCLE UI)
+   ========================================================================== */
+.pagination-bar {
+    margin-top: 24px;
+    padding: 16px 0 8px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.cyber-pagination-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 16px;
+    padding: 12px 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.pagination-info {
+    font-family: var(--font-mono, monospace);
+    font-size: 12px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination-info strong {
+    color: #38bdf8;
+    font-weight: 800;
+}
+
+.pagination-dot {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.pagination-total {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    font-size: 11px;
+}
+
+.pagination-btns-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-page-nav {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+    font-family: var(--font-mono, monospace);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-page-nav:hover:not(:disabled) {
+    background: rgba(56, 189, 248, 0.18);
+    border-color: #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-page-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.page-numbers-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-page-num {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    font-family: var(--font-mono, monospace);
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 6px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-page-num:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-page-num.active {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(99, 102, 241, 0.4));
+    border: 1px solid #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+    font-weight: 800;
+}
+
+.page-ellipsis {
+    color: #64748b;
+    font-family: var(--font-mono, monospace);
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+
+/* ==========================================================================
+   PAGE 10: AUDIT & TELEMETRY ACCESS LOGS TABLE STYLING
+   Fix for cramped columns, proper horizontal spacing & smooth mobile scroll
+   ========================================================================== */
+.table-container,
+.logs-table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(10, 16, 32, 0.65);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    margin-bottom: 16px;
+}
+
+.data-table,
+.logs-table {
+    width: 100%;
+    min-width: 1040px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+    text-align: left;
+}
+
+.data-table thead th,
+.logs-table thead th {
+    background: rgba(15, 23, 42, 0.96);
+    color: #94a3b8;
+    font-weight: 700;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 16px 22px;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.28);
+    white-space: nowrap;
+}
+
+.data-table tbody td,
+.logs-table tbody td {
+    padding: 16px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+    transition: background 0.15s ease;
+}
+
+.data-table tbody tr:hover td,
+.logs-table tbody tr:hover td {
+    background: rgba(56, 189, 248, 0.05);
+}
+
+/* Individual Column Widths & Margins to prevent text crowding */
+.logs-col-time {
+    min-width: 140px;
+    width: 140px;
+}
+
+.logs-col-ip {
+    min-width: 185px;
+    width: 185px;
+}
+
+.logs-col-os {
+    min-width: 195px;
+    width: 195px;
+}
+
+.logs-col-browser {
+    min-width: 280px;
+    width: 280px;
+}
+
+.logs-col-user {
+    min-width: 155px;
+    width: 155px;
+}
+
+.logs-col-action {
+    min-width: 145px;
+    width: 145px;
+}
+
+.logs-col-status {
+    min-width: 110px;
+    width: 110px;
+}
+
+.badge-ip-mono {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 12.5px;
+    padding: 3px 8px;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+
+.badge-os {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 8px;
+    background: rgba(59, 130, 246, 0.14);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    border-radius: 6px;
+    color: #60a5fa;
+    margin-bottom: 4px;
+}
+
+
+/* ==========================================================================
+   TOPBAR SEARCH BUTTON & LAYOUT FIX (Zero text wrapping & zero overflow)
+   ========================================================================== */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    max-width: 72%;
+}
+
+.search-command-btn {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0 12px !important;
+    height: 38px !important;
+    max-height: 38px !important;
+    color: var(--text-muted) !important;
+    font-family: inherit !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
+    transition: all 0.2s ease !important;
+}
+
+.search-command-btn span {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 210px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+.search-command-btn kbd {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(0, 229, 255, 0.25) !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 10px !important;
+    font-family: var(--font-mono) !important;
+    color: var(--cyan) !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+.topbar-pill-btn {
+    height: 38px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+@media (max-width: 1400px) {
+    .search-command-btn span {
+        max-width: 140px !important;
+    }
+}
+
+@media (max-width: 1220px) {
+    .search-command-btn span {
+        display: none !important;
+    }
+    .search-command-btn {
+        padding: 0 10px !important;
     }
 }

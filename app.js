@@ -360,7 +360,8 @@
                     'page-quiz': 'Cyber Role Quiz',
                     'page-glossary': 'Cyber Guide & Glossary',
                     'page-ctf': 'Cyber CTF Arena',
-                    'page-logs': 'Visitor & System Logs'
+                    'page-logs': 'Visitor & System Logs',
+                'page-developer': 'Developer // Netrunner Dossier'
                 } : {
                     'page-dashboard': 'Komuta Merkezi',
                     'page-academy': 'Siber Akademi (Eğitim Planı)',
@@ -369,7 +370,8 @@
                     'page-quiz': 'Siber Rol Testi',
                     'page-glossary': 'Siber Kılavuz & Sözlük',
                     'page-ctf': 'Siber CTF Arenası',
-                    'page-logs': 'Ziyaretçi & Sistem Logları'
+                    'page-logs': 'Ziyaretçi & Sistem Logları',
+                'page-developer': 'Geliştirici // Netrunner Dossier'
                 };
                 crumbTitle.textContent = titles[state.activePage] || 'LFL Platform';
             }
@@ -1515,6 +1517,55 @@
                 return;
             }
 
+            
+            // EASTER EGG: matrix digital rain stream
+            if (trimmed.toLowerCase() === 'matrix') {
+                const cmdRow = document.createElement('div');
+                cmdRow.className = 'kali-history-cmd';
+                cmdRow.innerHTML = `
+                    <div class="kali-prompt-line1">┌──(<span class="kali-user">Sunny</span><span class="kali-skull">㉿</span><span class="kali-host">SUNNY</span>)-[<span class="kali-path">~</span>]</div>
+                    <div class="kali-input-row"><span class="kali-prompt-line2">└─$</span><span class="kali-executed-text">${escapeHtml(trimmed)}</span></div>
+                `;
+                historyZone.appendChild(cmdRow);
+
+                const outputBox = document.createElement('div');
+                outputBox.className = 'kali-output-block';
+                outputBox.innerHTML = `
+                    <span style="color:#00ff66; font-weight:800; text-shadow:0 0 10px #00ff66;">[SYS_OVERRIDE: THE MATRIX HAS YOU...]</span><br/>
+                    <span style="color:#10b981;">Wake up, Neo... Yeşil dijital veri akışı başlatıldı. (Durdurmak için ekrana tıklayın veya ESC'ye basın)</span>
+                `;
+                historyZone.appendChild(outputBox);
+                activeTab.historyHtml = historyZone.innerHTML;
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+                if (typeof startMatrixRain === 'function') startMatrixRain();
+                return;
+            }
+
+            // EASTER EGG: radio toggle
+            if (trimmed.toLowerCase() === 'radio' || trimmed.toLowerCase() === 'music') {
+                const cmdRow = document.createElement('div');
+                cmdRow.className = 'kali-history-cmd';
+                cmdRow.innerHTML = `
+                    <div class="kali-prompt-line1">┌──(<span class="kali-user">Sunny</span><span class="kali-skull">㉿</span><span class="kali-host">SUNNY</span>)-[<span class="kali-path">~</span>]</div>
+                    <div class="kali-input-row"><span class="kali-prompt-line2">└─$</span><span class="kali-executed-text">${escapeHtml(trimmed)}</span></div>
+                `;
+                historyZone.appendChild(cmdRow);
+
+                if (window.CyberRadio) {
+                    const isPlay = window.CyberRadio.toggle();
+                    const outputBox = document.createElement('div');
+                    outputBox.className = 'kali-output-block';
+                    outputBox.innerHTML = `
+                        <span style="color:#ff007f; font-weight:800;">[CYBER RADIO]</span> <span style="color:#00f0ff;">98.4 NIGHT CITY FM ${isPlay ? 'BAŞLATILDI ▶' : 'DURDURULDU ❚❚'}</span><br/>
+                        <span style="color:#94a3b8;">Kanal: ${window.CyberRadio.getCurrentStationName()}</span>
+                    `;
+                    historyZone.appendChild(outputBox);
+                    activeTab.historyHtml = historyZone.innerHTML;
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                }
+                return;
+            }
+
             if (trimmed.toLowerCase() === 'clear') {
                 historyZone.innerHTML = '';
                 activeTab.historyHtml = '';
@@ -1564,6 +1615,52 @@
         generateTerminalResponse = function (rawCmd) {
             const trimmed = (rawCmd || '').trim();
             const lower = trimmed.toLowerCase();
+
+            // EASTER EGG: edgerunners / lucy
+            if (lower === 'edgerunners' || lower === 'lucy' || lower === 'moon') {
+                return `
+<div style="font-family: var(--font-mono); line-height: 1.25; margin: 8px 0; padding: 14px; background: rgba(13,2,33,0.85); border: 1px solid #a855f7; border-radius: 10px; box-shadow: 0 0 20px rgba(168,85,247,0.3);">
+<pre style="color: #c084fc; font-size: 11px; margin: 0; text-shadow: 0 0 8px rgba(168,85,247,0.6);">
+         .---.
+        /     \\        🌙 NIGHT CITY // THE MOON
+       |   O   |       
+        \     /        “You didn't take me to the moon,
+         '---'          but you were there with me.”
+       
+        .---.            .---.
+       /     \\          /     \\
+      | David |        |  Lucy |
+      /|     |\        /|     |\
+     / |     | \      / |     | \
+    '  '     '  '    '  '     '  '
+</pre>
+<div style="margin-top: 10px; color: #00f0ff; font-size: 12px; font-weight: 700;">[SYNAPSE CONNECTED] Tycho Crater Sub-Net &bull; Encrypted ID: weavers_thread1th</div>
+<div style="color: #94a3b8; font-size: 11px;">Track: I Really Want to Stay at Your House &bull; Cyberpunk Edgerunners</div>
+</div>`;
+            }
+
+            // EASTER EGG: sudo
+            if (lower === 'sudo' || lower.startsWith('sudo ')) {
+                return `
+<div style="color: #f43f5e; font-weight: 800; font-family: var(--font-mono); margin: 6px 0; text-shadow: 0 0 8px rgba(244,63,94,0.4);">
+[ARASAKA ICE_ALERT] Nice try, choom. Arasaka ICE is watching you.
+</div>
+<div style="color: #e2e8f0; font-size: 12px; font-family: var(--font-mono);">
+Incident has been reported to NetWatch and MaxTac dispatch.<br/>
+<span style="color: #94a3b8;">User 'Sunny' is not in the sudoers file on this Militech subnet. (sudo: 3 incorrect password attempts)</span>
+</div>`;
+            }
+
+            // EASTER EGG: cyberpunk / samurai / wake up
+            if (lower === 'cyberpunk' || lower === 'samurai' || lower.includes('wake up')) {
+                return `
+<div style="border-left: 3px solid #fcee0a; padding-left: 12px; margin: 8px 0; font-family: var(--font-mono);">
+<span style="color: #fcee0a; font-weight: 800; text-shadow: 0 0 10px #fcee0a;">[SILVERHAND DIRECT LINK // 2077]</span><br/>
+<span style="color: #00f0ff; font-weight: 700; font-size: 14px; text-shadow: 0 0 10px rgba(0,240,255,0.4);">"Wake up, Samurai. We have a city to burn."</span><br/>
+<span style="color: #94a3b8; font-size: 11px;">-- Johnny Silverhand &bull; Relic Engram Active</span>
+</div>`;
+            }
+
             if (lower === 'godmode' || lower === 'admininfo') {
                 const isAdmin = state.currentUser && state.currentUser.username === 'burak_wyxz';
                 if (isAdmin) {
@@ -3175,6 +3272,86 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
     // ==========================================
     // SİBER AKADEMİ 140+ COMMANDS ENGINE & FILTER
     // ==========================================
+    
+    // ==========================================
+    // REUSABLE CYBER PAGINATION COMPONENT
+    // ==========================================
+    function renderCyberPaginationControls({ containerId, currentPage, totalPages, totalItems, onPageChange, itemLabel = 'Öğe' }) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        if (totalPages <= 1) {
+            container.innerHTML = '';
+            container.style.display = 'none';
+            return;
+        }
+
+        container.style.display = 'flex';
+
+        let pageNumbers = [];
+        if (totalPages <= 7) {
+            for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
+        } else {
+            if (currentPage <= 4) {
+                pageNumbers = [1, 2, 3, 4, 5, '...', totalPages];
+            } else if (currentPage >= totalPages - 3) {
+                pageNumbers = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+            } else {
+                pageNumbers = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
+            }
+        }
+
+        container.innerHTML = `
+            <div class="cyber-pagination-wrap">
+                <div class="pagination-info">
+                    <span>Sayfa <strong>${currentPage}</strong> / ${totalPages}</span>
+                    <span class="pagination-dot">•</span>
+                    <span class="pagination-total">${totalItems} ${itemLabel}</span>
+                </div>
+                <div class="pagination-btns-group">
+                    <button type="button" class="btn-page-nav btn-page-prev" ${currentPage === 1 ? 'disabled' : ''}>
+                        ◀ Önceki
+                    </button>
+                    <div class="page-numbers-list">
+                        ${pageNumbers.map(p => {
+                            if (p === '...') {
+                                return `<span class="page-ellipsis">…</span>`;
+                            }
+                            return `
+                                <button type="button" class="btn-page-num ${p === currentPage ? 'active' : ''}" data-page="${p}">
+                                    ${p}
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                    <button type="button" class="btn-page-nav btn-page-next" ${currentPage === totalPages ? 'disabled' : ''}>
+                        Sonraki ▶
+                    </button>
+                </div>
+            </div>
+        `;
+
+        const prevBtn = container.querySelector('.btn-page-prev');
+        const nextBtn = container.querySelector('.btn-page-next');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) onPageChange(currentPage - 1);
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) onPageChange(currentPage + 1);
+            });
+        }
+
+        container.querySelectorAll('.btn-page-num').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const p = parseInt(btn.dataset.page);
+                if (p && p !== currentPage) onPageChange(p);
+            });
+        });
+    }
+
     function bindAcademyCheatsheet() {
         const container = document.getElementById('academy-commands-container');
         const searchInput = document.getElementById('academy-cmd-search');
@@ -3187,9 +3364,13 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         }
 
         let activeCat = 'all';
+        let commandsCurrentPage = 1;
+        const commandsPageSize = 10;
 
-        function renderAcademyCommands(category, query) {
+        function renderAcademyCommands(category, query, isResetPage = false) {
             if (!container) return;
+            if (isResetPage) commandsCurrentPage = 1;
+
             const commands = window.ACADEMY_COMMANDS || [];
             const q = (query || '').toLowerCase().trim();
 
@@ -3208,7 +3389,10 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 countBadge.textContent = `${filtered.length} / ${commands.length} KOMUT LİSTELENDİ`;
             }
 
+            const pContainer = document.getElementById('commands-pagination-bar');
+
             if (filtered.length === 0) {
+                if (pContainer) { pContainer.innerHTML = ''; pContainer.style.display = 'none'; }
                 container.innerHTML = `
                     <div style="text-align: center; padding: 40px; background: var(--bg-card); border-radius: var(--radius-md); border: 1px dashed var(--border);">
                         <p style="color: var(--text-muted); font-size: 13.5px;">"${escapeHtml(query)}" aramasına uygun komut bulunamadı.</p>
@@ -3225,13 +3409,20 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                             if (allPill) allPill.classList.add('active');
                         }
                         activeCat = 'all';
-                        renderAcademyCommands('all', '');
+                        commandsCurrentPage = 1;
+                        renderAcademyCommands('all', '', true);
                     });
                 }
                 return;
             }
 
-            container.innerHTML = filtered.map(item => `
+            const totalPages = Math.ceil(filtered.length / commandsPageSize) || 1;
+            if (commandsCurrentPage > totalPages) commandsCurrentPage = totalPages;
+            if (commandsCurrentPage < 1) commandsCurrentPage = 1;
+
+            const pageSlice = filtered.slice((commandsCurrentPage - 1) * commandsPageSize, commandsCurrentPage * commandsPageSize);
+
+            container.innerHTML = pageSlice.map(item => `
                 <div class="cheatsheet-card" data-cmd-id="${item.id}">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
                         <strong style="color: #ffffff; font-size: 14px;">${item.id}. ${escapeHtml(item.title)}</strong>
@@ -3252,12 +3443,26 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                     </div>
                 </div>
             `).join('');
+
+            renderCyberPaginationControls({
+                containerId: 'commands-pagination-bar',
+                currentPage: commandsCurrentPage,
+                totalPages: totalPages,
+                totalItems: filtered.length,
+                itemLabel: 'Komut',
+                onPageChange: (newPage) => {
+                    commandsCurrentPage = newPage;
+                    renderAcademyCommands(activeCat, searchInput ? searchInput.value : '', false);
+                    const pg = document.getElementById('page-commands');
+                    if (pg) pg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         }
 
         // Search input event
         if (searchInput) {
             searchInput.addEventListener('input', () => {
-                renderAcademyCommands(activeCat, searchInput.value);
+                renderAcademyCommands(activeCat, searchInput.value, true);
             });
         }
 
@@ -3269,7 +3474,7 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 pillContainer.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
                 pill.classList.add('active');
                 activeCat = pill.dataset.cat || 'all';
-                renderAcademyCommands(activeCat, searchInput ? searchInput.value : '');
+                renderAcademyCommands(activeCat, searchInput ? searchInput.value : '', true);
             });
         }
 
@@ -3460,6 +3665,32 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         if (tabSignup) tabSignup.addEventListener('click', () => setMode(true));
         if (closeBtn && modal) closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
 
+        if (inpPass) {
+            inpPass.addEventListener('input', () => {
+                const len = inpPass.value.length;
+                const fill = document.getElementById('entropy-bar-fill');
+                const txt = document.getElementById('entropy-text');
+                if (!fill || !txt) return;
+                if (len === 0) {
+                    fill.style.width = '10%';
+                    fill.style.background = 'var(--text-muted)';
+                    txt.textContent = 'Şifre Girilmedi';
+                } else if (len < 6) {
+                    fill.style.width = '30%';
+                    fill.style.background = '#ef4444';
+                    txt.textContent = 'Zayıf';
+                } else if (len < 10) {
+                    fill.style.width = '60%';
+                    fill.style.background = '#f59e0b';
+                    txt.textContent = 'Orta';
+                } else {
+                    fill.style.width = '100%';
+                    fill.style.background = '#10b981';
+                    txt.textContent = 'Güçlü Entropi';
+                }
+            });
+        }
+
         if (modal) {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) modal.classList.add('hidden');
@@ -3595,11 +3826,69 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
 
         const CHANGELOG_DATA = [
         {
+            version: 'v5.0',
+            date: '21 Kasım 2026',
+            tag: 'MAJOR REVOLUTION // CYBER QUEST COCKPIT & GAMIFIED LEARNING',
+            tagClass: 'tag-major',
+            isLatest: true,
+            title: 'Tam Ekran Görev Kokpiti, 100% Görsel Zihin Modelleri & Çıktı Dedektifi',
+            title_en: 'Fullscreen Quest Cockpit, 100% Visual Mental Models & Output Decoder',
+            desc: 'Eski dar 3 sütunlu panel ve sıkıcı metin paragrafları tamamen kaldırılarak yerine tam ekran oyunlaştırılmış Siber Görev Kokpiti (Cyber Quest Cockpit), akılda kalıcı günlük hayat benzetmeleri, interaktif akış simülatörü, terminal çıktı dedektifi ve tatlı squircle UI mimarisi getirildi.',
+            desc_en: 'Eliminated cramped 3-column layout and text walls; introduced Fullscreen Gamified Cyber Quest Cockpit with intuitive daily life analogies, interactive pipeline simulation, terminal output decoder, and delightful squircle UI.',
+            items: [
+                {
+                    type: 'NEW',
+                    text: '<strong>Tam Ekran Görev Kokpiti (100% Odaklanma):</strong> 320px sol menü arka planı buzlu (backdrop blur) süzülen şık bir çekmeceye (Slide-out Drawer) dönüştürüldü; ders alanı tam ekran genişliğe kavuştu.',
+                    text_en: '<strong>Fullscreen Quest Cockpit (100% Focus):</strong> 320px sidebar transformed into an off-canvas drawer with backdrop blur, expanding the learning canvas to full screen.'
+                },
+                {
+                    type: 'NEW',
+                    text: '<strong>Üst Bar Görünüm Seçici (View Switcher):</strong> <code>[ 🎮 Tam Ekran Ders ]</code>, <code>[ ◫ İkili Görünüm (Ders + Terminal) ]</code> ve <code>[ 💻 Sadece Terminal ]</code> arasında tek tıkla geçiş desteği eklendi.',
+                    text_en: '<strong>Topbar View Switcher:</strong> One-click switching between Fullscreen Lesson, Split View (Lesson + Terminal), and Full Terminal.'
+                },
+                {
+                    type: 'NEW',
+                    text: '<strong>📬 Günlük Hayattan Benzetmeler (Zihin Modelleri):</strong> 69 odanın tamamındaki mektup zarfı, otel anahtarları, kargo, telefon rehberi gibi akılda kalıcı benzetmeler neon kartlara taşındı; ezber değil 15 saniyede kalıcı mantık sağlandı.',
+                    text_en: '<strong>📬 Daily Life Analogies (Mental Models):</strong> Vivid analogies for all 69 rooms (postal letters, plaza offices, phonebook, cargo) brought front-and-center for instant intuition.'
+                },
+                {
+                    type: 'NEW',
+                    text: '<strong>⚡ İnteraktif Siber Veri Akış Şeması (Pipeline Simulator):</strong> Komutun sistemdeki akışını canlı canlandıran, lazer ses efektleri ve ışıldayan siber veri paketleriyle test edilen canlı simülasyon motoru eklendi.',
+                    text_en: '<strong>⚡ Interactive Cyber Pipeline Simulator:</strong> Visual circuit animating command data transformation with laser SFX and glowing particle packets.'
+                },
+                {
+                    type: 'NEW',
+                    text: '<strong>🔍 Çıktı Dedektifi & Röntgeni (Ne Anlama Gelir?):</strong> Terminaldeki karmaşık çıktılar (<code>inet</code>, <code>link/ether</code>, <code>lo</code>, <code>UP</code> vb.) satır satır çözümlenerek öğrencinin çıktıları bir güvenlik analisti gibi okuması sağlandı.',
+                    text_en: '<strong>🔍 Terminal Output Decoder:</strong> Line-by-line breakdown explaining what every output parameter actually proves in a real security investigation.'
+                },
+                {
+                    type: 'NEW',
+                    text: '<strong>📚 Taktik Siber Terimler Sözlüğü (Hap Bilgiler):</strong> Her odanın kritik kavramları (IP, MAC, Loopback, eth0 vb.) interaktif ve tatlı etiket kartları olarak ana sahneye eklendi.',
+                    text_en: '<strong>📚 Tactical Cyber Vocabulary:</strong> Foundational terminology presented as interactive, delightful flashchips right on the main stage.'
+                },
+                {
+                    type: 'NEW',
+                    text: '<strong>🧠 Taktik Karar Testi (Duolingo Style):</strong> Dokunmatik büyük kartlarla hızlı karar verme, anında yeşil neon kutlama efekti ve <code>+50 XP ✨</code> ödül mekanizması entegre edildi.',
+                    text_en: '<strong>🧠 Tactical Decision Challenge (Duolingo Style):</strong> Large touchable option cards with instant feedback, celebration glow, and +50 XP bonus.'
+                },
+                {
+                    type: 'NEW',
+                    text: '<strong>🚀 Tek Tıkla Canlı Ateşleme Barı:</strong> Komutu anında terminale aktarıp çalıştıran, bayrağı ele geçiren ve terminal çıktısını ekranda sergileyen ateşleme rampası kuruldu.',
+                    text_en: '<strong>🚀 1-Click Live Fire Launchpad:</strong> Automatically streams command into terminal engine, captures flag, and displays proof.'
+                },
+                {
+                    type: 'FIX',
+                    text: '<strong>Üst Bar Sığmama & Taşma Düzeltmesi:</strong> Mobilde ve masaüstünde butonların birbirini ezmesi ve taşması engellenerek 3 bölmeli (3-zone) kompakt, tatlı hap tasarımına geçildi.',
+                    text_en: '<strong>Navbar Responsiveness Fix:</strong> Replaced overcrowded buttons with a 3-zone compact layout to prevent clipping on all resolutions.'
+                }
+            ]
+        },
+        {
             version: 'v4.5',
             date: '10 Kasım 2026',
             tag: 'MAJOR UPDATE // INTERACTIVE CYBER SUITE',
             tagClass: 'tag-major',
-            isLatest: true,
+            isLatest: false,
             title: 'Canlı Paket Simülatörü, LFL Sentinel Asistan, Red vs Blue Düello & Sertifika',
             desc: 'Eğitim odalarına ve ana sayfaya görsel paket yolculuğu simülatörü, akıllı hata yakalayıcı asistan (LFL Sentinel), Web Audio ses efektleri, Speedrun kronometresi, kişisel not defteri (.md) indirici ve mezuniyet sertifikası eklendi.',
             items: [
@@ -3904,11 +4193,24 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                             </div>
                             <ul class="changelog-items-list">
                                 ${ver.items.map(it => {
-                                    const tagText = isEn && it.tag_en ? it.tag_en : it.tag;
+                                    const tagMap = {
+                                        'NEW': isEn ? 'NEW' : 'YENİ',
+                                        'IMPROVED': isEn ? 'IMPROVED' : 'GELİŞTİRME',
+                                        'FIX': isEn ? 'FIX' : 'DÜZELTME',
+                                        'SECURITY': isEn ? 'SECURITY' : 'GÜVENLİK'
+                                    };
+                                    const catMap = {
+                                        'NEW': 'feat',
+                                        'IMPROVED': 'acad',
+                                        'FIX': 'fix',
+                                        'SECURITY': 'sec'
+                                    };
+                                    const tagText = (isEn && it.tag_en ? it.tag_en : (it.tag || tagMap[it.type] || it.type || (isEn ? 'UPDATE' : 'YENİ')));
+                                    const catClass = it.cat || catMap[it.type] || 'feat';
                                     const itemText = isEn && it.text_en ? it.text_en : it.text;
                                     return `
                                         <li class="changelog-item">
-                                            <span class="changelog-tag-pill tag-${it.cat}">${tagText}</span>
+                                            <span class="changelog-tag-pill tag-${catClass}">${tagText}</span>
                                             <span>${itemText}</span>
                                         </li>
                                     `;
@@ -3944,8 +4246,20 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             };
         }
 
-        if (closeBtn) closeBtn.onclick = closeModal;
-        if (footerCloseBtn) footerCloseBtn.onclick = closeModal;
+        if (closeBtn) {
+            closeBtn.onclick = closeModal;
+            closeBtn.addEventListener('click', (e) => {
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+                closeModal();
+            });
+        }
+        if (footerCloseBtn) {
+            footerCloseBtn.onclick = closeModal;
+            footerCloseBtn.addEventListener('click', (e) => {
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+                closeModal();
+            });
+        }
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
@@ -4355,9 +4669,13 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         }
     }
 
-    function renderAccessLogs(filterQuery = '') {
+    let logsCurrentPage = 1;
+    const logsPageSize = 12;
+
+    function renderAccessLogs(filterQuery = '', isResetPage = false) {
         const tbody = document.getElementById('access-logs-tbody');
         if (!tbody) return;
+        if (isResetPage) logsCurrentPage = 1;
 
         const q = (filterQuery || '').toLowerCase().trim();
         const filtered = state.accessLogs.filter(item => {
@@ -4371,12 +4689,21 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 (item.path && item.path.toLowerCase().includes(q));
         });
 
+        const pContainer = document.getElementById('logs-pagination-bar');
+
         if (filtered.length === 0) {
+            if (pContainer) { pContainer.innerHTML = ''; pContainer.style.display = 'none'; }
             tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted" style="padding: 24px;">Filtreye uygun log kaydı bulunamadı.</td></tr>`;
             return;
         }
 
-        tbody.innerHTML = filtered.map(log => {
+        const totalPages = Math.ceil(filtered.length / logsPageSize) || 1;
+        if (logsCurrentPage > totalPages) logsCurrentPage = totalPages;
+        if (logsCurrentPage < 1) logsCurrentPage = 1;
+
+        const pageSlice = filtered.slice((logsCurrentPage - 1) * logsPageSize, logsCurrentPage * logsPageSize);
+
+        tbody.innerHTML = pageSlice.map(log => {
             const timeStr = log.timestamp ? new Date(log.timestamp).toLocaleTimeString() : '--:--:--';
             const dateStr = log.timestamp ? new Date(log.timestamp).toLocaleDateString() : '';
             const isAdmin = log.role === 'admin' || log.username === 'burak_wyxz';
@@ -4427,13 +4754,26 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 </tr>
             `;
         }).join('');
+
+        renderCyberPaginationControls({
+            containerId: 'logs-pagination-bar',
+            currentPage: logsCurrentPage,
+            totalPages: totalPages,
+            totalItems: filtered.length,
+            itemLabel: 'Log Kaydı',
+            onPageChange: (newPage) => {
+                logsCurrentPage = newPage;
+                const searchInput = document.getElementById('logs-search-input');
+                renderAccessLogs(searchInput ? searchInput.value : '', false);
+            }
+        });
     }
 
     function bindAccessLogsPanel() {
         const searchInput = document.getElementById('logs-search-input');
         if (searchInput) {
             searchInput.addEventListener('input', () => {
-                renderAccessLogs(searchInput.value);
+                renderAccessLogs(searchInput.value, true);
             });
         }
 
@@ -5209,13 +5549,15 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
     window.glossaryData = glossaryData;
 
 
+    let glossaryCurrentPage = 1;
+    const glossaryPageSize = 8;
+    let glossaryActiveCat = 'all';
+
     function bindGlossary() {
         const input = document.getElementById('glossary-search-input');
         const pillContainer = document.getElementById('glossary-category-pills');
         const container = document.getElementById('glossary-cards-container');
         const badgeCount = document.getElementById('glossary-badge-count');
-
-        let activeCat = 'all';
 
         if (badgeCount) {
             badgeCount.textContent = `${glossaryData.length}+ KAPSAMLI SİBER TERİM & ANALOJİ`;
@@ -5225,12 +5567,15 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             if (allPill) allPill.textContent = `Tümü (${glossaryData.length}+)`;
         }
 
-        function applyFilter() {
+        function applyFilter(isResetPage = true) {
+            if (isResetPage === true) glossaryCurrentPage = 1;
             const query = input ? input.value : '';
-            renderGlossary(activeCat, query);
+            renderGlossary(glossaryActiveCat, query);
         }
 
-        if (input) input.addEventListener('input', applyFilter);
+        if (input) {
+            input.addEventListener('input', () => applyFilter(true));
+        }
 
         // Fixed pill click listener with delegation
         if (pillContainer) {
@@ -5239,8 +5584,8 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 if (!pill) return;
                 pillContainer.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
                 pill.classList.add('active');
-                activeCat = pill.dataset.cat || 'all';
-                applyFilter();
+                glossaryActiveCat = pill.dataset.cat || 'all';
+                applyFilter(true);
             });
         }
 
@@ -5282,9 +5627,12 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         renderGlossary('all', '');
     }
 
-    function renderGlossary(category, query) {
+    function renderGlossary(category = 'all', query = '') {
         const container = document.getElementById('glossary-cards-container');
         if (!container) return;
+
+        if (typeof category !== 'string' || !category) category = glossaryActiveCat || 'all';
+        if (typeof query !== 'string') query = '';
 
         const catMeta = {
             auth: { label: 'Kimlik & Oturum', icon: '🔐' },
@@ -5308,15 +5656,18 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
         const filtered = glossaryData.filter(item => {
             const matchesCat = category === 'all' || item.category === category;
             const matchesQuery = !q ||
-                item.tag.toLowerCase().includes(q) ||
-                item.title.toLowerCase().includes(q) ||
-                item.desc.toLowerCase().includes(q) ||
-                item.analogy.toLowerCase().includes(q) ||
+                (item.tag && item.tag.toLowerCase().includes(q)) ||
+                (item.title && item.title.toLowerCase().includes(q)) ||
+                (item.desc && item.desc.toLowerCase().includes(q)) ||
+                (item.analogy && item.analogy.toLowerCase().includes(q)) ||
                 (item.cmd && item.cmd.toLowerCase().includes(q));
             return matchesCat && matchesQuery;
         });
 
+        const pContainer = document.getElementById('glossary-pagination-bar');
+
         if (filtered.length === 0) {
+            if (pContainer) { pContainer.innerHTML = ''; pContainer.style.display = 'none'; }
             container.innerHTML = `
                 <div style="grid-column: 1/-1; text-align: center; padding: 48px; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border);">
                     <p style="color: var(--text-muted); font-size: 14px;">"${escapeHtml(query)}" terimi bulunamadı.</p>
@@ -5325,8 +5676,14 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
             return;
         }
 
-        container.innerHTML = filtered.map(item => {
-            const meta = catMeta[item.category] || { label: item.category.toUpperCase(), icon: '🛡️' };
+        const totalPages = Math.ceil(filtered.length / glossaryPageSize) || 1;
+        if (glossaryCurrentPage > totalPages) glossaryCurrentPage = totalPages;
+        if (glossaryCurrentPage < 1) glossaryCurrentPage = 1;
+
+        const pageSlice = filtered.slice((glossaryCurrentPage - 1) * glossaryPageSize, glossaryCurrentPage * glossaryPageSize);
+
+        container.innerHTML = pageSlice.map(item => {
+            const meta = catMeta[item.category] || { label: (item.category || '').toUpperCase(), icon: '🛡️' };
             return `
                 <div class="glossary-card cat-${escapeHtml(item.category)}" data-reveal>
                     <div class="glossary-card-header">
@@ -5381,6 +5738,21 @@ Sunny     2401  0.0  0.3  24520  6820 pts/0    Ss   00:05   0:00 -bash
                 </div>
                 `;
         }).join('');
+
+        renderCyberPaginationControls({
+            containerId: 'glossary-pagination-bar',
+            currentPage: glossaryCurrentPage,
+            totalPages: totalPages,
+            totalItems: filtered.length,
+            itemLabel: 'Terim',
+            onPageChange: (newPage) => {
+                glossaryCurrentPage = newPage;
+                const input = document.getElementById('glossary-search-input');
+                renderGlossary(category, input ? input.value : '');
+                const pg = document.getElementById('page-glossary');
+                if (pg) pg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     }
 
     // ==========================================
@@ -7432,3 +7804,101 @@ function initAnimationEngine() {
 }
 
 
+
+
+/* ==========================================================================
+   LFL CYBER RADIO & MATRIX RAIN ENGINE (PROCEDURAL WEB AUDIO SYNTHESIS)
+   ========================================================================== */
+
+let matrixRainInterval = null;
+function startMatrixRain() {
+    const overlay = document.getElementById('cyber-matrix-overlay');
+    const canvas = document.getElementById('cyber-matrix-canvas');
+    if (!overlay || !canvas) return;
+
+    overlay.classList.remove('hidden');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+    const latin = '0123456789ABCDEF{}[]<>/*+=~#%&_';
+    const chars = (katakana + latin).split('');
+
+    const fontSize = 16;
+    const columns = Math.floor(width / fontSize);
+    const drops = Array.from({ length: columns }, () => Math.floor(Math.random() * -40));
+
+    if (matrixRainInterval) clearInterval(matrixRainInterval);
+
+    matrixRainInterval = setInterval(() => {
+        ctx.fillStyle = 'rgba(2, 6, 4, 0.08)';
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+
+            if (Math.random() > 0.88) {
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowColor = '#00ff66';
+                ctx.shadowBlur = 8;
+            } else {
+                ctx.fillStyle = '#00ff66';
+                ctx.shadowBlur = 0;
+            }
+
+            ctx.fillText(text, x, y);
+
+            if (y > height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }, 33);
+
+    const dismiss = () => stopMatrixRain();
+    overlay.onclick = dismiss;
+    const onKey = (e) => {
+        if (e.key === 'Escape' || e.key.toLowerCase() === 'q') {
+            dismiss();
+            window.removeEventListener('keydown', onKey);
+        }
+    };
+    window.addEventListener('keydown', onKey);
+}
+
+function stopMatrixRain() {
+    const overlay = document.getElementById('cyber-matrix-overlay');
+    if (overlay) overlay.classList.add('hidden');
+    if (matrixRainInterval) {
+        clearInterval(matrixRainInterval);
+        matrixRainInterval = null;
+    }
+}
+window.startMatrixRain = startMatrixRain;
+window.stopMatrixRain = stopMatrixRain;
+
+// CyberRadio is now powered by modular cyber_radio.js (synced across index.html & academy.html)
+    const CyberRadio = window.CyberRadio || {
+        play: () => window.CyberRadio?.play(),
+        pause: () => window.CyberRadio?.pause(),
+        togglePlay: () => window.CyberRadio?.togglePlay(),
+        nextStation: () => window.CyberRadio?.nextStation(),
+        prevStation: () => window.CyberRadio?.prevStation(),
+        setStation: (s) => window.CyberRadio?.setStation(s),
+        setVolume: (v) => window.CyberRadio?.setVolume(v)
+    };
+    
+
+// Auto-boot radio on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        try { CyberRadio.init(); } catch (e) {}
+    });
+} else {
+    try { CyberRadio.init(); } catch (e) {}
+}

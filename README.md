@@ -73,3 +73,13 @@ Geliştirici: burak_wyxz
 Proje: LOST FROM LIGHT (LFL) DEFENSE LAB
 
 GitHub: @burakbezmen
+
+### 🚀 Sürüm v5.0 Güncellemeleri (21 Kasım 2026 - Major Release)
+* **🎮 Tam Ekran Görev Kokpiti (Cyber Quest Cockpit):** Dar 3 sütunlu görünüm kaldırılarak ders alanı %100 tam ekran genişliğe kavuşturuldu. Sol menü arka planı buzlu süzülen çekmeceye dönüştürüldü.
+* **📬 Günlük Hayattan Benzetmeler (Zihin Modelleri):** 69 odanın tamamındaki akılda kalıcı benzetmeler (Mektup zarfı, Plaza kapıları, Telefon rehberi) görsel neon kartlara taşındı.
+* **⚡ Canlı Veri Akış Şeması:** Girdi ──► Süzgeç ──► Çıktı canlı simülatörü, lazer ses efektleri ve ışıldayan veri paketleri animasyonu eklendi.
+* **🔍 Çıktı Dedektifi & Röntgeni:** Terminaldeki karmaşık çıktılar satır satır çözümlenerek öğrencinin çıktıları bir güvenlik analisti gibi okuması sağlandı.
+* **📚 Taktik Siber Terimler:** Kritik kavramlar için tatlı, interaktif etiket kartları eklendi.
+* **🧠 Taktik Karar Testi (Duolingo Style):** Dokunmatik soru kartları, yeşil kutlama animasyonu ve +50 XP ödülü eklendi.
+* **🚀 Canlı Ateşleme Barı:** Tek tıkla komut çalıştırma, bayrak ele geçirme ve terminal çıktısı kanıtı eklendi.
+* **✨ Tatlı Squircle UI & Üst Bar Düzenlemesi:** Üst bar taşma sorunları 3 bölmeli kompakt flexbar ile çözüldü; 18-22px kavisli tatlı cam kutular tasarlandı.

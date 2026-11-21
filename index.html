@@ -8,12 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Cascadia+Code:wght@400;600;700&amp;display=swap"
         rel="stylesheet">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#00e5ff">
     <link rel="stylesheet" href="style.css?v=4.3">
     <link rel="stylesheet" href="animations.css?v=4.3">
+    <link rel="stylesheet" href="cyberpunk_profile.css?v=7.1">
 </head>
 
 <body class="theme-corporate-cyber">
@@ -213,6 +214,17 @@
                         style="background: rgba(0, 229, 255, 0.15); color: var(--cyan); border-color: var(--cyan);">A-Z</span>
                 </button>
 
+                <!-- DEVELOPER // NETRUNNER DOSSIER -->
+                <button class="nav-btn" data-page="page-developer" id="nav-btn-developer">
+                    <span class="nav-icon" style="color: #ec4899;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </span>
+                    <span class="nav-label" data-text="Developer // Dossier">Developer // Dossier</span>
+                </button>
+
                 <!-- SYSTEM CHANGELOG / UPDATE LOG -->
                 <button class="nav-btn" id="nav-btn-changelog" type="button">
                     <span class="nav-icon" style="color: #a855f7;">
@@ -226,7 +238,7 @@
                     </span>
                     <span class="nav-label" data-i18n="nav_changelog">Güncelleme Günlüğü</span>
                     <span class="nav-badge-new"
-                        style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #c084fc;">v4.1</span>
+                        style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #c084fc;">v5.0</span>
                 </button>
 
 
@@ -308,10 +320,10 @@
 
                                         <!-- UPDATE LOG / CHANGELOG BUTTON -->
                     <button type="button" class="topbar-pill-btn" id="btn-changelog-toggle"
-                        title="Platform Güncelleme Günlüğü / Changelog (v4.1)"
+                        title="Platform Güncelleme Günlüğü / Changelog (v5.0)"
                         style="border-color: rgba(168, 85, 247, 0.45); color: #c084fc; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
                         <span style="font-size: 13px;">🚀</span>
-                        <span data-i18n="topbar_updates">v4.2 Güncellemeleri</span>
+                        <span data-i18n="topbar_updates">v5.0 Güncellemeleri</span>
                         <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10b981; box-shadow:0 0 6px #10b981;"></span>
                     </button>
 
@@ -691,7 +703,7 @@
                                     </p>
                                 </div>
                                 <div class="level-card-action">
-                                    <span>[ 01 Ağ Temelleri ]'ne kaydır &darr;</span>
+                                    <span>[ 01 Ağ Temelleri ]'ne kaydır ↓</span>
                                 </div>
                             </div>
 
@@ -707,7 +719,7 @@
                                     </p>
                                 </div>
                                 <div class="level-card-action">
-                                    <span>[ 09 Nmap Taraması ]'na atla &darr;</span>
+                                    <span>[ 09 Nmap Taraması ]'na atla ↓</span>
                                 </div>
                             </div>
 
@@ -723,7 +735,7 @@
                                     </p>
                                 </div>
                                 <div class="level-card-action">
-                                    <span>Dallar (Red / Blue / Purple) bölümüne atla &darr;</span>
+                                    <span>Dallar (Red / Blue / Purple) bölümüne atla ↓</span>
                                 </div>
                             </div>
                         </div>
@@ -745,28 +757,28 @@
                                     </p>
 
                                     <div class="tree-root-steps-grid">
-                                        <a href="academy.html?track=starter&room=starter-01" class="root-step-pill" id="step-starter-01"><span class="step-num">01</span> Ağ Temelleri &amp; IP/MAC</a>
-                                        <a href="academy.html?track=starter&room=starter-02" class="root-step-pill" id="step-starter-02"><span class="step-num">02</span> Portlar &amp; Servisler</a>
-                                        <a href="academy.html?track=starter&room=starter-03" class="root-step-pill" id="step-starter-03"><span class="step-num">03</span> DNS &amp; İsim Çözümleme</a>
-                                        <a href="academy.html?track=starter&room=starter-04" class="root-step-pill" id="step-starter-04"><span class="step-num">04</span> TCP &amp; UDP Protokolleri</a>
-                                        <a href="academy.html?track=starter&room=starter-05" class="root-step-pill" id="step-starter-05"><span class="step-num">05</span> HTTP Başlıkları &amp; Metotlar</a>
-                                        <a href="academy.html?track=starter&room=starter-06" class="root-step-pill" id="step-starter-06"><span class="step-num">06</span> Linux Dosya Hiyerarşisi</a>
-                                        <a href="academy.html?track=starter&room=starter-07" class="root-step-pill" id="step-starter-07"><span class="step-num">07</span> Terminal &amp; CLI Temelleri</a>
-                                        <a href="academy.html?track=starter&room=starter-08" class="root-step-pill" id="step-starter-08"><span class="step-num">08</span> Linux İzinleri &amp; chmod</a>
-                                        <a href="academy.html?track=starter&room=starter-09" class="root-step-pill" id="step-starter-09"><span class="step-num">09</span> Nmap ile İlk Ağ Taraması</a>
-                                        <a href="academy.html?track=starter&room=starter-10" class="root-step-pill" id="step-starter-10"><span class="step-num">10</span> Kriptografi &amp; Hashleme</a>
-                                        <a href="academy.html?track=starter&room=starter-11" class="root-step-pill" id="step-starter-11"><span class="step-num">11</span> Linux Prosesleri &amp; ps/kill</a>
-                                        <a href="academy.html?track=starter&room=starter-12" class="root-step-pill" id="step-starter-12"><span class="step-num">12</span> Log Analizi &amp; grep/Pipe</a>
-                                        <a href="academy.html?track=starter&room=starter-13" class="root-step-pill" id="step-starter-13"><span class="step-num">13</span> Dinleyen Portlar &amp; ss/netstat</a>
-                                        <a href="academy.html?track=starter&room=starter-14" class="root-step-pill" id="step-starter-14"><span class="step-num">14</span> Paket Yakalama &amp; tcpdump</a>
-                                        <a href="academy.html?track=starter&room=starter-15" class="root-step-pill" id="step-starter-15"><span class="step-num">15</span> Cookie, Session &amp; curl</a>
-                                        <a href="academy.html?track=starter&room=starter-16" class="root-step-pill" id="step-starter-16"><span class="step-num">16</span> SSH &amp; Anahtar Çiftleri</a>
-                                        <a href="academy.html?track=starter&room=starter-17" class="root-step-pill" id="step-starter-17"><span class="step-num">17</span> Güvenlik Duvarı &amp; UFW</a>
-                                        <a href="academy.html?track=starter&room=starter-18" class="root-step-pill" id="step-starter-18"><span class="step-num">18</span> Etik Hackleme &amp; Mezuniyet</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-01" class="root-step-pill" id="step-starter-01"><span class="step-num">01</span> Ağ Temelleri &amp; IP/MAC</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-02" class="root-step-pill" id="step-starter-02"><span class="step-num">02</span> Portlar &amp; Servisler</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-03" class="root-step-pill" id="step-starter-03"><span class="step-num">03</span> DNS &amp; İsim Çözümleme</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-04" class="root-step-pill" id="step-starter-04"><span class="step-num">04</span> TCP &amp; UDP Protokolleri</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-05" class="root-step-pill" id="step-starter-05"><span class="step-num">05</span> HTTP Başlıkları &amp; Metotlar</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-06" class="root-step-pill" id="step-starter-06"><span class="step-num">06</span> Linux Dosya Hiyerarşisi</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-07" class="root-step-pill" id="step-starter-07"><span class="step-num">07</span> Terminal &amp; CLI Temelleri</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-08" class="root-step-pill" id="step-starter-08"><span class="step-num">08</span> Linux İzinleri &amp; chmod</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-09" class="root-step-pill" id="step-starter-09"><span class="step-num">09</span> Nmap ile İlk Ağ Taraması</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-10" class="root-step-pill" id="step-starter-10"><span class="step-num">10</span> Kriptografi &amp; Hashleme</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-11" class="root-step-pill" id="step-starter-11"><span class="step-num">11</span> Linux Prosesleri &amp; ps/kill</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-12" class="root-step-pill" id="step-starter-12"><span class="step-num">12</span> Log Analizi &amp; grep/Pipe</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-13" class="root-step-pill" id="step-starter-13"><span class="step-num">13</span> Dinleyen Portlar &amp; ss/netstat</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-14" class="root-step-pill" id="step-starter-14"><span class="step-num">14</span> Paket Yakalama &amp; tcpdump</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-15" class="root-step-pill" id="step-starter-15"><span class="step-num">15</span> Cookie, Session &amp; curl</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-16" class="root-step-pill" id="step-starter-16"><span class="step-num">16</span> SSH &amp; Anahtar Çiftleri</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-17" class="root-step-pill" id="step-starter-17"><span class="step-num">17</span> Güvenlik Duvarı &amp; UFW</a>
+                                        <a href="academy.html?track=starter&amp;room=starter-18" class="root-step-pill" id="step-starter-18"><span class="step-num">18</span> Etik Hackleme &amp; Mezuniyet</a>
                                     </div>
 
                                     <div class="tree-root-action">
-                                        <a href="academy.html?track=starter&room=starter-01" class="btn-tree-start-starter">
+                                        <a href="academy.html?track=starter&amp;room=starter-01" class="btn-tree-start-starter">
                                             <span data-i18n="tree_starter_btn">🌱 Starter Patikasına Başla (18 Temel Oda)</span>
                                             <span class="btn-arrow">&rarr;</span>
                                         </a>
@@ -782,7 +794,7 @@
                                     <div class="trunk-pulse-node"></div>
                                 </div>
                                 <div class="trunk-split-label">
-                                    <span>&diams; KÖKÜ TAMAMLAYINCA DALINI SEÇ (UZMANLAŞMA ALANLARI) &diams;</span>
+                                    <span>♦ KÖKÜ TAMAMLAYINCA DALINI SEÇ (UZMANLAŞMA ALANLARI) ♦</span>
                                 </div>
                                 <div class="tree-branch-svg-container">
                                     <svg class="branch-connector-svg" viewBox="0 0 900 60" preserveAspectRatio="none">
@@ -817,7 +829,7 @@
                                         <li><span class="topic-dot red-dot"></span> EDR / AV Bypass &amp; Payload Gizleme</li>
                                     </ul>
                                     <div class="branch-card-footer">
-                                        <a href="academy.html?track=red&room=red-101" class="btn-branch-action btn-red-action">
+                                        <a href="academy.html?track=red&amp;room=red-101" class="btn-branch-action btn-red-action">
                                             <span data-i18n="tree_red_btn">🔴 Red Team Patikasına Gir</span>
                                             <span class="btn-arrow">&rarr;</span>
                                         </a>
@@ -847,7 +859,7 @@
                                         <li><span class="topic-dot blue-dot"></span> SIEM &amp; Incident Response</li>
                                     </ul>
                                     <div class="branch-card-footer">
-                                        <a href="academy.html?track=blue&room=blue-101" class="btn-branch-action btn-blue-action">
+                                        <a href="academy.html?track=blue&amp;room=blue-101" class="btn-branch-action btn-blue-action">
                                             <span data-i18n="tree_blue_btn">🔵 Blue Team Patikasına Gir</span>
                                             <span class="btn-arrow">&rarr;</span>
                                         </a>
@@ -876,7 +888,7 @@
                                         <li><span class="topic-dot purple-dot"></span> Zero-Trust Doğrulama &amp; Gap Analizi</li>
                                     </ul>
                                     <div class="branch-card-footer">
-                                        <a href="academy.html?track=purple&room=purple-101" class="btn-branch-action btn-purple-action">
+                                        <a href="academy.html?track=purple&amp;room=purple-101" class="btn-branch-action btn-purple-action">
                                             <span data-i18n="tree_purple_btn">🟣 Purple Team Patikasına Gir</span>
                                             <span class="btn-arrow">&rarr;</span>
                                         </a>
@@ -939,7 +951,7 @@
                                     <a href="https://www.linkedin.com/in/burak-bezmen-a177833a8/" target="_blank" rel="noopener noreferrer" class="dev-mini-link">
                                         💼 LinkedIn &nearr;
                                     </a>
-                                    <a href="https://youtube.com/@burak_wyxz" target="_blank" rel="noopener noreferrer" class="dev-mini-link">
+                                    <a href="https://www.youtube.com/@burak_wyxz" target="_blank" rel="noopener noreferrer" class="dev-mini-link">
                                         ▶ YouTube &nearr;
                                     </a>
                                 </div>
@@ -1155,6 +1167,7 @@
                         <div id="academy-commands-container" style="display: flex; flex-direction: column; gap: 14px;">
                             <!-- Injected dynamically via app.js -->
                         </div>
+                    <div class="pagination-bar" id="commands-pagination-bar"></div>
                     </div>
                 </section>
 
@@ -1428,14 +1441,17 @@
                             <input type="text" id="glossary-search-input" class="glossary-search-input" placeholder="Terim ara (örn: MFA, HSTS, JWT, SQLite, MassTransit)..." />
                         </div>
                         <div class="filter-pills" id="glossary-category-pills">
-                            <button class="filter-pill active" data-cat="all" data-i18n="glossary_cat_all">Tümü (16)</button>
-                            <button class="filter-pill" data-cat="auth" data-i18n="glossary_cat_auth">Kimlik &amp; Oturum</button>
-                            <button class="filter-pill" data-cat="network" data-i18n="glossary_cat_network">Ağ &amp; Kalkanlar</button>
-                            <button class="filter-pill" data-cat="backend" data-i18n="glossary_cat_backend">Arka Plan &amp; Kuyruk</button>
+                            <button class="filter-pill active" data-cat="all">Tümü (85+)</button>
+                            <button class="filter-pill" data-cat="auth">🔐 Kimlik &amp; Oturum (5)</button>
+                            <button class="filter-pill" data-cat="network">🌐 Ağ &amp; Protokol (15)</button>
+                            <button class="filter-pill" data-cat="attacks">⚔️ Saldırı Türleri (27)</button>
+                            <button class="filter-pill" data-cat="defense">🛡️ Savunma &amp; Kripto (22)</button>
+                            <button class="filter-pill" data-cat="tools">💻 Siber Araçlar (Kali) (16)</button>
                         </div>
                     </div>
 
                     <div class="glossary-cards-grid" id="glossary-cards-container" data-reveal-stagger></div>
+                    <div class="pagination-bar" id="glossary-pagination-bar"></div>
                 </section>
 
                 <!-- ==========================================
@@ -1485,6 +1501,166 @@
                                 <tbody id="access-logs-tbody"><tr><td colspan="7" class="text-center text-muted" style="padding: 24px;">Ziyaretçi logları taranıyor...</td></tr></tbody>
                             </table>
                         </div>
+                        <div class="pagination-bar" id="logs-pagination-bar"></div>
+                    </div>
+                </section>
+
+            
+                <!-- ==========================================
+                     PAGE: DEVELOPER // NETRUNNER DOSSIER (CYBERPUNK 2077)
+                     ========================================== -->
+                <section class="app-page page-hidden" id="page-developer">
+                    <div class="cyberpunk-profile-stage" data-reveal>
+                        
+                        <!-- Top Cyber Hero Card -->
+                        <div class="cp-hero-card">
+                            <div class="cp-hero-banner">
+                                <span class="cp-banner-hud-tag">[SYS_ID: #77-BRK // CLASS-S NETRUNNER]</span>
+                            </div>
+
+                            <div class="cp-profile-body">
+                                <div class="cp-avatar-status-row">
+                                    <!-- Animated Glowing Avatar Frame -->
+                                    <div class="cp-avatar-wrapper">
+                                        <div class="cp-avatar-ring"></div>
+                                        <img src="dev_avatar_samurai.jpg" alt="Sunny Avatar" class="cp-avatar-img" />
+                                        <span class="cp-online-beacon" title="Online in Night City"></span>
+                                    </div>
+
+                                    <!-- Status Speech Bubble -->
+                                    <div class="cp-custom-status-bubble">
+                                        <span class="cp-status-dot"></span>
+                                        <span>In Night City...</span>
+                                    </div>
+                                </div>
+
+                                <!-- Name & Discord Badges -->
+                                <div class="cp-name-row">
+                                    <h1 class="cp-glitch-name" data-text="Sunny">Sunny</h1>
+                                </div>
+
+                                <div class="cp-alias-sub">
+                                    <span class="cp-alias-tag">weavers_thread1th</span>
+                                    <span>&bull;</span>
+                                    <span style="color: #e2e8f0;">Shadow Slave</span>
+                                    <span>&bull;</span>
+                                    <span style="color: var(--cp-neon-pink);">🌙 Edgerunner</span>
+                                </div>
+
+                                <!-- Bio Quote Box -->
+                                <div class="cp-bio-box">
+                                    <div class="cp-bio-quote">
+                                        <span>“You didn't take me to the moon, but you were there with me.”</span>
+                                    </div>
+                                    <a href="https://burakbezmen.github.io/cyberburak_wyxz/" target="_blank" rel="noopener noreferrer" class="cp-bio-link">
+                                        ⚡ https://burakbezmen.github.io/cyberburak_wyxz/ &rarr;
+                                    </a>
+                                </div>
+
+                                <!-- Holo-Connections (Discord Connections Grid) -->
+                                <div class="cp-section-title">
+                                    <span>📡 ENCRYPTED COMMS // BAĞLANTILAR</span>
+                                </div>
+                                <div class="cp-connections-grid">
+                                    <a href="https://github.com/burakbezmen" target="_blank" rel="noopener noreferrer" class="cp-conn-card">
+                                        <div class="cp-conn-left">
+                                            <div class="cp-conn-icon" style="color: #fff;">🐙</div>
+                                            <div>
+                                                <div class="cp-conn-name">GitHub</div>
+                                                <div class="cp-conn-handle">burakbezmen</div>
+                                            </div>
+                                        </div>
+                                        <span class="cp-conn-arrow">&#8599;</span>
+                                    </a>
+
+                                    <a href="https://open.spotify.com/user/31djj3rutke3voorgxv2hcojgl7e" target="_blank" rel="noopener noreferrer" class="cp-conn-card">
+                                        <div class="cp-conn-left">
+                                            <div class="cp-conn-icon" style="color: #1ed760;">🎵</div>
+                                            <div>
+                                                <div class="cp-conn-name">Spotify</div>
+                                                <div class="cp-conn-handle">Burak_wyxz</div>
+                                            </div>
+                                        </div>
+                                        <span class="cp-conn-arrow">&#8599;</span>
+                                    </a>
+
+                                    <a href="https://www.roblox.com/search/users?keyword=BuRaKPubgAnox" target="_blank" rel="noopener noreferrer" class="cp-conn-card">
+                                        <div class="cp-conn-left">
+                                            <div class="cp-conn-icon" style="color: #e11d48;">🎮</div>
+                                            <div>
+                                                <div class="cp-conn-name">Roblox</div>
+                                                <div class="cp-conn-handle">BuRaKPubgAnox</div>
+                                            </div>
+                                        </div>
+                                        <span class="cp-conn-arrow">&#8599;</span>
+                                    </a>
+
+                                    <a href="https://www.youtube.com/@burak_wyxz" target="_blank" rel="noopener noreferrer" class="cp-conn-card">
+                                        <div class="cp-conn-left">
+                                            <div class="cp-conn-icon" style="color: #ef4444;">▶️</div>
+                                            <div>
+                                                <div class="cp-conn-name">YouTube</div>
+                                                <div class="cp-conn-handle">burak_wyxz</div>
+                                            </div>
+                                        </div>
+                                        <span class="cp-conn-arrow">&#8599;</span>
+                                    </a>
+                                </div>
+
+                                <!-- Cyberdeck Specs / Tech Stack Grid -->
+                                <div class="cp-section-title">
+                                    <span>💾 CYBERDECK // DONANIM &amp; YETENEK SLOTLARI</span>
+                                </div>
+                                <div class="cp-specs-grid">
+                                    <div class="cp-spec-card">
+                                        <div class="cp-spec-header">
+                                            <span class="cp-spec-category">OPERATING SYSTEM</span>
+                                            <span class="cp-spec-slot">SLOT 01</span>
+                                        </div>
+                                        <div class="cp-spec-title">C# &bull; ASP.NET Core &bull; Linux</div>
+                                        <div class="cp-spec-desc">Güvenli ve yüksek performanslı backend mimarileri, Entity Framework Core ve REST API ekosistemi.</div>
+                                        <div class="cp-tech-chips">
+                                            <span class="cp-tech-chip">ASP.NET 8.0</span>
+                                            <span class="cp-tech-chip">EF SQLite</span>
+                                            <span class="cp-tech-chip">Kali Linux</span>
+                                            <span class="cp-tech-chip">Docker</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cp-spec-card">
+                                        <div class="cp-spec-header">
+                                            <span class="cp-spec-category">FRONT CORTEX // NEURAL LINK</span>
+                                            <span class="cp-spec-slot">SLOT 02</span>
+                                        </div>
+                                        <div class="cp-spec-title">Modern JavaScript (ESNext)</div>
+                                        <div class="cp-spec-desc">Zero-lag reaktif DOM mimarileri, özel CSS animasyon motorları ve interaktif siber simülatörler.</div>
+                                        <div class="cp-tech-chips">
+                                            <span class="cp-tech-chip">Vanilla JS</span>
+                                            <span class="cp-tech-chip">CSS3 Cyberpunk</span>
+                                            <span class="cp-tech-chip">Canvas HUD</span>
+                                            <span class="cp-tech-chip">Web Audio API</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="cp-spec-card">
+                                        <div class="cp-spec-header">
+                                            <span class="cp-spec-category">ICE BREAKER // OFFENSIVE &amp; DEFENSIVE</span>
+                                            <span class="cp-spec-slot">SLOT 03</span>
+                                        </div>
+                                        <div class="cp-spec-title">Siber Güvenlik &amp; Ağ Analizi</div>
+                                        <div class="cp-spec-desc">Penetrasyon testleri, Katman-7 WAF/EDR simülasyonları, şifreleme ve oturum güvenliği denetimleri.</div>
+                                        <div class="cp-tech-chips">
+                                            <span class="cp-tech-chip">Nmap</span>
+                                            <span class="cp-tech-chip">Wireshark</span>
+                                            <span class="cp-tech-chip">Burp Suite</span>
+                                            <span class="cp-tech-chip">JWT / Cryptography</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                 </section>
 
@@ -1494,36 +1670,90 @@
 
     <!-- Modals -->
     <!-- AUTHENTICATION MODAL -->
-    <div class="modal-overlay hidden" id="auth-modal">
-        <div class="auth-modal-card">
-            <button class="modal-close-btn" id="btn-close-auth-modal">&times;</button>
-            <div class="auth-modal-header">
-                <div class="auth-icon-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                <h3 class="auth-main-title" id="auth-main-title">Operatör Girişi</h3>
-                <p class="auth-main-subtitle" id="auth-main-subtitle">HMAC-SHA256 Token Tahsisi &amp; Session Storage Katmanı</p>
+    <div id="auth-modal" class="palette-backdrop hidden">
+        <div class="auth-clean-card">
+            <button class="modal-close-icon" id="btn-close-auth-modal" title="Kapat">&times;</button>
+            
+            <div class="auth-dialog-header" style="text-align: center; margin-bottom: 20px;">
+                <div class="brand-shield" style="margin: 0 auto 12px; width: 44px; height: 44px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3 class="auth-title" id="auth-main-title">Operatör Kimlik Doğrulama</h3>
+                <p class="auth-subtitle" id="auth-main-subtitle">Güvenli Erişim Ağ Geçidi &bull; JWT Bearer Token Yönetimi</p>
             </div>
-            <div class="auth-tabs"><button class="auth-tab active" id="modal-tab-signin" data-i18n="auth_tab_signin">Giriş Yap</button><button class="auth-tab" id="modal-tab-signup" data-i18n="auth_tab_signup">Kayıt Ol</button></div>
-            <form id="auth-modal-form" class="auth-form-body">
-                <div id="auth-modal-alert"></div>
-                <div class="form-group"><label class="form-label" data-i18n="form_username_label">Kullanıcı Adı / Callsign</label><input type="text" id="auth-input-username" class="form-input" required autocomplete="off" placeholder="Kullanıcı Adı (örn: lostfromlight)" /></div>
-                <div class="form-group"><label class="form-label" data-i18n="form_password_label">Şifre / Güvenlik Anahtarı</label><input type="password" id="auth-input-password" class="form-input" required placeholder="Şifrenizi girin..." /></div>
-                <div class="form-group hidden" id="auth-row-confirm"><label class="form-label" data-i18n="form_confirm_password_label">Şifreyi Onayla</label><input type="password" id="auth-input-confirm" class="form-input" placeholder="Şifrenizi tekrar girin..." /></div>
-                <div class="entropy-meter-box" style="margin-bottom: 16px;"><div class="entropy-bar-track"><div class="entropy-bar-fill" id="entropy-bar-fill" style="width: 35%; background: var(--cyan);"></div></div><span class="entropy-text" id="entropy-text">Standart Entropi</span></div>
-                <button type="submit" class="btn-glow-blue btn-block" id="auth-btn-execute" data-i18n="btn_auth_execute">Giriş Yap &amp; Session Storage'a Kaydet &rarr;</button>
+
+            <div class="auth-pill-switcher">
+                <button type="button" class="auth-switch-btn active" id="modal-tab-signin">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                        <polyline points="10 17 15 12 10 7"/>
+                        <line x1="15" y1="12" x2="3" y2="12"/>
+                    </svg>
+                    <span>Giriş Yap</span>
+                </button>
+                <button type="button" class="auth-switch-btn" id="modal-tab-signup">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="16"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                    <span>Kayıt Ol</span>
+                </button>
+            </div>
+
+            <div id="auth-modal-alert"></div>
+
+            <form id="auth-modal-form" class="enterprise-form">
+                <div class="form-row">
+                    <label class="form-label" data-i18n="form_username_label">Operatör Adı / Callsign</label>
+                    <input type="text" id="auth-input-username" class="form-input-styled" required autocomplete="off" placeholder="Kullanıcı Adı (örn: lostfromlight)" value="" />
+                </div>
+
+                <div class="form-row">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label class="form-label" data-i18n="form_password_label">Şifre / Güvenlik Anahtarı</label>
+                        <span class="entropy-label" id="entropy-text">Entropi Bekleniyor</span>
+                    </div>
+                    <input type="password" id="auth-input-password" class="form-input-styled" required placeholder="Şifrenizi girin..." value="" />
+                    
+                    <div class="entropy-meter-bar">
+                        <div class="entropy-fill" id="entropy-bar-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="form-row hidden" id="auth-row-confirm">
+                    <label class="form-label" data-i18n="form_confirm_password_label">Şifreyi Onayla</label>
+                    <input type="password" id="auth-input-confirm" class="form-input-styled" placeholder="Şifrenizi tekrar girin..." />
+                </div>
+
+                <button type="submit" id="auth-btn-execute" class="btn-glow-blue btn-block" style="margin-top: 10px; padding: 12px; width: 100%;">
+                    Giriş Yap &amp; Session Storage'a Kaydet &rarr;
+                </button>
             </form>
+
+            <div class="storage-info-badge" style="margin-top: 16px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <span>Giriş yapıldığında token doğrudan <strong>sessionStorage['cyber_token']</strong> alanına işlenir.</span>
+            </div>
         </div>
     </div>
 
     <!-- SYSTEM CHANGELOG & UPDATE LOG MODAL -->
     <div id="changelog-modal" class="palette-backdrop hidden">
         <div class="changelog-modal-card">
-            <button class="modal-close-icon" id="btn-close-changelog-modal">&times;</button>
+            <button type="button" class="modal-close-icon" id="btn-close-changelog-modal" onclick="document.getElementById('changelog-modal').classList.add('hidden')" aria-label="Kapat" title="Kapat">&times;</button>
             
             <div class="changelog-header">
                 <div class="changelog-title-row">
                     <span class="changelog-title-icon">🚀</span>
                     <h3 class="changelog-title" data-i18n="changelog_title">SİSTEM GÜNCELLEME GÜNLÜĞÜ</h3>
-                    <span class="changelog-current-badge">v4.1 CANLI</span>
+                    <span class="changelog-current-badge">v5.0 CANLI</span>
                 </div>
                 <p class="changelog-subtitle" data-i18n="changelog_subtitle">
                     LFL Platform mimarisine eklenen tüm yeni modüller, güvenlik katmanları, oda genişletmeleri ve komut motoru kayıtları.
@@ -1531,7 +1761,7 @@
                 
                 <div class="changelog-stats-row">
                     <div class="changelog-stat-box">
-                        <div class="changelog-stat-val">v4.1</div>
+                        <div class="changelog-stat-val">v5.0</div>
                         <div class="changelog-stat-lbl" data-i18n="cl_stat_version">Aktif Sürüm</div>
                     </div>
                     <div class="changelog-stat-box">
@@ -1568,8 +1798,66 @@
             </div>
 
             <div class="changelog-footer">
-                <span class="changelog-build-id">BUILD // 20261110-LFL-PROD-V4.1 &bull; SHA-256 VERIFIED</span>
+                <span class="changelog-build-id">BUILD // 20261121-LFL-PROD-V5.0 &bull; SHA-256 VERIFIED</span>
                 <button type="button" class="btn-close-changelog" id="btn-footer-close-changelog" data-i18n="cl_btn_close">Kapat [ESC]</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- MATRIX DIGITAL RAIN FULLSCREEN OVERLAY -->
+    <div id="cyber-matrix-overlay" class="cyber-matrix-overlay hidden">
+        <div class="matrix-exit-badge">[SYS_OVERRIDE: THE MATRIX STREAM] &times; ÇIKMAK İÇİN TIKLAYIN VEYA ESC</div>
+        <canvas id="cyber-matrix-canvas"></canvas>
+    </div>
+
+    <!-- LFL CYBER RADIO WIDGET (AMBIENT SYNTHWAVE & TRAUMA TEAM DISPATCH) -->
+    <div id="cyber-radio-widget" class="cyber-radio-widget">
+        <audio id="cyber-radio-audio" preload="auto"></audio>
+        <!-- Collapsed Mini Pill -->
+        <div class="cyber-radio-pill" id="radio-pill" title="LFL Cyber Radio (Tıklayarak Genişlet)">
+            <span class="radio-pill-icon">📻</span>
+            <div class="radio-equalizer">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+            </div>
+            <span class="radio-pill-title" id="radio-pill-text">98.4 NIGHT CITY FM</span>
+            <button type="button" class="radio-pill-btn" id="radio-pill-play-btn" title="Oynat / Durdur">&#9654;</button>
+        </div>
+
+        <!-- Expanded Futuristic Card -->
+        <div class="cyber-radio-card" id="radio-card">
+            <div class="radio-card-header">
+                <span class="radio-freq-badge">
+                    <span class="radio-live-dot"></span>
+                    <span id="radio-card-freq">98.4 NIGHT CITY FM</span>
+                </span>
+                <button type="button" class="radio-minimize-btn" id="radio-card-minimize" title="Küçült">&ndash;</button>
+            </div>
+
+            <div class="radio-track-info">
+                <div class="radio-station-title" id="radio-track-title">Night City Rain &amp; Neo-Lofi</div>
+                <div class="radio-station-desc" id="radio-track-desc">Siber Yağmur &amp; Analog Synth Pad</div>
+            </div>
+
+            <div class="radio-controls-row">
+                <button type="button" class="radio-ctrl-btn" id="radio-btn-prev" title="Önceki İstasyon">&#9198;</button>
+                <button type="button" class="radio-play-btn" id="radio-btn-play" title="Oynat / Durdur">&#9654;</button>
+                <button type="button" class="radio-ctrl-btn" id="radio-btn-next" title="Sonraki İstasyon">&#9197;</button>
+            </div>
+
+            <div class="radio-volume-row">
+                <span class="radio-vol-icon">&#128266;</span>
+                <input type="range" class="radio-vol-slider" id="radio-vol-slider" min="0" max="100" value="35" title="Ses Düzeyi" />
+            </div>
+
+            <div class="radio-presets-row">
+                <button type="button" class="radio-preset-chip active" data-station="0" title="I Really Want to Stay at Your House">🌙 Stay at Your House</button>
+                <button type="button" class="radio-preset-chip" data-station="1" title="HOME - Resonance">⚡ Resonance</button>
+                <button type="button" class="radio-preset-chip" data-station="2" title="Wham! - Last Christmas">🎄 Last Christmas</button>
             </div>
         </div>
     </div>
@@ -1580,6 +1868,7 @@
     <!-- Scripts -->
     <script src="academy-data.js?v=4.2"></script>
     <script src="rooms_data.js?v=4.2"></script>
-    <script src="app.js?v=4.2"></script>
+    <script src="cyber_radio.js?v=1.0"></script>
+    <script src="app.js?v=7.2"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=4.3">
     <link rel="stylesheet" href="animations.css?v=4.3">
+    <link rel="stylesheet" href="cyberpunk_profile.css?v=7.2">
 
     <style>
         /* ==========================================================================
@@ -1998,77 +1999,2279 @@
             color: #34d399;
         }
 
-    </style>
+        /* ==========================================================================
+           LFL TACTICAL DOSSIER: 4-PAGE INTERACTIVE FIELD MANUAL & PAGE-TURN ENGINE
+           ========================================================================== */
+        .mobile-view-tabs {
+            display: none;
+            width: 100%;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(8, 13, 28, 0.96);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.22);
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .mob-view-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: #94a3b8;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mob-view-btn.active {
+            background: rgba(0, 229, 255, 0.16);
+            border-color: var(--cyan, #00e5ff);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+        }
+
+        .mob-pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #10b981;
+        }
+
+        .dossier-panel-container {
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .dossier-stamp {
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            font-weight: 800;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.14);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .dossier-book-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        /* Dossier Navigation Strip */
+        .dossier-tabs-strip {
+            display: flex;
+            gap: 6px;
+            background: rgba(4, 8, 20, 0.85);
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .dossier-tabs-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dossier-tab-pill {
+            flex: 1;
+            min-width: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: #94a3b8;
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .dossier-tab-pill:hover {
+            color: #ffffff;
+            background: rgba(0, 229, 255, 0.08);
+        }
+
+        .dossier-tab-pill.active {
+            background: rgba(0, 229, 255, 0.16);
+            border-color: rgba(0, 229, 255, 0.45);
+            color: var(--cyan, #00e5ff);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+        }
+
+        .tab-badge-xp {
+            font-size: 10px;
+            padding: 1px 5px;
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 4px;
+        }
+
+        /* 3D Book Viewport */
+        .dossier-book-viewport {
+            flex: 1;
+            min-height: 0;
+            position: relative;
+            background: linear-gradient(180deg, rgba(8, 14, 30, 0.96) 0%, rgba(4, 8, 20, 0.98) 100%);
+            border: 1px solid rgba(0, 229, 255, 0.28);
+            border-radius: 14px;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), inset 0 0 40px rgba(0, 229, 255, 0.03);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            perspective: 1400px;
+            touch-action: pan-y;
+        }
+
+        /* Dog-Ear Paper Curl Corner */
+        .dossier-dogear-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            z-index: 25;
+            transition: all 0.25s ease;
+        }
+
+        .dossier-dogear-corner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 38px 38px 0;
+            border-color: transparent #080d1c transparent transparent;
+            filter: drop-shadow(-3px 3px 5px rgba(0, 0, 0, 0.7));
+            transition: all 0.25s ease;
+        }
+
+        .dossier-dogear-corner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 38px 0 0 38px;
+            border-color: rgba(0, 229, 255, 0.35) transparent transparent transparent;
+            transition: all 0.25s ease;
+        }
+
+        .dossier-dogear-corner:hover::before {
+            border-width: 0 48px 48px 0;
+        }
+
+        .dossier-dogear-corner:hover::after {
+            border-width: 48px 0 0 48px;
+            border-color: var(--cyan, #00e5ff) transparent transparent transparent;
+        }
+
+        .dogear-curl-label {
+            position: absolute;
+            top: 8px;
+            right: 48px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--cyan, #00e5ff);
+            letter-spacing: 0.4px;
+            pointer-events: none;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+            z-index: 20;
+        }
+
+        .dossier-dogear-corner:hover + .dogear-curl-label {
+            opacity: 1;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
+        }
+
+        /* Dossier Page Sheets */
+        .dossier-sheet {
+            display: none;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding: 24px;
+            gap: 16px;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 229, 255, 0.3) transparent;
+        }
+
+        .dossier-sheet.active {
+            display: flex;
+            animation: pageTurn3D 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform-origin: left center;
+        }
+
+        @keyframes pageTurn3D {
+            0% {
+                opacity: 0;
+                transform: rotateY(-14deg) scale(0.985);
+            }
+            100% {
+                opacity: 1;
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        .dossier-sheet::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dossier-sheet::-webkit-scrollbar-thumb {
+            background: rgba(0, 229, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        /* Sheet Footer & Advance Buttons */
+        .dossier-sheet-footer {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-dossier-advance {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.16), rgba(37, 99, 235, 0.28));
+            border: 1px solid rgba(0, 229, 255, 0.45);
+            color: #ffffff;
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-dossier-advance:hover {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.28), rgba(37, 99, 235, 0.45));
+            border-color: var(--cyan, #00e5ff);
+            transform: translateY(-1px);
+            box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
+        }
+
+        .btn-advance-mission {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(0, 229, 255, 0.25));
+            border-color: rgba(16, 185, 129, 0.5);
+            color: #a7f3d0;
+        }
+        .btn-advance-mission:hover {
+            border-color: #10b981;
+            box-shadow: 0 0 16px rgba(16, 185, 129, 0.45);
+        }
+
+        /* Fast Fill to Terminal Button */
+        .btn-mission-fast-fill {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(16, 185, 129, 0.25));
+            border: 1px solid rgba(0, 229, 255, 0.5);
+            color: #ffffff;
+            font-size: 13.5px;
+            font-weight: 800;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 18px rgba(0, 229, 255, 0.25);
+        }
+
+        .btn-mission-fast-fill:hover {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.32), rgba(16, 185, 129, 0.38));
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+        }
+
+        /* Dossier Bottom Bar */
+        .dossier-bottom-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: rgba(4, 8, 20, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0 0 14px 14px;
+        }
+
+        .btn-page-step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-page-step:hover:not(:disabled) {
+            background: rgba(0, 229, 255, 0.12);
+            border-color: var(--cyan, #00e5ff);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .btn-page-step:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .btn-page-next-action {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.18), rgba(16, 185, 129, 0.2));
+            border-color: rgba(0, 229, 255, 0.4);
+            color: #67e8f9;
+        }
+
+        .dossier-page-counter {
+            font-size: 12px;
+            color: #94a3b8;
+            font-family: var(--font-mono, monospace);
+        }
+
+        @media (max-width: 900px) {
+            .mobile-view-tabs {
+                display: flex !important;
+            }
+            .dossier-panel-container {
+                padding: 16px 12px !important;
+                height: auto !important;
+                max-height: none !important;
+            }
+            .dossier-book-viewport {
+                min-height: 480px !important;
+            }
+            .academy-workspace.view-dossier .academy-terminal-panel {
+                display: none !important;
+            }
+            .academy-workspace.view-terminal .academy-theory-panel {
+                display: none !important;
+            }
+            .academy-workspace.view-terminal .academy-rooms-sidebar {
+                display: none !important;
+            }
+            .academy-workspace.view-terminal .academy-terminal-panel {
+                display: flex !important;
+                height: calc(100vh - 120px) !important;
+                max-height: none !important;
+            }
+        }
+
+    
+
+        /* ==========================================================================
+           LFL CYBER RANGE: FULLSCREEN COCKPIT & GAMIFIED LEARNING ENGINE (ACADEMY 3.0)
+           ========================================================================== */
+
+        /* 1. View Mode Switcher in Navbar */
+        .view-mode-selector {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            border-radius: 10px;
+            padding: 3px;
+            gap: 3px;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.08);
+        }
+
+        .view-mode-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+        }
+
+        .view-mode-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .view-mode-btn.active {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.22), rgba(59, 130, 246, 0.25));
+            border: 1px solid rgba(0, 229, 255, 0.6);
+            color: #00e5ff;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+        }
+
+        /* 2. Slide-out Rooms Drawer Button in Navbar */
+        .btn-toggle-rooms-drawer {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            color: #ffffff;
+            font-family: var(--font-mono, monospace);
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-toggle-rooms-drawer:hover {
+            background: rgba(0, 229, 255, 0.15);
+            border-color: #00e5ff;
+            box-shadow: 0 0 14px rgba(0, 229, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .drawer-hamburger {
+            font-size: 14px;
+            color: #00e5ff;
+        }
+
+        .drawer-active-tag {
+            background: rgba(0, 229, 255, 0.15);
+            color: #00e5ff;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        /* 3. Workspace Layout Modes */
+        .academy-workspace {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: calc(100vh - var(--academy-header-height));
+            max-height: calc(100vh - var(--academy-header-height));
+            overflow: hidden;
+            background: #020617;
+        }
+
+        /* Mode A: Cockpit (Tam Ekran - Default!) */
+        .academy-workspace.mode-cockpit .academy-theory-panel {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            max-width: 100% !important;
+            display: flex !important;
+        }
+
+        .academy-workspace.mode-cockpit .academy-terminal-panel {
+            display: none !important;
+        }
+
+        /* Mode B: Split View (50 / 50) */
+        .academy-workspace.mode-split {
+            display: grid !important;
+            grid-template-columns: 1.15fr 1fr !important;
+        }
+
+        .academy-workspace.mode-split .academy-theory-panel {
+            display: flex !important;
+            width: 100% !important;
+            border-right: 1px solid rgba(0, 229, 255, 0.2) !important;
+        }
+
+        .academy-workspace.mode-split .academy-terminal-panel {
+            display: flex !important;
+            width: 100% !important;
+        }
+
+        /* Mode C: Terminal View (100% Terminal) */
+        .academy-workspace.mode-terminal .academy-theory-panel {
+            display: none !important;
+        }
+
+        .academy-workspace.mode-terminal .academy-terminal-panel {
+            display: flex !important;
+            width: 100% !important;
+            flex: 1 1 100% !important;
+        }
+
+        /* 4. Off-canvas Rooms Drawer & Backdrop */
+        .rooms-drawer-backdrop {
+            position: fixed;
+            inset: 0;
+            top: var(--academy-header-height);
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .rooms-drawer-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .academy-rooms-sidebar {
+            position: fixed !important;
+            top: var(--academy-header-height) !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 370px !important;
+            max-width: 88vw !important;
+            height: calc(100vh - var(--academy-header-height)) !important;
+            z-index: 999 !important;
+            background: rgba(8, 13, 28, 0.98) !important;
+            border-right: 1px solid rgba(0, 229, 255, 0.3) !important;
+            box-shadow: 15px 0 40px rgba(0, 0, 0, 0.85) !important;
+            transform: translateX(-105%) !important;
+            transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow-y: auto !important;
+        }
+
+        .academy-rooms-sidebar.drawer-open {
+            transform: translateX(0) !important;
+        }
+
+        .rooms-sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(15, 23, 42, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .btn-close-rooms-drawer {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #94a3b8;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-close-rooms-drawer:hover {
+            color: #ff3366;
+            border-color: #ff3366;
+            background: rgba(255, 51, 102, 0.1);
+        }
+
+        /* 5. Cyber Quest Cockpit Container */
+        .cockpit-panel-container {
+            flex: 1;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.06), transparent 70%), #060914;
+            padding: 24px 32px 48px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cyber-cockpit-stage {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Cockpit HUD Header */
+        .cockpit-hud-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 18px 24px;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(0, 229, 255, 0.22);
+            border-radius: 14px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .hud-left-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hud-track-pill {
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .hud-track-pill.starter {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+        }
+
+        .hud-track-pill.red {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+        }
+
+        .hud-track-pill.blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .hud-track-pill.purple {
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+        }
+
+        .hud-level-pill {
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hud-room-code {
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 700;
+            color: #00e5ff;
+        }
+
+        .hud-nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-hud-nav {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            font-family: var(--font-mono, monospace);
+            font-size: 11.5px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-hud-nav:hover:not(:disabled) {
+            background: rgba(0, 229, 255, 0.15);
+            border-color: #00e5ff;
+            color: #ffffff;
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+        }
+
+        .btn-hud-nav:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .hud-mission-title {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .hud-xp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(245, 158, 11, 0.1));
+            border: 1px solid rgba(234, 179, 8, 0.5);
+            padding: 6px 14px;
+            border-radius: 999px;
+            color: #fbbf24;
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 0 12px rgba(234, 179, 8, 0.2);
+        }
+
+        /* 6. Threat & Target Radar Card (Punchy 2-liner) */
+        .cockpit-radar-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(10, 16, 32, 0.95));
+            border: 1px solid rgba(0, 229, 255, 0.28);
+            border-left: 4px solid #00e5ff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .radar-ping-icon {
+            font-size: 28px;
+            line-height: 1;
+            filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6));
+            animation: radarPulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes radarPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.9)); }
+        }
+
+        .radar-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radar-target-tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #00e5ff;
+            text-transform: uppercase;
+        }
+
+        .radar-mission-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f8fafc;
+            line-height: 1.45;
+        }
+
+        .radar-tactical-tip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .tip-spark {
+            font-size: 15px;
+        }
+
+        /* 7. Interactive Cyber Pipeline Simulator (Animated Data Flow) */
+        .cockpit-pipeline-card {
+            background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8), rgba(6, 10, 22, 0.95));
+            border: 1px solid rgba(0, 229, 255, 0.22);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .pipeline-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 14px;
+        }
+
+        .pipeline-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pipeline-neon-icon {
+            color: #00e5ff;
+            font-size: 18px;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
+        }
+
+        .pipeline-title-text {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            color: #ffffff;
+        }
+
+        .pipeline-subtag {
+            background: rgba(0, 229, 255, 0.1);
+            color: #00e5ff;
+            font-family: var(--font-mono, monospace);
+            font-size: 9.5px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        .btn-pipeline-pulse {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.18), rgba(59, 130, 246, 0.2));
+            border: 1px solid rgba(0, 229, 255, 0.5);
+            color: #00e5ff;
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+        }
+
+        .btn-pipeline-pulse:hover {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.3), rgba(59, 130, 246, 0.35));
+            border-color: #00e5ff;
+            color: #ffffff;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .pipeline-canvas-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 0;
+        }
+
+        .pipeline-node {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .pipeline-node:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 229, 255, 0.15);
+        }
+
+        .node-source {
+            border-top: 3px solid #3b82f6;
+        }
+
+        .node-tool {
+            border-top: 3px solid #00e5ff;
+        }
+
+        .node-output {
+            border-top: 3px solid #10b981;
+        }
+
+        .pipeline-node.pulse-highlight {
+            border-color: #00e5ff !important;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.6) !important;
+            transform: scale(1.03) !important;
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .node-type {
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        .node-value {
+            font-family: var(--font-mono, monospace);
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            word-break: break-all;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .node-role {
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.35;
+        }
+
+        .pipeline-connector-track {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 48px;
+            height: 24px;
+        }
+
+        .connector-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 229, 255, 0.3), rgba(0, 229, 255, 0.7));
+            position: relative;
+        }
+
+        .connector-packet {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00e5ff;
+            box-shadow: 0 0 10px #00e5ff;
+            left: 0;
+            opacity: 0;
+        }
+
+        .connector-packet.animating {
+            animation: packetFlow 1s ease-in-out forwards;
+        }
+
+        @keyframes packetFlow {
+            0% { left: 0; opacity: 1; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { left: 100%; opacity: 0; transform: scale(1); }
+        }
+
+        .connector-arrow {
+            color: #00e5ff;
+            font-size: 14px;
+            margin-left: 2px;
+            text-shadow: 0 0 8px #00e5ff;
+        }
+
+        /* 8. Interactive Tactical Command Anatomy */
+        .cockpit-anatomy-card {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .anatomy-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .anatomy-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 12.5px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            color: #cbd5e1;
+        }
+
+        .anatomy-tip {
+            font-size: 11px;
+            color: #64748b;
+            font-family: var(--font-mono, monospace);
+        }
+
+        .anatomy-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .anatomy-token-card {
+            background: rgba(2, 6, 23, 0.6);
+            border: 1px solid rgba(0, 229, 255, 0.18);
+            border-radius: 10px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .anatomy-token-card:hover {
+            border-color: #00e5ff;
+            background: rgba(0, 229, 255, 0.08);
+            box-shadow: 0 0 18px rgba(0, 229, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .token-badge {
+            font-family: var(--font-mono, monospace);
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #00e5ff;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 6px;
+            align-self: flex-start;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        .token-role {
+            font-family: var(--font-mono, monospace);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #fbbf24;
+            text-transform: uppercase;
+        }
+
+        .token-desc {
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        /* 9. Gamified Tactical Decision Challenge (Duolingo style) */
+        .cockpit-quiz-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(10, 15, 30, 0.95));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .quiz-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quiz-title-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-title-txt {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #e2e8f0;
+        }
+
+        .quiz-reward-pill {
+            background: rgba(234, 179, 8, 0.15);
+            color: #fbbf24;
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(234, 179, 8, 0.4);
+        }
+
+        .quiz-status-pill {
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            font-weight: 700;
+            color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
+
+        .quiz-question-box {
+            font-size: 15.5px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.45;
+        }
+
+        .quiz-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .quiz-option-btn {
+            background: rgba(2, 6, 23, 0.7);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            font-family: var(--font-sans, sans-serif);
+            font-size: 13.5px;
+            line-height: 1.4;
+            font-weight: 500;
+            padding: 14px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .quiz-option-btn:hover:not(:disabled) {
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+        }
+
+        .quiz-option-letter {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .quiz-option-btn.correct {
+            border-color: #10b981 !important;
+            background: rgba(16, 185, 129, 0.18) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35) !important;
+        }
+
+        .quiz-option-btn.correct .quiz-option-letter {
+            background: #10b981;
+            color: #020617;
+        }
+
+        .quiz-option-btn.wrong {
+            border-color: #ef4444 !important;
+            background: rgba(239, 68, 68, 0.15) !important;
+            animation: quizShake 0.4s ease;
+        }
+
+        @keyframes quizShake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .quiz-feedback-box {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            line-height: 1.45;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-feedback-box.success {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #6ee7b7;
+        }
+
+        .quiz-feedback-box.error {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+        }
+
+        /* 10. Fire Command Action Bar */
+        .cockpit-action-launchpad {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(8, 14, 28, 0.98));
+            border: 1.5px solid rgba(0, 229, 255, 0.45);
+            border-radius: 14px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.18);
+        }
+
+        .launchpad-cmd-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(2, 6, 23, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 10px 16px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .launchpad-prompt {
+            color: #10b981;
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .launchpad-cmd {
+            color: #00e5ff;
+            font-family: var(--font-mono, monospace);
+            font-size: 14px;
+            font-weight: 700;
+            flex: 1;
+            word-break: break-all;
+        }
+
+        .btn-copy-launchpad-cmd {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 15px;
+            padding: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn-copy-launchpad-cmd:hover {
+            color: #ffffff;
+            transform: scale(1.15);
+        }
+
+        .launchpad-buttons-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cockpit-fire {
+            background: linear-gradient(135deg, #00e5ff, #0284c7);
+            color: #020617;
+            border: none;
+            font-family: var(--font-mono, monospace);
+            font-size: 13.5px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            padding: 13px 26px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.45);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-cockpit-fire:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.75);
+            background: linear-gradient(135deg, #38bdf8, #00e5ff);
+        }
+
+        .btn-cockpit-fire:active {
+            transform: translateY(1px);
+        }
+
+        .btn-cockpit-split-toggle {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #cbd5e1;
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cockpit-split-toggle:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border-color: rgba(0, 229, 255, 0.4);
+        }
+
+        /* 11. Mission Completed Banner */
+        .cockpit-completed-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 78, 59, 0.25));
+            border: 2px solid #10b981;
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.25);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .completed-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .completed-icon {
+            font-size: 36px;
+            filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.8));
+        }
+
+        .completed-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 16px;
+            font-weight: 900;
+            color: #10b981;
+            letter-spacing: 1px;
+        }
+
+        .completed-flag-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .flag-label {
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .flag-code {
+            font-family: var(--font-mono, monospace);
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #fef08a;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(254, 240, 138, 0.3);
+        }
+
+        .preview-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 11px;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        .preview-output {
+            margin: 0;
+            background: #020617;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 14px;
+            color: #a7f3d0;
+            font-family: var(--font-mono, monospace);
+            font-size: 12.5px;
+            line-height: 1.5;
+            max-height: 180px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .btn-cockpit-next-mission {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            border: none;
+            font-family: var(--font-mono, monospace);
+            font-size: 13.5px;
+            font-weight: 800;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-cockpit-next-mission:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+        }
+
+        /* 12. Collapsible Deep Dive (Closed by Default - Zero Text Wall!) */
+        .cockpit-deep-dive-details {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .deep-dive-summary {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.02);
+            list-style: none;
+            font-family: var(--font-mono, monospace);
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #94a3b8;
+            transition: all 0.2s ease;
+        }
+
+        .deep-dive-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .deep-dive-summary:hover {
+            color: #00e5ff;
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        .summary-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-badge {
+            font-size: 11px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .deep-dive-content {
+            padding: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .deep-terms-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 16px;
+        }
+
+        .terms-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 700;
+            color: #00e5ff;
+            margin-bottom: 12px;
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .term-item-card {
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+
+        .term-item-name {
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 800;
+            color: #f1f5f9;
+            margin-bottom: 4px;
+        }
+
+        .term-item-desc {
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        /* 13. Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .cockpit-panel-container {
+                padding: 16px 14px 40px !important;
+            }
+
+            .pipeline-canvas-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            .pipeline-connector-track {
+                width: 100% !important;
+                height: 16px !important;
+            }
+
+            .connector-line {
+                width: 2px !important;
+                height: 16px !important;
+            }
+
+            .connector-arrow {
+                transform: rotate(90deg) !important;
+                margin-left: 0 !important;
+                margin-top: 2px !important;
+            }
+
+            .hud-mission-title {
+                font-size: 18px !important;
+            }
+
+            .launchpad-cmd-display {
+                min-width: 100% !important;
+            }
+
+            .btn-cockpit-fire {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+    
+
+
+        /* ==========================================================================
+           SWEET CYBER COCKPIT ENHANCEMENTS: NAVBAR RESPONSIVENESS & RICH INTEL CARDS
+           ========================================================================== */
+
+        /* Responsive 3-Zone Navbar */
+        .academy-navbar {
+            height: 58px !important;
+            background: rgba(8, 13, 28, 0.96) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.22) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: 0 16px !important;
+            gap: 12px !important;
+            box-sizing: border-box !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            scrollbar-width: none !important;
+        }
+
+        .academy-navbar::-webkit-scrollbar {
+            display: none !important;
+        }
+
+        .nav-zone-left {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .academy-brand {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            text-decoration: none !important;
+            flex-shrink: 0 !important;
+        }
+
+        .academy-brand-logo {
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 10px !important;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(99, 102, 241, 0.3)) !important;
+            border: 1px solid rgba(56, 189, 248, 0.6) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 16px !important;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.3) !important;
+        }
+
+        .academy-brand-title {
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 13px !important;
+            font-weight: 900 !important;
+            letter-spacing: 0.8px !important;
+            color: #ffffff !important;
+            line-height: 1.1 !important;
+            white-space: nowrap !important;
+        }
+
+        .academy-brand-subtitle {
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 9px !important;
+            font-weight: 700 !important;
+            letter-spacing: 1px !important;
+            color: #38bdf8 !important;
+            display: block !important;
+            line-height: 1 !important;
+        }
+
+        .btn-toggle-rooms-drawer {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)) !important;
+            border: 1px solid rgba(56, 189, 248, 0.45) !important;
+            color: #ffffff !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            padding: 5px 12px !important;
+            border-radius: 999px !important;
+            cursor: pointer !important;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+        }
+
+        .btn-toggle-rooms-drawer:hover {
+            transform: translateY(-2px) scale(1.02) !important;
+            border-color: #38bdf8 !important;
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.4) !important;
+        }
+
+        .drawer-active-tag {
+            background: rgba(56, 189, 248, 0.2) !important;
+            color: #38bdf8 !important;
+            border: 1px solid rgba(56, 189, 248, 0.5) !important;
+            padding: 1px 6px !important;
+            border-radius: 999px !important;
+            font-size: 9.5px !important;
+            font-weight: 800 !important;
+        }
+
+        .nav-zone-center {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .view-mode-selector {
+            display: inline-flex !important;
+            align-items: center !important;
+            background: rgba(15, 23, 42, 0.9) !important;
+            border: 1px solid rgba(56, 189, 248, 0.35) !important;
+            border-radius: 999px !important;
+            padding: 2px !important;
+            gap: 2px !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .view-mode-btn {
+            background: transparent !important;
+            border: none !important;
+            color: #94a3b8 !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            padding: 5px 11px !important;
+            border-radius: 999px !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            white-space: nowrap !important;
+        }
+
+        .view-mode-btn.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(99, 102, 241, 0.4)) !important;
+            border: 1px solid rgba(56, 189, 248, 0.75) !important;
+            color: #38bdf8 !important;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.35) !important;
+        }
+
+        .nav-zone-right {
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .acad-util-btn {
+            background: rgba(15, 23, 42, 0.75) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: #cbd5e1 !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            padding: 5px 9px !important;
+            border-radius: 999px !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            transition: all 0.2s ease !important;
+            white-space: nowrap !important;
+        }
+
+        .acad-util-btn:hover {
+            background: rgba(56, 189, 248, 0.18) !important;
+            border-color: rgba(56, 189, 248, 0.5) !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .btn-role-quiz {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(139, 92, 246, 0.2)) !important;
+            border: 1px solid rgba(168, 85, 247, 0.55) !important;
+            color: #e9d5ff !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            padding: 5px 10px !important;
+            border-radius: 999px !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            transition: all 0.2s ease !important;
+            white-space: nowrap !important;
+        }
+
+        .academy-progress-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 3px !important;
+            min-width: 100px !important;
+            max-width: 120px !important;
+            background: rgba(2, 6, 23, 0.65) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 4px 8px !important;
+            border-radius: 999px !important;
+        }
+
+        .academy-progress-meta {
+            display: flex !important;
+            justify-content: center !important;
+            font-size: 9.5px !important;
+            font-family: var(--font-mono, monospace) !important;
+            color: #38bdf8 !important;
+            font-weight: 700 !important;
+        }
+
+        .academy-progress-track {
+            height: 4px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-radius: 999px !important;
+            overflow: hidden !important;
+        }
+
+        .academy-progress-fill {
+            height: 100% !important;
+            background: linear-gradient(90deg, #38bdf8, #34d399) !important;
+            border-radius: 999px !important;
+            transition: width 0.4s ease !important;
+        }
+
+        .btn-academy-back {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: #94a3b8 !important;
+            text-decoration: none !important;
+            font-family: var(--font-mono, monospace) !important;
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            padding: 5px 9px !important;
+            border-radius: 999px !important;
+            transition: all 0.2s ease !important;
+            white-space: nowrap !important;
+        }
+
+        /* Sweet Card Styling */
+        .cockpit-panel-container {
+            background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.07), transparent 60%),
+                        radial-gradient(circle at 10% 40%, rgba(168, 85, 247, 0.04), transparent 50%),
+                        #050814 !important;
+            padding: 22px 28px 56px !important;
+        }
+
+        .cyber-cockpit-stage {
+            gap: 18px !important;
+        }
+
+        .cockpit-hud-header {
+            border-radius: 18px !important;
+            border: 1px solid rgba(56, 189, 248, 0.3) !important;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(8, 14, 28, 0.95)) !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
+        }
+
+        /* 2. Sweet Story & Analogy Card */
+        .cockpit-analogy-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.65), rgba(15, 23, 42, 0.85));
+            border: 1.5px solid rgba(251, 191, 36, 0.45);
+            border-radius: 18px;
+            padding: 22px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cockpit-analogy-card:hover {
+            border-color: #fbbf24;
+            box-shadow: 0 12px 36px rgba(245, 158, 11, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .analogy-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .analogy-icon {
+            font-size: 24px;
+            filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+        }
+
+        .analogy-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 800;
+            color: #fef08a;
+            letter-spacing: 0.8px;
+            flex: 1;
+            margin-left: 8px;
+        }
+
+        .analogy-badge {
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            font-weight: 800;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.15);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            padding: 3px 9px;
+            border-radius: 999px;
+            letter-spacing: 0.8px;
+        }
+
+        .analogy-body {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: #f1f5f9;
+        }
+
+        .analogy-body strong {
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        .analogy-callout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .analogy-pill-card {
+            background: rgba(2, 6, 23, 0.6);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .analogy-pill-icon {
+            font-size: 20px;
+        }
+
+        .analogy-pill-text {
+            font-size: 12.5px;
+            color: #e2e8f0;
+            line-height: 1.35;
+        }
+
+        /* 3. Output Decoder Card (Çıktı Dedektifi) */
+        .cockpit-output-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(6, 12, 28, 0.95));
+            border: 1.5px solid rgba(52, 211, 153, 0.4);
+            border-radius: 18px;
+            padding: 22px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.12);
+        }
+
+        .output-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1px solid rgba(52, 211, 153, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .output-card-icon {
+            font-size: 22px;
+            filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.6));
+        }
+
+        .output-card-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 800;
+            color: #6ee7b7;
+            letter-spacing: 0.8px;
+            flex: 1;
+            margin-left: 8px;
+        }
+
+        .output-card-badge {
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            font-weight: 800;
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.15);
+            border: 1px solid rgba(52, 211, 153, 0.4);
+            padding: 3px 9px;
+            border-radius: 999px;
+        }
+
+        .output-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .output-decoder-item {
+            background: rgba(2, 6, 23, 0.7);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .output-decoder-item:hover {
+            border-color: #34d399;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(52, 211, 153, 0.2);
+        }
+
+        .decoder-snippet {
+            font-family: var(--font-mono, monospace);
+            font-size: 12px;
+            font-weight: 700;
+            color: #a7f3d0;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(52, 211, 153, 0.2);
+            word-break: break-all;
+        }
+
+        .decoder-meaning {
+            font-size: 12.5px;
+            color: #e2e8f0;
+            line-height: 1.45;
+        }
+
+        .decoder-meaning strong {
+            color: #fbbf24;
+        }
+
+        /* 4. Terms Card (Taktik Siber Sözlük) */
+        .cockpit-terms-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(10, 16, 32, 0.95));
+            border: 1.5px solid rgba(168, 85, 247, 0.35);
+            border-radius: 18px;
+            padding: 22px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.1);
+        }
+
+        .terms-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .terms-card-icon {
+            font-size: 22px;
+            filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
+        }
+
+        .terms-card-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 800;
+            color: #d8b4fe;
+            letter-spacing: 0.8px;
+            flex: 1;
+            margin-left: 8px;
+        }
+
+        .terms-card-badge {
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            font-weight: 800;
+            color: #c084fc;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            padding: 3px 9px;
+            border-radius: 999px;
+        }
+
+        .terms-chips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .term-flashchip {
+            background: rgba(2, 6, 23, 0.65);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .term-flashchip:hover {
+            border-color: #c084fc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.2);
+        }
+
+        .term-flashchip-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .term-flashchip-name {
+            font-family: var(--font-mono, monospace);
+            font-size: 13px;
+            font-weight: 800;
+            color: #f3e8ff;
+        }
+
+        .term-flashchip-desc {
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.45;
+        }
+    
+</style>
 </head>
 
 <body class="academy-body theme-corporate-cyber">
 
     <!-- Top Navigation Header -->
     <header class="academy-navbar">
-        <a href="index.html" class="academy-brand" title="Ana Sayfaya Dön">
-            <div class="academy-brand-logo">⚔️</div>
-            <div class="academy-brand-text">
-                <span class="academy-brand-title">LFL CYBER RANGE</span>
-                <span class="academy-brand-subtitle">INTERACTIVE ACADEMY ROOMS</span>
-            </div>
-        </a>
+        <!-- Zone 1 (Left): Brand + Room Drawer Pill -->
+        <div class="nav-zone-left">
+            <a href="index.html" class="academy-brand" title="Ana Sayfaya Dön">
+                <span class="academy-brand-logo">⚔️</span>
+                <div class="academy-brand-text">
+                    <span class="academy-brand-title">LFL CYBER</span>
+                    <span class="academy-brand-subtitle">ACADEMY</span>
+                </div>
+            </a>
 
-        <div class="academy-nav-right">
-            <!-- Hacker Ses Efektleri (Web Audio API) -->
+            <!-- Slide-out Rooms Drawer Toggle Button -->
+            <button type="button" class="btn-toggle-rooms-drawer" id="btn-toggle-rooms-drawer" title="Eğitim Odaları Listesi (69)">
+                <span class="drawer-hamburger">☰</span>
+                <span class="drawer-label">Odalar (69)</span>
+                <span class="drawer-active-tag" id="drawer-active-tag">STARTER-01</span>
+            </button>
+        </div>
+
+        <!-- Zone 2 (Center): View Mode Switcher -->
+        <div class="nav-zone-center">
+            <div class="view-mode-selector" id="view-mode-selector">
+                <button type="button" class="view-mode-btn active" data-mode="cockpit" id="view-btn-cockpit" title="Tam Ekran Görev Kokpiti">
+                    <span>🎮</span>
+                    <span>Ders</span>
+                </button>
+                <button type="button" class="view-mode-btn" data-mode="split" id="view-btn-split" title="Ders ve Terminal Yan Yana">
+                    <span>◫</span>
+                    <span>İkili</span>
+                </button>
+                <button type="button" class="view-mode-btn" data-mode="terminal" id="view-btn-terminal" title="Yalnızca Terminal">
+                    <span>💻</span>
+                    <span>Terminal</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Zone 3 (Right): Utilities + Progress + Exit -->
+        <div class="nav-zone-right">
+            <!-- Ses Efektleri -->
             <button type="button" class="acad-util-btn active-mode" id="btn-toggle-sfx" title="Terminal Ses Efektlerini Aç/Kapat">
                 <span id="sfx-icon">🔊</span>
-                <span id="sfx-label">Ses: Açık</span>
+                <span id="sfx-label" class="nav-btn-label">Ses</span>
             </button>
 
-            <!-- Speedrun Kronometre Modu -->
+            <!-- Speedrun Kronometre -->
             <button type="button" class="acad-util-btn" id="btn-speedrun-timer" title="Speedrun Kronometresini Başlat/Durdur">
                 <span>⏱️</span>
-                <span id="speedrun-display">Speedrun: 00:00</span>
+                <span id="speedrun-display">00:00</span>
             </button>
 
-            <!-- Kişisel Siber Not Defteri (Cheatsheet Export) -->
-            <button type="button" class="acad-util-btn" id="btn-export-notes" title="Tüm Öğrendiğin Komutları ve Açıklamalarını Not Defteri (.md) Olarak İndir">
+            <!-- Not Defteri İndir -->
+            <button type="button" class="acad-util-btn" id="btn-export-notes" title="Tüm Komutları ve Notları İndir (.md)">
                 <span>📥</span>
-                <span>Not Defterini İndir</span>
+                <span class="nav-btn-label">Notlar</span>
             </button>
 
-            <!-- Starter Mezuniyet Sertifikası -->
-            <button type="button" class="acad-util-btn" id="btn-open-certificate" title="Starter Patikası Mezuniyet Sertifikanı Görüntüle / Yazdır" style="border-color: rgba(234, 179, 8, 0.45); color: #fde047;">
+            <!-- Mezuniyet Sertifikası -->
+            <button type="button" class="acad-util-btn btn-cert" id="btn-open-certificate" title="Starter Sertifikası">
                 <span>🎓</span>
-                <span>Sertifika</span>
+                <span class="nav-btn-label">Sertifika</span>
             </button>
 
-            <!-- 10-Question Cyber Role Quiz Trigger -->
+            <!-- 10 Soruluk Rol Testi -->
             <button type="button" class="btn-role-quiz" id="btn-start-quiz" title="Siber Rolünü Belirle">
                 <span>🎯</span>
-                <span>Rol Belirleme Testi (10 Soru)</span>
+                <span class="nav-btn-label">Rol Testi</span>
             </button>
 
-            <!-- Progress Tracker -->
-            <div class="academy-progress-container">
+            <!-- Compact Progress Indicator -->
+            <div class="academy-progress-container" title="Akademi Tamamlama İlerlemesi">
                 <div class="academy-progress-meta">
-                    <span>AKADEMİ İLERLEMESİ</span>
-                    <span id="room-progress-text">%0 (0/0)</span>
+                    <span id="room-progress-text">%0 (0/69)</span>
                 </div>
                 <div class="academy-progress-track">
                     <div class="academy-progress-fill" id="room-progress-bar"></div>
                 </div>
             </div>
 
-            <!-- Return to Platform Button -->
-            <a href="index.html" class="btn-academy-back">
-                <span>&larr;</span>
-                <span>Ana Platforma Dön</span>
+            <!-- Ana Platforma Dön -->
+            <a href="index.html" class="btn-academy-back" title="Ana Platforma Dön">
+                <span>⌂</span>
+                <span class="nav-btn-label">Çıkış</span>
             </a>
         </div>
     </header>
 
     <!-- Workspace Split Screen -->
-    <main class="academy-workspace">
+    <main class="academy-workspace mode-cockpit" id="academy-workspace">
+        <div class="rooms-drawer-backdrop" id="rooms-drawer-backdrop"></div>
 
         <!-- Column 1: Rooms Navigation Sidebar -->
         <aside class="academy-rooms-sidebar">
             <div class="rooms-sidebar-header">
+                <button type="button" class="btn-close-rooms-drawer" id="btn-close-rooms-drawer" title="Menüyü Kapat">✕</button>
                 <div class="rooms-sidebar-title">
                     <span>📚</span>
                     <span>Eğitim Odaları</span>
@@ -2108,76 +4311,262 @@
             </div>
         </aside>
 
-        <!-- Column 2: Theory & Mission Left Panel -->
-        <section class="academy-theory-panel">
+        <!-- Mobile View Segment Switcher (<= 900px) -->
+        <div class="mobile-view-tabs" id="mobile-view-tabs">
+            <button type="button" class="mob-view-btn active" id="mob-btn-dossier">
+                <span>📖 Saha Kılavuzu (1-4)</span>
+            </button>
+            <button type="button" class="mob-view-btn" id="mob-btn-terminal">
+                <span>💻 Canlı Terminal</span>
+                <span class="mob-pulse-dot"></span>
+            </button>
+        </div>
 
-            <!-- Active Room Header & Badges -->
-            <div class="room-header-section">
-                <div class="room-badges-row">
-                    <span class="room-track-badge track-red" id="room-track">RED TEAM</span>
-                    <span class="room-level-badge" id="room-level">Beginner</span>
+        <!-- Column 2: Tactical Dossier & Field Manual Panel -->
+        <section class="academy-theory-panel cockpit-panel-container" id="academy-theory-panel">
+        <div class="cyber-cockpit-stage" id="cyber-cockpit-stage">
+
+            <!-- 1. Sweet HUD Header -->
+            <div class="cockpit-hud-header">
+                <div class="hud-left-group">
+                    <span class="hud-track-pill starter" id="hud-track-pill">⚡ STARTER</span>
+                    <span class="hud-level-pill" id="hud-level-pill">⭐ 0. Temel Altyapı</span>
+                    <span class="hud-room-code" id="hud-room-code">starter-01</span>
                 </div>
-                <h1 class="room-title-h1" id="room-title">Yükleniyor...</h1>
+                <div class="hud-nav-controls">
+                    <button type="button" class="btn-hud-nav" id="btn-cockpit-prev">◀ Önceki</button>
+                    <button type="button" class="btn-hud-nav" id="btn-cockpit-next">Sonraki ▶</button>
+                    <div class="hud-xp-badge">
+                        <span>✨</span>
+                        <span id="cockpit-xp-val">0 XP</span>
+                    </div>
+                </div>
+                <div style="width: 100%; margin-top: 4px;">
+                    <h1 class="hud-mission-title" id="hud-mission-title">Oda Yükleniyor...</h1>
+                </div>
             </div>
 
-            <!-- Theory Content (Markdown Parsed) -->
-            <article class="room-theory-content" id="room-theory">
-                <p>Oda teorik dokümantasyonu yükleniyor...</p>
-            </article>
-
-            <!-- Akademi 2.0: Sıfırdan Öğretici Komut Röntgeni & Rehber -->
-            <div id="room-pedagogy-guide" class="room-pedagogy-guide"></div>
-
-            <!-- Mission Scenario Box -->
-            <div class="room-mission-card">
-                <div class="mission-card-header">
-                    <span>🎯</span>
-                    <span>SENARYO GÖREVİ (TERMINAL MISSION)</span>
+            <!-- 2. Sweet Story & Analogy Card (Akılda Kalıcı Zihin Modeli) -->
+            <div class="cockpit-analogy-card" id="cockpit-analogy-card">
+                <div class="analogy-card-header">
+                    <span class="analogy-icon">📬</span>
+                    <span class="analogy-title">GÜNLÜK HAYATTAN BENZETME (Akılda Kalıcı Zihin Modeli)</span>
+                    <span class="analogy-badge">EZBER YOK • MANTIK VAR</span>
                 </div>
-                <p class="mission-text" id="room-mission">Görev tanımı yükleniyor...</p>
+                <div class="analogy-body" id="cockpit-analogy-body">
+                    Benzetme yükleniyor...
+                </div>
+            </div>
 
-                <!-- Tactical Hint Accordion (CTF Kısmındaki Gibi) -->
-                <div class="room-hint-container ctf-hint-container" id="room-hint-container">
-                    <button type="button" class="room-hint-btn ctf-hint-btn" id="btn-toggle-room-hint">
-                        <span style="display: flex; align-items: center; gap: 6px;">💡 Taktik İpucu &amp; Önerilen Kodlar (Takılırsan Tıkla)</span>
-                        <span id="room-hint-icon" style="font-weight: 800; color: #eab308; font-size: 13px;">&darr;</span>
-                    </button>
-                    <div class="room-hint-body ctf-hint-body" id="room-hint-body">
-                        <div class="room-hint-explanation" id="room-hint-explanation">
-                            <!-- Populated dynamically per room -->
-                        </div>
-                        <div class="room-hint-cmd-section">
-                            <div class="room-hint-cmd-header">
-                                <span>KULLANILABİLİR KOMUT (Terminale yaz veya tek tıkla aktar):</span>
-                                <button type="button" class="btn-hint-fill" id="btn-hint-fill">
-                                    <span>⚡ Terminale Aktar ↵</span>
-                                </button>
-                            </div>
-                            <div class="room-hint-code-box" id="room-hint-code-box" title="Terminale aktarmak için tıkla">
-                                <span class="prompt-sign">$</span>
-                                <code id="room-hint-code">...</code>
-                            </div>
+            <!-- 3. Real World Context & Mission Objective (Saha Gerçeği) -->
+            <div class="cockpit-radar-card">
+                <div class="radar-ping-icon">🎯</div>
+                <div class="radar-body">
+                    <div class="radar-target-tag">OPERASYONEL GÖREV HEDEFİ:</div>
+                    <div class="radar-mission-text" id="cockpit-mission-text">
+                        Hedef görev yönergesi yükleniyor...
+                    </div>
+                    <div class="radar-tactical-tip" id="cockpit-tactical-tip">
+                        <span class="tip-spark">🛡️</span>
+                        <div class="tip-content">
+                            <strong style="color: #38bdf8;">NEDEN KULLANIYORUZ? (SAHA MANTIĞI):</strong>
+                            <span id="cockpit-tip-txt">Saha mantığı yükleniyor...</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Flag Solved Box -->
-            <div class="room-flag-box" id="room-flag-display"></div>
+            <!-- 4. Interactive Cyber Pipeline Simulator (Animated Data Flow) -->
+            <div class="cockpit-pipeline-card">
+                <div class="pipeline-card-top">
+                    <div class="pipeline-title-group">
+                        <span class="pipeline-neon-icon">⚡</span>
+                        <span class="pipeline-title-text">İNTERAKTİF SİBER VERİ AKIŞ ŞEMASI</span>
+                        <span class="pipeline-subtag">CANLI SİMÜLASYON</span>
+                    </div>
+                    <button type="button" class="btn-pipeline-pulse" id="btn-pipeline-pulse" title="Veri akışını görsel simüle et">
+                        <span>▶</span>
+                        <span>Akışı Canlandır & Test Et ✨</span>
+                    </button>
+                </div>
 
-            <!-- Action: Prev & Next Room Buttons -->
-            <div class="room-actions-row">
-                <button type="button" class="btn-prev-room-style" id="btn-prev-room" title="Önceki odaya dön">
-                    <span>&larr;</span>
-                    <span>Önceki Oda</span>
-                </button>
-                <button type="button" class="btn-next-room-style" id="btn-next-room" title="Sonraki odaya geç">
-                    <span>Sonraki Odaya Geç</span>
-                    <span>&rarr;</span>
-                </button>
+                <div class="pipeline-canvas-grid" id="pipeline-canvas-grid">
+                    <!-- Node 1: Tool / Command -->
+                    <div class="pipeline-node node-tool" id="pipe-node-tool">
+                        <div class="node-header">
+                            <span class="node-icon">🛠️</span>
+                            <span class="node-type">ANA PROGRAM / SİLAH</span>
+                        </div>
+                        <div class="node-value" id="pipe-val-tool">ip</div>
+                        <div class="node-role" id="pipe-role-tool">Ağ Yönetim Aracı</div>
+                    </div>
+
+                    <!-- Connector 1 -->
+                    <div class="pipeline-connector-track" id="pipe-track-1">
+                        <div class="connector-line"></div>
+                        <div class="connector-packet" id="pipe-packet-1"></div>
+                        <div class="connector-arrow">►</div>
+                    </div>
+
+                    <!-- Node 2: Param / Filter -->
+                    <div class="pipeline-node node-source" id="pipe-node-source">
+                        <div class="node-header">
+                            <span class="node-icon">🏷️</span>
+                            <span class="node-type">PARAMETRE / SÜZGEÇ</span>
+                        </div>
+                        <div class="node-value" id="pipe-val-source">a</div>
+                        <div class="node-role" id="pipe-role-source">Adres Parametresi (address)</div>
+                    </div>
+
+                    <!-- Connector 2 -->
+                    <div class="pipeline-connector-track" id="pipe-track-2">
+                        <div class="connector-line"></div>
+                        <div class="connector-packet" id="pipe-packet-2"></div>
+                        <div class="connector-arrow">►</div>
+                    </div>
+
+                    <!-- Node 3: Target Output -->
+                    <div class="pipeline-node node-output" id="pipe-node-output">
+                        <div class="node-header">
+                            <span class="node-icon">🎯</span>
+                            <span class="node-type">TESPİT ÇIKTISI</span>
+                        </div>
+                        <div class="node-value" id="pipe-val-output">inet 192.168.1.105</div>
+                        <div class="node-role" id="pipe-role-output">Yerel IP ve MAC Tespit Edildi!</div>
+                    </div>
+                </div>
             </div>
 
-        </section>
+            <!-- 5. Interactive Tactical Command Anatomy (Parçala & Keşfet) -->
+            <div class="cockpit-anatomy-card">
+                <div class="anatomy-header">
+                    <span class="anatomy-title">🧩 KOMUTUN TAKTİK ANATOMİSİ (Parçala & Keşfet)</span>
+                    <span class="anatomy-tip">Kartların üzerine gelin veya dokunun</span>
+                </div>
+                <div class="anatomy-cards-grid" id="cockpit-anatomy-cards-grid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- 6. ÇIKTI DEDEKTİFİ & RÖNTGENİ (Terminal Output Decoder) -->
+            <div class="cockpit-output-card" id="cockpit-output-card">
+                <div class="output-card-header">
+                    <span class="output-card-icon">🔍</span>
+                    <span class="output-card-title">ÇIKTI DEDEKTİFİ: EKRANDA NE GÖRÜYORUZ? (Ne Anlama Gelir?)</span>
+                    <span class="output-card-badge">SAHA ÇÖZÜMLEMESİ</span>
+                </div>
+                <div class="output-items-grid" id="cockpit-output-items-grid">
+                    <!-- Populated dynamically from room.outputGuide -->
+                </div>
+            </div>
+
+            <!-- 7. TAKTİK SİBER SÖZLÜK (Hap Terimler) -->
+            <div class="cockpit-terms-card" id="cockpit-terms-card">
+                <div class="terms-card-header">
+                    <span class="terms-card-icon">📚</span>
+                    <span class="terms-card-title">BU ODANIN TAKTİK TERİMLERİ (Hap Bilgiler)</span>
+                    <span class="terms-card-badge">TEMEL KAVRAMLAR</span>
+                </div>
+                <div class="terms-chips-grid" id="cockpit-terms-chips-grid">
+                    <!-- Populated dynamically from room.beginnerTerms -->
+                </div>
+            </div>
+
+            <!-- 8. Gamified Tactical Decision Challenge (Duolingo style) -->
+            <div class="cockpit-quiz-card" id="cockpit-quiz-card">
+                <div class="quiz-card-header">
+                    <div class="quiz-title-box">
+                        <span class="quiz-icon">🧠</span>
+                        <span class="quiz-title-txt">TAKTIK KARAR TESTİ</span>
+                        <span class="quiz-reward-pill">+50 XP ✨</span>
+                    </div>
+                    <div class="quiz-status-pill" id="cockpit-quiz-status">Kararını Ver</div>
+                </div>
+                <div class="quiz-question-box" id="cockpit-quiz-question-box">
+                    Soru yükleniyor...
+                </div>
+                <div class="quiz-options-grid" id="cockpit-quiz-options-grid">
+                    <!-- Populated dynamically -->
+                </div>
+                <div class="quiz-feedback-box" id="cockpit-quiz-feedback-box" style="display:none;"></div>
+            </div>
+
+            <!-- 9. Fire Command Action Bar -->
+            <div class="cockpit-action-launchpad">
+                <div class="launchpad-cmd-display">
+                    <span class="launchpad-prompt">kali@lfl-range:~$</span>
+                    <code class="launchpad-cmd" id="cockpit-launchpad-cmd">...</code>
+                    <button type="button" class="btn-copy-launchpad-cmd" id="btn-copy-launchpad-cmd" title="Komutu Kopyala">📋</button>
+                </div>
+                <div class="launchpad-buttons-row">
+                    <button type="button" class="btn-cockpit-fire" id="btn-cockpit-fire">
+                        <span>🚀</span>
+                        <span>KOMUTU ATEŞLE & BAYRAĞI ELE GEÇİR ↵</span>
+                    </button>
+                    <button type="button" class="btn-cockpit-split-toggle" id="btn-cockpit-split-toggle">
+                        <span>💻 Terminali Aç / İkili Görünüm</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 10. Mission Completed Banner -->
+            <div class="cockpit-completed-card" id="cockpit-completed-card" style="display:none;">
+                <div class="completed-header">
+                    <span class="completed-icon">🏆</span>
+                    <div>
+                        <div class="completed-title">GÖREV BAŞARIYLA TAMAMLANDI!</div>
+                        <div class="completed-flag-line">
+                            <span class="flag-label">BAYRAK:</span>
+                            <code class="flag-code" id="cockpit-completed-flag">LFL{...}</code>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="preview-title">GERÇEK TERMİNAL ÇIKTISI KANITI:</div>
+                    <pre class="preview-output" id="cockpit-completed-output"></pre>
+                </div>
+                <div>
+                    <button type="button" class="btn-cockpit-next-mission" id="btn-cockpit-next-mission">
+                        <span>Sonraki Odaya İlerle ➔</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 11. Collapsible Raw Manual / Theory (Closed by default) -->
+            <details class="cockpit-deep-dive-details" id="cockpit-deep-dive-details">
+                <summary class="deep-dive-summary">
+                    <div class="summary-left">
+                        <span>📖</span>
+                        <span>Ham Dokümantasyon & Ek Notlar (İsteğe Bağlı)</span>
+                    </div>
+                    <span class="summary-badge">Genişlet ▾</span>
+                </summary>
+                <div class="deep-dive-content">
+                    <div class="deep-theory-body" id="cockpit-deep-theory-body"></div>
+                </div>
+            </details>
+
+            <!-- Hidden Container with Required DOM IDs for AcademyEngine Compatibility -->
+            <div style="display:none;" id="academy-engine-compatibility-cache">
+                <span id="room-track"></span>
+                <span id="room-level"></span>
+                <span id="room-title"></span>
+                <div id="room-theory"></div>
+                <div id="room-mission"></div>
+                <div id="room-hint-container"></div>
+                <button type="button" id="btn-toggle-room-hint"></button>
+                <div id="room-hint-body"></div>
+                <span id="room-hint-icon"></span>
+                <div id="room-hint-explanation"></div>
+                <code id="room-hint-code"></code>
+                <button type="button" id="btn-hint-fill"></button>
+                <div id="room-hint-code-box"></div>
+                <button type="button" id="btn-next-room"></button>
+                <button type="button" id="btn-prev-room"></button>
+            </div>
+
+        </div>
+    </section>
 
         <!-- Column 3: Mini Hacker Terminal Right Panel -->
         <section class="academy-terminal-panel">
@@ -2356,9 +4745,85 @@
                 };
             }
 
-            window.renderRoomPedagogyGuide = function (room) {
-                const container = document.getElementById('room-pedagogy-guide');
-                if (!container || !room) return;
+            // =========================================================================
+            // LFL TACTICAL DOSSIER: 4-PAGE INTERACTIVE FIELD MANUAL CONTROLLER
+            // =========================================================================
+            window.currentDossierPage = 1;
+
+            window.setDossierPage = function (pageNum) {
+                const target = Math.max(1, Math.min(4, parseInt(pageNum, 10) || 1));
+                window.currentDossierPage = target;
+
+                // Update tab pills
+                document.querySelectorAll('.dossier-tab-pill').forEach(pill => {
+                    const p = parseInt(pill.getAttribute('data-page'), 10);
+                    pill.classList.toggle('active', p === target);
+                });
+
+                // Update sheets
+                document.querySelectorAll('.dossier-sheet').forEach(sheet => {
+                    const idx = parseInt(sheet.getAttribute('data-sheet-index'), 10);
+                    if (idx === target) {
+                        sheet.classList.add('active');
+                        sheet.scrollTop = 0;
+                    } else {
+                        sheet.classList.remove('active');
+                    }
+                });
+
+                // Update bottom pager
+                const counter = document.getElementById('current-page-num');
+                if (counter) counter.textContent = target;
+
+                const prevBtn = document.getElementById('btn-dossier-prev');
+                if (prevBtn) prevBtn.disabled = (target === 1);
+
+                const nextBtn = document.getElementById('btn-dossier-next');
+                if (nextBtn) {
+                    if (target === 4) {
+                        nextBtn.innerHTML = '<span>Başa Dön (1. Sayfa) ↺</span>';
+                    } else {
+                        nextBtn.innerHTML = '<span>Sonraki Sayfa (Çevir) ›</span>';
+                    }
+                }
+
+                // Update dog-ear corner label
+                const dogearLabel = document.getElementById('dogear-label');
+                if (dogearLabel) {
+                    if (target === 4) {
+                        dogearLabel.textContent = '1. Sayfaya Dön ↺';
+                    } else {
+                        dogearLabel.textContent = `Sayfa ${target + 1}'e Çevir ➔`;
+                    }
+                }
+
+                if (typeof window.playCyberSound === 'function') {
+                    window.playCyberSound('cmd');
+                }
+            };
+
+            // Mobile Segment Switcher Handler
+            window.setMobileView = function (view) {
+                const workspace = document.querySelector('.academy-workspace');
+                const mobBtnDossier = document.getElementById('mob-btn-dossier');
+                const mobBtnTerminal = document.getElementById('mob-btn-terminal');
+                if (!workspace) return;
+
+                if (view === 'terminal') {
+                    workspace.classList.remove('view-dossier');
+                    workspace.classList.add('view-terminal');
+                    if (mobBtnTerminal) mobBtnTerminal.classList.add('active');
+                    if (mobBtnDossier) mobBtnDossier.classList.remove('active');
+                } else {
+                    workspace.classList.remove('view-terminal');
+                    workspace.classList.add('view-dossier');
+                    if (mobBtnDossier) mobBtnDossier.classList.add('active');
+                    if (mobBtnTerminal) mobBtnTerminal.classList.remove('active');
+                }
+            };
+
+            window.renderTacticalDossier = function (room) {
+                if (!room) return;
 
                 const formatInline = (str) => {
                     return String(str || '')
@@ -2374,186 +4839,319 @@
                         .replace(/"/g, '&quot;');
                 };
 
-                let sectionsHtml = '';
+                // Reset to page 1 on new room
+                window.setDossierPage(1);
 
-                // 1. Neden Bu Komutu Kullanıyoruz?
-                if (room.whyWeUse) {
-                    sectionsHtml += `
-                        <div class="pedagogy-section-card card-why">
-                            <div class="pedagogy-card-header">
-                                <div class="pedagogy-card-title">
-                                    <span>❓</span>
-                                    <span>1. BU KOMUTU NEDEN KULLANIYORUZ? (GERÇEK HAYAT MANTIĞI)</span>
+                // 1. PAGE 1: Why We Use (Gerçek Hayat Mantığı)
+                const whyBox = document.getElementById('dossier-why-box');
+                if (whyBox) {
+                    if (room.whyWeUse) {
+                        whyBox.innerHTML = `
+                            <div class="pedagogy-section-card card-why">
+                                <div class="pedagogy-card-header">
+                                    <div class="pedagogy-card-title">
+                                        <span>❓</span>
+                                        <span>1. BU KOMUTU NEDEN KULLANIYORUZ? (GERÇEK HAYAT MANTIĞI)</span>
+                                    </div>
+                                    <span class="pedagogy-card-badge" style="color:#34d399; border-color:rgba(16,185,129,0.3); background:rgba(16,185,129,0.12);">EZBER YOK // MANTIK VAR</span>
                                 </div>
-                                <span class="pedagogy-card-badge" style="color:#34d399; border-color:rgba(16,185,129,0.3); background:rgba(16,185,129,0.12);">EZBER YOK // MANTIK VAR</span>
+                                <p class="pedagogy-why-text">${formatInline(room.whyWeUse)}</p>
                             </div>
-                            <p class="pedagogy-why-text">${formatInline(room.whyWeUse)}</p>
-                        </div>
-                    `;
+                        `;
+                        whyBox.style.display = 'block';
+                    } else {
+                        whyBox.innerHTML = '';
+                        whyBox.style.display = 'none';
+                    }
                 }
 
-                // 2. Komutun Kelime Kelime Röntgeni
-                if (Array.isArray(room.cmdAnatomy) && room.cmdAnatomy.length > 0) {
-                    const inlineChips = room.cmdAnatomy.map(item => `<span class="cmd-xray-chip">${escapeHtml(item.token)}</span>`).join('');
-                    const anatomyRows = room.cmdAnatomy.map(item => `
-                        <div class="cmd-anatomy-row">
-                            <div class="cmd-anatomy-token-box">
-                                <span class="cmd-anatomy-token">${escapeHtml(item.token)}</span>
-                                <span class="cmd-anatomy-role">${escapeHtml(item.role)}</span>
-                            </div>
-                            <div class="cmd-anatomy-desc">${formatInline(item.desc)}</div>
-                        </div>
-                    `).join('');
-
-                    const safeCmdAttr = escapeHtml(room.expectedCommand || '');
-
-                    sectionsHtml += `
-                        <div class="pedagogy-section-card card-anatomy">
-                            <div class="pedagogy-card-header">
-                                <div class="pedagogy-card-title">
-                                    <span>🔬</span>
-                                    <span>2. KOMUTUN KELİME KELİME RÖNTGENİ (PARÇA PARÇA NE İŞE YARAR?)</span>
+                // 2. PAGE 2: Command Anatomy, Output Guide & Glossary
+                const xrayBox = document.getElementById('dossier-xray-box');
+                if (xrayBox) {
+                    if (Array.isArray(room.cmdAnatomy) && room.cmdAnatomy.length > 0) {
+                        const inlineChips = room.cmdAnatomy.map(item => `<span class="cmd-xray-chip">${escapeHtml(item.token)}</span>`).join('');
+                        const anatomyRows = room.cmdAnatomy.map(item => `
+                            <div class="cmd-anatomy-row">
+                                <div class="cmd-anatomy-token-box">
+                                    <span class="cmd-anatomy-token">${escapeHtml(item.token)}</span>
+                                    <span class="cmd-anatomy-role">${escapeHtml(item.role)}</span>
                                 </div>
-                                <span class="pedagogy-card-badge">KOMUT ANATOMİSİ</span>
+                                <div class="cmd-anatomy-desc">${formatInline(item.desc)}</div>
                             </div>
-                            <div class="cmd-xray-bar">
-                                <div class="cmd-xray-tokens-inline">
-                                    <span style="color:#94a3b8; font-weight:700; margin-right:4px;">$</span>
-                                    ${inlineChips}
+                        `).join('');
+
+                        const safeCmdAttr = escapeHtml(room.expectedCommand || '');
+
+                        xrayBox.innerHTML = `
+                            <div class="pedagogy-section-card card-anatomy">
+                                <div class="pedagogy-card-header">
+                                    <div class="pedagogy-card-title">
+                                        <span>🔬</span>
+                                        <span>2. KOMUTUN KELİME KELİME RÖNTGENİ (PARÇA PARÇA NE İŞE YARAR?)</span>
+                                    </div>
+                                    <span class="pedagogy-card-badge">KOMUT ANATOMİSİ</span>
                                 </div>
-                                <button type="button" class="btn-xray-send" data-fill-cmd="${safeCmdAttr}">
-                                    ⚡ Komutu Terminale Yaz
-                                </button>
+                                <div class="cmd-xray-bar">
+                                    <div class="cmd-xray-tokens-inline">
+                                        <span style="color:#94a3b8; font-weight:700; margin-right:4px;">$</span>
+                                        ${inlineChips}
+                                    </div>
+                                    <button type="button" class="btn-xray-send" data-fill-cmd="${safeCmdAttr}">
+                                        ⚡ Terminale Aktar
+                                    </button>
+                                </div>
+                                <div class="cmd-anatomy-grid">
+                                    ${anatomyRows}
+                                </div>
                             </div>
-                            <div class="cmd-anatomy-grid">
-                                ${anatomyRows}
-                            </div>
-                        </div>
-                    `;
+                        `;
+                        xrayBox.style.display = 'block';
+
+                        // Bind fill btn
+                        const btnXray = xrayBox.querySelector('.btn-xray-send');
+                        if (btnXray) {
+                            btnXray.addEventListener('click', () => {
+                                if (typeof window.quickFillCmd === 'function') {
+                                    window.quickFillCmd(btnXray.getAttribute('data-fill-cmd'));
+                                    if (window.innerWidth <= 900) window.setMobileView('terminal');
+                                }
+                            });
+                        }
+                    } else {
+                        xrayBox.innerHTML = '';
+                        xrayBox.style.display = 'none';
+                    }
                 }
 
-                // 3. Terminal Çıktısını Nasıl Okumalısın?
-                if (Array.isArray(room.outputGuide) && room.outputGuide.length > 0) {
-                    const outItems = room.outputGuide.map(item => `
-                        <div class="output-guide-item">
-                            <div class="output-guide-snippet">&gt; ${escapeHtml(item.snippet)}</div>
-                            <div class="output-guide-meaning">↳ ${formatInline(item.meaning)}</div>
-                        </div>
-                    `).join('');
+                const outBox = document.getElementById('dossier-output-box');
+                if (outBox) {
+                    if (Array.isArray(room.outputGuide) && room.outputGuide.length > 0) {
+                        const outItems = room.outputGuide.map(item => `
+                            <div class="output-guide-item">
+                                <div class="output-guide-snippet">&gt; ${escapeHtml(item.snippet)}</div>
+                                <div class="output-guide-meaning">↳ ${formatInline(item.meaning)}</div>
+                            </div>
+                        `).join('');
 
-                    sectionsHtml += `
-                        <div class="pedagogy-section-card card-output">
-                            <div class="pedagogy-card-header">
-                                <div class="pedagogy-card-title">
-                                    <span>🖥️</span>
-                                    <span>3. TERMİNAL ÇIKTISINI NASIL OKUMALISIN? (SATIR SATIR TERCÜME)</span>
+                        outBox.innerHTML = `
+                            <div class="pedagogy-section-card card-output">
+                                <div class="pedagogy-card-header">
+                                    <div class="pedagogy-card-title">
+                                        <span>🖥️</span>
+                                        <span>3. TERMİNAL ÇIKTISINI NASIL OKUMALISIN? (SATIR SATIR TERCÜME)</span>
+                                    </div>
+                                    <span class="pedagogy-card-badge" style="color:#d8b4fe; border-color:rgba(168,85,247,0.3); background:rgba(168,85,247,0.12);">ÇIKTI REHBERİ</span>
                                 </div>
-                                <span class="pedagogy-card-badge" style="color:#d8b4fe; border-color:rgba(168,85,247,0.3); background:rgba(168,85,247,0.12);">ÇIKTI REHBERİ</span>
+                                <div class="output-guide-list">
+                                    ${outItems}
+                                </div>
                             </div>
-                            <div class="output-guide-list">
-                                ${outItems}
-                            </div>
-                        </div>
-                    `;
+                        `;
+                        outBox.style.display = 'block';
+                    } else {
+                        outBox.innerHTML = '';
+                        outBox.style.display = 'none';
+                    }
                 }
 
-                // 4. Sıfırdan Terimler Sözlüğü
-                if (Array.isArray(room.beginnerTerms) && room.beginnerTerms.length > 0) {
-                    const termCards = room.beginnerTerms.map(t => `
-                        <div class="beginner-term-card">
-                            <div class="beginner-term-name">📌 ${escapeHtml(t.term)}</div>
-                            <div class="beginner-term-desc">${formatInline(t.desc)}</div>
-                        </div>
-                    `).join('');
+                const termsBox = document.getElementById('dossier-terms-box');
+                if (termsBox) {
+                    if (Array.isArray(room.beginnerTerms) && room.beginnerTerms.length > 0) {
+                        const termCards = room.beginnerTerms.map(t => `
+                            <div class="beginner-term-card">
+                                <div class="beginner-term-name">📌 ${escapeHtml(t.term)}</div>
+                                <div class="beginner-term-desc">${formatInline(t.desc)}</div>
+                            </div>
+                        `).join('');
 
-                    sectionsHtml += `
-                        <div class="pedagogy-section-card card-terms">
-                            <div class="pedagogy-card-header">
-                                <div class="pedagogy-card-title">
-                                    <span>📖</span>
-                                    <span>4. BU ODADAKİ YABANCI TERİMLER (SIFIRDAN MİNİ SÖZLÜK)</span>
+                        termsBox.innerHTML = `
+                            <div class="pedagogy-section-card card-terms">
+                                <div class="pedagogy-card-header">
+                                    <div class="pedagogy-card-title">
+                                        <span>📖</span>
+                                        <span>4. BU ODADAKİ YABANCI TERİMLER (SIFIRDAN MİNİ SÖZLÜK)</span>
+                                    </div>
+                                    <span class="pedagogy-card-badge" style="color:#fbbf24; border-color:rgba(245,158,11,0.3); background:rgba(245,158,11,0.12);">KAVRAM REHBERİ</span>
                                 </div>
-                                <span class="pedagogy-card-badge" style="color:#fbbf24; border-color:rgba(245,158,11,0.3); background:rgba(245,158,11,0.12);">KAVRAM REHBERİ</span>
+                                <div class="beginner-terms-grid">
+                                    ${termCards}
+                                </div>
                             </div>
-                            <div class="beginner-terms-grid">
-                                ${termCards}
-                            </div>
-                        </div>
-                    `;
+                        `;
+                        termsBox.style.display = 'block';
+                    } else {
+                        termsBox.innerHTML = '';
+                        termsBox.style.display = 'none';
+                    }
                 }
 
-                // 5. Mini Mantık Kontrolü (Self-Check Quiz)
-                if (room.quickCheck && Array.isArray(room.quickCheck.options)) {
-                    const optsHtml = room.quickCheck.options.map((opt, idx) => `
-                        <button type="button" class="quick-check-btn" data-opt-idx="${idx}">
-                            ${String.fromCharCode(65 + idx)}) ${formatInline(opt)}
-                        </button>
-                    `).join('');
+                // 3. PAGE 3: Quick Check Quiz (İnteraktif Soru)
+                const quizBox = document.getElementById('dossier-quiz-box');
+                if (quizBox) {
+                    if (room.quickCheck && Array.isArray(room.quickCheck.options)) {
+                        const optsHtml = room.quickCheck.options.map((opt, idx) => `
+                            <button type="button" class="quick-check-btn" data-opt-idx="${idx}">
+                                ${String.fromCharCode(65 + idx)}) ${formatInline(opt)}
+                            </button>
+                        `).join('');
 
-                    sectionsHtml += `
-                        <div class="pedagogy-section-card card-quiz">
-                            <div class="pedagogy-card-header">
-                                <div class="pedagogy-card-title">
-                                    <span>🧠</span>
-                                    <span>5. MİNİ MANTIK KONTROLÜ (ÖĞRENDİĞİNİ TEST ET)</span>
+                        quizBox.innerHTML = `
+                            <div class="pedagogy-section-card card-quiz">
+                                <div class="pedagogy-card-header">
+                                    <div class="pedagogy-card-title">
+                                        <span>🧠</span>
+                                        <span>TAKTİK REFLEKS TESTİ (ÖĞRENDİĞİNİ TEST ET)</span>
+                                    </div>
+                                    <span class="pedagogy-card-badge" style="color:#60a5fa; border-color:rgba(59,130,246,0.3); background:rgba(59,130,246,0.12);">DOĞRU CEVAP = +25 XP</span>
                                 </div>
-                                <span class="pedagogy-card-badge" style="color:#60a5fa; border-color:rgba(59,130,246,0.3); background:rgba(59,130,246,0.12);">1 TIKLA KENDİNİ DENE</span>
+                                <div class="quick-check-question" style="font-size:14.5px; font-weight:600; color:#ffffff; margin-bottom:14px;">${formatInline(room.quickCheck.question)}</div>
+                                <div class="quick-check-options">
+                                    ${optsHtml}
+                                </div>
+                                <div class="quick-check-feedback" id="quick-check-feedback" style="display:none; margin-top:14px; padding:12px; border-radius:8px;"></div>
                             </div>
-                            <div class="quick-check-question">${formatInline(room.quickCheck.question)}</div>
-                            <div class="quick-check-options">
-                                ${optsHtml}
-                            </div>
-                            <div class="quick-check-feedback" id="quick-check-feedback"></div>
-                        </div>
-                    `;
+                        `;
+                        quizBox.style.display = 'block';
+
+                        const quizBtns = quizBox.querySelectorAll('.quick-check-btn');
+                        const feedbackEl = quizBox.querySelector('#quick-check-feedback');
+                        if (quizBtns.length > 0) {
+                            quizBtns.forEach(btn => {
+                                btn.addEventListener('click', () => {
+                                    const chosen = parseInt(btn.getAttribute('data-opt-idx'), 10);
+                                    const correct = room.quickCheck.answer || 0;
+                                    quizBtns.forEach((b, i) => {
+                                        b.classList.remove('correct', 'wrong');
+                                        if (i === correct) b.classList.add('correct');
+                                    });
+                                    if (chosen !== correct) {
+                                        btn.classList.add('wrong');
+                                        if (typeof window.playCyberSound === 'function') window.playCyberSound('warn');
+                                    } else {
+                                        if (typeof window.playCyberSound === 'function') window.playCyberSound('flag');
+                                    }
+                                    if (feedbackEl) {
+                                        feedbackEl.style.display = 'block';
+                                        if (chosen === correct) {
+                                            feedbackEl.style.background = 'rgba(16, 185, 129, 0.16)';
+                                            feedbackEl.style.border = '1px solid rgba(16, 185, 129, 0.45)';
+                                            feedbackEl.style.color = '#a7f3d0';
+                                            feedbackEl.innerHTML = `
+                                                <div style="font-size:14px; font-weight:800; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
+                                                    <span>🎉 HARİKA! DOĞRU CEVAP (+25 XP KAZANILDI)</span>
+                                                </div>
+                                                <div style="font-size:13px; line-height:1.5;">${formatInline(room.quickCheck.explanation)}</div>
+                                            `;
+                                        } else {
+                                            feedbackEl.style.background = 'rgba(239, 68, 68, 0.15)';
+                                            feedbackEl.style.border = '1px solid rgba(239, 68, 68, 0.45)';
+                                            feedbackEl.style.color = '#fecaca';
+                                            feedbackEl.innerHTML = `
+                                                <div style="font-size:13.5px; font-weight:800; margin-bottom:4px;">💡 Doğru Cevap: ${String.fromCharCode(65 + correct)} Şıkkı</div>
+                                                <div style="font-size:12.5px; line-height:1.5;">${formatInline(room.quickCheck.explanation)}</div>
+                                            `;
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    } else {
+                        quizBox.innerHTML = '';
+                        quizBox.style.display = 'none';
+                    }
                 }
 
-                container.innerHTML = sectionsHtml;
-
-                // Bind "Komutu Terminale Yaz" button
-                const fillBtn = container.querySelector('.btn-xray-send');
-                if (fillBtn) {
-                    fillBtn.addEventListener('click', () => {
-                        const cmd = fillBtn.getAttribute('data-fill-cmd') || '';
+                // 4. PAGE 4: Bind Fast Fill Button
+                const fastFillBtn = document.getElementById('btn-mission-fast-fill');
+                if (fastFillBtn) {
+                    fastFillBtn.onclick = () => {
+                        const cmd = room.expectedCommand || '';
                         if (typeof window.quickFillCmd === 'function') {
                             window.quickFillCmd(cmd);
                         }
+                        if (window.innerWidth <= 900) {
+                            window.setMobileView('terminal');
+                        }
+                    };
+                }
+            };
+
+            // Setup Dossier Controls (Once)
+            const setupDossierControls = () => {
+                // Tab pills
+                document.querySelectorAll('.dossier-tab-pill').forEach(pill => {
+                    pill.addEventListener('click', () => {
+                        const p = parseInt(pill.getAttribute('data-page'), 10);
+                        if (!isNaN(p)) window.setDossierPage(p);
+                    });
+                });
+
+                // Advance buttons
+                document.querySelectorAll('.btn-dossier-advance').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const p = parseInt(btn.getAttribute('data-go-page'), 10);
+                        if (!isNaN(p)) window.setDossierPage(p);
+                    });
+                });
+
+                // Bottom pager prev / next
+                const prevBtn = document.getElementById('btn-dossier-prev');
+                const nextBtn = document.getElementById('btn-dossier-next');
+                if (prevBtn) prevBtn.addEventListener('click', () => {
+                    window.setDossierPage(window.currentDossierPage - 1);
+                });
+                if (nextBtn) nextBtn.addEventListener('click', () => {
+                    const next = window.currentDossierPage >= 4 ? 1 : window.currentDossierPage + 1;
+                    window.setDossierPage(next);
+                });
+
+                // Dog-ear corner (Kağıt kıvrımı)
+                const dogear = document.getElementById('dossier-dogear');
+                if (dogear) {
+                    dogear.addEventListener('click', () => {
+                        const next = window.currentDossierPage >= 4 ? 1 : window.currentDossierPage + 1;
+                        window.setDossierPage(next);
                     });
                 }
 
-                // Bind Mini Logic Check option buttons
-                const quizBtns = container.querySelectorAll('.quick-check-btn');
-                const feedbackEl = container.querySelector('#quick-check-feedback');
-                if (quizBtns.length > 0 && room.quickCheck) {
-                    quizBtns.forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            const chosen = parseInt(btn.getAttribute('data-opt-idx'), 10);
-                            const correct = room.quickCheck.answer || 0;
-                            quizBtns.forEach((b, i) => {
-                                b.classList.remove('correct', 'wrong');
-                                if (i === correct) b.classList.add('correct');
-                            });
-                            if (chosen !== correct) {
-                                btn.classList.add('wrong');
-                            }
-                            if (feedbackEl) {
-                                feedbackEl.style.display = 'block';
-                                if (chosen === correct) {
-                                    feedbackEl.style.background = 'rgba(16, 185, 129, 0.14)';
-                                    feedbackEl.style.border = '1px solid rgba(16, 185, 129, 0.4)';
-                                    feedbackEl.style.color = '#a7f3d0';
-                                    feedbackEl.innerHTML = '✅ <strong>Harika! Mantığı Tam Kavradın:</strong> ' + formatInline(room.quickCheck.explanation);
+                // Touch Swipe on viewport (Mobile friendly)
+                const viewport = document.getElementById('dossier-book-viewport');
+                if (viewport) {
+                    let touchStartX = 0;
+                    let touchStartY = 0;
+                    viewport.addEventListener('touchstart', e => {
+                        if (e.changedTouches && e.changedTouches[0]) {
+                            touchStartX = e.changedTouches[0].clientX;
+                            touchStartY = e.changedTouches[0].clientY;
+                        }
+                    }, { passive: true });
+                    viewport.addEventListener('touchend', e => {
+                        if (e.changedTouches && e.changedTouches[0]) {
+                            const diffX = e.changedTouches[0].clientX - touchStartX;
+                            const diffY = e.changedTouches[0].clientY - touchStartY;
+                            if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+                                if (diffX < 0) {
+                                    window.setDossierPage(window.currentDossierPage + 1);
                                 } else {
-                                    feedbackEl.style.background = 'rgba(239, 68, 68, 0.14)';
-                                    feedbackEl.style.border = '1px solid rgba(239, 68, 68, 0.4)';
-                                    feedbackEl.style.color = '#fecaca';
-                                    feedbackEl.innerHTML = '💡 <strong>Doğru Cevap A Şıkkı:</strong> ' + formatInline(room.quickCheck.explanation);
+                                    window.setDossierPage(window.currentDossierPage - 1);
                                 }
                             }
-                        });
-                    });
+                        }
+                    }, { passive: true });
                 }
+
+                // Mobile view buttons
+                const mobBtnDossier = document.getElementById('mob-btn-dossier');
+                const mobBtnTerminal = document.getElementById('mob-btn-terminal');
+                if (mobBtnDossier) mobBtnDossier.addEventListener('click', () => window.setMobileView('dossier'));
+                if (mobBtnTerminal) mobBtnTerminal.addEventListener('click', () => window.setMobileView('terminal'));
+                window.setMobileView('dossier');
             };
+
+            setupDossierControls();
+
+            // Backwards compatibility alias
+            window.renderRoomPedagogyGuide = window.renderTacticalDossier;
 
             window.addEventListener('roomSelected', () => {
                 setTimeout(() => {
@@ -3031,7 +5629,8 @@
                             </div>
                         </div>
                         <button class="print-btn" onclick="window.print()">🖨️ PDF Olarak Kaydet / Yazdır</button>
-                    </body>
+                    
+    
                     </html>`);
                     certWin.document.close();
                 });
@@ -3046,8 +5645,587 @@
                 }
             };
         });
-    </script>
+    
 
+        // ==========================================================================
+        // LFL CYBER RANGE: COCKPIT CONTROLLER & DYNAMIC GAMIFIED ENGINE
+        // ==========================================================================
+        (function() {
+            let currentActiveRoom = null;
+            let currentQuizAnswered = false;
+
+            // 1. Workspace View Modes (Cockpit / Split / Terminal)
+            window.setWorkspaceMode = function(mode) {
+                const ws = document.getElementById('academy-workspace');
+                const btnCockpit = document.getElementById('view-btn-cockpit');
+                const btnSplit = document.getElementById('view-btn-split');
+                const btnTerm = document.getElementById('view-btn-terminal');
+                if (!ws) return;
+
+                ws.classList.remove('mode-cockpit', 'mode-split', 'mode-terminal');
+                if (btnCockpit) btnCockpit.classList.remove('active');
+                if (btnSplit) btnSplit.classList.remove('active');
+                if (btnTerm) btnTerm.classList.remove('active');
+
+                if (mode === 'split') {
+                    ws.classList.add('mode-split');
+                    if (btnSplit) btnSplit.classList.add('active');
+                } else if (mode === 'terminal') {
+                    ws.classList.add('mode-terminal');
+                    if (btnTerm) btnTerm.classList.add('active');
+                    const termInput = document.getElementById('room-terminal-input');
+                    if (termInput) setTimeout(() => termInput.focus(), 100);
+                } else {
+                    ws.classList.add('mode-cockpit');
+                    if (btnCockpit) btnCockpit.classList.add('active');
+                }
+
+                if (typeof window.playCyberSound === 'function') {
+                    window.playCyberSound('cmd');
+                }
+            };
+
+            // 2. Slide-out Rooms Drawer
+            window.openRoomsDrawer = function() {
+                const drawer = document.querySelector('.academy-rooms-sidebar');
+                const backdrop = document.getElementById('rooms-drawer-backdrop');
+                if (drawer) drawer.classList.add('drawer-open');
+                if (backdrop) backdrop.classList.add('active');
+                if (typeof window.playCyberSound === 'function') window.playCyberSound('cmd');
+            };
+
+            window.closeRoomsDrawer = function() {
+                const drawer = document.querySelector('.academy-rooms-sidebar');
+                const backdrop = document.getElementById('rooms-drawer-backdrop');
+                if (drawer) drawer.classList.remove('drawer-open');
+                if (backdrop) backdrop.classList.remove('active');
+            };
+
+            // 3. Render Cyber Cockpit for any Room
+            window.renderCyberCockpit = function(room) {
+                if (!room) return;
+                currentActiveRoom = room;
+                currentQuizAnswered = false;
+
+                // Close drawer if open
+                window.closeRoomsDrawer();
+
+                // Update active tag in topbar
+                const tagEl = document.getElementById('drawer-active-tag');
+                if (tagEl) tagEl.textContent = (room.id || '').toUpperCase();
+
+                // A. HUD
+                const hudTrack = document.getElementById('hud-track-pill');
+                if (hudTrack) {
+                    hudTrack.className = 'hud-track-pill ' + (room.track || 'starter');
+                    const trackNames = { starter: '⚡ STARTER', red: '⚔️ RED TEAM', blue: '🛡️ BLUE TEAM', purple: '🔮 PURPLE TEAM' };
+                    hudTrack.textContent = trackNames[room.track] || (room.track || '').toUpperCase();
+                }
+
+                const hudLevel = document.getElementById('hud-level-pill');
+                if (hudLevel) hudLevel.textContent = '⭐ ' + (room.level || '0. Temel Altyapı');
+
+                const hudCode = document.getElementById('hud-room-code');
+                if (hudCode) hudCode.textContent = '#' + (room.id || '');
+
+                const hudTitle = document.getElementById('hud-mission-title');
+                if (hudTitle) hudTitle.textContent = room.title || 'Siber Görev';
+
+                // B. Story & Analogy Card (Akılda Kalıcı Zihin Modeli)
+                const analogyCard = document.getElementById('cockpit-analogy-card');
+                const analogyBody = document.getElementById('cockpit-analogy-body');
+                if (analogyBody) {
+                    let analogyText = '';
+                    const th = room.theory || '';
+                    const marker = 'GÜNLÜK HAYATTAN BENZETME';
+                    const markerPos = th.indexOf(marker);
+                    if (markerPos !== -1) {
+                        const afterMarker = th.substring(markerPos + marker.length).replace(/^[:*\s]+/, '');
+                        const endPos = afterMarker.indexOf('###');
+                        analogyText = (endPos !== -1 ? afterMarker.substring(0, endPos) : afterMarker).trim();
+                    } else if (room.whyWeUse) {
+                        analogyText = room.whyWeUse;
+                    } else {
+                        analogyText = 'Bu komut sistem üzerinde hedef kaynakları doğrudan inceler ve güvenlik açıklarını tespit eder.';
+                    }
+
+                    // Format inline markdown
+                    const formattedAnalogy = analogyText
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/`(.*?)`/g, '<code class="inline-code">$1</code>')
+                        .replace(/\n\*\s+(.*?)/g, '<br>• <strong>$1</strong>')
+                        .replace(/\n\n/g, '<br><br>');
+
+                    analogyBody.innerHTML = formattedAnalogy;
+                }
+
+                // C. Mission & Tactical Rationale
+                const missionEl = document.getElementById('cockpit-mission-text');
+                if (missionEl) {
+                    missionEl.textContent = room.mission || 'Hedef komutu çalıştırarak sistemi inceleyin.';
+                }
+
+                const tipEl = document.getElementById('cockpit-tip-txt');
+                if (tipEl) {
+                    if (room.whyWeUse) {
+                        const cleanWhy = room.whyWeUse.replace(/\*\*(.*?)\*\*/g, '$1');
+                        tipEl.textContent = cleanWhy;
+                    } else {
+                        tipEl.textContent = 'Sistem durumunu kontrol ederek güvenlik açıklarını veya hedef servisleri doğrulayın.';
+                    }
+                }
+
+                // D. Pipeline Simulator Nodes (Corrected token order: Tool -> Param -> Output)
+                let toolVal = 'komut';
+                let toolRole = 'Ana Araç';
+                let sourceVal = 'parametre';
+                let sourceRole = 'Hedef Süzgeç';
+                let outVal = 'Sonuç';
+                let outRole = 'Tespit Edildi!';
+
+                const expCmd = room.expectedCommand || '';
+                const parts = expCmd.split(' ');
+                if (parts.length > 0) {
+                    toolVal = parts[0];
+                    toolRole = 'Ana Program';
+                    if (parts.length > 1) {
+                        sourceVal = parts.slice(1).join(' ');
+                        sourceRole = 'Parametre / Hedef';
+                    }
+                }
+
+                if (room.cmdAnatomy && room.cmdAnatomy.length > 0) {
+                    toolVal = room.cmdAnatomy[0].token;
+                    toolRole = room.cmdAnatomy[0].role;
+                    if (room.cmdAnatomy.length > 1) {
+                        sourceVal = room.cmdAnatomy.slice(1).map(x => x.token).join(' ');
+                        sourceRole = room.cmdAnatomy[1].role;
+                    }
+                }
+
+                if (room.outputGuide && room.outputGuide.length > 0) {
+                    outVal = room.outputGuide[0].snippet || 'Sonuç';
+                    outRole = (room.outputGuide[0].meaning || 'Başarılı Analiz!').split('.')[0].replace(/\*\*/g, '');
+                } else if (room.flag) {
+                    outVal = room.flag;
+                    outRole = 'Bayrak Ele Geçirildi!';
+                }
+
+                const nodeToolVal = document.getElementById('pipe-val-tool');
+                const nodeToolRole = document.getElementById('pipe-role-tool');
+                if (nodeToolVal) nodeToolVal.textContent = toolVal;
+                if (nodeToolRole) nodeToolRole.textContent = toolRole;
+
+                const nodeSourceVal = document.getElementById('pipe-val-source');
+                const nodeSourceRole = document.getElementById('pipe-role-source');
+                if (nodeSourceVal) nodeSourceVal.textContent = sourceVal;
+                if (nodeSourceRole) nodeSourceRole.textContent = sourceRole;
+
+                const nodeOutVal = document.getElementById('pipe-val-output');
+                const nodeOutRole = document.getElementById('pipe-role-output');
+                if (nodeOutVal) nodeOutVal.textContent = outVal;
+                if (nodeOutRole) nodeOutRole.textContent = outRole;
+
+                // E. Command Anatomy Cards
+                const anatomyGrid = document.getElementById('cockpit-anatomy-cards-grid');
+                if (anatomyGrid) {
+                    anatomyGrid.innerHTML = '';
+                    const anatomy = room.cmdAnatomy || [
+                        { token: parts[0] || 'komut', role: 'Ana Komut', desc: 'Sistemde yürütülen temel siber güvenlik aracı.' }
+                    ];
+
+                    anatomy.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'anatomy-token-card';
+                        card.innerHTML = `
+                            <span class="token-badge">${item.token}</span>
+                            <span class="token-role">${item.role}</span>
+                            <span class="token-desc">${item.desc}</span>
+                        `;
+                        card.addEventListener('click', () => {
+                            if (typeof window.playCyberSound === 'function') window.playCyberSound('key');
+                            card.style.transform = 'scale(1.04)';
+                            setTimeout(() => card.style.transform = '', 200);
+                        });
+                        anatomyGrid.appendChild(card);
+                    });
+                }
+
+                // F. Çıktı Dedektifi (Terminal Output Decoder)
+                const outputGrid = document.getElementById('cockpit-output-items-grid');
+                if (outputGrid) {
+                    outputGrid.innerHTML = '';
+                    const outputs = room.outputGuide || [];
+                    if (outputs.length === 0) {
+                        outputGrid.innerHTML = '<span style="color:#64748b; font-size:12px;">Bu komut standart sistem çıktısı üretir.</span>';
+                    } else {
+                        outputs.forEach(item => {
+                            const oCard = document.createElement('div');
+                            oCard.className = 'output-decoder-item';
+                            const cleanMeaning = (item.meaning || '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                            oCard.innerHTML = `
+                                <div class="decoder-snippet">${item.snippet}</div>
+                                <div class="decoder-meaning">${cleanMeaning}</div>
+                            `;
+                            outputGrid.appendChild(oCard);
+                        });
+                    }
+                }
+
+                // G. Taktik Siber Sözlük (Beginner Terms)
+                const termsGrid = document.getElementById('cockpit-terms-chips-grid');
+                if (termsGrid) {
+                    termsGrid.innerHTML = '';
+                    const terms = room.beginnerTerms || [];
+                    if (terms.length === 0) {
+                        termsGrid.innerHTML = '<span style="color:#64748b; font-size:12px;">Bu oda için özel terim bulunmuyor.</span>';
+                    } else {
+                        terms.forEach(t => {
+                            const tCard = document.createElement('div');
+                            tCard.className = 'term-flashchip';
+                            tCard.innerHTML = `
+                                <div class="term-flashchip-head">
+                                    <span>🏷️</span>
+                                    <span class="term-flashchip-name">${t.term}</span>
+                                </div>
+                                <div class="term-flashchip-desc">${t.desc}</div>
+                            `;
+                            tCard.addEventListener('click', () => {
+                                if (typeof window.playCyberSound === 'function') window.playCyberSound('key');
+                            });
+                            termsGrid.appendChild(tCard);
+                        });
+                    }
+                }
+
+                // H. Tactical Decision Quiz (Duolingo Style)
+                const qBox = document.getElementById('cockpit-quiz-question-box');
+                const optGrid = document.getElementById('cockpit-quiz-options-grid');
+                const feedBox = document.getElementById('cockpit-quiz-feedback-box');
+                const qStatus = document.getElementById('cockpit-quiz-status');
+
+                if (feedBox) feedBox.style.display = 'none';
+                if (qStatus) {
+                    qStatus.textContent = 'Kararını Ver';
+                    qStatus.style.color = '#c084fc';
+                }
+
+                const quizData = room.quickCheck || {
+                    question: `${room.title} görevini tamamlamak için hangi komut ateşlenmelidir?`,
+                    options: [
+                        `\`${room.expectedCommand}\` komutunu çalıştırmak`,
+                        'Tarayıcı sekmesini kapatmak',
+                        'Sistemi yeniden başlatmak'
+                    ],
+                    answer: 0,
+                    explanation: 'Tebrikler! Doğru komut operasyonel hedefi doğrudan ele geçirir.'
+                };
+
+                if (qBox) qBox.textContent = quizData.question.replace(/[`*]/g, '');
+                if (optGrid) {
+                    optGrid.innerHTML = '';
+                    const letters = ['A', 'B', 'C', 'D'];
+                    (quizData.options || []).forEach((optText, idx) => {
+                        const btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'quiz-option-btn';
+                        btn.innerHTML = `
+                            <span class="quiz-option-letter">${letters[idx] || (idx + 1)}</span>
+                            <span>${optText.replace(/[`*]/g, '')}</span>
+                        `;
+
+                        btn.addEventListener('click', () => {
+                            if (currentQuizAnswered) return;
+                            const isCorrect = (idx === quizData.answer);
+                            if (isCorrect) {
+                                currentQuizAnswered = true;
+                                btn.classList.add('correct');
+                                if (qStatus) {
+                                    qStatus.textContent = '✅ DOĞRU KARAR (+50 XP ✨)';
+                                    qStatus.style.color = '#34d399';
+                                }
+                                if (feedBox) {
+                                    feedBox.className = 'quiz-feedback-box success';
+                                    feedBox.style.display = 'block';
+                                    feedBox.innerHTML = `🎉 <strong>MÜKEMMEL SEÇİM!</strong> ${quizData.explanation || 'Tebrikler!'}`;
+                                }
+                                if (typeof window.playCyberSound === 'function') window.playCyberSound('flag');
+
+                                // Increment XP
+                                const xpVal = document.getElementById('cockpit-xp-val');
+                                if (xpVal) {
+                                    const cur = parseInt(xpVal.textContent) || 0;
+                                    xpVal.textContent = (cur + 50) + ' XP';
+                                }
+                            } else {
+                                btn.classList.add('wrong');
+                                if (feedBox) {
+                                    feedBox.className = 'quiz-feedback-box error';
+                                    feedBox.style.display = 'block';
+                                    feedBox.innerHTML = '⚠️ <strong>Tekrar Dene:</strong> Bu seçenek operasyon hedefini karşılamıyor.';
+                                }
+                                if (typeof window.playCyberSound === 'function') window.playCyberSound('warn');
+                                setTimeout(() => btn.classList.remove('wrong'), 1000);
+                            }
+                        });
+
+                        optGrid.appendChild(btn);
+                    });
+                }
+
+                // I. Launchpad Command Preview
+                const launchCmd = document.getElementById('cockpit-launchpad-cmd');
+                if (launchCmd) launchCmd.textContent = room.expectedCommand || 'komut';
+
+                // J. Check If Already Completed
+                const completedBox = document.getElementById('cockpit-completed-card');
+                const completedFlag = document.getElementById('cockpit-completed-flag');
+                const completedOutput = document.getElementById('cockpit-completed-output');
+                let isCompleted = false;
+
+                if (window.academyEngine && window.academyEngine.state && window.academyEngine.state.completedRooms) {
+                    isCompleted = window.academyEngine.state.completedRooms.includes(room.id);
+                }
+
+                if (completedBox) {
+                    if (isCompleted) {
+                        completedBox.style.display = 'flex';
+                        if (completedFlag) completedFlag.textContent = room.flag || 'LFL{TAMAMLANDI}';
+                        if (completedOutput) completedOutput.textContent = room.terminalSuccessOutput || '[OK] Görev daha önce başarıyla tamamlandı.';
+                    } else {
+                        completedBox.style.display = 'none';
+                    }
+                }
+
+                // K. Deep Dive Details (Raw documentation if needed)
+                const deepTheory = document.getElementById('cockpit-deep-theory-body');
+                if (deepTheory) {
+                    if (typeof AcademyEngine !== 'undefined' && AcademyEngine.prototype && AcademyEngine.prototype.formatMarkdown) {
+                        deepTheory.innerHTML = AcademyEngine.prototype.formatMarkdown(room.theory || '');
+                    } else {
+                        deepTheory.innerHTML = (room.theory || '').replace(/\n/g, '<br>');
+                    }
+                }
+            };
+
+            window.renderTacticalDossier = window.renderCyberCockpit;
+            window.renderRoomPedagogyGuide = window.renderCyberCockpit;
+
+            // Pipeline Simulation Animation
+            window.simulatePipelinePulse = function() {
+                const p1 = document.getElementById('pipe-packet-1');
+                const p2 = document.getElementById('pipe-packet-2');
+                const nTool = document.getElementById('pipe-node-tool');
+                const nOut = document.getElementById('pipe-node-output');
+
+                if (typeof window.playCyberSound === 'function') window.playCyberSound('cmd');
+
+                if (p1) {
+                    p1.classList.remove('animating');
+                    void p1.offsetWidth;
+                    p1.classList.add('animating');
+                }
+
+                setTimeout(() => {
+                    if (nTool) {
+                        nTool.classList.add('pulse-highlight');
+                        if (typeof window.playCyberSound === 'function') window.playCyberSound('key');
+                        setTimeout(() => nTool.classList.remove('pulse-highlight'), 500);
+                    }
+                }, 400);
+
+                setTimeout(() => {
+                    if (p2) {
+                        p2.classList.remove('animating');
+                        void p2.offsetWidth;
+                        p2.classList.add('animating');
+                    }
+                }, 500);
+
+                setTimeout(() => {
+                    if (nOut) {
+                        nOut.classList.add('pulse-highlight');
+                        if (typeof window.playCyberSound === 'function') window.playCyberSound('flag');
+                        setTimeout(() => nOut.classList.remove('pulse-highlight'), 700);
+                    }
+                }, 1000);
+            };
+
+            // Wire DOM Events once loaded
+            document.addEventListener('DOMContentLoaded', () => {
+                // Drawer toggle buttons
+                const btnToggleDrawer = document.getElementById('btn-toggle-rooms-drawer');
+                const btnCloseDrawer = document.getElementById('btn-close-rooms-drawer');
+                const backdrop = document.getElementById('rooms-drawer-backdrop');
+
+                if (btnToggleDrawer) btnToggleDrawer.addEventListener('click', window.openRoomsDrawer);
+                if (btnCloseDrawer) btnCloseDrawer.addEventListener('click', window.closeRoomsDrawer);
+                if (backdrop) backdrop.addEventListener('click', window.closeRoomsDrawer);
+
+                // View Mode Buttons
+                const btnCockpit = document.getElementById('view-btn-cockpit');
+                const btnSplit = document.getElementById('view-btn-split');
+                const btnTerm = document.getElementById('view-btn-terminal');
+
+                if (btnCockpit) btnCockpit.addEventListener('click', () => window.setWorkspaceMode('cockpit'));
+                if (btnSplit) btnSplit.addEventListener('click', () => window.setWorkspaceMode('split'));
+                if (btnTerm) btnTerm.addEventListener('click', () => window.setWorkspaceMode('terminal'));
+
+                const btnSplitToggle = document.getElementById('btn-cockpit-split-toggle');
+                if (btnSplitToggle) {
+                    btnSplitToggle.addEventListener('click', () => {
+                        const ws = document.getElementById('academy-workspace');
+                        if (ws && ws.classList.contains('mode-split')) {
+                            window.setWorkspaceMode('cockpit');
+                        } else {
+                            window.setWorkspaceMode('split');
+                        }
+                    });
+                }
+
+                // Pipeline simulation button
+                const btnPulse = document.getElementById('btn-pipeline-pulse');
+                if (btnPulse) btnPulse.addEventListener('click', window.simulatePipelinePulse);
+
+                // Copy command button
+                const btnCopyCmd = document.getElementById('btn-copy-launchpad-cmd');
+                if (btnCopyCmd) {
+                    btnCopyCmd.addEventListener('click', () => {
+                        if (currentActiveRoom && currentActiveRoom.expectedCommand) {
+                            navigator.clipboard.writeText(currentActiveRoom.expectedCommand);
+                            btnCopyCmd.textContent = '✅';
+                            setTimeout(() => btnCopyCmd.textContent = '📋', 1500);
+                            if (typeof window.playCyberSound === 'function') window.playCyberSound('key');
+                        }
+                    });
+                }
+
+                // Cockpit Fire Button
+                const btnFire = document.getElementById('btn-cockpit-fire');
+                if (btnFire) {
+                    btnFire.addEventListener('click', () => {
+                        if (!currentActiveRoom) return;
+                        const cmd = currentActiveRoom.expectedCommand;
+                        const input = document.getElementById('room-terminal-input');
+                        const form = document.getElementById('room-terminal-form');
+
+                        if (input && form) {
+                            input.value = cmd;
+                            if (typeof window.playCyberSound === 'function') window.playCyberSound('cmd');
+
+                            // Submit terminal form
+                            form.dispatchEvent(new Event('submit', { cancelable: true }));
+
+                            // Show celebration in completed card
+                            setTimeout(() => {
+                                const completedBox = document.getElementById('cockpit-completed-card');
+                                const completedFlag = document.getElementById('cockpit-completed-flag');
+                                const completedOutput = document.getElementById('cockpit-completed-output');
+
+                                if (completedBox) {
+                                    completedBox.style.display = 'flex';
+                                    completedBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                }
+                                if (completedFlag) completedFlag.textContent = currentActiveRoom.flag || 'LFL{SUCCESS}';
+                                if (completedOutput) completedOutput.textContent = currentActiveRoom.terminalSuccessOutput || '[OK] Komut basariyla calistirildi.';
+
+                                if (typeof window.playCyberSound === 'function') window.playCyberSound('flag');
+                            }, 250);
+                        }
+                    });
+                }
+
+                // HUD Prev & Next Buttons
+                const btnCockpitPrev = document.getElementById('btn-cockpit-prev');
+                const btnCockpitNext = document.getElementById('btn-cockpit-next');
+                const btnCompletedNext = document.getElementById('btn-cockpit-next-mission');
+
+                const handleNext = () => {
+                    const origNext = document.getElementById('btn-next-room');
+                    if (origNext) origNext.click();
+                };
+
+                const handlePrev = () => {
+                    const origPrev = document.getElementById('btn-prev-room');
+                    if (origPrev) origPrev.click();
+                };
+
+                if (btnCockpitPrev) btnCockpitPrev.addEventListener('click', handlePrev);
+                if (btnCockpitNext) btnCockpitNext.addEventListener('click', handleNext);
+                if (btnCompletedNext) btnCompletedNext.addEventListener('click', handleNext);
+
+                // Listen to room load events
+                window.addEventListener('roomSelected', () => {
+                    setTimeout(() => {
+                        if (window.academyEngine && window.academyEngine.currentRoom) {
+                            window.renderCyberCockpit(window.academyEngine.currentRoom);
+                        }
+                    }, 20);
+                });
+
+                // Auto render on initial engine start
+                setTimeout(() => {
+                    if (window.academyEngine && window.academyEngine.currentRoom) {
+                        window.renderCyberCockpit(window.academyEngine.currentRoom);
+                    }
+                }, 200);
+            });
+        })();
+    
+</script>
+
+
+    <!-- LFL CYBER RADIO WIDGET (AMBIENT SYNTHWAVE & TRAUMA TEAM DISPATCH) -->
+    <div id="cyber-radio-widget" class="cyber-radio-widget">
+        <audio id="cyber-radio-audio" preload="auto"></audio>
+        <!-- Collapsed Mini Pill -->
+        <div class="cyber-radio-pill" id="radio-pill" title="LFL Cyber Radio (Tıklayarak Genişlet)">
+            <span class="radio-pill-icon">📻</span>
+            <div class="radio-equalizer">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+            </div>
+            <span class="radio-pill-title" id="radio-pill-text">98.4 NIGHT CITY FM</span>
+            <button type="button" class="radio-pill-btn" id="radio-pill-play-btn" title="Oynat / Durdur">&#9654;</button>
+        </div>
+
+        <!-- Expanded Futuristic Card -->
+        <div class="cyber-radio-card" id="radio-card">
+            <div class="radio-card-header">
+                <span class="radio-freq-badge">
+                    <span class="radio-live-dot"></span>
+                    <span id="radio-card-freq">98.4 NIGHT CITY FM</span>
+                </span>
+                <button type="button" class="radio-minimize-btn" id="radio-card-minimize" title="Küçült">&ndash;</button>
+            </div>
+
+            <div class="radio-track-info">
+                <div class="radio-station-title" id="radio-track-title">I Really Want to Stay at Your House</div>
+                <div class="radio-station-desc" id="radio-track-desc">Rosa Walton &amp; Hallie Coggins (Cyberpunk 2077)</div>
+            </div>
+
+            <div class="radio-controls-row">
+                <button type="button" class="radio-ctrl-btn" id="radio-btn-prev" title="Önceki İstasyon">&#9198;</button>
+                <button type="button" class="radio-play-btn" id="radio-btn-play" title="Oynat / Durdur">&#9654;</button>
+                <button type="button" class="radio-ctrl-btn" id="radio-btn-next" title="Sonraki İstasyon">&#9197;</button>
+            </div>
+
+            <div class="radio-volume-row">
+                <span class="radio-vol-icon">&#128266;</span>
+                <input type="range" class="radio-vol-slider" id="radio-vol-slider" min="0" max="100" value="35" title="Ses Düzeyi" />
+            </div>
+
+            <div class="radio-presets-row">
+                <button type="button" class="radio-preset-chip active" data-station="0" title="I Really Want to Stay at Your House">🌙 Stay at Your House</button>
+                <button type="button" class="radio-preset-chip" data-station="1" title="HOME - Resonance">⚡ Resonance</button>
+                <button type="button" class="radio-preset-chip" data-station="2" title="Wham! - Last Christmas">🎄 Last Christmas</button>
+            </div>
+        </div>
+    </div>
+    <script src="cyber_radio.js?v=1.0"></script>
 </body>
 
 </html>
