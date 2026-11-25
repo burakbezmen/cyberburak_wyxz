@@ -1840,7 +1840,7 @@ body.theme-corporate-cyber {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.75));
+    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.9)) drop-shadow(0 0 8px rgba(52, 211, 153, 0.6));
     will-change: transform;
     transform: translateZ(0);
     animation: dragonPulseGlow 3s ease-in-out infinite alternate;
@@ -1864,8 +1864,8 @@ body.theme-corporate-cyber {
     left: 4%;
     right: 4%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #00e5ff 30%, #ffffff 50%, #00e5ff 70%, transparent);
-    box-shadow: 0 0 10px #00e5ff, 0 0 18px #00e5ff;
+    background: linear-gradient(90deg, transparent, #10b981 30%, #ffffff 50%, #34d399 70%, transparent);
+    box-shadow: 0 0 10px #10b981, 0 0 18px #34d399;
     border-radius: 2px;
     pointer-events: none;
     will-change: transform, opacity;
@@ -2100,4 +2100,54 @@ body.theme-corporate-cyber {
 .kali-tab-menu-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
+}
+/* =========================================================
+   HOLOGRAPHIC CYBER RINGS & CORE GLOW AROUND RUNE
+   ========================================================= */
+.intro-holo-ring {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 1px dashed rgba(16, 185, 129, 0.45);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.2);
+    animation: holoRingSpin 22s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.intro-holo-ring.ring-outer {
+    width: 310px;
+    height: 310px;
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: holoRingSpinRev 15s linear infinite;
+}
+
+.intro-rune-core-glow {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(0, 229, 255, 0.15) 50%, transparent 75%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 1;
+    animation: coreGlowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes holoRingSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes holoRingSpinRev {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes coreGlowPulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    100% { transform: scale(1.18); opacity: 0.95; }
 }

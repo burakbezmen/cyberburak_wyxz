@@ -25,14 +25,17 @@
         <div class="intro-cyber-grid"></div>
 
         <div class="intro-dragon-container">
-            <img src="kali_dragon.svg" alt="Official Kali Linux Dragon" class="intro-dragon-image" />
+            <div class="intro-holo-ring"></div>
+            <div class="intro-holo-ring ring-outer"></div>
+            <div class="intro-rune-core-glow"></div>
+            <img src="lfl_symbol.png" alt="LFL Lost From Light Symbol" class="intro-dragon-image" />
             <div class="intro-laser-scanner"></div>
         </div>
 
         <div class="intro-details-card">
             <div class="intro-badge-pill">
                 <span class="pulsing-beacon" style="background: var(--cyan); box-shadow: 0 0 10px var(--cyan);"></span>
-                <span>KALI LINUX ROLLING // SİBER SAVUNMA KERNEL</span>
+                <span>LFL // LOST FROM LIGHT // SİBER SAVUNMA KERNEL</span>
             </div>
 
             <h1 class="intro-brand-title">LFL // LOST FROM LIGHT</h1>
@@ -90,16 +93,8 @@
         <aside class="app-sidebar sidebar-collapsed" id="app-sidebar">
             <div class="sidebar-header">
                 <div class="brand-shield"
-                    style="background: rgba(0, 229, 255, 0.12); border: 1px solid var(--cyan); box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lfl-logo-svg">
-                        <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" stroke="var(--cyan)" stroke-width="1.8"
-                            fill="rgba(0, 229, 255, 0.15)" />
-                        <path d="M12 2v20" stroke="var(--cyan)" stroke-width="1.4" stroke-dasharray="2 2" />
-                        <path d="M7 8l5-3 5 3v8l-5 3-5-3z" stroke="#38bdf8" stroke-width="1.4" />
-                        <polyline points="9 11 12 8 15 11" stroke="#ffffff" stroke-width="2" />
-                        <polyline points="9 14 12 17 15 14" stroke="var(--cyan)" stroke-width="2" />
-                    </svg>
+                    style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.45); box-shadow: 0 0 15px rgba(16, 185, 129, 0.35);">
+                    <img src="lfl_symbol.png" alt="LFL Logo" class="lfl-badge-rune" />
                 </div>
                 <div class="brand-meta">
                     <span class="brand-name" style="letter-spacing: 1.5px; font-weight: 900;">LFL</span>
@@ -141,7 +136,7 @@
                         style="background: rgba(16, 185, 129, 0.2); color: var(--green); border: 1px solid var(--green);" data-i18n="badge_education">EĞİTİM</span>
                 </a>
 
-                <!-- 140+ SİBER KOD KÜTÜPHANESİ (AYRI YER) -->
+                <!-- 175+ SİBER KOD KÜTÜPHANESİ (AYRI YER) -->
                 <button class="nav-btn" data-page="page-commands">
                     <span class="nav-icon" style="color: var(--cyan);">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -152,7 +147,7 @@
                     </span>
                     <span class="nav-label" data-i18n="nav_commands">Siber Kod Kütüphanesi</span>
                     <span class="nav-badge-new"
-                        style="background: rgba(0, 229, 255, 0.2); color: var(--cyan); border: 1px solid var(--cyan);" data-i18n="badge_140_codes">140+ KOD</span>
+                        style="background: rgba(0, 229, 255, 0.2); color: var(--cyan); border: 1px solid var(--cyan);" data-i18n="badge_140_codes">175+ KOD</span>
                 </button>
 
                 <button class="nav-btn" data-page="page-terminal">
@@ -311,14 +306,22 @@
                         <kbd>Ctrl+K</kbd>
                     </button>
 
-                    <!-- REPLAY KALI DRAGON INTRO BUTTON -->
-                    <button class="topbar-pill-btn" id="btn-replay-intro"
-                        title="Kali Ejderhası Açılış Animasyonunu Tekrar Oynat"
-                        style="border-color: rgba(0, 229, 255, 0.4); color: var(--cyan);">
-                        <span data-i18n="topbar_dragon">🐉 Kali Animasyonu</span>
-                    </button>
+                    
 
-                                        <!-- UPDATE LOG / CHANGELOG BUTTON -->
+                                        <!-- LIVE CYBER TELEMETRY STATUS CHIP -->
+                    <div class="cyber-telemetry-chip" title="Platform Canlı Siber Güvenlik Durumu">
+                        <span class="telemetry-dot"></span>
+                        <span class="telemetry-label">SYS // OPERATIONAL</span>
+                        <span class="telemetry-crypto">256-BIT</span>
+                    </div>
+
+                    <!-- DIRECT DDOS LAB SHORTCUT -->
+                    <a href="academy.html?open=ddos" class="topbar-pill-btn ddos-shortcut-pill" title="LFL DDoS Lab & Protokol Kılavuzu" style="border: 1px solid rgba(239, 68, 68, 0.45); background: rgba(239, 68, 68, 0.14); color: #fca5a5; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-weight: 700; height: 34px; padding: 0 10px; border-radius: 999px; flex-shrink: 0;">
+                        <span>🐉</span>
+                        <span style="font-size: 11px;">DDoS Lab</span>
+                    </a>
+
+                    <!-- UPDATE LOG / CHANGELOG BUTTON -->
                     <button type="button" class="topbar-pill-btn" id="btn-changelog-toggle"
                         title="Platform Güncelleme Günlüğü / Changelog (v5.0)"
                         style="border-color: rgba(168, 85, 247, 0.45); color: #c084fc; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
@@ -660,8 +663,250 @@
                             background: rgba(56, 189, 248, 0.2);
                             color: #ffffff;
                         }
+
+                        /* =========================================================
+                           CYBERPUNK SCROLL SUITE: 4-IN-1 ORCHESTRATION (v4.5)
+                           1. Smooth Stagger Süzülme (Below-fold reveal)
+                           2. HUD Lazer Taraması (Card Glint)
+                           3. Matrix Şifre Çözülme (Text Scramble)
+                           4. Siber Devre / İlerleme Çizgisi (Neon Stream Bar)
+                           * BAŞTAKİ HERO VE SEVİYE KARTLARI ASLA GİZLENMEZ (100% GÖRÜNÜR) *
+                           ========================================================= */
+                        .cyber-scroll-stream-bar {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            height: 3px;
+                            width: 0%;
+                            z-index: 99999;
+                            pointer-events: none;
+                            background: linear-gradient(90deg, #10b981, #00e5ff);
+                            box-shadow: 0 0 12px rgba(0, 229, 255, 0.75);
+                            transition: width 0.08s ease-out, background 0.35s ease, box-shadow 0.35s ease, opacity 0.25s ease;
+                            opacity: 1;
+                        }
+
+                        /* Reveal targets below the fold */
+                        .cyber-scroll-reveal {
+                            opacity: 0;
+                            transform: translateY(48px);
+                            transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+                            will-change: transform, opacity;
+                        }
+
+                        .cyber-scroll-reveal.revealed {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+
+                        /* Stagger delays for specialization branch cards (Çok Aheste, Teker Teker Görkemli Giriş) */
+                        .tree-branches-grid .tree-branch-card.branch-red.cyber-scroll-reveal.revealed {
+                            transition-delay: 0.15s;
+                        }
+                        .tree-branches-grid .tree-branch-card.branch-blue.cyber-scroll-reveal.revealed {
+                            transition-delay: 0.55s;
+                        }
+                        .tree-branches-grid .tree-branch-card.branch-purple.cyber-scroll-reveal.revealed {
+                            transition-delay: 0.95s;
+                        }
+
+                        /* Stagger delays for real technical power cards */
+                        .real-power-footer-grid .real-power-card:nth-child(1).cyber-scroll-reveal.revealed { transition-delay: 0.15s; }
+                        .real-power-footer-grid .real-power-card:nth-child(2).cyber-scroll-reveal.revealed { transition-delay: 0.50s; }
+                        .real-power-footer-grid .real-power-card:nth-child(3).cyber-scroll-reveal.revealed { transition-delay: 0.85s; }
+
+                        /* HUD Laser Scan Effect (2.6s Yavaş, Geniş & Derin Işık Süzmesi) */
+                        .tree-root-card, .tree-branch-card {
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        .tree-root-card.cyber-laser-sweep::before,
+                        .tree-branch-card.cyber-laser-sweep::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: -120%;
+                            width: 75%;
+                            height: 100%;
+                            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.06) 20%, rgba(0, 229, 255, 0.45) 50%, rgba(255, 255, 255, 0.06) 80%, transparent 100%);
+                            transform: skewX(-25deg);
+                            pointer-events: none;
+                            z-index: 5;
+                            animation: cyberLaserSweepRun 2.6s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+                        }
+
+                        @keyframes cyberLaserSweepRun {
+                            0% { left: -120%; opacity: 0; }
+                            35% { opacity: 1; }
+                            100% { left: 240%; opacity: 0; }
+                        }
+
+                        .branch-red.cyber-laser-sweep::before {
+                            background: linear-gradient(90deg, transparent 0%, rgba(239, 68, 68, 0.4) 50%, transparent 100%);
+                        }
+                        .branch-blue.cyber-laser-sweep::before {
+                            background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.4) 50%, transparent 100%);
+                        }
+                        .branch-purple.cyber-laser-sweep::before {
+                            background: linear-gradient(90deg, transparent 0%, rgba(192, 132, 252, 0.4) 50%, transparent 100%);
+                        }
+
+                        /* =========================================================
+                           CYBERPUNK HUD CORNER ACCENTS & TACTICAL BRACKETS
+                           ========================================================= */
+                        .level-selector-card,
+                        .real-power-card {
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        .level-selector-card::before,
+                        .real-power-card::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 10px;
+                            height: 10px;
+                            border-top: 2px solid rgba(52, 211, 153, 0.6);
+                            border-left: 2px solid rgba(52, 211, 153, 0.6);
+                            pointer-events: none;
+                            transition: all 0.25s ease;
+                            z-index: 2;
+                        }
+
+                        .level-selector-card::after,
+                        .real-power-card::after {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            width: 10px;
+                            height: 10px;
+                            border-bottom: 2px solid rgba(56, 189, 248, 0.6);
+                            border-right: 2px solid rgba(56, 189, 248, 0.6);
+                            pointer-events: none;
+                            transition: all 0.25s ease;
+                            z-index: 2;
+                        }
+
+                        .level-selector-card:hover::before,
+                        .real-power-card:hover::before {
+                            border-color: #34d399;
+                            width: 16px;
+                            height: 16px;
+                            box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
+                        }
+
+                        .level-selector-card:hover::after,
+                        .real-power-card:hover::after {
+                            border-color: #38bdf8;
+                            width: 16px;
+                            height: 16px;
+                            box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+                        }
+
+                        @media (prefers-reduced-motion: reduce) {
+                            .cyber-scroll-reveal {
+                                opacity: 1 !important;
+                                transform: none !important;
+                                transition: none !important;
+                            }
+                            .tree-root-card.cyber-laser-sweep::before,
+                            .tree-branch-card.cyber-laser-sweep::before {
+                                display: none !important;
+                            }
+                        }
+                    
+                        /* =========================================================
+                           COMPREHENSIVE ZERO-OVERFLOW RESPONSIVE SUITE (<= 768px)
+                           ========================================================= */
+                        @media (max-width: 768px) {
+                            .lfl-home-wrapper {
+                                padding: 12px 10px 40px 10px !important;
+                                gap: 20px !important;
+                                max-width: 100vw !important;
+                                box-sizing: border-box !important;
+                                overflow-x: hidden !important;
+                            }
+
+                            .lfl-hero-clean {
+                                padding: 24px 14px 22px 14px !important;
+                                border-radius: 14px !important;
+                            }
+
+                            .lfl-hero-badge {
+                                font-size: 11px !important;
+                                padding: 5px 12px !important;
+                                white-space: normal !important;
+                                line-height: 1.4 !important;
+                            }
+
+                            .lfl-hero-cta-row {
+                                flex-direction: column !important;
+                                width: 100% !important;
+                                gap: 10px !important;
+                            }
+
+                            .btn-lfl-primary-cta,
+                            .btn-lfl-secondary-cta {
+                                width: 100% !important;
+                                justify-content: center !important;
+                                box-sizing: border-box !important;
+                                padding: 13px 18px !important;
+                                font-size: 13.5px !important;
+                            }
+
+                            .quick-level-selector-grid {
+                                grid-template-columns: 1fr !important;
+                                gap: 12px !important;
+                            }
+
+                            .level-selector-card {
+                                padding: 14px 16px !important;
+                            }
+
+                            .tree-root-card {
+                                padding: 18px 14px !important;
+                            }
+
+                            .tree-root-steps-grid {
+                                grid-template-columns: 1fr !important;
+                                gap: 8px !important;
+                            }
+
+                            .root-step-pill {
+                                font-size: 12px !important;
+                                padding: 10px 12px !important;
+                            }
+
+                            .tree-branches-grid {
+                                grid-template-columns: 1fr !important;
+                                gap: 14px !important;
+                            }
+
+                            .tree-branch-card {
+                                padding: 16px 14px !important;
+                            }
+
+                            .real-power-footer-grid {
+                                grid-template-columns: 1fr !important;
+                                gap: 12px !important;
+                            }
+
+                            /* Compact Topbar Telemetry on Mobile */
+                            .cyber-telemetry-chip {
+                                padding: 4px 8px !important;
+                            }
+                            .cyber-telemetry-chip .telemetry-label {
+                                display: none !important;
+                            }
+                        }
+
                     </style>
 
+                    <div class="cyber-scroll-stream-bar" id="cyber-scroll-stream-bar" aria-hidden="true"></div>
                     <div class="lfl-home-wrapper">
 
                         <!-- ==========================================
@@ -1055,6 +1300,155 @@
                                     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
                                 });
                             });
+
+                            // ==========================================
+                            // CYBERPUNK SCROLL SUITE: ORCHESTRATION ENGINE
+                            // ==========================================
+                            initCyberScrollEngine();
+                        }
+
+                        // Matrix Hacker Scramble Text Decoder (Çok yavaş, gözle doyasıya okunan 1.8s deşifre)
+                        function scrambleDecode(element, duration) {
+                            if (!element || element.dataset.scrambled === 'true') return;
+                            element.dataset.scrambled = 'true';
+                            const orig = element.textContent.trim();
+                            const chars = '!<>-_\\/[]{}—=+*^?#0101';
+                            const dur = duration || 1800; // 1.8 Saniye boyunca aheste deşifre
+                            const start = performance.now();
+                            const len = orig.length;
+                            let lastShuffle = 0;
+                            let cachedChars = orig.split('').map(c => c === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)]);
+
+                            function frame(now) {
+                                const progress = Math.min((now - start) / dur, 1);
+                                // Harflerin kilitlenme hızını çok tatlı ve kademeli yay
+                                const easedProgress = 1 - Math.pow(1 - progress, 2.5);
+                                const lockIdx = Math.floor(easedProgress * len);
+
+                                // Karakterleri 80ms aralıklarla sakin sakin değiştir
+                                if (now - lastShuffle > 80) {
+                                    lastShuffle = now;
+                                    for (let i = lockIdx; i < len; i++) {
+                                        if (orig[i] !== ' ') {
+                                            cachedChars[i] = chars[Math.floor(Math.random() * chars.length)];
+                                        }
+                                    }
+                                }
+
+                                let res = '';
+                                for (let i = 0; i < len; i++) {
+                                    if (i < lockIdx || orig[i] === ' ') {
+                                        res += orig[i];
+                                    } else {
+                                        res += cachedChars[i];
+                                    }
+                                }
+                                element.textContent = res;
+
+                                if (progress < 1) {
+                                    requestAnimationFrame(frame);
+                                } else {
+                                    element.textContent = orig;
+                                }
+                            }
+                            requestAnimationFrame(frame);
+                        }
+
+                        // Cyberpunk Scroll Orchestrator
+                        function initCyberScrollEngine() {
+                            // 1. Setup Neon Stream Progress Line
+                            const streamBar = document.getElementById('cyber-scroll-stream-bar');
+
+                            function updateStreamProgress() {
+                                if (!streamBar) return;
+                                const isDashboardActive = document.getElementById('page-dashboard')?.classList.contains('page-active');
+                                if (!isDashboardActive) {
+                                    streamBar.style.opacity = '0';
+                                    return;
+                                }
+                                streamBar.style.opacity = '1';
+
+                                const docEl = document.documentElement;
+                                const bodyEl = document.body;
+                                const mainEl = document.querySelector('.app-main');
+                                
+                                const scrollTop = (mainEl && mainEl.scrollTop > 0) ? mainEl.scrollTop : (window.pageYOffset || docEl.scrollTop || bodyEl.scrollTop || 0);
+                                const scrollHeight = (mainEl && mainEl.scrollHeight > mainEl.clientHeight) ? (mainEl.scrollHeight - mainEl.clientHeight) : (Math.max(docEl.scrollHeight, bodyEl.scrollHeight) - window.innerHeight);
+
+                                if (scrollHeight <= 0) {
+                                    streamBar.style.width = '0%';
+                                    return;
+                                }
+
+                                const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+                                streamBar.style.width = (progress * 100).toFixed(1) + '%';
+
+                                // Dynamic track color matching depth
+                                if (progress < 0.28) {
+                                    streamBar.style.background = 'linear-gradient(90deg, #10b981, #34d399)';
+                                    streamBar.style.boxShadow = '0 0 12px rgba(16, 185, 129, 0.75)';
+                                } else if (progress < 0.55) {
+                                    streamBar.style.background = 'linear-gradient(90deg, #ef4444, #f87171)';
+                                    streamBar.style.boxShadow = '0 0 12px rgba(239, 68, 68, 0.75)';
+                                } else if (progress < 0.8) {
+                                    streamBar.style.background = 'linear-gradient(90deg, #0284c7, #38bdf8)';
+                                    streamBar.style.boxShadow = '0 0 12px rgba(56, 189, 248, 0.75)';
+                                } else {
+                                    streamBar.style.background = 'linear-gradient(90deg, #9333ea, #c084fc)';
+                                    streamBar.style.boxShadow = '0 0 12px rgba(192, 132, 252, 0.75)';
+                                }
+                            }
+
+                            window.addEventListener('scroll', () => requestAnimationFrame(updateStreamProgress), { passive: true });
+                            const mainScroll = document.querySelector('.app-main');
+                            if (mainScroll) {
+                                mainScroll.addEventListener('scroll', () => requestAnimationFrame(updateStreamProgress), { passive: true });
+                            }
+                            updateStreamProgress();
+
+                            // 2. Below-Fold Reveal Elements (HERO AND LEVEL SELECTOR ARE EXCLUDED, REMAINING 100% VISIBLE)
+                            const revealTargets = [
+                                { el: document.querySelector('.tree-root-card'), scrambleEl: document.querySelector('.tree-root-title') },
+                                { el: document.getElementById('specialization-branches-section') },
+                                { el: document.querySelector('.tree-branch-card.branch-red'), scrambleEl: document.querySelector('.branch-red .branch-card-title') },
+                                { el: document.querySelector('.tree-branch-card.branch-blue'), scrambleEl: document.querySelector('.branch-blue .branch-card-title') },
+                                { el: document.querySelector('.tree-branch-card.branch-purple'), scrambleEl: document.querySelector('.branch-purple .branch-card-title') },
+                                { el: document.querySelector('.tree-bottom-quiz-box') },
+                                ...Array.from(document.querySelectorAll('.real-power-card')).map(card => ({ el: card }))
+                            ];
+
+                            revealTargets.forEach(target => {
+                                if (target.el) {
+                                    target.el.classList.add('cyber-scroll-reveal');
+                                }
+                            });
+
+                            if ('IntersectionObserver' in window) {
+                                const observer = new IntersectionObserver((entries) => {
+                                    entries.forEach(entry => {
+                                        if (entry.isIntersecting) {
+                                            const targetEl = entry.target;
+                                            targetEl.classList.add('revealed');
+                                            targetEl.classList.add('cyber-laser-sweep');
+                                            
+                                            // Find matching scramble element if any
+                                            const match = revealTargets.find(t => t.el === targetEl);
+                                            if (match && match.scrambleEl) {
+                                                scrambleDecode(match.scrambleEl);
+                                            }
+                                            observer.unobserve(targetEl);
+                                        }
+                                    });
+                                }, { rootMargin: '0px 0px -80px 0px', threshold: 0.20 });
+
+                                revealTargets.forEach(target => {
+                                    if (target.el) observer.observe(target.el);
+                                });
+                            } else {
+                                revealTargets.forEach(target => {
+                                    if (target.el) target.el.classList.add('revealed');
+                                });
+                            }
                         }
 
                         if (document.readyState === 'loading') {
@@ -1126,7 +1520,7 @@
                         </div>
                     </div>
 
-                    <!-- 140+ REAL PRACTICAL COMMANDS MASTER LIBRARY -->
+                    <!-- 175+ REAL PRACTICAL COMMANDS MASTER LIBRARY -->
                     <div style="margin-top: 10px;" data-reveal>
                         <div class="panel-header" style="margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
                             <div class="panel-title">
@@ -1146,10 +1540,10 @@
                                     <circle cx="11" cy="11" r="8"/>
                                     <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                                 </svg>
-                                <input type="text" id="academy-cmd-search" placeholder="140+ komut veya araç ara (örn: nmap, hping3, gobuster, hydra, port, dosya, parola, syn)..." />
+                                <input type="text" id="academy-cmd-search" placeholder="175+ komut veya araç ara (örn: nmap, hping3, gobuster, hydra, port, dosya, parola, syn)..." />
                             </div>
                             <div class="filter-pills" id="academy-category-pills">
-                                <button class="filter-pill active" data-cat="all">Tümü (140+)</button>
+                                <button class="filter-pill active" data-cat="all">Tümü (175+)</button>
                                 <button class="filter-pill" data-cat="linux">1. Linux Temelleri</button>
                                 <button class="filter-pill" data-cat="nmap">2. Ağ &amp; Nmap</button>
                                 <button class="filter-pill" data-cat="web">3. Web &amp; Fuzzing</button>
@@ -1769,7 +2163,7 @@
                         <div class="changelog-stat-lbl" data-i18n="cl_stat_rooms">Toplam Görev</div>
                     </div>
                     <div class="changelog-stat-box">
-                        <div class="changelog-stat-val">143+ Kod</div>
+                        <div class="changelog-stat-val">175+ Kod</div>
                         <div class="changelog-stat-lbl" data-i18n="cl_stat_cli">Terminal Motoru</div>
                     </div>
                     <div class="changelog-stat-box">

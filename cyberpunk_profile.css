@@ -1068,3 +1068,215 @@
         max-width: 300px;
     }
 }
+
+
+/* ==========================================================================
+   DEVELOPER DOSSIER // 100% FLUID MOBILE RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .cyberpunk-profile-stage {
+        padding-bottom: 40px !important;
+        gap: 20px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .cp-profile-body {
+        padding: 0 14px 20px 14px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .cp-avatar-status-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        margin-top: -45px !important;
+        gap: 12px !important;
+    }
+
+    .cp-avatar-wrapper {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .cp-avatar-img {
+        width: 78px !important;
+        height: 78px !important;
+    }
+
+    .cp-specs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .cp-connections-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .cp-spec-card,
+    .cp-conn-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+
+/* ==========================================================================
+   IMAGE 2 FIX: PRECISION ZERO-CLIP RESPONSIVE SUITE FOR DEVELOPER DOSSIER
+   ========================================================================== */
+.cp-alias-sub {
+    flex-wrap: wrap !important;
+    row-gap: 4px !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+}
+
+.cp-bio-box {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+}
+
+.cp-bio-quote {
+    word-break: break-word !important;
+    max-width: 100% !important;
+}
+
+.cp-bio-link {
+    max-width: 100% !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+    display: inline-block !important;
+    white-space: normal !important;
+}
+
+.cp-section-title {
+    max-width: 100% !important;
+    word-break: break-word !important;
+    flex-wrap: wrap !important;
+}
+
+@media (max-width: 768px) {
+    .cyberpunk-profile-stage {
+        padding: 0 0 40px 0 !important;
+        gap: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    .cp-hero-card {
+        border-radius: 14px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .cp-profile-body {
+        padding: 0 14px 20px 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .cp-avatar-status-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        margin-top: -45px !important;
+        margin-bottom: 16px !important;
+        gap: 12px !important;
+    }
+
+    .cp-avatar-wrapper {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .cp-avatar-img {
+        width: 78px !important;
+        height: 78px !important;
+    }
+
+    .cp-glitch-name {
+        font-size: 26px !important;
+        line-height: 1.2 !important;
+    }
+
+    .cp-alias-sub {
+        font-size: 12.5px !important;
+        gap: 6px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .cp-bio-box {
+        padding: 14px 14px !important;
+        margin-bottom: 20px !important;
+        border-radius: 10px !important;
+    }
+
+    .cp-bio-quote {
+        font-size: 13.5px !important;
+        line-height: 1.5 !important;
+    }
+
+    .cp-bio-link {
+        font-size: 11.5px !important;
+        line-height: 1.5 !important;
+    }
+
+    .cp-section-title {
+        font-size: 13px !important;
+        letter-spacing: 0.8px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .cp-connections-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-bottom: 24px !important;
+    }
+
+    .cp-specs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .cp-spec-card,
+    .cp-conn-card {
+        padding: 12px 14px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* Cyber Radio Mobile Compactness & Anti-Overlap */
+@media (max-width: 600px) {
+    .cyber-radio-widget {
+        bottom: 12px !important;
+        right: 12px !important;
+        z-index: 95 !important;
+    }
+    .cyber-radio-pill {
+        padding: 6px 10px !important;
+        gap: 6px !important;
+        font-size: 10.5px !important;
+        border-radius: 999px !important;
+    }
+    .radio-pill-title {
+        max-width: 110px !important;
+        font-size: 10px !important;
+    }
+    .radio-equalizer {
+        display: none !important;
+    }
+}
